@@ -1,0 +1,219 @@
+.body-bg-custom{
+    background-image: url(../img/Bokeh-on-Blue.jpg);
+    position: absolute;
+    width: 100%;
+    /* height: 100%; */
+    /*background-image: url(combined-and-fonts.min.css);*/
+    background-repeat: repeat-y;
+    background-size: cover;
+    /* background-position: 50% 50%; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    color: white;
+}
+
+.bg-main-color{
+    background-color: #506dad;
+}
+
+.com-name{
+    color: white !important;
+    text-transform: uppercase;
+    border-right: solid 1px white;
+    padding-right: 20px;
+}
+
+.title-nav{
+    color: white !important;
+    text-transform: uppercase;
+}
+
+.title-nav:hover{
+    text-decoration: underline !important;
+    opacity: 0.5;
+}
+
+.user-info{
+    /* color: white; */
+    display: flex;
+}
+.user-info .nav-link{
+    color: white !important;
+    display: flex;
+    padding: 0px;
+}
+
+.com-name-login{
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: x-large;
+}
+
+table{
+    color: white !important;
+}
+
+.modal{
+    color: black;
+}
+
+.nav-link.active.title-nav.selected{
+    opacity: 0.5;
+    text-decoration: underline;
+}
+
+hr{
+    background-color: white;
+}
+
+.box_review{
+    border: solid 1px ; 
+    border-radius: 10px; width: 290px;
+    margin: auto;
+}
+.box_review span{
+    font-weight: 700;
+    font-size: 1.28571429em;
+}
+
+.box_review a{
+    cursor: pointer;
+}
+.nav-item.nav-link{
+    color: white !important;
+    cursor: pointer;
+}
+.nav-item.nav-link.active{
+    color: black !important;
+}
+
+.box_review img{
+   width: 100%;
+   height: 320px;
+   position: relative;
+    display: block;
+    flex: 0 0 auto;
+    padding: 0;
+    background: rgba(0,0,0,.05);
+    border-radius: .28571429rem .28571429rem 0 0 !important;
+    border-top: none !important;
+}
+
+.box_review .content{
+    padding: 10px;
+}
+.box_review button{
+    min-height: 40px;
+    background-color: #cce2ff;
+    color: #2185d0 !important;
+    border-radius: .28571429rem;
+}
+.img_lib{
+    max-width: 100%;
+    /* height: 350px; */
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    padding: 10px;
+}
+
+.img_item{
+    background-size: cover;
+background-repeat: no-repeat;
+background-position: center center;
+/* width: 195px; */
+height: 250px;
+margin-right: 10px;
+margin-left: 10px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.img_item.active{
+    border: 5px solid rgb(127, 213, 206);
+}
+
+.pricing{
+    border:  1px solid white;
+    border-radius: 10px;
+    /* padding: 10px; */
+    /* height: 255px; */
+    width: 100%;
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    margin-top: 20px;
+}
+.pricing_title{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: 700;
+    text-align: center;
+    font-size: xx-large;
+    background-color: #2185d0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.pricing_cost{
+    font-weight: 700;
+    text-align: center;
+    /* font-size: larger; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: greenyellow;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.pricing_benefit{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.pricing_benefit_title{
+    /* font-weight: 700; */
+    /* font-size: larger; */
+    /* background-color: yellowgreen; */
+    border-bottom: 1px solid white;
+}
+.pricing_benefit_item{
+    display: flex;
+    flex-direction: column;
+}
+
+#loading-element{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 99 !important;
+    display: none;
+    opacity: 0.6;
+}
+#loading-element > img{
+    width: 30vw;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100 !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .com-name{
+        border-bottom: solid 1px white;
+        padding-bottom: 10px;
+    }
+    
+    .title-nav{
+        border-bottom: solid 1px white;
+        padding-bottom: 10px;
+    }
+    
+}

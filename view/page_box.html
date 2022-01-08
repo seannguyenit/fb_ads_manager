@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Notice</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body class="body-bg-custom">
+    <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId            : '296238829130822',
+            autoLogAppEvents : true,
+            xfbml            : true,
+            version          : 'v12.0'
+          });
+        };
+      </script>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <!-- Top Bar -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
+        <div class="container-fluid">
+            <a class="navbar-brand com-name" href="/home/notice">FB ads support</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
+                aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between;">
+                <div id="main_menu" class="navbar-nav">
+                    <a class="nav-link active title-nav" aria-current="page" href="/home/notice">Thông báo</a>
+                    <a class="nav-link active title-nav" aria-current="page" href="/home/getcontent">Lấy nội dung</a>
+
+                </div>
+                <div class="navbar-nav user-info">
+                    <div class="nav-link active" aria-current="page"><a id="current_username">USER</a> <a
+                            class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuất)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section>
+        <div class="col-12">
+            <div class="container">
+                <!-- <div class="col-md-12 d-flex flex-wrap mt-2">
+
+                    <div class="col-md-10">
+                        <label for="user_token" class="form-label">User token</label>
+                        <input type="text" class="form-control" id="user_token" required>
+                    </div>
+                    <div class="col-md-2">
+                        <button onclick="run_()" class="btn btn-primary" style="margin-top: 30px;">Chạy</button>
+                    </div>
+                </div> -->
+                <div class="col-md-12 d-flex flex-wrap mt-2">
+                    <div class="col-md-4">
+                        <label for="list_pages" class="form-label">TK FACEBOOK</label>
+                        <select class="form-select p-2 w-100" id="list_fb" onchange="set_combobox_data()" required>
+                            <option selected disabled value="">Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="list_pages" class="form-label">PAGE</label>
+                        <select class="form-select p-2 w-100" id="list_pages" onchange="change_page_selected()"
+                            required>
+                            <option selected disabled value="">Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="list_pages" class="form-label">TK QUẢN CÁO</label>
+                        <select class="form-select p-2 w-100" id="list_ads" required>
+                            <option selected disabled value="">Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12 d-flex flex-wrap mt-2">
+                    <div class="col-md-6 pt-4">
+                        <div class="box_review">
+                            <a onclick="select_file()"><img id="img_1" src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                            <div class="d-flex justify-content-between content">
+                                <span data-select="review1">Like Page 👉 👉</span>
+                                <button data-select="review" class="btn">Like page</button>
+                                <input id="file-input" type="file" name="name0" style="display: none;"
+                                    onchange="PreviewImage()" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pt-4">
+                        <div class="box_review">
+                            <a onclick="select_file1()"><img id="img_2" src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                            <div class="d-flex justify-content-between content">
+                                <span data-select="review2">Like Page 👉 👉</span>
+                                <button data-select="review" class="btn">Like page</button>
+                                <input id="file-input1" type="file" name="name1" style="display: none;"
+                                    onchange="PreviewImage1()" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 d-flex flex-wrap pt-4 pb-4">
+                    <nav class="w-100">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab"
+                                aria-controls="nav-home" aria-selected="true" onclick="set_card(1)">CARD 1</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" role="tab"
+                                aria-controls="nav-profile" aria-selected="false" onclick="set_card(2)">CARD 2</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content w-100" id="nav-tabContent">
+                        <div class="tab-pane fade show active d-flex flex-wrap p-4">
+                            <div class="col-md-6 p-2" data-select="card1">
+                                <label for="list_pages" class="form-label">BUTTONS</label>
+                                <select onchange="change_button()" class="form-select p-2 w-100" id="list_bts" required>
+                                    <option selected>Like Page</option>
+                                    <option>No Button</option>
+                                    <option>Learn More</option>
+                                    <option>Book Travel</option>
+                                    <option>Contact Us</option>
+                                    <option>Download</option>
+                                    <option>Get Quote </option>
+                                    <option>Install App </option>
+                                    <option>Listen Music</option>
+                                    <option>Message Page</option>
+                                    <option>Open Link</option>
+                                    <option>Play Game</option>
+                                    <option>Shop Now</option>
+                                    <option>Sign Up</option>
+                                    <option>Subscribe</option>
+                                    <option>Use App</option>
+                                    <option>Watch More</option>
+                                    <option>Watch Video</option>
+                                    <option>Apply Now</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 p-2" data-select="card1">
+                                <label for="title" class="form-label">CARD TITLE</label>
+                                <input oninput="change_title()" type="text" class="form-control" id="title"
+                                    value="Like Page 👉 👉">
+                            </div>
+                            <div class="col-md-12 p-2" style="display: none;" data-select="card2">
+                                <label for="link" class="form-label">LINK (OPTIONAL) </label>
+                                <input type="text" class="form-control" id="link">
+                            </div>
+                            <div class="col-md-12 p-2" data-select="card2">
+                                <div id="lib_img" class="img_lib">
+                                    <div class="img_item"><img width="100%" height="100%" /></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 p-2">
+                                <label for="post_message" class="form-label">POST MESSAGE </label>
+                                <textarea rows="2" type="text" class="form-control" id="post_message"></textarea>
+                            </div>
+                            <div class="col-md-6 p-2 d-block text-center">
+                                <div class="col-md-12">
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" onchange="change_check_schedule()"
+                                                type="checkbox" name="is_schedule" id="is_schedule"> SCHEDULE
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="datetime-local" id="schedule_time" name="schedule_time" disabled
+                                        value="2018-06-12T19:30">
+                                </div>
+                            </div>
+                            <div class="col-md-12 p-2">
+                                <button onclick="run_public()" class="btn btn-primary w-100">Public</button>
+                            </div>
+                            <div class="col-md-12 p-2">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>FB</th>
+                                            <th>PAGE</th>
+                                            <th>LINK</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="rs_tb">
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- Link post <a class="btn btn-primary" id="rs_link" target="_blank">Link</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../js/authen_fuction.js"></script>
+    <script src="../js/helper_manager.js"></script>
+    <script src="../js/permission.js"></script>
+    <script src="../js/contact_fb.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+
+</html>

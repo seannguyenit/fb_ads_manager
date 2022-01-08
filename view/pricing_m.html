@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Notice</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body class="body-bg-custom">
+    <!-- Top Bar -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
+        <div class="container-fluid">
+            <a class="navbar-brand com-name" href="/home/notice">FB ads support</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
+                aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between;">
+                <div id="main_menu" class="navbar-nav">
+                    <a class="nav-link active title-nav" aria-current="page" href="/home/notice">Thông báo</a>
+                    <a class="nav-link active title-nav" aria-current="page" href="/home/getcontent">Lấy nội dung</a>
+                </div>
+                <div class="navbar-nav user-info">
+                    <div class="nav-link active" aria-current="page"><a id="current_username">USER</a> <a
+                            class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuất)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section>
+        <div class="col-12">
+            <div class="container">
+                <div class="col-12 pt-5 pb-2">
+                    <button onclick="open_modal_pricing(0)" class="btn btn-primary">Tạo mới</button>
+                </div>
+                <div class="col-12">
+                    <table id="table_data" class="tablemanager table table-striped table-bordered table-sm"
+                        cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên</th>
+                                <!-- <th>Mô tả</th> -->
+                                <th>Giá</th>
+                                <th>SL FB</th>
+                                <th>Request/Day</th>
+                                <th>Hạn Ngày</th>
+                                <th>Bậc</th>
+                                <!-- <th>Trạng thái</th> -->
+                                <th class="disableFilterBy">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="pricing_details" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="pricing_details" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal_title">Thông tin gói dịch vụ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex flex-wrap">
+                    <input hidden id="pricing_id" value="0" />
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Tên</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="price" class="form-label">Giá</label>
+                        <input type="number" class="form-control" id="price" required>
+                    </div>
+                    <div class="col-md-12" style="display: none;">
+                        <label for="des" class="form-label">Mô tả</label>
+                        <textarea rows="2" type="text" class="form-control" value="" id="des"></textarea>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="limit_fb" class="form-label">SL FB</label>
+                        <input type="number" class="form-control" id="limit_fb" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="limit_day" class="form-label">SL Ngày</label>
+                        <input type="number" class="form-control" id="limit_day" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="limit_request" class="form-label">Request</label>
+                        <input type="number" class="form-control" id="limit_request" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="level" class="form-label">Bậc</label>
+                        <input type="text" class="form-control" id="level" required>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
+                        class="btn btn-primary" onclick="save_pricing()" data-dismiss="modal">Save</button><button
+                        type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../js/authen_fuction.js"></script>
+    <script src="../js/pricing_manager.js"></script>
+    <script src="../js/helper_manager.js"></script>
+    <script src="../js/permission.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+<script>
+    let main_table = document.getElementById('table_data').children[1];
+    init_pricing();
+    
+</script>
+
+</html>

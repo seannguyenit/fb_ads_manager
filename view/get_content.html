@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Get content</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body class="body-bg-custom">
+    <!-- Top Bar -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
+        <div class="container-fluid">
+            <a class="navbar-brand com-name" href="/home/notice">FB ads support</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
+                aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between;">
+                <div id="main_menu" class="navbar-nav">
+                    <a class="nav-link active title-nav" aria-current="page" href="/home/notice">Thông báo</a>
+                    <a class="nav-link active title-nav" aria-current="page" href="/home/getcontent">Lấy nội dung</a>
+
+                </div>
+                <div class="navbar-nav user-info">
+                    <div class="nav-link active" aria-current="page"><a id="current_username">USER</a> <a
+                            class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuất)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section>
+        <div class="col-12">
+            <div class="col-12 p-2">
+                <div class="d-flex">
+                    <div class="col-12">
+                        <label for="input_link" class="form-label">Link :</label>
+                        <textarea rows="5" type="text" class="form-control" id="input_link"></textarea>
+                        <!-- <div class="valid-feedback">
+                            Looks good!
+                        </div> -->
+                        <label for="input_link" class="form-label">Tên miền WP :</label>
+                        <input type="text" class="form-control" id="input_domain"></input>
+                        <label for="input_link" class="form-label">user WP :</label>
+                        <input type="text" class="form-control" id="input_user"></input>
+                        <label for="input_link" class="form-label">Mật khẩu API WP :</label>
+                        <input type="password" class="form-control" id="input_pass"></input>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div style="text-align: center;">
+                    <button onclick="run_scripts()" class="btn btn-primary">Bắt đầu cào dữ liệu</button>
+                    <button onclick="clear_all()" class="btn btn-warning">Clear</button>
+                    <a href="../client/client_cnc_media.zip" class="btn btn-warning">Tải tiện ích chrome</a>
+                </div>
+            </div>
+            <hr />
+            <div class="col-md-12 d-flex flex-wrap">
+                <div class="col-md-12">
+                    <table id="main_table" class="table table-bordered" style="color: white !important;">
+                        <thead>
+                            <th>STT</th>
+                            <th>link</th>
+                            <th>link bài viết</th>
+                            <th>Trạng thái</th>
+                        </thead>
+                        <tbody>
+                            <!-- <tr>
+                                <td>dasd</td>
+                                <td>asdasd</td>
+                                <td>asdasdas</td>
+                                <td>asdasdas</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <button id="sp_ex" style="display: none;" data-url="" data-stt="0" data-index=""></button>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="../js/authen_fuction.js"></script>
+    <script src="../js/get_content.js"></script>
+    <script src="../js/permission.js"></script>
+    <script>
+        var cr_links = [];
+        var stt_name = ['Đang chờ', 'Đang xử lý', 'Đã xong', 'Bị chặn / Mở bằng extentions', 'Lỗi web WP'];
+        async function run_scripts() {
+            document.getElementById('main_table').querySelector('tbody').innerHTML = '';
+            //0. validate input
+            if (!validate_all()) return;
+            //1. get all current input link
+            cr_links = document.getElementById('input_link').value.split(/\r|\n/);
+            cr_links = cr_links.filter((f) => { return f.length > 0 });
+            load_default();
+            //2. collect data from every single link
+            //3. send that data to wp
+            //4. update status in table
+            run_url_by_url();
+
+
+
+            // var data = await get_content(document.getElementById('input_link').value);
+            // document.getElementById('content_located').innerHTML = data.content;
+            // show_media(data.media, document.getElementById('input_link').value);
+        }
+
+        function clear_all() {
+            document.getElementById('input_link').value = '';
+            document.getElementById('content_located').value = '';
+            document.getElementById('media_located').innerHTML = '';
+        }
+
+        function load_default() {
+            if (cr_links) {
+                var tb = document.getElementById('main_table').querySelector('tbody');
+                for (let index = 0; index < cr_links.length; index++) {
+                    var r = cr_links[index];
+                    tb.innerHTML += `<tr data-row="${index + 1}">
+                                <td>${index + 1}</td>
+                                <td>${r}</td>
+                                <td></td>
+                                <td>${stt_name[0]}</td>
+                            </tr> `;
+                }
+            }
+        }
+
+        async function run_url_by_url() {
+            if (!cr_links) return;
+            var data = {};
+            for (let index = 0; index < cr_links.length; index++) {
+                try {
+                    change_stt(stt_name[1], index);
+                    var r = cr_links[index];
+                    data = await get_content(r);
+                    if (data.error) {
+                        change_stt(stt_name[3], index);
+                        data = await get_content_by_plugin(r, index);
+                    }
+                    // console.log(rs);
+                } catch (error) {
+                    change_stt(stt_name[3], index);
+                    data = await get_content_by_plugin(r, index);
+                }
+                try {
+                    if (!data.content || data.content.length == 0) {
+                        change_stt(stt_name[4], index);
+                        // break;
+                    } else {
+                        await set_correct_data(data, index);
+                    }
+                } catch (error) {
+                    change_stt(stt_name[4], index);
+
+                }
+
+            }
+        }
+
+        async function set_correct_data(data, index) {
+            var root_url = document.getElementById('input_domain').value;
+            var user = document.getElementById('input_user').value;
+            var pass = document.getElementById('input_pass').value;
+            var rs = await save_posts(root_url, user, pass, data.title, data.content);
+            let w = await waitingForNext(2000);
+            change_stt(stt_name[2], index);
+            change_link(rs.link, index)
+        }
+
+        async function change_stt(name, index) {
+            var sl = document.querySelector(`[data-row="${index + 1}"]`);
+            if (sl) {
+                sl.children[3].innerText = name;
+            }
+        }
+        async function change_link(link, index) {
+            var sl = document.querySelector(`[data-row="${index + 1}"]`);
+            if (sl) {
+                sl.children[2].innerHTML = `<a href="${link}" target="_blank">Link</a>`;
+            }
+        }
+
+    </script>
+</body>
+
+</html>
