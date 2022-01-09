@@ -4,18 +4,35 @@ const bodyParser = require('body-parser')
 const cors = require('cors');
 const path = require('path')
 var server = require('http').createServer(app);
-var corsAnywhere = require('cors-anywhere')
+// var server2 = require('http').createServer(app);
+require('dotenv').config
+
+// Listen on a specific host via the HOST environment variable
+// var host = process.env.HOST || '127.0.0.1';
+// Listen on a specific port via the PORT environment variable
+// var port2 = process.env.PORT || 3000;
+
+// var cors_proxy = require('cors-anywhere');
+// cors_proxy.createServer({
+//     originWhitelist: [], // Allow all origins
+//     requireHeader: ['origin', 'x-requested-with'],
+//     removeHeaders: ['cookie', 'cookie2']
+// }).listen(port2, function() {
+//     console.log('Running CORS Anywhere on ' + ':' + port2);
+// });
+
+
+// var corsAnywhere = require('cors-anywhere')
 // .createServer({
 //     originWhitelist: [], // Allow all origins
 //     requireHeader: ['origin', 'x-requested-with'],
 //     removeHeaders: ['cookie', 'cookie2']
 // });
-let proxy = corsAnywhere.createServer({
-    originWhitelist: ["https://phanmemnhatrang.xyz","http://phanmemnhatrang.xyz","http://phanmemnhatrang.xyz:3000","https://phanmemnhatrang.xyz:3000","https://phanmemnhatrang.xyz/proxy/"], // Allow all origins
-    requireHeader: ['origin', 'x-requested-with'],
-    removeHeaders: ['cookie', 'cookie2']
-});
-require('dotenv').config
+// let proxy = corsAnywhere.createServer({
+//     originWhitelist: [], // Allow all origins
+//     requireHeader: ['origin', 'x-requested-with'],
+//     removeHeaders: ['cookie', 'cookie2']
+// });
 const port = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -33,10 +50,21 @@ app.use(express.static(path.join(__dirname, 'static')));
 // app.all('/cors_anywhere', (req, res) => {
 //     cors_proxy.emit('request', req, res);
 // })
-app.all('/proxy/:proxyUrl*', (req, res) => {
-    req.url = req.url.replace('/proxy/https:/', '/https://'); // Strip '/proxy' from the front of the URL, else the proxy won't work.
-    proxy.emit('request', req, res);
-});
+
+// cors_proxy.use(function(req, res, next) {
+//     var index_ = req.url.indexOf('/https:');
+//     var sliced_ = req.url.slice(index_ + 7,2);
+//     console.log(sliced_);
+//     next();
+//   });
+
+
+// app.all('/proxy/:proxyUrl*', (req, res) => {
+//     req.url = req.url.replace('/proxy/https:/', '/https://'); // Strip '/proxy' from the front of the URL, else the proxy won't work.
+//     // req.url = 'http://localhost:3000' + req.url;
+//     proxy.emit('request', req, res);
+//     console.log(req.url);
+// });
 
 
 server.listen(port, () => {

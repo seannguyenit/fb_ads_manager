@@ -6,8 +6,10 @@ var cr_token;
 
 var cr_video1;
 var cr_video2;
-// const r_url = `${window.location.origin}/proxy/`;
-const r_url = `https://phanmemnhatrang.xyz/proxy/`;
+const r_url = `https://arthurtech.xyz/`;
+// const r_url = `${window.location.protocol}//${window.location.hostname}/proxy/`;
+
+
 const option_get = {
     "credentials": "omit",
     "headers": {
@@ -239,6 +241,7 @@ async function PreviewImage() {
 };
 
 async function PreviewImage1() {
+    start_loading();
     try {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("file-input1").files[0]);
@@ -467,7 +470,7 @@ async function public_data(ads_id, token) {
         data.object_story_spec.link_data.child_attachments[1].video_id = video2;
     }
     // console.log(data);
-    var url = `${r_url}http://graph.facebook.com/v12.0/act_${ads_id}/adcreatives`;
+    var url = `${r_url}https://graph.facebook.com/v12.0/act_${ads_id}/adcreatives`;
     // var rs_op = await fetch(url, {
     //     method: 'OPTIONS', // or 'PUT'
     // })
