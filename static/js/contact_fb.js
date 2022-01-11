@@ -74,6 +74,7 @@ async function init_default() {
             });
             await set_combobox_data();
         }
+        change_card_element();
     } catch (error) {
         stop_loading();
     }
@@ -124,10 +125,14 @@ async function load_lib_img(v1) {
     var img_p = document.getElementById('lib_img');
     img_p.innerHTML = '';
     if (cr_video1 && cr_video1.thumbnails.data) {
-        img_p.innerHTML += `<div onclick="change_img(this)" data-type="video1" class="img_item"><img src="${cr_video1.thumbnails.data[0].uri}" width="195" height="100%"/></div>`;
+        cr_video1.thumbnails.data.forEach(f => {
+            img_p.innerHTML += `<div onclick="change_img(this)" data-type="video1" class="img_item"><img src="${f.uri}" width="195" height="100%"/></div>`;
+        });
     }
     if (cr_video2 && cr_video2.thumbnails.data) {
-        img_p.innerHTML += `<div onclick="change_img(this)" data-type="video2" class="img_item"><img src="${cr_video2.thumbnails.data[0].uri}" width="195" height="100%"/></div>`;
+        cr_video2.thumbnails.data.forEach(f => {
+            img_p.innerHTML += `<div onclick="change_img(this)" data-type="video2" class="img_item"><img src="${f.uri}" width="195" height="100%"/></div>`;
+        });
     }
 
     var lst_img = await get_img_acc_from_ad($('#list_ads :selected').val(), tk);
@@ -207,15 +212,21 @@ function set_card(number) {
 }
 
 async function change_card_element() {
-    // var lib_ = document.getElementById('lib_img').parentElement;
-    // // var tab_ = document.querySelectorAll('div[data-select="card1"]');
-    // if (cr_card == 1) {
-    //     // lib_.style.display = 'none';
-    //     // tab_.forEach(f => { f.style.display = "block" });
-    // } else {
-    //     // lib_.style.display = 'block';
-    //     // tab_.forEach(f => { f.style.display = "none" });
-    // }
+    var lib_ = document.getElementById('lib_img').parentElement;
+    var tab_ = document.querySelectorAll('div[data-select="card1"]');
+    var img_p = document.getElementById('lib_img');
+    var lst_img = img_p.querySelectorAll('[data-type="image"]');
+    if (cr_card == 1) {
+        // lib_.style.display = 'none';
+        lst_img.forEach(f => { f.style.display = "none" });
+        tab_.forEach(f => { f.style.display = "block" });
+    } else {
+        // lib_.style.display = 'block';
+        lst_img.forEach(f => { f.style.display = "block" });
+        tab_.forEach(f => { f.style.display = "none" });
+    }
+
+
 }
 
 async function PreviewImage() {
@@ -225,7 +236,7 @@ async function PreviewImage() {
         oFReader.readAsDataURL(document.getElementById("file-input").files[0]);
 
         oFReader.onload = function (oFREvent) {
-            document.getElementById("img_1").src = oFREvent.target.result;
+            // document.getElementById("img_1").src = oFREvent.target.result;
         };
         var new_obj = await upload_and_return_url(document.getElementById("file-input"), $('#list_ads :selected').val(), $('#list_fb :selected').data('token'));
         if (new_obj) {
@@ -247,7 +258,7 @@ async function PreviewImage1() {
         oFReader.readAsDataURL(document.getElementById("file-input1").files[0]);
 
         oFReader.onload = function (oFREvent) {
-            document.getElementById("img_2").src = oFREvent.target.result;
+            // document.getElementById("img_2").src = oFREvent.target.result;
         };
         var new_obj = await upload_and_return_url(document.getElementById("file-input1"), $('#list_ads :selected').val(), $('#list_fb :selected').data('token'));
         if (new_obj) {
@@ -337,7 +348,7 @@ async function upload_and_return_url(file_element, ads_id, token) {
             // }
         };
 
-        var url = `https://graph.facebook.com/v12.0/act_${ads_id}/adimages?_app=ADS_MANAGER&_reqName=path:/act_${ads_id}/adimages&access_token=${token}`;
+        var url = `${r_url}https://graph.facebook.com/v12.0/act_${ads_id}/adimages?_app=ADS_MANAGER&_reqName=path:/act_${ads_id}/adimages&access_token=${token}`;
         return await fetch(url, options)
             .then(response => response.json())
             .then(data => {
@@ -360,7 +371,7 @@ async function upload_and_return_url(file_element, ads_id, token) {
             //   'Content-Type': 'multipart/form-data',
             // }
         };
-        var url = `https://graph.facebook.com/v12.0/act_${ads_id}/advideos?access_token=${token}`;
+        var url = `${r_url}https://graph.facebook.com/v12.0/act_${ads_id}/advideos?access_token=${token}`;
         var vd_rs = await fetch(url, options)
             .then(response => response.json())
             .then(data => {
@@ -540,7 +551,11 @@ async function post_step3(op) {
     var token = $('#list_pages :selected').data('token');
     // var ads_id = $('#list_ads :selected').val();
     var data = { "access_token": token, "is_published": true }
-    var url = `https://graph.facebook.com/v12.0/${op}`;
+    if ($('#is_schedule').is(':checked') == true) {
+        var timesta = (new Date($('#schedule_time').val())).getTime();
+        data = { "access_token": token, "scheduled_publish_time": timesta }
+    }
+    var url = `${r_url}https://graph.facebook.com/v12.0/${op}`;
     return await fetch(url, {
         method: 'POST', // or 'PUT'
         headers: {
@@ -550,9 +565,7 @@ async function post_step3(op) {
     })
         .then(response => response.json())
         .then(data => {
-            if (data != undefined) {
-                return data || {};
-            }
+            return data
         })
         .catch(error => {
             console.error('Error:', error);

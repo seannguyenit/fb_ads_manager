@@ -92,14 +92,14 @@ hr{
 
 .box_review img{
    width: 100%;
-   height: 320px;
+   height: 290px;
+   object-fit: cover;
    position: relative;
     display: block;
-    flex: 0 0 auto;
     padding: 0;
     background: rgba(0,0,0,.05);
-    border-radius: .28571429rem .28571429rem 0 0 !important;
-    border-top: none !important;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .box_review .content{
@@ -135,7 +135,9 @@ margin-left: 10px;
 .img_item.active{
     border: 5px solid rgb(127, 213, 206);
 }
-
+.img_item img{
+    object-fit: cover;
+}
 .pricing{
     border:  1px solid white;
     border-radius: 10px;
