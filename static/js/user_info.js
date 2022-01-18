@@ -1,5 +1,6 @@
 'use strict'
-const r_url = `https://arthurtech.xyz/`;
+const r_url = "/proxy/";
+// const r_url = `https://arthurtech.xyz/`;
 // const r_url = `${window.location.protocol}//${window.location.hostname}/proxy/`;
 
 

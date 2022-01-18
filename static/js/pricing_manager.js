@@ -155,3 +155,16 @@ async function del_pricing(id) {
     // console.log('Success:', rs);
     init_pricing();
 }
+
+
+async function get_pricing_history(user_id) {
+    return await fetch(`/api/pricing_public/${user_id}` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}

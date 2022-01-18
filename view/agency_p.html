@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Pricing</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body class="body-bg-custom">
+    <!-- Top Bar -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
+        <div class="container-fluid">
+            <a class="navbar-brand com-name" href="/home/notice">FB ads support</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
+                aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between;">
+                <div id="main_menu" class="navbar-nav">
+                    <a class="nav-link active title-nav" aria-current="page" href="/home/notice">Thông báo</a>
+                    <a class="nav-link active title-nav" aria-current="page" href="/home/getcontent">Lấy nội dung</a>
+
+                </div>
+                <div class="navbar-nav user-info">
+                    <div class="nav-link active" aria-current="page"><a id="current_username">USER</a> <a
+                            class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuất)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section>
+        <div class="col-12">
+            <div class="container">
+                <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="link_ref">Link giới thiệu :</label>
+                            <input type="text" class="form-control" name="link_ref" id="link_ref"
+                                aria-describedby="link_ref" placeholder="Vui lòng đăng ký làm đại lý !">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="container d-flex flex-column">
+                            <label>Chưa đăng ký</label>
+                            <button class="btn btn-primary">Đăng ký</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../js/authen_fuction.js"></script>
+    <script src="../js/helper_manager.js"></script>
+    <script src="../js/permission.js"></script>
+    <script src="../js/agency_public.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+
+</html>

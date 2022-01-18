@@ -28,6 +28,12 @@ module.exports = function (app) {
   app.route('/api/menu_user/:user_id')
     .post(menuCtrl.add_menu);
 
+  app.route('/api/pricing_public/:user_id')
+    .get(pricingCtrl.pricing_histories);
+    
+  app.route('/api/pricing_public')
+  .post(pricingCtrl.order_pricing);
+
   app.route('/api/pricing')
     .get(pricingCtrl.get)
     .post(pricingCtrl.store);

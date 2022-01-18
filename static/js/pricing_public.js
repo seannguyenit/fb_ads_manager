@@ -15,9 +15,7 @@ async function init_default() {
             </div>
 
             <div class="pricing_benefit">
-                <div class="pricing_benefit_title">
-                    Lợi ích
-                </div>
+                
                 <div class="pricing_benefit_item">
                     <div><i class="fa fa-facebook" aria-hidden="true"></i> <span>${item.limit_fb} </span>FB account</div>
                     <div><i class="fa fa-clock-o" aria-hidden="true"></i> <span>${item.limit_day} </span>Ngày</div>
@@ -27,7 +25,8 @@ async function init_default() {
             <div class="pricing_cost">
                 ${get_format_VND(item.price)} VNĐ
             </div>
-        </div>
+            </div>
+            <div class="text-center mt-2 mb-2"><button onclick="order_pricing(${item.id},'${item.name}')" class="btn btn-primary">Mua ngay</button></div>
     </div>`;
         });
     }
@@ -43,4 +42,38 @@ async function pricing_get_all() {
             console.warn(error);
             return undefined;
         });
+}
+
+
+
+async function order_pricing(id, name) {
+    if (!confirm(`Bạn có chắc chắn muốn gia hạn gói ${name} ?`)) {
+        return;
+    }
+    var cr_u = get_cr_user().id;
+    // var add = $("#add").val()
+
+    var url = `/api/accounts`;
+    var meth = 'POST';
+
+    meth = 'POST';
+    url = `/api/pricing_public`;
+    var data = { user_id: cr_u, pricing_id: id };
+    await fetch(url, {
+        method: meth, // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data != undefined) {
+                return data || {};
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    alert('Gia hạn thành công !')
 }

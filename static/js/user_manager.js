@@ -79,7 +79,9 @@ async function init_users() {
                 <td>${item.real_name}</td>    
                 <td>${item.phone}</td>    
                 <td>${item.add}</td>
+                <td>${format_time(item.limit_time)}</td>
                 <td>
+                    ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], 'Gói DV')}
                     ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], 'edit')}
                     ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], 'delete')}
                 </td>
@@ -172,4 +174,16 @@ async function del_acc(id) {
     // const formData = new FormData();
     // console.log('Success:', rs);
     init_users();
+}
+
+async function init_pricing_history(id) {
+    var tb = document.getElementById('tb_pricing_his');
+    tb.innerHTML = '';
+    var data = await get_pricing_history(id);
+    if (data) {
+        data.forEach(f => {
+            tb.innerHTML += `<tr><td>${data.indexOf(f) + 1}</td><td>${format_time(f.time)}</td><td>${f.pricing_name}</td></tr>`
+        });
+    }
+    $('#pricing_history_modal').modal('show')
 }

@@ -1,12 +1,14 @@
 'use strict'
 
+var f_l = 1;
 var cr_card = 1;
 // var cr_ads_id;
 var cr_token;
 
 var cr_video1;
 var cr_video2;
-const r_url = `https://arthurtech.xyz/`;
+const r_url = "/proxy/";
+const r_url2 = `https://arthurtech.xyz/`;
 // const r_url = `${window.location.protocol}//${window.location.hostname}/proxy/`;
 
 
@@ -62,7 +64,10 @@ async function init_default() {
     try {
         document.getElementById('rs_tb').innerHTML = '';
         change_card_element();
-        document.getElementById('schedule_time').value = new Date(Date.now()).toISOString().substr(0, 16);
+        var now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        document.getElementById('schedule_time').value = now.toISOString().slice(0, 16);
+        // document.getElementById('schedule_time').value = new Date(Date.now()).toISOString().substr(0, 16);
         var combo_fb = document.getElementById('list_fb');
         combo_fb.innerHTML = '';
 
@@ -74,7 +79,8 @@ async function init_default() {
             });
             await set_combobox_data();
         }
-        change_card_element();
+        await change_card_element();
+        f_l = 0;
     } catch (error) {
         stop_loading();
     }
@@ -190,7 +196,7 @@ async function change_img(ele) {
     change_img_selected();
 }
 async function change_img_selected() {
-    if (cr_card == 1) {
+    if (cr_card == 1 && f_l == 0) {
         document.getElementById('img_1').src = document.querySelector('div[class="img_item active"]').children[0].src;
     } else {
         document.getElementById('img_2').src = document.querySelector('div[class="img_item active"]').children[0].src;
@@ -234,7 +240,11 @@ async function PreviewImage() {
     try {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("file-input").files[0]);
-
+        var s = Math.round(document.getElementById("file-input").files[0].size / 1024 / 1024);
+        if (s >= 100) {
+            alert('Chọn file nhỏ hơn 100Mb !')
+            return;
+        }
         oFReader.onload = function (oFREvent) {
             // document.getElementById("img_1").src = oFREvent.target.result;
         };
@@ -256,7 +266,11 @@ async function PreviewImage1() {
     try {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("file-input1").files[0]);
-
+        var s = Math.round(document.getElementById("file-input1").files[0].size / 1024 / 1024);
+        if (s >= 100) {
+            alert('Chọn file nhỏ hơn 100Mb !')
+            return;
+        }
         oFReader.onload = function (oFREvent) {
             // document.getElementById("img_2").src = oFREvent.target.result;
         };
@@ -404,7 +418,7 @@ async function get_thumbnails_video(vid) {
     var dt_rs = await get_thumbnails_from_api(url);
     var count = 0;
     while ((!dt_rs.thumbnails) || ((dt_rs.thumbnails.data || []).length < 2 && count < 11)) {
-        let w = await waitingForNext(1000);
+        let w = await waitingForNext(2000);
         dt_rs = await get_thumbnails_from_api(url);
         count++;
     }
@@ -480,19 +494,25 @@ async function public_data(ads_id, token) {
     if (video2) {
         data.object_story_spec.link_data.child_attachments[1].video_id = video2;
     }
+
+    if (pic1 == 'https://i.imgur.com/BDJYyka.jpg') {
+        alert('Chưa chọn file video ở ô 1 !');
+        return;
+    }
+
     // console.log(data);
-    var url = `${r_url}https://graph.facebook.com/v12.0/act_${ads_id}/adcreatives`;
-    // var rs_op = await fetch(url, {
-    //     method: 'OPTIONS', // or 'PUT'
-    // })
-    //     .then(response => response.text())
-    //     .then(r => {
-    //         return r;
-    //     })
-    //     .catch(error => {
-    //         stop_loading();
-    //         console.error('Error:', error);
-    //     });
+    var url = `${r_url2}https://graph.facebook.com/v12.0/act_${ads_id}/adcreatives`;
+    var rs_op = await fetch(url, {
+        method: 'OPTIONS', // or 'PUT'
+    })
+        .then(response => response.text())
+        .then(r => {
+            return r;
+        })
+        .catch(error => {
+            stop_loading();
+            console.error('Error:', error);
+        });
 
     // var w1 = await waitingForNext(2000);
     return await fetch(url, {
@@ -552,7 +572,7 @@ async function post_step3(op) {
     // var ads_id = $('#list_ads :selected').val();
     var data = { "access_token": token, "is_published": true }
     if ($('#is_schedule').is(':checked') == true) {
-        var timesta = (new Date($('#schedule_time').val())).getTime();
+        var timesta = ((new Date($('#schedule_time').val())).getTime()) / 1000;
         data = { "access_token": token, "scheduled_publish_time": timesta }
     }
     var url = `${r_url}https://graph.facebook.com/v12.0/${op}`;
@@ -586,6 +606,7 @@ async function run_public() {
             stop_loading();
             return;
         } else {
+            // let w = await waitingForNext(1000);
             var s2 = await get_step2(rs.id)
             if (s2.effective_object_story_id) {
                 // var w = await waitingForNext(2000);

@@ -37,7 +37,15 @@ function validate_() {
         return true;
     }
 }
-
+function format_time(time) {
+    try {
+        var d = time.substr(0, time.indexOf('T'));
+        var t = time.substring(time.indexOf('T') + 1, time.lastIndexOf(':'));
+        return `${d} ${t}`;
+    } catch (error) {
+        return time;
+    }
+}
 function get_format_VND(str) {
     if (isNaN(str)) return str;
     var pls = '';

@@ -22,17 +22,17 @@ require('dotenv').config
 // });
 
 
-// var corsAnywhere = require('cors-anywhere')
+var corsAnywhere = require('./lib/cors-anywhere')
 // .createServer({
 //     originWhitelist: [], // Allow all origins
 //     requireHeader: ['origin', 'x-requested-with'],
 //     removeHeaders: ['cookie', 'cookie2']
 // });
-// let proxy = corsAnywhere.createServer({
-//     originWhitelist: [], // Allow all origins
-//     requireHeader: ['origin', 'x-requested-with'],
-//     removeHeaders: ['cookie', 'cookie2']
-// });
+let proxy = corsAnywhere.createServer({
+    originWhitelist: [], // Allow all origins
+    requireHeader: [],
+    removeHeaders: []
+});
 const port = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -59,12 +59,16 @@ app.use(express.static(path.join(__dirname, 'static')));
 //   });
 
 
-// app.all('/proxy/:proxyUrl*', (req, res) => {
-//     req.url = req.url.replace('/proxy/https:/', '/https://'); // Strip '/proxy' from the front of the URL, else the proxy won't work.
-//     // req.url = 'http://localhost:3000' + req.url;
-//     proxy.emit('request', req, res);
-//     console.log(req.url);
-// });
+app.all('/proxy/:proxyUrl*', (req, res) => {
+    if (req.url.indexOf('http') > -1) {
+        req.url = req.url.replace('/proxy/https:/', '/https://'); // Strip '/proxy' from the front of the URL, else the proxy won't work.
+        req.url = req.url.replace('/proxy/http:/', '/http://'); // Strip '/proxy' from the front of the URL, else the proxy won't work.
+    } else {
+        req.url = req.url.replace('/proxy/', '/http://'); // Strip '/proxy' from the front of the URL, else the proxy won't work.
+    }
+    // console.log('proxy get url : ', req.url);
+    proxy.emit('request', req, res);
+});
 
 
 server.listen(port, () => {

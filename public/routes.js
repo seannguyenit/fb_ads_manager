@@ -28,4 +28,10 @@ module.exports = function (app) {
 
   app.route('/home/pricing')
     .get(homeCtrl.pricing_public);
+
+  app.route('/home/agency_manager')
+    .get(homeCtrl.agency_manager);
+
+  app.route('/home/agency')
+    .get(homeCtrl.agency_public);
 };
