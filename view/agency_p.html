@@ -30,7 +30,7 @@
 
                 </div>
                 <div class="navbar-nav user-info">
-                    <div class="nav-link active" aria-current="page"><a id="current_username">USER</a> <a
+                    <div id="current_username" class="nav-link active" aria-current="page"><a>USER</a> <a
                             class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuất)</a>
                     </div>
                 </div>
@@ -50,15 +50,73 @@
                     </div>
                     <div class="col-md-6">
                         <div class="container d-flex flex-column">
-                            <label>Chưa đăng ký</label>
-                            <button class="btn btn-primary">Đăng ký</button>
+                            <label id="lb_stt">Chưa đăng ký</label>
+                            <button id="btn_reg" onclick="agency_register()" class="btn btn-primary">Đăng ký</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <hr />
+    <section>
+        <div class="col-12">
+            <div class="container">
+                <div id="main_content" class="col-md-12 d-flex flex-wrap mt-2">
+                    <div class="container title-agency">
+                        Thông tin đại lý
+                    </div>
+                    <div class="col-md-12 d-flex flex-wrap">
+                        <div class="col-md-4">
+                            <div class="box-agency">
+                                <div>0</div>
+                                <div>Tổng tiền nạp</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box-agency">
+                                <div>0</div>
+                                <div>Số lần nạp</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box-agency">
+                                <div>0</div>
+                                <div>Đăng ký mới</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr />
+    <section>
+        <div class="col-12">
+            <div class="container">
+                <div id="main_content" class="col-md-12 d-flex flex-wrap mt-2">
+                    <div class="container title-agency">
+                        Danh sách TK
+                    </div>
+                    <div class="col-md-12 d-flex flex-wrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>User</th>
+                                    <th>Tổng tiền nạp</th>
+                                    <th>Ngày tạo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
     <script src="../js/helper_manager.js"></script>

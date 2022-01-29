@@ -572,7 +572,7 @@ async function post_step3(op) {
     // var ads_id = $('#list_ads :selected').val();
     var data = { "access_token": token, "is_published": true }
     if ($('#is_schedule').is(':checked') == true) {
-        var timesta = ((new Date($('#schedule_time').val())).getTime()) / 1000;
+        var timesta = ((new Date($('#schedule_time').val())).getTime());
         data = { "access_token": token, "scheduled_publish_time": timesta }
     }
     var url = `${r_url}https://graph.facebook.com/v12.0/${op}`;

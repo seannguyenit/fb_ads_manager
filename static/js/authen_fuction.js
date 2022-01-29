@@ -2,16 +2,18 @@
 init_authen();
 
 function init_authen() {
-    var cr = document.getElementById('current_username');
-    if (cr) {
-        if(!check_is_login()){
+    if (document.getElementById('current_username')) {
+        if (!check_is_login()) {
             location.href = "/login";
         }
         var cr_u = get_cr_user();
-        if (cr_u) {
-            cr.innerText = cr_u.username + ' ( 0 VNĐ )';
-            cr.style.color = "white";
-            cr.href = "/home/user_info";
+        if (cr_u && cr_u.id > 0) {
+            get_current_finance().then(rs => {
+                var cr = document.getElementById('current_username');
+                let user_info = rs.username + ' ( ' + get_format_VND(rs.money) + ' VNĐ )';
+                cr.innerHTML = `<a style="color:white" href="/home/user_info">${user_info}</a>
+                <a class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuất)</a>`;
+            })
         }
     }
 }
@@ -42,6 +44,19 @@ function get_cr_user() {
     } catch (error) {
         return {};
     }
+}
+
+async function get_current_finance() {
+    var cr_u = get_cr_user();
+    return await fetch(`/api/finance/${cr_u.id}` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data[0];
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
 }
 
 async function menu_get_current_menu() {

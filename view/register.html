@@ -91,15 +91,17 @@
                 <!-- <form class="login-form"> -->
                 <!-- <input type="hidden" name="_token" value="iyDxZDf2Q5FVqsv3pfnFP4FMvxe0q6ikI8bduICa">                <h3 class="login-head text-uppercase">Đăng nhập</h3> -->
 
+                <input id="ref" type="hidden" name="ref" value="">
+
 
                 <div class="form-group">
-                    <label class="control-label text-uppercase">Tài khoản</label>
+                    <label class="control-label text-uppercase">email</label>
                     <input class="form-control" id="user" name="username" type="text" placeholder="" autofocus="">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="control-label text-uppercase">email</label>
                     <input class="form-control" id="email" name="email" type="email" placeholder="" autofocus="">
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label class="control-label text-uppercase">SDT</label>
                     <input class="form-control" id="phone" name="phone" type="phone" placeholder="" autofocus="">
@@ -110,7 +112,8 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label text-uppercase">xác nhận mật khẩu</label>
-                    <input class="form-control" id="pass_confirm" name="pass_confirm" type="pass_confirm" placeholder="" autofocus="">
+                    <input class="form-control" id="pass_confirm" name="pass_confirm" type="pass_confirm" placeholder=""
+                        autofocus="">
                 </div>
 
 
@@ -154,6 +157,8 @@
     <!-- Gallery popup -->
 
     <script src="../collect/particles.js"></script>
+    <script src="../js/register.js"></script>
+
 
     <script>
         particlesJS("particles-js", {

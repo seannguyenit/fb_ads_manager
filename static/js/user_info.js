@@ -118,4 +118,34 @@ async function get_user_info_from_fb(token) {
         });
 }
 
-//fetch("http://www.graph.facebook.com/v12.0/me?fields=name%2Cpicture&access_token=EAAPO8P5BZCqsBALSMKGdZAsKtnPcGaMqx7eACBZAmV0KlC4oExsk6xASmzZAZCCxX2ewsAtJkjLfPGZC2MXmXSZCkSEaWekYSd4BgwNf8EhTwWWjwiVxFsKxlhstAlrOhlxCe2bUjcSrSqhwxZCSCS098RpfH9QLr8qZBNKqOpGmQy4nLynlFhLFWHO2zMFrCAvIhTeDEq5xhbAZDZD")
+async function change_pass() {
+    var pass_ = document.getElementById('old_pass').value;
+    var new_pass_ = document.getElementById('new_pass').value;
+    var confirm_pass = document.getElementById('confirm_pass').value;
+    if (confirm_pass != new_pass_) {
+        alert('Mật khẩu xác nhận chưa đúng !')
+        return;
+    }
+    var cr_u = await get_cr_user();
+    if (!cr_u) return;
+    let rs = await fetch(`/api/change_acc/${cr_u.id}`, {
+        method: 'PUT', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ pass: pass_, new_pass: new_pass_ })
+    })
+        .then(response => response.json())
+        .then(data => {
+            return data
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    if (rs.error) {
+        alert(rs.error);
+    }else{
+        alert('Đổi mật khẩu thành công ! Quay lại trang đăng nhập !')
+        window.location.href = '/login'
+    }
+}

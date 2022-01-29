@@ -1,5 +1,14 @@
 'use strict'
 
+init_register()
+async function init_register() {
+    var ref = new URL(window.location.href).searchParams.get("ref");
+    if (ref) {
+        document.getElementById('ref').value = ref;
+    }
+}
+
+
 async function check_username() {
     var id = get_cr_user().id;
     var user_name = $('#user').val();
@@ -20,4 +29,45 @@ async function user_check_existed(id, username) {
             console.warn(error);
             return undefined;
         });
+}
+
+
+async function register() {
+    if (!check_username()) {
+        alert('email bị trùng !')
+        return;
+    }
+
+    if (document.getElementById('pass').value != document.getElementById('pass_confirm').value) {
+        alert('Xác nhận mật khẩu không dúng !')
+        return;
+    }
+    if (document.getElementById('pass').value.length == 0 || document.getElementById('user').value.length == 0 || document.getElementById('pass_confirm').value.length == 0) {
+        alert('Chưa điền đủ thông tin !')
+        return;
+    }
+    if (document.getElementById('user').value.indexOf('@') == -1) {
+        alert('email không đúng !')
+        return;
+    } 
+    var user_ = document.getElementById('user').value;
+    var pass_ = document.getElementById('pass').value;
+    var ref_ = document.getElementById('ref').value;
+    let rs = await fetch(`/api/reg_acc`, {
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user: user_, pass: pass_, ref: ref_ })
+    })
+        .then(response => response.json())
+        .then(data => {
+            return data
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    if (rs) {
+        alert('Đăng ký thành công !')
+    }
 }

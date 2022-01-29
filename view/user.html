@@ -29,7 +29,7 @@
                     <a class="nav-link active title-nav" aria-current="page" href="/home/getcontent">Lấy nội dung</a>
                 </div>
                 <div class="navbar-nav user-info">
-                    <div class="nav-link active" aria-current="page"><a id="current_username">USER</a> <a
+                    <div id="current_username" class="nav-link active" aria-current="page"><a>USER</a> <a
                             class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuất)</a>
                     </div>
                 </div>
@@ -49,6 +49,8 @@
                             <tr>
                                 <th>stt</th>
                                 <th>Username</th>
+                                <th>Tổng nạp</th>
+                                <th>Tổng thưởng</th>
                                 <th>Tên</th>
                                 <th>SDT</th>
                                 <th>ĐC</th>
@@ -143,12 +145,46 @@
         </div>
     </div>
 
+    
+    <!-- Modal -->
+    <div class="modal fade" id="money_history" tabindex="-1" role="dialog" aria-labelledby="money_history" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Lịch sử nạp tiền</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th>Stt</th>
+                                <th>Mục đích</th>
+                                <th>Số tiền (VND)</th>
+                                <th>Thời gian</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tb_money_his">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
     <script src="../js/user_manager.js"></script>
     <script src="../js/helper_manager.js"></script>
     <script src="../js/permission.js"></script>
     <script src="../js/pricing_manager.js"></script>
+    <script src="../js/money_manager.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"

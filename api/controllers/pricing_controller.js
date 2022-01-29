@@ -62,12 +62,20 @@ module.exports = {
         })
     },
     order_pricing: (req, res) => {
-        let data = req.body;
-        // data.pass = data.pass;
-        let sql = 'INSERT INTO pricing_history SET ?;'
-        db.query(sql, [data], (err, response) => {
+        let data_money = req.body.money;
+        let data_pricing = req.body.pricing;
+        data_money.type = 0;
+        data_money.time = new Date().getTime()/1000;
+        data_money.active = 1;
+        data_money.money_bonus = 0;
+        let sql_money = 'insert into money_history SET ?;'
+        db.query(sql_money, data_money, (err, response) => {
             if (err) throw err
-            res.json({ message: 'save success!' })
+            let sql = 'INSERT INTO pricing_history SET ?;'
+            db.query(sql, [data_pricing], (err, response) => {
+                if (err) throw err
+                res.json({ message: 'save success!' })
+            })
         })
     },
 }

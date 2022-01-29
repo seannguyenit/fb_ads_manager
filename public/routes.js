@@ -10,7 +10,7 @@ module.exports = function (app) {
   app.route('/register')
     .get(auth_Ctrl.register);
   app.route('')
-    .get(homeCtrl.notice);
+    .get(homeCtrl.user_info);
 
   // app.route('')
   //   .get(homeCtrl.get);
@@ -31,7 +31,9 @@ module.exports = function (app) {
 
   app.route('/home/agency_manager')
     .get(homeCtrl.agency_manager);
-
-  app.route('/home/agency')
+    app.route('/home/agency')
     .get(homeCtrl.agency_public);
+
+  app.route('/home/topup')
+    .get(homeCtrl.top_up);
 };

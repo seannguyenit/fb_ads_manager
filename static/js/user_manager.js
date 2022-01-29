@@ -75,13 +75,16 @@ async function init_users() {
             main_table.innerHTML += `
             <tr>
                 <td>${dt.indexOf(item) + 1}</td>    
-                <td>${item.username}</td>    
+                <td>${item.username}</td> 
+                <td>${get_format_VND(item.money)}</td> 
+                <td>${get_format_VND(item.bonus)}</td>  
                 <td>${item.real_name}</td>    
                 <td>${item.phone}</td>    
                 <td>${item.add}</td>
                 <td>${format_time(item.limit_time)}</td>
                 <td>
                     ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], 'Gói DV')}
+                    ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], 'LS Tiền')}
                     ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], 'edit')}
                     ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], 'delete')}
                 </td>
@@ -186,4 +189,22 @@ async function init_pricing_history(id) {
         });
     }
     $('#pricing_history_modal').modal('show')
+}
+
+async function init_money_history(id) {
+    const types = ['Mua gói', 'Nạp']
+    var tb = document.getElementById('tb_money_his');
+    tb.innerHTML = '';
+    var data = await get_money_history(id);
+    if (data) {
+        data.forEach(f => {
+            tb.innerHTML += `<tr>
+            <td>${data.indexOf(f) + 1}</td>
+            <td>${types[f.type] || ''}</td>
+            <td>${(f.type == 0 ? '-' : '+') + (f.money)}</td>
+            <td>${format_time(f.time)}</td>
+            </tr>`
+        });
+    }
+    $('#money_history').modal('show')
 }

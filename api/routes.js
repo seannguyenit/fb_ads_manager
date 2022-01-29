@@ -4,7 +4,8 @@ module.exports = function (app) {
   let menuCtrl = require('./controllers/menu_controller');
   let pricingCtrl = require('./controllers/pricing_controller');
   let fbCtrl = require('./controllers/fb_controller');
-  // todoList Routes
+  let moneyCtrl = require('./controllers/money_controller');
+
   app.route('/api/login')
     .post(accCtrl.login);
   app.route('/api/logout')
@@ -17,9 +18,30 @@ module.exports = function (app) {
   app.route('/api/Accounts/:id')
     .get(accCtrl.detail);
 
+  app.route('/api/reg_acc')
+    .post(accCtrl.register)
+
+  app.route('/api/change_acc/:id')
+    .put(accCtrl.change_pass)
+
+  app.route('/api/finance/:id')
+    .get(accCtrl.get_current_finance)
+
   app.route('/api/Accounts/:id')
     .put(accCtrl.update)
     .delete(accCtrl.delete);
+
+  app.route('/api/agency')
+    .get(accCtrl.get_all_agency)
+  app.route('/api/agency_reg')
+    .get(accCtrl.get_all_agency_reg)
+
+  app.route('/api/agency/:id')
+    .get(accCtrl.get_agency_info)
+    .put(accCtrl.agency_reg);
+
+  app.route('/api/agency_m/:id')
+    .put(accCtrl.agency_app);
 
   app.route('/api/menu')
     .get(menuCtrl.get_template);
@@ -30,9 +52,9 @@ module.exports = function (app) {
 
   app.route('/api/pricing_public/:user_id')
     .get(pricingCtrl.pricing_histories);
-    
+
   app.route('/api/pricing_public')
-  .post(pricingCtrl.order_pricing);
+    .post(pricingCtrl.order_pricing);
 
   app.route('/api/pricing')
     .get(pricingCtrl.get)
@@ -56,5 +78,18 @@ module.exports = function (app) {
 
   app.route('/api/fb/:url*')
     .get(fbCtrl.get_fb_api);
+
+  app.route('/api/config')
+    .get(menuCtrl.get_all_config);
+
+  app.route('/api/config/:id')
+    .put(menuCtrl.update_config);
+
+  app.route('/api/money_ticket')
+    .post(moneyCtrl.add_money);
+  app.route('/api/money_history/:user_id')
+    .get(moneyCtrl.get_history);
+  app.route('/api/money_topup/:user_id')
+    .get(moneyCtrl.get_list_top_up);
 }
 

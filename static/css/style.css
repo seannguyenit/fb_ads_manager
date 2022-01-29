@@ -1,12 +1,13 @@
 .body-bg-custom{
-    background-image: url(../img/Bokeh-on-Blue.jpg);
+    /* background-image: url(../img/Bokeh-on-Blue.jpg); */
     position: absolute;
     width: 100%;
     /* height: 100%; */
     /*background-image: url(combined-and-fonts.min.css);*/
-    background-repeat: repeat-y;
-    background-size: cover;
+    /* background-repeat: repeat-y;
+    background-size: cover; */
     /* background-position: 50% 50%; */
+    background-color: #025;
     top: 0;
     left: 0;
     right: 0;
@@ -24,6 +25,10 @@
     text-transform: uppercase;
     border-right: solid 1px white;
     padding-right: 20px;
+}
+
+button{
+    text-transform: uppercase !important;
 }
 
 .title-nav{
@@ -206,6 +211,23 @@ margin-left: 10px;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100 !important;
+}
+
+.title-agency{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.box-agency{
+    width: 85%;
+    margin: auto;
+    text-align: center;
+    border: solid 1px white;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 @media only screen and (max-width: 600px) {

@@ -29,6 +29,9 @@ module.exports = {
     agency_public: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/agency_p.html'))
     },
+    top_up: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/topup.html'))
+    },
     // get_partial: (req,res)=>{
     //     let action = [req.params.action];
     //     res.sendFile(path.join(__dirname,`../../view/partial/${action}.html`))

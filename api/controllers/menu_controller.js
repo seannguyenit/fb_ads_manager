@@ -32,5 +32,19 @@ module.exports = {
             if (err) throw err
             res.json({ message: 'Insert success!' })
         })
+    },
+    get_all_config: (req, res) => {
+        let sql = 'select * from web_config order by `order`'
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    update_config: (req, res) => {
+        let sql = 'update `web_config` set ? where id = ?'
+        db.query(sql, [req.body, req.params.id], (err, response) => {
+            if (err) throw err
+            res.json({ message: 'Success!' })
+        })
     }
 }

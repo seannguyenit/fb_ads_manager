@@ -3,7 +3,6 @@
 const util = require('util')
 const mysql = require('mysql')
 const db = require('./../db')
-// const session = require('express-session');
 
 module.exports = {
     get: (req, res) => {
@@ -14,16 +13,10 @@ module.exports = {
         })
     },
     detail: (req, res) => {
-        // let is_admin = req.params.is_admin || false;
         let sql = 'CALL `user_getdetail`(?)'
         db.query(sql, [req.params.id], (err, response) => {
             if (err) throw err
             var dt = response[0][0];
-            // if(is_admin){
-            //     dt.pass = dt.pass;
-            // }else{
-
-            // }
             res.json(dt);
         })
     },
@@ -33,8 +26,6 @@ module.exports = {
         let sql = 'UPDATE user SET ? WHERE id = ?;'
         db.query(sql, [data, userId], (err, response) => {
             if (err) throw err
-            // var dt = response[0][0];
-            // res.json(dt)
         })
         let sql1 = 'call user_getdetail(?);'
         db.query(sql1, [req.params.id], (err, response) => {
@@ -45,18 +36,14 @@ module.exports = {
     },
     store: (req, res) => {
         let data = req.body;
-        data.pass = data.pass;
         let sql = 'INSERT INTO user SET ?;'
         db.query(sql, [data], (err, response) => {
             if (err) throw err
-            // var dt = response[0][0];
-            // res.json(dt)
         })
         let sql2 = 'call user_getdetail(last_insert_id());'
         db.query(sql2, [data], (err, response) => {
             if (err) throw err
-            var dt = response[0][0];
-            res.json(dt)
+            res.json(response[0][0])
         })
     },
     delete: (req, res) => {
@@ -67,13 +54,11 @@ module.exports = {
         })
     },
     login: (req, res) => {
-        var er = '';
         let data = req.body;
         let sql = 'CALL `login`(?,?)'
         try {
             db.query(sql, [data.user, data.pass], (err, response) => {
                 if (err) throw err
-                // console.log(response);
                 let dt = response[0][0];
                 if (dt) {
                     res.json({ ok: 1, data: response[0][0] });
@@ -82,7 +67,6 @@ module.exports = {
                 }
             })
         } catch (error) {
-            er = error;
         }
     },
     logout: (req, res) => {
@@ -91,24 +75,48 @@ module.exports = {
         try {
             db.query(sql, [data.user, data.token], (err, response) => {
                 if (err) throw err
-                // console.log(response);
                 res.json({ ok: 1 });
             })
         } catch (error) {
-            er = error;
         }
+    },
+    register: (req, res) => {
+        let data = req.body;
+        let sql = 'INSERT INTO `user` SET `username` = ?,pass = ?,par_id = (select tem.id from `user` as tem where tem.ref = ? limit 1);'
+        db.query(sql, [data.user, data.pass, data.ref], (err, response) => {
+            if (err) throw err
+            res.json({ ok: 1 })
+        })
+    },
+    change_pass: (req, res) => {
+        let old_pass = req.body.pass;
+        let new_pass = req.body.new_pass;
+        let userId = req.params.id;
+        let sql = 'UPDATE user SET pass = ? WHERE id = ? and pass = ?;'
+        db.query(sql, [new_pass, userId, old_pass], (err, response) => {
+            if (err) throw err
+            if (response.affectedRows == 1) {
+                res.json({ ok: 1 })
+            } else {
+                res.json({ error: 'Thay đổi mật khẩu không thành công !' })
+            }
+        })
+    },
+    get_current_finance: (req, res) => {
+        let sql = 'select id,username,get_current_money(`user`.`id`) as money,get_current_bonus(`user`.`id`) as bonus from `user` where id = ? limit 1'
+        db.query(sql, [Number(req.params.id)], (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
     },
     get_sd: async (req, res) => {
         let data = req.body;
-        // let sql = 'CALL `logout`(?,?)'
         try {
             db.query(sql, [data.user, data.token], (err, response) => {
                 if (err) throw err
-                // console.log(response);
                 res.json({ ok: 1 });
             })
         } catch (error) {
-            er = error;
         }
     },
     store_token: (req, res) => {
@@ -128,16 +136,51 @@ module.exports = {
     },
     get_all_token: (req, res) => {
         let sql = 'select * from user_token_fb where user_id = ?'
-        db.query(sql,[req.params.id], (err, response) => {
+        db.query(sql, [req.params.id], (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
     user_check_existed: (req, res) => {
         let sql = 'call user_check_existed(?,?);'
-        db.query(sql,[req.params.id,req.params.username], (err, response) => {
+        db.query(sql, [req.params.id, req.params.username], (err, response) => {
             if (err) throw err
             res.json(response)
+        })
+    },
+    get_all_agency: (req, res) => {
+        let sql = 'SELECT `user`.`id`, `user`.`username`, `user`.`is_admin`, `user`.`active`, `user`.`real_name`, `user`.`phone`, `user`.`add`, `user`.`created_at`, `user`.`created_by`, `user`.`is_public`, `user`.`par_id`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` FROM `user` where is_agency = 1 and active = 1'
+        db.query(sql, [], (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    get_agency_info: (req, res) => {
+        let sql = 'SELECT `user`.`username`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` where `user`.id = ? and active = 1 limit 1'
+        db.query(sql, [Number(req.params.id)], (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    get_all_agency_reg: (req, res) => {
+        let sql = 'SELECT `user`.`id`, `user`.`username`, `user`.`is_admin`, `user`.`active`, `user`.`real_name`, `user`.`phone`, `user`.`add`, `user`.`created_at`, `user`.`created_by`, `user`.`is_public`, `user`.`par_id`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` FROM `user` where is_agency = 0 and active = 1'
+        db.query(sql, [], (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    agency_reg: (req, res) => {
+        let sql = 'update `user` set is_agency = 0, agency_time = UNIX_TIMESTAMP() where id = ?;'
+        db.query(sql, [Number(req.params.id)], (err, response) => {
+            if (err) throw err
+            res.json({ ok: 1 });
+        })
+    },
+    agency_app: (req, res) => {
+        let sql = 'update `user` set is_agency = 1, agency_time = UNIX_TIMESTAMP() ,ref = (LEFT(MD5(RAND()), 8)) where id = ?;'
+        db.query(sql, [Number(req.params.id)], (err, response) => {
+            if (err) throw err
+            res.json({ ok: 1 });
         })
     }
 }
