@@ -31,7 +31,8 @@ var corsAnywhere = require('./lib/cors-anywhere')
 let proxy = corsAnywhere.createServer({
     originWhitelist: [], // Allow all origins
     requireHeader: [],
-    removeHeaders: []
+    removeHeaders: [],
+    corsMaxAge: 600
 });
 const port = process.env.PORT || 3000
 

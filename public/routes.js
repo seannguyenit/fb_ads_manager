@@ -31,9 +31,11 @@ module.exports = function (app) {
 
   app.route('/home/agency_manager')
     .get(homeCtrl.agency_manager);
-    app.route('/home/agency')
+  app.route('/home/agency')
     .get(homeCtrl.agency_public);
 
   app.route('/home/topup')
     .get(homeCtrl.top_up);
+  app.route('/home/topup_manager')
+    .get(homeCtrl.top_up_m);
 };

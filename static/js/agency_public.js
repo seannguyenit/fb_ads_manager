@@ -5,7 +5,7 @@ init_agency_public();
 async function init_agency_public() {
     let cr_info = await get_cr_agency_info();
     if (cr_info) {
-        $('#link_ref').val(`http://tool264.com/register?ref=${info.ref || ''}`);
+        $('#link_ref').val((!cr_info.ref) ? '' : `http://tool264.com/register?ref=${cr_info.ref}`);
         $('#lb_stt').text(get_lb_stt(cr_info));
         get_lb_btn(cr_info);
     }
@@ -26,10 +26,10 @@ function get_lb_stt(info) {
 function get_lb_btn(info) {
     if (info.agency_time) {
         if (info.is_agency != null) {
-            document.getElementById('btn_reg').style.enabled = 'false';
-            if(info.is_agency == 0){
+            document.getElementById('btn_reg').disabled = 'true';
+            if (info.is_agency == 0) {
                 document.getElementById('btn_reg').innerText = 'Đang chờ xét duyệt !'
-            }else{
+            } else {
                 document.getElementById('btn_reg').innerText = 'Đã là đại lý !'
             }
         }
@@ -38,7 +38,7 @@ function get_lb_btn(info) {
 
 async function get_cr_agency_info() {
     var cr_u = get_cr_user();
-    await fetch(`/api/agency/${cr_u.id}`, {
+    var rs = await fetch(`/api/agency/${cr_u.id}`, {
         method: 'GET', // or 'PUT'
     })
         .then(response => response.json())
@@ -48,6 +48,7 @@ async function get_cr_agency_info() {
         .catch(error => {
             console.log('Error:', error);
         });
+    return rs;
 }
 
 async function agency_register() {
@@ -67,5 +68,7 @@ async function agency_register() {
             .catch(error => {
                 console.log('Error:', error);
             });
+
     }
+    location.reload();
 }

@@ -156,14 +156,14 @@ module.exports = {
         })
     },
     get_agency_info: (req, res) => {
-        let sql = 'SELECT `user`.`username`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` where `user`.id = ? and active = 1 limit 1'
+        let sql = 'SELECT `user`.`username`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` from `user` where `user`.id = ? and active = 1 limit 1'
         db.query(sql, [Number(req.params.id)], (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
     get_all_agency_reg: (req, res) => {
-        let sql = 'SELECT `user`.`id`, `user`.`username`, `user`.`is_admin`, `user`.`active`, `user`.`real_name`, `user`.`phone`, `user`.`add`, `user`.`created_at`, `user`.`created_by`, `user`.`is_public`, `user`.`par_id`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` FROM `user` where is_agency = 0 and active = 1'
+        let sql = 'SELECT `user`.`id`, `user`.`username`, `user`.`is_admin`, `user`.`active`, `user`.`real_name`, `user`.`phone`, `user`.`add`, `user`.`created_at`, `user`.`created_by`, `user`.`is_public`, `user`.`par_id`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` FROM `user` where is_agency = 0 and `user`.`agency_time` is not null and active = 1'
         db.query(sql, [], (err, response) => {
             if (err) throw err
             res.json(response)

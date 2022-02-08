@@ -39,13 +39,17 @@ function validate_() {
 }
 function format_time(time) {
     try {
-        var d = time.substr(0, time.indexOf('T'));
-        var t = time.substring(time.indexOf('T') + 1, time.lastIndexOf(':'));
-        return `${d} ${t}`;
+        if (time.indexOf('T') > -1) {
+            return new Date(time).toLocaleDateString();
+        } else {
+            return new Date(Number(time)*1000).toLocaleDateString();
+
+        }
     } catch (error) {
         return time;
     }
 }
+
 function get_format_VND(str) {
     if (isNaN(str)) return str;
     var pls = '';
@@ -69,7 +73,7 @@ function get_format_VND(str) {
 
 init_loading()
 
-async function init_loading(){
+async function init_loading() {
     document.body.innerHTML += `<div id="loading-element"><img src="../img/loading.gif"/></div>`;
 }
 

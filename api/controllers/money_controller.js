@@ -32,4 +32,18 @@ module.exports = {
             res.json(response)
         })
     },
+    get_list_reg: (req, res) => {
+        let sql = 'select MH.*,U.username from money_history AS MH left join `user` AS U on MH.user_id = U.id where MH.`type` = 1 and MH.`active` = 0 order by MH.`time`;'
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    approve_topup: (req, res) => {
+        let sql = 'update money_history set `active` = 1, time = UNIX_TIMESTAMP() where id = ?;'
+        db.query(sql, [Number(req.params.id)], (err, response) => {
+            if (err) throw err
+            res.json({ ok: 1 });
+        })
+    }
 }

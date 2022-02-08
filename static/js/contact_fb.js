@@ -7,6 +7,8 @@ var cr_token;
 
 var cr_video1;
 var cr_video2;
+var cr_time = new Date().getTime();
+
 const r_url = "/proxy/";
 const r_url2 = `https://arthurtech.xyz/`;
 // const r_url = `${window.location.protocol}//${window.location.hostname}/proxy/`;
@@ -66,7 +68,7 @@ async function init_default() {
         change_card_element();
         var now = new Date();
         now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-        document.getElementById('schedule_time').value = now.toISOString().slice(0, 16);
+        document.getElementById('schedule_time').value = now.toISOString().substring(0, 16);
         // document.getElementById('schedule_time').value = new Date(Date.now()).toISOString().substr(0, 16);
         var combo_fb = document.getElementById('list_fb');
         combo_fb.innerHTML = '';
@@ -93,7 +95,7 @@ async function set_combobox_data() {
     cr_video1 = undefined;
     cr_video2 = undefined;
     var f = $('#list_fb :selected').data('token');
-    console.log(f);
+    // console.log(f);
     var combo_pages = document.getElementById('list_pages');
     combo_pages.innerHTML = '';
     var combo_ads = document.getElementById('list_ads');
@@ -514,7 +516,8 @@ async function public_data(ads_id, token) {
             console.error('Error:', error);
         });
 
-    // var w1 = await waitingForNext(2000);
+    let w1 = await waitingForNext(1000);
+
     return await fetch(url, {
         method: 'POST', // or 'PUT'
         headers: {
@@ -572,10 +575,11 @@ async function post_step3(op) {
     // var ads_id = $('#list_ads :selected').val();
     var data = { "access_token": token, "is_published": true }
     if ($('#is_schedule').is(':checked') == true) {
-        var timesta = ((new Date($('#schedule_time').val())).getTime());
-        data = { "access_token": token, "scheduled_publish_time": timesta }
+        var timesta = Math.floor((new Date(document.getElementById('schedule_time').value)).getTime()/1000);
+        console.log(timesta);
+        data = { "access_token": token, "scheduled_publish_time": Number(timesta) }
     }
-    var url = `${r_url}https://graph.facebook.com/v12.0/${op}`;
+    var url = `${r_url2}https://graph.facebook.com/v12.0/${op}`;
     return await fetch(url, {
         method: 'POST', // or 'PUT'
         headers: {
@@ -606,8 +610,9 @@ async function run_public() {
             stop_loading();
             return;
         } else {
-            // let w = await waitingForNext(1000);
+            let w = await waitingForNext(1000);
             var s2 = await get_step2(rs.id)
+            console.log(s2);
             if (s2.effective_object_story_id) {
                 // var w = await waitingForNext(2000);
                 try {

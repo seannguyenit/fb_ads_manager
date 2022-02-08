@@ -69,5 +69,6 @@ async function register() {
         });
     if (rs) {
         alert('Đăng ký thành công !')
+        location.href = '/login'
     }
 }

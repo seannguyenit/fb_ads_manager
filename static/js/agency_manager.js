@@ -7,8 +7,7 @@ async function init_agency_manager() {
 }
 
 async function init_agency_all() {
-    var located = document.getElementById('table_data-reg').querySelector('body')
-    located.innerHTML = '';
+
     let url = '/api/agency';
     let rs = await fetch(url /*, options */)
         .then((response) => response.json())
@@ -19,23 +18,23 @@ async function init_agency_all() {
             console.warn(error);
             return undefined;
         });
+    let located = document.getElementById('table_data').children[1]
+    located.innerHTML = '';
     if (rs) {
         rs.forEach(f => {
             located.innerHTML += `<tr>
                 <td>${rs.indexOf(f) + 1}</td>
-                <td>${f.user}</td>
-                <td>${f.total_user}</td>
-                <td>${f.total_money}</td>
-                <td>${f.total_bonus}</td>
-                <td>${f.time}</td>
+                <td>${f.username}</td>
+                <td>${f.total_user || 0}</td>
+                <td>${f.total_money || 0}</td>
+                <td>${f.total_bonus || 0}</td>
+                <td>${format_time(f.agency_time)}</td>
             </tr>`
         })
     }
 }
 
 async function init_agency_reg() {
-    var located = document.getElementById('table_data').querySelector('body')
-    located.innerHTML = '';
     let url = '/api/agency_reg';
     let rs = await fetch(url /*, options */)
         .then((response) => response.json())
@@ -46,14 +45,16 @@ async function init_agency_reg() {
             console.warn(error);
             return undefined;
         });
+    let located = document.getElementById('table_data_reg').children[1]
+    located.innerHTML = '';
     if (rs) {
         rs.forEach(f => {
             located.innerHTML += `<tr>
                     <td>${rs.indexOf(f) + 1}</td>
-                    <td>${f.user}</td>
-                    <td>${f.total}</td>
-                    <td>${f.created_at}</td>
-                    <td>${f.reg_at}</td>
+                    <td>${f.username}</td>
+                    <td>${f.total||0}</td>
+                    <td>${format_time(f.created_at)}</td>
+                    <td>${format_time(f.agency_time)}</td>
                     <td>${button_action_tool(f.id, 'agency_approved', ['btn', 'btn-sm', 'btn-primary'], 'Duyệt')}</td>
                 </tr>`
         })

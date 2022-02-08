@@ -91,5 +91,10 @@ module.exports = function (app) {
     .get(moneyCtrl.get_history);
   app.route('/api/money_topup/:user_id')
     .get(moneyCtrl.get_list_top_up);
+
+  app.route('/api/topup_m')
+    .get(moneyCtrl.get_list_reg);
+  app.route('/api/topup_m/:id')
+    .put(moneyCtrl.approve_topup);
 }
 

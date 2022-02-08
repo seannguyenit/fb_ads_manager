@@ -32,6 +32,9 @@ module.exports = {
     top_up: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/topup.html'))
     },
+    top_up_m: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/money_manager.html'))
+    },
     // get_partial: (req,res)=>{
     //     let action = [req.params.action];
     //     res.sendFile(path.join(__dirname,`../../view/partial/${action}.html`))
