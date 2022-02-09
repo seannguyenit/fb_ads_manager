@@ -21,6 +21,9 @@ module.exports = function (app) {
   app.route('/api/reg_acc')
     .post(accCtrl.register)
 
+  app.route('/account/activate/:key_active')
+    .get(accCtrl.active_email)
+
   app.route('/api/change_acc/:id')
     .put(accCtrl.change_pass)
 
@@ -35,6 +38,12 @@ module.exports = function (app) {
     .get(accCtrl.get_all_agency)
   app.route('/api/agency_reg')
     .get(accCtrl.get_all_agency_reg)
+
+  app.route('/api/agency_child/:id')
+    .get(accCtrl.get_agency_child)
+
+  app.route('/api/agency_count/:id')
+    .get(accCtrl.get_agency_count)
 
   app.route('/api/agency/:id')
     .get(accCtrl.get_agency_info)
@@ -96,5 +105,6 @@ module.exports = function (app) {
     .get(moneyCtrl.get_list_reg);
   app.route('/api/topup_m/:id')
     .put(moneyCtrl.approve_topup);
+
 }
 

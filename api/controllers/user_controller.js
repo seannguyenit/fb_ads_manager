@@ -2,7 +2,9 @@
 
 const util = require('util')
 const mysql = require('mysql')
+const nodeMailer = require('nodemailer')
 const db = require('./../db')
+const path = require('path')
 
 module.exports = {
     get: (req, res) => {
@@ -26,12 +28,12 @@ module.exports = {
         let sql = 'UPDATE user SET ? WHERE id = ?;'
         db.query(sql, [data, userId], (err, response) => {
             if (err) throw err
-        })
-        let sql1 = 'call user_getdetail(?);'
-        db.query(sql1, [req.params.id], (err, response) => {
-            if (err) throw err
-            var dt = response[0][0];
-            res.json(dt)
+            let sql1 = 'call user_getdetail(?);'
+            db.query(sql1, [req.params.id], (err, response) => {
+                if (err) throw err
+                var dt = response[0][0];
+                res.json(dt)
+            })
         })
     },
     store: (req, res) => {
@@ -39,11 +41,11 @@ module.exports = {
         let sql = 'INSERT INTO user SET ?;'
         db.query(sql, [data], (err, response) => {
             if (err) throw err
-        })
-        let sql2 = 'call user_getdetail(last_insert_id());'
-        db.query(sql2, [data], (err, response) => {
-            if (err) throw err
-            res.json(response[0][0])
+            let sql2 = 'call user_getdetail(last_insert_id());'
+            db.query(sql2, [data], (err, response) => {
+                if (err) throw err
+                res.json(response[0][0])
+            })
         })
     },
     delete: (req, res) => {
@@ -82,10 +84,18 @@ module.exports = {
     },
     register: (req, res) => {
         let data = req.body;
-        let sql = 'INSERT INTO `user` SET `username` = ?,pass = ?,par_id = (select tem.id from `user` as tem where tem.ref = ? limit 1);'
-        db.query(sql, [data.user, data.pass, data.ref], (err, response) => {
+        let key_active = uuidv4();
+        let sql = 'INSERT INTO `user` SET `username` = ?,key_active = ?,`active` = 0,pass = ?,par_id = (select tem.id from `user` as tem where tem.ref = ? limit 1);'
+        let ok = 0;
+        db.query(sql, [data.user, key_active, data.pass, data.ref], (err, response) => {
             if (err) throw err
-            res.json({ ok: 1 })
+            sendMail(data.user, key_active).then(() => {
+                ok = 1
+            }).catch((error) => {
+                ok = 0
+            }).finally(() => {
+                res.json({ ok: ok })
+            });
         })
     },
     change_pass: (req, res) => {
@@ -99,6 +109,18 @@ module.exports = {
                 res.json({ ok: 1 })
             } else {
                 res.json({ error: 'Thay đổi mật khẩu không thành công !' })
+            }
+        })
+    },
+    active_email: (req, res) => {
+        let key_active = req.params.key_active;
+        let sql = 'UPDATE `user` SET `active` = 1 WHERE key_active = ?;'
+        db.query(sql, [key_active], (err, response) => {
+            if (err) throw err
+            if (response.affectedRows == 1) {
+                res.sendFile(path.join(__dirname, '../../view/notice.html'))
+            } else {
+                res.json({ error: 'Kích hoạt không thành công !' })
             }
         })
     },
@@ -142,8 +164,8 @@ module.exports = {
         })
     },
     user_check_existed: (req, res) => {
-        let sql = 'call user_check_existed(?,?);'
-        db.query(sql, [req.params.id, req.params.username], (err, response) => {
+        let sql = 'select count(A.id) as existed from `user` AS A where A.username = ? and A.id != ? and A.active = 1;'
+        db.query(sql, [req.params.username, Number(req.params.id)], (err, response) => {
             if (err) throw err
             res.json(response)
         })
@@ -153,6 +175,20 @@ module.exports = {
         db.query(sql, [], (err, response) => {
             if (err) throw err
             res.json(response)
+        })
+    },
+    get_agency_child: (req, res) => {
+        let sql = 'SELECT `user`.`username`,(SELECT sum(money) FROM money_history where `active` = 1 and `type` =  1 and user_id = `user`.id) as total, `user`.`ref`, `user`.`is_agency`, `user`.`created_at` from `user` where `user`.par_id = ? and active = 1'
+        db.query(sql, [Number(req.params.id)], (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    get_agency_count: (req, res) => {
+        let sql = 'select (select count(id) from user where active = 1 and par_id = ?) as number_user,count(MH.id) as topup_time,SUM(MH.money) as topup_money from money_history AS MH where active = 1 and type = 1 and MH.user_id = ?;'
+        db.query(sql, [Number(req.params.id), Number(req.params.id)], (err, response) => {
+            if (err) throw err
+            res.json(response[0])
         })
     },
     get_agency_info: (req, res) => {
@@ -185,30 +221,49 @@ module.exports = {
     }
 }
 
+function sendMail(to, key_active) {
+    // Những thông tin dưới đây các bạn có thể ném nó vào biến môi trường env nhé.
+    // Vì để demo nên mình để các biến const ở đây.
+    const adminEmail = 'tool264sp@gmail.com'
+    const adminPassword = '#@*7LRmrfNZcn*@)'
+    // Mình sử dụng host của google - gmail
+    const mailHost = 'smtp.gmail.com'
+    // 587 là một cổng tiêu chuẩn và phổ biến trong giao thức SMTP
+    const mailPort = 587
+    // Khởi tạo một thằng transporter object sử dụng chuẩn giao thức truyền tải SMTP với các thông tin cấu hình ở trên.
+    const transporter = nodeMailer.createTransport({
+        host: mailHost,
+        port: mailPort,
+        secure: false, // nếu các bạn dùng port 465 (smtps) thì để true, còn lại hãy để false cho tất cả các port khác
+        auth: {
+            user: adminEmail,
+            pass: adminPassword
+        }
+    })
 
-// async function get_content() {
-//     var url = 'http://postshare.co.kr/archives/406545?nt=m1';
-//     return await fetch(url).then(function (response) {
-//         // The API call was successful!
-//         return response.text();
-//     }).then(async function (html) {
-//         console.log(html);
-//         return html;
-//         // Convert the HTML string into a document object
-//         // var parser = new DOMParser();
-//         // var doc = parser.parseFromString(html, 'text/html');
-//         // await remove_href(doc);
-//         // await remove_script(doc);
-//         // await change_src_image(doc);
-//         // var title = doc.title;
-//         // var body_ = await get_main_intelligent(doc);
+    const options = {
+        from: adminEmail, // địa chỉ admin email bạn dùng để gửi
+        to: to, // địa chỉ gửi đến
+        subject: 'Đăng ký thành công tool264.com', // Tiêu đề của mail
+        html: `<h3>Chao mừng bạn đã đăng ký tool264.com</h3><div>Bấm vào link để kích hoạt tài khoản: </div><a target="_blank" href="https://tool264.com/account/activate/${key_active}">Kích hoạt</a>` // Phần nội dung mail mình sẽ dùng html thay vì thuần văn bản thông thường.
+    }
 
-//         // var media_ = doc.body.querySelector('article').querySelectorAll('img');
-//         // // console.log(media_);
-//         // return { title: title, content: body_, media: media_ };
+    // hàm transporter.sendMail() này sẽ trả về cho chúng ta một Promise
+    return transporter.sendMail(options)
+}
 
-//     }).catch(function (err) {
-//         // There was an error
-//         console.warn('Something went wrong.', err);
-//     });
-// }
+function uuidv4() {
+    var d = new Date().getTime();//Timestamp
+    var d2 = ((typeof performance !== 'undefined') && performance.now && (performance.now() * 1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
+    return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16;//random number between 0 and 16
+        if (d > 0) {//Use timestamp until depleted
+            r = (d + r) % 16 | 0;
+            d = Math.floor(d / 16);
+        } else {//Use microseconds since page-load if supported
+            r = (d2 + r) % 16 | 0;
+            d2 = Math.floor(d2 / 16);
+        }
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+}

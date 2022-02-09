@@ -575,7 +575,7 @@ async function post_step3(op) {
     // var ads_id = $('#list_ads :selected').val();
     var data = { "access_token": token, "is_published": true }
     if ($('#is_schedule').is(':checked') == true) {
-        var timesta = Math.floor((new Date(document.getElementById('schedule_time').value)).getTime()/1000);
+        var timesta = Math.floor((new Date(document.getElementById('schedule_time').value)).getTime() / 1000);
         console.log(timesta);
         data = { "access_token": token, "scheduled_publish_time": Number(timesta) }
     }
@@ -588,12 +588,39 @@ async function post_step3(op) {
         body: JSON.stringify(data)
     })
         .then(response => response.json())
-        .then(data => {
-            return data
+        .then(d => {
+            return d
         })
         .catch(error => {
             console.error('Error:', error);
-            stop_loading();
+            // stop_loading();
+        });
+}
+
+async function post_step3_pro5(op) {
+    var token = $('#list_pages :selected').data('token');
+    // var ads_id = $('#list_ads :selected').val();
+    var data = { "access_token": token, "is_published": true }
+    if ($('#is_schedule').is(':checked') == true) {
+        var timesta = Math.floor((new Date(document.getElementById('schedule_time').value)).getTime() / 1000);
+        console.log(timesta);
+        data = { "access_token": token,"scheduled_publish_time": Number(timesta) }
+    }
+    var url = `${r_url2}https://graph.facebook.com/v12.0/${op}`;
+    return await fetch(url, {
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(d => {
+            return d
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // stop_loading();
         });
 }
 
@@ -602,7 +629,6 @@ async function run_public() {
     if (!confirm('Bạn có chắc chắn muốn public ?')) {
         return;
     }
-    var link_rs = document.getElementById('rs_link');
     var rs = await public_data();
     if (rs) {
         if (rs.error) {
@@ -613,11 +639,19 @@ async function run_public() {
             let w = await waitingForNext(1000);
             var s2 = await get_step2(rs.id)
             console.log(s2);
+            var co = 0;
+            while ((!s2.effective_object_story_id) && co < 7) {
+                s2 = await get_step2(rs.id)
+                co++;
+                let wfn = await waitingForNext(2000);
+            }
             if (s2.effective_object_story_id) {
-                // var w = await waitingForNext(2000);
                 try {
                     var op = await option_step3(s2.effective_object_story_id);
                     var s3 = await post_step3(s2.effective_object_story_id);
+                    if (s3.error) {
+                        await post_step3_pro5(s2.effective_object_story_id);
+                    }
                     var row_rs = document.getElementById('rs_tb');
                     var fb = $('#list_fb :selected').text();
                     var page_id = $('#list_pages :selected').text();
@@ -645,24 +679,3 @@ async function waitingForNext(time) {
     // console.log('waiting...')
     let delayres = await delay(time);
 }
-
-// async function test(p) {
-//     console.log(await test_(p));
-// }
-
-// await fetch("https://square-sun-eee2.kundollars.workers.dev/https://graph.facebook.com/v12.0/act_345234299528373/adcreatives", {
-//     "credentials": "omit",
-//     "headers": {
-//         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:95.0) Gecko/20100101 Firefox/95.0",
-//         "Accept": "application/json, text/plain, */*",
-//         "Accept-Language": "en-US,en;q=0.5",
-//         "Content-Type": "application/json",
-//         "Sec-Fetch-Dest": "empty",
-//         "Sec-Fetch-Mode": "cors",
-//         "Sec-Fetch-Site": "cross-site"
-//     },
-//     "referrer": "https://zsocial.vn/",
-//     "body": "{\"access_token\":\"EAAGNO4a7r2wBACmZCZBeOikcoKvEZB68NuaqGsMpi4CMrwR2y6NtpdS6ZBAq8J3I6PZBZBfN9sCyLf3X0PCRPQfGM6cAdqTUTMYdZAu0dedypRILAiv7w5NEmO9s6AZAzShZAd9tzlv1LIWWqZAgZAR6RTjctW01pdjnjOxZC6dEa4jJk3qZCzzQTTklZC\",\"object_story_spec\":{\"link_data\":{\"child_attachments\":[{\"call_to_action\":{\"type\":\"LIKE_PAGE\",\"value\":{\"page\":\"863153897185255\"}},\"link\":\"https://www.facebook.com/863153897185255\",\"name\":\"Like Page 👉 👉\",\"picture\":\"https://scontent.fdad3-3.fna.fbcdn.net/v/t45.1600-4/267247410_23850053565030666_8405242837608020741_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=2aac32&_nc_ohc=dfymj4SbDzAAX_nMBg4&_nc_ht=scontent.fdad3-3.fna&oh=00_AT9_KrxL3wNNgvtuHnbA9St_jCBFvsBqC4F6INgIpzXjsQ&oe=61D6E281\"},{\"call_to_action\":{\"type\":\"LIKE_PAGE\",\"value\":{\"page\":\"863153897185255\"}},\"link\":\"https://www.facebook.com/863153897185255\",\"name\":\"Like Page 👉 👉\",\"picture\":\"https://scontent.fdad3-5.fna.fbcdn.net/v/t45.1600-4/254951144_23850038970310666_7032487807551466145_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=2aac32&_nc_ohc=vTSmzUgQcQMAX_p_rQD&_nc_ht=scontent.fdad3-5.fna&oh=00_AT8vuYSc9b-y9eDB8-zh8103T8UTqeupWwkQ5LQBmdk9Yg&oe=61D7B7AC\"}],\"message\":\"\",\"multi_share_end_card\":false,\"multi_share_optimized\":true},\"page_id\":\"863153897185255\"}}",
-//     "method": "POST",
-//     "mode": "cors"
-// });

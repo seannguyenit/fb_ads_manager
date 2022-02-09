@@ -76,4 +76,5 @@ async function order_pricing(id, name, price) {
             console.error('Error:', error);
         });
     alert('Gia hạn thành công !')
+    location.reload();
 }

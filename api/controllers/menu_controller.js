@@ -7,7 +7,7 @@ const db = require('./../db')
 
 module.exports = {
     get_template: (req, res) => {
-        let sql = 'CALL `get_all_menu_template`();'
+        let sql = 'SELECT `menu`.`id`,`menu`.`name`,`menu`.`par_id`,`menu`.`order` FROM `fb_ads_management`.`menu` order by `menu`.`order`;'
         db.query(sql, (err, response) => {
             if (err) throw err
             res.json(response)

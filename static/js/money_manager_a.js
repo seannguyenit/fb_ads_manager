@@ -26,6 +26,7 @@ async function init_topup_all() {
                 <td>${f.username}</td>
                 <td>${get_format_VND(f.money || 0)}</td>
                 <td>${format_time(f.time)}</td>
+                <td>${f.des}</td>
                 <td>${button_action_tool(f.id, 'topup_approved', ['btn', 'btn-sm', 'btn-primary'], 'Duyệt')}</td>
             </tr>`
         })

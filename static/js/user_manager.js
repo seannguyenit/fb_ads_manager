@@ -95,17 +95,17 @@ async function init_users() {
     }
 }
 async function open_modal(params) {
-    var menu = await menu_get_template();
-    var per_place = document.getElementById('permiss_place');
-    per_place.innerHTML = '';
-    menu.forEach(f => {
-        per_place.innerHTML += `<div class="form-check">
-                            <input class="form-check-input" data-id="${f.id}" type="checkbox" ${f.stt == 1 ? "checked" : ""}>
-                            <label class="form-check-label" for="invalidCheck">
-                              ${f.name}
-                            </label>
-                        </div>`;
-    });
+    // var menu = await menu_get_template();
+    // var per_place = document.getElementById('permiss_place');
+    // per_place.innerHTML = '';
+    // menu.forEach(f => {
+    //     per_place.innerHTML += `<div class="form-check">
+    //                         <input class="form-check-input" data-id="${f.id}" type="checkbox" ${f.stt == 1 ? "checked" : ""}>
+    //                         <label class="form-check-label" for="invalidCheck">
+    //                           ${f.name}
+    //                         </label>
+    //                     </div>`;
+    // });
     if (params != 0) {
         var detail_dt = await acc_get_detail(params);
         $('#user_id').val(detail_dt.id || 0);
@@ -148,6 +148,11 @@ async function save_() {
     var real_name = $("#real_name").val()
     var phone = $("#phone").val()
     var add = $("#add").val()
+    var rs_check = await check_username();
+    if (!rs_check) {
+        alert('email bị trùng !')
+        return;
+    }
 
     var url = `/api/accounts`;
     var meth = 'POST';
@@ -162,7 +167,7 @@ async function save_() {
     let rs = await acc_save(url, data, meth);
     //add_menu_user
     var menu_sl = Array.prototype.map.call(document.querySelectorAll('input[data-id]'), (m) => { return [parseInt(m.dataset.id), m.checked ? 1 : 0, rs.id] });
-    let rs_per = await add_menu_user(menu_sl, rs.id);
+    // let rs_per = await add_menu_user(menu_sl, rs.id);
 
     // console.log('Success:', rs);
     // load_user();
@@ -207,4 +212,26 @@ async function init_money_history(id) {
         });
     }
     $('#money_history').modal('show')
+}
+
+async function check_username() {
+    var id = $('#user_id').val();
+    var user_name = $('#user').val();
+    var rs = await user_check_existed(id, user_name);
+    if (!rs) return false;
+    if (rs.existed > 0) return false;
+    return true;
+}
+
+async function user_check_existed(id, username) {
+    // var cr_u = get_cr_user();
+    return await fetch(`/api/check_u/${id}/${username}` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data[0];
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
 }

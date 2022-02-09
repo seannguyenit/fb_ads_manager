@@ -5,7 +5,7 @@ async function menu_get_template() {
     return await fetch(`/api/menu` /*, options */)
         .then((response) => response.json())
         .then((data) => {
-            return data[0];
+            return data;
         })
         .catch((error) => {
             console.warn(error);

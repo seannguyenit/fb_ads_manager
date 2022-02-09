@@ -10,8 +10,8 @@ async function init_register() {
 
 
 async function check_username() {
-    var id = get_cr_user().id;
-    var user_name = $('#user').val();
+    var id = 0;
+    var user_name = document.getElementById('user').value;
     var rs = await user_check_existed(id, user_name);
     if (!rs) return false;
     if (rs.existed > 0) return false;
@@ -49,7 +49,7 @@ async function register() {
     if (document.getElementById('user').value.indexOf('@') == -1) {
         alert('email không đúng !')
         return;
-    } 
+    }
     var user_ = document.getElementById('user').value;
     var pass_ = document.getElementById('pass').value;
     var ref_ = document.getElementById('ref').value;
@@ -68,7 +68,7 @@ async function register() {
             console.error('Error:', error);
         });
     if (rs) {
-        alert('Đăng ký thành công !')
+        alert('Đăng ký thành công vui lòng vào email đã đăng ký để kích hoạt tài khoản !')
         location.href = '/login'
     }
 }

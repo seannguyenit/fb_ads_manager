@@ -15,6 +15,7 @@ async function init_top_up() {
                 <td>${data.indexOf(f) + 1}</td>
                 <td>${get_format_VND(f.money)}</td>
                 <td>${new Date(Number(f.time*1000||0)).toLocaleString()}</td>
+                <td>${f.des}</td>
                 <td>${(f.active == 1 ? 'Đã duyệt' : 'Chưa duyệt')}</td>
             </tr>`
         })

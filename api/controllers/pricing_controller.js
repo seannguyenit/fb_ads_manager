@@ -62,8 +62,8 @@ module.exports = {
         })
     },
     order_pricing: (req, res) => {
-        let data_money = req.body.money;
-        let data_pricing = req.body.pricing;
+        var data_money = req.body.data_money;
+        var data_pricing = req.body.data_pricing;
         data_money.type = 0;
         data_money.time = new Date().getTime()/1000;
         data_money.active = 1;

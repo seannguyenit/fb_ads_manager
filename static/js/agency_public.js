@@ -9,6 +9,8 @@ async function init_agency_public() {
         $('#lb_stt').text(get_lb_stt(cr_info));
         get_lb_btn(cr_info);
     }
+    await get_agency_count();
+    await get_agency_child();
 }
 
 function get_lb_stt(info) {
@@ -71,4 +73,57 @@ async function agency_register() {
 
     }
     location.reload();
+}
+
+async function get_agency_child() {
+    document.getElementById('table_dt').innerHTML = '';
+    var cr_u = get_cr_user();
+    if (cr_u) {
+        var rs = await fetch(`/api/agency_child/${cr_u.id}`, {
+            method: 'GET', // or 'PUT'
+        })
+            .then(response => response.json())
+            .then(r => {
+                return r;
+            })
+            .catch(error => {
+                console.log('Error:', error);
+            });
+        if (rs && rs.length > 0) {
+            rs.forEach(it => {
+                document.getElementById('table_dt').innerHTML += `
+                    <tr>
+                        <td>${rs.indexOf(it) + 1}</td>    
+                        <td>${it.username}</td>
+                        <td>${get_format_VND(it.total || 0)}</td>
+                        <td>${format_time(it.created_at)}</td>
+                    </tr>
+                `;
+
+            });
+        }
+    }
+}
+
+
+async function get_agency_count() {
+    var cr_u = get_cr_user();
+    if (cr_u) {
+        var rs = await fetch(`/api/agency_count/${cr_u.id}`, {
+            method: 'GET', // or 'PUT'
+        })
+            .then(response => response.json())
+            .then(r => {
+                return r;
+            })
+            .catch(error => {
+                console.log('Error:', error);
+            });
+        if (rs) {
+            var arr_e = document.getElementsByClassName('box-agency');
+            arr_e[0].children[0].innerText = get_format_VND(rs.topup_money || 0);
+            arr_e[1].children[0].innerText = rs.topup_time;
+            arr_e[2].children[0].innerText = rs.number_user;
+        }
+    }
 }
