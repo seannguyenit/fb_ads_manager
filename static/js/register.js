@@ -33,7 +33,8 @@ async function user_check_existed(id, username) {
 
 
 async function register() {
-    if (!check_username()) {
+    var check = await check_username();
+    if (!check) {
         alert('email bị trùng !')
         return;
     }

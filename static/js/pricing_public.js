@@ -59,7 +59,7 @@ async function order_pricing(id, name, price) {
     var data_pricing = { user_id: cr_u, pricing_id: id };
     var data_money = { user_id: cr_u, money: price };
     var data = { data_money: data_money, data_pricing: data_pricing }
-    await fetch(url, {
+    var rs = await fetch(url, {
         method: meth, // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
@@ -75,6 +75,10 @@ async function order_pricing(id, name, price) {
         .catch(error => {
             console.error('Error:', error);
         });
-    alert('Gia hạn thành công !')
-    location.reload();
+    if (rs.error) {
+        alert(rs.error);
+    } else {
+        alert('Gia hạn thành công !')
+        location.reload();
+    }
 }

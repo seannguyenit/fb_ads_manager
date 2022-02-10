@@ -84,6 +84,10 @@ module.exports = function (app) {
   app.route('/api/check_u/:id/:username')
     .get(accCtrl.user_check_existed);
 
+  app.route('/api/start_request')
+    .post(accCtrl.start_request);
+  app.route('/api/end_request/:time')
+    .post(accCtrl.end_request);
 
   app.route('/api/fb/:url*')
     .get(fbCtrl.get_fb_api);

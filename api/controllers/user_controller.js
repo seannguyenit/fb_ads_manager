@@ -112,6 +112,41 @@ module.exports = {
             }
         })
     },
+    start_request: (req, res) => {
+        let data = req.body;
+        let sql_current_pricing = 'call get_current_pricing_info(?)'
+        db.query(sql_current_pricing, [Number(data.user_id)], (err, response) => {
+            if (err) throw error
+            if (response[0][0]) {
+                let limit_time = Number(response[0][0].limit_time || 0);
+                let limit_request = response[0][0].limit_request || 0;
+                let number_today = response[0][0].number_today || 0;
+                let now_ = Math.floor(new Date().getTime() / 1000);
+                if (limit_time < now_) {
+                    res.json({ error: 'Bạn chưa đăng ký gia hạn !' })
+                }
+                if (number_today >= limit_request) {
+                    res.json({ error: 'Đã đạt tối đa request hôm nay !' })
+                }
+                let sql = 'INSERT INTO request_history SET time = ?,user_id = ?;'
+                let t_ = Number(Math.floor(new Date().getTime() / 1000));
+                db.query(sql, [t_, Number(data.user_id)], (err, response) => {
+                    if (err) throw err
+                    res.json({ time: t_ })
+                })
+            } else {
+                res.json({ error: 'Bạn chưa đăng ký gia hạn !' })
+            }
+        })
+    },
+    end_request: (req, res) => {
+        let data = req.body;
+        let sql = 'update request_history SET status = ? where user_id = ? and time = ? and status is NULL;'
+        db.query(sql, [Number(data.status), Number(req.params.time), Number(data.user_id)], (err, response) => {
+            if (err) throw err
+            res.json({ ok: 1 })
+        })
+    },
     active_email: (req, res) => {
         let key_active = req.params.key_active;
         let sql = 'UPDATE `user` SET `active` = 1 WHERE key_active = ?;'

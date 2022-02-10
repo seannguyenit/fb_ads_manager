@@ -65,17 +65,25 @@ module.exports = {
         var data_money = req.body.data_money;
         var data_pricing = req.body.data_pricing;
         data_money.type = 0;
-        data_money.time = new Date().getTime()/1000;
+        data_money.time = new Date().getTime() / 1000;
         data_money.active = 1;
         data_money.money_bonus = 0;
-        let sql_money = 'insert into money_history SET ?;'
-        db.query(sql_money, data_money, (err, response) => {
+        let sql_check = 'SELECT get_current_money(?) as rmn;'
+        db.query(sql_check, [Number(data_money.user_id)], (err, response) => {
             if (err) throw err
-            let sql = 'INSERT INTO pricing_history SET ?;'
-            db.query(sql, [data_pricing], (err, response) => {
-                if (err) throw err
-                res.json({ message: 'save success!' })
-            })
+            if (response[0] && (response[0].rmn >= data_money.money)) {
+                let sql_money = 'insert into money_history SET ?;'
+                db.query(sql_money, data_money, (err, response) => {
+                    if (err) throw err
+                    let sql = 'INSERT INTO pricing_history SET ?;'
+                    db.query(sql, [data_pricing], (err, response) => {
+                        if (err) throw err
+                        res.json({ message: 'save success!' })
+                    })
+                })
+            } else {
+                res.json({ error: 'Không đủ tiền trong tk!' })
+            }
         })
     },
 }
