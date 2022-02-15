@@ -23,19 +23,19 @@ module.exports = function (app) {
     .get(homeCtrl.user);
   app.route('/home/user_info')
     .get(homeCtrl.user_info);
-  app.route('/home/pricing_manager')
+  app.route('/home/p_manager')
     .get(homeCtrl.pricing_manager);
 
   app.route('/home/pricing')
     .get(homeCtrl.pricing_public);
 
-  app.route('/home/agency_manager')
+  app.route('/home/a_manager')
     .get(homeCtrl.agency_manager);
   app.route('/home/agency')
     .get(homeCtrl.agency_public);
 
   app.route('/home/topup')
     .get(homeCtrl.top_up);
-  app.route('/home/topup_manager')
+  app.route('/home/t_manager')
     .get(homeCtrl.top_up_m);
 };

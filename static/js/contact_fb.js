@@ -94,7 +94,7 @@ async function set_combobox_data() {
     start_loading();
     cr_video1 = null;
     cr_video2 = null;
-    var f = $('#list_fb :selected').data('token');
+    var f = get_token_user();
     var combo_pages = document.getElementById('list_pages');
     combo_pages.innerHTML = '';
     var combo_ads = document.getElementById('list_ads');
@@ -113,7 +113,7 @@ async function set_combobox_data() {
             }
             change_page_selected();
             await load_lib_img();
-            var cr_page = $('#list_pages :selected').val();
+            var cr_page = get_page_value();
             document.getElementById('link').value = `https://www.facebook.com/${cr_page}`;
         } catch (error) {
             alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
@@ -130,7 +130,7 @@ async function set_combobox_data() {
 }
 
 async function load_lib_img(v1) {
-    var tk = $('#list_fb :selected').data('token');
+    var tk = get_token_user();
     var img_p = document.getElementById('lib_img');
     img_p.innerHTML = '';
     if (cr_video1 && cr_video1.thumbnails.data) {
@@ -144,7 +144,7 @@ async function load_lib_img(v1) {
         });
     }
 
-    var lst_img = await get_img_acc_from_ad($('#list_ads :selected').val(), tk);
+    var lst_img = await get_img_acc_from_ad(get_token_ads(), tk);
     if (lst_img) {
         lst_img.forEach(im => {
             img_p.innerHTML += `<div onclick="change_img(this)" data-type="image" class="img_item"><img src="${im.url}" width="195" height="100%"/></div>`;
@@ -189,7 +189,7 @@ async function change_check_schedule() {
 }
 async function change_page_selected() {
     document.querySelector('span[data-select="review2"]').innerText = $('#list_pages :selected').data('name');
-    var p_id = $('#list_pages :selected').val();
+    var p_id = get_page_value();
     document.getElementById('link').value = `https://www.facebook.com/${p_id}`;
 }
 
@@ -251,7 +251,7 @@ async function PreviewImage() {
         oFReader.onload = function (oFREvent) {
             // document.getElementById("img_1").src = oFREvent.target.result;
         };
-        var new_obj = await upload_and_return_url(document.getElementById("file-input"), $('#list_ads :selected').val(), $('#list_fb :selected').data('token'));
+        var new_obj = await upload_and_return_url(document.getElementById("file-input"), get_token_ads(), get_token_user());
         if (new_obj) {
             document.getElementById("img_1").src = new_obj.images[document.getElementById("file-input").files[0].name].url
             document.getElementById("img_1").dataset.hash = new_obj.images[document.getElementById("file-input").files[0].name].hash
@@ -277,7 +277,7 @@ async function PreviewImage1() {
         oFReader.onload = function (oFREvent) {
             // document.getElementById("img_2").src = oFREvent.target.result;
         };
-        var new_obj = await upload_and_return_url(document.getElementById("file-input1"), $('#list_ads :selected').val(), $('#list_fb :selected').data('token'));
+        var new_obj = await upload_and_return_url(document.getElementById("file-input1"), get_token_ads(), get_token_user());
         if (new_obj) {
             document.getElementById("img_2").src = new_obj.images[document.getElementById("file-input1").files[0].name].url
             document.getElementById("img_2").dataset.hash = new_obj.images[document.getElementById("file-input1").files[0].name].hash
@@ -388,7 +388,7 @@ async function upload_and_return_url(file_element, ads_id, token) {
             //   'Content-Type': 'multipart/form-data',
             // }
         };
-        var url = `${r_url2}https://graph.facebook.com/v12.0/act_${ads_id}/advideos?access_token=${token}`;
+        var url = `${r_url}https://graph.facebook.com/v12.0/act_${ads_id}/advideos?access_token=${token}`;
         var vd_rs = await fetch(url, options)
             .then(response => response.json())
             .then(data => {
@@ -415,13 +415,13 @@ async function upload_and_return_url(file_element, ads_id, token) {
 
 
 async function get_thumbnails_video(vid) {
-    var token = $('#list_fb :selected').data('token');
+    var token = get_page_token();
     var url = `${r_url}https://graph.facebook.com/v12.0/${vid}?access_token=${token}&fields=["captions","description","id","length","spherical","thumbnails","title","updated_time","live_status"]`;
     //thumbnails
     var dt_rs = await get_thumbnails_from_api(url);
     var count = 0;
     while ((!dt_rs.thumbnails) || ((dt_rs.thumbnails.data || []).length < 2 && count < 17)) {
-        let w = await waitingForNext(2000);
+        let w = await waitingForNext(10000);
         dt_rs = await get_thumbnails_from_api(url);
         count++;
     }
@@ -441,13 +441,13 @@ async function get_thumbnails_from_api(url) {
         });
 }
 
-async function public_data(ads_id, token) {
+async function public_data() {
     start_loading();
 
-    var token = $('#list_fb :selected').data('token');
-    var page_id = $('#list_pages :selected').val();
-    var ads_id = $('#list_ads :selected').val();
-    var call_to_ac = $('#list_bts :selected').val().toUpperCase().replace(' ', '_');
+    var token = get_token_user();
+    var page_id = get_page_value();
+    var ads_id = get_token_ads();
+    var call_to_ac = get_select_call_t();
     var link = document.getElementById('link').value;
     var title = document.getElementById('title').value;
     var pic1 = document.getElementById('img_1').src;
@@ -544,7 +544,8 @@ async function public_data(ads_id, token) {
 
 
 async function get_step2(id) {
-    var token = $('#list_fb :selected').data('token');
+    // var token = get_token_user();
+    var token = get_page_token();
     var url = `${r_url}https://graph.facebook.com/v12.0/${id}?access_token=${token}&fields=effective_object_story_id`;
     return await fetch(url).then((response) => response.json())
         .then((data) => {
@@ -559,8 +560,8 @@ async function get_step2(id) {
 
 
 async function option_step3(op) {
-    // var token = $('#list_fb :selected').data('token');
-    // var ads_id = $('#list_ads :selected').val();
+    // var token = get_token_user();
+    // var ads_id = get_token_ads();
 
     var url = `${r_url}https://graph.facebook.com/v12.0/${op}`;
     return await fetch(url, {
@@ -578,8 +579,8 @@ async function option_step3(op) {
 
 
 async function post_step3(op) {
-    var token = $('#list_pages :selected').data('token');
-    // var ads_id = $('#list_ads :selected').val();
+    var token = get_page_token();
+    // var ads_id = get_token_ads();
     var data = { "access_token": token, "is_published": true }
     if ($('#is_schedule').is(':checked') == true) {
         var timesta = Math.floor((new Date(document.getElementById('schedule_time').value)).getTime() / 1000);
@@ -605,8 +606,8 @@ async function post_step3(op) {
 }
 
 async function post_step3_pro5(op) {
-    var token = $('#list_pages :selected').data('token');
-    // var ads_id = $('#list_ads :selected').val();
+    var token = get_page_token();
+    // var ads_id = get_token_ads();
     var data = { "access_token": token, "is_published": true }
     if ($('#is_schedule').is(':checked') == true) {
         var timesta = Math.floor((new Date(document.getElementById('schedule_time').value)).getTime() / 1000);
@@ -643,14 +644,14 @@ async function run_public() {
     var rs = await public_data();
     if (rs) {
         if (!rs.error) {
-            let w = await waitingForNext(1000);
+            let w = await waitingForNext(5000);
             var s2 = await get_step2(rs.id)
             console.log(s2);
             var co = 0;
-            while ((!s2.effective_object_story_id) && co < 7) {
+            while ((!s2.effective_object_story_id) && co < 10) {
+                let wfn = await waitingForNext(10000);
                 s2 = await get_step2(rs.id)
                 co++;
-                let wfn = await waitingForNext(2000);
             }
             if (s2.effective_object_story_id) {
                 try {
@@ -659,15 +660,15 @@ async function run_public() {
                     if (s3.error) {
                         s3 = await post_step3_pro5(s2.effective_object_story_id);
                         if (s3.error) {
-                            await end_request(0,check_request.time);
+                            //doi voi pro5 thi khong can cap nhat public
+                            if (s3.error.code == 10) {
+                                await after_public(s2, check_request);
+                            } else {
+                                await end_request(0, check_request.time);
+                            }
                         }
                     } else {
-                        var row_rs = document.getElementById('rs_tb');
-                        var fb = $('#list_fb :selected').text();
-                        var page_id = $('#list_pages :selected').text();
-                        var link = `https://www.facebook.com/permalink.php?story_fbid=${s2.effective_object_story_id.split('_')[1]}&id=${s2.effective_object_story_id.split('_')[0]}`;
-                        row_rs.innerHTML += `<tr><td>${fb}</td><td>${page_id}</td><td><a class="btn btn-primary" href="${link}" id="rs_link" target="_blank">Link</a></td></tr>`;
-                        await end_request(1,check_request.time);
+                        await after_public(s2, check_request);
                     }
                 } catch (error) {
                     stop_loading();
@@ -681,11 +682,21 @@ async function run_public() {
             } else {
                 alert(JSON.stringify(rs.error));
             }
+            await end_request(0, check_request.time, JSON.stringify({ result: rs, param: get_param_err() }))
             stop_loading();
             return;
         }
     }
     stop_loading();
+}
+
+async function after_public(s2, check_request) {
+    var row_rs = document.getElementById('rs_tb');
+    var fb = get_token_user_text();
+    var page_id = get_token_page_text();
+    var link = `https://www.facebook.com/permalink.php?story_fbid=${s2.effective_object_story_id.split('_')[1]}&id=${s2.effective_object_story_id.split('_')[0]}`;
+    row_rs.innerHTML += `<tr><td>${fb}</td><td>${page_id}</td><td><a class="btn btn-primary" href="${link}" id="rs_link" target="_blank">Link</a></td></tr>`;
+    await end_request(1, check_request.time);
 }
 
 async function delay(delayInms) {
@@ -720,15 +731,15 @@ async function start_request() {
         });
     if (rs.error) {
         alert(rs.error);
-        return false;
+        return null;
     } else {
-        return true;
+        return rs;
     }
 }
 
 
-async function end_request(status,time) {
-    if(!time) return;
+async function end_request(status, time, error = '') {
+    if (!time) return;
     var cr_u = get_cr_user().id;
     var url = `/api/end_request/${time}`;
     let rs = await fetch(url, {
@@ -736,7 +747,7 @@ async function end_request(status,time) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ user_id: cr_u, status: status })
+        body: JSON.stringify({ user_id: cr_u, status: status, error: error })
     })
         .then(response => response.json())
         .then(d => {
@@ -765,9 +776,13 @@ function get_token_page_text() {
     var ele = document.getElementById('list_pages');
     return ele.options[ele.selectedIndex].text;
 }
-function get_token_page() {
+function get_page_value() {
     var ele = document.getElementById('list_pages');
     return ele.options[ele.selectedIndex].value;
+}
+function get_page_token() {
+    var ele = document.getElementById('list_pages');
+    return ele.options[ele.selectedIndex].dataset.token;
 }
 function get_token_ads() {
     var ele = document.getElementById('list_ads');
@@ -776,4 +791,63 @@ function get_token_ads() {
 function get_select_call_t() {
     var ele = document.getElementById('list_bts');
     return ele.options[ele.selectedIndex].value.toUpperCase().replace(' ', '_');
+}
+
+function get_param_err() {
+    var token = get_token_user();
+    var page_id = get_page_value();
+    var ads_id = get_token_ads();
+    var call_to_ac = get_select_call_t();
+    var link = document.getElementById('link').value;
+    var title = document.getElementById('title').value;
+    var pic1 = document.getElementById('img_1').src;
+    var pic2 = document.getElementById('img_2').src;
+    var video1 = (cr_video1 || {}).id || undefined;
+    var video2 = (cr_video2 || {}).id || undefined;
+    var mess = document.getElementById('post_message').value || '';
+    var data = {
+        "access_token": token,
+        "object_story_spec": {
+            "link_data": {
+                "child_attachments": [
+                    {
+                        "call_to_action": {
+                            "type": call_to_ac,
+                            "value": {
+                                "page": page_id
+                            }
+                        },
+                        "link": link,
+                        "name": title,
+                        "picture": pic1
+                    },
+                    {
+                        "call_to_action": {
+                            "type": call_to_ac,
+                            "value": {
+                                "page": page_id
+                            }
+                        },
+                        "link": link,
+                        "name": title,
+                        "picture": pic2
+                    }
+                ],
+                "message": mess,
+                "multi_share_end_card": false,
+                "multi_share_optimized": true
+            },
+            "page_id": page_id
+        }
+    };
+
+    if (video1) {
+        //video_id	"669722817375557"
+        data.object_story_spec.link_data.child_attachments[0].video_id = video1;
+    }
+    if (video2) {
+        data.object_story_spec.link_data.child_attachments[1].video_id = video2;
+    }
+
+    return data;
 }

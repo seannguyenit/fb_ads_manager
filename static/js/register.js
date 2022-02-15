@@ -33,21 +33,26 @@ async function user_check_existed(id, username) {
 
 
 async function register() {
+    start_loading();
     var check = await check_username();
     if (!check) {
+        stop_loading();
         alert('email bị trùng !')
         return;
     }
 
     if (document.getElementById('pass').value != document.getElementById('pass_confirm').value) {
+        stop_loading();
         alert('Xác nhận mật khẩu không dúng !')
         return;
     }
     if (document.getElementById('pass').value.length == 0 || document.getElementById('user').value.length == 0 || document.getElementById('pass_confirm').value.length == 0) {
+        stop_loading();
         alert('Chưa điền đủ thông tin !')
         return;
     }
     if (document.getElementById('user').value.indexOf('@') == -1) {
+        stop_loading();
         alert('email không đúng !')
         return;
     }
@@ -67,8 +72,10 @@ async function register() {
         })
         .catch(error => {
             console.error('Error:', error);
+            stop_loading();
         });
     if (rs) {
+        stop_loading();
         alert('Đăng ký thành công vui lòng vào email đã đăng ký để kích hoạt tài khoản !')
         location.href = '/login'
     }

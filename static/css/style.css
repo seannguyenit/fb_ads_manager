@@ -1,3 +1,52 @@
+body{
+    background-color:#000;
+    color: #ffffff
+}
+.blue-color-bg{
+    background-color:#32A1CC
+}
+.blue-color-text{
+    color:#32A1CC
+}
+a{
+    color:#ffffff
+}
+a:hover{
+    color: #123;
+    text-decoration: none
+}
+
+.login-form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-img{
+    width: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+    .com-name{
+        border-bottom: solid 1px white;
+        padding-bottom: 10px;
+    }
+    
+    .title-nav{
+        border-bottom: solid 1px white;
+        padding-bottom: 10px;
+    }
+    
+    .login-form{
+        width: 100%;
+    }
+    .login-img{
+        display:none !important
+    }
+}
+
+
 .body-bg-custom{
     /* background-image: url(../img/Bokeh-on-Blue.jpg); */
     position: absolute;
@@ -230,15 +279,3 @@ margin-left: 10px;
     padding: 10px;
 }
 
-@media only screen and (max-width: 600px) {
-    .com-name{
-        border-bottom: solid 1px white;
-        padding-bottom: 10px;
-    }
-    
-    .title-nav{
-        border-bottom: solid 1px white;
-        padding-bottom: 10px;
-    }
-    
-}

@@ -5,261 +5,87 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
 
-
-    <style>
-        .main-content img {
-            max-width: 100% !important;
-            height: auto !important;
-        }
-    </style>
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../collect/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../collect/bootstrap.css" rel="stylesheet" type="text/css">
 
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="../collect/main.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <!-- Font-icon css-->
-
-    <style>
-        #particles-js {
-            /*color: #ffffff;*/
-            background-image: url(../img/Bokeh-on-Blue.jpg);
-            /*position: relative;*/
-            /*background-position: center bottom;*/
-            /*background-repeat: no-repeat;*/
-            /*background-attachment: scroll;*/
-            /*background-size: cover;*/
-            /*padding-top: 180px;*/
-            /*padding-bottom: 160px;*/
-            /*background-size: cover;*/
-
-
-
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            /*background-image: url(combined-and-fonts.min.css);*/
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: 50% 50%;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 0;
-        }
-
-        footer {
-            background-color: black;
-        }
-    </style>
-
-    <style>
-        .field-disabled {
-            pointer-events: none;
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-    </style>
-    <style>
-        .login-content {
-            width: 450px;
-            color: white;
-            padding: 16px;
-            max-width: 100%;
-        }
-    </style>
-
 </head>
 
-<body class="app sidebar-mini">
-
-    <main class="position-relative" style="min-height: 100vh;">
-        <div id="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="1366"
-                height="537"></canvas></div>
-        <section class="login-content">
+<body>
+    <section class="login-content">
 
 
 
-            <div class="login-box rounded py-4 px-3 px-lg-5">
-                <div class="px-4 mb-3">
-                    <div class="text-center com-name-login">FB ads support</div>
-                    <!-- <img src="" alt="" class="img-fluid"> -->
+        <div class="login-box rounded py-4 px-3 px-lg-5">
+            <div class="px-4 mb-3">
+                <div class="w-100 text-center">
+                    <img src="../img/logo.jpg" width="200vw" alt="logo tool264.com" />
                 </div>
-                <!-- <form class="login-form"> -->
-                <!-- <input type="hidden" name="_token" value="iyDxZDf2Q5FVqsv3pfnFP4FMvxe0q6ikI8bduICa">                <h3 class="login-head text-uppercase">Đăng nhập</h3> -->
-
-
-                <div class="form-group">
-                    <label class="control-label text-uppercase">Email</label>
-                    <input class="form-control" id="user" name="username" type="text" placeholder="" autofocus="">
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label text-uppercase">mật khẩu</label>
-                    <input class="form-control" id="pass" name="password" type="password" placeholder="" autofocus="">
-                </div>
-
-
-                <div class="form-group btn-container mb-3">
-                    <button onclick="login()" class="btn btn-primary btn-block text-uppercase">Đăng nhập</button>
-                    <a class="btn btn-warning btn-block text-uppercase" href="/register">Đăng ký ngay</a>
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-                <!-- </form> -->
-
-
-
-
-
-
-
-
-
-
-
-
+                <h4 class="text-center blue-color-text">Chào mừng trở lại</h4>
+                <h6 class="text-center">Vui lòng đăng nhập để tiếp tục</h6>
+                <!-- <img src="" alt="" class="img-fluid"> -->
             </div>
-        </section>
-    </main>
+            <!-- <form class="login-form"> -->
+            <!-- <input type="hidden" name="_token" value="iyDxZDf2Q5FVqsv3pfnFP4FMvxe0q6ikI8bduICa">                <h3 class="login-head text-uppercase">Đăng nhập</h3> -->
 
-    <!-- Essential javascripts for application to work-->
+            <!-- <form> -->
+            <div class="d-flex flex-wrap w-75 m-auto">
+                <div class="login-form">
+                    <div class="form-group">
+                        <label class="control-label text-uppercase">Email</label>
+                        <input class="form-control" id="user" name="username" type="text" placeholder="" autofocus="">
+                    </div>
 
-    <!-- Data table plugin-->
+                    <div class="form-group">
+                        <label class="control-label text-uppercase">mật khẩu</label>
+                        <input class="form-control" id="pass" name="password" type="password" placeholder=""
+                            autofocus="">
+                    </div>
+
+                    <div class="form-group btn-container mb-3">
+                        <button onclick="login()" class="btn btn-primary btn-block text-uppercase blue-color-bg">Đăng
+                            nhập</button>
+                        <div class="d-flex flex-column mt-2">
+                            <a href="/register">Đăng ký ngay ?</a>
+                            <a href="/recovery">Quên mật khẩu ?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-img">
+                    <img src="../img/right.jpg" width="400px" alt="tool264.com entrance" />
+                </div>
+            </div>
+            <!-- </form> -->
 
 
-    <!-- Gallery popup -->
 
-    <script src="../collect/particles.js"></script>
 
-    <script>
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#ffffff"
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    },
-                    "image": {
-                        "src": "img/github.svg",
-                        "width": 100,
-                        "height": 100
-                    }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": false,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 4,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 40,
-                        "size_min": 0.5,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#ffffff",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 6,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 140,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
-                    }
-                }
-            },
-            "retina_detect": true
-        });
-    </script>
+
+
+
+
+
+
+            <!-- </form> -->
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </section>
     <script src="../js/login.js"></script>
     <script src="../js/authen_fuction.js"></script>
-    <!-- <script src="../js/permission.js"></script> -->
-    <!-- <script src="../js/menu_function.js"></script> -->
     <script>
         //ensure logout
         if (check_is_login()) {
