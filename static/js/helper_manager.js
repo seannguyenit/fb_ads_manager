@@ -42,12 +42,26 @@ function format_time(time) {
         if (time.indexOf('T') > -1) {
             return new Date(time).toLocaleDateString();
         } else {
-            return new Date(Number(time)*1000).toLocaleDateString();
+            return new Date(Number(time) * 1000).toLocaleDateString();
 
         }
     } catch (error) {
         return time;
     }
+}
+
+function get_number_by_id(number, count = 4) {
+    if (count < 4) count = 4;
+    var str_number = '';
+    if (number.toString().length > 4) {
+        str_number = number.toString().subString(number.toString().length - 4, number.toString().length - 1);
+        return str_number;
+    }
+    for (var i = 1; i <= count - number.toString().length; i++) {
+        str_number = '0' + str_number;
+    }
+    str_number = str_number + number.toString();
+    return str_number;
 }
 
 function get_format_VND(str) {

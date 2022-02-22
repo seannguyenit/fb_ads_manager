@@ -32,6 +32,9 @@ module.exports = {
     top_up: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/topup.html'))
     },
+    top_up_card: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/topup_directly.html'))
+    },
     top_up_m: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/money_manager.html'))
     },

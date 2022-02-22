@@ -171,7 +171,7 @@ async function change_title() {
 }
 
 async function change_button() {
-    var select = $("#list_bts :selected").text();
+    var select = $("#list_bts :selected").val();
     if (select == 'Like Page') {
         document.getElementById('link').parentElement.style.display = "none";
     } else {
@@ -388,7 +388,7 @@ async function upload_and_return_url(file_element, ads_id, token) {
             //   'Content-Type': 'multipart/form-data',
             // }
         };
-        var url = `${r_url}https://graph.facebook.com/v12.0/act_${ads_id}/advideos?access_token=${token}`;
+        var url = `${r_url2}https://graph.facebook.com/v12.0/act_${ads_id}/advideos?access_token=${token}`;
         var vd_rs = await fetch(url, options)
             .then(response => response.json())
             .then(data => {

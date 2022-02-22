@@ -42,7 +42,8 @@
             <div class="container">
                 <div class="col-md-12 d-flex flex-wrap mt-5 mb-5">
                     <div class="col-12">
-                        <h2>Nạp tiền theo các bước bên dưới</h2>
+                        <h2>Nạp tiền theo các bước bên dưới hoặc nạp bằng thẻ cào</h2>
+                        <a class="btn btn-primary"href="/home/topup_card">Nạp bằng thẻ cào</a>
                     </div>
                     <div class="col-md-4">
                         <div class="pricing">
@@ -96,7 +97,7 @@
                                 <th>Stt</th>
                                 <th>Số tiền (VND)</th>
                                 <th>Thời gian</th>
-                                <th>Lời nhắn</th>
+                                <!-- <th>Mã ck</th> -->
                                 <th>Trạng thái</th>
                             </tr>
                         </thead>
@@ -120,13 +121,13 @@
                         </button>
                 </div>
                 <div class="modal-body d-flex">
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                         <label for="money" class="form-label">Số tiền</label>
                         <input type="number" class="form-control" id="money" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="des" class="form-label">Lời nhắn chuyển khoản</label>
-                        <input type="text" class="form-control" id="des" required>
+                    </div> -->
+                    <div class="col-md-12">
+                        <label for="des" class="form-label">Mã chuyển khoản</label>
+                        <input disabled type="text" class="form-control" id="des" required>
                     </div>
                 </div>
                 <div class="modal-footer">

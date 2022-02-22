@@ -107,8 +107,10 @@ module.exports = function (app) {
 
   app.route('/api/topup_m')
     .get(moneyCtrl.get_list_reg);
-  app.route('/api/topup_m/:id')
+  app.route('/api/topup_m/:id/:money')
     .put(moneyCtrl.approve_topup);
-
+    
+  app.route('/api/money_success')
+    .post(moneyCtrl.successfully_topup);
 }
 

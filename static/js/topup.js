@@ -14,12 +14,13 @@ async function init_top_up() {
             <tr>
                 <td>${data.indexOf(f) + 1}</td>
                 <td>${get_format_VND(f.money)}</td>
-                <td>${new Date(Number(f.time*1000||0)).toLocaleString()}</td>
-                <td>${f.des}</td>
+                <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
                 <td>${(f.active == 1 ? 'Đã duyệt' : 'Chưa duyệt')}</td>
             </tr>`
         })
     }
+    var cr_u = get_cr_user();
+    document.getElementById('des').value = get_number_by_id(cr_u.id);
 }
 
 function open_ticket() {
@@ -27,7 +28,8 @@ function open_ticket() {
 }
 
 async function save_ticket() {
-    var money = $('#money').val();
+    var money = 0;
+    // var money = $('#money').val();
     var des = $('#des').val();
     var user_id = get_cr_user().id;
     if (money.length == 0 || des.length == 0) {

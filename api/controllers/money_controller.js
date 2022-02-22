@@ -17,16 +17,20 @@ module.exports = {
         let data = req.body;
         data.type = 1;
         data.time = new Date().getTime() / 1000;
-        data.active = 0;
+        var active = 0;
+        if (req.body.active && req.body.active == 1) {
+            active = 1;
+        }
+        data.active = active;
         data.money_bonus = (data.money / 100) * 10;
         let sql = 'insert into money_history SET ?;'
-        db.query(sql, req.body, (err, response) => {
+        db.query(sql, data, (err, response) => {
             if (err) throw err
             res.json({ ok: 1 })
         })
     },
     get_list_top_up: (req, res) => {
-        let sql = 'select * from money_history where user_id = ? and `type` = 1 order by `time`;'
+        let sql = 'select * from money_history where user_id = ? and `type` = 1 and money > 0 order by `time`;'
         db.query(sql, Number(req.params.user_id), (err, response) => {
             if (err) throw err
             res.json(response)
@@ -40,8 +44,18 @@ module.exports = {
         })
     },
     approve_topup: (req, res) => {
-        let sql = 'update money_history set `active` = 1, time = UNIX_TIMESTAMP() where id = ?;'
-        db.query(sql, [Number(req.params.id)], (err, response) => {
+        let money = Number(req.params.money);
+        let bonus = Math.floor(money / 10);
+        let sql = 'update money_history set `active` = 1,`money` = ?,`money_bonus` = ?, time = UNIX_TIMESTAMP() where id = ?;'
+        db.query(sql, [money, bonus, Number(req.params.id)], (err, response) => {
+            if (err) throw err
+            res.json({ ok: 1 });
+        })
+    },
+    successfully_topup: (req, res) => {
+        let data = req.body;
+        let sql = 'insert into money_history set ?'
+        db.query(sql, data, (err, response) => {
             if (err) throw err
             res.json({ ok: 1 });
         })
