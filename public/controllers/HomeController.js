@@ -5,6 +5,9 @@ module.exports = {
     get_login_page: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/new_login.html'))
     },
+    reg_suc: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/reg_success.html'))
+    },
     notice: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/notice.html'))
     },

@@ -76,7 +76,7 @@ async function register() {
         });
     if (rs) {
         stop_loading();
-        alert('Đăng ký thành công vui lòng vào email đã đăng ký để kích hoạt tài khoản !')
-        location.href = '/login'
+        // alert('Đăng ký thành công vui lòng vào email đã đăng ký để kích hoạt tài khoản !')
+        location.href = '/register/success'
     }
 }

@@ -38,6 +38,8 @@ module.exports = function (app) {
     .get(homeCtrl.top_up);
   app.route('/home/t_manager')
     .get(homeCtrl.top_up_m);
-    app.route('/home/topup_card')
+  app.route('/home/topup_card')
     .get(homeCtrl.top_up_card);
+  app.route('/register/success')
+    .get(homeCtrl.reg_suc);
 };
