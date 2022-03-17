@@ -29,7 +29,10 @@ async function init_topup_all() {
                 <td>${(f.money || 0) > 0 ? (get_format_VND(f.money || 0)) : 'Chưa nhập'}</td>
                 <td>${format_time(f.time)}</td>
                 <td>${f.des}</td>
-                <td><button class="btn btn-sm btn-primary" onclick="open_approved(${f.des},${f.id})">Duyệt</button></td>
+                <td>
+                    <button class="btn btn-sm btn-primary" onclick="open_approved(${f.des},${f.id})">Duyệt</button>
+                    <button class="btn btn-sm btn-danger" onclick="topup_cancel(${f.id})">Hủy</button>
+                </td>
             </tr>`
         })
     }
@@ -55,6 +58,28 @@ async function topup_approved() {
     if (cr_u) {
         await fetch(`/api/topup_m/${id}/${money}`, {
             method: 'PUT', // or 'PUT'
+        })
+            .then(response => response.text())
+            .then(r => {
+                return r;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+    alert('Xong !')
+    location.reload();
+}
+
+
+async function topup_cancel(id) {
+    if (!confirm(`Bạn có chắc chắn muốn hủy ?`)) {
+        return;
+    }
+    var cr_u = get_cr_user();
+    if (cr_u) {
+        await fetch(`/api/topup_m/cancel/${id}`, {
+            method: 'POST', // or 'PUT'
         })
             .then(response => response.text())
             .then(r => {

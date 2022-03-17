@@ -16,6 +16,10 @@ a:hover{
     text-decoration: none
 }
 
+.button-radius{
+    border-radius: 0.5rem !important;
+}
+
 .login-form{
     width: 50%;
     display: flex;
@@ -56,7 +60,7 @@ a:hover{
     /* background-repeat: repeat-y;
     background-size: cover; */
     /* background-position: 50% 50%; */
-    background-color: #025;
+    background-color:#000;
     top: 0;
     left: 0;
     right: 0;
@@ -106,6 +110,12 @@ button{
     font-size: x-large;
 }
 
+select,textarea,input{
+    background-color: dimgray !important;
+    color: #ffffff !important;
+    border-radius: 0.5rem !important;
+}
+
 table{
     color: white !important;
 }
@@ -123,6 +133,10 @@ hr{
     background-color: white;
 }
 
+.nav-tabs {
+    border-bottom: unset !important;
+}
+
 .box_review{
     border: solid 1px ; 
     border-radius: 10px; width: 290px;
@@ -136,12 +150,27 @@ hr{
 .box_review a{
     cursor: pointer;
 }
+.nav-left{
+    border-top-left-radius: 0.9rem !important;
+    border-bottom-left-radius: 0.9rem !important;
+    border-top-right-radius: unset !important;
+    border-bottom-right-radius: unset !important;
+}
+.nav-right{
+    border-top-right-radius: 0.9rem !important;
+    border-bottom-right-radius: 0.9rem !important;
+    border-top-left-radius: unset !important;
+    border-top-left-radius: unset !important;
+}
 .nav-item.nav-link{
     color: white !important;
     cursor: pointer;
+    width: 50%;
+    border: 1px solid white !important;
 }
 .nav-item.nav-link.active{
-    color: black !important;
+    color: white !important;
+    background-color: dimgray !important;
 }
 
 .box_review img{
@@ -279,3 +308,30 @@ margin-left: 10px;
     padding: 10px;
 }
 
+textarea::placeholder,input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white !important;
+    opacity: 1; /* Firefox */
+  }
+  
+  textarea::placeholder,input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white !important;
+  }
+  
+  textarea::placeholder,input::-ms-input-placeholder { /* Microsoft Edge */
+    color: white !important;
+  }
+
+.custom_scroll::-webkit-scrollbar {
+    width: 8px;               /* width of the entire scrollbar */
+    height: 8px;
+  }
+  
+  .custom_scroll::-webkit-scrollbar-track {
+    background: gainsboro;        /* color of the tracking area */
+  }
+  
+  .custom_scroll::-webkit-scrollbar-thumb {
+    background-color: gray;    /* color of the scroll thumb */
+    border-radius: 10px;       /* roundness of the scroll thumb */
+    border: 1px solid gainsboro;  /* creates padding around scroll thumb */
+  }

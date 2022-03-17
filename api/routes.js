@@ -51,6 +51,8 @@ module.exports = function (app) {
 
   app.route('/api/agency_m/:id')
     .put(accCtrl.agency_app);
+  app.route('/api/agency_m/cancel/:id')
+    .put(accCtrl.agency_cancel);
 
   app.route('/api/menu')
     .get(menuCtrl.get_template);
@@ -109,7 +111,9 @@ module.exports = function (app) {
     .get(moneyCtrl.get_list_reg);
   app.route('/api/topup_m/:id/:money')
     .put(moneyCtrl.approve_topup);
-    
+  app.route('/api/topup_m/cancel/:id')
+    .post(moneyCtrl.cancel_topup);
+
   app.route('/api/money_success')
     .post(moneyCtrl.successfully_topup);
 }

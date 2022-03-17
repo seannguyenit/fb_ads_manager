@@ -159,8 +159,10 @@ async function load_lib_img(v1) {
         img_p.querySelector('[data-type="video2"]').classList.add('active');
         document.getElementById('img_2').src = img_p.querySelector('[data-type="video2"]').children[0].src
     } else {
-        img_p.querySelector('[data-type="image"]').classList.add('active');
-        change_img_selected();
+        if (img_p.querySelector('[data-type="image"]')) {
+            img_p.querySelector('[data-type="image"]').classList.add('active');
+            change_img_selected();
+        }
     }
 
 }

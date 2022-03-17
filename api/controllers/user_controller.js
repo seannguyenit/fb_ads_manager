@@ -253,6 +253,13 @@ module.exports = {
             if (err) throw err
             res.json({ ok: 1 });
         })
+    },
+    agency_cancel: (req, res) => {
+        let sql = 'update `user` set is_agency = NULL, agency_time = UNIX_TIMESTAMP() ,ref = NULL where id = ?;'
+        db.query(sql, [Number(req.params.id)], (err, response) => {
+            if (err) throw err
+            res.json({ ok: 1 });
+        })
     }
 }
 

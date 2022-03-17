@@ -52,6 +52,13 @@ module.exports = {
             res.json({ ok: 1 });
         })
     },
+    cancel_topup: (req, res) => {
+        let sql = 'delete from money_history where id = ?;'
+        db.query(sql, [Number(req.params.id)], (err, response) => {
+            if (err) throw err
+            res.json({ ok: 1 });
+        })
+    },
     successfully_topup: (req, res) => {
         let data = req.body;
         let sql = 'insert into money_history set ?'

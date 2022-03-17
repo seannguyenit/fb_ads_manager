@@ -19,8 +19,12 @@ async function add_token() {
     // }
     var data_fb = await get_user_info_from_fb(token);
     if (data_fb) {
-        await save_token({ token: token, name: data_fb.name, fb_id: data_fb.id, picture: data_fb.picture.data.url });
-        await load_token();
+        if (data_fb.error) {
+            alert('Token đã hết hạn vui lòng nhập lại !')
+        } else {
+            await save_token({ token: token, name: data_fb.name, fb_id: data_fb.id, picture: data_fb.picture.data.url });
+            await load_token();
+        }
     } else {
         alert('Token đã hết hạn vui lòng nhập lại !')
     }
@@ -144,7 +148,7 @@ async function change_pass() {
         });
     if (rs.error) {
         alert(rs.error);
-    }else{
+    } else {
         alert('Đổi mật khẩu thành công ! Quay lại trang đăng nhập !')
         window.location.href = '/login'
     }
