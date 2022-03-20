@@ -14,7 +14,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body class="body-bg-custom custom_scroll"><!-- Top Bar -->
+<body class="body-bg-custom custom_scroll">
+    <!-- Top Bar -->
     <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
             <a class="navbar-brand com-name" href="#">FB ads support</a>
@@ -80,8 +81,8 @@
                             <div class="d-flex justify-content-between content">
                                 <span data-select="review1">Like Page 👉 👉</span>
                                 <button data-select="review" class="btn">Like page</button>
-                                <input id="file-input" accept="video/mp4" type="file" name="name0" style="display: none;"
-                                    onchange="PreviewImage()" />
+                                <input id="file-input" accept="video/mp4" type="file" name="name0"
+                                    style="display: none;" onchange="PreviewImage()" />
                             </div>
                         </div>
                     </div>
@@ -91,8 +92,8 @@
                             <div class="d-flex justify-content-between content">
                                 <span data-select="review2">Like Page 👉 👉</span>
                                 <button data-select="review" class="btn">Like page</button>
-                                <input id="file-input1" type="file" accept=".gif, .jpg, .png" name="name1" style="display: none;"
-                                    onchange="PreviewImage1()" />
+                                <input id="file-input1" type="file" accept=".gif, .jpg, .png" name="name1"
+                                    style="display: none;" onchange="PreviewImage1()" />
                             </div>
                         </div>
                     </div>
@@ -148,33 +149,39 @@
                             </div>
                             <div class="col-md-12 p-2">
                                 <!-- <label for="post_message" class="form-label">POST MESSAGE </label> -->
-                                <textarea rows="2" type="text" placeholder="Nội dung bài viết" class="form-control" id="post_message"></textarea>
+                                <textarea rows="2" type="text" placeholder="Nội dung bài viết" class="form-control"
+                                    id="post_message"></textarea>
                             </div>
-                            <div class="col-md-12 p-2 d-block text-center">
-                                <div class="col-md-12">
-                                    <div class="form-check form-check-inline">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input" onchange="change_check_schedule()"
-                                                type="checkbox" name="is_schedule" id="is_schedule"> SCHEDULE
-                                        </label>
+                            <div class="col-md-12 p-2 d-flex">
+                                <fieldset class="w-100 p-3 rounded border">
+                                    <legend class="w-auto">Hẹn Lịch</legend>
+                                    <div style="width: 90%;" class="m-auto d-flex justify-content-between">
+                                        <div>
+                                            <input type="datetime-local" id="schedule_time" name="schedule_time"
+                                                disabled value="2018-06-12T19:30">
+                                        </div>
+                                        <div>
+                                            <div class="custom-control custom-switch" style="zoom: 1.2;">
+                                                <input type="checkbox" onchange="change_check_schedule()"
+                                                    class="custom-control-input" id="is_schedule">
+                                                <label class="custom-control-label" style="width: 50px;" for="is_schedule"></label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <input type="datetime-local" id="schedule_time" name="schedule_time" disabled
-                                        value="2018-06-12T19:30">
-                                </div>
+                                </fieldset>
                             </div>
-                          
+
                             <div class="col-md-12 p-2">
-                                <button onclick="run_public()" class="btn btn-primary button-radius w-100">ĐĂNG BÀI</button>
+                                <button onclick="run_public()" class="btn btn-primary button-radius w-100">ĐĂNG
+                                    BÀI</button>
                             </div>
                             <div class="col-md-12 p-2">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>FB</th>
-                                            <th>PAGE</th>
-                                            <th>LINK</th>
+                                            <th>Tài khoản Facebook</th>
+                                            <th>Trang</th>
+                                            <th>Liên kết bài</th>
                                         </tr>
                                     </thead>
                                     <tbody id="rs_tb">

@@ -3,11 +3,16 @@ var data_;
 
 init_default();
 async function init_default() {
+    start_loading();
     let data = await fetch(`https://arthurtech.xyz/https://api.autocard365.com/api/cardrate?apikey=${api_key}`).then(response => response.json()).then(rs => { return rs });
     if (data && data.Code == 1) {
+        data.Data.forEach((fe)=>{
+            fe.prices = fe.prices.filter(ft=>{return ft.price < 100000});
+        });
         data_ = data.Data.sort();
         init_type();
     }
+    stop_loading();
 }
 
 function init_type() {
