@@ -1,5 +1,4 @@
 'use strict'
-
 const util = require('util')
 const mysql = require('mysql')
 const nodeMailer = require('nodemailer')
@@ -142,7 +141,7 @@ module.exports = {
     end_request: (req, res) => {
         let data = req.body;
         let sql = 'update request_history SET status = ?,error = ? where user_id = ? and time = ? and status is NULL;'
-        db.query(sql, [Number(data.status), data.error,Number(data.user_id),Number(req.params.time), ], (err, response) => {
+        db.query(sql, [Number(data.status), data.error, Number(data.user_id), Number(req.params.time),], (err, response) => {
             if (err) throw err
             res.json({ ok: 1 })
         })

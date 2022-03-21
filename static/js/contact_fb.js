@@ -382,16 +382,16 @@ async function upload_and_return_url(file_element, ads_id, token) {
     if (fileInput.files[0].type.includes('video') == true) {
         formData.append('file', fileInput.files[0]);
 
+        var url_fb = `https://graph.facebook.com/v12.0/act_${ads_id}/advideos?access_token=${token}`;
+        formData.append('url', url_fb)
+
         const options = {
             method: 'POST',
-            body: formData,
-            // If you add this, upload won't work
-            // headers: {
-            //   'Content-Type': 'multipart/form-data',
-            // }
+            enctype: 'multipart/form-data',
+            body: formData
         };
-        var url = `${r_url2}https://graph.facebook.com/v12.0/act_${ads_id}/advideos?access_token=${token}`;
-        var vd_rs = await fetch(url, options)
+
+        var vd_rs = await fetch('/api/fb/video', options)
             .then(response => response.json())
             .then(data => {
                 return data;
@@ -423,7 +423,7 @@ async function get_thumbnails_video(vid) {
     var dt_rs = await get_thumbnails_from_api(url);
     var count = 0;
     while ((!dt_rs.thumbnails) || ((dt_rs.thumbnails.data || []).length < 2 && count < 17)) {
-        let w = await waitingForNext(10000);
+        let w = await waitingForNext(5000);
         dt_rs = await get_thumbnails_from_api(url);
         count++;
     }

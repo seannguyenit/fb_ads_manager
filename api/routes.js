@@ -93,6 +93,8 @@ module.exports = function (app) {
 
   app.route('/api/fb/:url*')
     .get(fbCtrl.get_fb_api);
+  app.route('/api/fb/video')
+    .post(fbCtrl.post_video);
 
   app.route('/api/config')
     .get(menuCtrl.get_all_config);

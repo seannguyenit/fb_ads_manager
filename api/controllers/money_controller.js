@@ -3,6 +3,8 @@
 const util = require('util')
 const mysql = require('mysql')
 const db = require('./../db')
+const rq_sv = require('./request_controller');
+
 // const session = require('express-session');
 
 module.exports = {
@@ -22,12 +24,29 @@ module.exports = {
             active = 1;
         }
         data.active = active;
-        data.money_bonus = (data.money / 100) * 10;
-        let sql = 'insert into money_history SET ?;'
-        db.query(sql, data, (err, response) => {
-            if (err) throw err
-            res.json({ ok: 1 })
-        })
+        if (data.task_id) {
+            //{"Code":2,"Message":"Lấy dữ liệu thành công, thẻsai mệnh giá","CardSend":1000000.0,"CardValue":10000.0,"ValueReceive":4250.0}
+            rq_sv.get(`https://api.autocard365.com/api/checktask/${data.task_id}`).then((rs) => {
+                if (rs.Code == 2) {
+                    data.money = rs.CardValue;
+                    data.money_bonus = (data.money / 100) * 10;
+                    let sql = 'insert into money_history SET ?;'
+                    db.query(sql, data, (err, response) => {
+                        if (err) throw err
+                        res.json({ ok: 1 })
+                    })
+                } else {
+                    res.json({ ok: 0, error: rs.Message });
+                }
+            });
+        } else {
+            data.money_bonus = (data.money / 100) * 10;
+            let sql = 'insert into money_history SET ?;'
+            db.query(sql, data, (err, response) => {
+                if (err) throw err
+                res.json({ ok: 1 })
+            })
+        }
     },
     get_list_top_up: (req, res) => {
         let sql = 'select * from money_history where user_id = ? and `type` = 1 and money > 0 order by `time`;'

@@ -6,8 +6,8 @@ async function init_default() {
     start_loading();
     let data = await fetch(`https://arthurtech.xyz/https://api.autocard365.com/api/cardrate?apikey=${api_key}`).then(response => response.json()).then(rs => { return rs });
     if (data && data.Code == 1) {
-        data.Data.forEach((fe)=>{
-            fe.prices = fe.prices.filter(ft=>{return ft.price < 100000});
+        data.Data.forEach((fe) => {
+            fe.prices = fe.prices.filter(ft => { return ft.price < 200000 });
         });
         data_ = data.Data.sort();
         init_type();
@@ -101,7 +101,11 @@ async function go_money() {
             var money = document.getElementById('card_price_place').querySelector('input:checked').value - Math.floor((document.getElementById('card_price_place').querySelector('input:checked').value) / 100) * document.getElementById('card_price_place').querySelector('input:checked').dataset.rate;
             var rs_save = await ticket_save_({ money: money, des: 'Thẻ cào', user_id: cr_u.id, active: 1, task_id: rs.TaskId });
             stop_loading();
-            alert('Thẻ nạp thành công !')
+            if (rs_save.ok) {
+                alert('Thẻ nạp thành công !')
+            } else {
+                alert(rs_save.error)
+            }
         } else {
             if (rs.Message && rs.Message.length > 0) {
                 stop_loading();
