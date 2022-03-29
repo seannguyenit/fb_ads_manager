@@ -24,11 +24,11 @@ module.exports = {
             active = 1;
         }
         data.active = active;
-        if (data.task_id) {
+        if ((data.task_id || 0) > 0) {
             //{"Code":2,"Message":"Lấy dữ liệu thành công, thẻsai mệnh giá","CardSend":1000000.0,"CardValue":10000.0,"ValueReceive":4250.0}
-            rq_sv.get(`https://api.autocard365.com/api/checktask/${data.task_id}`).then((rs) => {
+            waitingForCardResult(data.task_id).then((rs) => {
                 if (rs.Code == 2) {
-                    data.money = rs.CardValue;
+                    data.money = rs.ValueReceive;
                     data.money_bonus = (data.money / 100) * 10;
                     let sql = 'insert into money_history SET ?;'
                     db.query(sql, data, (err, response) => {
@@ -86,4 +86,27 @@ module.exports = {
             res.json({ ok: 1 });
         })
     }
+}
+
+async function waitingForCardResult(task_id) {
+    var info = await rq_sv.get(`https://api.autocard365.com/api/checktask/${task_id}`);
+    var count = 0;
+    while (Number(info.data.Code) < 2 && count < 15) {
+        await waitingForNext(5000);
+        info = await rq_sv.get(`https://api.autocard365.com/api/checktask/${task_id}`);
+        count++;
+    }
+    return info.data;
+}
+
+async function delay(delayInms) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(2);
+        }, delayInms);
+    });
+}
+async function waitingForNext(time) {
+    // console.log('waiting...')
+    let delayres = await delay(time);
 }

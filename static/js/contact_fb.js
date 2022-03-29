@@ -335,15 +335,25 @@ async function get_ads_acc_from_fb(token) {
 
 async function get_img_acc_from_ad(id, token) {
     const url = `${r_url}https://graph.facebook.com/v12.0/act_${id}/adimages?access_token=${token}&fields=hash,url`;
-    return await fetch(url /*, options */)
+    var rs = await fetch(url /*, options */)
         .then((response) => response.json())
         .then((data) => {
-            return data.data;
+            return data;
         })
         .catch((error) => {
             console.warn(error);
             return undefined;
         });
+    if (rs.error) {
+        if (rs.error.message) {
+            alert(rs.error.message);
+        } else {
+            alert('Lỗi phần quyền trên page hoặc trên tk quản cáo !')
+            // stop_loading();
+        }
+        return null;
+    }
+    return rs.data;
 }
 
 async function upload_and_return_url(file_element, ads_id, token) {
@@ -401,14 +411,22 @@ async function upload_and_return_url(file_element, ads_id, token) {
             });
 
         if (vd_rs) {
-            var new_id = vd_rs.id;
-            var thumbnails_details = await get_thumbnails_video(new_id);
-            if (cr_card == 1) {
-                cr_video1 = thumbnails_details;
-                load_lib_img(true)
+            if (vd_rs.error) {
+                alert((vd_rs.error.message) || 'Lỗi phân quyền trên page');
             } else {
-                cr_video2 = thumbnails_details;
-                load_lib_img(false)
+                var new_id = vd_rs.id;
+                if (new_id) {
+                    var thumbnails_details = await get_thumbnails_video(new_id);
+                    if (cr_card == 1) {
+                        cr_video1 = thumbnails_details;
+                        load_lib_img(true)
+                    } else {
+                        cr_video2 = thumbnails_details;
+                        load_lib_img(false)
+                    }
+                } else {
+                    alert('Không up được video ! Kiểm tra đường truyền mạng hoặc phân quyền trên page !')
+                }
             }
         }
     }
@@ -423,7 +441,7 @@ async function get_thumbnails_video(vid) {
     var dt_rs = await get_thumbnails_from_api(url);
     var count = 0;
     while ((!dt_rs.thumbnails) || ((dt_rs.thumbnails.data || []).length < 2 && count < 17)) {
-        let w = await waitingForNext(5000);
+        let w = await waitingForNext(3000);
         dt_rs = await get_thumbnails_from_api(url);
         count++;
     }
