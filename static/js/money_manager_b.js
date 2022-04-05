@@ -45,7 +45,7 @@ async function init_withdraw_all() {
 async function open_approved(des,id,withdraw) {
     cr_id = id;
     document.getElementById('des').value = get_number_by_id(des);
-    document.getElementById('money').value = get_format_VND(withdraw);  
+    document.getElementById('money').value = withdraw;  
      
     $('#app').modal('show');
 }
