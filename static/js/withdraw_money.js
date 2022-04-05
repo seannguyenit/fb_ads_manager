@@ -32,8 +32,12 @@ function open_ticket() {
 async function save_ticket2() {
     var money = 0;
     var method = 2;
-    // if($('#money_withdraw').val() > )
+    var current_money = $('#current_money').val();
     var withdraw = $('#money_withdraw').val();
+     if ( withdraw >= current_money) {
+         alert('số dư trong tài khoảng không đủ')
+         return;
+     }
     var des = $('#des').val();
     var user_id = get_cr_user().id;
     if (money.length == 0 || des.length == 0) {
