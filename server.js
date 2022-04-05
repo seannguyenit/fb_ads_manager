@@ -41,6 +41,7 @@ app.use(bodyParser.json())
 app.use(cors({
     origin: '*'
 }));
+
 let routes = require('./api/routes') //importing route
 let p_routes = require('./public/routes') //importing route
 routes(app)
@@ -71,8 +72,7 @@ app.all('/proxy/:proxyUrl*', (req, res) => {
     proxy.emit('request', req, res);
 });
 
-
 server.listen(port, () => {
-    console.log('listening on *:3000');
+    console.log('listening on *:3000'); 
 });
 console.log('RESTful API server started on: ' + port);

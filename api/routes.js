@@ -113,10 +113,15 @@ module.exports = function (app) {
     .get(moneyCtrl.get_list_reg);
   app.route('/api/topup_m/:id/:money')
     .put(moneyCtrl.approve_topup);
+    app.route('/api/topup2_m/:id/:money')
+    .put(moneyCtrl.approve2_topup);
   app.route('/api/topup_m/cancel/:id')
     .post(moneyCtrl.cancel_topup);
 
   app.route('/api/money_success')
     .post(moneyCtrl.successfully_topup);
+
+    app.route('/api/list_withdraw/:id')
+    .get(moneyCtrl.get_list_withdraw);
 }
 

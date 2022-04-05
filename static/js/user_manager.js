@@ -137,6 +137,52 @@ async function open_modal(params) {
     $('#user_details').modal('show');
 
 }
+
+/////////////////////
+async function open_modal2(params) {
+    // var menu = await menu_get_template();
+    // var per_place = document.getElementById('permiss_place');
+    // per_place.innerHTML = '';
+    // menu.forEach(f => {
+    //     per_place.innerHTML += `<div class="form-check">
+    //                         <input class="form-check-input" data-id="${f.id}" type="checkbox" ${f.stt == 1 ? "checked" : ""}>
+    //                         <label class="form-check-label" for="invalidCheck">
+    //                           ${f.name}
+    //                         </label>
+    //                     </div>`;
+    // });
+    if (params != 0) {
+        var detail_dt = await acc_get_detail(params);
+        $('#user_id').val(detail_dt.id || 0);
+        $('#user').val(detail_dt.username || '');
+        $('#pass').val(detail_dt.pass || '');
+        $('#real_name').val(detail_dt.real_name || '');
+        $('#phone').val(detail_dt.phone || '');
+        $('#add').val(detail_dt.add || '');
+        if (detail_dt.id != 0) {
+            var data_per = await menu_get_current_menu(detail_dt.id);
+            data_per.forEach(r => {
+                if (r.stt == 1) {
+                    var sl_per = document.querySelector(`input[data-id="${r.menu_id}"]`);
+                    if (sl_per) {
+                        sl_per.checked = true;
+                    }
+                }
+            });
+        }
+    } else {
+        $('#user_id').val(0);
+        $('#user').val('');
+        $('#pass').val('');
+        $('#real_name').val('');
+        $('#phone').val('');
+        $('#add').val('');
+
+    }
+    $('#user_details').modal('show');
+
+}
+/////////////////////
 async function save_() {
     if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu ?')) {
         return;

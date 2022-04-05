@@ -7,7 +7,7 @@ async function menu_get_template() {
         .then((data) => {
             return data;
         })
-        .catch((error) => {
+        .catch((error) => { 
             console.warn(error);
             return undefined;
         });
@@ -37,7 +37,8 @@ async function init_menu() {
         }
         lst_menu.forEach(item => {
             menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>`;
-        });
+        }
+        );
     }
 }
 

@@ -28,9 +28,16 @@ module.exports = function (app) {
 
   app.route('/home/pricing')
     .get(homeCtrl.pricing_public);
+////////////
+  app.route('/home/w_manager')
+    .get(homeCtrl.withdraw_manager);
 
+  app.route('/home/withdraw')
+    .get(homeCtrl.withdraw);
+////////////
   app.route('/home/a_manager')
     .get(homeCtrl.agency_manager);
+     // agency_manager
   app.route('/home/agency')
     .get(homeCtrl.agency_public);
 

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Pricing</title>
+    <title>Money</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -39,76 +39,26 @@
     <section>
         <div class="col-12">
             <div class="container">
-                <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="link_ref">Link giới thiệu :</label>
-                            <input type="text" class="form-control" name="link_ref" id="link_ref"
-                                aria-describedby="link_ref" placeholder="Vui lòng đăng ký làm đại lý !">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="container d-flex flex-column">
-                            <label id="lb_stt">Chưa đăng ký</label>
-                            <button id="btn_reg" onclick="agency_register()" class="btn btn-primary">Đăng ký</button>
-                        </div>
-                    </div>
+                <div class="col-12 pt-5 pb-2">
+                    <h5>Danh sách phiếu rút tiền</h5>
                 </div>
-            </div>
-        </div>
-    </section>
-    <hr />
-    <section>
-        <div class="col-12">
-            <div class="container">
-                <div id="main_content" class="col-md-12 d-flex flex-wrap mt-2">
-                    <div class="container title-agency">
-                        Thông tin đại lý
-                    </div>
-                    <div class="col-md-12 d-flex flex-wrap">
-                        <div class="col-md-4">
-                            <div class="box-agency">
-                                <div>0</div>
-                                <div>Tổng tiền nạp</div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="box-agency">
-                                <div>0</div>
-                                <div>Số lần nạp</div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="box-agency">
-                                <div>0</div>
-                                <div>Đăng ký mới</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <hr />
-    <section>
-        <div class="col-12">
-            <div class="container">
-                <div id="main_content" class="col-md-12 d-flex flex-wrap mt-2">
-                    <div class="container title-agency">
-                        Danh sách TK
-                    </div>
-                    <div class="col-md-12 d-flex flex-wrap">
-                        <table class="table">
+                <div class="col-12">
+                    <div class="col-12">
+                        <table id="table_data_reg2" class="tablemanager table table-striped table-bordered table-sm"
+                            cellspacing="0" width="100%">
                             <thead>
                                 <tr>
+                                    <!-- <th>ID</th> -->
                                     <th>STT</th>
                                     <th>User</th>
-                                    <th>Tổng tiền nạp</th>
-                                    <th>Ngày tạo</th>
+                                    <th>Tổng tiền rút</th>
+                                    <th>Thời gian</th>
+                                    <th>Mã CK</th>
+                                    <th class="disableFilterBy">Thao tác</th>
                                 </tr>
                             </thead>
-                            <tbody id="table_dt">
-
+                            <tbody>
+    <!-- <input type="text" value="" id="id"> -->
                             </tbody>
                         </table>
                     </div>
@@ -116,11 +66,41 @@
             </div>
         </div>
     </section>
+    <hr />
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="app" tabindex="-1" role="dialog" aria-labelledby="app" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Xác nhận</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex">
+                    <div class="col-md-6">
+                        <label for="des" class="form-label">Mã chuyển khoản</label>
+                        <input disabled type="text" class="form-control" id="des" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="money" class="form-label">Số tiền</label>
+                        <input disabled type="text" class="form-control" id="money" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button onclick="withdraw_approved()" type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
+    <script src="../js/money_manager_b.js"></script>
     <script src="../js/helper_manager.js"></script>
     <script src="../js/permission.js"></script>
-    <script src="../js/agency_public.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -130,6 +110,5 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
-
 
 </html>

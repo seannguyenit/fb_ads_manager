@@ -5,7 +5,44 @@ init_topup_manager()
 
 async function init_topup_manager() {
     init_topup_all();
+    // init_withdraw_all();
 }
+
+// async function init_withdraw_all() {
+
+//     let url = '/api/topup_m';
+//     let rs = await fetch(url /*, options */)
+//         .then((response) => response.json())
+//         .then((data) => {
+//             return data;
+//         })
+//         .catch((error) => {
+//             console.warn(error);
+//             return undefined;
+//         });
+//     let located = document.getElementById('table_data_reg2').children[1]
+//     located.innerHTML = '';
+//     if (rs) {
+//         rs.forEach(f => {
+//             if (f.method  != 1) {
+//                 located.innerHTML += `<tr>
+//                 <td>${f.id}</td>
+//                 <td>${rs.indexOf(f) + 1}</td>
+//                 <td>${f.username}</td>
+//                 <td>${(f.withdraw || 0) > 0 ? (get_format_VND(f.withdraw || 0)) : 'Chưa nhập'}</td>
+//                 <td>${format_time(f.time)}</td>
+//                 <td>${f.des}</td>
+//                 <td>
+//                     <button class="btn btn-sm btn-primary" onclick="open_approved(${f.des},${f.id})">Duyệt</button>
+//                     <button class="btn btn-sm btn-danger" onclick="topup_cancel(${f.id})">Hủy</button>
+//                 </td>
+               
+//             </tr>`
+            
+//             }
+//         })
+//     }
+// }
 
 async function init_topup_all() {
 
@@ -22,8 +59,9 @@ async function init_topup_all() {
     let located = document.getElementById('table_data_reg').children[1]
     located.innerHTML = '';
     if (rs) {
-        rs.forEach(f => {
-            located.innerHTML += `<tr>
+        rs.forEach(f => { 
+            if (f.method != 2) {
+                located.innerHTML += `<tr>
                 <td>${rs.indexOf(f) + 1}</td>
                 <td>${f.username}</td>
                 <td>${(f.money || 0) > 0 ? (get_format_VND(f.money || 0)) : 'Chưa nhập'}</td>
@@ -34,15 +72,54 @@ async function init_topup_all() {
                     <button class="btn btn-sm btn-danger" onclick="topup_cancel(${f.id})">Hủy</button>
                 </td>
             </tr>`
+            }
         })
     }
 }
-
-function open_approved(des, id) {
-    document.getElementById('des').value = get_number_by_id(des);
+// async function get() {
+//     var id =67;
+//     return await fetch(`/api/list_withdraw/${id}`)
+//         .then((response) => response.json())
+//         .then((data) => {
+//             return data;
+//         })
+//         .catch((error) => {
+//             console.warn(error);
+//             return undefined;
+//         });
+// }
+async function open_approved(des,id) {
     cr_id = id;
+    document.getElementById('des').value = get_number_by_id(des);
     $('#app').modal('show');
 }
+////////// 
+// async function withdraw_approved() {
+//     var id = cr_id;
+//     var money = document.getElementById('money').value;
+//     if (money <= 0) {
+//         alert('Số tiền phải lớn hơn 0 !')
+//         return;
+//     }
+//     if (!confirm(`Bạn có chắc chắn muốn đồng ý ?`)) {
+//         return;
+//     }
+//     var cr_u = get_cr_user();
+//     if (cr_u) {
+//         await fetch(`/api/topup2_m/${id}/${money}`, {
+//             method: 'PUT', // or 'PUT'
+//         })
+//             .then(response => response.text())
+//             .then(r => {
+//                 return r;
+//             })
+//             .catch(error => {
+//                 console.error('Error:', error);
+//             });
+//     }
+//     alert('Xong !')
+//     location.reload();
+// }
 
 async function topup_approved() {
     var id = cr_id;
