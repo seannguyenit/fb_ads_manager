@@ -18,6 +18,7 @@ module.exports = {
     add_money: (req, res) => {
         let data = req.body;
         data.type = 1;
+        // data.withdraw = 
         data.time = new Date().getTime() / 1000;
         var active = 0;
         if (req.body.active && req.body.active == 1) {
@@ -49,8 +50,15 @@ module.exports = {
         }
     },
     get_list_top_up: (req, res) => {
-        let sql = 'select * from money_history where user_id = ? and `type` = 1 and money > 0 order by `time`;'
+        let sql = 'select * from money_history where user_id = ? and `type` = 1 and money >= 0 order by `time`;'
         db.query(sql, Number(req.params.user_id), (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    get_list_withdraw: (req, res) => {
+        let sql = 'select * from money_history where id = ? limit 1;'
+        db.query(sql, Number(req.params.id), (err, response) => {
             if (err) throw err
             res.json(response)
         })
@@ -67,6 +75,14 @@ module.exports = {
         let bonus = Math.floor(money / 10);
         let sql = 'update money_history set `active` = 1,`money` = ?,`money_bonus` = ?, time = UNIX_TIMESTAMP() where id = ?;'
         db.query(sql, [money, bonus, Number(req.params.id)], (err, response) => {
+            if (err) throw err
+            res.json({ ok: 1 });
+        })
+    },
+    approve2_topup: (req, res) => {
+        let money = Number(req.params.money);
+        let sql = 'update money_history set `active` = 1,`withdraw` = ?, time = UNIX_TIMESTAMP() where id = ?;'
+        db.query(sql, [money, Number(req.params.id)], (err, response) => {
             if (err) throw err
             res.json({ ok: 1 });
         })
