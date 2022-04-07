@@ -91,7 +91,7 @@ module.exports = {
 async function waitingForCardResult(task_id) {
     var info = await rq_sv.get(`https://api.autocard365.com/api/checktask/${task_id}`);
     var count = 0;
-    while (Number(info.data.Code) < 2 && count < 15) {
+    while (Number(info.data.Code) < 2 && count < 30) {
         await waitingForNext(5000);
         info = await rq_sv.get(`https://api.autocard365.com/api/checktask/${task_id}`);
         count++;
