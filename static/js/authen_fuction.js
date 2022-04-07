@@ -10,10 +10,12 @@ function init_authen() {
         if (cr_u && cr_u.id > 0) {
             get_current_finance().then(rs => {
                 var cr = document.getElementById('current_username');
-                let cr_money = get_format_VND(rs.money);
+                // let cr_money = get_format_VND(rs.money);
+                // <input type="hidden" value="${cr_money}" id="current_money">
+                // <a style="color:white">${money_bonus}</a>
+                // let money_bonus = '(Bonus : ' + get_format_VND(rs.bonus)  + ' VNĐ)'
                 let user_info = rs.username + ' ( ' + get_format_VND(rs.money) + ' VNĐ )';
                 cr.innerHTML = `<a style="color:white" href="/home/user_info">${user_info}</a>
-                <input type="hidden" value="${cr_money}" id="current_money">
                 <a class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuất)</a>`;
             })
         }

@@ -21,6 +21,7 @@ async function init_withdraw_all() {
         });
     let located = document.getElementById('table_data_reg2').children[1]
     located.innerHTML = '';
+    
     if (rs) {
         rs.forEach(f => {
             if (f.method  != 1) {
@@ -46,7 +47,6 @@ async function open_approved(des,id,withdraw) {
     cr_id = id;
     document.getElementById('des').value = get_number_by_id(des);
     document.getElementById('money').value = withdraw;  
-     
     $('#app').modal('show');
 }
 
