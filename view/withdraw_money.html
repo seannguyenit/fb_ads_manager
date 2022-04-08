@@ -41,8 +41,11 @@
         <div class="col-12">
             <div class="container">
                 <div class="col-md-12 d-flex flex-wrap mt-5 mb-5">
-                    <div class="col-12">
-                        <h2>Rút tiền theo các bước bên dưới</h2>
+                    <div class="col-12" >
+                        <h2>Rút tiền Bonus theo bước bên dưới</h2>
+                    </div>
+                    <div class="col-12" id="current_bonus">
+                        <h2> Bonus </h2>
                     </div>
                     <div class="col-md-4">
                        
@@ -71,15 +74,15 @@
             <div class="container">
                 <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5 mb-5">
                     <table class="table table-dark">
-                        <caption>Danh sách rút tiền</caption>
+                        <caption>lịch sử giao dịch gần đây</caption>
                         <thead>
                             <tr>
                                 <th>Stt</th>
-                                <th>Số tiền (VND)</th>
+                                <th>Số tiền nạp (VND)</th>
                                 <th>Thời gian</th>
                                 <!-- <th>Mã ck</th> -->
                                 <th>Trạng thái</th>
-                                <th>Tiền Rút</th>
+                                <th>Số tiền rút (VND)</th>
                             </tr>
                         </thead>
                         <tbody id="tb_money_his">
@@ -92,7 +95,10 @@
     </section>
     
     <!-- Modal -->
-    <div class="modal fade" id="money_ticket" tabindex="-1" role="dialog" aria-labelledby="money_ticket" aria-hidden="true">
+    <div id="ticket_money">
+
+    </div>
+    <!-- <div class="modal fade" id="money_ticket" tabindex="-1" role="dialog" aria-labelledby="money_ticket" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -102,10 +108,6 @@
                         </button>
                 </div>
                 <div class="modal-body d-flex">
-                    <!-- <div class="col-md-6">
-                        <label for="money" class="form-label">Số tiền</label>
-                        <input type="number" class="form-control" id="money" required>
-                    </div> -->
                     <div class="col-md-12">
                         <label for="des" class="form-label">Mã chuyển khoản</label>
                         <input disabled type="text" class="form-control" id="des" required>
@@ -119,7 +121,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>

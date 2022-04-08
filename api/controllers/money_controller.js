@@ -50,7 +50,7 @@ module.exports = {
         }
     },
     get_list_top_up: (req, res) => {
-        let sql = 'select * from money_history where user_id = ? and `type` = 1 and money >= 0 order by `time`;'
+        let sql = 'select * from money_history where user_id = ? and `type` = 1 and money >= 0 order by `time` limit 20;'
         db.query(sql, Number(req.params.user_id), (err, response) => {
             if (err) throw err
             res.json(response)

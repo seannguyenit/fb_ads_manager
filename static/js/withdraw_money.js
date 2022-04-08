@@ -1,8 +1,72 @@
 'use strict'
 
 init_withdraw_money();
+show_money_bonus(); 
+show_ticket_money();
 
 ///api/money_ticket2
+///api/finance
+
+async function get_current_finance() {
+    var cr_u = get_cr_user();
+    return await fetch(`/api/finance/${cr_u.id}` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data[0];
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+
+// show MoneyBonus  
+function show_money_bonus() {
+    get_current_finance().then(rs => {
+        var cr = document.getElementById('current_bonus');
+        let money_bonus = 'Bonus Money : ' + get_format_VND(rs.bonus)  + ' VNĐ';
+        cr.innerHTML = `<p>${money_bonus}</p>`;
+    })
+}
+
+/**
+ * show TicketMoney 
+ * 
+ * onlick(money_bonus) 
+ *  */ 
+function show_ticket_money(){
+    get_current_finance().then(rs => {
+        var crs = document.getElementById('ticket_money');
+        let money_bonus = rs.bonus;
+        let id = get_number_by_id(rs.id);
+        crs.innerHTML = `
+        <div class="modal fade" id="money_ticket" tabindex="-1" role="dialog" aria-labelledby="money_ticket" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Phiếu rút Tiền</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body d-flex">
+                    <div class="col-md-12">
+                        <label for="des" class="form-label">Mã chuyển khoản</label>
+                        <input disabled type="text" class="form-control" value="${id}" id="des" required>
+                        <label for="" class="form-label">Nhập Tiền</label>
+                        <input  type="number" value="0" class="form-control" id="money_withdraw" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button onclick="save_ticket2(${money_bonus})" type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        `;
+    })
+}
 
 async function init_withdraw_money() {
     var data = await get_money_top_up();
@@ -18,23 +82,22 @@ async function init_withdraw_money() {
                 <td>${(f.active == 1 ? 'Đã duyệt' : 'Chưa duyệt')}</td>
                 <td>${get_format_VND(f.withdraw)}</td>
             </tr>`
-            // <td>${get_format_VND(f.withdraw)}</td>
         })
     }
     var cr_u = get_cr_user();
     document.getElementById('des').value = get_number_by_id(cr_u.id);
 }
 
-function open_ticket() {
+function open_ticket() {   
     $('#money_ticket').modal('show');
 }
 
-async function save_ticket2() {
+async function save_ticket2(money_bonus) {
     var money = 0;
     var method = 2;
-    var current_money = $('#current_money').val();
+    var current_money_bonus = money_bonus;
     var withdraw = $('#money_withdraw').val();
-     if ( withdraw >= current_money) {
+     if ( withdraw >= current_money_bonus) {
          alert('số dư trong tài khoảng không đủ')
          return;
      }
