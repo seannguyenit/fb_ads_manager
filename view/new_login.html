@@ -103,7 +103,11 @@
                 await set_cr_user(cr_u);
                 var lst_menu = await menu_get_current_menu();
                 if (lst_menu) {
-                    location.href = `/home/${lst_menu[0].action}`;
+                    if (cr_u.is_admin) {
+                        location.href = `/home/${lst_menu[lst_menu.length-1].action}`;
+                    }else{
+                        location.href = `/home/${lst_menu[0].action}`;
+                    }
                 } else {
                     location.href = '/home/page_box';
                 }
