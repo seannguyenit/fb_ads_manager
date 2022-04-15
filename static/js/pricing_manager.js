@@ -168,3 +168,15 @@ async function get_pricing_history(user_id) {
             return undefined;
         });
 }
+
+// async function get_wrap_pricing_history(user_id) {
+//     return await fetch(`/api/wrap_pricing_public/${user_id}` /*, options */)
+//         .then((response) => response.json())
+//         .then((data) => {
+//             return data;
+//         })
+//         .catch((error) => {
+//             console.warn(error);
+//             return undefined;
+//         });
+// }

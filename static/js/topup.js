@@ -18,7 +18,7 @@ async function init_top_up() {
                 <td>${(f.active == 1 ? 'Đã duyệt' : 'Chưa duyệt')}</td>
                 <td>${get_format_VND(f.withdraw)}</td>
             </tr>`
-            // <td>${get_format_VND(f.withdraw)}</td>
+            //  <td>${(f.time)}</td>
         })
     }
     var cr_u = get_cr_user();

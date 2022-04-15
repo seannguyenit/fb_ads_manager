@@ -6,12 +6,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
 <body class="body-bg-custom">
@@ -39,8 +39,19 @@
     <section>
         <div class="col-12">
             <div class="container">
-                <div class="col-12 pt-5 pb-2">
-                    <button onclick="open_modal(0)" class="btn btn-primary">Tạo mới</button>
+                <div class="">
+                    <div class="col-12 pt-5 pb-2">
+                        <button onclick="open_modal(0)" class="btn btn-primary">Tạo mới</button>
+                        <!-- <button onclick="paginate()" class="btn btn-primary">test</button> -->
+                        <!-- <input type="text" id="sreach_user" name="sreach_user"> 
+                        <button onclick="" class="btn btn-primary">search</button> -->
+                        <div class="float_right">
+                            <label for="username" class="form-label"></label>
+                            <input type="text" class="" id="username" required placeholder="username...">
+                            <button onclick="search_acc()" class="btn btn-primary">search</button>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div class="col-12">
                     <table id="table_data" class="tablemanager table table-striped table-bordered table-sm"
@@ -51,11 +62,11 @@
                                 <th>Username</th>
                                 <th>Tổng nạp</th>
                                 <th>Tổng thưởng</th>
+                                <th>Tổng nạp tháng</th>
                                 <th>Tên</th>
                                 <th>SDT</th>
                                 <th>ĐC</th>
                                 <th>hạn ngày</th>
-                                <!-- <th>Trạng thái</th> -->
                                 <th class="disableFilterBy">Thao tác</th>
                             </tr>
                         </thead>
@@ -63,6 +74,34 @@
 
                         </tbody>
                     </table>
+                    <!-- ////////////////////// -->
+                    <div class="modal fade " id="searh_table" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                        aria-labelledby="searh_table" aria-hidden="true">
+                        <table id="search_table" class="tablemanager table table-striped table-bordered table-sm"
+                            cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>sttsss</th>
+                                    <th>Username</th>
+                                    <th>Tổng nạp</th>
+                                    <th>Tổng thưởng</th>
+                                    <th>Tổng nạp tháng</th>
+                                    <th>Tên</th>
+                                    <th>SDT</th>
+                                    <th>ĐC</th>
+                                    <th>hạn ngày</th>
+
+                                    <th class="disableFilterBy">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="paginate"></div>
+                    <!-- /////////////////////// -->
                 </div>
             </div>
         </div>
@@ -113,16 +152,17 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Modal -->
-    <div class="modal fade" id="pricing_history_modal" tabindex="-1" role="dialog" aria-labelledby="pricing" aria-hidden="true">
+    <div class="modal fade" id="pricing_history_modal" tabindex="-1" role="dialog" aria-labelledby="pricing"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Lịch sử đăng ký gói</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <table class="table table-dark">
@@ -145,16 +185,17 @@
         </div>
     </div>
 
-    
+
     <!-- Modal -->
-    <div class="modal fade" id="money_history" tabindex="-1" role="dialog" aria-labelledby="money_history" aria-hidden="true">
+    <div class="modal fade" id="money_history" tabindex="-1" role="dialog" aria-labelledby="money_history"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Lịch sử nạp tiền</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <table class="table table-dark">
@@ -186,6 +227,7 @@
     <script src="../js/pricing_manager.js"></script>
     <script src="../js/money_manager.js"></script>
 
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -197,7 +239,6 @@
 <script>
     let main_table = document.getElementById('table_data').children[1];
     init_users();
-    
 </script>
 
 </html>

@@ -44,8 +44,6 @@ async function pricing_get_all() {
         });
 }
 
-
-
 async function order_pricing(id, name, price) {
     if (!confirm(`Bạn có chắc chắn muốn gia hạn gói ${name} ?`)) {
         return;

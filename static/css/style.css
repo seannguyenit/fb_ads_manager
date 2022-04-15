@@ -270,6 +270,9 @@ margin-left: 10px;
     display: flex;
     flex-direction: column;
 }
+.font_size24 {
+    font-size: 24px;
+}
 
 #loading-element{
     position: fixed;
@@ -335,3 +338,9 @@ textarea::placeholder,input::placeholder { /* Chrome, Firefox, Opera, Safari 10.
     border-radius: 10px;       /* roundness of the scroll thumb */
     border: 1px solid gainsboro;  /* creates padding around scroll thumb */
   }
+.float_left{
+    float: left;
+}
+.float_right{
+    float: right;
+}
