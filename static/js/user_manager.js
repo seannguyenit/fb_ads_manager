@@ -296,6 +296,7 @@ async function search_acc() {
     }
     await acc_search(username);
     init_users_byname();
+    paginate();
 }
 
 async function del_acc(id) {
@@ -423,25 +424,48 @@ async function init_users(cr_page,user_number_page) {
         `;
         });
     }
+    // paginate(each_page);
 }
 
 /// Cearte  Page Paginate
 async function paginate(each_page){
+    var name = document.getElementById('username').value;
     var user_some_list = await acc_get_all();
     var page = document.getElementById('paginate');
-     page.innerHTML ="";
-     // Create Redirect Back
-    if (Number(each_page) > 1) {
-        page.innerHTML += `<a class="font_size24" href="/home/users?page=${Number(each_page) -1 }"> << back </a>`;
+    page.innerHTML ="";
+     
+    if (name.length == 0){
+        // Create Redirect Back
+        if (Number(each_page) > 1) {
+            page.innerHTML += `<a class="font_size24" href="/home/users?page=${Number(each_page) -1 }"> << back </a>`;
+        }
+        var user_count =  Object.keys(user_some_list).length;
+        var user_page = Math.ceil(Number(user_count) / 10);
+        //  Number mid 
+            page.innerHTML += `<span class="font_size24">  ${each_page}  </span>`;
+
+        // Create Redirect Next
+        if (Number(each_page) < Number(user_page)) {
+            page.innerHTML += `<a class="font_size24" href="/home/users?page=${1 + Number(each_page) }"> next >></a>`;
+        }
+        return;
+    }else{
+        page.innerHTML ="";
+        return;
     }
-    var user_count =  Object.keys(user_some_list).length;
-    var user_page = Math.ceil(Number(user_count) / 10);
+     
+     // Create Redirect Back
+    // if (Number(each_page) > 1) {
+    //     page.innerHTML += `<a class="font_size24" href="/home/users?page=${Number(each_page) -1 }"> << back </a>`;
+    // }
+    // var user_count =  Object.keys(user_some_list).length;
+    // var user_page = Math.ceil(Number(user_count) / 10);
     //  Number mid 
-        page.innerHTML += `<span class="font_size24">  ${each_page}  </span>`;
+        // page.innerHTML += `<span class="font_size24">  ${each_page}  </span>`;
 
     // Create Redirect Next
-    if (Number(each_page) < Number(user_page)) {
-        page.innerHTML += `<a class="font_size24" href="/home/users?page=${1 + Number(each_page) }"> next >></a>`;
-    }
+    // if (Number(each_page) < Number(user_page)) {
+    //     page.innerHTML += `<a class="font_size24" href="/home/users?page=${1 + Number(each_page) }"> next >></a>`;
+    // }
     // alert(user_page);
 }
