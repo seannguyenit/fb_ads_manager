@@ -17,13 +17,16 @@ module.exports = function (app) {
 
   app.route('/api/Accounts/:id')
     .get(accCtrl.detail);
+
   app.route('/api/Accounts/:cr_page/:user_number_page')
-    .get(accCtrl.get2)
+    .get(accCtrl.get2);
+
   app.route('/api/Accounts_search/:username')
     .put(accCtrl.get_byname)
     .get(accCtrl.get_byname);
-    //  app.route('/api/Accounts_search')
-    //  .get(accCtrl.get_byname);
+
+    app.route('/api/Accounts_history/:id')
+    .put(accCtrl.delete_history);
 
   app.route('/api/reg_acc')
     .post(accCtrl.register)

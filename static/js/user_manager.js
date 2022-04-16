@@ -1,5 +1,6 @@
 'use strict'
 get_user_limit();
+del_history();
 
 /* account */
 async function acc_get_all() {
@@ -13,6 +14,7 @@ async function acc_get_all() {
             return undefined;
         });
 }
+
 
 async function acc_get_detail(id) {
     // var cr_u = get_cr_user();
@@ -50,6 +52,7 @@ async function init_users_byname() {
     var dt = await acc_get_byname(name);
     if (dt) {
             dt.forEach(item => {
+                
                 main_table.innerHTML += `
                     <tr>
                         <td>${dt.indexOf(item) + 1}</td>    
@@ -87,6 +90,41 @@ async function acc_save(url, data, meth) {
             if (data != undefined) {
                 return data || {};
             }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+async function del_history() {
+    var data = await acc_get_all();
+    var id = 0;
+    if (data) {
+        data.forEach(item => {
+            var today = new Date().getTime();
+            var  date = new Date(item.limit_time).getTime();
+            if( Number(date) != 0 && Number(date) < Number(today) ){
+                 id = item.id;
+            }
+        }
+    )};
+     await history_del(id);
+    //  alert(id);
+}
+
+async function history_del(id) {
+    var url = `/api/accounts_history/${id}`;
+    var meth = 'PUT';
+    return await fetch(url, {
+        method: meth, // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ active: false })
+    })
+        .then(response => response.json())
+        .then(result => {
+            return result;
         })
         .catch(error => {
             console.error('Error:', error);
@@ -205,53 +243,8 @@ async function open_modal(params) {
 
 }
 
-/////////////////////
-async function open_modal2(params) {
-    // var menu = await menu_get_template();
-    // var per_place = document.getElementById('permiss_place');
-    // per_place.innerHTML = '';
-    // menu.forEach(f => {
-    //     per_place.innerHTML += `<div class="form-check">
-    //                         <input class="form-check-input" data-id="${f.id}" type="checkbox" ${f.stt == 1 ? "checked" : ""}>
-    //                         <label class="form-check-label" for="invalidCheck">
-    //                           ${f.name}
-    //                         </label>
-    //                     </div>`;
-    // });
-    if (params != 0) {
-        var detail_dt = await acc_get_detail(params);
-        $('#user_id').val(detail_dt.id || 0);
-        $('#user').val(detail_dt.username || '');
-        $('#pass').val(detail_dt.pass || '');
-        $('#real_name').val(detail_dt.real_name || '');
-        $('#phone').val(detail_dt.phone || '');
-        $('#add').val(detail_dt.add || '');
-        if (detail_dt.id != 0) {
-            var data_per = await menu_get_current_menu(detail_dt.id);
-            data_per.forEach(r => {
-                if (r.stt == 1) {
-                    var sl_per = document.querySelector(`input[data-id="${r.menu_id}"]`);
-                    if (sl_per) {
-                        sl_per.checked = true;
-                    }
-                }
-            });
-        }
-    } else {
-        $('#user_id').val(0);
-        $('#user').val('');
-        $('#pass').val('');
-        $('#real_name').val('');
-        $('#phone').val('');
-        $('#add').val('');
-
-    }
-    $('#user_details').modal('show');
-
-}
-/////////////////////
 async function save_() {
-    if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu ?')) {
+    if (!confirm('Bạn có chắc chắn muốn lưu dữ liệu ?')) {
         return;
     }
     if (!validate_()) return;
@@ -282,7 +275,9 @@ async function save_() {
     var menu_sl = Array.prototype.map.call(document.querySelectorAll('input[data-id]'), (m) => { return [parseInt(m.dataset.id), m.checked ? 1 : 0, rs.id] });
     // let rs_per = await add_menu_user(menu_sl, rs.id);
 
-    init_users();
+    get_user_limit()
+    init_users(cr_page,user_number_page);
+    // init_users(cr_page,user_number_page);
 };
 
 /// input search name 
@@ -300,17 +295,29 @@ async function search_acc() {
 }
 
 async function del_acc(id) {
-    if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu ?')) {
+    if (!confirm('Bạn có chắc chắn muốn XÓa dữ liệu ?')) {
         return;
     }
     await acc_del(id);
-    init_users();
+    get_user_limit()
+    init_users(cr_page,user_number_page);
 }
 
+// show history pricing and name pricing
 async function init_pricing_history(id) {
     var tb = document.getElementById('tb_pricing_his');
+    var p = document.getElementById('pricing');
     tb.innerHTML = '';
+    p.innerHTML = '';
     var data = await get_pricing_history(id);
+    var data_limit = await get_wrap_pricing_history(id);
+    
+    if(data_limit) {
+        data_limit.forEach(f =>{
+            p.innerHTML = `<h5 class="pd_l_15">Sử dụng : ${f.pricing_name} <h5>
+            <span class="pd_l_15">Lịch sử sẽ tự động xóa sau khi đã quá hạn</span>`
+        });
+    }
     if (data) {
         data.forEach(f => {
             tb.innerHTML += `<tr><td>${data.indexOf(f) + 1}</td><td>${format_time(f.time)}</td><td>${f.pricing_name}</td></tr>`
@@ -403,6 +410,17 @@ async function init_users(cr_page,user_number_page) {
     var dt = await user_limit(cr_page,user_number_page);
     if (dt) {
         dt.forEach(item => {
+           var today = new Date().getTime();
+           var  date = new Date(item.limit_time).getTime();
+           
+            // date_number = date.getTime();
+            if(Number(date) > Number(today)){
+                var  limit_date = format_time(item.limit_time);
+            }else if( Number(date) != 0){
+                var  limit_date = format_time(item.limit_time) + "(hết hạn)";
+            }else{
+                var  limit_date = format_time(item.limit_time);
+            }
             main_table.innerHTML += `
             <tr>
                 <td>${dt.indexOf(item) + 1}</td>    
@@ -413,7 +431,7 @@ async function init_users(cr_page,user_number_page) {
                 <td>${item.real_name}</td>    
                 <td>${item.phone}</td>    
                 <td>${item.add}</td>
-                <td>${format_time(item.limit_time)}</td>
+                <td>${limit_date}</td>
                 <td>
                     ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], 'Gói DV')}
                     ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], 'LS Tiền')}

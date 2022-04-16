@@ -73,6 +73,13 @@ module.exports = {
             res.json({ message: 'Delete success!' })
         })
     },
+    delete_history: (req, res) => {
+        let sql = 'DELETE FROM pricing_history WHERE user_id = ?'
+        db.query(sql, [req.params.id], (err, response) => {
+            if (err) throw err
+            res.json({ message: 'Delete success!' })
+        })
+    },
     login: (req, res) => {
         let data = req.body;
         let sql = 'CALL `login`(?,?)'

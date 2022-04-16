@@ -49,6 +49,7 @@ async function order_pricing(id, name, price) {
         return;
     }
     var cr_u = get_cr_user().id;
+    // var data = await get_pricing_history(cr_u);
     // var add = $("#add").val()
 
     var url = `/api/pricing_public`;

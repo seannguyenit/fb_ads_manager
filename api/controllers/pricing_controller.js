@@ -61,9 +61,25 @@ module.exports = {
             res.json(response)
         })
     },
+    pricing_histories: (req, res) => {
+        // data.pass = data.pass;
+        let sql = 'select PH.*,U.username,U.real_name,P.name as pricing_name from pricing_history AS PH left join `user` AS U on U.id = PH.user_id left join pricing as P on P.id = PH.pricing_id where PH.user_id = ? GROUP BY PH.time DESC'
+        db.query(sql, [req.params.user_id], (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    // pricing_histories: (req, res) => {
+    //     // data.pass = data.pass;
+    //     let sql = 'select PH.*,U.username,U.real_name,P.name as pricing_name from pricing_history AS PH left join `user` AS U on U.id = PH.user_id left join pricing as P on P.id = PH.pricing_id where PH.user_id = ? '
+    //     db.query(sql, [req.params.user_id], (err, response) => {
+    //         if (err) throw err
+    //         res.json(response)
+    //     })
+    // },
     wrap_pricing_histories: (req, res) => {
         // data.pass = data.pass;
-        let sql = 'select PH.*,U.username,U.real_name,P.name as pricing_name from pricing_history AS PH left join `user` AS U on U.id = PH.user_id left join pricing as P on P.id = PH.pricing_id where PH.user_id = ? order by `pricing_id`  desc'
+        let sql = 'select PH.*,U.username,U.real_name,P.name as pricing_name from pricing_history AS PH left join `user` AS U on U.id = PH.user_id left join pricing as P on P.id = PH.pricing_id where PH.user_id = ? GROUP BY PH.pricing_id DESC LIMIT 1'
         db.query(sql, [req.params.user_id], (err, response) => {
             if (err) throw err
             res.json(response)
