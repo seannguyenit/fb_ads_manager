@@ -44,19 +44,19 @@ async function pricing_get_all() {
         });
 }
 
-
-
 async function order_pricing(id, name, price) {
     if (!confirm(`Bạn có chắc chắn muốn gia hạn gói ${name} ?`)) {
         return;
     }
+    var pricing_active = 1; 
     var cr_u = get_cr_user().id;
+    // var data = await get_pricing_history(cr_u);
     // var add = $("#add").val()
 
     var url = `/api/pricing_public`;
     var meth = 'POST';
 
-    var data_pricing = { user_id: cr_u, pricing_id: id };
+    var data_pricing = { user_id: cr_u, pricing_id: id, pricing_active: pricing_active};
     var data_money = { user_id: cr_u, money: price };
     var data = { data_money: data_money, data_pricing: data_pricing }
     var rs = await fetch(url, {

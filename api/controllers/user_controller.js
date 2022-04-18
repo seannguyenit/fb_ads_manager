@@ -12,6 +12,17 @@ module.exports = {
             if (err) throw err
             res.json(response)
         })
+        // let sql = 'CALL `user_getbyname`(?)';
+        
+    },
+    get2: (req, res) => {
+        let sql = 'CALL `user_getalllimit`(?,?)'
+        db.query(sql,[req.params.cr_page,req.params.user_number_page] ,(err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+        // let sql = 'CALL `user_getbyname`(?)';
+        
     },
     detail: (req, res) => {
         let sql = 'CALL `user_getdetail`(?)'
@@ -19,6 +30,14 @@ module.exports = {
             if (err) throw err
             var dt = response[0][0];
             res.json(dt);
+        })
+    },
+    get_byname: (req, res) => {
+        let username = '%'+req.params.username+'%';
+        let sql = 'CALL `user_getbyname`(?)'
+        db.query(sql, [username], (err, response) => {
+            if (err) throw err
+            res.json(response)
         })
     },
     update: (req, res) => {
@@ -52,6 +71,14 @@ module.exports = {
         db.query(sql, [req.params.id], (err, response) => {
             if (err) throw err
             res.json({ message: 'Delete success!' })
+        })
+    },
+    update_history: (req, res) => {
+        var active = 0;
+        let sql = 'Update pricing_history SET pricing_active = ? WHERE user_id = ?'
+        db.query(sql, [active,req.params.id], (err, response) => {
+            if (err) throw err
+            res.json({ message: 'Update success!' })
         })
     },
     login: (req, res) => {

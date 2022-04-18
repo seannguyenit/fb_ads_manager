@@ -97,7 +97,7 @@ async function save_ticket2(money_bonus) {
     var method = 2;
     var current_money_bonus = money_bonus;
     var withdraw = $('#money_withdraw').val();
-     if ( withdraw >= current_money_bonus) {
+     if (Number(withdraw) >= current_money_bonus) {
          alert('số dư trong tài khoảng không đủ')
          return;
      }

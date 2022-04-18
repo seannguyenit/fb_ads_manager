@@ -19,7 +19,8 @@ module.exports = {
         let data = req.body;
         data.type = 1;
         // data.withdraw = 
-        data.time = new Date().getTime() / 1000;
+         data.time = new Date().getTime() / 1000;
+        // data.time = new Date().getTime()
         var active = 0;
         if (req.body.active && req.body.active == 1) {
             active = 1;
@@ -50,7 +51,7 @@ module.exports = {
         }
     },
     get_list_top_up: (req, res) => {
-        let sql = 'select * from money_history where user_id = ? and `type` = 1 and money >= 0 order by `time` limit 20;'
+        let sql = 'select * from money_history where user_id = ? and `type` = 1 and money >= 0 order by `time` DESC limit 20 ;'
         db.query(sql, Number(req.params.user_id), (err, response) => {
             if (err) throw err
             res.json(response)

@@ -18,6 +18,16 @@ module.exports = function (app) {
   app.route('/api/Accounts/:id')
     .get(accCtrl.detail);
 
+  app.route('/api/Accounts/:cr_page/:user_number_page')
+    .get(accCtrl.get2);
+
+  app.route('/api/Accounts_search/:username')
+    .put(accCtrl.get_byname)
+    .get(accCtrl.get_byname);
+
+    app.route('/api/Accounts_history/:id')
+    .put(accCtrl.update_history);
+
   app.route('/api/reg_acc')
     .post(accCtrl.register)
 
@@ -63,6 +73,8 @@ module.exports = function (app) {
 
   app.route('/api/pricing_public/:user_id')
     .get(pricingCtrl.pricing_histories);
+    app.route('/api/wrap_pricing_public/:user_id')
+    .get(pricingCtrl.wrap_pricing_histories);
 
   app.route('/api/pricing_public')
     .post(pricingCtrl.order_pricing);
@@ -123,5 +135,6 @@ module.exports = function (app) {
 
     app.route('/api/list_withdraw/:id')
     .get(moneyCtrl.get_list_withdraw);
+
 }
 
