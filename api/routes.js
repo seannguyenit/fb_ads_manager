@@ -26,7 +26,7 @@ module.exports = function (app) {
     .get(accCtrl.get_byname);
 
     app.route('/api/Accounts_history/:id')
-    .put(accCtrl.delete_history);
+    .put(accCtrl.update_history);
 
   app.route('/api/reg_acc')
     .post(accCtrl.register)

@@ -1,6 +1,6 @@
 'use strict'
 get_user_limit();
-del_history();
+update_history();
 
 /* account */
 async function acc_get_all() {
@@ -96,7 +96,7 @@ async function acc_save(url, data, meth) {
         });
 }
 
-async function del_history() {
+async function update_history() {
     var data = await acc_get_all();
     var id = 0;
     if (data) {
@@ -108,11 +108,11 @@ async function del_history() {
             }
         }
     )};
-     await history_del(id);
+     await history_update(id);
     //  alert(id);
 }
 
-async function history_del(id) {
+async function history_update(id) {
     var url = `/api/accounts_history/${id}`;
     var meth = 'PUT';
     return await fetch(url, {
@@ -243,7 +243,7 @@ async function open_modal(params) {
 
 }
 
-async function save_() {
+async function save__() {
     if (!confirm('Bạn có chắc chắn muốn lưu dữ liệu ?')) {
         return;
     }
@@ -278,6 +278,42 @@ async function save_() {
     get_user_limit()
     init_users(cr_page,user_number_page);
     // init_users(cr_page,user_number_page);
+};
+async function save_() {
+    if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu ?')) {
+        return;
+    }
+    if (!validate_()) return;
+    var id = $("#user_id").val()
+    var username = $("#user").val()
+    var pass = $("#pass").val()
+    var real_name = $("#real_name").val()
+    var phone = $("#phone").val()
+    var add = $("#add").val()
+    var rs_check = await check_username();
+    if (!rs_check) {
+        alert('email bị trùng !')
+        return;
+    }
+
+    var url = `/api/accounts`;
+    var meth = 'POST';
+    const formData = new FormData();
+
+    if (id != 0) {
+        meth = 'PUT';
+        url = `/api/accounts/${id}`;
+    }
+    var data = { username: username, pass: pass, real_name: real_name, phone: phone, add: add };
+
+    let rs = await acc_save(url, data, meth);
+    //add_menu_user
+    var menu_sl = Array.prototype.map.call(document.querySelectorAll('input[data-id]'), (m) => { return [parseInt(m.dataset.id), m.checked ? 1 : 0, rs.id] });
+    // let rs_per = await add_menu_user(menu_sl, rs.id);
+
+    // console.log('Success:', rs);
+    // load_user();
+    init_users();
 };
 
 /// input search name 
@@ -315,7 +351,7 @@ async function init_pricing_history(id) {
     if(data_limit) {
         data_limit.forEach(f =>{
             p.innerHTML = `<h5 class="pd_l_15">Sử dụng : ${f.pricing_name} <h5>
-            <span class="pd_l_15">Lịch sử sẽ tự động xóa sau khi đã quá hạn</span>`
+            <span class="pd_l_15 font_size15">Lịch sử sẽ tự động xóa sau khi đã quá hạn</span>`
         });
     }
     if (data) {
@@ -419,7 +455,7 @@ async function init_users(cr_page,user_number_page) {
             }else if( Number(date) != 0){
                 var  limit_date = format_time(item.limit_time) + "(hết hạn)";
             }else{
-                var  limit_date = format_time(item.limit_time);
+                var  limit_date = "";
             }
             main_table.innerHTML += `
             <tr>
