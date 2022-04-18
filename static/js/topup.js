@@ -22,7 +22,7 @@ async function init_top_up() {
         })
     }
     var cr_u = get_cr_user();
-    document.getElementById('des').value = get_number_by_id(cr_u.id);
+    // document.getElementById('des').value = get_number_by_id(cr_u.id);
     document.getElementById('ticket_number').innerText = get_number_by_id(cr_u.id);
 }
 
