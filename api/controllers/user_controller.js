@@ -232,8 +232,8 @@ module.exports = {
         })
     },
     get_all_agency: (req, res) => {
-        let sql = 'SELECT `user`.`id`, `user`.`username`, `user`.`is_admin`, `user`.`active`, `user`.`real_name`, `user`.`phone`, `user`.`add`, `user`.`created_at`, `user`.`created_by`, `user`.`is_public`, `user`.`par_id`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` FROM `user` where is_agency = 1 and active = 1'
-        db.query(sql, [], (err, response) => {
+        let sql = 'CALL `user_getbyagency`(0)';
+            db.query(sql, (err, response) => {
             if (err) throw err
             res.json(response)
         })
@@ -260,7 +260,7 @@ module.exports = {
         })
     },
     get_all_agency_reg: (req, res) => {
-        let sql = 'SELECT `user`.`id`, `user`.`username`, `user`.`is_admin`, `user`.`active`, `user`.`real_name`, `user`.`phone`, `user`.`add`, `user`.`created_at`, `user`.`created_by`, `user`.`is_public`, `user`.`par_id`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` FROM `user` where is_agency = 0 and `user`.`agency_time` is not null and active = 1'
+        let sql = 'SELECT `user`.`id`,get_current_money(`user`.`id`) as money, `user`.`username`, `user`.`is_admin`, `user`.`active`, `user`.`real_name`, `user`.`phone`, `user`.`add`, `user`.`created_at`, `user`.`created_by`, `user`.`is_public`, `user`.`par_id`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` FROM `user` where is_agency = 0 and `user`.`agency_time` is not null and active = 1'
         db.query(sql, [], (err, response) => {
             if (err) throw err
             res.json(response)
