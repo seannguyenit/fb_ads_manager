@@ -464,9 +464,9 @@ async function init_users(cr_page,user_number_page) {
                 <td>${get_format_VND(item.money)}</td> 
                 <td>${get_format_VND(item.bonus)}</td> 
                 <td>${get_format_VND(item.money_month)}</td> 
-                <td>${item.real_name}</td>    
-                <td>${item.phone}</td>    
-                <td>${item.add}</td>
+                <td>${item.real_name||''}</td>    
+                <td>${item.phone||''}</td>    
+                <td>${item.add||''}</td>
                 <td>${limit_date}</td>
                 <td>
                     ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], 'Gói DV')}
