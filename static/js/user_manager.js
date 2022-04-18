@@ -60,10 +60,10 @@ async function init_users_byname() {
                         <td>${get_format_VND(item.money)}</td> 
                         <td>${get_format_VND(item.bonus)}</td> 
                         <td>${get_format_VND(item.money_month)}</td>  
-                        <td>${item.real_name}</td>    
-                        <td>${item.phone}</td>    
-                        <td>${item.add}</td>
-                        <td>${format_time(item.limit_time)}</td>
+                        <td>${item.real_name||''}</td>    
+                        <td>${item.phone||''}</td>    
+                        <td>${item.add||''}</td>
+                        <td>${format_time(item.limit_time)||''}</td>
                         <td>
                             ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], 'Gói DV')}
                             ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], 'LS Tiền')}
