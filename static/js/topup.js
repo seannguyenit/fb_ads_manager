@@ -26,31 +26,36 @@ async function init_top_up() {
     document.getElementById('ticket_number').innerText = get_number_by_id(cr_u.id);
 }
 
-function open_ticket() {
-    $('#money_ticket').modal('show');
-}
+// function open_ticket() {
+//     $('#money_ticket').modal('show');
+// }
+// async function save_ticket() {
+//     var money = 0;
+//     var method = 1;
+//     // var money = $('#money').val();
+//     var des = $('#des').val();
+//     var user_id = get_cr_user().id;
+//     if (money.length == 0 || des.length == 0) {
+//         alert('Chưa nhập đúng thông tin !')
+//         return;
+//     }
+//     var rs = await ticket_save_({ money: money,  method: method, des: des, user_id: user_id});
+//     // var rs = await ticket_save_({des:des, user_id:user_id});
+//     alert('Xong !');
+//     $('#money_ticket').modal('hide');
+//     init_top_up();
+// }
+
 async function save_ticket() {
-    var money = 0;
-    var method = 1;
-    // var money = $('#money').val();
-    var des = $('#des').val();
-    var user_id = get_cr_user().id;
-    if (money.length == 0 || des.length == 0) {
-        alert('Chưa nhập đúng thông tin !')
+    if (!confirm('Bạn muốn gửi yêu cầu nạp tiền ?')) {
         return;
     }
-    var rs = await ticket_save_({ money: money,  method: method, des: des, user_id: user_id});
-    // var rs = await ticket_save_({des:des, user_id:user_id});
-    alert('Xong !');
-    $('#money_ticket').modal('hide');
-    init_top_up();
-}
-
-async function save_ticket2() {
+    var cr_u = get_cr_user();
+    // document.getElementById('des').value = get_number_by_id(cr_u.id);
     var money = 0;
     var method = 2;
     // var money = $('#money').val();
-    var des = $('#des').val();
+    var des = get_number_by_id(cr_u.id);
     var user_id = get_cr_user().id;
     if (money.length == 0 || des.length == 0) {
         alert('Chưa nhập đúng thông tin !')
@@ -59,7 +64,7 @@ async function save_ticket2() {
     var rs = await ticket_save_({ money: money, method: method, des: des, user_id: user_id});
     // var rs = await ticket_save_({des:des, user_id:user_id});
     alert('Xong !');
-    $('#money_ticket').modal('hide');
+    // $('#money_ticket').modal('hide');
     init_top_up();
 }
 
