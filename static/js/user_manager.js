@@ -1,6 +1,8 @@
 'use strict'
 get_user_limit();
 update_history();
+// init_all_money();
+cr_month();
 
 /* account */
 async function acc_get_all() {
@@ -15,6 +17,48 @@ async function acc_get_all() {
         });
 }
 
+
+// cr_month
+function cr_month(){
+    let d = new Date();
+    let month = d.getMonth() + 1 ;
+   var cr = document.getElementById('month');
+   var cr_ = document.getElementById('month_');
+   cr.innerHTML = "Tổng nạp tháng " + month;
+   cr_.innerHTML = "Tổng tiền nạp trong tháng " + month;
+}
+
+// Get money all User
+async function get_all_money() {
+    return await fetch(`/api/accounts_allmoney` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+
+//Show Data money all User
+async function open_data_money() {
+    var data = await get_all_money();
+    var placed = document.getElementById('table_data_money');
+    placed.innerHTML = '';
+    if (data) {
+        data.forEach(f => {
+            placed.innerHTML += `
+            <tr>
+                <td>${get_format_VND(f.all_money)} VNĐ</td>
+                <td>${get_format_VND(f.all_month_money)} VNĐ</td>
+                <td>${get_format_VND(f.all_bonus)} VNĐ</td>
+                <td>${get_format_VND(f.all_withdraw_money)} VNĐ</td>
+            </tr>`
+        })
+    }
+    $('#money_table').modal('show')
+}
 
 async function acc_get_detail(id) {
     // var cr_u = get_cr_user();

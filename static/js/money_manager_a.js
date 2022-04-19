@@ -1,5 +1,6 @@
 'use strict'
 var cr_id = 0;
+var cr_agency = 0;
 
 init_topup_manager()
 
@@ -32,7 +33,7 @@ async function init_topup_all() {
                 <td>${format_time(f.time)}</td>
                 <td>${f.des}</td>
                 <td>
-                    <button class="btn btn-sm btn-primary" onclick="open_approved(${f.des},${f.id})">Duyệt</button>
+                    <button class="btn btn-sm btn-primary" onclick="open_approved(${f.des},${f.id},${f.is_agency})">Duyệt</button>
                     <button class="btn btn-sm btn-danger" onclick="topup_cancel(${f.id})">Hủy</button>
                 </td>
             </tr>`
@@ -41,14 +42,16 @@ async function init_topup_all() {
     }
 }
 
-async function open_approved(des,id) {
+async function open_approved(des,id,is_agency) {
     cr_id = id;
+    cr_agency = is_agency;
     document.getElementById('des').value = get_number_by_id(des);
     $('#app').modal('show');
 }
 
 async function topup_approved() {
     var id = cr_id;
+    var is_agency = cr_agency;
     var money = document.getElementById('money').value;
     if (money <= 0) {
         alert('Số tiền phải lớn hơn 0 !')
@@ -59,7 +62,7 @@ async function topup_approved() {
     }
     var cr_u = get_cr_user();
     if (cr_u) {
-        await fetch(`/api/topup_m/${id}/${money}`, {
+        await fetch(`/api/topup_m/${id}/${money}/${is_agency}`, {
             method: 'PUT', // or 'PUT'
         })
             .then(response => response.text())

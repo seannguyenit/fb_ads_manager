@@ -41,6 +41,7 @@
             <div class="container">
                 <div class="">
                     <div class="col-12 pt-5 pb-2">
+                        <button onclick="open_data_money()" class="btn btn-primary">Tổng tiền</button>
                         <button onclick="open_modal(0)" class="btn btn-primary">Tạo mới</button>
                         <!-- <button onclick="paginate()" class="btn btn-primary">test</button> -->
                         <!-- <input type="text" id="sreach_user" name="sreach_user"> 
@@ -62,7 +63,7 @@
                                 <th>Username</th>
                                 <th>Tổng nạp</th>
                                 <th>Tổng thưởng</th>
-                                <th>Tổng nạp tháng</th>
+                                <th id="month"></th>
                                 <th>Tên</th>
                                 <th>SDT</th>
                                 <th>ĐC</th>
@@ -85,7 +86,7 @@
                                     <th>Username</th>
                                     <th>Tổng nạp</th>
                                     <th>Tổng thưởng</th>
-                                    <th>Tổng nạp tháng</th>
+                                    <th id="month"></th>
                                     <th>Tên</th>
                                     <th>SDT</th>
                                     <th>ĐC</th>
@@ -222,7 +223,36 @@
             </div>
         </div>
     </div>
-
+    <!-- Modal -->
+    <div class="modal fade" id="money_table" tabindex="-1" role="dialog" aria-labelledby="money_table"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title red">Tổng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th>Tổng tiền đã nạp</th>
+                                <th id="month_"> </th>
+                                <th>Tổng tiền thưởng</th>
+                                <th>Tổng tiền đã rút</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table_data_money"></tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
     <script src="../js/user_manager.js"></script>

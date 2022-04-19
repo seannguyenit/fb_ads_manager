@@ -13,7 +13,13 @@ module.exports = {
             res.json(response)
         })
         // let sql = 'CALL `user_getbyname`(?)';
-        
+    },
+    get_all_money : (req, res) => {
+        let sql = 'SELECT get_all_money() AS all_money, get_all_bonus() AS all_bonus, get_all_month_money() AS all_month_money, get_all_withdraw_money() AS all_withdraw_money LIMIT 1;'
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
     },
     get2: (req, res) => {
         let sql = 'CALL `user_getalllimit`(?,?)'
