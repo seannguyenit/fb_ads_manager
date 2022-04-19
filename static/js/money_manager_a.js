@@ -25,7 +25,6 @@ async function init_topup_all() {
     located.innerHTML = '';
     if (rs) {
         rs.forEach(f => { 
-            if (f.method != 2) {
                 located.innerHTML += `<tr>
                 <td>${rs.indexOf(f) + 1}</td>
                 <td>${f.username}</td>
@@ -37,8 +36,13 @@ async function init_topup_all() {
                     <button class="btn btn-sm btn-danger" onclick="topup_cancel(${f.id})">Hủy</button>
                 </td>
             </tr>`
-            }
         })
+    }
+    if(Number(rs.length) != 0 ){
+        document.getElementById('showing').innerHTML = "Showing 1 to "+ rs.length + " of " + rs.length + " entries";
+    }
+    else{
+        document.getElementById('showing').innerHTML = "";
     }
 }
 

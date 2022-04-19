@@ -9,7 +9,7 @@ init_withdraw_all();
 
 async function init_withdraw_all() {
 
-    let url = '/api/topup_m';
+    let url = '/api/topup_m2';
     let rs = await fetch(url /*, options */)
         .then((response) => response.json())
         .then((data) => {
@@ -24,7 +24,6 @@ async function init_withdraw_all() {
     
     if (rs) {
         rs.forEach(f => {
-            if (f.method  != 1) {
                 located.innerHTML += `<tr>
                 <td>${rs.indexOf(f) + 1}</td>
                 <td>${f.username}</td>
@@ -37,9 +36,13 @@ async function init_withdraw_all() {
                 </td>
                
             </tr>`
-            
-            }
         })
+    }    
+    if(Number(rs.length) != 0 ){
+        document.getElementById('showing').innerHTML = "Showing 1 to "+ rs.length + " of " + rs.length + " entries";
+    }
+    else{
+        document.getElementById('showing').innerHTML = "";
     }
 }
 

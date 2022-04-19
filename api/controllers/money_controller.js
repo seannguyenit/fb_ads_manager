@@ -65,7 +65,14 @@ module.exports = {
         })
     },
     get_list_reg: (req, res) => {
-        let sql = 'select MH.*,U.username,U.is_agency from money_history AS MH left join `user` AS U on MH.user_id = U.id where MH.`type` = 1 and MH.`active` = 0 order by MH.`time`;'
+        let sql = 'select MH.*,U.username,U.is_agency from money_history AS MH left join `user` AS U on MH.user_id = U.id where MH.`type` = 1 and MH.`active` = 0 and method = 1 order by MH.`time`;'
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    get_list_reg2: (req, res) => {
+        let sql = 'select MH.*,U.username,U.is_agency from money_history AS MH left join `user` AS U on MH.user_id = U.id where MH.`type` = 1 and MH.`active` = 0 and method = 2 order by MH.`time`;'
         db.query(sql, (err, response) => {
             if (err) throw err
             res.json(response)
