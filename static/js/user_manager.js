@@ -17,9 +17,6 @@ async function acc_get_all() {
         });
 }
 
-function money_table_show(){
-    init_all_money();
-}
 
 // cr_month
 function cr_month(){
