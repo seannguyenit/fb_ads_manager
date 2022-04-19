@@ -12,7 +12,7 @@ async function init_agency_all() {
     let rs = await fetch(url /*, options */)
         .then((response) => response.json())
         .then((data) => {
-            return data;
+            return data[0];
         })
         .catch((error) => {
             console.warn(error);
@@ -25,9 +25,10 @@ async function init_agency_all() {
             located.innerHTML += `<tr>
                 <td>${rs.indexOf(f) + 1}</td>
                 <td>${f.username}</td>
-                <td>${f.total_user || 0}</td>
-                <td>${f.total_money || 0}</td>
-                <td>${f.total_bonus || 0}</td>
+                <td>${get_format_VND(f.total_user || 0)}</td>
+                <td>${get_format_VND(f.total_money || 0)}</td>
+                <td>${get_format_VND(f.total_bonus || 0)}</td>
+                <td>${get_format_VND(f.total_month || 0)}</td>
                 <td>${format_time(f.agency_time)}</td>
             </tr>`
         })
@@ -52,7 +53,7 @@ async function init_agency_reg() {
             located.innerHTML += `<tr>
                     <td>${rs.indexOf(f) + 1}</td>
                     <td>${f.username}</td>
-                    <td>${f.total || 0}</td>
+                    <td>${get_format_VND(f.money || 0)}</td>
                     <td>${format_time(f.created_at)}</td>
                     <td>${format_time(f.agency_time)}</td>
                     <td>
