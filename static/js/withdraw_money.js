@@ -85,7 +85,7 @@ async function init_withdraw_money() {
         })
     }
     var cr_u = get_cr_user();
-    document.getElementById('des').value = get_number_by_id(cr_u.id);
+    // document.getElementById('des').value = get_number_by_id(cr_u.id);
 }
 
 function open_ticket() {   
@@ -97,7 +97,7 @@ async function save_ticket2(money_bonus) {
     var method = 2;
     var current_money_bonus = money_bonus;
     var withdraw = $('#money_withdraw').val();
-     if (Number(withdraw) >= current_money_bonus) {
+     if (Number(withdraw) > current_money_bonus) {
          alert('số dư trong tài khoảng không đủ')
          return;
      }
