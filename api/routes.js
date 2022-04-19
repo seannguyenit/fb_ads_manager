@@ -15,6 +15,9 @@ module.exports = function (app) {
     .get(accCtrl.get)
     .post(accCtrl.store);
 
+    app.route('/api/Accounts_allmoney')
+    .get(accCtrl.get_all_money);
+
   app.route('/api/Accounts/:id')
     .get(accCtrl.detail);
 
@@ -123,7 +126,7 @@ module.exports = function (app) {
 
   app.route('/api/topup_m')
     .get(moneyCtrl.get_list_reg);
-  app.route('/api/topup_m/:id/:money')
+  app.route('/api/topup_m/:id/:money/:is_agency')
     .put(moneyCtrl.approve_topup);
     app.route('/api/topup2_m/:id/:money')
     .put(moneyCtrl.approve2_topup);
