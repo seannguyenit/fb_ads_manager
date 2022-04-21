@@ -88,7 +88,13 @@ async function init_pricing() {
             </tr>
         `;
         });
-        smoothy_ui_table();
+        // smoothy_ui_table();
+        if(Number(dt.length) != 0 ){
+            showing.innerHTML = "Showing 1 to "+ dt.length + " of " + dt.length + " entries";
+        }
+        else{
+            showing.innerHTML = "";
+        }
     }
 }
 async function open_modal_pricing(params) {

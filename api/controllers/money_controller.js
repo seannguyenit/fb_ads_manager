@@ -16,6 +16,7 @@ module.exports = {
         })
     },
     add_money: (req, res) => {
+
         let data = req.body;
         data.type = 1;
         // data.withdraw = 
@@ -50,6 +51,13 @@ module.exports = {
             })
         }
     },
+    get_list_money_history_limit: (req, res) => {
+        let sql = 'select * from money_history where user_id = ? and `type` = 1 and method = 2 order by `time` DESC limit 1 ;'
+        db.query(sql, Number(req.params.user_id), (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
     get_list_top_up: (req, res) => {
         let sql = 'select * from money_history where user_id = ? and `type` = 1 and money >= 0 order by `time` DESC limit 20 ;'
         db.query(sql, Number(req.params.user_id), (err, response) => {
@@ -65,7 +73,14 @@ module.exports = {
         })
     },
     get_list_reg: (req, res) => {
-        let sql = 'select MH.*,U.username,U.is_agency from money_history AS MH left join `user` AS U on MH.user_id = U.id where MH.`type` = 1 and MH.`active` = 0 order by MH.`time`;'
+        let sql = 'select MH.*,U.username,U.is_agency from money_history AS MH left join `user` AS U on MH.user_id = U.id where MH.`type` = 1 and MH.`active` = 0 and method = 1 order by MH.`time`;'
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    get_list_reg2: (req, res) => {
+        let sql = 'select MH.*,U.username,U.is_agency from money_history AS MH left join `user` AS U on MH.user_id = U.id where MH.`type` = 1 and MH.`active` = 0 and method = 2 order by MH.`time`;'
         db.query(sql, (err, response) => {
             if (err) throw err
             res.json(response)
@@ -74,8 +89,8 @@ module.exports = {
     approve_topup: (req, res) => {
         let money = Number(req.params.money);
         let bonus = 0;
-        if(Number(req.params.is_agency) == 1){
-             bonus = Math.floor(money / 10);
+        if (Number(req.params.is_agency) == 1) {
+            bonus = Math.floor(money / 10);
         }
         let sql = 'update money_history set `active` = 1,`money` = ?,`money_bonus` = ?, time = UNIX_TIMESTAMP() where id = ?;'
         db.query(sql, [money, bonus, Number(req.params.id)], (err, response) => {

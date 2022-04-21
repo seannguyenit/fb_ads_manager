@@ -4,6 +4,7 @@ init_agency_manager()
 async function init_agency_manager() {
     init_agency_reg();
     init_agency_all();
+    cr_month();
 }
 
 async function init_agency_all() {
@@ -32,6 +33,11 @@ async function init_agency_all() {
                 <td>${format_time(f.agency_time)}</td>
             </tr>`
         })
+    }
+    if(Number(rs.length) != 0 ){
+        document.getElementById('showing').innerHTML = "Showing 1 to "+ rs.length + " of " + rs.length + " entries";
+    }else{
+        document.getElementById('showing').innerHTML = "";
     }
 }
 
@@ -62,6 +68,11 @@ async function init_agency_reg() {
                     </td>
                 </tr>`
         })
+    }
+    if(Number(rs.length) != 0 ){
+        document.getElementById('showing1').innerHTML = "Showing 1 to "+ rs.length + " of " + rs.length + " entries";
+    }else{
+        document.getElementById('showing1').innerHTML = "";
     }
 }
 
@@ -106,4 +117,44 @@ async function agency_cancel(id) {
     }
     alert('Xong !')
     init_agency_manager();
+}
+
+// cr_month
+function cr_month(){
+    let d = new Date();
+    let month = d.getMonth() + 1 ;
+   var cr_ = document.getElementById('month_');
+   cr_.innerHTML = "Tổng tiền nạp trong tháng " + month;
+}
+
+// Get money all User
+async function get_all_money() {
+    return await fetch(`/api/agency_allmoney` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+
+//Show Data money all User
+async function open_data_money() {
+    var data = await get_all_money();
+    var placed = document.getElementById('table_data_money');
+    placed.innerHTML = '';
+    if (data) {
+        data.forEach(f => {
+            placed.innerHTML += `
+            <tr>
+                <td>${get_format_VND(f.all_money)} VNĐ</td>
+                <td>${get_format_VND(f.all_month_money)} VNĐ</td>
+                <td>${get_format_VND(f.all_bonus)} VNĐ</td>
+                <td>${get_format_VND(f.all_withdraw_money)} VNĐ</td>
+            </tr>`
+        })
+    }
+    $('#money_table').modal('show')
 }

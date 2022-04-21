@@ -1,7 +1,7 @@
 'use strict'
 
 init_withdraw_money();
-show_money_bonus(); 
+show_money_bonus();
 show_ticket_money();
 
 ///api/money_ticket2
@@ -24,7 +24,7 @@ async function get_current_finance() {
 function show_money_bonus() {
     get_current_finance().then(rs => {
         var cr = document.getElementById('current_bonus');
-        let money_bonus = 'Bonus Money : ' + get_format_VND(rs.bonus)  + ' VNĐ';
+        let money_bonus = 'Bonus Money : ' + get_format_VND(rs.bonus) + ' VNĐ';
         cr.innerHTML = `<p>${money_bonus}</p>`;
     })
 }
@@ -33,8 +33,8 @@ function show_money_bonus() {
  * show TicketMoney 
  * 
  * onlick(money_bonus) 
- *  */ 
-function show_ticket_money(){
+ *  */
+function show_ticket_money() {
     get_current_finance().then(rs => {
         var crs = document.getElementById('ticket_money');
         let money_bonus = rs.bonus;
@@ -88,30 +88,45 @@ async function init_withdraw_money() {
     // document.getElementById('des').value = get_number_by_id(cr_u.id);
 }
 
-function open_ticket() {   
-    $('#money_ticket').modal('show');
+function open_ticket() {
+
+    get_money_history_limit_top_up().then(rs => {
+        if (Number(rs.active) != 1) {
+            alert('Bạn đã gửi yêu cầu rút tiền hãy chờ xét duyệt . ');
+        } else {
+            $('#money_ticket').modal('show');
+        }
+    })
 }
 
 async function save_ticket2(money_bonus) {
+
     var money = 0;
     var method = 2;
     var current_money_bonus = money_bonus;
     var withdraw = $('#money_withdraw').val();
-     if (Number(withdraw) > current_money_bonus) {
-         alert('số dư trong tài khoảng không đủ')
-         return;
-     }
+    if (Number(withdraw) <= 0) {
+        alert('hãy nhập số tiền bn muốn rút')
+        return;
+    }
+    if (Number(withdraw) > Number(current_money_bonus)) {
+        alert('số dư trong tài khoảng không đủ')
+        return;
+    }
     var des = $('#des').val();
     var user_id = get_cr_user().id;
     if (money.length == 0 || des.length == 0) {
         alert('Chưa nhập đúng thông tin !')
         return;
     }
-    var rs = await ticket_save_({ money: money, method: method, des: des, user_id: user_id, withdraw: withdraw});
+    var rs = await ticket_save_({ money: money, method: method, des: des, user_id: user_id, withdraw: withdraw });
     // var rs = await ticket_save_({des:des, user_id:user_id});
+    // var bn = rs.bonus;
+    // alert(bn);
     alert('Xong !');
     $('#money_ticket').modal('hide');
     init_withdraw_money();
+
 }
 
 async function get_money_top_up() {
@@ -121,6 +136,23 @@ async function get_money_top_up() {
             .then((response) => response.json())
             .then((data) => {
                 return data;
+            })
+            .catch((error) => {
+                console.log(error);
+                return undefined;
+            });
+        return rs;
+    }
+}
+
+// GET limit 1 LIST DATA Money_history by id 
+async function get_money_history_limit_top_up() {
+    var cr_u = get_cr_user();
+    if (cr_u) {
+        let rs = await fetch(`/api/money_history_topup/${cr_u.id}` /*, options */)
+            .then((response) => response.json())
+            .then((data) => {
+                return data[0];
             })
             .catch((error) => {
                 console.log(error);

@@ -40,7 +40,8 @@
         <div class="col-12">
             <div class="container">
                 <div class="col-12 pt-5 pb-2">
-                    <h5>Danh sách đăng ký đại lý</h5>
+                        <button onclick="open_data_money()" class="btn btn-primary m_b_5 float_right">Tổng tiền</button>
+                    <h5 class="">Danh sách đăng ký đại lý</h5>
                 </div>
                 <div class="col-12">
                     <table id="table_data_reg" class="tablemanager table table-striped table-bordered table-sm"
@@ -58,12 +59,13 @@
                         <tbody>
 
                         </tbody>
+                        <caption id="showing1"></caption>
                     </table>
                 </div>
             </div>
         </div>
     </section>
-    <hr/>
+    <hr />
     <section>
         <div class="col-12">
             <div class="container">
@@ -87,11 +89,42 @@
                         <tbody>
 
                         </tbody>
+                        <caption id="showing"></caption>
                     </table>
                 </div>
             </div>
         </div>
     </section>
+    <!-- Modal -->
+    <div class="modal fade" id="money_table" tabindex="-1" role="dialog" aria-labelledby="money_table"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title red">Tổng Tiền</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th>Tổng tiền đã nạp</th>
+                                <th id="month_"></th>
+                                <th>Tổng tiền thưởng</th>
+                                <th>Tổng tiền đã rút</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table_data_money"></tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
     <script src="../js/agency_manager.js"></script>
