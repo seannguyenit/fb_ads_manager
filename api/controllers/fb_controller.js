@@ -15,9 +15,6 @@ module.exports = {
         //res.json(response)
     },
     post_video: function (req, res) {
-        // rq_sv.post(req.body.url, req.body.data).then((r) => {
-        //     res.json(r);
-        // })
         var form = new formidable.IncomingForm();
         form.parse(req, function (err, fields, files) {
             const formData = new FormData();
