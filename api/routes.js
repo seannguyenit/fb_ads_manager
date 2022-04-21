@@ -118,10 +118,13 @@ module.exports = function (app) {
 
   app.route('/api/money_ticket')
     .post(moneyCtrl.add_money);
+    // .get(moneyCtrl.add_money);
   app.route('/api/money_history/:user_id')
     .get(moneyCtrl.get_history);
   app.route('/api/money_topup/:user_id')
     .get(moneyCtrl.get_list_top_up);
+    app.route('/api/money_history_topup/:user_id')
+    .get(moneyCtrl.get_list_money_history_limit);
 
   app.route('/api/topup_m')
     .get(moneyCtrl.get_list_reg);
