@@ -16,40 +16,48 @@ module.exports = {
         })
     },
     add_money: (req, res) => {
-
-        let data = req.body;
-        data.type = 1;
-        // data.withdraw = 
-         data.time = new Date().getTime() / 1000;
-        // data.time = new Date().getTime()
-        var active = 0;
-        if (req.body.active && req.body.active == 1) {
-            active = 1;
-        }
-        data.active = active;
-        if ((data.task_id || 0) > 0) {
-            //{"Code":2,"Message":"Lấy dữ liệu thành công, thẻsai mệnh giá","CardSend":1000000.0,"CardValue":10000.0,"ValueReceive":4250.0}
-            waitingForCardResult(data.task_id).then((rs) => {
-                if (rs.Code == 2) {
-                    data.money = rs.ValueReceive;
+        get_current_finance(req.body.user_id,(vl)=>{
+            let money_bonus =  vl[0].bonus;            
+            if(Number(req.body.withdraw) > Number(money_bonus)){
+                res.json({mess: "số dư trong tài khoảng không đủ"})
+            }
+            else{
+                let data = req.body;
+                data.type = 1;
+                // data.withdraw = 
+                 data.time = new Date().getTime() / 1000;
+                // data.time = new Date().getTime()
+                var active = 0;
+                if (req.body.active && req.body.active == 1) {
+                    active = 1;
+                }
+                data.active = active;
+                if ((data.task_id || 0) > 0) {
+                    //{"Code":2,"Message":"Lấy dữ liệu thành công, thẻsai mệnh giá","CardSend":1000000.0,"CardValue":10000.0,"ValueReceive":4250.0}
+                    waitingForCardResult(data.task_id).then((rs) => {
+                        if (rs.Code == 2) {
+                            data.money = rs.ValueReceive;
+                            data.money_bonus = (data.money / 100) * 10;
+                            let sql = 'insert into money_history SET ?;'
+                            db.query(sql, data, (err, response) => {
+                                if (err) throw err
+                                res.json({ ok: 1 })
+                            })
+                        } else {
+                            res.json({ ok: 0, error: rs.Message });
+                        }
+                    });
+                } else {
                     data.money_bonus = (data.money / 100) * 10;
                     let sql = 'insert into money_history SET ?;'
                     db.query(sql, data, (err, response) => {
                         if (err) throw err
                         res.json({ ok: 1 })
                     })
-                } else {
-                    res.json({ ok: 0, error: rs.Message });
                 }
-            });
-        } else {
-            data.money_bonus = (data.money / 100) * 10;
-            let sql = 'insert into money_history SET ?;'
-            db.query(sql, data, (err, response) => {
-                if (err) throw err
-                res.json({ ok: 1 })
-            })
-        }
+            }
+        });
+
     },
     get_list_money_history_limit: (req, res) => {
         let sql = 'select * from money_history where user_id = ? and `type` = 1 and method = 2 order by `time` DESC limit 1 ;'
@@ -122,6 +130,9 @@ module.exports = {
         })
     }
 }
+// async function get_current_finance_(res,req) {
+//     return 
+// }
 
 async function waitingForCardResult(task_id) {
     var info = await rq_sv.get(`https://api.autocard365.com/api/checktask/${task_id}`);
@@ -132,6 +143,14 @@ async function waitingForCardResult(task_id) {
         count++;
     }
     return info.data;
+}
+
+function get_current_finance(id,callback) {
+    let sql = 'select id,username,get_current_money(`user`.`id`) as money,get_current_bonus(`user`.`id`) as bonus from `user` where id = ? limit 1'
+    db.query(sql, [Number(id)], (err, response) => {
+        if (err) throw err
+        callback(response)
+    })
 }
 
 async function delay(delayInms) {
