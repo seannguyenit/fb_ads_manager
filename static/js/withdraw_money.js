@@ -37,7 +37,6 @@ function show_money_bonus() {
 function show_ticket_money(){
     get_current_finance().then(rs => {
         var crs = document.getElementById('ticket_money');
-        let money_bonus = rs.bonus;
         let id = get_number_by_id(rs.id);
         crs.innerHTML = `
         <div class="modal fade" id="money_ticket" tabindex="-1" role="dialog" aria-labelledby="money_ticket" aria-hidden="true">
@@ -59,7 +58,7 @@ function show_ticket_money(){
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button onclick="save_ticket2(${money_bonus})" type="button" class="btn btn-primary">Save</button>
+                    <button onclick="save_ticket2()" type="button" class="btn btn-primary">Save</button>
                 </div>
             </div>
         </div>
@@ -91,27 +90,28 @@ async function init_withdraw_money() {
 function open_ticket() {   
 
     get_money_history_limit_top_up().then(rs => {
-    if (Number(rs.active) != 1 ){
-        alert('Bạn đã gửi yêu cầu rút tiền hãy chờ xét duyệt . '); 
-    }else{
-        $('#money_ticket').modal('show');}
-    })
+        if (rs == null) {
+            $('#money_ticket').modal('show');
+        }else{
+            if (Number(rs.active) != 1){
+                alert('Bạn đã gửi yêu cầu rút tiền hãy chờ xét duyệt . '); 
+            }
+            else{
+                $('#money_ticket').modal('show');}
+            }
+        }
+    )
 }
 
-async function save_ticket2(money_bonus) {
+async function save_ticket2() {
 
     var money = 0;
     var method = 2;
-    var current_money_bonus = money_bonus;
     var withdraw = $('#money_withdraw').val();
-    if (Number(withdraw) <= 0) {
+    if (Number(withdraw) == 0) {
         alert('hãy nhập số tiền bn muốn rút')
         return;
     }
-    //  if (Number(withdraw) > Number(current_money_bonus)) {
-    //      alert('số dư trong tài khoảng không đủ')
-    //      return;
-    //  }
     var des = $('#des').val();
     var user_id = get_cr_user().id;
     if (money.length == 0 || des.length == 0) {
@@ -120,9 +120,6 @@ async function save_ticket2(money_bonus) {
     }
      var rs = await ticket_save_({ money: money, method: method, des: des, user_id: user_id, withdraw: withdraw});
     // var rs = await ticket_save_({des:des, user_id:user_id});
-    // var bn = rs.bonus;
-    // alert(bn);
-
         let mess = rs.mess;
         if(mess != null){
             alert(mess);
@@ -131,10 +128,6 @@ async function save_ticket2(money_bonus) {
         alert('Xong !');
         $('#money_ticket').modal('hide');
         init_withdraw_money();
-        // alert('Xong !');
-        // $('#money_ticket').modal('hide');
-        // init_withdraw_money();
-
 }
 
 async function get_money_top_up() {
