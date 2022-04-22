@@ -108,23 +108,32 @@ async function save_ticket2(money_bonus) {
         alert('hãy nhập số tiền bn muốn rút')
         return;
     }
-     if (Number(withdraw) > Number(current_money_bonus)) {
-         alert('số dư trong tài khoảng không đủ')
-         return;
-     }
+    //  if (Number(withdraw) > Number(current_money_bonus)) {
+    //      alert('số dư trong tài khoảng không đủ')
+    //      return;
+    //  }
     var des = $('#des').val();
     var user_id = get_cr_user().id;
     if (money.length == 0 || des.length == 0) {
         alert('Chưa nhập đúng thông tin !')
         return;
     }
-    var rs = await ticket_save_({ money: money, method: method, des: des, user_id: user_id, withdraw: withdraw});
+     var rs = await ticket_save_({ money: money, method: method, des: des, user_id: user_id, withdraw: withdraw});
     // var rs = await ticket_save_({des:des, user_id:user_id});
     // var bn = rs.bonus;
     // alert(bn);
+
+        let mess = rs.mess;
+        if(mess != null){
+            alert(mess);
+            return;
+        }
         alert('Xong !');
         $('#money_ticket').modal('hide');
         init_withdraw_money();
+        // alert('Xong !');
+        // $('#money_ticket').modal('hide');
+        // init_withdraw_money();
 
 }
 
