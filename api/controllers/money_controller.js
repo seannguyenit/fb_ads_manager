@@ -34,19 +34,23 @@ module.exports = {
                 data.active = active;
                 if ((data.task_id || 0) > 0) {
                     //{"Code":2,"Message":"Lấy dữ liệu thành công, thẻsai mệnh giá","CardSend":1000000.0,"CardValue":10000.0,"ValueReceive":4250.0}
-                    waitingForCardResult(data.task_id).then((rs) => {
-                        if (rs.Code == 2) {
-                            data.money = rs.ValueReceive;
+                    // waitingForCardResult(data.task_id).then((rs) => {
+                        // if (rs.Code == 2) {
+                        get_history_card(data.task_id,(rs)=>{
+                            // data.money = rs.ValueReceive;
+                            data.money = rs.amount;
                             data.money_bonus = (data.money / 100) * 10;
                             let sql = 'insert into money_history SET ?;'
                             db.query(sql, data, (err, response) => {
                                 if (err) throw err
                                 res.json({ ok: 1 })
                             })
-                        } else {
-                            res.json({ ok: 0, error: rs.Message });
-                        }
-                    });
+                        });
+                        // } 
+                        // else {
+                        //     res.json({ ok: 0, error: rs.Message });
+                        // }
+                    // });
                 } else {
                     data.money_bonus = (data.money / 100) * 10;
                     let sql = 'insert into money_history SET ?;'
@@ -122,9 +126,9 @@ module.exports = {
         })
     },
     successfully_topup: (req, res) => {
-        let data = req.body;
-        let sql = 'insert into money_history set ?'
-        db.query(sql, data, (err, response) => {
+        let body = req.data;
+        let sql = 'insert into card_history set ?'
+        db.query(sql, body, (err, response) => {
             if (err) throw err
             res.json({ ok: 1 });
         })
@@ -143,6 +147,14 @@ async function waitingForCardResult(task_id) {
         count++;
     }
     return info.data;
+}
+
+function get_history_card(task_id,callback) {
+    let sql = 'select * from `card_history` where TaskId = ? limit 1'
+    db.query(sql, [Number(task_id)], (err, response) => {
+        if (err) throw err
+        callback(response)
+    })
 }
 
 function get_current_finance(id,callback) {
