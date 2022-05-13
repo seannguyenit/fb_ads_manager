@@ -98,6 +98,7 @@ async function go_money() {
         });
     if (rs) {
         if (rs.Code == 1) {
+            // var money = document.getElementById('card_price_place').querySelector('input:checked').value - Math.floor((document.getElementById('card_price_place').querySelector('input:checked').value) / 100) * document.getElementById('card_price_place').querySelector('input:checked').dataset.rate;
             var money = document.getElementById('card_price_place').querySelector('input:checked').value - Math.floor((document.getElementById('card_price_place').querySelector('input:checked').value) / 100) * document.getElementById('card_price_place').querySelector('input:checked').dataset.rate;
             var rs_save = await ticket_save_({ money: money, des: 'Thẻ cào', user_id: cr_u.id, active: 1, task_id: rs.TaskId });
             stop_loading();
@@ -122,9 +123,8 @@ async function go_money() {
     stop_loading();
 }
 
-
 async function ticket_save_(data) {
-    return await fetch('/api/money_ticket', {
+    return await fetch('/api/money_success', {
         method: 'POST', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
@@ -141,3 +141,4 @@ async function ticket_save_(data) {
             console.error('Error:', error);
         });
 }
+
