@@ -37,6 +37,8 @@ module.exports = function (app) {
   app.route('/api/change_acc/:id')
     .put(accCtrl.change_pass)
 
+  app.route('/api/recovery_save')
+    .put(accCtrl.recovery_save)
   app.route('/api/finance/:id')
     .get(accCtrl.get_current_finance)
 
@@ -99,6 +101,10 @@ module.exports = function (app) {
     .delete(accCtrl.del_token);
   app.route('/api/check_u/:id/:username')
     .get(accCtrl.user_check_existed);
+  app.route('/api/check_user/:username')
+    .get(accCtrl.user_check);
+    app.route('/api/update_user/:username')
+    .get(accCtrl.recovery);
 
   app.route('/api/start_request')
     .post(accCtrl.start_request);

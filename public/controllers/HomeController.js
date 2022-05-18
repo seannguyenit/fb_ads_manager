@@ -8,6 +8,9 @@ module.exports = {
     reg_suc: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/reg_success.html'))
     },
+    rec_success: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/rec_success.html'))
+    },
     notice: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/notice.html'))
     },

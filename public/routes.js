@@ -9,6 +9,10 @@ module.exports = function (app) {
     .get(auth_Ctrl.get_login_page);
   app.route('/register')
     .get(auth_Ctrl.register);
+    app.route('/recovery')
+    .get(auth_Ctrl.recovery);
+  app.route('/recovery_save')
+    .get(auth_Ctrl.recovery_save);
   app.route('')
     .get(homeCtrl.user_info);
 
@@ -49,4 +53,6 @@ module.exports = function (app) {
     .get(homeCtrl.top_up_card);
   app.route('/register/success')
     .get(homeCtrl.reg_suc);
+    app.route('/recovery/success')
+    .get(homeCtrl.rec_success);
 };
