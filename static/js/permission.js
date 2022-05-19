@@ -27,6 +27,7 @@ async function menu_get_current_menu(id) {
 
 async function init_menu() {
     var menu = document.getElementById('main_menu');
+    var menu_ = document.getElementById('menu_money');
     var cr_url = location.href;
     if (menu) {
         menu.innerHTML = '';
@@ -36,7 +37,16 @@ async function init_menu() {
             location.href = '/login'
         }
         lst_menu.forEach(item => {
-            menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>`;
+            if(item.type === 0){
+                menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>`;
+            }
+            if(item.type === 1){
+                menu_.innerHTML += `
+                    <a style="background-color: #2E9AFE;" class="nav-link dropdown-item active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>
+                `;
+            //     // <a class="dropdown-item" href="#">Action</a>
+            }
+            // menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>`;
         }
         );
     }

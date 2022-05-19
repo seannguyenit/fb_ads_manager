@@ -20,6 +20,9 @@ module.exports = {
     user: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/user.html'))
     },
+    logo_manager: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/manager_logo.html'))
+    },
     user_info: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/user_info.html'))
     },
@@ -52,6 +55,15 @@ module.exports = {
     },
     top_up_m: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/money_manager.html'))
+    },
+    money_report: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/report_money.html'))
+    },
+    manager_articles: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/m_articles.html'))
+    },
+    p_articles: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/p_articles.html'))
     },
 
     // get_partial: (req,res)=>{

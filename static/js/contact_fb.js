@@ -31,6 +31,36 @@ const option_get = {
 
 
 init_default();
+check_service();
+
+async function acc_get_detail() {
+    var cr_u = get_cr_user();
+   return await fetch(`/api/accounts/${cr_u.id}` /*, options */)
+       .then((response) => response.json())
+       .then((data) => {
+           if (data != undefined) {
+               return data || {};
+           }
+       })
+       .catch((error) => {
+           console.warn(error);
+       });
+}
+
+async function check_service(){
+   var dt = await acc_get_detail();
+   if(dt){
+    var today = new Date().getTime();
+    var  date = new Date(dt.limit_time).getTime();
+         if(dt.limit_time === null){
+            alert("Mua gói dịch vụ để sử dụng !");
+            window.location.href = 'pricing';
+         }else if(date <= today){
+            alert("Gói dịch vụ đã hết hạn !");
+            window.location.href = 'pricing';
+         }
+       }
+}
 
 
 async function get_user_info(token) {

@@ -15,8 +15,14 @@ module.exports = {
         // let sql = 'CALL `user_getbyname`(?)';
     },
     get_all_money : (req, res) => {
-        let sql = 'SELECT get_all_money() AS all_money, get_all_bonus() AS all_bonus, get_all_month_money() AS all_month_money, get_all_withdraw_money() AS all_withdraw_money LIMIT 1;'
-        db.query(sql, (err, response) => {
+        var time_from = req.params.from;
+        var time_to = req.params.to;
+        // if(time_from === time_to){
+        //     time_to = time_to + 0.0001;
+        // };
+        let sql = 'SELECT get_all_money(?,?) AS all_money, get_all_bonus(?,?) AS all_bonus, get_all_withdraw_money(?,?) AS all_withdraw_money LIMIT 1;'
+        // , get_all_bonus() AS all_bonus, get_all_month_money() AS all_month_money, get_all_withdraw_money() AS all_withdraw_money
+        db.query(sql,[time_from ,time_to, time_from ,time_to, time_from ,time_to ],(err, response) => {
             if (err) throw err
             res.json(response)
         })
@@ -327,7 +333,75 @@ module.exports = {
             if (err) throw err
             res.json({ ok: 1 });
         })
-    }
+    },
+    add_contacts: (req, res) => {
+                let data = req.body;
+                data.time = new Date().getTime() / 1000;
+                let sql = 'insert into contacts SET ?;'
+                    db.query(sql, data, (err, response) => {
+                        if (err) throw err
+                        res.json({ok:1})
+                    })
+    },
+    agency_allcontacts: (req, res) => {
+        let sql = 'SELECT contacts.id,contacts.content,contacts.time,user.username FROM contacts left join user on user.id = contacts.user_id limit 20;'
+            db.query(sql, (err, response) => {
+                if (err) throw err
+                res.json(response)
+            })
+    },
+    del_contacts: (req, res) => {
+        let sql = 'delete from contacts where id = ?;'
+            db.query(sql,[req.params.id], (err, response) => {
+                if (err) throw err
+                res.json({ok:1})
+            })
+    },
+
+    get_articles: (req, res) => {
+        let sql = 'select * from articles where `active` = 1 order by `time` DESC limit 20;'
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    insert_articles: (req, res) => {
+        let data = req.body;
+        // data.pass = data.pass;
+        data.active = 1;
+        data.time = new Date().getTime() / 1000;
+        let sql = 'INSERT INTO articles SET ?;'
+        db.query(sql, [data], (err, response) => {
+            if (err) throw err
+            res.json({ message: 'save success!' })
+        })
+    },
+    detail_articles: (req, res) => {
+        // let is_admin = req.params.is_admin || false;
+        let sql = 'select * from articles where `active` = 1 and `id` = ? limit 1;'
+        db.query(sql, [req.params.id], (err, response) => {
+            if (err) throw err
+            res.json(response[0])
+        })
+    },
+    update_articles: (req, res) => {
+        let data = req.body;
+        data.time = new Date().getTime() / 1000;
+        let id = req.params.id;
+        let sql = 'UPDATE articles SET ? WHERE id = ?;'
+        db.query(sql, [data, id], (err, response) => {
+            if (err) throw err
+            res.json({ message: 'save success!' })
+        })
+    },
+    delete_articles: (req, res) => {
+        let sql = 'UPDATE pricing SET `active` = 0 WHERE id = ?;'
+        db.query(sql, [req.params.id], (err, response) => {
+            if (err) throw err
+            res.json({ message: 'Delete success!' })
+        })
+    },
+
 }
 
 function sendMail(to, key_active) {

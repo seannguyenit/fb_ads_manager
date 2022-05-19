@@ -16,7 +16,7 @@
 
 <body class="body-bg-custom">
     <!-- Top Bar -->
-    <nav style="background-color: #2E9AFE;" class="navbar navbar-expand-sm navbar-light bg-main-color">
+    <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
             <a class="navbar-brand com-name" href="#">FB ads support</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
@@ -28,17 +28,6 @@
                     <a class="nav-link active title-nav" aria-current="page" href="/">Thông báo</a>
                     <a class="nav-link active title-nav" aria-current="page" href="/home/getcontent">Lấy nội dung</a>
                 </div>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                      <li class="nav-item dropdown">
-                        <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          QUẢN LÝ TIỀN
-                        </a>
-                        <div id="menu_money" style="background-color: #2E9AFE;" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        </div>
-                      </li>
-                    </ul>
-                </div>
                 <div class="navbar-nav user-info">
                     <div id="current_username" class="nav-link active" aria-current="page"><a>USER</a> <a
                             class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuất)</a>
@@ -48,22 +37,23 @@
         </div>
     </nav>
     <section>
+        <div>
+            <img id="imgs" src="" alt="logo new">
+        </div>
         <div class="col-12">
             <div class="container">
-                <div class="">  
+                <div class="">
                     <div class="col-12 pt-5 pb-2">
-                        <button onclick="open_modal(0)" class="btn btn-primary">Tạo mới User</button>
-                        <div class="float_left" id = "m_logo">
-                            <!-- <button onclick="open_modal_logo()" class="btn btn-primary">logo</button> -->
-                        </div>  
+                        <button onclick="open_modal(0)" class="btn btn-primary">Thêm Logo</button>
+                      <div class="float_left" id = "m_logo"></div>  
                         <!-- <button onclick="paginate()" class="btn btn-primary">test</button> -->
                         <!-- <input type="text" id="sreach_user" name="sreach_user"> 
                         <button onclick="" class="btn btn-primary">search</button> -->
-                        <div class="float_right">
+                        <!-- <div class="float_right">
                             <label for="username" class="form-label"></label>
                             <input type="text" class="" id="username" required placeholder="username...">
                             <button onclick="search_acc()" class="btn btn-primary">search</button>
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -73,14 +63,9 @@
                         <thead>
                             <tr>
                                 <th>stt</th>
-                                <th>Username</th>
-                                <th>Tổng nạp</th>
-                                <th>Tổng thưởng</th>
-                                <th id="month"></th>
-                                <th>SDT</th>
-                                <th>ĐC</th>
-                                <th>Ngày Tạo<br><span style="font-size: 10px;">(mm/dd/yyyy)</span></th>
-                                <th>Hạn ngày</th>
+                                <th>Tên Logo</th>
+                                <th>Hình ảnh</th>
+                                <th>action</th>
                                 <th class="disableFilterBy">Thao tác</th>
                             </tr>
                         </thead>
@@ -88,7 +73,7 @@
 
                         </tbody>
                     </table>
-                    <div class="modal fade " id="search_table" data-backdrop="static" data-keyboard="false"
+                    <!-- <div class="modal fade " id="search_table" data-backdrop="static" data-keyboard="false"
                         tabindex="-1" aria-labelledby="search_table" aria-hidden="true">
                         <table id="search_table" class="tablemanager table table-striped table-bordered table-sm"
                             cellspacing="0" width="100%">
@@ -112,7 +97,7 @@
                             </tbody>
                            
                         </table>
-                    </div>
+                    </div> -->
                     <div id="paginate"></div>
 
                     <!-- /////////////////////// -->
@@ -127,43 +112,27 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal_title">Thông tin tài khoản</h5>
+                    <h5 class="modal-title" id="modal_title">Thêm Logo</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body d-flex flex-wrap">
-                    <input hidden id="user_id" value="0" />
+                    <input hidden id="id" value="0" />
                     <div class="col-md-4">
-                        <label for="user" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="user" required>
+                        <label for="logo_name" class="form-label">Name Logo</label>
+                        <input type="text" class="form-control" id="logo_name" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="pass" class="form-label">Mật khẩu</label>
-                        <input type="password" class="form-control" id="pass" required>
+                        <label for="logo_img" class="form-label">Tải ảnh lên</label>
+                        <input type="file" class="" id="logo_img" onchange="PreviewImage()" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="phone" class="form-label">SDT</label>
-                        <input type="text" class="form-control" id="phone" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="real_name" class="form-label">Tên</label>
-                        <input type="text" class="form-control" id="real_name" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="add" class="form-label">Địa chỉ</label>
-                        <input type="text" class="form-control" id="add" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="created_at" class="form-label">ngày tạo</label>
-                        <input disabled type="text" class="form-control" id="created_at" required>
-                    </div>
-                    <div class="col-md-12" style="display: none;">
-                        <label for="permission" class="form-label">Phân quyền : </label>
-                        <!-- <input type="text" class="form-control" id="add" required> -->
-                        <div id="permiss_place" class="col-md-12 d-flex flex-wrap justify-content-between">
-
-                        </div>
+                        <label for="type" class="form-label">Hiển thị</label>
+                        <select name="type" id="type">
+                            <option value="1">On</option>    
+                            <option value="0">Off</option> 
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
@@ -242,11 +211,11 @@
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
-    <script src="../js/user_manager.js"></script>
+    <!-- <script src="../js/user_manager.js"></script> -->
     <script src="../js/helper_manager.js"></script>
     <script src="../js/permission.js"></script>
-    <script src="../js/pricing_manager.js"></script>
-    <script src="../js/money_manager.js"></script>
+    <!-- <script src="../js/download_img.js"></script> -->
+    <script src="../js/manager_logo.js"></script>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -259,7 +228,7 @@
 </body>
 <script>
     let main_table = document.getElementById('table_data').children[1];
-    init_users();
+    // init_logo();
 </script>
 
 </html>

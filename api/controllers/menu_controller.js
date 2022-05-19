@@ -13,6 +13,26 @@ module.exports = {
             res.json(response)
         })
     },
+    get_logo: (req, res) => {
+        let sql = 'SELECT * from logo;'
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    edit_type_logo: (req, res) => {
+        var type = req.params.type;
+        if(Number(type) === 0){
+            type = 1
+        }else{
+            type = 0
+        }
+        let sql = 'update `logo` set `type` = ? where id = ?;'
+        db.query(sql,[type, req.params.id] ,(err, response) => {
+            if (err) throw err
+            res.json({ message: 'Success!' })
+        })
+    },
     get_by_user: (req, res) => {
         let sql = 'CALL `get_all_menu_by_user`(?);'
         db.query(sql, [req.params.id], (err, response) => {
@@ -46,5 +66,20 @@ module.exports = {
             if (err) throw err
             res.json({ message: 'Success!' })
         })
-    }
+    },
+    del_logo: (req, res) => {
+        let sql = 'DELETE FROM logo WHERE id = ?'
+        db.query(sql, [req.params.id], (err, response) => {
+            if (err) throw err
+            res.json({ message: 'Delete success!' })
+        })
+    },
+    insert_logo: (req, res) => {
+        let data = req.body;
+        let sql = 'insert into logo set ?'
+        db.query(sql, [data], (err, response) => {
+            if (err) throw err
+            res.json({ message: 'insert success!' })
+        })
+    },
 }
