@@ -606,6 +606,9 @@ async function post_step3(op) {
         var timesta = Math.floor((new Date(document.getElementById('schedule_time').value)).getTime() / 1000);
         console.log(timesta);
         data = { "access_token": token, "scheduled_publish_time": Number(timesta) }
+        if(video1||video2){
+            await waitingForNext(5000);
+        }
     }
     var url = `${r_url2}https://graph.facebook.com/v13.0/${op}`;
     return await fetch(url, {
