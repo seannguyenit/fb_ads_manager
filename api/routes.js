@@ -46,7 +46,7 @@ module.exports = function (app) {
     .put(accCtrl.update)
     .delete(accCtrl.delete);
 
-    app.route('/api/agency_allmoney')
+    app.route('/api/agency_allmoney/:from/:to')
     .get(accCtrl.get_all_money);
   app.route('/api/agency')
     .get(accCtrl.get_all_agency)
@@ -58,7 +58,12 @@ module.exports = function (app) {
 
   app.route('/api/agency_count/:id')
     .get(accCtrl.get_agency_count)
-
+  app.route('/api/contacts_ticket')
+    .post(accCtrl.add_contacts);
+  app.route('/api/contacts')
+    .get(accCtrl.agency_allcontacts)
+  app.route('/api/contacts/:id')
+    .put(accCtrl.del_contacts)
   app.route('/api/agency/:id')
     .get(accCtrl.get_agency_info)
     .put(accCtrl.agency_reg);
@@ -74,6 +79,16 @@ module.exports = function (app) {
     .get(menuCtrl.get_by_user);
   app.route('/api/menu_user/:user_id')
     .post(menuCtrl.add_menu);
+
+  
+  app.route('/api/logo')
+    .post(menuCtrl.insert_logo);
+  app.route('/api/menu_logo')
+    .get(menuCtrl.get_logo);
+    app.route('/api/menu_logo/:id')
+    .put(menuCtrl.del_logo);
+  app.route('/api/menu_logo/:id/:type')
+    .get(menuCtrl.edit_type_logo);
 
   app.route('/api/pricing_public/:user_id')
     .get(pricingCtrl.pricing_histories);
@@ -146,8 +161,19 @@ module.exports = function (app) {
   app.route('/api/money_success')
     .post(moneyCtrl.successfully_topup);
 
-    app.route('/api/list_withdraw/:id')
+  app.route('/api/list_withdraw/:id')
     .get(moneyCtrl.get_list_withdraw);
+
+  app.route('/api/articles')
+    .get(accCtrl.get_articles)
+    .post(accCtrl.insert_articles);
+
+  app.route('/api/articles/:id')
+    .get(accCtrl.detail_articles);
+
+  app.route('/api/articles/:id')
+    .put(accCtrl.update_articles)
+    .delete(accCtrl.delete_articles);
 
 }
 

@@ -1,6 +1,5 @@
 'use strict'
 
-
 async function get_content(url) {
     try {
         return await fetch(url).then(function (response) {

@@ -5,6 +5,9 @@ body{
 .blue-color-bg{
     background-color:#32A1CC
 }
+.m_b_5{
+    margin-bottom: 5px;
+}
 .pd_l_15{
     padding-left: 15px;
 }
@@ -129,6 +132,7 @@ table{
 .modal{
     color: black;
 }
+
 
 .nav-link.active.title-nav.selected{
     opacity: 0.5;
@@ -349,4 +353,26 @@ textarea::placeholder,input::placeholder { /* Chrome, Firefox, Opera, Safari 10.
 }
 .float_right{
     float: right;
+}
+
+.box-content{
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 2px solid red; */
+    /* margin-bottom: 30px; */
+}
+.box-left{
+    width: 5vw;
+    /* border: 1px solid red; */
+}
+.box-right{
+    width: 60vw;
+    /* padding-right: 1vw; */
+    margin-left: 1vw;
+    /* border: 1px solid red; */
+}
+.box{
+    width: 70vw;
+    margin: 0px auto;
+    /* border: 2px solid red; */
 }

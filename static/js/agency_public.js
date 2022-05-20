@@ -127,3 +127,36 @@ async function get_agency_count() {
         }
     }
 }
+
+function open_modal() {
+    $('#contacts_ticket').modal('show');
+}
+
+async function save_ticket() {
+    var cr_u = get_cr_user();
+    var user_id = cr_u.id;
+    var content = $('#contacts').val();
+    
+     var rs = await ticket_save_({ user_id: user_id, content: content});
+        alert('Đẫ Gửi Yêu Cầu Thành Công !');
+        $('#contacts_ticket').modal('hide');
+}
+
+async function ticket_save_(data) {
+    return await fetch('/api/contacts_ticket', {
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data != undefined) {
+                return data || {};
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}

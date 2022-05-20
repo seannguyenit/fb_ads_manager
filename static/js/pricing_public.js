@@ -1,5 +1,5 @@
 'use strict'
-
+show_pricing()
 init_default();
 
 async function init_default() {
@@ -82,3 +82,30 @@ async function order_pricing(id, name, price) {
         location.reload();
     }
 }
+
+// Get Data (pricing_history join user join pricing) Desc limit 1
+async function get_wrap_pricing_history(user_id) {
+    return await fetch(`/api/wrap_pricing_public/${user_id}` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+
+// show name pricing
+async function show_pricing(){
+    var cr_u = get_cr_user();
+    var data_limit = await get_wrap_pricing_history(cr_u.id);
+    var p = document.getElementById("r_pricing");
+    p.innerHTML = '';
+    if(data_limit) {
+        data_limit.forEach(f =>{
+            p.innerHTML = `<h5 class="pd_l_15">Đang sử dụng : ${f.pricing_name} <h5>`
+        });
+    }
+}
+

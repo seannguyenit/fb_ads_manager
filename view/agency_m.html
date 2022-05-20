@@ -16,7 +16,7 @@
 
 <body class="body-bg-custom">
     <!-- Top Bar -->
-    <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
+    <nav style="background-color: #2E9AFE;" class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
             <a class="navbar-brand com-name" href="#">FB ads support</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
@@ -27,6 +27,17 @@
                 <div id="main_menu" class="navbar-nav">
                     <a class="nav-link active title-nav" aria-current="page" href="/">Thông báo</a>
                     <a class="nav-link active title-nav" aria-current="page" href="/home/getcontent">Lấy nội dung</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                      <li class="nav-item dropdown">
+                        <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          QUẢN LÝ TIỀN
+                        </a>
+                        <div id="menu_money" style="background-color: #2E9AFE;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        </div>
+                      </li>
+                    </ul>
                 </div>
                 <div class="navbar-nav user-info">
                     <div id="current_username" class="nav-link active" aria-current="page"><a>USER</a> <a
@@ -40,7 +51,7 @@
         <div class="col-12">
             <div class="container">
                 <div class="col-12 pt-5 pb-2">
-                        <button onclick="open_data_money()" class="btn btn-primary m_b_5 float_right">Tổng tiền</button>
+                        <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button>
                     <h5 class="">Danh sách đăng ký đại lý</h5>
                 </div>
                 <div class="col-12">
@@ -101,7 +112,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title red">Tổng Tiền</h5>
+                    <h5 class="modal-title red">Contacts</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -110,10 +121,10 @@
                     <table class="table table-dark">
                         <thead>
                             <tr>
-                                <th>Tổng tiền đã nạp</th>
-                                <th id="month_"></th>
-                                <th>Tổng tiền thưởng</th>
-                                <th>Tổng tiền đã rút</th>
+                                <th>Tên</th>
+                                <th>Nội dung</th>
+                                <th>Thời gian</th>
+                                <th>Thao tác</th>
                             </tr>
                         </thead>
                         <tbody id="table_data_money"></tbody>

@@ -23,41 +23,7 @@ function cr_month(){
     let d = new Date();
     let month = d.getMonth() + 1 ;
    var cr = document.getElementById('month');
-   var cr_ = document.getElementById('month_');
    cr.innerHTML = "Tổng nạp tháng " + month;
-   cr_.innerHTML = "Tổng tiền nạp trong tháng " + month;
-}
-
-// Get money all User
-async function get_all_money() {
-    return await fetch(`/api/accounts_allmoney` /*, options */)
-        .then((response) => response.json())
-        .then((data) => {
-            return data;
-        })
-        .catch((error) => {
-            console.warn(error);
-            return undefined;
-        });
-}
-
-//Show Data money all User
-async function open_data_money() {
-    var data = await get_all_money();
-    var placed = document.getElementById('table_data_money');
-    placed.innerHTML = '';
-    if (data) {
-        data.forEach(f => {
-            placed.innerHTML += `
-            <tr>
-                <td>${get_format_VND(f.all_money)} VNĐ</td>
-                <td>${get_format_VND(f.all_month_money)} VNĐ</td>
-                <td>${get_format_VND(f.all_bonus)} VNĐ</td>
-                <td>${get_format_VND(f.all_withdraw_money)} VNĐ</td>
-            </tr>`
-        })
-    }
-    $('#money_table').modal('show')
 }
 
 async function acc_get_detail(id) {
@@ -95,28 +61,29 @@ async function init_users_byname() {
     var name = document.getElementById('username').value;
     var dt = await acc_get_byname(name);
     if (dt) {
-            dt.forEach(item => {
+        dt.forEach(item => {
                 
-                main_table.innerHTML += `
-                    <tr>
-                        <td>${dt.indexOf(item) + 1}</td>    
-                        <td>${item.username}</td> 
-                        <td>${get_format_VND(item.money)}</td> 
-                        <td>${get_format_VND(item.bonus)}</td> 
-                        <td>${get_format_VND(item.money_month)}</td>  
-                        <td>${item.real_name||''}</td>    
-                        <td>${item.phone||''}</td>    
-                        <td>${item.add||''}</td>
-                        <td>${format_time(item.limit_time)||''}</td>
+            main_table.innerHTML += `
+                <tr>
+                    <td>${dt.indexOf(item) + 1}</td>    
+                    <td>${item.username}</td> 
+                    <td>${get_format_VND(item.money)}</td> 
+                    <td>${get_format_VND(item.bonus)}</td> 
+                    <td>${get_format_VND(item.money_month)}</td>  
+                    <td>${item.real_name||''}</td>    
+                    <td>${item.phone||''}</td>    
+                    <td>${item.add||''}</td>
+                    <td>${format_time(item.limit_time)||''}</td>
                         <td>
                             ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], 'Gói DV')}
                             ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], 'LS Tiền')}
                             ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], 'edit')}
                             ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], 'delete')}
                         </td>
-                    </tr>
-                `;
-                });                
+                </tr>`;
+                    });                
+            }else{
+                main_table.innerHTML = 'Không Tìm Thấy Tên Phù Hợp';
             }
 }
 
@@ -149,6 +116,8 @@ async function update_history() {
             var  date = new Date(item.limit_time).getTime();
             if( Number(date) != 0 && Number(date) < Number(today) ){
                  id = item.id;
+                //  alert(id);
+                //  await history_update(item.id);
             }
         }
     )};
@@ -263,6 +232,7 @@ async function open_modal(params) {
         $('#real_name').val(detail_dt.real_name || '');
         $('#phone').val(detail_dt.phone || '');
         $('#add').val(detail_dt.add || '');
+        $('#created_at').val(format_time(detail_dt.created_at) || '');
         if (detail_dt.id != 0) {
             var data_per = await menu_get_current_menu(detail_dt.id);
             data_per.forEach(r => {
@@ -281,6 +251,7 @@ async function open_modal(params) {
         $('#real_name').val('');
         $('#phone').val('');
         $('#add').val('');
+        $('#created_at').val('');
 
     }
     $('#user_details').modal('show');
@@ -498,6 +469,7 @@ async function init_users(cr_page,user_number_page) {
                 var  limit_date = format_time(item.limit_time);
             }else if( Number(date) != 0){
                 var  limit_date = format_time(item.limit_time) + "(hết hạn)";
+                // await history_update(item.id);
             }else{
                 var  limit_date = "";
             }
@@ -507,10 +479,10 @@ async function init_users(cr_page,user_number_page) {
                 <td>${item.username}</td> 
                 <td>${get_format_VND(item.money)}</td> 
                 <td>${get_format_VND(item.bonus)}</td> 
-                <td>${get_format_VND(item.money_month)}</td> 
-                <td>${item.real_name||''}</td>    
+                <td>${get_format_VND(item.money_month)}</td>   
                 <td>${item.phone||''}</td>    
                 <td>${item.add||''}</td>
+                <td>${format_time(item.created_at)||''}</td>  
                 <td>${limit_date}</td>
                 <td>
                     ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], 'Gói DV')}
@@ -551,19 +523,9 @@ async function paginate(each_page){
         page.innerHTML ="";
         return;
     }
-     
-     // Create Redirect Back
-    // if (Number(each_page) > 1) {
-    //     page.innerHTML += `<a class="font_size24" href="/home/users?page=${Number(each_page) -1 }"> << back </a>`;
-    // }
-    // var user_count =  Object.keys(user_some_list).length;
-    // var user_page = Math.ceil(Number(user_count) / 10);
-    //  Number mid 
-        // page.innerHTML += `<span class="font_size24">  ${each_page}  </span>`;
-
-    // Create Redirect Next
-    // if (Number(each_page) < Number(user_page)) {
-    //     page.innerHTML += `<a class="font_size24" href="/home/users?page=${1 + Number(each_page) }"> next >></a>`;
-    // }
-    // alert(user_page);
 }
+
+// Open modal manager Logo
+ function open_modal_logo(){
+    window.location.href = 'm_logo'
+ }

@@ -25,6 +25,8 @@ module.exports = function (app) {
     .get(homeCtrl.page_box);
   app.route('/home/users')
     .get(homeCtrl.user);
+  app.route('/home/m_logo')
+    .get(homeCtrl.logo_manager);
   app.route('/home/user_info')
     .get(homeCtrl.user_info);
   app.route('/home/p_manager')
@@ -38,6 +40,13 @@ module.exports = function (app) {
 
   app.route('/home/withdraw')
     .get(homeCtrl.withdraw);
+
+  app.route('/home/m_report')
+    .get(homeCtrl.money_report);
+  app.route('/home/m_articles')
+    .get(homeCtrl.manager_articles);
+    app.route('/home/p_articles')
+    .get(homeCtrl.p_articles);
 ////////////
   app.route('/home/a_manager')
     .get(homeCtrl.agency_manager);
@@ -53,6 +62,6 @@ module.exports = function (app) {
     .get(homeCtrl.top_up_card);
   app.route('/register/success')
     .get(homeCtrl.reg_suc);
-    app.route('/recovery/success')
+  app.route('/recovery/success')
     .get(homeCtrl.rec_success);
 };
