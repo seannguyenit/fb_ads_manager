@@ -21,6 +21,15 @@ module.exports = {
             res.json(response[0])
         })
     },
+    insert_pricing_history: (req, res) => {
+        let data = req.body;
+        // let is_admin = req.params.is_admin || false;
+        let sql = 'INSERT INTO pricing_history SET ?;'
+        db.query(sql, [data], (err, response) => {
+            if (err) throw err
+            res.json({ message: 'save success!' })
+        })
+    },
     update: (req, res) => {
         let data = req.body;
         let pricingId = req.params.id;

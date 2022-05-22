@@ -104,6 +104,8 @@ module.exports = function (app) {
 
   app.route('/api/pricing/:id')
     .get(pricingCtrl.detail);
+  app.route('/api/pricing_insert_wrap')
+    .post(pricingCtrl.insert_pricing_history);
 
   app.route('/api/pricing/:id')
     .put(pricingCtrl.update)
@@ -147,9 +149,9 @@ module.exports = function (app) {
     app.route('/api/money_history_topup/:user_id')
     .get(moneyCtrl.get_list_money_history_limit);
 
-  app.route('/api/topup_m')
+  app.route('/api/topup_m/:from/:to')
     .get(moneyCtrl.get_list_reg);
-    app.route('/api/topup_m2')
+    app.route('/api/topup_m2/:from/:to')
     .get(moneyCtrl.get_list_reg2);
   app.route('/api/topup_m/:id/:money/:is_agency')
     .put(moneyCtrl.approve_topup);

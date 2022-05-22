@@ -362,6 +362,20 @@ async function init_pricing_history(id) {
     p.innerHTML = '';
     var data = await get_pricing_history(id);
     var data_limit = await get_wrap_pricing_history(id);
+    var place = document.getElementById('wrap_pricing');
+    var bt = document.getElementById('save_wrap_pricing');
+    place.innerHTML = '';
+
+    var data_pricing = await pricing_get_all();
+    if (data_pricing) {
+        place.innerHTML +=`<option selected value="0">Open this select menu</option>`
+        data_pricing.forEach(item => {
+            place.innerHTML += `
+            <option value="${item.id}">${item.name}</option>`
+        });
+        bt.innerHTML =`<button type="button"
+                    class="btn btn-primary" onclick="save_pricing_(${id})" data-dismiss="modal">Mua</button>`
+    }
     
     if(data_limit) {
         data_limit.forEach(f =>{
@@ -523,6 +537,52 @@ async function paginate(each_page){
         page.innerHTML ="";
         return;
     }
+}
+
+// get data list pricing
+async function pricing_get_all() {
+    return await fetch(`/api/pricing` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+
+// save wrap_pricing 
+async function save_pricing_(id){
+    var pricing_id = document.getElementById("wrap_pricing").value;
+    if(Number(pricing_id) === 0){
+        alert("Hãy chọn gói mà bạn muốn mua");
+        return;
+    }
+    var user_id = id;
+    var pricing_active = 1; 
+    var data = { user_id: user_id, pricing_id: pricing_id, pricing_active: pricing_active};
+    var url = `/api/pricing_insert_wrap`;
+    var meth = 'POST';
+
+    var rs = await fetch(url, {
+        method: meth, // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data != undefined) {
+                return data || {};
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        get_user_limit()
+        init_users(cr_page,user_number_page);
 }
 
 // Open modal manager Logo
