@@ -28,7 +28,7 @@
                     <a class="nav-link active title-nav" aria-current="page" href="/">Thông báo</a>
                     <a class="nav-link active title-nav" aria-current="page" href="/home/getcontent">Lấy nội dung</a>
                 </div>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="main_menu_nav">
                     <ul class="navbar-nav mr-auto">
                       <li class="nav-item dropdown">
                         <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,6 +51,24 @@
         <div class="col-12">
             <div class="container">
                 <div class="col-12 pt-5 pb-2">
+                    <div class="w-100 d-flex">
+                        <div class="form-group w-25">
+                            <label for="from_date">Từ ngày</label>
+                            <input type="date" class="form-control" name="from_date" id="from_date"
+                                aria-describedby="from_date" placeholder="yyyy-MM-dd">
+                            <!-- <small id="from_date" class="form-text text-muted">Chọn ngày</small> -->
+                        </div>
+                        <div class="form-group w-25 pd_l_15">
+                            <label for="to_date">Đến ngày</label>
+                            <input type="date" class="form-control" name="to_date" id="to_date" aria-describedby="to_date"
+                                placeholder="yyyy-MM-dd">
+                            <!-- <small id="to_date" class="form-text text-muted">Chọn ngày</small> -->
+                        </div>
+                        <div style="padding-top:32px ;" class="form-group w-25 pd_l_15">
+                            <button class="btn btn-primary" data-toggle="modal" onclick="init_topup_all()"
+                            data-target="#detailId">search</button>
+                        </div>
+                    </div>
                     <h5>Danh sách phiếu nạp</h5>
                 </div>
                 <div class="col-12">

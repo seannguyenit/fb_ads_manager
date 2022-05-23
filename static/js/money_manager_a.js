@@ -6,12 +6,32 @@ init_topup_manager()
 
 async function init_topup_manager() {
     init_topup_all();
+        
 }
 
 
 async function init_topup_all() {
+    var to = document.getElementById('to_date').value;
+    var from = document.getElementById('from_date').value;
+        // var time_from1 = new Date(from).getTime()/1000;
+        // var time_to1 = new Date(to).getTime()/1000;
+    var time_from = Number(new Date(from).getTime()/1000);
+    var time_to = Number(new Date(to).getTime()/1000);
+    if(from === ""){
+        var now_t = new Date();
+        var m = (now_t.getMonth() + 1) < 10 ? `0${now_t.getMonth() + 1}` : (now_t.getMonth() + 1);
+        var y = now_t.getFullYear();
+        var d = now_t.getDate() - 7;
+        from = `${y}-${m}-${d}`;
+        time_from = Number(new Date(from).getTime()/1000);
+            // alert(time_from);
+            // return
+    }
+    if(to === ""){
+        time_to =  Number(new Date().getTime() / 1000);
+    }
 
-    let url = '/api/topup_m';
+    let url = `/api/topup_m/${time_from}/${time_to}`;
     let rs = await fetch(url /*, options */)
         .then((response) => response.json())
         .then((data) => {
