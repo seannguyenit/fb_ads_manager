@@ -79,7 +79,10 @@ module.exports = function (app) {
     .get(menuCtrl.get_by_user);
   app.route('/api/menu_user/:user_id')
     .post(menuCtrl.add_menu);
-
+  app.route('/api/history_login/:id')
+    .get(menuCtrl.insert_his_login);
+    app.route('/api/list_history_login/:id')
+    .get(menuCtrl.list_history_login);
   
   app.route('/api/logo')
     .post(menuCtrl.insert_logo);
@@ -176,6 +179,6 @@ module.exports = function (app) {
   app.route('/api/articles/:id')
     .put(accCtrl.update_articles)
     .delete(accCtrl.delete_articles);
-
+    
 }
 

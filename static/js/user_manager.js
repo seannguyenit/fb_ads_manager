@@ -251,7 +251,7 @@ async function open_modal(params) {
         $('#real_name').val('');
         $('#phone').val('');
         $('#add').val('');
-        $('#created_at').val('');
+        $('#created_at').val("to day");
 
     }
     $('#user_details').modal('show');
@@ -305,6 +305,7 @@ async function save_() {
     var real_name = $("#real_name").val()
     var phone = $("#phone").val()
     var add = $("#add").val()
+    var created_at = new Date();
     var rs_check = await check_username();
     if (!rs_check) {
         alert('email bị trùng !')
@@ -319,7 +320,7 @@ async function save_() {
         meth = 'PUT';
         url = `/api/accounts/${id}`;
     }
-    var data = { username: username, pass: pass, real_name: real_name, phone: phone, add: add };
+    var data = { username: username, pass: pass, real_name: real_name, phone: phone, add: add ,created_at:created_at};
 
     let rs = await acc_save(url, data, meth);
     //add_menu_user
@@ -328,7 +329,8 @@ async function save_() {
 
     // console.log('Success:', rs);
     // load_user();
-    init_users();
+    get_user_limit()
+    init_users(cr_page,user_number_page);
 };
 
 /// input search name 

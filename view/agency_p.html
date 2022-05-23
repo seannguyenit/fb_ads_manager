@@ -16,9 +16,27 @@
 
 <body class="body-bg-custom">
     <!-- Top Bar -->
+    <div class="header">
+        <div class="d-flex">
+            <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/page_box"><img src="../img/logo.jpg"
+                        alt=""></a></div>
+            <div style="padding-top:15px ;" class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;"
+                        width="50px" height="50px" src="../img/avatar_user.png" alt=""></a></div>
+            <div style="padding-top:25px" class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    nGÔN NGỮ
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">ENGLISH</a>
+                    <a class="dropdown-item" href="#">VIỆT NAM</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
-            <a class="navbar-brand com-name" href="#">FB ads support</a>
+            <!-- <a class="navbar-brand com-name" href="#">FB ads support</a> -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                 aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,13 +54,14 @@
             </div>
         </div>
     </nav>
+
     <section>
         <div class="col-12">
-            
+
             <div class="container">
-                <div class="pricing_benefit float_right d-flex flex-column" style="height:100px">
-                    <button onclick="open_modal()" class="btn btn-primary m-auto">Góp Ý</button>
-                </div>
+                <h3 style="padding-top: 50px;" class="pd_l_15"><i class=" pd_r_5 fa fa-users" aria-hidden="true"></i>Đại Lý</h3>
+                <hr />
+                <!-- <button onclick="open_modal()" class="btn btn-primary m-auto">Góp Ý</button> -->
                 <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -123,7 +142,7 @@
 
     <!-- modal  -->
 
-    <div class="modal fade" id="contacts_ticket" tabindex="-1" role="dialog" aria-labelledby="money_ticket" aria-hidden="true">
+    <!-- <div class="modal fade" id="contacts_ticket" tabindex="-1" role="dialog" aria-labelledby="money_ticket" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -136,7 +155,6 @@
                     <div class="col-md-12">
                         <label for="contacts" class="form-label">Ý Kiến :</label>
                         <textarea class="form-control" name="contacts" id="contacts" cols="60" rows="5" required></textarea>
-                        <!-- <input style="height:200px" type="text" class="form-control" id="money_withdraw" required> -->
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -145,7 +163,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>

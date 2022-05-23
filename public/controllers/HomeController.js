@@ -65,6 +65,12 @@ module.exports = {
     p_articles: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/p_articles.html'))
     },
+    p_facebook: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/p_facebook.html'))
+    },
+    action: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/action.html'))
+    },
 
     // get_partial: (req,res)=>{
     //     let action = [req.params.action];

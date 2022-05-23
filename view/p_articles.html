@@ -16,9 +16,28 @@
 
 <body class="body-bg-custom">
     <!-- Top Bar -->
+    <div class="header">
+        <div class="d-flex">
+            <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/page_box"><img src="../img/logo.jpg"
+                        alt=""></a></div>
+            <div style="padding-top:15px ;" class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;"
+                        width="50px" height="50px" src="../img/avatar_user.png" alt=""></a></div>
+            <div style="padding-top:25px" class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   nGÔN NGỮ
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">ENGLISH</a>
+                    <a class="dropdown-item" href="#">VIỆT NAM</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
     <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
-            <a class="navbar-brand com-name" href="#">FB ads support</a>
+            <!-- <a class="navbar-brand com-name" href="#">FB ads support</a> -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                 aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -41,26 +60,29 @@
         <div class="col-12">
             <div class="container">
                 <div class="col-md-12 d-flex flex-wrap mt-5 mb-5">
-                    <div class="col-12" >
-                        <h2>THÔNG BÁO !!</h2>
+                    <div class="col-12">
+                        <h3 class="float_left"><i class="pd_r_5 fa fa-bell-o" aria-hidden="true"></i>
+                            THÔNG BÁO !!</h3>
+                        <button onclick="open_modal()" class="btn float_right btn-primary m-auto">Góp Ý</button>
                     </div>
                     <div id="table_data">
-                            <div class="box" >
-                               <div  class="box-content">
+                        <div class="box">
+                            <div class="box-content">
                                 <div class="box-left">
-                                    <img style="border-radius: 50%;" width="50px" height="50px" src="../img/avatar.png" alt="">
+                                    <img style="border-radius: 50%;" width="50px" height="50px" src="../img/avatar.png"
+                                        alt="">
                                 </div>
                                 <div class="box-right">
-                                    <span style="font-weight:bolder">Quản Trị viên</span> 
+                                    <span style="font-weight:bolder">Quản Trị viên</span>
                                     <p>thời gian</p>
                                 </div>
-                               </div> 
-                               <div>
+                            </div>
+                            <div>
                                 <h5>Lorem</h5>
                                 <p>Lorem i</p>
-                                </div>
                             </div>
-                    </div>        
+                        </div>
+                    </div>
                     <!-- <div class="col-12" id="current_bonus">
                         <h2> Bonus </h2>
                     </div> -->
@@ -86,60 +108,33 @@
             </div>
         </div>
     </section>
-    <!-- <section>
-        <div class="col-12">
-            <div class="container">
-                <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5 mb-5">
-                    <table class="table table-dark">
-                        <caption>lịch sử giao dịch gần đây</caption>
-                        <thead>
-                            <tr>
-                                <th>Stt</th>
-                                <th>Số tiền nạp (VND)</th>
-                                <th>Thời gian</th> -->
-                                <!-- <th>Mã ck</th> -->
-                                <!-- <th>Trạng thái</th>
-                                <th>Số tiền rút (VND)</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tb_money_his">
+    <!-- modal  -->
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    
-    <!-- Modal -->
-    <!-- <div id="ticket_money">
-
-    </div> -->
-    <!-- <div class="modal fade" id="money_ticket" tabindex="-1" role="dialog" aria-labelledby="money_ticket" aria-hidden="true">
+    <div class="modal fade" id="contacts_ticket" tabindex="-1" role="dialog" aria-labelledby="money_ticket"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Phiếu rút Tiền</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <h5 class="modal-title">Contacts</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body d-flex">
                     <div class="col-md-12">
-                        <label for="des" class="form-label">Mã chuyển khoản</label>
-                        <input disabled type="text" class="form-control" id="des" required>
-                        <label for="" class="form-label">Nhập Tiền</label>
-                        <input  type="number" value="0" class="form-control" id="money_withdraw" required>
+                        <label for="contacts" class="form-label">Ý Kiến :</label>
+                        <textarea class="form-control" name="contacts" id="contacts" cols="60" rows="5"
+                            required></textarea>
+                        <!-- <input style="height:200px" type="text" class="form-control" id="money_withdraw" required> -->
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button onclick="save_ticket2()" type="button" class="btn btn-primary">Save</button>
+                    <button onclick="save_ticket()" type="button" class="btn btn-primary">Save</button>
                 </div>
             </div>
         </div>
-    </div> -->
-
+    </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
     <script src="../js/helper_manager.js"></script>
@@ -156,7 +151,7 @@
         crossorigin="anonymous"></script>
 
     <script>
-       let main_table = document.getElementById('table_data');
+        let main_table = document.getElementById('table_data');
         init_articles();        
     </script>
 </body>

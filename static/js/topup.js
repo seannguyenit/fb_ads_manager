@@ -1,6 +1,7 @@
 'use strict'
 
 init_top_up();
+init_money();
 
 ///api/money_ticket
 
@@ -106,4 +107,30 @@ async function ticket_save_(data) {
         .catch(error => {
             console.error('Error:', error);
         });
+}
+
+async function get_current_finance() {
+    var cr_u = get_cr_user();
+    return await fetch(`/api/finance/${cr_u.id}` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data[0];
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+function init_money() {
+            get_current_finance().then(rs => {
+                var cr = document.getElementById('cr_money_');
+                // let cr_money = get_format_VND(rs.money);
+                // <input type="hidden" value="${cr_money}" id="current_money">
+                // <a style="color:white">${money_bonus}</a>
+                // let money_bonus = '(Bonus : ' + get_format_VND(rs.bonus)  + ' VNĐ)'
+                // <a style="color:white" href="/home/user_info">${user_info}</a>
+                let user_info = rs.username + ' ( ' + get_format_VND(rs.money) + ' VNĐ )';
+                cr.innerHTML = `
+                ${user_info}`;
+            })
 }

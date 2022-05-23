@@ -85,6 +85,7 @@
     <script src="../js/login.js"></script>
     <script src="../js/authen_fuction.js"></script>
     <script>
+        
         //ensure logout
         if (check_is_login()) {
             acc_logout();
@@ -98,16 +99,20 @@
             let rs = await acc_login(user, pass);
             if (rs.ok == 1) {
                 var cr_u = rs.data;
+                var cr_id = rs.data.id;
+                await history_login(cr_id);
                 await set_cr_user(cr_u);
                 var lst_menu = await menu_get_current_menu();
                 if (lst_menu) {
                     if (cr_u.is_admin) {
-                        location.href = `/home/${lst_menu[lst_menu.length-1].action}`;
-                    }else{
+                        location.href = `/home/${lst_menu[lst_menu.length - 1].action}`;
+                    } else {
                         location.href = `/home/${lst_menu[0].action}`;
                     }
                 } else {
+                    history_login();
                     location.href = '/home/page_box';
+                    
                 }
             } else {
                 alert('Thông tin đăng nhập không chính xác !');

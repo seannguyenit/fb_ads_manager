@@ -87,7 +87,8 @@ async function save_articles() {
     var name = $("#name").val()
     var headline = $("#headline").val()
     var content = $("#content").val()
-
+    // alert(content);
+    // return;
     var url = `/api/articles`;
     var meth = 'POST';
     // const formData = new FormData();

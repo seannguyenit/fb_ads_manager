@@ -45,8 +45,12 @@ module.exports = function (app) {
     .get(homeCtrl.money_report);
   app.route('/home/m_articles')
     .get(homeCtrl.manager_articles);
-    app.route('/home/p_articles')
+  app.route('/home/p_articles')
     .get(homeCtrl.p_articles);
+  app.route('/home/p_facebook')
+    .get(homeCtrl.p_facebook);
+  app.route('/home/action')
+    .get(homeCtrl.action);
 ////////////
   app.route('/home/a_manager')
     .get(homeCtrl.agency_manager);
@@ -64,4 +68,5 @@ module.exports = function (app) {
     .get(homeCtrl.reg_suc);
   app.route('/recovery/success')
     .get(homeCtrl.rec_success);
+    
 };

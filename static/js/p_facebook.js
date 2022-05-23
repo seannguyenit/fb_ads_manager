@@ -5,11 +5,11 @@ const r_url = "/proxy/";
 
 
 
-init_pricing_history();
-init_user();
-// show_pricing()
+// init_pricing_history();
+// init_user();
+show_pricing()
 
-// load_token();
+load_token();
 
 async function add_token() {
     var token = document.getElementById('token_fb').value;
@@ -192,17 +192,17 @@ async function init_user() {
     at.innerHTML = "";
     get_current_finance().then(rs => {
         var cr = document.getElementById('money_cr');
-        cr.innerHTML = `  <label class="control-label text-uppercase" >Số Dư :</label>
-        <span style="padding-left: 11vmax;" >${ get_format_VND(rs.money)} VNĐ</span>`;
+        cr.innerHTML = `  <label class="control-label text-uppercase" >Số Dư</label>
+        <span style="padding-left: 8vmax;" >${ get_format_VND(rs.money)} Xu</span>`;
     })
     if(dt){
             user.innerHTML =`
-                <div  class="control-label text-uppercase">Email :</div>
-                <div style="padding-left: 11vmax;">${dt.username}</div>
+                <div  class="control-label text-uppercase">Email</div>
+                <div style="padding-left: 8vmax;">${dt.username}</div>
             `;
             at.innerHTML = `
-            <div class="control-label text-uppercase">Ngày Tạo :</div>
-            <div  style="padding-left: 9vmax;">${format_time(dt.created_at)}</div>
+            <div class="control-label text-uppercase">Ngày Tạo</div>
+            <div  style="padding-left: 8vmax;">${format_time(dt.created_at)}</div>
             `;
         }
 
@@ -269,26 +269,48 @@ async function acc_get_detail() {
 async function show_pricing(){
     var cr_u = get_cr_user();
     var data_limit = await get_wrap_pricing_history(cr_u.id);
-    var rs = acc_get_detail();
+    var rs = await acc_get_detail();
     var p = document.getElementById("r_pricing");
+    var d = document.getElementById("limit_đate");
     p.innerHTML = '';
+    d.innerHTML = '';
     if(rs){
-        alert(rs.limit_time);
-        return;
+        if(rs.limit_time){
+            d.innerHTML = ` <label class="control-label text-uppercase" >Hạn ngày :</label>
+            <span style="padding-left: 8vmax;" >${format_time(rs.limit_time)}</span>`
+        }else{
+            d.innerHTML = ` <label class="control-label text-uppercase" >Hạn ngày :</label>
+            <span style="padding-left: 8vmax;" >Hết Hạn</span>`
+        }
     }
     if(data_limit) {
         data_limit.forEach(f =>{
             p.innerHTML = `<div class="d-flex flex-row mb-3"  id="" >
-            <label  class="control-label text-uppercase">Tên gói</label>
-            <span style="padding-left: 8vmax;">${f.name} (${f.limit_day} Ngày)</span>
+            <label  class="control-label text-uppercase">Tên gói :</label>
+            <span style="padding-left: 9.5vmax;">${f.name} (${f.limit_day} Ngày)</span>
         </div>
         <div class="d-flex flex-row mb-3" id="">
-            <label class="control-label text-uppercase">Quyền lợi</label>
+            <label class="control-label text-uppercase">Quyền lợi :</label>
             <span  style="padding-left: 8vmax;">${f.limit_request} Request/Ngày</span>
         </div>
         <div class="d-flex flex-row mb-3" id="">
-            <label class="control-label text-uppercase" >Ngày mua</label>
+            <label class="control-label text-uppercase" >Ngày mua :</label>
             <span style="padding-left: 8vmax;" >${format_time(f.created_at)}</span>
+        </div>`
+        });
+    } else if (data_limit === null) {
+        data_limit.forEach(f =>{
+            p.innerHTML = `<div class="d-flex flex-row mb-3"  id="" >
+            <label  class="control-label text-uppercase">Tên gói</label>
+            <span style="padding-left: 8vmax;">Null</span>
+        </div>
+        <div class="d-flex flex-row mb-3" id="">
+            <label class="control-label text-uppercase">Quyền lợi</label>
+            <span  style="padding-left: 8vmax;">Null</span>
+        </div>
+        <div class="d-flex flex-row mb-3" id="">
+            <label class="control-label text-uppercase" >Ngày mua</label>
+            <span style="padding-left: 8vmax;" >Null</span>
         </div>`
         });
     }

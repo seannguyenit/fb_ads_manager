@@ -15,9 +15,27 @@
 
 <body class="body-bg-custom custom_scroll">
     <!-- Top Bar -->
+    <div class="header">
+        <div class="d-flex">
+            <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/page_box"><img src="../img/logo.jpg"
+                        alt=""></a></div>
+            <div style="padding-top:15px ;" class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;"
+                        width="50px" height="50px" src="../img/avatar_user.png" alt=""></a></div>
+            <div style="padding-top:25px" class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    nGÔN NGỮ
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">ENGLISH</a>
+                    <a class="dropdown-item" href="#">VIỆT NAM</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
-            <a class="navbar-brand com-name" href="#">FB ads support</a>
+            <!-- <a class="navbar-brand com-name" href="#">FB ads support</a> -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                 aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -156,14 +174,16 @@
                                     <legend class="w-auto">Hẹn Lịch</legend>
                                     <div style="width: 90%;" class="m-auto d-flex justify-content-between">
                                         <div style="width: 90%;">
-                                            <input style="width: 90%;" type="datetime-local" id="schedule_time" name="schedule_time"
-                                                disabled value="2018-06-12T19:30">
+                                            <input style="width: 90%;" type="datetime-local" id="schedule_time"
+                                                name="schedule_time" disabled value="2018-06-12T19:30">
                                         </div>
                                         <div style="width: 90%;">
                                             <div class="custom-control custom-switch" style="zoom: 1.2;">
-                                                <input style="width: 90%;" type="checkbox" onchange="change_check_schedule()"
-                                                    class="custom-control-input" id="is_schedule">
-                                                <label class="custom-control-label" style="width: 50px;" for="is_schedule"></label>
+                                                <input style="width: 90%;" type="checkbox"
+                                                    onchange="change_check_schedule()" class="custom-control-input"
+                                                    id="is_schedule">
+                                                <label class="custom-control-label" style="width: 50px;"
+                                                    for="is_schedule"></label>
                                             </div>
                                         </div>
                                     </div>

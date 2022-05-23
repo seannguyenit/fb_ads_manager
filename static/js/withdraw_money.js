@@ -25,7 +25,7 @@ function show_money_bonus() {
     get_current_finance().then(rs => {
         var cr = document.getElementById('current_bonus');
         let money_bonus = 'Bonus Money : ' + get_format_VND(rs.bonus)  + ' VNĐ';
-        cr.innerHTML = `<p>${money_bonus}</p>`;
+        cr.innerHTML = `${money_bonus}`;
     })
 }
 

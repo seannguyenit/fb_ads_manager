@@ -19,3 +19,14 @@ async function acc_login(user, pass) {
         });
 }
 
+async function history_login(id) {
+    return await fetch(`/api/history_login/${id}` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}

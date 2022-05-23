@@ -82,4 +82,20 @@ module.exports = {
             res.json({ message: 'insert success!' })
         })
     },
+    insert_his_login: (req, res) => {
+       var time = new Date().getTime() / 1000;
+        let sql = 'insert into history_login set user_id = ? , time = ?;'
+        db.query(sql, [req.params.id,time], (err, response) => {
+            if (err) throw err
+            res.json({ message: 'insert success!' })
+        })
+    }, 
+    list_history_login: (req, res) => {
+        var time = new Date().getTime() / 1000;
+         let sql = 'SELECT PH.*,P.username AS username FROM `history_login` AS PH left join user as P on PH.user_id = P.id where PH.user_id = ? order by `time` desc limit 20;'
+         db.query(sql, [req.params.id], (err, response) => {
+             if (err) throw err
+             res.json(response)
+         })
+     },
 }
