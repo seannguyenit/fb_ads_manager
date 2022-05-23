@@ -1,5 +1,6 @@
 'use strict'
 init_menu();
+// history_login()
 /* menu */
 async function menu_get_template() {
     return await fetch(`/api/menu` /*, options */)
@@ -36,19 +37,29 @@ async function init_menu() {
         if(!cr_url.includes('user_info') && lst_menu.filter(f=>{ return cr_url.includes(f.action)}).length == 0) {
             location.href = '/login'
         }
-        lst_menu.forEach(item => {
-            if(item.type === 0){
-                menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>`;
+        if(menu === null){
+            lst_menu.forEach(item => {
+                if(item.type === 0){
+                    menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>`;
+                }
+            });
+        }else{
+            lst_menu.forEach(item => {
+                if(item.type === 0){
+                    menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>`;
+                }
+                
+                if(item.type === 1){
+                    menu_.innerHTML += `
+                        <a style="background-color: #2E9AFE;" class="nav-link dropdown-item active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>
+                    `;
+                //     // <a class="dropdown-item" href="#">Action</a>
+                }
+                // menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>`;
             }
-            if(item.type === 1){
-                menu_.innerHTML += `
-                    <a style="background-color: #2E9AFE;" class="nav-link dropdown-item active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>
-                `;
-            //     // <a class="dropdown-item" href="#">Action</a>
-            }
-            // menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>`;
+            );
         }
-        );
+        
     }
 }
 
@@ -68,3 +79,16 @@ async function add_menu_user(data, user_id) {
             console.log('Error:', error);
         });
 }
+
+// async function history_login(){
+//     var cr_user = get_cr_user();
+//     return await fetch(`/api/history_login/${cr_user.id}` /*, options */)
+//         .then((response) => response.json())
+//         .then((data) => {
+//             return data;
+//         })
+//         .catch((error) => { 
+//             console.warn(error);
+//             return undefined;
+//         });
+// }
