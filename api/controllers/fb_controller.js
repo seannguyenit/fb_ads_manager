@@ -7,12 +7,19 @@ const rq_sv = require('./request_controller');
 var formidable = require('formidable');
 const fs = require('fs');
 const FormData = require('form-data');
+const axios = require('axios');
 
 module.exports = {
     get_fb_api: function (req, res) {
         // const response = await fetch(req.params.url)
         //console.log(response)
         //res.json(response)
+    },
+    get_url: (req, res) => {
+        var url = req.body.url;
+        axios.get(url).then((r) => {
+            res.json({ result: r.data });
+        });
     },
     post_video: function (req, res) {
         var form = new formidable.IncomingForm();

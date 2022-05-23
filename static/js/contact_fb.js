@@ -10,7 +10,7 @@ var cr_video2;
 var cr_time = new Date().getTime();
 
 const r_url = "/proxy/";
-const r_url2 = `https://arthurtech.xyz/`;
+const r_url2 = "/api/fproxy";
 // const r_url = `${window.location.protocol}//${window.location.hostname}/proxy/`;
 
 
@@ -35,38 +35,47 @@ check_service();
 
 async function acc_get_detail() {
     var cr_u = get_cr_user();
-   return await fetch(`/api/accounts/${cr_u.id}` /*, options */)
-       .then((response) => response.json())
-       .then((data) => {
-           if (data != undefined) {
-               return data || {};
-           }
-       })
-       .catch((error) => {
-           console.warn(error);
-       });
+    return await fetch(`/api/accounts/${cr_u.id}` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data != undefined) {
+                return data || {};
+            }
+        })
+        .catch((error) => {
+            console.warn(error);
+        });
 }
 
-async function check_service(){
-   var dt = await acc_get_detail();
-   if(dt){
-    var today = new Date().getTime();
-    var  date = new Date(dt.limit_time).getTime();
-         if(dt.limit_time === null){
+async function check_service() {
+    var dt = await acc_get_detail();
+    if (dt) {
+        var today = new Date().getTime();
+        var date = new Date(dt.limit_time).getTime();
+        if (dt.limit_time === null) {
             alert("Mua gói dịch vụ để sử dụng !");
             window.location.href = 'pricing';
-         }else if(date <= today){
+        } else if (date <= today) {
             alert("Gói dịch vụ đã hết hạn !");
             window.location.href = 'pricing';
-         }
-       }
+        }
+    }
 }
 
 
 async function get_user_info(token) {
-    var url = `${r_url}https://graph.facebook.com/v13.0/me?access_token=${token}`;
-    return await fetch(url)
-        .then((response) => response.json())
+    var url = `https://graph.facebook.com/v13.0/me?access_token=${token}`;
+
+    return await fetch(
+        r_url2,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url })
+        }
+    ).then((response) => response.json())
         .then((data) => {
             return data;
         })
@@ -79,8 +88,17 @@ async function get_user_info(token) {
 //fetch("https://graph.facebook.com/v13.0/150960240509430/accounts?limit=2&access_token=EAAPO8P5BZCqsBAHwGbcnj1btjqe6UAMfqbO6XZBLoRj2cVvVU6kVcVCZADrjJgaj3myI9ZCAqJAWCzwo1qQXfSYo6KVGWNCCTPCfZB0qzakZCYt5p8lLOrZC4Bg8DiLb3mU0YnsADKwZBci8ZBGFz8QQ1gnNwIQq3hQmwiUUko7Gcxa9eNp1WbAwSmZAGVn7521RV6KRRmnKx8fQZDZD")
 
 async function get_list_page(token, id) {
-    var url = `${r_url}https://graph.facebook.com/v13.0/${id}/accounts?limit=2000&access_token=${token}`;
-    return await fetch(url)
+    var url = `https://graph.facebook.com/v13.0/${id}/accounts?limit=2000&access_token=${token}`;
+    return await fetch(
+        r_url2,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url })
+        }
+    )
         .then((response) => response.json())
         .then((data) => {
             return data.data;
@@ -635,10 +653,7 @@ async function post_step3(op) {
     if ($('#is_schedule').is(':checked') == true) {
         var timesta = Math.floor((new Date(document.getElementById('schedule_time').value)).getTime() / 1000);
         console.log(timesta);
-        data = { "access_token": token, "scheduled_publish_time": Number(timesta) }
-        if(video1||video2){
-            await waitingForNext(5000);
-        }
+        data = { "access_token": token, "published": true, "scheduled_publish_time": Number(timesta) }
     }
     var url = `${r_url2}https://graph.facebook.com/v13.0/${op}`;
     return await fetch(url, {

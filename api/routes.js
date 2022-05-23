@@ -6,6 +6,8 @@ module.exports = function (app) {
   let fbCtrl = require('./controllers/fb_controller');
   let moneyCtrl = require('./controllers/money_controller');
 
+
+
   app.route('/api/login')
     .post(accCtrl.login);
   app.route('/api/logout')
@@ -25,7 +27,7 @@ module.exports = function (app) {
     .put(accCtrl.get_byname)
     .get(accCtrl.get_byname);
 
-    app.route('/api/Accounts_history/:id')
+  app.route('/api/Accounts_history/:id')
     .put(accCtrl.update_history);
 
   app.route('/api/reg_acc')
@@ -46,7 +48,7 @@ module.exports = function (app) {
     .put(accCtrl.update)
     .delete(accCtrl.delete);
 
-    app.route('/api/agency_allmoney/:from/:to')
+  app.route('/api/agency_allmoney/:from/:to')
     .get(accCtrl.get_all_money);
   app.route('/api/agency')
     .get(accCtrl.get_all_agency)
@@ -80,19 +82,19 @@ module.exports = function (app) {
   app.route('/api/menu_user/:user_id')
     .post(menuCtrl.add_menu);
 
-  
+
   app.route('/api/logo')
     .post(menuCtrl.insert_logo);
   app.route('/api/menu_logo')
     .get(menuCtrl.get_logo);
-    app.route('/api/menu_logo/:id')
+  app.route('/api/menu_logo/:id')
     .put(menuCtrl.del_logo);
   app.route('/api/menu_logo/:id/:type')
     .get(menuCtrl.edit_type_logo);
 
   app.route('/api/pricing_public/:user_id')
     .get(pricingCtrl.pricing_histories);
-    app.route('/api/wrap_pricing_public/:user_id')
+  app.route('/api/wrap_pricing_public/:user_id')
     .get(pricingCtrl.wrap_pricing_histories);
 
   app.route('/api/pricing_public')
@@ -118,7 +120,7 @@ module.exports = function (app) {
     .get(accCtrl.user_check_existed);
   app.route('/api/check_user/:username')
     .get(accCtrl.user_check);
-    app.route('/api/update_user/:username')
+  app.route('/api/update_user/:username')
     .get(accCtrl.recovery);
 
   app.route('/api/start_request')
@@ -126,6 +128,8 @@ module.exports = function (app) {
   app.route('/api/end_request/:time')
     .post(accCtrl.end_request);
 
+  app.route('/api/fproxy')
+    .post(fbCtrl.get_url);
   app.route('/api/fb/:url*')
     .get(fbCtrl.get_fb_api);
   app.route('/api/fb/video')
@@ -139,21 +143,21 @@ module.exports = function (app) {
 
   app.route('/api/money_ticket')
     .post(moneyCtrl.add_money);
-    // .get(moneyCtrl.add_money);
+  // .get(moneyCtrl.add_money);
   app.route('/api/money_history/:user_id')
     .get(moneyCtrl.get_history);
   app.route('/api/money_topup/:user_id')
     .get(moneyCtrl.get_list_top_up);
-    app.route('/api/money_history_topup/:user_id')
+  app.route('/api/money_history_topup/:user_id')
     .get(moneyCtrl.get_list_money_history_limit);
 
   app.route('/api/topup_m')
     .get(moneyCtrl.get_list_reg);
-    app.route('/api/topup_m2')
+  app.route('/api/topup_m2')
     .get(moneyCtrl.get_list_reg2);
   app.route('/api/topup_m/:id/:money/:is_agency')
     .put(moneyCtrl.approve_topup);
-    app.route('/api/topup2_m/:id/:money')
+  app.route('/api/topup2_m/:id/:money')
     .put(moneyCtrl.approve2_topup);
   app.route('/api/topup_m/cancel/:id')
     .post(moneyCtrl.cancel_topup);
