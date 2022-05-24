@@ -1,6 +1,15 @@
 body{
     background-color:#000;
-    color: #ffffff
+    color: #ffffff;
+    /* font-family: cursive; */
+}
+#user::before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f2f6";
+}
+.body{
+    font-family: "Times New Roman", Times, serif;
 }
 .blue-color-bg{
     background-color:#32A1CC
@@ -10,6 +19,9 @@ body{
 }
 .pd_l_15{
     padding-left: 15px;
+}
+.pd_r_5{
+    padding-right: 5px;
 }
 .blue-color-text{
     color:#32A1CC
@@ -62,6 +74,7 @@ a:hover{
 
 .body-bg-custom{
     /* background-image: url(../img/Bokeh-on-Blue.jpg); */
+    font-family: "Times New Roman", Times, serif;
     position: absolute;
     width: 100%;
     /* height: 100%; */
@@ -362,17 +375,20 @@ textarea::placeholder,input::placeholder { /* Chrome, Firefox, Opera, Safari 10.
     /* margin-bottom: 30px; */
 }
 .box-left{
-    width: 5vw;
+    width: 100px;
+    padding-left: 20px;
+    /* margin-right: 2px; */
     /* border: 1px solid red; */
 }
 .box-right{
-    width: 60vw;
-    /* padding-right: 1vw; */
-    margin-left: 1vw;
+    width: 500px;
     /* border: 1px solid red; */
+    /* margin-left: -10vw; */
 }
 .box{
     width: 70vw;
     margin: 0px auto;
     /* border: 2px solid red; */
+    margin-top: 10px;
+    background-color: rgb(34, 31, 31);
 }

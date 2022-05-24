@@ -1,5 +1,5 @@
 'use strict'
-show_pricing()
+// show_pricing()
 init_default();
 
 async function init_default() {
@@ -11,7 +11,8 @@ async function init_default() {
             place_.innerHTML += ` <div class="col-md-4">
         <div class="pricing">
             <div class="pricing_title">
-                ${item.name}
+            <i class=" pd_r_5 fa fa-shopping-cart" aria-hidden="true"></i>
+            ${item.name}
             </div>
 
             <div class="pricing_benefit">

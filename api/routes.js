@@ -83,6 +83,11 @@ module.exports = function (app) {
     .post(menuCtrl.add_menu);
 
 
+  app.route('/api/history_login/:id')
+    .get(menuCtrl.insert_his_login);
+  app.route('/api/list_history_login/:id')
+    .get(menuCtrl.list_history_login);
+
   app.route('/api/logo')
     .post(menuCtrl.insert_logo);
   app.route('/api/menu_logo')

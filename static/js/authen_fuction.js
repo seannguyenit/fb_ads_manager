@@ -14,8 +14,9 @@ function init_authen() {
                 // <input type="hidden" value="${cr_money}" id="current_money">
                 // <a style="color:white">${money_bonus}</a>
                 // let money_bonus = '(Bonus : ' + get_format_VND(rs.bonus)  + ' VNĐ)'
+                // <a style="color:white" href="/home/user_info">${user_info}</a>
                 let user_info = rs.username + ' ( ' + get_format_VND(rs.money) + ' VNĐ )';
-                cr.innerHTML = `<a style="color:white" href="/home/user_info">${user_info}</a>
+                cr.innerHTML = `
                 <a class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuất)</a>`;
             })
         }

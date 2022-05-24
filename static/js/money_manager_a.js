@@ -8,9 +8,38 @@ async function init_topup_manager() {
     init_topup_all();
         
 }
+async function init_date(){
+    var to = document.getElementById('to_date').value;
+    var from = document.getElementById('from_date').value;
+    var date = document.getElementById('date_');
+    var time_from = from;
+    var time_to = to;
+    if(from === ""){
+        var now_t = new Date();
+        var m = (now_t.getMonth() + 1) < 10 ? `0${now_t.getMonth() + 1}` : (now_t.getMonth() + 1);
+        var y = now_t.getFullYear();
+        var d = now_t.getDate() - 7;
+        from = `${y}-${m}-${d}`;
+        time_from = from;
+            // alert(time_from);
+            // return
+    }
+    if(to === ""){
+        var now_t = new Date();
+        var m = (now_t.getMonth() + 1) < 10 ? `0${now_t.getMonth() + 1}` : (now_t.getMonth() + 1);
+        var y = now_t.getFullYear();
+        var d = now_t.getDate();
+        to = `${y}-${m}-${d}`;
+        time_to = to;
+    }
+    // alert(from);
+    // alert(time_to);
+     date.innerHTML = `<span>từ ${time_from} đến ${time_to}</span>`;
+}
 
 
 async function init_topup_all() {
+    init_date()
     var to = document.getElementById('to_date').value;
     var from = document.getElementById('from_date').value;
         // var time_from1 = new Date(from).getTime()/1000;
