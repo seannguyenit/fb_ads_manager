@@ -19,11 +19,11 @@ async function acc_get_all() {
 
 
 // cr_month
-function cr_month(){
+function cr_month() {
     let d = new Date();
-    let month = d.getMonth() + 1 ;
-   var cr = document.getElementById('month');
-   cr.innerHTML = "Tổng nạp tháng " + month;
+    let month = d.getMonth() + 1;
+    var cr = document.getElementById('month');
+    cr.innerHTML = "Tổng nạp tháng " + month;
 }
 
 async function acc_get_detail(id) {
@@ -44,14 +44,14 @@ async function acc_get_detail(id) {
 async function acc_get_byname(username) {
     // var cr_u = get_cr_user();
     return await fetch(`/api/accounts_search/${username}` /*, options */)
-    .then((response) => response.json())
-    .then((data) => {
-        return data[0];
-    })
-    .catch((error) => {
-        console.warn(error);
-        return undefined;
-    });
+        .then((response) => response.json())
+        .then((data) => {
+            return data[0];
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
 }
 
 // SHOW LIST DATA SEARCH
@@ -62,7 +62,7 @@ async function init_users_byname() {
     var dt = await acc_get_byname(name);
     if (dt) {
         dt.forEach(item => {
-                
+
             main_table.innerHTML += `
                 <tr>
                     <td>${dt.indexOf(item) + 1}</td>    
@@ -70,10 +70,10 @@ async function init_users_byname() {
                     <td>${get_format_VND(item.money)}</td> 
                     <td>${get_format_VND(item.bonus)}</td> 
                     <td>${get_format_VND(item.money_month)}</td>  
-                    <td>${item.real_name||''}</td>    
-                    <td>${item.phone||''}</td>    
-                    <td>${item.add||''}</td>
-                    <td>${format_time(item.limit_time)||''}</td>
+                    <td>${item.phone || ''}</td>    
+                    <td>${item.add || ''}</td>
+                    <td>${format_time(item.created_at) || ''}</td>  
+                    <td>${format_time(item.limit_time) || ''}</td>
                         <td>
                             ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], 'Gói DV')}
                             ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], 'LS Tiền')}
@@ -81,10 +81,10 @@ async function init_users_byname() {
                             ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], 'delete')}
                         </td>
                 </tr>`;
-                    });                
-            }else{
-                main_table.innerHTML = 'Không Tìm Thấy Tên Phù Hợp';
-            }
+        });
+    } else {
+        main_table.innerHTML = 'Không Tìm Thấy Tên Phù Hợp';
+    }
 }
 
 
@@ -113,15 +113,16 @@ async function update_history() {
     if (data) {
         data.forEach(item => {
             var today = new Date().getTime();
-            var  date = new Date(item.limit_time).getTime();
-            if( Number(date) != 0 && Number(date) < Number(today) ){
-                 id = item.id;
+            var date = new Date(item.limit_time).getTime();
+            if (Number(date) != 0 && Number(date) < Number(today)) {
+                id = item.id;
                 //  alert(id);
                 //  await history_update(item.id);
             }
         }
-    )};
-     await history_update(id);
+        )
+    };
+    await history_update(id);
     //  alert(id);
 }
 
@@ -251,7 +252,7 @@ async function open_modal(params) {
         $('#real_name').val('');
         $('#phone').val('');
         $('#add').val('');
-        $('#created_at').val("to day");
+        $('#created_at').val("hôm nay");
 
     }
     $('#user_details').modal('show');
@@ -283,7 +284,7 @@ async function save__() {
         meth = 'PUT';
         url = `/api/accounts/${id}`;
     }
-    var data = { username: username, pass: pass, real_name: real_name, phone: phone, add: add };
+    var data = { username: username, pass: pass, real_name: real_name, phone: phone, add: add, created_at: created_at };
 
     let rs = await acc_save(url, data, meth);
     //add_menu_user
@@ -291,7 +292,7 @@ async function save__() {
     // let rs_per = await add_menu_user(menu_sl, rs.id);
 
     get_user_limit()
-    init_users(cr_page,user_number_page);
+    init_users(cr_page, user_number_page);
     // init_users(cr_page,user_number_page);
 };
 async function save_() {
@@ -320,7 +321,7 @@ async function save_() {
         meth = 'PUT';
         url = `/api/accounts/${id}`;
     }
-    var data = { username: username, pass: pass, real_name: real_name, phone: phone, add: add ,created_at:created_at};
+    var data = { username: username, pass: pass, real_name: real_name, phone: phone, add: add, created_at: created_at };
 
     let rs = await acc_save(url, data, meth);
     //add_menu_user
@@ -330,12 +331,12 @@ async function save_() {
     // console.log('Success:', rs);
     // load_user();
     get_user_limit()
-    init_users(cr_page,user_number_page);
+    init_users(cr_page, user_number_page);
 };
 
 /// input search name 
 async function search_acc() {
-    
+
     var username = $('#username').val();
     if (username.length == 0) {
         // var username = $('#username').val();
@@ -353,7 +354,7 @@ async function del_acc(id) {
     }
     await acc_del(id);
     get_user_limit()
-    init_users(cr_page,user_number_page);
+    init_users(cr_page, user_number_page);
 }
 
 // show history pricing and name pricing
@@ -370,17 +371,17 @@ async function init_pricing_history(id) {
 
     var data_pricing = await pricing_get_all();
     if (data_pricing) {
-        place.innerHTML +=`<option selected value="0">Open this select menu</option>`
+        place.innerHTML += `<option selected value="0">Open this select menu</option>`
         data_pricing.forEach(item => {
             place.innerHTML += `
             <option value="${item.id}">${item.name}</option>`
         });
-        bt.innerHTML =`<button type="button"
+        bt.innerHTML = `<button type="button"
                     class="btn btn-primary" onclick="save_pricing_(${id})" data-dismiss="modal">Mua</button>`
     }
-    
-    if(data_limit) {
-        data_limit.forEach(f =>{
+
+    if (data_limit) {
+        data_limit.forEach(f => {
             p.innerHTML = `<h5 class="pd_l_15">Sử dụng : ${f.pricing_name} <h5>
             <span class="pd_l_15 font_size15">Lịch sử sẽ tự động xóa sau khi đã quá hạn</span>`
         });
@@ -441,53 +442,53 @@ async function get_user_limit() {
     let queryString = new URLSearchParams(paramString);
 
     for (let pair of queryString.entries()) {
-    var key_page = ("Key is: " + pair[0]);
-    var page = (pair[1]);
+        var key_page = ("Key is: " + pair[0]);
+        var page = (pair[1]);
     }
     var user_number_page = 10;
     var each_page = 0;
-    if(page != null){
-       each_page = page;
-    }else{
+    if (page != null) {
+        each_page = page;
+    } else {
         each_page = 1;
     }
     var cr_page = (each_page - 1) * user_number_page;
     await paginate(each_page);
-    await user_limit(cr_page,user_number_page);
-    await init_users(cr_page,user_number_page);
+    await user_limit(cr_page, user_number_page);
+    await init_users(cr_page, user_number_page);
 }
 
 // PUSH (user_number_page,cr_page) TO API 
-async function user_limit(cr_page,user_number_page){
+async function user_limit(cr_page, user_number_page) {
     return await fetch(`/api/accounts/${cr_page}/${user_number_page}`)
-    .then((response) => response.json())
-    .then((data) => {
-        return data[0];
-    })
-    .catch((error) => {
-        console.warn(error);
-        return undefined;
-    });
+        .then((response) => response.json())
+        .then((data) => {
+            return data[0];
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
 }
 
 
 // show Lits DATA all
-async function init_users(cr_page,user_number_page) {
+async function init_users(cr_page, user_number_page) {
     main_table.innerHTML = '';
-    var dt = await user_limit(cr_page,user_number_page);
+    var dt = await user_limit(cr_page, user_number_page);
     if (dt) {
         dt.forEach(item => {
-           var today = new Date().getTime();
-           var  date = new Date(item.limit_time).getTime();
-           
+            var today = new Date().getTime();
+            var date = new Date(item.limit_time).getTime();
+
             // date_number = date.getTime();
-            if(Number(date) > Number(today)){
-                var  limit_date = format_time(item.limit_time);
-            }else if( Number(date) != 0){
-                var  limit_date = format_time(item.limit_time) + "(hết hạn)";
+            if (Number(date) > Number(today)) {
+                var limit_date = format_time(item.limit_time);
+            } else if (Number(date) != 0) {
+                var limit_date = format_time(item.limit_time) + "(hết hạn)";
                 // await history_update(item.id);
-            }else{
-                var  limit_date = "";
+            } else {
+                var limit_date = "";
             }
             main_table.innerHTML += `
             <tr>
@@ -496,9 +497,9 @@ async function init_users(cr_page,user_number_page) {
                 <td>${get_format_VND(item.money)}</td> 
                 <td>${get_format_VND(item.bonus)}</td> 
                 <td>${get_format_VND(item.money_month)}</td>   
-                <td>${item.phone||''}</td>    
-                <td>${item.add||''}</td>
-                <td>${format_time(item.created_at)||''}</td>  
+                <td>${item.phone || ''}</td>    
+                <td>${item.add || ''}</td>
+                <td>${format_time(item.created_at) || ''}</td>  
                 <td>${limit_date}</td>
                 <td>
                     ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], 'Gói DV')}
@@ -514,29 +515,29 @@ async function init_users(cr_page,user_number_page) {
 }
 
 /// Cearte  Page Paginate
-async function paginate(each_page){
+async function paginate(each_page) {
     var name = document.getElementById('username').value;
     var user_some_list = await acc_get_all();
     var page = document.getElementById('paginate');
-    page.innerHTML ="";
-     
-    if (name.length == 0){
+    page.innerHTML = "";
+
+    if (name.length == 0) {
         // Create Redirect Back
         if (Number(each_page) > 1) {
-            page.innerHTML += `<a class="font_size24" href="/home/users?page=${Number(each_page) -1 }"> << back </a>`;
+            page.innerHTML += `<a class="font_size24" href="/home/users?page=${Number(each_page) - 1}"> << back </a>`;
         }
-        var user_count =  Object.keys(user_some_list).length;
+        var user_count = Object.keys(user_some_list).length;
         var user_page = Math.ceil(Number(user_count) / 10);
         //  Number mid 
-            page.innerHTML += `<span class="font_size24">  ${each_page}  </span>`;
+        page.innerHTML += `<span class="font_size24">  ${each_page}  </span>`;
 
         // Create Redirect Next
         if (Number(each_page) < Number(user_page)) {
-            page.innerHTML += `<a class="font_size24" href="/home/users?page=${1 + Number(each_page) }"> next >></a>`;
+            page.innerHTML += `<a class="font_size24" href="/home/users?page=${1 + Number(each_page)}"> next >></a>`;
         }
         return;
-    }else{
-        page.innerHTML ="";
+    } else {
+        page.innerHTML = "";
         return;
     }
 }
@@ -555,15 +556,15 @@ async function pricing_get_all() {
 }
 
 // save wrap_pricing 
-async function save_pricing_(id){
+async function save_pricing_(id) {
     var pricing_id = document.getElementById("wrap_pricing").value;
-    if(Number(pricing_id) === 0){
+    if (Number(pricing_id) === 0) {
         alert("Hãy chọn gói mà bạn muốn mua");
         return;
     }
     var user_id = id;
-    var pricing_active = 1; 
-    var data = { user_id: user_id, pricing_id: pricing_id, pricing_active: pricing_active};
+    var pricing_active = 1;
+    var data = { user_id: user_id, pricing_id: pricing_id, pricing_active: pricing_active };
     var url = `/api/pricing_insert_wrap`;
     var meth = 'POST';
 
@@ -583,11 +584,11 @@ async function save_pricing_(id){
         .catch(error => {
             console.error('Error:', error);
         });
-        get_user_limit()
-        init_users(cr_page,user_number_page);
+    get_user_limit()
+    init_users(cr_page, user_number_page);
 }
 
 // Open modal manager Logo
- function open_modal_logo(){
+function open_modal_logo() {
     window.location.href = 'm_logo'
- }
+}

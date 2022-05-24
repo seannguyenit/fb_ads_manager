@@ -1,4 +1,5 @@
-search_report_moneybytime();
+    search_report_moneybytime();
+
     async function get_all_money(time_from,time_to) {
         return await fetch(`/api/agency_allmoney/${time_from}/${time_to}` /*, options */)
             .then((response) => response.json())
@@ -10,8 +11,39 @@ search_report_moneybytime();
                 return undefined;
             });
     }
+
+    async function init_date(){
+        var to = document.getElementById('to_date').value;
+        var from = document.getElementById('from_date').value;
+        var date = document.getElementById('date_');
+        var time_from = from;
+        var time_to = to;
+        if(from === ""){
+            var now_t = new Date();
+            var m = (now_t.getMonth() + 1) < 10 ? `0${now_t.getMonth() + 1}` : (now_t.getMonth() + 1);
+            var y = now_t.getFullYear();
+            var d = now_t.getDate() - 7;
+            from = `${y}-${m}-1`;
+            time_from = from;
+                // alert(time_from);
+                // return
+        }
+        if(to === ""){
+            var now_t = new Date();
+            var m = (now_t.getMonth() + 1) < 10 ? `0${now_t.getMonth() + 1}` : (now_t.getMonth() + 1);
+            var y = now_t.getFullYear();
+            var d = now_t.getDate();
+            to = `${y}-${m}-${d}`;
+            time_to = to;
+        }
+        // alert(from);
+        // alert(time_to);
+         date.innerHTML = `<span>từ ${time_from} đến ${time_to}</span>`;
+    }
+    
    
     async function search_report_moneybytime() {
+        init_date()
         var to = document.getElementById('to_date').value;
         var from = document.getElementById('from_date').value;
         // var time_from1 = new Date(from).getTime()/1000;
