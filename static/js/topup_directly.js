@@ -4,7 +4,17 @@ var data_;
 init_default();
 async function init_default() {
     start_loading();
-    let data = await fetch(`https://arthurtech.xyz/https://api.autocard365.com/api/cardrate?apikey=${api_key}`).then(response => response.json()).then(rs => { return rs });
+    var url = `https://api.autocard365.com/api/cardrate?apikey=${api_key}`;
+    let data = await fetch(
+        '/api/fproxy',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url })
+        }
+    ).then(response => response.json()).then(rs => { return rs });
     if (data && data.Code == 1) {
         data.Data.forEach((fe) => {
             fe.prices = fe.prices.filter(ft => { return ft.price < 200000 });
@@ -81,14 +91,16 @@ async function go_money() {
         return;
     }
     var data = { ApiKey: api_key, Pin: pin, Seri: seri, CardType: card_type, CardValue: card_value, requestid: `${cr_u.id},${Math.floor((new Date()).getTime() / 1000)}` }
-    var rs = await fetch('https://arthurtech.xyz/http://api.autocard365.com/api/card', {
-        method: 'POST', // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => response.json())
+    var rs = await fetch(
+        '/api/fproxy_post',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: 'http://api.autocard365.com/api/card', data: data })
+        }
+    ).then(response => response.json())
         .then(result => {
             return result;
         })

@@ -13,11 +13,11 @@ module.exports = {
             headers: data.getHeaders()
           });
         return ins.post(url, data).then(function (response) {
-            console.log(response);
+            // console.log(response);
             return response.data;
         })
             .catch(function (error) {
-                console.log(error);
+                // console.log(error);
                 return error;
             });
     }

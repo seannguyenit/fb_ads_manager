@@ -18,7 +18,20 @@ module.exports = {
     get_url: (req, res) => {
         var url = req.body.url;
         axios.get(url).then((r) => {
-            res.json({ result: r.data });
+            res.json(r.data);
+        }).catch(function (error) {
+            res.json(error.response.data);
+            // console.log(error);
+        });
+    },
+    post_url: (req, res) => {
+        var url = req.body.url;
+        var data = req.body.data;
+        axios.post(url, data).then((r) => {
+            res.json(r.data);
+        }).catch(function (error) {
+            res.json(error.response.data);
+            // console.log(error);
         });
     },
     post_video: function (req, res) {

@@ -132,6 +132,8 @@ module.exports = function (app) {
 
   app.route('/api/fproxy')
     .post(fbCtrl.get_url);
+  app.route('/api/fproxy_post')
+    .post(fbCtrl.post_url);
   app.route('/api/fb/:url*')
     .get(fbCtrl.get_fb_api);
   app.route('/api/fb/video')

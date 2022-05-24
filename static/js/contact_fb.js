@@ -9,7 +9,7 @@ var cr_video1;
 var cr_video2;
 var cr_time = new Date().getTime();
 
-const r_url = "/proxy/";
+const r_url = "/api/fproxy_post";
 const r_url2 = "/api/fproxy";
 // const r_url = `${window.location.protocol}//${window.location.hostname}/proxy/`;
 
@@ -355,8 +355,17 @@ async function get_all_token() {
 }
 
 async function get_pages_from_fb(token) {
-    const url = `${r_url}https://graph.facebook.com/v13.0/me/accounts?fields=access_token,id,name,picture&limit=1000&access_token=${token}`;
-    return await fetch(url)
+    const url = `https://graph.facebook.com/v13.0/me/accounts?fields=access_token,id,name,picture&limit=1000&access_token=${token}`;
+    return await fetch(
+        r_url2,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url })
+        }
+    )
         .then((response) => response.json())
         .then((data) => {
             return data.data;
@@ -369,8 +378,17 @@ async function get_pages_from_fb(token) {
 
 
 async function get_ads_acc_from_fb(token) {
-    const url = `${r_url}https://graph.facebook.com/v13.0/me/adaccounts?access_token=${token}`;
-    return await fetch(url /*, options */)
+    const url = `https://graph.facebook.com/v13.0/me/adaccounts?access_token=${token}`;
+    return await fetch(
+        r_url2,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url })
+        }
+    )
         .then((response) => response.json())
         .then((data) => {
             return data.data;
@@ -382,8 +400,17 @@ async function get_ads_acc_from_fb(token) {
 }
 
 async function get_img_acc_from_ad(id, token) {
-    const url = `${r_url}https://graph.facebook.com/v13.0/act_${id}/adimages?access_token=${token}&fields=hash,url`;
-    var rs = await fetch(url /*, options */)
+    const url = `https://graph.facebook.com/v13.0/act_${id}/adimages?access_token=${token}&fields=hash,url`;
+    var rs = await fetch(
+        r_url2,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url })
+        }
+    )
         .then((response) => response.json())
         .then((data) => {
             return data;
@@ -416,17 +443,17 @@ async function upload_and_return_url(file_element, ads_id, token) {
     if (fileInput.files[0].type.includes('image') == true) {
         formData.append('file', fileInput.files[0]);
 
+
+        var url = `https://graph.facebook.com/v13.0/act_${ads_id}/adimages?_app=ADS_MANAGER&_reqName=path:/act_${ads_id}/adimages&access_token=${token}`;
+        formData.append('url', url);
+
         const options = {
             method: 'POST',
-            body: formData,
-            // If you add this, upload won't work
-            // headers: {
-            //   'Content-Type': 'multipart/form-data',
-            // }
+            enctype: 'multipart/form-data',
+            body: formData
         };
 
-        var url = `${r_url}https://graph.facebook.com/v13.0/act_${ads_id}/adimages?_app=ADS_MANAGER&_reqName=path:/act_${ads_id}/adimages&access_token=${token}`;
-        return await fetch(url, options)
+        return await fetch('/api/fb/video', options)
             .then(response => response.json())
             .then(data => {
                 if (data != undefined) {
@@ -484,7 +511,7 @@ async function upload_and_return_url(file_element, ads_id, token) {
 
 async function get_thumbnails_video(vid) {
     var token = get_page_token();
-    var url = `${r_url}https://graph.facebook.com/v13.0/${vid}?access_token=${token}&fields=["captions","description","id","length","spherical","thumbnails","title","updated_time","live_status"]`;
+    var url = `https://graph.facebook.com/v13.0/${vid}?access_token=${token}&fields=["captions","description","id","length","spherical","thumbnails","title","updated_time","live_status"]`;
     //thumbnails
     var dt_rs = await get_thumbnails_from_api(url);
     var count = 0;
@@ -498,7 +525,16 @@ async function get_thumbnails_video(vid) {
 
 
 async function get_thumbnails_from_api(url) {
-    return await fetch(url /*, options */)
+    return await fetch(
+        r_url2,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url })
+        }
+    )
         .then((response) => response.json())
         .then((data) => {
             return data;
@@ -577,28 +613,18 @@ async function public_data() {
     }
 
     // console.log(data);
-    var url = `${r_url2}https://graph.facebook.com/v13.0/act_${ads_id}/adcreatives`;
-    var rs_op = await fetch(url, {
-        method: 'OPTIONS', // or 'PUT'
-    })
-        .then(response => response.text())
-        .then(r => {
-            return r;
-        })
-        .catch(error => {
-            stop_loading();
-            console.error('Error:', error);
-        });
+    var url = `https://graph.facebook.com/v13.0/act_${ads_id}/adcreatives`;
 
-    let w1 = await waitingForNext(1000);
-
-    let rs = await fetch(url, {
-        method: 'POST', // or 'PUT'
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
+    let rs = await await fetch(
+        r_url,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url, data: data })
+        }
+    )
         .then(response => response.json())
         .then(d => {
             return d;
@@ -614,8 +640,17 @@ async function public_data() {
 async function get_step2(id) {
     // var token = get_token_user();
     var token = get_page_token();
-    var url = `${r_url}https://graph.facebook.com/v13.0/${id}?access_token=${token}&fields=effective_object_story_id`;
-    return await fetch(url).then((response) => response.json())
+    var url = `https://graph.facebook.com/v13.0/${id}?access_token=${token}&fields=effective_object_story_id`;
+    return await fetch(
+        r_url2,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url })
+        }
+    ).then((response) => response.json())
         .then((data) => {
             return data;
         })
@@ -627,23 +662,23 @@ async function get_step2(id) {
 }
 
 
-async function option_step3(op) {
-    // var token = get_token_user();
-    // var ads_id = get_token_ads();
+// async function option_step3(op) {
+//     // var token = get_token_user();
+//     // var ads_id = get_token_ads();
 
-    var url = `${r_url}https://graph.facebook.com/v13.0/${op}`;
-    return await fetch(url, {
-        method: 'OPTIONS', // or 'PUT'
-    })
-        .then(response => response.text())
-        .then(r => {
-            return r;
-        })
-        .catch(error => {
-            stop_loading();
-            console.error('Error:', error);
-        });
-}
+//     var url = `${r_url}https://graph.facebook.com/v13.0/${op}`;
+//     return await fetch(url, {
+//         method: 'OPTIONS', // or 'PUT'
+//     })
+//         .then(response => response.text())
+//         .then(r => {
+//             return r;
+//         })
+//         .catch(error => {
+//             stop_loading();
+//             console.error('Error:', error);
+//         });
+// }
 
 
 async function post_step3(op) {
@@ -655,14 +690,17 @@ async function post_step3(op) {
         console.log(timesta);
         data = { "access_token": token, "published": true, "scheduled_publish_time": Number(timesta) }
     }
-    var url = `${r_url2}https://graph.facebook.com/v13.0/${op}`;
-    return await fetch(url, {
-        method: 'POST', // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    })
+    var url = `https://graph.facebook.com/v13.0/${op}`;
+    return await fetch(
+        r_url,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url, data: data })
+        }
+    )
         .then(response => response.json())
         .then(d => {
             return d
@@ -683,13 +721,16 @@ async function post_step3_pro5(op) {
         data = { "access_token": token, "scheduled_publish_time": Number(timesta) }
     }
     var url = `${r_url2}https://graph.facebook.com/v13.0/${op}`;
-    return await fetch(url, {
-        method: 'POST', // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    })
+    return await fetch(
+        r_url,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url, data: data })
+        }
+    )
         .then(response => response.json())
         .then(d => {
             return d
@@ -723,7 +764,7 @@ async function run_public() {
             }
             if (s2.effective_object_story_id) {
                 try {
-                    var op = await option_step3(s2.effective_object_story_id);
+                    // var op = await option_step3(s2.effective_object_story_id);
                     var s3 = await post_step3(s2.effective_object_story_id);
                     if (s3.error) {
                         s3 = await post_step3_pro5(s2.effective_object_story_id);
