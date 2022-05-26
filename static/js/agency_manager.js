@@ -118,62 +118,62 @@ async function agency_cancel(id) {
     init_agency_manager();
 }
 
-// Get money all User
-async function get_all_contacts() {
-    return await fetch('/api/contacts' /*, options */)
-        .then((response) => response.json())
-        .then((data) => {
-            return data;
-        })
-        .catch((error) => {
-            console.warn(error);
-            return undefined;
-        });
-}
+// Get contacts all User
+// async function get_all_contacts() {
+//     return await fetch('/api/contacts' /*, options */)
+//         .then((response) => response.json())
+//         .then((data) => {
+//             return data;
+//         })
+//         .catch((error) => {
+//             console.warn(error);
+//             return undefined;
+//         });
+// }
 
-//Show Data money all User
-async function open_data_contacts() {
-    var data = await get_all_contacts();
-    var placed = document.getElementById('table_data_money');
-    placed.innerHTML = '';
-    if (data) {
-        data.forEach(f => {
-            placed.innerHTML += `
-            <tr>
-                <td>${f.username}</td>
-                <td>${f.content}</td>
-                <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
-                <td> ${button_action_tool(f.id, 'del_contacts', ['btn', 'btn-sm', 'btn-danger'], 'delete')}</td>
-            </tr>`
-        })
-    }
-    $('#money_table').modal('show')
-}
+// //Show Data contacts all User
+// async function open_data_contacts() {
+//     var data = await get_all_contacts();
+//     var placed = document.getElementById('table_data_money');
+//     placed.innerHTML = '';
+//     if (data) {
+//         data.forEach(f => {
+//             placed.innerHTML += `
+//             <tr>
+//                 <td>${f.username}</td>
+//                 <td>${f.content}</td>
+//                 <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
+//                 <td> ${button_action_tool(f.id, 'del_contacts', ['btn', 'btn-sm', 'btn-danger'], 'delete')}</td>
+//             </tr>`
+//         })
+//     }
+//     $('#money_table').modal('show')
+// }
 
-async function del_contacts(id){
-    if (!confirm(`Bạn có chắc chắn muốn hủy ?`)) {
-        return;
-    }
-    await contacts_del(id);
-    alert('Xong !')
-    open_data_contacts();
-}
+// async function del_contacts(id){
+//     if (!confirm(`Bạn có chắc chắn muốn hủy ?`)) {
+//         return;
+//     }
+//     await contacts_del(id);
+//     alert('Xong !')
+//     open_data_contacts();
+// }
 
-async function contacts_del(id) {
-    var url = `/api/contacts/${id}`;
-    var meth = 'PUT';
-    return await fetch(url, {
-        method: meth, // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        // body: JSON.stringify({ active: false })
-    })
-        .then(response => response.json())
-        .then(result => {
-            return result;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
+// async function contacts_del(id) {
+//     var url = `/api/contacts/${id}`;
+//     var meth = 'PUT';
+//     return await fetch(url, {
+//         method: meth, // or 'PUT'
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         // body: JSON.stringify({ active: false })
+//     })
+//         .then(response => response.json())
+//         .then(result => {
+//             return result;
+//         })
+//         .catch(error => {
+//             console.error('Error:', error);
+//         });
+// }

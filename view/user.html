@@ -16,6 +16,25 @@
 
 <body class="body-bg-custom">
     <!-- Top Bar -->
+    <div class="header">
+        <div class="d-flex">
+            <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/users"><img height="68.99px"
+                        src="../img/logo.jpg" alt=""></a></div>
+
+            <div style="padding-top: 0px; padding-right: 6vw;" class="dropdown">
+                <div  class=" dropdown-toggle" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img style="border-radius: 50%; margin-top: 1.5vw;" width="50px" height="50px"
+                        src="../img/avatar.png" alt="">
+                </div>
+                <div  class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o" aria-hidden="true"></i> Tài Khoảng</a>
+                    <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out" aria-hidden="true"></i>Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <nav style="background-color: #2E9AFE;" class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
             <a class="navbar-brand com-name" href="#">FB ads support</a>
@@ -30,13 +49,15 @@
                 </div>
                 <div class="collapse navbar-collapse" id="main_menu_nav">
                     <ul class="navbar-nav mr-auto">
-                      <li class="nav-item dropdown">
-                        <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          QUẢN LÝ TIỀN
-                        </a>
-                        <div id="menu_money" style="background-color: #2E9AFE;" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        </div>
-                      </li>
+                        <li class="nav-item dropdown">
+                            <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                QUẢN LÝ TIỀN
+                            </a>
+                            <div id="menu_money" style="background-color: #2E9AFE;" class="dropdown-menu"
+                                aria-labelledby="navbarDropdown">
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="navbar-nav user-info">
@@ -46,27 +67,71 @@
                 </div>
             </div>
         </div>
-       
+
     </nav>
     <section>
         <div class="col-12">
-            <div class="container">
-                <div class="">  
-                    <div class="col-12 pt-5 pb-2">
-                        <button onclick="open_modal(0)" class="btn btn-primary">Tạo mới User</button>
-                        <div class="float_left" id = "m_logo">
-                            <!-- <button onclick="open_modal_logo()" class="btn btn-primary">logo</button> -->
-                        </div>  
-                        <!-- <button onclick="paginate()" class="btn btn-primary">test</button> -->
-                        <!-- <input type="text" id="sreach_user" name="sreach_user"> 
-                        <button onclick="" class="btn btn-primary">search</button> -->
-                        <div class="float_right">
-                            <label for="username" class="form-label"></label>
-                            <input type="text" class="" id="username" placeholder="username...">
-                            <button onclick="search_acc()" class="btn btn-primary">search</button>
+            <div class="container pt-5">
+                <h3> <i class=" pd_r_5 fa fa-user-circle-o" aria-hidden="true"></i>Quản Lý Tài Khoảng</h3>
+                <div class="col-md-12 d-flex flex-wrap mt-5 mb-5">
+                    <div style="background-color: #2E9AFE; height: 100px; border-radius: 5%;" class="m_l_5 col-md-3">
+                        <div class=" pd_l_15 m_t_2 float_left">
+                            <img style="border-radius: 50%; width: 50px;height: 50px;" src="../img/avatar_user.png"
+                                alt="">
+                                
+                        </div>
+                        <div class=" pd_r_5 text_center m_t_2 float_right">
+                            <h5>Tổng Thành Viên</h5>
+                            <!-- <br> -->
+                            <div id="total_user">
+                                <h5>0</h5>
+                            </div>
                         </div>
                     </div>
+                    <div style="background-color: #2E9AFE; height: 100px; border-radius: 5%;" class="m_l_5 col-md-3">
+                        <div class="pd_l_15 m_t_2 float_left">
+                            <img style="border-radius: 50%; width: 50px;height: 50px;" src="../img/avatar_user.png"
+                                alt="">
+                        </div>
+                        <div class=" pd_r_5 text_center m_t_2 float_right">
+                            <h5>Tổng Đại Lý</h5>
+                            <!-- <br> -->
+                            <div id="total_agency">
+                                <h5>0</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background-color: #2E9AFE; height: 100px; border-radius: 5%;" class="m_l_5 col-md-3">
+                        <div class="pd_l_15 m_t_2 float_left">
+                            <img style="border-radius: 50%; width: 50px;height: 50px;" src="../img/avatar_user.png"
+                                alt="">
+                        </div>
+                        <div class=" text_center m_t_2 float_right">
+                            <h5>Tổng Cộng Tác viên</h5>
+                            <!-- <br> -->
+                            <div id="total_sub_agency">
+                                <h5>0</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="background-color: #080808; margin-top: 2vw;" class="container">
 
+                <div class="col-12 pd_t_1 pb-2">
+                    <h5 class="">Danh sách thành viên</h5>
+                    <button onclick="open_modal(0)" class="btn btn-primary">Tạo mới User</button>
+                    <div class="float_left" id="m_logo">
+                        <!-- <button onclick="open_modal_logo()" class="btn btn-primary">logo</button> -->
+                    </div>
+                    <!-- <button onclick="paginate()" class="btn btn-primary">test</button> -->
+                    <!-- <input type="text" id="sreach_user" name="sreach_user"> 
+                        <button onclick="" class="btn btn-primary">search</button> -->
+                    <div class="float_right">
+                        <label for="username" class="form-label"></label>
+                        <input type="text" class="" id="username" placeholder="username...">
+                        <button onclick="search_acc()" class="btn btn-primary">search</button>
+                    </div>
                 </div>
                 <div class="col-12">
                     <table id="table_data" class="tablemanager table table-striped table-bordered table-sm"
@@ -111,7 +176,7 @@
                             <tbody>
 
                             </tbody>
-                           
+
                         </table>
                     </div>
                     <div id="paginate"></div>
@@ -188,12 +253,12 @@
                 <div class="modal-header">
                     <span>Gói DV</span>
                     <div>
-                    <select class="form-select" id="wrap_pricing"  aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
+                        <select class="form-select" id="wrap_pricing" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
                     </div>
                     <div id="save_wrap_pricing">
 
@@ -237,6 +302,25 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span>Thay đổi số dư : </span>
+                        <select style="height: 30px;" class="form-select" id="edit_money" aria-label="Default select example">
+                            <option selected>--Trạng Thái--</option>
+                            <option value="1">Cộng Tiền</option>
+                            <option value="2">Trừ tiền</option>
+                            <!-- <option value="3">Three</option> -->
+                        </select>
+                        <div>
+                            <input type="number" style="width: 150px;" id="_money" placeholder="money..">
+                        </div>
+                        <div id="save_edit_money">
+                            <!-- <button type="button" style="height: 30px;" class="btn btn-primary" onclick=""
+                                data-dismiss="modal">Save</button> -->
+                        </div>
+                    </div>
+                </div>
+
                 <div class="modal-body">
                     <table class="table table-dark">
                         <thead>
@@ -277,6 +361,9 @@
 </body>
 <script>
     let main_table = document.getElementById('table_data').children[1];
+    let total_user = document.getElementById('total_user');
+    let total_agency = document.getElementById('total_agency');
+    let total_sub_agency = document.getElementById('total_sub_agency');
     init_users();
 </script>
 

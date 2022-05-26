@@ -27,6 +27,22 @@ module.exports = {
             res.json(response)
         })
     },
+    get_agency : (req, res) => {
+        let sql = 'SELECT * FROM `user` WHERE is_agency = 1 AND active = 1;'
+        // , get_all_bonus() AS all_bonus, get_all_month_money() AS all_month_money, get_all_withdraw_money() AS all_withdraw_money
+        db.query(sql,(err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    get_sub_agency : (req, res) => {
+        let sql = 'SELECT * FROM `user` WHERE par_id != 0 AND active = 1;'
+        // , get_all_bonus() AS all_bonus, get_all_month_money() AS all_month_money, get_all_withdraw_money() AS all_withdraw_money
+        db.query(sql,(err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
     get2: (req, res) => {
         let sql = 'CALL `user_getalllimit`(?,?)'
         db.query(sql,[req.params.cr_page,req.params.user_number_page] ,(err, response) => {
