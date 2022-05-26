@@ -188,5 +188,7 @@ module.exports = function (app) {
     .put(accCtrl.update_articles)
     .delete(accCtrl.delete_articles);
 
+  app.route('/api/lang_lib/:lang')
+    .get(menuCtrl.lang_lib);
 }
 

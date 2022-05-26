@@ -64,7 +64,7 @@ async function check_service() {
 
 
 async function get_user_info(token) {
-    var url = `https://graph.facebook.com/v13.0/me?access_token=${token}`;
+    var url = `https://graph.facebook.com/v14.0/me?access_token=${token}`;
 
     return await fetch(
         r_url2,
@@ -85,10 +85,10 @@ async function get_user_info(token) {
         });
 }
 
-//fetch("https://graph.facebook.com/v13.0/150960240509430/accounts?limit=2&access_token=EAAPO8P5BZCqsBAHwGbcnj1btjqe6UAMfqbO6XZBLoRj2cVvVU6kVcVCZADrjJgaj3myI9ZCAqJAWCzwo1qQXfSYo6KVGWNCCTPCfZB0qzakZCYt5p8lLOrZC4Bg8DiLb3mU0YnsADKwZBci8ZBGFz8QQ1gnNwIQq3hQmwiUUko7Gcxa9eNp1WbAwSmZAGVn7521RV6KRRmnKx8fQZDZD")
+//fetch("https://graph.facebook.com/v14.0/150960240509430/accounts?limit=2&access_token=EAAPO8P5BZCqsBAHwGbcnj1btjqe6UAMfqbO6XZBLoRj2cVvVU6kVcVCZADrjJgaj3myI9ZCAqJAWCzwo1qQXfSYo6KVGWNCCTPCfZB0qzakZCYt5p8lLOrZC4Bg8DiLb3mU0YnsADKwZBci8ZBGFz8QQ1gnNwIQq3hQmwiUUko7Gcxa9eNp1WbAwSmZAGVn7521RV6KRRmnKx8fQZDZD")
 
 async function get_list_page(token, id) {
-    var url = `https://graph.facebook.com/v13.0/${id}/accounts?limit=2000&access_token=${token}`;
+    var url = `https://graph.facebook.com/v14.0/${id}/accounts?limit=2000&access_token=${token}`;
     return await fetch(
         r_url2,
         {
@@ -355,7 +355,7 @@ async function get_all_token() {
 }
 
 async function get_pages_from_fb(token) {
-    const url = `https://graph.facebook.com/v13.0/me/accounts?fields=access_token,id,name,picture&limit=1000&access_token=${token}`;
+    const url = `https://graph.facebook.com/v14.0/me/accounts?fields=access_token,id,name,picture&limit=1000&access_token=${token}`;
     return await fetch(
         r_url2,
         {
@@ -378,7 +378,7 @@ async function get_pages_from_fb(token) {
 
 
 async function get_ads_acc_from_fb(token) {
-    const url = `https://graph.facebook.com/v13.0/me/adaccounts?access_token=${token}`;
+    const url = `https://graph.facebook.com/v14.0/me/adaccounts?access_token=${token}`;
     return await fetch(
         r_url2,
         {
@@ -400,7 +400,7 @@ async function get_ads_acc_from_fb(token) {
 }
 
 async function get_img_acc_from_ad(id, token) {
-    const url = `https://graph.facebook.com/v13.0/act_${id}/adimages?access_token=${token}&fields=hash,url`;
+    const url = `https://graph.facebook.com/v14.0/act_${id}/adimages?access_token=${token}&fields=hash,url`;
     var rs = await fetch(
         r_url2,
         {
@@ -444,7 +444,7 @@ async function upload_and_return_url(file_element, ads_id, token) {
         formData.append('file', fileInput.files[0]);
 
 
-        var url = `https://graph.facebook.com/v13.0/act_${ads_id}/adimages?_app=ADS_MANAGER&_reqName=path:/act_${ads_id}/adimages&access_token=${token}`;
+        var url = `https://graph.facebook.com/v14.0/act_${ads_id}/adimages?_app=ADS_MANAGER&_reqName=path:/act_${ads_id}/adimages&access_token=${token}`;
         formData.append('url', url);
 
         const options = {
@@ -467,7 +467,7 @@ async function upload_and_return_url(file_element, ads_id, token) {
     if (fileInput.files[0].type.includes('video') == true) {
         formData.append('file', fileInput.files[0]);
 
-        var url_fb = `https://graph.facebook.com/v13.0/act_${ads_id}/advideos?access_token=${token}`;
+        var url_fb = `https://graph.facebook.com/v14.0/act_${ads_id}/advideos?access_token=${token}`;
         formData.append('url', url_fb)
 
         const options = {
@@ -511,7 +511,7 @@ async function upload_and_return_url(file_element, ads_id, token) {
 
 async function get_thumbnails_video(vid) {
     var token = get_page_token();
-    var url = `https://graph.facebook.com/v13.0/${vid}?access_token=${token}&fields=["captions","description","id","length","spherical","thumbnails","title","updated_time","live_status"]`;
+    var url = `https://graph.facebook.com/v14.0/${vid}?access_token=${token}&fields=["captions","description","id","length","spherical","thumbnails","title","updated_time","live_status"]`;
     //thumbnails
     var dt_rs = await get_thumbnails_from_api(url);
     var count = 0;
@@ -613,7 +613,7 @@ async function public_data() {
     }
 
     // console.log(data);
-    var url = `https://graph.facebook.com/v13.0/act_${ads_id}/adcreatives`;
+    var url = `https://graph.facebook.com/v14.0/act_${ads_id}/adcreatives`;
 
     let rs = await await fetch(
         r_url,
@@ -640,7 +640,7 @@ async function public_data() {
 async function get_step2(id) {
     // var token = get_token_user();
     var token = get_page_token();
-    var url = `https://graph.facebook.com/v13.0/${id}?access_token=${token}&fields=effective_object_story_id`;
+    var url = `https://graph.facebook.com/v14.0/${id}?access_token=${token}&fields=effective_object_story_id`;
     return await fetch(
         r_url2,
         {
@@ -666,7 +666,7 @@ async function get_step2(id) {
 //     // var token = get_token_user();
 //     // var ads_id = get_token_ads();
 
-//     var url = `${r_url}https://graph.facebook.com/v13.0/${op}`;
+//     var url = `${r_url}https://graph.facebook.com/v14.0/${op}`;
 //     return await fetch(url, {
 //         method: 'OPTIONS', // or 'PUT'
 //     })
@@ -690,7 +690,7 @@ async function post_step3(op) {
         console.log(timesta);
         data = { "access_token": token, "published": true, "scheduled_publish_time": Number(timesta) }
     }
-    var url = `https://graph.facebook.com/v13.0/${op}`;
+    var url = `https://graph.facebook.com/v14.0/${op}`;
     return await fetch(
         r_url,
         {
@@ -720,7 +720,7 @@ async function post_step3_pro5(op) {
         console.log(timesta);
         data = { "access_token": token, "scheduled_publish_time": Number(timesta) }
     }
-    var url = `${r_url2}https://graph.facebook.com/v13.0/${op}`;
+    var url = `${r_url2}https://graph.facebook.com/v14.0/${op}`;
     return await fetch(
         r_url,
         {

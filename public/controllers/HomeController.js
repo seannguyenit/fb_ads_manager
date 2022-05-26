@@ -40,7 +40,7 @@ module.exports = {
         res.sendFile(path.join(__dirname, '../../view/agency_w.html'))
     },
 
-    withdraw:(req, res) => {
+    withdraw: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/withdraw_money.html'))
     },
     //////////
@@ -70,8 +70,7 @@ module.exports = {
     },
     action: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/action.html'))
-    },
-
+    }
     // get_partial: (req,res)=>{
     //     let action = [req.params.action];
     //     res.sendFile(path.join(__dirname,`../../view/partial/${action}.html`))

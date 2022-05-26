@@ -112,7 +112,7 @@ async function delete_token(id) {
 
 
 async function get_user_info_from_fb(token) {
-    const url = `https://graph.facebook.com/v13.0/me?fields=name,picture&access_token=${token}`;
+    const url = `https://graph.facebook.com/v14.0/me?fields=name,picture&access_token=${token}`;
     return await fetch(
         r_url,
         {

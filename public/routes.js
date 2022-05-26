@@ -9,7 +9,7 @@ module.exports = function (app) {
     .get(auth_Ctrl.get_login_page);
   app.route('/register')
     .get(auth_Ctrl.register);
-    app.route('/recovery')
+  app.route('/recovery')
     .get(auth_Ctrl.recovery);
   app.route('/recovery_save')
     .get(auth_Ctrl.recovery_save);
@@ -34,7 +34,7 @@ module.exports = function (app) {
 
   app.route('/home/pricing')
     .get(homeCtrl.pricing_public);
-////////////
+  ////////////
   app.route('/home/w_manager')
     .get(homeCtrl.withdraw_manager);
 
@@ -51,10 +51,10 @@ module.exports = function (app) {
     .get(homeCtrl.p_facebook);
   app.route('/home/action')
     .get(homeCtrl.action);
-////////////
+  ////////////
   app.route('/home/a_manager')
     .get(homeCtrl.agency_manager);
-     // agency_manager
+  // agency_manager
   app.route('/home/agency')
     .get(homeCtrl.agency_public);
 
@@ -68,5 +68,4 @@ module.exports = function (app) {
     .get(homeCtrl.reg_suc);
   app.route('/recovery/success')
     .get(homeCtrl.rec_success);
-    
 };

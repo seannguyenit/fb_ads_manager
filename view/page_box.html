@@ -22,13 +22,13 @@
             <div style="padding-top:15px ;" class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;"
                         width="50px" height="50px" src="../img/avatar_user.png" alt=""></a></div>
             <div style="padding-top:25px" class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    nGÔN NGỮ
+                    {Language}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">ENGLISH</a>
-                    <a class="dropdown-item" href="#">VIỆT NAM</a>
+                    <a class="dropdown-item" onclick="change_lang('en')" href="#">ENGLISH</a>
+                    <a class="dropdown-item" onclick="change_lang('vi')" href="#">VIỆT NAM</a>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="navbar-nav user-info">
                     <div id="current_username" class="nav-link active" aria-current="page"><a>USER</a> <a
-                            class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuất) </a>
+                            class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">{Log_out} </a>
                     </div>
                 </div>
             </div>
@@ -69,14 +69,14 @@
                 </div> -->
                 <div class="col-md-12 d-flex flex-wrap mt-2">
                     <div class="col-md-4">
-                        <label for="list_pages" class="form-label">TÀI KHOẢNG FACEBOOK</label>
+                        <label for="list_pages" class="form-label">{Facebookuser}</label>
                         <select class="form-select p-2 w-100" id="list_fb" onchange="set_combobox_data()" required>
                             <option selected disabled value="">Choose...</option>
                             <option>...</option>
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <label for="list_pages" class="form-label">TRANG</label>
+                        <label for="list_pages" class="form-label">{Page}</label>
                         <select class="form-select p-2 w-100" id="list_pages" onchange="change_page_selected()"
                             required>
                             <option selected disabled value="">Choose...</option>
@@ -84,7 +84,7 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <label for="list_pages" class="form-label">TÀI KHOẢNG QUẢNG CÁO</label>
+                        <label for="list_pages" class="form-label">{Adsuser}</label>
                         <select class="form-select p-2 w-100" id="list_ads" required>
                             <option selected disabled value="">Choose...</option>
                             <option>...</option>
@@ -119,15 +119,15 @@
                     <nav class="w-100">
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link nav-left active" id="nav-home-tab" data-toggle="tab" role="tab"
-                                aria-controls="nav-home" aria-selected="true" onclick="set_card(1)">CARD 1</a>
+                                aria-controls="nav-home" aria-selected="true" onclick="set_card(1)">{card1}</a>
                             <a class="nav-item nav-link nav-right" id="nav-profile-tab" data-toggle="tab" role="tab"
-                                aria-controls="nav-profile" aria-selected="false" onclick="set_card(2)">CARD 2</a>
+                                aria-controls="nav-profile" aria-selected="false" onclick="set_card(2)">{card2}</a>
                         </div>
                     </nav>
                     <div class="tab-content w-100" id="nav-tabContent">
                         <div class="tab-pane fade show active d-flex flex-wrap p-4">
                             <div class="col-md-6 p-2" data-select="card1">
-                                <label for="list_pages" class="form-label">BUTTONS</label>
+                                <label for="list_pages" class="form-label">{Buttons}</label>
                                 <select onchange="change_button()" class="form-select p-2 w-100" id="list_bts" required>
                                     <option selected value="Like Page">Like Page</option>
                                     <option value="No Button">No Button</option>
@@ -151,12 +151,12 @@
                                 </select>
                             </div>
                             <div class="col-md-6 p-2" data-select="card1">
-                                <label for="title" class="form-label">CARD TITLE</label>
+                                <label for="title" class="form-label">{cardtitle}</label>
                                 <input oninput="change_title()" type="text" class="form-control" id="title"
                                     value="Like Page 👉 👉">
                             </div>
                             <div class="col-md-12 p-2" style="display: none;" data-select="card2">
-                                <label for="link" class="form-label">LINK (OPTIONAL) </label>
+                                <label for="link" class="form-label">{Linkoptional}</label>
                                 <input type="text" class="form-control" id="link">
                             </div>
                             <div class="col-md-12 p-2" data-select="card2">
@@ -166,12 +166,12 @@
                             </div>
                             <div class="col-md-12 p-2">
                                 <!-- <label for="post_message" class="form-label">POST MESSAGE </label> -->
-                                <textarea rows="2" type="text" placeholder="Nội dung bài viết" class="form-control"
+                                <textarea rows="2" type="text" placeholder="{Content}" class="form-control"
                                     id="post_message"></textarea>
                             </div>
                             <div class="col-md-12 p-2 d-flex">
                                 <fieldset class="w-100 p-3 rounded border">
-                                    <legend class="w-auto">Hẹn Lịch</legend>
+                                    <legend class="w-auto">{Schedule}</legend>
                                     <div style="width: 90%;" class="m-auto d-flex justify-content-between">
                                         <div style="width: 90%;">
                                             <input style="width: 90%;" type="datetime-local" id="schedule_time"
@@ -191,16 +191,15 @@
                             </div>
 
                             <div class="col-md-12 p-2">
-                                <button onclick="run_public()" class="btn btn-primary button-radius w-100">ĐĂNG
-                                    BÀI</button>
+                                <button onclick="run_public()" class="btn btn-primary button-radius w-100">{Public}</button>
                             </div>
                             <div class="col-md-12 p-2">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Tài khoản Facebook</th>
-                                            <th>Trang</th>
-                                            <th>Liên kết bài</th>
+                                            <th>{Facebookuser}</th>
+                                            <th>{Page}</th>
+                                            <th>{Linkpost}</th>
                                         </tr>
                                     </thead>
                                     <tbody id="rs_tb">
@@ -225,6 +224,7 @@
     <script src="../js/helper_manager.js"></script>
     <script src="../js/permission.js"></script>
     <script src="../js/contact_fb.js"></script>
+    <script defer src="../js/translator.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
