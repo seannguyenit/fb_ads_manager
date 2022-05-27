@@ -16,6 +16,24 @@
 
 <body class="body-bg-custom">
     <!-- Top Bar -->
+    <div class="header">
+        <div class="d-flex">
+            <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/users"><img height="68.99px" src="../img/logo.jpg"
+                        alt=""></a></div>
+           
+            <div style="padding-right: 6vw;" class="dropdown">
+                <div  class=" dropdown-toggle" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                    <img style="border-radius: 50%; margin-top: 1.5vw;"
+                            width="50px" height="50px" src="../img/avatar.png" alt="">
+                </div>
+                <div style="padding-top: 0px; padding-right: 15vw;" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o" aria-hidden="true"></i> Tài Khoảng</a>
+                    <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out" aria-hidden="true"></i>Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <nav style="background-color: #2E9AFE;" class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
             <a class="navbar-brand com-name" href="#">FB ads support</a>
@@ -49,9 +67,12 @@
     </nav>
     <section>
         <div class="col-12">
-            <div class="container">
-                <div class="col-12 pt-5 pb-2">
-                        <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button>
+            <div class="container pt-5">
+                <h3><i class="pd_r_5 fa fa-users" aria-hidden="true"></i>Quản Lý Đại Lý</h3>
+             </div>
+             <div style="background-color: #080808; margin-top: 2vw;" class="container">
+                <div class="col-12 pd_t_1 pb-2">
+                        <!-- <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button> -->
                     <h5 class="">Danh sách đăng ký đại lý</h5>
                 </div>
                 <div class="col-12">
@@ -76,11 +97,11 @@
             </div>
         </div>
     </section>
-    <hr />
+    <!-- <hr /> -->
     <section>
         <div class="col-12">
-            <div class="container">
-                <div class="col-12 pt-2 pb-2">
+            <div style="background-color: #080808; margin-top: 2vw;" class="container">
+                <div class="col-12 pd_t_1 pb-2">
                     <h5>Danh sách đại lý</h5>
                 </div>
                 <div class="col-12">

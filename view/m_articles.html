@@ -16,6 +16,24 @@
 
 <body class="body-bg-custom">
     <!-- Top Bar -->
+    <div class="header">
+        <div class="d-flex">
+            <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/users"><img height="68.99px" src="../img/logo.jpg"
+                        alt=""></a></div>
+           
+            <div style=" padding-right: 6vw;" class="dropdown">
+                <div  class=" dropdown-toggle" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                    <img style="border-radius: 50%; margin-top: 1.5vw;"
+                            width="50px" height="50px" src="../img/avatar.png" alt="">
+                </div>
+                <div style="padding-top: 0px; padding-right: 15vw;" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o" aria-hidden="true"></i> Tài Khoảng</a>
+                    <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out" aria-hidden="true"></i>Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <nav style="background-color: #2E9AFE;" class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
             <a class="navbar-brand com-name" href="#">FB ads support</a>
@@ -30,18 +48,21 @@
                 </div>
                 <div class="collapse navbar-collapse" id="main_menu_nav">
                     <ul class="navbar-nav mr-auto">
-                      <li class="nav-item dropdown">
-                        <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          QUẢN LÝ TIỀN
-                        </a>
-                        <div id="menu_money" style="background-color: #2E9AFE;" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        </div>
-                      </li>
+                        <li class="nav-item dropdown">
+                            <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                QUẢN LÝ TIỀN
+                            </a>
+                            <div id="menu_money" style="background-color: #2E9AFE;" class="dropdown-menu"
+                                aria-labelledby="navbarDropdown">
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="navbar-nav user-info">
-                    <div id="current_username" class="nav-link active" aria-current="page"><a>USER</a> 
-                        <a class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuấtssss)</a>
+                    <div id="current_username" class="nav-link active" aria-current="page"><a>USER</a>
+                        <a class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng
+                            xuấtssss)</a>
                     </div>
                 </div>
             </div>
@@ -49,9 +70,13 @@
     </nav>
     <section>
         <div class="col-12">
-            <div class="container">
-                <div class="col-12 pt-5 pb-2">
+            <div class="container pt-5">
+                <h3><i class=" pd_r_5 fa fa-pencil-square-o" aria-hidden="true"></i>Quản Lý Bài Viết</h3>
+            </div>
+            <div style="background-color: #080808; margin-top: 2vw;" class="container">
+                <div class="col-12 pd_t_1 pb-2">
                     <button onclick="open_modal_articles(0)" class="btn btn-primary">Tạo mới</button>
+                    <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button>
                 </div>
                 <div class="col-12">
                     <table id="table_data" class="tablemanager table table-striped table-bordered table-sm"
@@ -72,7 +97,7 @@
 
                         </tbody>
                         <caption id="showing"></caption>
-                    </table>  
+                    </table>
                 </div>
             </div>
         </div>
@@ -91,7 +116,7 @@
                     <input hidden id="articles_id" value="0" />
                     <div class="col-md-6">
                         <label for="name" class="form-label">Tên</label>
-                        <input disabled type="text" class="form-control" id="name" value="Quản Trị Viên" required/>
+                        <input disabled type="text" class="form-control" id="name" value="Quản Trị Viên" required />
                     </div>
                     <div class="col-md-12">
                         <label for="headline" class="form-label">Tiêu đề</label>
@@ -99,7 +124,8 @@
                     </div>
                     <div class="col-md-12">
                         <label for="contacts" class="form-label">Nội Dung :</label>
-                        <textarea class="form-control" name="contacts" id="content" cols="60" rows="5" required></textarea>
+                        <textarea class="form-control" name="contacts" id="content" cols="60" rows="5"
+                            required></textarea>
                         <!-- <textarea class="form-control" name="contacts" id="content" cols="60" rows="5" required></textarea> -->
                         <!-- <input style="height:200px" type="text" class="form-control" id="money_withdraw" required> -->
                     </div>
@@ -110,7 +136,36 @@
             </div>
         </div>
     </div>
-
+    <!-- Modal -->
+    <div class="modal fade" id="money_table" tabindex="-1" role="dialog" aria-labelledby="money_table"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title red">Contacts</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th>Tên</th>
+                                <th>Nội dung</th>
+                                <th>Thời gian</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table_data_money"></tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
@@ -131,7 +186,7 @@
     let main_table = document.getElementById('table_data').children[1];
     let showing = document.getElementById('showing');
     init_articles();
-    
+
 </script>
 
 </html>

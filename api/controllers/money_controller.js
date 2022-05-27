@@ -9,11 +9,40 @@ const rq_sv = require('./request_controller');
 
 module.exports = {
     get_history: (req, res) => {
-        let sql = 'select * from money_history where user_id = ? and `active` = 1 order by `time`;'
+        let sql = 'select * from money_history where user_id = ? and `active` = 1 order by `time` desc;'
         db.query(sql, Number(req.params.user_id), (err, response) => {
             if (err) throw err
             res.json(response)
         })
+    },
+    edit_money_byadmin: (req, res) => {
+        if (Number(req.body.type) === 0) {
+            get_current_finance(req.body.user_id, (vl) => {
+                let money_bonus = vl[0].money;
+                if (Number(req.body.money) > Number(money_bonus)) {
+                    res.json({ mess: "số dư trong tài khoảng không đủ" })
+                } else {
+                    var data = req.body;
+                    data.time = new Date().getTime() / 1000;
+                    data.active = 1;
+                    let sql = 'insert into money_history SET ?;'
+                    db.query(sql, data, (err, response) => {
+                        if (err) throw err
+                        res.json({ ok: 1 })
+                    })
+                }
+            })
+        } else {
+            var data = req.body;
+            data.time = new Date().getTime() / 1000;
+            data.active = 1;
+            let sql = 'insert into money_history SET ?;'
+            db.query(sql, data, (err, response) => {
+                if (err) throw err
+                res.json({ ok: 1 })
+            })
+        }
+
     },
     add_money: (req, res) => {
         get_current_finance(req.body.user_id, (vl) => {
@@ -33,31 +62,31 @@ module.exports = {
                 }
                 data.active = active;
                 // if ((data.task_id || 0) > 0) {
-                    //{"Code":2,"Message":"Lấy dữ liệu thành công, thẻsai mệnh giá","CardSend":1000000.0,"CardValue":10000.0,"ValueReceive":4250.0}
-                    // waitingForCardResult(data.task_id).then((rs) => {
-                    // if (rs.Code == 2) {
-                    // get_history_card(data.task_id, (rs) => {
-                    //     // data.money = rs.ValueReceive;
-                    //     data.money = rs.amount;
-                    //     data.money_bonus = (data.money / 100) * 10;
-                    //     let sql = 'insert into money_history SET ?;'
-                    //     db.query(sql, data, (err, response) => {
-                    //         if (err) throw err
-                    //         res.json({ ok: 1 })
-                    //     })
-                    // });
-                    // } 
-                    // else {
-                    //     res.json({ ok: 0, error: rs.Message });
-                    // }
-                    // });
+                //{"Code":2,"Message":"Lấy dữ liệu thành công, thẻsai mệnh giá","CardSend":1000000.0,"CardValue":10000.0,"ValueReceive":4250.0}
+                // waitingForCardResult(data.task_id).then((rs) => {
+                // if (rs.Code == 2) {
+                // get_history_card(data.task_id, (rs) => {
+                //     // data.money = rs.ValueReceive;
+                //     data.money = rs.amount;
+                //     data.money_bonus = (data.money / 100) * 10;
+                //     let sql = 'insert into money_history SET ?;'
+                //     db.query(sql, data, (err, response) => {
+                //         if (err) throw err
+                //         res.json({ ok: 1 })
+                //     })
+                // });
+                // } 
+                // else {
+                //     res.json({ ok: 0, error: rs.Message });
+                // }
+                // });
                 // } else {
-                    data.money_bonus = (data.money / 100) * 10;
-                    let sql = 'insert into money_history SET ?;'
-                    db.query(sql, data, (err, response) => {
-                        if (err) throw err
-                        res.json({ ok: 1 })
-                    })
+                data.money_bonus = (data.money / 100) * 10;
+                let sql = 'insert into money_history SET ?;'
+                db.query(sql, data, (err, response) => {
+                    if (err) throw err
+                    res.json({ ok: 1 })
+                })
                 // }
             }
         });
@@ -86,14 +115,14 @@ module.exports = {
     },
     get_list_reg: (req, res) => {
         let sql = 'select MH.*,U.username,U.is_agency from money_history AS MH left join `user` AS U on MH.user_id = U.id where (CAST(MH.time AS decimal(13,3)) >= ? and CAST(MH.time AS decimal(13,3)) <= ?) and MH.`type` = 1 and MH.`active` = 0 and method = 1 order by MH.`time`;'
-        db.query(sql,[req.params.from,req.params.to], (err, response) => {
+        db.query(sql, [req.params.from, req.params.to], (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
     get_list_reg2: (req, res) => {
         let sql = 'select MH.*,U.username,U.is_agency from money_history AS MH left join `user` AS U on MH.user_id = U.id where (CAST(MH.time AS decimal(13,3)) >= ? and CAST(MH.time AS decimal(13,3)) <= ?) and MH.`type` = 1 and MH.`active` = 0 and method = 2 order by MH.`time`;'
-        db.query(sql,[req.params.from,req.params.to], (err, response) => {
+        db.query(sql, [req.params.from, req.params.to], (err, response) => {
             if (err) throw err
             res.json(response)
         })
@@ -131,40 +160,40 @@ module.exports = {
         if (card_history != null) {
             insert_history_card(card_history, (rs) => {
                 if (rs.ok = 1) {
-                        money_history.type = 1;
-                        money_history.time = new Date().getTime() / 1000;
-                        var active = 0;
-                        if (req.body.active && req.body.active == 1) {
-                            active = 1;
-                        }
-                        money_history.active = active;
-                        money_history.money = card_history.amount;
-                        money_history.money_bonus = (money_history.money / 100) * 10;
+                    money_history.type = 1;
+                    money_history.time = new Date().getTime() / 1000;
+                    var active = 0;
+                    if (req.body.active && req.body.active == 1) {
+                        active = 1;
+                    }
+                    money_history.active = active;
+                    money_history.money = card_history.amount;
+                    money_history.money_bonus = (money_history.money / 100) * 10;
 
-                        let sql1 = 'insert into money_history SET ?;'
-                        db.query(sql1, money_history, (err, response) => {
-                            if (err) throw err
-                            res.json({ mess: 1 })
-                        })
+                    let sql1 = 'insert into money_history SET ?;'
+                    db.query(sql1, money_history, (err, response) => {
+                        if (err) throw err
+                        res.json({ mess: 1 })
+                    })
                 }
             })
         }
 
-            // money_history.type = 1;
-            // money_history.time = new Date().getTime() / 1000;
-            // var active = 0;
-            // if (req.body.active && req.body.active == 1) {
-            //     active = 1;
-            // }
-            // money_history.active = active;
-            // money_history.money = card_history.amount;
-            // money_history.money_bonus = (money_history.money / 100) * 10;
-            // let sql1 = 'insert into money_history SET ?;'
-            // db.query(sql1, money_history, (err, response) => {
-            //     if (err) throw err
-            //     res.json({ ok: 1 })
-            // })
-        }
+        // money_history.type = 1;
+        // money_history.time = new Date().getTime() / 1000;
+        // var active = 0;
+        // if (req.body.active && req.body.active == 1) {
+        //     active = 1;
+        // }
+        // money_history.active = active;
+        // money_history.money = card_history.amount;
+        // money_history.money_bonus = (money_history.money / 100) * 10;
+        // let sql1 = 'insert into money_history SET ?;'
+        // db.query(sql1, money_history, (err, response) => {
+        //     if (err) throw err
+        //     res.json({ ok: 1 })
+        // })
+    }
 }
 // async function get_current_finance_(res,req) {
 //     return 

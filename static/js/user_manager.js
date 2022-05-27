@@ -16,6 +16,28 @@ async function acc_get_all() {
             return undefined;
         });
 }
+async function acc_get_agency() {
+    return await fetch(`/api/accounts_agency` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+async function acc_get_sub_agency() {
+    return await fetch(`/api/accounts_sub_agency` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
 
 
 // cr_month
@@ -399,6 +421,9 @@ async function init_money_history(id) {
     const types = ['Mua gói', 'Nạp']
     var tb = document.getElementById('tb_money_his');
     tb.innerHTML = '';
+    var bn_money = document.getElementById('save_edit_money');
+    bn_money.innerHTML = `<button type="button" style="height: 30px;" class="btn btn-primary" onclick="save_edit_money(${id})"
+    data-dismiss="modal">Save</button>`;
     var data = await get_money_history(id);
     if (data) {
         data.forEach(f => {
@@ -410,6 +435,7 @@ async function init_money_history(id) {
             </tr>`
         });
     }
+    
     $('#money_history').modal('show')
 }
 
@@ -475,6 +501,27 @@ async function user_limit(cr_page, user_number_page) {
 // show Lits DATA all
 async function init_users(cr_page, user_number_page) {
     main_table.innerHTML = '';
+    total_user.innerHTML = '';
+    total_agency.innerHTML = '';
+    total_sub_agency.innerHTML = '';
+    // total_agency.innerHTML = '';
+    var user_list = await acc_get_all();
+    var agency_list = await acc_get_agency();
+    var sub_agency_list = await acc_get_sub_agency();
+    // var sub_agency_list = await acc_get_sub_agency();
+    if (user_list) {
+        var user = Object.keys(user_list).length;
+        total_user.innerHTML = `<h5>${user}</h5>`;
+
+    }
+    if (agency_list) {
+        var agency = Object.keys(agency_list).length;
+        total_agency.innerHTML = `<h5>${agency}</h5>`;
+    }
+    if (sub_agency_list) {
+        var sub_agency = Object.keys(sub_agency_list).length;
+        total_sub_agency.innerHTML = `<h5>${sub_agency}</h5>`;
+    }
     var dt = await user_limit(cr_page, user_number_page);
     if (dt) {
         dt.forEach(item => {
@@ -587,6 +634,63 @@ async function save_pricing_(id) {
     get_user_limit()
     init_users(cr_page, user_number_page);
 }
+
+// save edit money 
+async function save_edit_money(id) {
+    var edit_money = document.getElementById("edit_money").value;
+    var type = 0;
+    if(Number(edit_money) === 1){
+        type = 1;
+    }else{
+        type = 0;
+    }
+    var money = document.getElementById("_money").value;
+    if (Number(edit_money) === 0) {
+        alert("Hãy chọn trạng thái bạn muốn muốn");
+        return;
+    }
+    var user_id = id;
+    var data = { user_id: user_id, money: money, type: type };
+    var url = `/api/a_insert_money`;
+    var meth = 'POST';
+
+    var rs = await fetch(url, {
+        method: meth, // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data != undefined) {
+                return data || {};
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        if(rs.mess){
+            alert(rs.mess);
+            return;
+        }
+        if(rs.ok = 1){
+            alert("thay đổi tiền thành công")
+        }
+    get_user_limit()
+    init_users(cr_page, user_number_page);
+}
+
+// async function total_user_agency(){
+//     // var total_user = document.getElementById('total_user').children[1];
+//     total_user.innerHTML = '';
+//     // total_agency.innerHTML = '';
+//     var user_list = await acc_get_all();
+//     if(user_list){
+//         var rs = Object.keys(user_list).length;
+//         total_user.innerHTML = `<span>${rs} sssss</span>`;
+//     }
+// }
 
 // Open modal manager Logo
 function open_modal_logo() {

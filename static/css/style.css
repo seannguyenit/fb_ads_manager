@@ -11,11 +11,26 @@ body{
 .body{
     font-family: "Times New Roman", Times, serif;
 }
+.text_center{
+    text-align: center;
+}
 .blue-color-bg{
     background-color:#32A1CC
 }
+.m_t_2{
+    margin-top: 2vw;
+}
 .m_b_5{
     margin-bottom: 5px;
+}
+.m_l_5{
+    margin-left: 5vw;
+}
+.pd_t_1{
+    padding-top: 1vw;
+}
+.pd_r_5vw{
+    padding-right: 5vw;
 }
 .pd_l_15{
     padding-left: 15px;
