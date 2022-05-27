@@ -78,14 +78,14 @@ async function acc_get_byname(username) {
 
 // SHOW LIST DATA SEARCH
 async function init_users_byname() {
-    main_table.innerHTML = '';
+    document.getElementById('table_data').querySelector('tbody').innerHTML = '';
     // var cr = document.getElementById('search_table');
     var name = document.getElementById('username').value;
     var dt = await acc_get_byname(name);
     if (dt) {
         dt.forEach(item => {
 
-            main_table.innerHTML += `
+            document.getElementById('table_data').querySelector('tbody').innerHTML += `
                 <tr>
                     <td>${dt.indexOf(item) + 1}</td>    
                     <td>${item.username}</td> 
@@ -105,7 +105,7 @@ async function init_users_byname() {
                 </tr>`;
         });
     } else {
-        main_table.innerHTML = 'Không Tìm Thấy Tên Phù Hợp';
+        document.getElementById('table_data').querySelector('tbody').innerHTML = 'Không Tìm Thấy Tên Phù Hợp';
     }
 }
 
@@ -208,11 +208,11 @@ async function acc_search(username) {
 }
 
 // async function init_users() {
-//     main_table.innerHTML = '';
+//     document.getElementById('table_data').querySelector('tbody').innerHTML = '';
 //     var dt = await acc_get_all();
 //     if (dt) {
 //         dt.forEach(item => {
-//             main_table.innerHTML += `
+//             document.getElementById('table_data').querySelector('tbody').innerHTML += `
 //             <tr>
 //                 <td>${dt.indexOf(item) + 1}</td>    
 //                 <td>${item.username}</td> 
@@ -480,7 +480,7 @@ async function get_user_limit() {
     }
     var cr_page = (each_page - 1) * user_number_page;
     await paginate(each_page);
-    await user_limit(cr_page, user_number_page);
+    // await user_limit(cr_page, user_number_page);
     await init_users(cr_page, user_number_page);
 }
 
@@ -500,10 +500,14 @@ async function user_limit(cr_page, user_number_page) {
 
 // show Lits DATA all
 async function init_users(cr_page, user_number_page) {
-    main_table.innerHTML = '';
-    total_user.innerHTML = '';
-    total_agency.innerHTML = '';
-    total_sub_agency.innerHTML = '';
+    let md = document.getElementById('table_data').querySelector('tbody');
+    let tu = document.getElementById('total_user');
+    let ta = document.getElementById('total_agency');
+    let tsa = document.getElementById('total_sub_agency');
+    md.innerHTML = '';
+    tu.innerHTML = '';
+    ta.innerHTML = '';
+    tsa.innerHTML = '';
     // total_agency.innerHTML = '';
     var user_list = await acc_get_all();
     var agency_list = await acc_get_agency();
@@ -537,13 +541,13 @@ async function init_users(cr_page, user_number_page) {
             } else {
                 var limit_date = "";
             }
-            main_table.innerHTML += `
+            document.getElementById('table_data').querySelector('tbody').innerHTML += `
             <tr>
                 <td>${dt.indexOf(item) + 1}</td>    
                 <td>${item.username}</td> 
-                <td>${get_format_VND(item.money)}</td> 
-                <td>${get_format_VND(item.bonus)}</td> 
-                <td>${get_format_VND(item.money_month)}</td>   
+                <td>${get_format_VND(item.money||'')}</td> 
+                <td>${get_format_VND(item.bonus||'')}</td> 
+                <td>${get_format_VND(item.money_month||'')}</td>   
                 <td>${item.phone || ''}</td>    
                 <td>${item.add || ''}</td>
                 <td>${format_time(item.created_at) || ''}</td>  
