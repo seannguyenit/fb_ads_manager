@@ -34,29 +34,24 @@ async function init_menu() {
         menu.innerHTML = '';
         var cr_user = get_cr_user();
         var lst_menu = await menu_get_current_menu(cr_user.id);
-        if (cr_user.is_admin == 0 && lst_menu) {
-            lst_menu.forEach(f => {
-                f.name = `{${f.name}}`;
-            })
-        }
         if (!cr_url.includes('user_info') && lst_menu.filter(f => { return cr_url.includes(f.action) }).length == 0) {
             location.href = '/login'
         }
         if (menu === null) {
             lst_menu.forEach(item => {
                 if (item.type === 0) {
-                    menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>`;
+                    menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>`;
                 }
             });
         } else {
             lst_menu.forEach(item => {
                 if (item.type === 0) {
-                    menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>`;
+                    menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>`;
                 }
 
                 if (item.type === 1) {
                     menu_.innerHTML += `
-                        <a style="background-color: #2E9AFE;" class="nav-link dropdown-item active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}">${item.name}</a>
+                        <a style="background-color: #2E9AFE;" class="nav-link dropdown-item active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>
                     `;
                     //     // <a class="dropdown-item" href="#">Action</a>
                 }
@@ -85,6 +80,7 @@ async function add_menu_user(data, user_id) {
             console.log('Error:', error);
         });
 }
+
 
 // async function history_login(){
 //     var cr_user = get_cr_user();

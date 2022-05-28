@@ -15,9 +15,15 @@ async function translator() {
             return undefined;
         });
     if (lib) {
-        var all_ = Object.keys(lib);
-        all_.forEach(f => {
-            document.body.innerHTML = document.body.innerHTML.replaceAll(`{${f.replaceAll('_',' ')}}`, lib[`${f}`]);
+        Array.from(document.querySelectorAll('[data-lang]')).forEach(obj => {
+            if (obj.dataset.langtg) {
+                obj.setAttribute(obj.dataset.langtg, lib[`${obj.dataset.lang.replaceAll(' ', '_')}`]);
+            } else {
+                var new_str = lib[`${obj.dataset.lang.replaceAll(' ', '_')}`];
+                if(new_str){
+                    obj.innerText = new_str;
+                }
+            }
         });
     }
 }

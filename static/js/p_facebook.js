@@ -1,5 +1,5 @@
 'use strict'
-const r_url = "/proxy/";
+const r_url = "/api/fproxy";
 // const r_url = `https://arthurtech.xyz/`;
 // const r_url = `${window.location.protocol}//${window.location.hostname}/proxy/`;
 
@@ -112,8 +112,17 @@ async function delete_token(id) {
 
 
 async function get_user_info_from_fb(token) {
-    const url = `${r_url}https://graph.facebook.com/v12.0/me?fields=name,picture&access_token=${token}`;
-    return await fetch(url /*, options */)
+    const url = `https://graph.facebook.com/v14.0/me?fields=name,picture&access_token=${token}`;
+    return await fetch(
+        r_url,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url })
+        }
+    )
         .then((response) => response.json())
         .then((data) => {
             return data;
