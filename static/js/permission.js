@@ -68,6 +68,7 @@ async function init_menu() {
     }
 }
 
+
 async function add_menu_user(data, user_id) {
     return await fetch(`/api/menu_user/${user_id}`, {
         method: 'POST', // or 'PUT'
