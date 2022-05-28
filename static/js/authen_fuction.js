@@ -22,7 +22,7 @@ function init_authen() {
                 // <a style="color:white" href="/home/user_info">${user_info}</a>
                 let user_info = rs.username + ' ( ' + get_format_VND(rs.money) + ' VNĐ )';
                 cr.innerHTML = `
-                <a class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">{Logout}</a>`;
+                <a class="nav-link active" aria-current="page" onclick="acc_logout()" href="#" data-lang="Logout"></a>`;
             })
         }
     }
