@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body class="body-bg-custom">
@@ -23,16 +23,19 @@
         <div class="d-flex">
             <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/page_box"><img src="../img/logo.jpg"
                         alt=""></a></div>
-            <div style="padding-top:15px ;" class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;"
-                        width="50px" height="50px" src="../img/avatar_user.png" alt=""></a></div>
-            <div style="padding-top:25px" class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    nGÔN NGỮ
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">ENGLISH</a>
-                    <a class="dropdown-item" href="#">VIỆT NAM</a>
+            <div style="padding-top:25px" class="d-flex">
+                <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
+                            height="40px" src="../img/avatar_user.png" alt=""></a></div>
+
+                <div style="padding-top:5px" class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
+                        data-toggle="dropdown" data-lang="Language" aria-haspopup="true" aria-expanded="false">
+
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="change_lang('en')" href="#">ENGLISH</a>
+                        <a class="dropdown-item" onclick="change_lang('vi')" href="#">VIỆT NAM</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,8 +85,8 @@
                                     <span style="padding-left: 8vmax;">1</span>
                                 </div>
                                 <div class="d-flex flex-row mb-3">
-                                    <label class="control-label text-uppercase">Đăng Xuất</label>
-                                    <div style="padding-left: 8vmax;"> <button onclick="acc_logout()"
+                                    <label style="width: 28%;" class="control-label text-uppercase">Đăng Xuất</label>
+                                    <div style="width: 60%; margin-left: 10%"> <button onclick="acc_logout()"
                                             class="btn btn-primary">Đăng Xuất</button></div>
                                 </div>
                             </div>

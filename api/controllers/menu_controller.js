@@ -5,8 +5,6 @@ const mysql = require('mysql')
 const db = require('./../db')
 const fs = require("fs");
 
-// const session = require('express-session');
-
 module.exports = {
     get_template: (req, res) => {
         let sql = 'SELECT `menu`.`id`,`menu`.`name`,`menu`.`par_id`,`menu`.`order` FROM `fb_ads_management`.`menu` order by `menu`.`order`;'
@@ -78,6 +76,7 @@ module.exports = {
     },
     insert_logo: (req, res) => {
         let data = req.body;
+        // data.logo_img = req.body.img;
         let sql = 'insert into logo set ?'
         db.query(sql, [data], (err, response) => {
             if (err) throw err

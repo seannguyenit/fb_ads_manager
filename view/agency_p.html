@@ -20,16 +20,19 @@
         <div class="d-flex">
             <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/page_box"><img src="../img/logo.jpg"
                         alt=""></a></div>
-            <div style="padding-top:15px ;" class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;"
-                        width="50px" height="50px" src="../img/avatar_user.png" alt=""></a></div>
-            <div style="padding-top:25px" class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    nGÔN NGỮ
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">ENGLISH</a>
-                    <a class="dropdown-item" href="#">VIỆT NAM</a>
+            <div style="padding-top:25px" class="d-flex">
+                <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
+                            height="40px" src="../img/avatar_user.png" alt=""></a></div>
+
+                <div style="padding-top:5px" class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
+                        data-toggle="dropdown" data-lang="Language" aria-haspopup="true" aria-expanded="false">
+
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="change_lang('en')" href="#">ENGLISH</a>
+                        <a class="dropdown-item" onclick="change_lang('vi')" href="#">VIỆT NAM</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -59,7 +62,8 @@
         <div class="col-12">
 
             <div class="container">
-                <h3 style="padding-top: 50px;" class="pd_l_15"><i class=" pd_r_5 fa fa-users" aria-hidden="true"></i>Đại Lý</h3>
+                <h3 style="padding-top: 50px;" class="pd_l_15"><i class=" pd_r_5 fa fa-users" aria-hidden="true"></i>Đại
+                    Lý</h3>
                 <hr />
                 <!-- <button onclick="open_modal()" class="btn btn-primary m-auto">Góp Ý</button> -->
                 <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5">

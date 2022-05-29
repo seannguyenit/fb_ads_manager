@@ -16,7 +16,29 @@
 
 <body class="body-bg-custom">
     <!-- Top Bar -->
-    <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
+    <div class="header">
+        <div class="d-flex">
+            <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/users"><img height="68.99px"
+                        src="../img/logo.jpg" alt=""></a></div>
+
+            <div style="padding-top: 0px; padding-right: 6vw;" class="dropdown">
+                <div class=" dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <img style="border-radius: 50%; margin-top: 1.5vw;" width="50px" height="50px"
+                        src="../img/avatar.png" alt="">
+                </div>
+                <div style="padding-top: 0px; padding-right: 15vw;" class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o" aria-hidden="true"></i>
+                        Tài
+                        Khoảng</a>
+                    <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
+                            aria-hidden="true"></i>Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav style="background-color: #2E9AFE;" class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
             <a class="navbar-brand com-name" href="#">FB ads support</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
@@ -27,6 +49,19 @@
                 <div id="main_menu" class="navbar-nav">
                     <a class="nav-link active title-nav" aria-current="page" href="/">Thông báo</a>
                     <a class="nav-link active title-nav" aria-current="page" href="/home/getcontent">Lấy nội dung</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main_menu_nav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                QUẢN LÝ TIỀN
+                            </a>
+                            <div id="menu_money" style="background-color: #2E9AFE;" class="dropdown-menu"
+                                aria-labelledby="navbarDropdown">
+                            </div>
+                        </li>
+                    </ul>
                 </div>
                 <div class="navbar-nav user-info">
                     <div id="current_username" class="nav-link active" aria-current="page"><a>USER</a> <a
@@ -45,7 +80,7 @@
                 <div class="">
                     <div class="col-12 pt-5 pb-2">
                         <button onclick="open_modal(0)" class="btn btn-primary">Thêm Logo</button>
-                      <div class="float_left" id = "m_logo"></div>  
+                        <div class="float_left" id="m_logo"></div>
                         <!-- <button onclick="paginate()" class="btn btn-primary">test</button> -->
                         <!-- <input type="text" id="sreach_user" name="sreach_user"> 
                         <button onclick="" class="btn btn-primary">search</button> -->
@@ -118,20 +153,20 @@
                     </button>
                 </div>
                 <div class="modal-body d-flex flex-wrap">
-                    <input hidden id="id" value="0" />
+                    <!-- <input hidden id="id" value="0" /> -->
                     <div class="col-md-4">
                         <label for="logo_name" class="form-label">Name Logo</label>
                         <input type="text" class="form-control" id="logo_name" required>
                     </div>
                     <div class="col-md-4">
                         <label for="logo_img" class="form-label">Tải ảnh lên</label>
-                        <input type="file" class="" id="logo_img" onchange="PreviewImage()" required>
+                        <input type="file" class="" id="logo_img" name="logo_img" required>
                     </div>
                     <div class="col-md-4">
                         <label for="type" class="form-label">Hiển thị</label>
                         <select name="type" id="type">
-                            <option value="1">On</option>    
-                            <option value="0">Off</option> 
+                            <option value="1">On</option>
+                            <option value="0">Off</option>
                         </select>
                     </div>
                 </div>

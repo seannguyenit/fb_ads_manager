@@ -21,16 +21,19 @@
         <div class="d-flex">
             <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/page_box"><img src="../img/logo.jpg"
                         alt=""></a></div>
-            <div style="padding-top:15px ;" class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;"
-                        width="50px" height="50px" src="../img/avatar_user.png" alt=""></a></div>
-            <div style="padding-top:25px" class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    nGÔN NGỮ
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">ENGLISH</a>
-                    <a class="dropdown-item" href="#">VIỆT NAM</a>
+            <div style="padding-top:25px" class="d-flex">
+                <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
+                            height="40px" src="../img/avatar_user.png" alt=""></a></div>
+
+                <div style="padding-top:5px" class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
+                        data-toggle="dropdown" data-lang="Language" aria-haspopup="true" aria-expanded="false">
+
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="change_lang('en')" href="#">ENGLISH</a>
+                        <a class="dropdown-item" onclick="change_lang('vi')" href="#">VIỆT NAM</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,13 +65,14 @@
             <div class="container">
                 <div class="col-md-12 d-flex flex-wrap mt-5 mb-5">
                     <div class="col-12">
-                        <h2><i class="pd_r_5 fa fa-university" aria-hidden="true"></i>Nạp tiền theo các bước bên dưới hoặc nạp bằng thẻ cào</h2>
+                        <h2><i class="pd_r_5 fa fa-university" aria-hidden="true"></i>Nạp tiền theo các bước bên dưới
+                            hoặc nạp bằng thẻ cào</h2>
                         <!-- <a class="btn btn-primary" href="#">Nạp bằng thẻ cào (Đang bảo trì)</a> -->
                         <a class="btn btn-primary" href="/home/topup_card">Nạp bằng thẻ cào</a>
                     </div>
                     <div class="col-md-6">
                         <div class="pricing ">
-                            <div class="pricing_title" id ="cr_money_">
+                            <div class="pricing_title" id="cr_money_">
                                 Chuyển tiền vào ngân hàng MB
                             </div>
 

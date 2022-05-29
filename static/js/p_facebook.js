@@ -285,8 +285,8 @@ async function show_pricing(){
     d.innerHTML = '';
     if(rs){
         if(rs.limit_time){
-            d.innerHTML = ` <label class="control-label text-uppercase" >Hạn ngày :</label>
-            <span style="padding-left: 8vmax;" >${format_time(rs.limit_time)}</span>`
+            d.innerHTML = ` <label style="width: 28%;" class="control-label text-uppercase" >Hạn ngày :</label>
+            <span style="width: 60%; margin-left: 10%" >${format_time(rs.limit_time)}</span>`
         }else{
             d.innerHTML = ` <label class="control-label text-uppercase" >Hạn ngày :</label>
             <span style="padding-left: 8vmax;" >Hết Hạn</span>`
@@ -295,16 +295,16 @@ async function show_pricing(){
     if(data_limit) {
         data_limit.forEach(f =>{
             p.innerHTML = `<div class="d-flex flex-row mb-3"  id="" >
-            <label  class="control-label text-uppercase">Tên gói :</label>
-            <span style="padding-left: 9.5vmax;">${f.name} (${f.limit_day} Ngày)</span>
+            <label style="width: 28%;"  class="control-label text-uppercase">Tên gói :</label>
+            <span style="width: 60%; margin-left: 10%">${f.name} (${f.limit_day} Ngày)</span>
         </div>
         <div class="d-flex flex-row mb-3" id="">
-            <label class="control-label text-uppercase">Quyền lợi :</label>
-            <span  style="padding-left: 8vmax;">${f.limit_request} Request/Ngày</span>
+            <label style="width: 28%;" class="control-label text-uppercase">Quyền lợi :</label>
+            <span style="width: 60%; margin-left: 10%">${f.limit_request} Request/Ngày</span>
         </div>
         <div class="d-flex flex-row mb-3" id="">
-            <label class="control-label text-uppercase" >Ngày mua :</label>
-            <span style="padding-left: 8vmax;" >${format_time(f.created_at)}</span>
+            <label  style="width: 28%;" class="control-label text-uppercase" >Ngày mua :</label>
+            <span style="width: 60%; margin-left: 10%" style="padding-left: 8vmax;" >${format_time(f.created_at)}</span>
         </div>`
         });
     } else if (data_limit === null) {

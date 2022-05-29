@@ -112,7 +112,8 @@ async function acc_save(url, data, meth) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
+        // enctype: 'multipart/form-data',
+        body: JSON.stringify(data),
     })
         .then(response => response.json())
         .then(data => {
@@ -149,18 +150,19 @@ async function save_(){
     if (!validate_()) return;
     var id = $("#user_id").val();
     var logo_name = $("#logo_name").val();
-    var logo_img = "right.jpg";
+    var logo_img = document.getElementById("logo_img").files[0].name;
     var type = document.getElementById("type").value;
 
     var url = `/api/logo`;
     var meth = 'POST';
     const formData = new FormData();
+    // formData.append('file', fileInput.files[0]);
 
-    if (id != 0) {
-        meth = 'PUT';
-        url = `/api/logo/${id}`;
-    }
-    var data = { logo_name: logo_name, logo_img: logo_img, type: type};
+    // if (id != 0) {
+    //     meth = 'PUT';
+    //     url = `/api/logo/${id}`;
+    // }
+    var data = {logo_name:logo_name,logo_img: logo_img,type:type};
 
     let rs = await acc_save(url, data, meth);
     //add_menu_user

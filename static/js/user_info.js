@@ -201,17 +201,17 @@ async function init_user() {
     at.innerHTML = "";
     get_current_finance().then(rs => {
         var cr = document.getElementById('money_cr');
-        cr.innerHTML = `  <label class="control-label text-uppercase" >Số Dư :</label>
-        <span style="padding-left: 11vmax;" >${ get_format_VND(rs.money)} VNĐ</span>`;
+        cr.innerHTML = `  <label  style="width: 28%;" class="control-label text-uppercase" >Số Dư :</label>
+                        <span style="width: 60%; margin-left: 10%" >${ get_format_VND(rs.money)} VNĐ</span>`;
     })
     if(dt){
             user.innerHTML =`
-                <div  class="control-label text-uppercase">Email :</div>
-                <div style="padding-left: 11vmax;">${dt.username}</div>
+                <div style="width: 28%;" class="control-label text-uppercase">Email :</div>
+                <div style="width: 60%; margin-left: 10%">${dt.username}</div>
             `;
             at.innerHTML = `
-            <div class="control-label text-uppercase">Ngày Tạo :</div>
-            <div  style="padding-left: 9vmax;">${format_time(dt.created_at)}</div>
+            <div style="width: 28%;" class="control-label text-uppercase">Ngày Tạo :</div>
+            <div style="width: 60%; margin-left: 10%">${format_time(dt.created_at)}</div>
             `;
         }
 
@@ -275,31 +275,31 @@ async function acc_get_detail() {
 }
 
 // show name pricing
-async function show_pricing(){
-    var cr_u = get_cr_user();
-    var data_limit = await get_wrap_pricing_history(cr_u.id);
-    var rs = acc_get_detail();
-    var p = document.getElementById("r_pricing");
-    p.innerHTML = '';
-    if(rs){
-        alert(rs.limit_time);
-        return;
-    }
-    if(data_limit) {
-        data_limit.forEach(f =>{
-            p.innerHTML = `<div class="d-flex flex-row mb-3"  id="" >
-            <label  class="control-label text-uppercase">Tên gói</label>
-            <span style="padding-left: 8vmax;">${f.name} (${f.limit_day} Ngày)</span>
-        </div>
-        <div class="d-flex flex-row mb-3" id="">
-            <label class="control-label text-uppercase">Quyền lợi</label>
-            <span  style="padding-left: 8vmax;">${f.limit_request} Request/Ngày</span>
-        </div>
-        <div class="d-flex flex-row mb-3" id="">
-            <label class="control-label text-uppercase" >Ngày mua</label>
-            <span style="padding-left: 8vmax;" >${format_time(f.created_at)}</span>
-        </div>`
-        });
-    }
-}
+// async function show_pricing(){
+//     var cr_u = get_cr_user();
+//     var data_limit = await get_wrap_pricing_history(cr_u.id);
+//     var rs = acc_get_detail();
+//     var p = document.getElementById("r_pricing");
+//     p.innerHTML = '';
+//     if(rs){
+//         alert(rs.limit_time);
+//         return;
+//     }
+//     if(data_limit) {
+//         data_limit.forEach(f =>{
+//             p.innerHTML = `<div class="d-flex flex-row mb-3"  id="" >
+//             <label  style="width: 28%;"  class="control-label text-uppercase">Tên gói</label>
+//             <span style="width: 60%; margin-left: 10%">${f.name} (${f.limit_day} Ngày)</span>
+//         </div>
+//         <div class="d-flex flex-row mb-3" id="">
+//             <label  style="width: 28%;" class="control-label text-uppercase">Quyền lợi</label>
+//             <span style="width: 60%; margin-left: 10%">${f.limit_request} Request/Ngày</span>
+//         </div>
+//         <div class="d-flex flex-row mb-3" id="">
+//             <label  style="width: 28%;" class="control-label text-uppercase" >Ngày mua</label>
+//             <span style="width: 60%; margin-left: 10%" >${format_time(f.created_at)}</span>
+//         </div>`
+//         });
+//     }
+// }
 

@@ -19,16 +19,20 @@
         <div class="d-flex">
             <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/page_box"><img src="../img/logo.jpg"
                         alt=""></a></div>
-            <div style="padding-top:15px ;" class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;"
-                        width="50px" height="50px" src="../img/avatar_user.png" alt=""></a></div>
-            <div style="padding-top:25px" class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
-                    data-toggle="dropdown" data-lang="Language" aria-haspopup="true" aria-expanded="false">
-                    
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" onclick="change_lang('en')" href="#">ENGLISH</a>
-                    <a class="dropdown-item" onclick="change_lang('vi')" href="#">VIỆT NAM</a>
+            <div style="padding-top:25px" class="d-flex">
+                <div class=""><a class="navbar-brand" href="#"> <img
+                            style="border-radius: 50%;" width="40px" height="40px" src="../img/avatar_user.png"
+                            alt=""></a></div>
+
+                <div style="padding-top:5px" class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
+                        data-toggle="dropdown" data-lang="Language" aria-haspopup="true" aria-expanded="false">
+
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="change_lang('en')" href="#">ENGLISH</a>
+                        <a class="dropdown-item" onclick="change_lang('vi')" href="#">VIỆT NAM</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,7 +52,8 @@
                 </div>
                 <div class="navbar-nav user-info">
                     <div id="current_username" class="nav-link active" aria-current="page"><a>USER</a> <a
-                            class="nav-link active" aria-current="page" onclick="acc_logout()" href="#" data-lang="Log_out"> </a>
+                            class="nav-link active" aria-current="page" onclick="acc_logout()" href="#"
+                            data-lang="Log_out"> </a>
                     </div>
                 </div>
             </div>
@@ -119,9 +124,11 @@
                     <nav class="w-100">
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link nav-left active" id="nav-home-tab" data-toggle="tab" role="tab"
-                                aria-controls="nav-home" aria-selected="true" onclick="set_card(1)" data-lang="card1"></a>
+                                aria-controls="nav-home" aria-selected="true" onclick="set_card(1)"
+                                data-lang="card1"></a>
                             <a class="nav-item nav-link nav-right" id="nav-profile-tab" data-toggle="tab" role="tab"
-                                aria-controls="nav-profile" aria-selected="false" onclick="set_card(2)" data-lang="card2"></a>
+                                aria-controls="nav-profile" aria-selected="false" onclick="set_card(2)"
+                                data-lang="card2"></a>
                         </div>
                     </nav>
                     <div class="tab-content w-100" id="nav-tabContent">
@@ -166,8 +173,8 @@
                             </div>
                             <div class="col-md-12 p-2">
                                 <!-- <label for="post_message" class="form-label">POST MESSAGE </label> -->
-                                <textarea rows="2" type="text" data-lang="Content" data-langtg="placeholder" class="form-control"
-                                    id="post_message"></textarea>
+                                <textarea rows="2" type="text" data-lang="Content" data-langtg="placeholder"
+                                    class="form-control" id="post_message"></textarea>
                             </div>
                             <div class="col-md-12 p-2 d-flex">
                                 <fieldset class="w-100 p-3 rounded border">
@@ -191,7 +198,8 @@
                             </div>
 
                             <div class="col-md-12 p-2">
-                                <button onclick="run_public()" class="btn btn-primary button-radius w-100" data-lang="Public"></button>
+                                <button onclick="run_public()" class="btn btn-primary button-radius w-100"
+                                    data-lang="Public"></button>
                             </div>
                             <div class="col-md-12 p-2">
                                 <table class="table table-bordered">
