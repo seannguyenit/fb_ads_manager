@@ -636,25 +636,29 @@ async function save_pricing_(id) {
             console.error('Error:', error);
         });
     get_user_limit()
-    init_users(cr_page, user_number_page);
+    // init_users(cr_page, user_number_page);
 }
 
 // save edit money 
 async function save_edit_money(id) {
     var edit_money = document.getElementById("edit_money").value;
-    var type = 0;
-    if(Number(edit_money) === 1){
-        type = 1;
-    }else{
-        type = 0;
-    }
+    // var type = 0;
+    // if(Number(edit_money) === 1){
+    //     type = 1;
+    // }else{
+    //     type = 0;
+    // }
     var money = document.getElementById("_money").value;
+    if(Number(money) === 0 || Number(money) === null){
+        alert("Hãy nhận số tiền bạn muốn");
+        return;
+    }
     if (Number(edit_money) === 0) {
         alert("Hãy chọn trạng thái bạn muốn muốn");
         return;
     }
     var user_id = id;
-    var data = { user_id: user_id, money: money, type: type };
+    var data = { user_id: user_id, money: money, type: edit_money };
     var url = `/api/a_insert_money`;
     var meth = 'POST';
 
@@ -682,7 +686,7 @@ async function save_edit_money(id) {
             alert("thay đổi tiền thành công")
         }
     get_user_limit()
-    init_users(cr_page, user_number_page);
+    // init_users(cr_page, user_number_page);
 }
 
 // async function total_user_agency(){
