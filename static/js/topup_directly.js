@@ -120,14 +120,10 @@ async function go_money() {
     if (rs) {
         if (rs.Code == 1) {
             // var money = document.getElementById('card_price_place').querySelector('input:checked').value - Math.floor((document.getElementById('card_price_place').querySelector('input:checked').value) / 100) * document.getElementById('card_price_place').querySelector('input:checked').dataset.rate;
-            var money = document.getElementById('card_price_place').querySelector("option:checked").value - Math.floor((document.getElementById('card_price_place').querySelector("option:checked").value) / 100) * document.getElementById('card_price_place').querySelector("option:checked").id;
-            var rs_save = await _ticket_save_({ money: money, des: 'Thẻ cào', user_id: cr_u.id, active: 1, task_id: rs.TaskId });
+            //var money = document.getElementById('card_price_place').querySelector('input:checked').value - Math.floor((document.getElementById('card_price_place').querySelector('input:checked').value) / 100) * document.getElementById('card_price_place').querySelector('input:checked').dataset.rate;
+            var rs_save = await ticket_save_({ money: 0, des: 'Thẻ cào', user_id: cr_u.id, active: 1, task_id: rs.TaskId, type: 1, time: Math.floor((new Date()).getTime() / 1000) });
             stop_loading();
-            if (rs_save.ok) {
-                alert('Thẻ nạp thành công !')
-            } else {
-                alert(rs_save.error)
-            }
+            alert('Thẻ nạp thành công vui lòng chờ 3-5 phút để tiền về tài khoản ! Nếu sau đó tk chưa có tiền vui lòng liên hệ admin !')
         } else {
             if (rs.Message && rs.Message.length > 0) {
                 stop_loading();
@@ -144,8 +140,8 @@ async function go_money() {
     stop_loading();
 }
 
-async function _ticket_save_(data) {
-    return await fetch('/api/money_success', {
+async function ticket_save_(data) {
+    return await fetch('/api/money_success_ticket', {
         method: 'POST', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',

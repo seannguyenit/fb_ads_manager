@@ -239,49 +239,49 @@ module.exports = {
         })
     },
     successfully_topup: (req, res) => {
-        let card_history = req.data;
         let money_history = req.body;
-        if (card_history != null) {
-            insert_history_card(card_history, (rs) => {
+        console.log('Receive receipt : ',money_history);
+        if (money_history) {
+            insert_history_card(money_history, (rs) => {
+                var err = '';
+                var money = 0;
+                var money_bonus = 0;
                 if (rs.ok = 1) {
-                    money_history.type = 1;
-                    money_history.time = new Date().getTime() / 1000;
-                    var active = 0;
-                    if (req.body.active && req.body.active == 1) {
-                        active = 1;
+                    if (money_history.Success == false) {
+                        err = 'Gạch thẻ lỗi';
+                    } else {
+                        money = money_history.amount;
+                        money_bonus = (money / 100) * 10;
                     }
-                    money_history.active = active;
-                    money_history.money = card_history.amount;
-                    money_history.money_bonus = (money_history.money / 100) * 10;
-
-                    let sql1 = 'insert into money_history SET ?;'
-                    db.query(sql1, money_history, (err, response) => {
+                    let sql1 = 'update money_history set money = ?,money_bonus = ?,error = ? where task_id = ?;'
+                    db.query(sql1, [Number(money), Number(money_bonus), err, Number(money_history.TaskId)], (err, response) => {
                         if (err) throw err
-                        res.json({ mess: 1 })
+                        res.json({ code: 1 })
                     })
                 }
             })
         }
+    },
+    add_money_ticket: (req, res) => {
+        let money_history = req.body;
+        let sql = 'select * from user where id = ? limit 1';
+        db.query(sql, [Number(money_history.user_id)], (err, response) => {
+            if (err) throw err;
+            var par_id = response[0].par_id;
+            if (par_id > 0) {
+                req.body.money_bonus = (money_history.money / 100) * 10;
+            } else {
+                req.body.money_bonus = 0;
+            }
+            let sql1 = 'insert into money_history SET ?;'
+            db.query(sql1, money_history, (err, response) => {
+                if (err) throw err
+                res.json({ ok: 1 })
+            })
+        })
 
-        // money_history.type = 1;
-        // money_history.time = new Date().getTime() / 1000;
-        // var active = 0;
-        // if (req.body.active && req.body.active == 1) {
-        //     active = 1;
-        // }
-        // money_history.active = active;
-        // money_history.money = card_history.amount;
-        // money_history.money_bonus = (money_history.money / 100) * 10;
-        // let sql1 = 'insert into money_history SET ?;'
-        // db.query(sql1, money_history, (err, response) => {
-        //     if (err) throw err
-        //     res.json({ ok: 1 })
-        // })
     }
 }
-// async function get_current_finance_(res,req) {
-//     return 
-// }
 
 async function waitingForCardResult(task_id) {
     var info = await rq_sv.get(`https://api.autocard365.com/api/checktask/${task_id}`);
