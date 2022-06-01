@@ -31,11 +31,11 @@ async function init_logo(){
             <tr>
                 <td>${dt.indexOf(item) + 1}</td>    
                 <td>${item.logo_name}</td> 
-                <td> <img src="${item.logo_img}" height="100vw" width="200vw" alt="logo tool264.com" /></td>    
+                <td class="text_center"> <img src="${item.logo_img}" height="100vw" width="200vw" alt="logo tool264.com" /></td>    
                 <td>
                     ${action}
                 </td>
-                    <td>
+                    <td >
                         ${button_action_tool(item.id, 'logo_del', ['btn', 'btn-sm', 'btn-danger'], 'delete')}
                     </td>
             </tr>`;
