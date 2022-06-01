@@ -52,7 +52,7 @@ async function load_token() {
                             <span style="color: white;"
                                 class="control-label text-uppercase">${item.name}</span>
                         </div>
-                        <button onclick="del_token(${item.id})" class="btn btn-danger">Xóa</button>
+                        <button onclick="del_token(${item.id})" class="btn btn-danger"  data-lang="delete">Xóa</button>
                     </div>
                 </div>
             </div>`;

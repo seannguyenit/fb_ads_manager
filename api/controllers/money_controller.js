@@ -16,7 +16,7 @@ module.exports = {
         })
     },
     edit_money_byadmin: (req, res) => {
-        if (Number(req.body.type) === 0) {
+        if (Number(req.body.type) === 2) {
             get_current_finance(req.body.user_id, (vl) => {
                 let money_bonus = vl[0].money;
                 if (Number(req.body.money) > Number(money_bonus)) {

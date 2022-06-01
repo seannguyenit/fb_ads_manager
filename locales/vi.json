@@ -86,7 +86,10 @@
     "discount:" : "Chiết khấu :",
     "real_recognition:" : "Thực nhận :",
     "number_seri" : "Số seri",
-    "card_code" : "Mã thẻ"
+    "card_code" : "Mã thẻ",
+    "recharged" : "Nạp thẻ",
+    "you're_cards" : "Bạn đang nạp thẻ",
+    "denomination" : "mệnh giá :"
 
 
 

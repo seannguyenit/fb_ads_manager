@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
 </head>
 
 <body class="body-bg-custom">
@@ -21,11 +21,23 @@
 
     <div class="header">
         <div class="d-flex">
-            <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/page_box"><img src="../img/logo.jpg"
-                        alt=""></a></div>
+            <div class="p-2 flex-grow-1" id="img_logo"><a class="navbar-brand" href="/home/page_box"><img
+                        src="../img/logo.jpg" alt=""></a></div>
             <div style="padding-top:25px" class="d-flex">
-                <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
-                            height="40px" src="../img/avatar_user.png" alt=""></a></div>
+                <!-- <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
+                            height="40px" src="../img/avatar_user.png" alt=""></a></div> -->
+                <div class="dropdown" style="padding-top: 5px;padding-right: 10px;">
+                    <div class=""  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img style="border-radius: 50%;" width="40px" height="40px" src="../img/avatar_user.png" alt="">
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
+                                aria-hidden="true"></i> Tài Khoảng</a>
+                        <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
+                                aria-hidden="true"></i>Đăng xuất</a>
+                    </div>
+                </div>
 
                 <div style="padding-top:5px" class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
@@ -70,7 +82,7 @@
                 <div class="container">
                     <div class="col-md-12 d-flex flex-wrap mt-5">
                         <div class="col-md-6">
-                            <h3 style="text-align: center;"><i class="pd_r_5 fas fa-user"></i><span
+                            <h3 style="text-align: center;"><i class="pd_r_5 fa fa-user-o"></i><span
                                     data-lang="information_user"></span></h3>
                             <hr />
                             <div class="col-md-12">
@@ -118,7 +130,8 @@
                                         placeholder="" autofocus="">
                                 </div>
                                 <div class="form-group text-center">
-                                    <button onclick="change_pass()" class="btn btn-primary" data-lang="save">Lưu</button>
+                                    <button onclick="change_pass()" class="btn btn-primary"
+                                        data-lang="save">Lưu</button>
                                 </div>
                             </div>
                         </div>

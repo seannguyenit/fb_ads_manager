@@ -86,7 +86,11 @@
     "discount:" : "Discount :",
     "real_recognition:" : "Real recognition :",
     "number_seri" : "Number seri",
-    "card_code" : "Card code"
+    "card_code" : "Card code",
+    "recharged" : "Recharged",
+    "you're_cards" : "You're recharged cards",
+    "denomination" : "denomination :"
+
 
 
 

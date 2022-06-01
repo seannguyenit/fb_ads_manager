@@ -18,11 +18,23 @@
     <!-- Top Bar -->
     <div class="header">
         <div class="d-flex">
-            <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/page_box"><img src="../img/logo.jpg"
-                        alt=""></a></div>
+            <div class="p-2 flex-grow-1" id="img_logo"><a class="navbar-brand" href="/home/page_box"><img
+                        src="../img/logo.jpg" alt=""></a></div>
             <div style="padding-top:25px" class="d-flex">
-                <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
-                            height="40px" src="../img/avatar_user.png" alt=""></a></div>
+                <!-- <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
+                            height="40px" src="../img/avatar_user.png" alt=""></a></div> -->
+                <div class="dropdown" style="padding-top: 5px;padding-right: 10px;">
+                    <div class=""  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img style="border-radius: 50%;" width="40px" height="40px" src="../img/avatar_user.png" alt="">
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
+                                aria-hidden="true"></i> Tài Khoảng</a>
+                        <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
+                                aria-hidden="true"></i>Đăng xuất</a>
+                    </div>
+                </div>
 
                 <div style="padding-top:5px" class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
@@ -64,7 +76,8 @@
                 <div class="col-md-12 d-flex flex-wrap mt-5 mb-5">
                     <div class="col-12">
                         <h2><i class="pd_r_5 fa fa-university" aria-hidden="true"></i>
-                            <span data-lang="bonus_withdraw"></span></h2>
+                            <span data-lang="bonus_withdraw"></span>
+                        </h2>
                     </div>
                     <!-- <div class="col-12" id="current_bonus">
                         <h2> Bonus </h2>
@@ -75,9 +88,12 @@
                                 Bonus Money
                             </div>
                             <div class="pricing_benefit d-flex flex-column" style="height:100px">
-                                <span><span style="font-weight: bolder;"><span data-lang="note:"> Chú ý:</span></span><br />
-                                   <span data-lang="note_withdraw_1"> - Chỉ được tạo phiếu rút tiền một lần chờ admin duyệt để được rút thêm</span><br />
-                                   <span data-lang="note_withdraw_2"> - Nếu có vấn đề liên hệ zalo : 0987533112 để được hỗ trợ</span>
+                                <span><span style="font-weight: bolder;"><span data-lang="note:"> Chú
+                                            ý:</span></span><br />
+                                    <span data-lang="note_withdraw_1"> - Chỉ được tạo phiếu rút tiền một lần chờ admin
+                                        duyệt để được rút thêm</span><br />
+                                    <span data-lang="note_withdraw_2"> - Nếu có vấn đề liên hệ zalo : 0987533112 để được
+                                        hỗ trợ</span>
                                 </span>
                                 </span>
                                 <!-- <div class="col-12" id="current_bonus">
@@ -88,12 +104,14 @@
                     <div class="col-md-6">
                         <div class="pricing">
                             <div class="pricing_title">
-                                <i class="pd_r_5 fa fa-university" aria-hidden="true"></i> <span data-lang="Rút_Tiền"></span>
+                                <i class="pd_r_5 fa fa-university" aria-hidden="true"></i> <span
+                                    data-lang="Rút_Tiền"></span>
                             </div>
 
                             <div class="pricing_benefit d-flex flex-column" style="height:100px">
                                 <span data-lang="click_review_votes">Bấm vào đây để tạo phiếu xét duyệt</span>
-                                <button onclick="open_ticket()" class="btn btn-primary w-50 m-auto" data-lang="create_votes">Tạo phiếu</button>
+                                <button onclick="open_ticket()" class="btn btn-primary w-50 m-auto"
+                                    data-lang="create_votes">Tạo phiếu</button>
                             </div>
                         </div>
                     </div>
