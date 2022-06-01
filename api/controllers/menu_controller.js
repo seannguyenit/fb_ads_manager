@@ -4,10 +4,29 @@ const util = require('util')
 const mysql = require('mysql')
 const db = require('./../db')
 const fs = require("fs");
+var formidable = require('formidable');
+const FormData = require('form-data');
 // const bodyparser = require('body-parser');
 // const multer = require('multer');
 
+const multer = require('multer');
 
+// const storage =  multer.diskStorage({ 
+//     destination: function (req, file, next) {
+//         next(null,`./lib/2022/6`);
+//       },
+//     filename: function (req, file, cb) {
+//         // let time =Date.now();
+//         cb(null,date+file.originalname);
+//   }
+// });
+// const upload = multer(
+//   {
+//     storage: storage, fileFilter: (req, file, next) => {
+//       next(null, true);
+//     }, limits: { fileSize: 15 * 1000000 }
+//   }
+//   ).single('file');
 
 // const storage = multer.diskStorage({
 //     destination: function (req, file, next) {
@@ -34,6 +53,13 @@ module.exports = {
     },
     get_logo: (req, res) => {
         let sql = 'SELECT * from logo;'
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    get_img_logo: (req, res) => {
+        let sql = 'SELECT * from logo where type = 1 limit 1;'
         db.query(sql, (err, response) => {
             if (err) throw err
             res.json(response)
@@ -94,35 +120,38 @@ module.exports = {
         })
     },
     insert_logo: (req, res) => {
-        let logo_name = "2";
-        let type = 0;
-        // upload(req, res, function (err) {
-            
-        // })
-        logo_name = req.body.logo_name;
-        type = req.body.type;
-        let logo_img = req.file.originalname + '--' + '.png';
-        let sql = 'insert into logo set logo_name = ?, logo_img = ?, type = ? '
-        db.query(sql, [logo_name, logo_img, type], (err, response) => {
-            if (err) throw err
-            res.json({ message: 'insert success!' })
-            // window.location.href = 'm_logo';
+        let date = Date.now();
+        const storage =  multer.diskStorage({ 
+            destination: function (req, file, next) {
+                next(null,`././static/lib/img`);
+              },
+            filename: function (req, file, cb) {
+                // let time =Date.now();
+                cb(null,date+".jpg");
+          }
+        });
+        const upload = multer(
+          {
+            storage: storage, fileFilter: (req, file, next) => {
+              next(null, true);
+            }, limits: { fileSize: 15 * 1000000 }
+          }
+          ).single('file');
+        upload(req, res, function (err) {})
+        var form = new formidable.IncomingForm();
+        form.parse(req, function (err, fields, files) {
+            const formData = new FormData();
+            var f = fs.createReadStream(files.file.filepath);
+            let logo_img = "../lib/img/"+date+".jpg";
+            let logo_name = fields.name;
+            let type = fields.type;
+            let sql = 'insert into logo set logo_name = ?, logo_img = ?, type = ? '
+            db.query(sql, [logo_name, logo_img, type], (err, response) => {
+                if (err) throw err
+                res.json({ message: 'insert success!' })
+            })
+
         })
-
-        //   console.log(req.file); // ------> line 270 of my original server1.js file
-        //     // if(err){
-        //     alert("err");
-        //     return;
-        // }
-        // else{
-        //     alert("thanh cong");
-        // }
-
-
-        // var form = new formidable.IncomingForm();
-        // form.parse(req, function (err, fields, files) {})
-        // let data = req.file;
-        // data.logo_img = data.files[0];
 
     },
     insert_his_login: (req, res) => {

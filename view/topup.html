@@ -19,11 +19,23 @@
 
     <div class="header">
         <div class="d-flex">
-            <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/page_box"><img src="../img/logo.jpg"
-                        alt=""></a></div>
+            <div class="p-2 flex-grow-1" id="img_logo"><a class="navbar-brand" href="/home/page_box"><img
+                        src="../img/logo.jpg" alt=""></a></div>
             <div style="padding-top:25px" class="d-flex">
-                <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
-                            height="40px" src="../img/avatar_user.png" alt=""></a></div>
+                <!-- <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
+                            height="40px" src="../img/avatar_user.png" alt=""></a></div> -->
+                <div class="dropdown" style="padding-top: 5px;padding-right: 10px;">
+                    <div class=""  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img style="border-radius: 50%;" width="40px" height="40px" src="../img/avatar_user.png" alt="">
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
+                                aria-hidden="true"></i> Tài Khoảng</a>
+                        <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
+                                aria-hidden="true"></i>Đăng xuất</a>
+                    </div>
+                </div>
 
                 <div style="padding-top:5px" class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
@@ -80,9 +92,11 @@
                                 <div class="container">
                                     <span>
                                         <span style="font-weight: bolder;" data-lang="note:">Chú ý:</span><br />
-                                        <span data-lang="note_topup_1"> -Mức nạp tối thiểu qua Banking 30.000 VNĐ</span><br />
+                                        <span data-lang="note_topup_1"> -Mức nạp tối thiểu qua Banking 30.000
+                                            VNĐ</span><br />
                                         <span data-lang="note_topup_2">- Nhập đúng nội dung chuyển khoản</span><br />
-                                        <span data-lang="note_topup_3">- Sau 30 phút không cộng tiền liên hệ zalo : 0987533112 để được hỗ trợ</span>
+                                        <span data-lang="note_topup_3">- Sau 30 phút không cộng tiền liên hệ zalo :
+                                            0987533112 để được hỗ trợ</span>
                                         <br><br><br><br><br><br><br>
                                     </span>
                                 </div>
@@ -93,22 +107,26 @@
                         <div class="pricing ">
                             <div class="pricing_title">
                                 <i class="pd_r_5 fa fa-university" aria-hidden="true"></i><span
-                                data-lang="bankMB"></span>
+                                    data-lang="bankMB"></span>
                             </div>
 
                             <div class="pricing_benefit d-flex flex-column">
-                                <span style="margin-top: 5px;" ><span data-lang="account_name"> Tên tài khoản</span><br /><span>Nguyễn Quốc Tài</span> <button
+                                <span style="margin-top: 5px;"><span data-lang="account_name"> Tên tài
+                                        khoản</span><br /><span>Nguyễn Quốc Tài</span> <button
                                         onclick="copy_near_span(this)"
                                         class="btn btn-primary btn-sm">Copy</button></span>
-                                <span style="margin-top: 5px;" ><span data-lang="account_number">Số tài khoản</span>  <br /><span>264264989999</span> <button
+                                <span style="margin-top: 5px;"><span data-lang="account_number">Số tài khoản</span>
+                                    <br /><span>264264989999</span> <button onclick="copy_near_span(this)"
+                                        class="btn btn-primary btn-sm">Copy</button></span>
+                                <span style="margin-top: 5px;"> <span data-lang="transfer_contents"> Nội dung chuyển
+                                        khoản</span> <br /><span id="ticket_number"></span> <button
                                         onclick="copy_near_span(this)"
                                         class="btn btn-primary btn-sm">Copy</button></span>
-                                <span style="margin-top: 5px;" > <span data-lang="transfer_contents"> Nội dung chuyển khoản</span> <br /><span
-                                        id="ticket_number"></span> <button onclick="copy_near_span(this)"
-                                        class="btn btn-primary btn-sm">Copy</button></span>
-                                <span data-lang="successful_transfer:">Chuyển khoản thành công vui lòng nhấn nút :</span>
+                                <span data-lang="successful_transfer:">Chuyển khoản thành công vui lòng nhấn nút
+                                    :</span>
                                 <!-- <span>Have fun !</span> -->
-                                <button onclick="save_ticket()" class="btn btn-primary w-50 m-auto" data-lang="confirm">Xác nhận</button>
+                                <button onclick="save_ticket()" class="btn btn-primary w-50 m-auto"
+                                    data-lang="confirm">Xác nhận</button>
                             </div>
                         </div>
                     </div>

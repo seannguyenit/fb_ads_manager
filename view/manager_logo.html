@@ -18,7 +18,7 @@
     <!-- Top Bar -->
     <div class="header">
         <div class="d-flex">
-            <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/users"><img height="68.99px"
+            <div class="p-2 flex-grow-1" id="img_logo"><a class="navbar-brand" href="/home/users"><img width="141.94px" height="68.99px"
                         src="../img/logo.jpg" alt=""></a></div>
 
             <div style="padding-top: 0px; padding-right: 6vw;" class="dropdown">
@@ -72,25 +72,17 @@
         </div>
     </nav>
     <section>
-        <div>
-            <img id="imgs" src="" alt="logo new">
-        </div>
+        <!-- <div>
+            <img src="../lib/2022/6/1--.png" alt="logo new">
+        </div> -->
         <div class="col-12">
-            <div class="container">
-                <div class="">
-                    <div class="col-12 pt-5 pb-2">
-                        <button onclick="open_modal(0)" class="btn btn-primary">Thêm Logo</button>
-                        <div class="float_left" id="m_logo"></div>
-                        <!-- <button onclick="paginate()" class="btn btn-primary">test</button> -->
-                        <!-- <input type="text" id="sreach_user" name="sreach_user"> 
-                        <button onclick="" class="btn btn-primary">search</button> -->
-                        <!-- <div class="float_right">
-                            <label for="username" class="form-label"></label>
-                            <input type="text" class="" id="username" required placeholder="username...">
-                            <button onclick="search_acc()" class="btn btn-primary">search</button>
-                        </div> -->
-                    </div>
-
+            <div class="container pt-5">
+                <h3><i class=" pd_r_5 fa fa-pencil-square-o" aria-hidden="true"></i>Quản Lý Logo</h3>
+            </div>
+            <div style="background-color: #080808; margin-top: 2vw;" class="container">
+                <div class="col-12 pd_t_1 pb-2">
+                    <button onclick="open_modal(0)" class="btn btn-primary">Thêm Logo</button>
+                    <!-- <div class="float_left" id="m_logo"></div> -->
                 </div>
                 <div class="col-12">
                     <table id="table_data" class="tablemanager table table-striped table-bordered table-sm"
@@ -105,41 +97,17 @@
                             </tr>
                         </thead>
                         <tbody>
-
                         </tbody>
+                        <caption id="showing"></caption>
                     </table>
-                    <!-- <div class="modal fade " id="search_table" data-backdrop="static" data-keyboard="false"
-                        tabindex="-1" aria-labelledby="search_table" aria-hidden="true">
-                        <table id="search_table" class="tablemanager table table-striped table-bordered table-sm"
-                            cellspacing="0" width="100%">
-                            <thead>
-                                <tr>
-                                    <th>stt</th>
-                                    <th>Username</th>
-                                    <th>Tổng nạp</th>
-                                    <th>Tổng thưởng</th>
-                                    <th id="month"></th>
-                                    <th>Tên</th>
-                                    <th>SDT</th>
-                                    <th>ĐC</th>
-                                    <th>hạn ngày</th>
-
-                                    <th class="disableFilterBy">Thao tác</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                           
-                        </table>
-                    </div> -->
-                    <div id="paginate"></div>
-
-                    <!-- /////////////////////// -->
                 </div>
-                <!-- ////////////////////// -->
-
+                <!-- <div id="paginate"></div> -->
             </div>
+            <!-- /////////////////////// -->
+
+            <!-- ////////////////////// -->
+
+
         </div>
     </section>
     <div class="modal fade" id="user_details" data-backdrop="static" data-keyboard="false" tabindex="-1"

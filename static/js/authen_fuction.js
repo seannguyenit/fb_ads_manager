@@ -1,9 +1,19 @@
 `use strict`
 init_authen();
-
+init_logo();
 function change_lang(lang) {
     setCookie('lang', lang, 90000);
     location.reload();
+}
+
+async function init_logo(){
+    var data = await get_img_logo();
+    if (data) {
+        data.forEach(item => {
+            document.getElementById('img_logo').innerHTML = `<a class="navbar-brand" href="/home/users"><img width="141.94px" height="68.99px"
+            src="${item.logo_img}" alt=""></a>`;
+        })
+    }
 }
 
 function init_authen() {
@@ -21,8 +31,9 @@ function init_authen() {
                 // let money_bonus = '(Bonus : ' + get_format_VND(rs.bonus)  + ' VNĐ)'
                 // <a style="color:white" href="/home/user_info">${user_info}</a>
                 let user_info = rs.username + ' ( ' + get_format_VND(rs.money) + ' VNĐ )';
-                cr.innerHTML = `
-                <a class="nav-link active" aria-current="page" onclick="acc_logout()" href="#" data-lang="Logout"></a>`;
+                cr.innerHTML ="";
+                //  `
+                // <a class="nav-link active" aria-current="page" onclick="acc_logout()" href="#" data-lang="Logout"></a>`;
             })
         }
     }
@@ -54,6 +65,18 @@ function get_cr_user() {
     } catch (error) {
         return {};
     }
+}
+
+async function get_img_logo() {
+    return await fetch(`/api/init_logo` /*, options */)
+    .then((response) => response.json())
+    .then((data) => {
+        return data;
+    })
+    .catch((error) => { 
+        console.warn(error);
+        return undefined;
+    });
 }
 
 async function get_current_finance() {

@@ -20,11 +20,23 @@
 
     <div class="header">
         <div class="d-flex">
-            <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/page_box"><img src="../img/logo.jpg"
-                        alt=""></a></div>
+            <div class="p-2 flex-grow-1" id="img_logo"><a class="navbar-brand" href="/home/page_box"><img
+                        src="../img/logo.jpg" alt=""></a></div>
             <div style="padding-top:25px" class="d-flex">
-                <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
-                            height="40px" src="../img/avatar_user.png" alt=""></a></div>
+                <!-- <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
+                            height="40px" src="../img/avatar_user.png" alt=""></a></div> -->
+                <div class="dropdown" style="padding-top: 5px; padding-right: 10px;">
+                    <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img style="border-radius: 50%;" width="40px" height="40px" src="../img/avatar_user.png" alt="">
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
+                                aria-hidden="true"></i> Tài Khoảng</a>
+                        <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
+                                aria-hidden="true"></i>Đăng xuất</a>
+                    </div>
+                </div>
 
                 <div style="padding-top:5px" class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
@@ -57,7 +69,7 @@
     <div>
         <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
             <div class="container-fluid">
-            <a class="navbar-brand com-name" href="#">FB ads support</a>
+                <a class="navbar-brand com-name" href="#">FB ads support</a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                     aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
