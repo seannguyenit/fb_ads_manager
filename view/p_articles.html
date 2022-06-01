@@ -40,7 +40,7 @@
     </div>
     <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
-            <!-- <a class="navbar-brand com-name" href="#">FB ads support</a> -->
+            <a class="navbar-brand com-name" href="#">FB ads support</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                 aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -64,9 +64,10 @@
             <div class="container">
                 <div class="col-md-12 d-flex flex-wrap mt-5 mb-5">
                     <div class="col-12">
-                        <h3 class="float_left"><i class="pd_r_5 fa fa-bell-o" aria-hidden="true"></i>
-                            THÔNG BÁO !!</h3>
-                        <button onclick="open_modal()" class="btn float_right btn-primary m-auto">Góp Ý</button>
+                        <h3 class="float_left"><i class="pd_r_5 fa fa-bell-o" aria-hidden="true"></i><span
+                                data-lang="Thông_Báo"></span>
+                        </h3>
+                        <button onclick="open_modal()" class="btn float_right btn-primary m-auto" data-lang="comments">Góp Ý</button>
                     </div>
                     <div id="table_data">
                         <div class="box">
@@ -125,7 +126,7 @@
                 </div>
                 <div class="modal-body d-flex">
                     <div class="col-md-12">
-                        <label for="contacts" class="form-label">Ý Kiến :</label>
+                        <label for="contacts" class="form-label" data-lang="content">Ý Kiến :</label>
                         <textarea class="form-control" name="contacts" id="contacts" cols="60" rows="5"
                             required></textarea>
                         <!-- <input style="height:200px" type="text" class="form-control" id="money_withdraw" required> -->

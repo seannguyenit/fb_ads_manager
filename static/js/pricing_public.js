@@ -27,7 +27,7 @@ async function init_default() {
                 ${get_format_VND(item.price)} VNĐ
             </div>
             </div>
-            <div class="text-center mt-2 mb-2"><button onclick="order_pricing(${item.id},'${item.name}',${item.price})" class="btn btn-primary">Mua ngay</button></div>
+            <div class="text-center mt-2 mb-2"><button onclick="order_pricing(${item.id},'${item.name}',${item.price})" class="btn btn-primary" data-lang="buy_now">Mua ngay</button></div>
     </div>`;
         });
     }

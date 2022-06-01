@@ -39,7 +39,7 @@
     </div>
     <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
-            <!-- <a class="navbar-brand com-name" href="#">FB ads support</a> -->
+            <a class="navbar-brand com-name" href="#">FB ads support</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                 aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -62,14 +62,14 @@
         <div class="col-12">
 
             <div class="container">
-                <h3 style="padding-top: 50px;" class="pd_l_15"><i class=" pd_r_5 fa fa-users" aria-hidden="true"></i>Đại
-                    Lý</h3>
+                <h3 style="padding-top: 50px;" class="pd_l_15"><i class=" pd_r_5 fa fa-users" aria-hidden="true"></i><span
+                    data-lang="Đại_lý"></span></h3>
                 <hr />
                 <!-- <button onclick="open_modal()" class="btn btn-primary m-auto">Góp Ý</button> -->
                 <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="link_ref">Link giới thiệu :</label>
+                            <label for="link_ref" data-lang="referral_link">Link giới thiệu :</label>
                             <input type="text" class="form-control" name="link_ref" id="link_ref"
                                 aria-describedby="link_ref" placeholder="Vui lòng đăng ký làm đại lý !">
                         </div>
@@ -77,7 +77,7 @@
                     <div class="col-md-6">
                         <div class="container d-flex flex-column">
                             <label id="lb_stt">Chưa đăng ký</label>
-                            <button id="btn_reg" onclick="agency_register()" class="btn btn-primary">Đăng ký</button>
+                            <button id="btn_reg" onclick="agency_register()" class="btn btn-primary"></button>
                         </div>
                     </div>
                 </div>
@@ -89,26 +89,26 @@
         <div class="col-12">
             <div class="container">
                 <div id="main_content" class="col-md-12 d-flex flex-wrap mt-2">
-                    <div class="container title-agency">
+                    <div class="container title-agency" data-lang="information_agency">
                         Thông tin đại lý
                     </div>
                     <div class="col-md-12 d-flex flex-wrap">
                         <div class="col-md-4">
                             <div class="box-agency">
                                 <div>0</div>
-                                <div>Tổng tiền nạp</div>
+                                <div data-lang="total_top_up">Tổng tiền nạp</div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="box-agency">
                                 <div>0</div>
-                                <div>Số lần nạp</div>
+                                <div data-lang="number_of_top_up">Số lần nạp</div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="box-agency">
                                 <div>0</div>
-                                <div>Đăng ký mới</div>
+                                <div data-lang="new_registration">Đăng ký mới</div>
                             </div>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
         <div class="col-12">
             <div class="container">
                 <div id="main_content" class="col-md-12 d-flex flex-wrap mt-2">
-                    <div class="container title-agency">
+                    <div class="container title-agency" data-lang="list_of_user">
                         Danh sách tài khoảng
                     </div>
                     <div class="col-md-12 d-flex flex-wrap">
@@ -129,9 +129,9 @@
                             <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>User</th>
-                                    <th>Tổng tiền nạp</th>
-                                    <th>Ngày tạo</th>
+                                    <th data-lang="Tài_Khoản">User</th>
+                                    <th data-lang="total_top_up">Tổng tiền nạp</th>
+                                    <th data-lang="creation_date">Ngày tạo</th>
                                 </tr>
                             </thead>
                             <tbody id="table_dt">

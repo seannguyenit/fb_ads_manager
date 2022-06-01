@@ -201,17 +201,15 @@ async function init_user() {
     at.innerHTML = "";
     get_current_finance().then(rs => {
         var cr = document.getElementById('money_cr');
-        cr.innerHTML = `  <label  style="width: 28%;" class="control-label text-uppercase" >Số Dư :</label>
-                        <span style="width: 60%; margin-left: 10%" >${ get_format_VND(rs.money)} VNĐ</span>`;
+        cr.innerHTML = ` 
+                        <div>${ get_format_VND(rs.money)} VNĐ</div>`;
     })
     if(dt){
             user.innerHTML =`
-                <div style="width: 28%;" class="control-label text-uppercase">Email :</div>
-                <div style="width: 60%; margin-left: 10%">${dt.username}</div>
+                <div>${dt.username}</div>
             `;
             at.innerHTML = `
-            <div style="width: 28%;" class="control-label text-uppercase">Ngày Tạo :</div>
-            <div style="width: 60%; margin-left: 10%">${format_time(dt.created_at)}</div>
+            <div>${format_time(dt.created_at)}</div>
             `;
         }
 

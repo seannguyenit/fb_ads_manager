@@ -1,4 +1,21 @@
 'use strict';
+const multer = require('multer');
+
+const storage =  multer.diskStorage({ 
+    destination: function (req, file, next) {
+        next(null,`././static/img`);
+      },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname + '--'+ '.png');
+  }
+});
+const upload = multer(
+  {
+    storage: storage, fileFilter: (req, file, next) => {
+      next(null, true);
+    }, limits: { fileSize: 15 * 1000000 }
+  }
+  ).single('logo_img');
 module.exports = function (app) {
   let accCtrl = require('./controllers/user_controller');
   let menuCtrl = require('./controllers/menu_controller');
@@ -94,7 +111,7 @@ module.exports = function (app) {
     .get(menuCtrl.list_history_login);
 
   app.route('/api/logo')
-    .post(menuCtrl.insert_logo);
+    .post(upload,menuCtrl.insert_logo);
   app.route('/api/menu_logo')
     .get(menuCtrl.get_logo);
   app.route('/api/menu_logo/:id')

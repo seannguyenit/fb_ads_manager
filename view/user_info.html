@@ -43,6 +43,7 @@
     <div>
         <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
             <div class="container-fluid">
+                <a class="navbar-brand com-name" href="#">FB ads support</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                     aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -69,50 +70,55 @@
                 <div class="container">
                     <div class="col-md-12 d-flex flex-wrap mt-5">
                         <div class="col-md-6">
-                            <h3 style="text-align: center;"> <i class="pd_r_5 fas fa-user"></i>Thông tin tài khoản</h3>
+                            <h3 style="text-align: center;"><i class="pd_r_5 fas fa-user"></i><span
+                                    data-lang="information_user"></span></h3>
                             <hr />
                             <div class="col-md-12">
-                                <div class="d-flex flex-row mb-3" id="user_infor">
-                                    <label class="control-label text-uppercase">Email</label>
-                                    <span style="padding-left: 8vmax;">1</span>
-                                </div>
-                                <div class="d-flex flex-row mb-3" id="create_at_infor">
-                                    <label class="control-label text-uppercase">Ngày Tạo</label>
-                                    <span style="padding-left: 8vmax;">1</span>
-                                </div>
-                                <div class="d-flex flex-row mb-3" id="money_cr">
-                                    <label class="control-label text-uppercase">Số Dư</label>
-                                    <span style="padding-left: 8vmax;">1</span>
+                                <div class="d-flex flex-row mb-3">
+                                    <div style="width: 28%;" class="control-label text-uppercase">Email :</div>
+                                    <div style="width: 60%; margin-left: 10%" id="user_infor"></div>
                                 </div>
                                 <div class="d-flex flex-row mb-3">
-                                    <label style="width: 28%;" class="control-label text-uppercase">Đăng Xuất</label>
+                                    <div style="width: 28%;" class="control-label text-uppercase"
+                                        data-lang="creation_date:"></div>
+                                    <div style="width: 60%; margin-left: 10%" id="create_at_infor"></div>
+                                </div>
+                                <div class="d-flex flex-row mb-3">
+                                    <div style="width: 28%;" class="control-label text-uppercase" data-lang="money:">
+                                    </div>
+                                    <span style="width: 60%; margin-left: 10%" id="money_cr"></span>
+                                </div>
+                                <div class="d-flex flex-row mb-3">
+                                    <label style="width: 28%;" class="control-label text-uppercase"
+                                        data-lang="Logout"></label>
                                     <div style="width: 60%; margin-left: 10%"> <button onclick="acc_logout()"
-                                            class="btn btn-primary">Đăng Xuất</button></div>
+                                            class="btn btn-primary" data-lang="Logout"></button></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <h3 style="text-align: center;"> <i class=" pd_r_5 fa fa-unlock-alt" aria-hidden="true"></i>
-                                Đổi mật khẩu</h3>
+                            <h3 style="text-align: center;"> <i class=" pd_r_5 fa fa-unlock-alt"
+                                    aria-hidden="true"></i><span data-lang="change_password"></span></h3>
                             <hr />
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label text-uppercase">mật khẩu cũ</label>
+                                    <label class="control-label text-uppercase" data-lang="old_password"></label>
                                     <input class="form-control" id="old_pass" name="old_pass" type="password"
                                         placeholder="" autofocus="">
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label text-uppercase">mật khẩu mới</label>
+                                    <label class="control-label text-uppercase" data-lang="new_password"></label>
                                     <input class="form-control" id="new_pass" name="new_pass" type="password"
                                         placeholder="" autofocus="">
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label text-uppercase">xác nhận mật khẩu mới</label>
+                                    <label class="control-label text-uppercase"
+                                        data-lang="confirm_new_password"></label>
                                     <input class="form-control" id="confirm_pass" name="confirm_pass" type="password"
                                         placeholder="" autofocus="">
                                 </div>
                                 <div class="form-group text-center">
-                                    <button onclick="change_pass()" class="btn btn-primary">Lưu</button>
+                                    <button onclick="change_pass()" class="btn btn-primary" data-lang="save">Lưu</button>
                                 </div>
                             </div>
                         </div>
@@ -142,17 +148,16 @@
             <div class="col-12">
                 <div class="container">
                     <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5 mb-5">
-                        <h3><i class="pd_r_5 fa fa-history"></i>Lịch sử hoạt động</h3>
+                        <h3><i class="pd_r_5 fa fa-history"></i><span data-lang="history_operation"></span></h3>
                         <table class="table table-dark">
-                            <caption>
-                                lịch sử giao dịch gần đây</caption>
+                            <caption data-lang="recent_trading_history"></caption>
                             <thead>
                                 <tr>
                                     <th>Stt</th>
-                                    <th>Gói</th>
+                                    <th data-lang="Gói_dịch_vụ">Gói_dịch_vụ</th>
                                     <!-- <th>Mã ck</th> -->
-                                    <th>Giá</th>
-                                    <th>Thời Gian</th>
+                                    <th data-lang="price">Giá</th>
+                                    <th data-lang="time">Thời Gian</th>
                                 </tr>
                             </thead>
                             <tbody id="tb_data">

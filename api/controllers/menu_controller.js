@@ -4,6 +4,25 @@ const util = require('util')
 const mysql = require('mysql')
 const db = require('./../db')
 const fs = require("fs");
+// const bodyparser = require('body-parser');
+// const multer = require('multer');
+
+
+
+// const storage = multer.diskStorage({
+//     destination: function (req, file, next) {
+//         next(null, path.join(__dirname, 'img'));
+//     },
+//     filename: function (req, file, cb) {
+//         cb(null, file.fieldname + '--' + '.png');
+//     }
+// });
+// const upload = multer({
+//     storage: storage, fileFilter: (req, file, next) => {
+//         next(null, true);
+//     }, limits: { fileSize: 15 * 1000000 }
+// }).single('logo_img');
+
 
 module.exports = {
     get_template: (req, res) => {
@@ -75,13 +94,36 @@ module.exports = {
         })
     },
     insert_logo: (req, res) => {
-        let data = req.body;
-        // data.logo_img = req.body.img;
-        let sql = 'insert into logo set ?'
-        db.query(sql, [data], (err, response) => {
+        let logo_name = "2";
+        let type = 0;
+        // upload(req, res, function (err) {
+            
+        // })
+        logo_name = req.body.logo_name;
+        type = req.body.type;
+        let logo_img = req.file.originalname + '--' + '.png';
+        let sql = 'insert into logo set logo_name = ?, logo_img = ?, type = ? '
+        db.query(sql, [logo_name, logo_img, type], (err, response) => {
             if (err) throw err
             res.json({ message: 'insert success!' })
+            // window.location.href = 'm_logo';
         })
+
+        //   console.log(req.file); // ------> line 270 of my original server1.js file
+        //     // if(err){
+        //     alert("err");
+        //     return;
+        // }
+        // else{
+        //     alert("thanh cong");
+        // }
+
+
+        // var form = new formidable.IncomingForm();
+        // form.parse(req, function (err, fields, files) {})
+        // let data = req.file;
+        // data.logo_img = data.files[0];
+
     },
     insert_his_login: (req, res) => {
         var time = new Date().getTime() / 1000;

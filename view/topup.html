@@ -40,7 +40,7 @@
     </div>
     <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
-            <!-- <a class="navbar-brand com-name" href="#">FB ads support</a> -->
+            <a class="navbar-brand com-name" href="#">FB ads support</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                 aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -65,23 +65,24 @@
             <div class="container">
                 <div class="col-md-12 d-flex flex-wrap mt-5 mb-5">
                     <div class="col-12">
-                        <h2><i class="pd_r_5 fa fa-university" aria-hidden="true"></i>Nạp tiền theo các bước bên dưới
-                            hoặc nạp bằng thẻ cào</h2>
+                        <h2><i class="pd_r_5 fa fa-university" aria-hidden="true"></i> <span
+                                data-lang="topup_or_card"></span></h2>
                         <!-- <a class="btn btn-primary" href="#">Nạp bằng thẻ cào (Đang bảo trì)</a> -->
-                        <a class="btn btn-primary" href="/home/topup_card">Nạp bằng thẻ cào</a>
+                        <a class="btn btn-primary" href="/home/topup_card" data-lang="with_scratch_card">Nạp bằng thẻ
+                            cào</a>
                     </div>
                     <div class="col-md-6">
                         <div class="pricing ">
                             <div class="pricing_title" id="cr_money_">
-                                Chuyển tiền vào ngân hàng MB
                             </div>
 
                             <div class="pricing_benefit d-flex flex-column">
                                 <div class="container">
-                                    <span><span style="font-weight: bolder;">Chú ý:</span><br />
-                                        -Mức nạp tối thiểu qua Banking 30.000 VNĐ<br />
-                                        - Nhập đúng nội dung chuyển khoản<br />
-                                        - Sau 30 phút không cộng tiền liên hệ zalo : 0987533112 để được hỗ trợ
+                                    <span>
+                                        <span style="font-weight: bolder;" data-lang="note:">Chú ý:</span><br />
+                                        <span data-lang="note_topup_1"> -Mức nạp tối thiểu qua Banking 30.000 VNĐ</span><br />
+                                        <span data-lang="note_topup_2">- Nhập đúng nội dung chuyển khoản</span><br />
+                                        <span data-lang="note_topup_3">- Sau 30 phút không cộng tiền liên hệ zalo : 0987533112 để được hỗ trợ</span>
                                         <br><br><br><br><br><br><br>
                                     </span>
                                 </div>
@@ -91,22 +92,23 @@
                     <div class="col-md-6">
                         <div class="pricing ">
                             <div class="pricing_title">
-                                <i class="pd_r_5 fa fa-university" aria-hidden="true"></i> Chuyển tiền vào ngân hàng MB
+                                <i class="pd_r_5 fa fa-university" aria-hidden="true"></i><span
+                                data-lang="bankMB"></span>
                             </div>
 
                             <div class="pricing_benefit d-flex flex-column">
-                                <span style="margin-top: 5px;">Tên tài khoản<br /><span>Nguyễn Quốc Tài</span> <button
+                                <span style="margin-top: 5px;" ><span data-lang="account_name"> Tên tài khoản</span><br /><span>Nguyễn Quốc Tài</span> <button
                                         onclick="copy_near_span(this)"
                                         class="btn btn-primary btn-sm">Copy</button></span>
-                                <span style="margin-top: 5px;">Số tài khoản <br /><span>264264989999</span> <button
+                                <span style="margin-top: 5px;" ><span data-lang="account_number">Số tài khoản</span>  <br /><span>264264989999</span> <button
                                         onclick="copy_near_span(this)"
                                         class="btn btn-primary btn-sm">Copy</button></span>
-                                <span style="margin-top: 5px;">Nội dung chuyển khoản <br /><span
+                                <span style="margin-top: 5px;" > <span data-lang="transfer_contents"> Nội dung chuyển khoản</span> <br /><span
                                         id="ticket_number"></span> <button onclick="copy_near_span(this)"
                                         class="btn btn-primary btn-sm">Copy</button></span>
-                                <span>Chuyển khoản thành công vui lòng nhấn nút :</span>
+                                <span data-lang="successful_transfer:">Chuyển khoản thành công vui lòng nhấn nút :</span>
                                 <!-- <span>Have fun !</span> -->
-                                <button onclick="save_ticket()" class="btn btn-primary w-50 m-auto">Xác nhận</button>
+                                <button onclick="save_ticket()" class="btn btn-primary w-50 m-auto" data-lang="confirm">Xác nhận</button>
                             </div>
                         </div>
                     </div>
@@ -125,17 +127,17 @@
         <div class="col-12">
             <div class="container">
                 <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5 mb-5">
-                    <h3><i class="pd_r_5 fa fa-history"></i>Lịch sử hoạt động</h3>
+                    <h3><i class="pd_r_5 fa fa-history"></i><span data-lang="history_operation"></span></h3>
                     <table class="table table-dark">
-                        <caption>lịch sử giao dịch gần đây</caption>
+                        <caption data-lang="recent_trading_history">lịch sử giao dịch gần đây</caption>
                         <thead>
                             <tr>
                                 <th>Stt</th>
-                                <th>Số tiền nạp (VND)</th>
-                                <th>Thời gian</th>
+                                <th data-lang="money_topup">Số tiền nạp (VND)</th>
+                                <th data-lang="time">Thời gian</th>
                                 <!-- <th>Mã ck</th> -->
-                                <th>Trạng thái</th>
-                                <th>Số tiền rút (VND)</th>
+                                <th data-lang="condition">Trạng thái</th>
+                                <th data-lang="money_withdraw">Số tiền rút (VND)</th>
                             </tr>
                         </thead>
                         <tbody id="tb_money_his">

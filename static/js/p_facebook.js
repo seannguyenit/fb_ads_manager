@@ -279,49 +279,33 @@ async function show_pricing(){
     var cr_u = get_cr_user();
     var data_limit = await get_wrap_pricing_history(cr_u.id);
     var rs = await acc_get_detail();
-    var p = document.getElementById("r_pricing");
-    var d = document.getElementById("limit_đate");
-    p.innerHTML = '';
-    d.innerHTML = '';
     if(rs){
         if(rs.limit_time){
-            d.innerHTML = ` <label style="width: 28%;" class="control-label text-uppercase" >Hạn ngày :</label>
-            <span style="width: 60%; margin-left: 10%" >${format_time(rs.limit_time)}</span>`
+            document.getElementById("limit_đate").innerHTML = ` 
+            <span>${format_time(rs.limit_time)}</span>`
         }else{
-            d.innerHTML = ` <label class="control-label text-uppercase" >Hạn ngày :</label>
-            <span style="padding-left: 8vmax;" >Hết Hạn</span>`
+            document.getElementById("limit_đate").innerHTML = ` 
+            <>Hết Hạn</span>`
         }
     }
     if(data_limit) {
         data_limit.forEach(f =>{
-            p.innerHTML = `<div class="d-flex flex-row mb-3"  id="" >
-            <label style="width: 28%;"  class="control-label text-uppercase">Tên gói :</label>
-            <span style="width: 60%; margin-left: 10%">${f.name} (${f.limit_day} Ngày)</span>
-        </div>
-        <div class="d-flex flex-row mb-3" id="">
-            <label style="width: 28%;" class="control-label text-uppercase">Quyền lợi :</label>
-            <span style="width: 60%; margin-left: 10%">${f.limit_request} Request/Ngày</span>
-        </div>
-        <div class="d-flex flex-row mb-3" id="">
-            <label  style="width: 28%;" class="control-label text-uppercase" >Ngày mua :</label>
-            <span style="width: 60%; margin-left: 10%" style="padding-left: 8vmax;" >${format_time(f.created_at)}</span>
-        </div>`
+            document.getElementById("name_pricing").innerHTML = `
+            <span>${f.name} (${f.limit_day} Ngày)</span>`
+            document.getElementById("rights").innerHTML = `
+            <span>${f.limit_request} Request/Ngày</span>`
+            document.getElementById("date_buy").innerHTML = `
+            <span>${format_time(f.created_at)}</span>`
         });
-    } else if (data_limit === null) {
-        data_limit.forEach(f =>{
-            p.innerHTML = `<div class="d-flex flex-row mb-3"  id="" >
-            <label  class="control-label text-uppercase">Tên gói</label>
-            <span style="padding-left: 8vmax;">Null</span>
-        </div>
-        <div class="d-flex flex-row mb-3" id="">
-            <label class="control-label text-uppercase">Quyền lợi</label>
-            <span  style="padding-left: 8vmax;">Null</span>
-        </div>
-        <div class="d-flex flex-row mb-3" id="">
-            <label class="control-label text-uppercase" >Ngày mua</label>
-            <span style="padding-left: 8vmax;" >Null</span>
-        </div>`
-        });
+    } 
+    else if (data_limit === null) {
+        document.getElementById("name_pricing").innerHTML = `
+        <span>null</span>`
+        document.getElementById("rights").innerHTML = `
+        <span>null</span>`
+        document.getElementById("date_buy").innerHTML = `
+        <span>null}</span>`
     }
+
 }
 

@@ -6,7 +6,7 @@ async function init_agency_public() {
     let cr_info = await get_cr_agency_info();
     if (cr_info) {
         $('#link_ref').val((!cr_info.ref) ? '' : `http://tool264.com/register?ref=${cr_info.ref}`);
-        $('#lb_stt').text(get_lb_stt(cr_info));
+        get_lb_stt(cr_info);
         get_lb_btn(cr_info);
     }
     await get_agency_count();
@@ -14,15 +14,14 @@ async function init_agency_public() {
 }
 
 function get_lb_stt(info) {
-    var lb = 'Chưa đăng ký';
+    document.getElementById('lb_stt').innerHTML = `<span data-lang="unregistered">Chưa đăng ký<span>`;
     if (info.agency_time) {
         if (info.is_agency == 1) {
-            lb = 'Đã là đại lý !'
+            document.getElementById('lb_stt').innerHTML = `<span data-lang="was_agency">Đã là đại lý !</span>`
         } else {
-            lb = 'Đang chờ xét duyệt !'
+            document.getElementById('lb_stt').innerHTML = `<span data-lang="waiting_for_review">Đang chờ xét duyệt !<span>`
         }
     }
-    return lb;
 }
 
 function get_lb_btn(info) {
@@ -30,9 +29,9 @@ function get_lb_btn(info) {
         if (info.is_agency != null) {
             document.getElementById('btn_reg').disabled = 'true';
             if (info.is_agency == 0) {
-                document.getElementById('btn_reg').innerText = 'Đang chờ xét duyệt !'
+                document.getElementById('btn_reg').innerHTML = `<span data-lang="waiting_for_review">Đang chờ xét duyệt !<span>`
             } else {
-                document.getElementById('btn_reg').innerText = 'Đã là đại lý !'
+                document.getElementById('btn_reg').innerHTML = `<span data-lang="was_agency">Đã là đại lý !</span>`
             }
         }
     }

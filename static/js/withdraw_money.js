@@ -43,16 +43,16 @@ function show_ticket_money() {
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Phiếu rút Tiền</h5>
+                    <h5 class="modal-title" data-lang="withdraw_votes">Phiếu rút Tiền</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                 </div>
                 <div class="modal-body d-flex">
                     <div class="col-md-12">
-                        <label for="des" class="form-label">Mã chuyển khoản</label>
+                        <label for="des" class="form-label" data-lang="transfer_code">Mã chuyển khoản</label>
                         <input disabled type="text" class="form-control" value="${id}" id="des" required>
-                        <label for="" class="form-label">Nhập Tiền</label>
+                        <label for="" class="form-label">Money</label>
                         <input  type="number" value="0" class="form-control" id="money_withdraw" required>
                     </div>
                 </div>

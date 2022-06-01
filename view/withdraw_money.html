@@ -39,7 +39,7 @@
     </div>
     <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
-            <!-- <a class="navbar-brand com-name" href="#">FB ads support</a> -->
+            <a class="navbar-brand com-name" href="#">FB ads support</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                 aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -64,7 +64,7 @@
                 <div class="col-md-12 d-flex flex-wrap mt-5 mb-5">
                     <div class="col-12">
                         <h2><i class="pd_r_5 fa fa-university" aria-hidden="true"></i>
-                            Rút tiền Bonus theo bước bên dưới</h2>
+                            <span data-lang="bonus_withdraw"></span></h2>
                     </div>
                     <!-- <div class="col-12" id="current_bonus">
                         <h2> Bonus </h2>
@@ -75,9 +75,9 @@
                                 Bonus Money
                             </div>
                             <div class="pricing_benefit d-flex flex-column" style="height:100px">
-                                <span><span style="font-weight: bolder;">Chú ý:</span><br />
-                                    - Chỉ được tạo phiếu rút tiền một lần chờ admin duyệt để được rút thêm<br />
-                                    - Nếu có vấn đề liên hệ zalo : 0987533112 để được hỗ trợ
+                                <span><span style="font-weight: bolder;"><span data-lang="note:"> Chú ý:</span></span><br />
+                                   <span data-lang="note_withdraw_1"> - Chỉ được tạo phiếu rút tiền một lần chờ admin duyệt để được rút thêm</span><br />
+                                   <span data-lang="note_withdraw_2"> - Nếu có vấn đề liên hệ zalo : 0987533112 để được hỗ trợ</span>
                                 </span>
                                 </span>
                                 <!-- <div class="col-12" id="current_bonus">
@@ -88,12 +88,12 @@
                     <div class="col-md-6">
                         <div class="pricing">
                             <div class="pricing_title">
-                                <i class="pd_r_5 fa fa-university" aria-hidden="true"></i> Rút Tiền
+                                <i class="pd_r_5 fa fa-university" aria-hidden="true"></i> <span data-lang="Rút_Tiền"></span>
                             </div>
 
                             <div class="pricing_benefit d-flex flex-column" style="height:100px">
-                                <span>Bấm vào đây để tạo phiếu xét duyệt</span>
-                                <button onclick="open_ticket()" class="btn btn-primary w-50 m-auto">Tạo phiếu</button>
+                                <span data-lang="click_review_votes">Bấm vào đây để tạo phiếu xét duyệt</span>
+                                <button onclick="open_ticket()" class="btn btn-primary w-50 m-auto" data-lang="create_votes">Tạo phiếu</button>
                             </div>
                         </div>
                     </div>
@@ -106,17 +106,17 @@
         <div class="col-12">
             <div class="container">
                 <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5 mb-5">
-                    <h3><i class="pd_r_5 fa fa-history"></i>Lịch sử hoạt động</h3>
+                    <h3><i class="pd_r_5 fa fa-history"></i><span data-lang="history_operation"></span></h3>
                     <table class="table table-dark">
-                        <caption>lịch sử giao dịch gần đây</caption>
+                        <caption data-lang="recent_trading_history">lịch sử giao dịch gần đây</caption>
                         <thead>
                             <tr>
                                 <th>Stt</th>
-                                <th>Số tiền nạp (VND)</th>
-                                <th>Thời gian</th>
+                                <th data-lang="money_topup">Số tiền nạp (VND)</th>
+                                <th data-lang="time">Thời gian</th>
                                 <!-- <th>Mã ck</th> -->
-                                <th>Trạng thái</th>
-                                <th>Số tiền rút (VND)</th>
+                                <th data-lang="condition">Trạng thái</th>
+                                <th data-lang="money_withdraw">Số tiền rút (VND)</th>
                             </tr>
                         </thead>
                         <tbody id="tb_money_his">

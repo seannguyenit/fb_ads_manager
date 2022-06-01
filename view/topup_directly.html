@@ -16,6 +16,27 @@
 
 <body class="body-bg-custom">
     <!-- Top Bar -->
+    <div class="header">
+        <div class="d-flex">
+            <div class="p-2 flex-grow-1"><a class="navbar-brand" href="/home/page_box"><img src="../img/logo.jpg"
+                        alt=""></a></div>
+            <div style="padding-top:25px" class="d-flex">
+                <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
+                            height="40px" src="../img/avatar_user.png" alt=""></a></div>
+
+                <div style="padding-top:5px" class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
+                        data-toggle="dropdown" data-lang="Language" aria-haspopup="true" aria-expanded="false">
+
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="change_lang('en')" href="#">ENGLISH</a>
+                        <a class="dropdown-item" onclick="change_lang('vi')" href="#">VIỆT NAM</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
             <a class="navbar-brand com-name" href="#">FB ads support</a>
@@ -30,8 +51,9 @@
 
                 </div>
                 <div class="navbar-nav user-info">
-                    <div id="current_username" class="nav-link active" aria-current="page"><a>USER</a> <a
-                            class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuất)</a>
+                    <div id="current_username" class="nav-link active" aria-current="page">
+                        <a>USER</a>
+                        <a class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuất)</a>
                     </div>
                 </div>
             </div>
@@ -42,18 +64,18 @@
             <div class="container">
                 <div class="col-md-12 d-flex flex-wrap mt-5 mb-5">
                     <div class="col-12">
-                        <h2>Nạp tiền bằng thẻ cào</h2>
+                        <h2><span data-lang="top_up_with_card"></span></h2>
                     </div>
                     <div class="col-md-6 mt-2 mb-5">
                         <div class="row d-flex mt-2 mb-2">
-                            <div class="col-3">Loại thẻ:</div>
+                            <div class="col-3" data-lang="card_type:">Loại thẻ:</div>
                             <div class="col-9">
                                 <div id="card_type_place" class="d-flex flex-wrap">
                                 </div>
                             </div>
                         </div>
                         <div class="row d-flex mt-2 mb-2">
-                            <div class="col-3">Mệnh giá:</div>
+                            <div class="col-3" data-lang="denomination:">Mệnh giá:</div>
                             <div class="col-9">
                                 <div id="card_price_place" class="d-flex flex-wrap">
 
@@ -69,15 +91,15 @@
 
                     <div class="col-md-6 mt-2 mb-5">
                         <div class="form-group w-100">
-                            <label for="seri">Số seri</label>
+                            <label for="seri" data-lang="number_seri">Số seri</label>
                             <input type="number" class="form-control" name="seri" id="seri" aria-describedby="seri_"
-                                placeholder="Số Seri">
+                                placeholder=".....">
                             <!-- <small id="seri_" class="form-text text-muted">Seri number</small> -->
                         </div>
                         <div class="form-group w-100">
-                            <label for="pin">Mã thẻ</label>
+                            <label for="pin" data-lang="card_code">Mã thẻ</label>
                             <input type="number" class="form-control" name="pin" id="pin" aria-describedby="seri_"
-                                placeholder="Mã thẻ">
+                                placeholder=".....">
                             <!-- <small id="pin_" class="form-text text-muted">pin number</small> -->
                         </div>
                         <button type="button" onclick="go_money()" class="btn btn-primary">Nạp ngay</button>

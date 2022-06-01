@@ -57,6 +57,8 @@
     <div>
         <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
             <div class="container-fluid">
+            <a class="navbar-brand com-name" href="#">FB ads support</a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                     aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -83,31 +85,37 @@
                 <div class="container">
                     <div class="col-md-12 d-flex flex-wrap mt-5">
                         <div class="col-md-6">
-                            <h3><i class="pd_r_5 fa fa-info" aria-hidden="true"></i>
-                                Thông tin gói</h3>
+                            <h3><i class="pd_r_5 fa fa-info" aria-hidden="true"></i><span
+                                    data-lang="information_pricing"></span>
+                            </h3>
                             <hr />
-                            <div class="col-md-12" id="r_pricing">
-                                <div class="d-flex flex-row mb-3" id="">
-                                    <label class="control-label text-uppercase">Tên gói</label>
-                                    <span style="padding-left: 8vmax;">1</span>
+                            <div class="col-md-12" id="">
+                                <div class="d-flex flex-row mb-3">
+                                    <div style="width: 28%;" class="control-label text-uppercase"
+                                        data-lang="name_pricing">tên gói :</div>
+                                    <div style="width: 60%; margin-left: 10%" id="name_pricing"></div>
                                 </div>
-                                <div class="d-flex flex-row mb-3" id="">
-                                    <label class="control-label text-uppercase">Quyền lợi</label>
-                                    <span style="padding-left: 8vmax;">1</span>
+                                <div class="d-flex flex-row mb-3">
+                                    <div style="width: 28%;" class="control-label text-uppercase" data-lang="rights">
+                                    </div>
+                                    <div style="width: 60%; margin-left: 10%" id="rights"></div>
                                 </div>
-                                <div class="d-flex flex-row mb-3" id="">
-                                    <label class="control-label text-uppercase">Ngày mua</label>
-                                    <span style="padding-left: 8vmax;">1</span>
+                                <div class="d-flex flex-row mb-3">
+                                    <div style="width: 28%;" class="control-label text-uppercase" data-lang="date_buy">
+                                    </div>
+                                    <div style="width: 60%; margin-left: 10%" id="date_buy"></div>
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <div class="d-flex flex-row mb-3" id="limit_đate">
-                                    <label class="control-label text-uppercase">Hạn ngày</label>
-                                    <span style="padding-left: 8vmax;">1</span>
+                                <div class="d-flex flex-row mb-3">
+                                    <div style="width: 28%;" class="control-label text-uppercase"
+                                        data-lang="date_limit">Hạn ngày</div>
+                                    <div style="width: 60%; margin-left: 10%" id="limit_đate"></div>
                                 </div>
                                 <div class="d-flex flex-row mb-3">
-                                    <div style="padding-left: 8vmax;"> <button onclick="acc_logout()"
-                                            class="btn btn-primary">Mua Gói</button></div>
+                                    <div style="padding-left: 8vmax;"> <button onclick="" class="btn btn-primary"
+                                            data-lang="buy_now">Mua
+                                            Gói</button></div>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +145,8 @@
                     </div> -->
                         <div class="col-md-6">
                             <h3> <i class="pd_r_5 fa fa-facebook" aria-hidden="true"></i>
-                                Thêm token FB</h3>
+                                <span data-lang="add_fb_tokens"></span>
+                            </h3>
                             <hr />
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -145,7 +154,8 @@
                                     <div class="d-flex">
                                         <input class="form-control" id="token_fb" name="token_fb" type="text"
                                             placeholder="" autofocus="">
-                                        <button onclick="add_token()" class="btn btn-warning">Thêm</button>
+                                        <button onclick="add_token()" class="btn btn-warning"
+                                            data-lang="add">Thêm</button>
                                     </div>
                                 </div>
                                 <div id="list_data_token" class="form-group pr-2"

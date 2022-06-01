@@ -92,15 +92,15 @@ async function open_modal(params) {
 }
 
 //
-document.querySelector("#logo_img").addEventListener("change", function(){
-    const reader = new FileReader();
+// document.querySelector("#logo_img").addEventListener("change", function(){
+//     const reader = new FileReader();
     
-    reader.addEventListener("load",()=>{
-        localStorage.setItem("recent-image", reader.result);
-    });
-    reader.readAsDataURL(this.files[0]);
-}) ;
-const url_img =  localStorage.getItem("recent-image");
+//     reader.addEventListener("load",()=>{
+//         localStorage.setItem("recent-image", reader.result);
+//     });
+//     reader.readAsDataURL(this.files[0]);
+// }) ;
+// const url_img =  localStorage.getItem("recent-image");
 // var mess = document.getElementById("type").value;
 // // save_(url_img, "./img/"+1+".jpg");
 // alert(mess);
@@ -109,11 +109,12 @@ const url_img =  localStorage.getItem("recent-image");
 async function acc_save(url, data, meth) {
     return await fetch(url, {
         method: meth, // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        // enctype: 'multipart/form-data',
-        body: JSON.stringify(data),
+        // headers: {
+        //     'Content-Type': 'application/json',
+        // },
+        mode: 'multipart/form-data',
+        body:data,
+        // body: JSON.stringify(data),
     })
         .then(response => response.json())
         .then(data => {
@@ -132,11 +133,11 @@ async function save_(){
     //     // const reader = new FileReader();
     //     console.log(this.files);
     // })    
-    const url_img =  localStorage.getItem("recent-image");
+    // const url_img =  localStorage.getItem("recent-image");
 
-    if(url_img){
-        document.querySelector("#imgs").setAttribute("src",url_img);
-    }
+    // if(url_img){
+    //     document.querySelector("#imgs").setAttribute("src",url_img);
+    // }
     // const fs = require('fs');
     // var fullurrl = url;
     // var localpath = fs.createWriteStream(path);
@@ -150,23 +151,47 @@ async function save_(){
     if (!validate_()) return;
     var id = $("#user_id").val();
     var logo_name = $("#logo_name").val();
-    var logo_img = document.getElementById("logo_img").files[0].name;
+    var logo_img = document.getElementById("logo_img_").files;
     var type = document.getElementById("type").value;
-
+    console.log(logo_img);
     var url = `/api/logo`;
     var meth = 'POST';
     const formData = new FormData();
-    // formData.append('file', fileInput.files[0]);
+    // formData.append('file', logo_img);
+    // const options = {
+    //     method: 'POST',
+    //     enctype: 'multipart/form-data',
+    //     body: formData
+    // };\
+// =     formData.append('logo_img', logo_img);
 
     // if (id != 0) {
     //     meth = 'PUT';
     //     url = `/api/logo/${id}`;
     // }
-    var data = {logo_name:logo_name,logo_img: logo_img,type:type};
+    // var data = {logo_name:logo_name,logo_img: logo_img,type:type};
+    // return await fetch(url, {
+    //     method: meth, // or 'PUT'
+    //     // headers: {
+    //     //     'Content-Type': 'application/json',
+    //     // },
+    //     enctype: 'multipart/form-data',
+    //     body: JSON.stringify(data),
+    // })
+    // return await fetch(`/api/logo`, options)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         if (data != undefined) {
+    //             return data;
+    //         }
+    //     })
+    //     .catch(error => {
+    //         console.error('Error:', error);
+    //     });
 
-    let rs = await acc_save(url, data, meth);
+    // let rs = await acc_save(url, data, meth);
     //add_menu_user
-    var menu_sl = Array.prototype.map.call(document.querySelectorAll('input[data-id]'), (m) => { return [parseInt(m.dataset.id), m.checked ? 1 : 0, rs.id] });
+    // var menu_sl = Array.prototype.map.call(document.querySelectorAll('input[data-id]'), (m) => { return [parseInt(m.dataset.id), m.checked ? 1 : 0, rs.id] });
     // let rs_per = await add_menu_user(menu_sl, rs.id);
 
     // console.log('Success:', rs);
