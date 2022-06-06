@@ -132,9 +132,9 @@ async function init_users_byname() {
                 <tr>
                     <td>${dt.indexOf(item) + 1}</td>    
                     <td>${item.username}</td> 
-                    <td>${get_format_VND(item.money || '')}</td> 
-                    <td>${get_format_VND(item.bonus || '')}</td> 
-                    <td>${get_format_VND(item.money_month || '')}</td>   
+                    <td>${get_format_VND(item.money)}</td> 
+                    <td>${get_format_VND(item.bonus)}</td> 
+                    <td>${get_format_VND(item.money_month)}</td>  
                     <td>${format_time(item.created_at) || ''}</td>  
                     <td>${limit_date}</td>
                     <td>
@@ -343,8 +343,6 @@ async function open_modal(params) {
         $('#user').val(detail_dt.username || '');
         $('#pass').val(detail_dt.pass || '');
         $('#real_name').val(detail_dt.real_name || '');
-        $('#phone').val(detail_dt.phone || '');
-        $('#add').val(detail_dt.add || '');
         $('#created_at').val(format_time(detail_dt.created_at) || '');
         if (detail_dt.id != 0) {
             var data_per = await menu_get_current_menu(detail_dt.id);
@@ -380,8 +378,6 @@ async function save__() {
     var username = $("#user").val()
     var pass = $("#pass").val()
     var real_name = $("#real_name").val()
-    var phone = $("#phone").val()
-    var add = $("#add").val()
     var rs_check = await check_username();
     if (!rs_check) {
         alert('email bị trùng !')
@@ -392,11 +388,13 @@ async function save__() {
     var meth = 'POST';
     const formData = new FormData();
 
+    var data = { username: username, pass: pass, real_name: real_name, phone: '0', add: 'none' };
     if (id != 0) {
         meth = 'PUT';
         url = `/api/accounts/${id}`;
+    } else {
+        data.created_at = created_at;
     }
-    var data = { username: username, pass: pass, real_name: real_name, phone: phone, add: add, created_at: created_at };
 
     let rs = await acc_save(url, data, meth);
     //add_menu_user
@@ -416,8 +414,6 @@ async function save_() {
     var username = $("#user").val()
     var pass = $("#pass").val()
     var real_name = $("#real_name").val()
-    var phone = $("#phone").val()
-    var add = $("#add").val()
     var created_at = new Date();
     var rs_check = await check_username();
     if (!rs_check) {
@@ -428,12 +424,14 @@ async function save_() {
     var url = `/api/accounts`;
     var meth = 'POST';
     const formData = new FormData();
+    var data = { username: username, pass: pass, real_name: real_name, phone: '0', add: 'none'};
 
     if (id != 0) {
         meth = 'PUT';
         url = `/api/accounts/${id}`;
+    }else{
+        data.created_at = created_at;
     }
-    var data = { username: username, pass: pass, real_name: real_name, phone: phone, add: add, created_at: created_at };
 
     let rs = await acc_save(url, data, meth);
     //add_menu_user
@@ -701,7 +699,7 @@ async function init_users(cr_page, user_number_page) {
                 <td>${item.username}</td> 
                 <td>${get_format_VND(item.money || '')}</td> 
                 <td>${get_format_VND(item.bonus || '')}</td> 
-                <td>${get_format_VND(item.money_month || '')}</td>   
+                <td>${get_format_VND(item.money_month || '')}</td> 
                 <td>${format_time(item.created_at) || ''}</td>  
                 <td>${limit_date}</td>
                 <td>
