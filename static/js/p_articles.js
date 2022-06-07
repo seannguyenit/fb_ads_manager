@@ -20,7 +20,7 @@ async function init_articles(){
     if (dt) {
         dt.forEach(item => {
             main_table.innerHTML += `
-                        <div class="box" style="padding:1vw">
+                        <div class="box_articles" style="padding:1vw">
                             <div  class="box-content">
                                 <div class="box-left"><img style="border-radius: 50%;" width="50px" height="50px" src="../img/avatar.png" alt=""></div>
                                 <div class="box-right"><span style="font-weight:bolder">${item.name}</span> 

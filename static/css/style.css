@@ -3,6 +3,16 @@ body{
     color: #ffffff;
     /* font-family: cursive; */
 }
+/* .bg_menu_color{
+    background-color: #2a2e3f
+} */
+.bg_box{
+    background-color: #2a2e3f;
+}
+.bg_btn{
+    background-color: #5cd3b9;
+    /* background-color: red; */
+}
 #user::before{
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
@@ -19,6 +29,9 @@ body{
 }
 .m_t_2{
     margin-top: 2vw;
+}
+.m_t_1{
+    margin-top: 1vw;
 }
 .m_b_5{
     margin-bottom: 5px;
@@ -37,6 +50,9 @@ body{
 }
 .pd_r_5{
     padding-right: 5px;
+}
+.pd_r_5{
+    padding-right: 2px;
 }
 .mg_r_5{
     margin-right: 5px;
@@ -100,7 +116,7 @@ a:hover{
     /* background-repeat: repeat-y;
     background-size: cover; */
     /* background-position: 50% 50%; */
-    background-color:#000;
+    background-color:#383d52;
     top: 0;
     left: 0;
     right: 0;
@@ -110,7 +126,7 @@ a:hover{
 }
 
 .bg-main-color{
-    background-color: #506dad;
+    background-color: #2a2e3f;
 }
 
 .com-name{
@@ -403,10 +419,10 @@ textarea::placeholder,input::placeholder { /* Chrome, Firefox, Opera, Safari 10.
     /* border: 1px solid red; */
     /* margin-left: -10vw; */
 }
-.box{
+.box_articles{
     width: 70vw;
     margin: 0px auto;
     /* border: 2px solid red; */
     margin-top: 10px;
-    background-color: rgb(34, 31, 31);
+    background-color: #2a2e3f;
 }

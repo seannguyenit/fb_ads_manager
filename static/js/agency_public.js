@@ -14,7 +14,7 @@ async function init_agency_public() {
 }
 
 function get_lb_stt(info) {
-    document.getElementById('lb_stt').innerHTML = `<span data-lang="unregistered">Chưa đăng ký<span>`;
+    // document.getElementById('lb_stt').innerHTML = `<span data-lang="unregistered">Chưa đăng ký<span>`;
     if (info.agency_time) {
         if (info.is_agency == 1) {
             document.getElementById('lb_stt').innerHTML = `<span data-lang="was_agency">Đã là đại lý !</span>`

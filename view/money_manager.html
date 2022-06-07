@@ -18,23 +18,25 @@
     <!-- Top Bar -->
     <div class="header">
         <div class="d-flex">
-            <div class="p-2 flex-grow-1" id="img_logo"><a class="navbar-brand" href="/home/users"><img height="68.99px" src="../img/logo.jpg"
-                        alt=""></a></div>
-           
-            <div  style="padding-right: 6vw;"class="dropdown">
-                <div class=" dropdown-toggle" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                    <img style="border-radius: 50%; margin-top: 1.5vw;"
-                            width="50px" height="50px" src="../img/avatar.png" alt="">
+            <div class="p-2 flex-grow-1" id="img_logo"><a class="navbar-brand" href="/home/users"><img height="68.99px"
+                        src="../img/logo.jpg" alt=""></a></div>
+
+            <div style="padding-right: 6vw;" class="dropdown">
+                <div class=" dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <img style="border-radius: 50%; margin-top: 1.5vw;" width="50px" height="50px"
+                        src="../img/avatar.png" alt="">
                 </div>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o" aria-hidden="true"></i> Tài Khoảng</a>
-                    <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out" aria-hidden="true"></i>Đăng xuất</a>
+                    <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o" aria-hidden="true"></i>
+                        Tài Khoảng</a>
+                    <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
+                            aria-hidden="true"></i>Đăng xuất</a>
                 </div>
             </div>
         </div>
     </div>
-    <nav style="background-color: #2E9AFE;" class="navbar navbar-expand-sm navbar-light bg-main-color">
+    <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
             <a class="navbar-brand com-name" href="#">FB ads support</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
@@ -46,20 +48,36 @@
                     <a class="nav-link active title-nav" aria-current="page" href="/">Thông báo</a>
                     <a class="nav-link active title-nav" aria-current="page" href="/home/getcontent">Lấy nội dung</a>
                 </div>
+                <div style="max-width: 167px;" class="collapse navbar-collapse" id="main_menu_nav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                QUẢN LÝ CHUNG
+                            </a>
+                            <div id="menu_" style="background-color: #2a2e3f;" class="dropdown-menu"
+                                aria-labelledby="navbarDropdown">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
                 <div class="collapse navbar-collapse" id="main_menu_nav">
                     <ul class="navbar-nav mr-auto">
-                      <li class="nav-item dropdown">
-                        <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          QUẢN LÝ TIỀN
-                        </a>
-                        <div id="menu_money" style="background-color: #2E9AFE;" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        </div>
-                      </li>
+                        <li class="nav-item dropdown">
+                            <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                QUẢN LÝ TIỀN
+                            </a>
+                            <div id="menu_money" style="background-color: #2a2e3f;" class="dropdown-menu"
+                                aria-labelledby="navbarDropdown">
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="navbar-nav user-info">
-                    <div id="current_username" class="nav-link active" aria-current="page"><a>USER</a> <a
-                            class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng xuất)</a>
+                    <div id="current_username" class="nav-link active" aria-current="page"><a>USER</a>
+                        <a class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng
+                            xuấtssss)</a>
                     </div>
                 </div>
             </div>
@@ -69,8 +87,8 @@
         <div class="col-12">
             <div class="container pt-5">
                 <h3><i class="pd_r_5 fa fa-university" aria-hidden="true"></i> Quản Lý Nạp Tiền</h3>
-             </div>
-             <div style="background-color: #080808; margin-top: 2vw;" class="container">
+            </div>
+            <div style="margin-top: 2vw;" class="bg-main-color container">
                 <div class="col-12 pd_t_1 pb-2">
                     <div class="w-100 d-flex">
                         <div class="form-group w-25">
@@ -81,13 +99,13 @@
                         </div>
                         <div class="form-group w-25 pd_l_15">
                             <label for="to_date">Đến ngày</label>
-                            <input type="date" class="form-control" name="to_date" id="to_date" aria-describedby="to_date"
-                                placeholder="yyyy-MM-dd">
+                            <input type="date" class="form-control" name="to_date" id="to_date"
+                                aria-describedby="to_date" placeholder="yyyy-MM-dd">
                             <!-- <small id="to_date" class="form-text text-muted">Chọn ngày</small> -->
                         </div>
                         <div style="padding-top:32px ;" class="form-group w-25 pd_l_15">
                             <button class="btn btn-primary" data-toggle="modal" onclick="init_topup_all()"
-                            data-target="#detailId">search</button>
+                                data-target="#detailId">search</button>
                         </div>
                     </div>
                     <br>
