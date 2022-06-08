@@ -1,4 +1,5 @@
     search_report_moneybytime();
+    init_allmoney_todaymoney()
 
     async function get_all_money(time_from,time_to) {
         return await fetch(`/api/agency_allmoney/${time_from}/${time_to}` /*, options */)
@@ -79,6 +80,35 @@
                     <td>${get_format_VND(f.all_bonus)||0} VNĐ </td>
                     <td>${get_format_VND(f.all_withdraw_money)||0} VNĐ</td>
                 </tr>`
+            })
+        }
+    }
+
+    //
+    async function get_allmoney_todaymoney() {
+        return await fetch(`/api/agency_allmoney_todaymoney` /*, options */)
+            .then((response) => response.json())
+            .then((data) => {
+                return data;
+            })
+            .catch((error) => {
+                console.warn(error);
+                return undefined;
+            });
+    }
+
+    // 
+    async function init_allmoney_todaymoney(){
+        var data = await get_allmoney_todaymoney();
+        if (data) {
+            data.forEach(f => {
+                document.getElementById('total_money_user').innerHTML = `<h5>${get_format_VND(f.all_current_money)} VNĐ</h5>`
+                document.getElementById('total_topup').innerHTML = `<h5>${get_format_VND(f.all_money)} VNĐ</h5>`
+                document.getElementById('total_use_money').innerHTML = `<h5>${get_format_VND(f.all_use_money)} VNĐ</h5>`
+
+                document.getElementById('today_user').innerHTML = `<h5>${(f.today_user)} User</h5>`
+                document.getElementById('today_topup').innerHTML = `<h5>${get_format_VND(f.today_topup)} VNĐ</h5>`
+                document.getElementById('today_use_money').innerHTML = `<h5>${get_format_VND(f.today_use_money)} VNĐ</h5>`
             })
         }
     }

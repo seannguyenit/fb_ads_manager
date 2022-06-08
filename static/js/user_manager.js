@@ -95,9 +95,9 @@ async function init_users_byname() {
                     <td>${format_time(item.created_at) || ''}</td>  
                     <td>${format_time(item.limit_time) || ''}</td>
                         <td>
-                            ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], 'Gói DV')}
-                            ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], 'LS Tiền')}
-                            ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], 'edit')}
+                            ${button_action_tool(item.id, 'init_pricing_history', ['bg_btn','btn', 'btn-sm', 'btn-primary'], 'Gói DV')}
+                            ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary','bg_btn'], 'LS Tiền')}
+                            ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary','bg_btn'], 'edit')}
                             ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], 'delete')}
                         </td>
                 </tr>`;

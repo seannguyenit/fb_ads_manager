@@ -6,6 +6,7 @@ init_topup_manager()
 
 async function init_topup_manager() {
     init_topup_all();
+    init_date();
         
 }
 async function init_date(){
@@ -19,6 +20,10 @@ async function init_date(){
         var m = (now_t.getMonth() + 1) < 10 ? `0${now_t.getMonth() + 1}` : (now_t.getMonth() + 1);
         var y = now_t.getFullYear();
         var d = now_t.getDate() - 7;
+        if(Number(d) <= 0 ){
+            m = "0"+(m - 1) 
+            d = 30 + d;
+        }
         from = `${y}-${m}-${d}`;
         time_from = from;
             // alert(time_from);
@@ -29,6 +34,9 @@ async function init_date(){
         var m = (now_t.getMonth() + 1) < 10 ? `0${now_t.getMonth() + 1}` : (now_t.getMonth() + 1);
         var y = now_t.getFullYear();
         var d = now_t.getDate();
+        if(Number(d) < 10){
+            d = "0"+d;
+        }
         to = `${y}-${m}-${d}`;
         time_to = to;
     }
@@ -39,7 +47,6 @@ async function init_date(){
 
 
 async function init_topup_all() {
-    init_date()
     var to = document.getElementById('to_date').value;
     var from = document.getElementById('from_date').value;
         // var time_from1 = new Date(from).getTime()/1000;
@@ -51,6 +58,10 @@ async function init_topup_all() {
         var m = (now_t.getMonth() + 1) < 10 ? `0${now_t.getMonth() + 1}` : (now_t.getMonth() + 1);
         var y = now_t.getFullYear();
         var d = now_t.getDate() - 7;
+        if(Number(d) <= 0 ){
+            m = "0"+(m - 1) 
+            d = 30 + d;
+        }
         from = `${y}-${m}-${d}`;
         time_from = Number(new Date(from).getTime()/1000);
             // alert(time_from);

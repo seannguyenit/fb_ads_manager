@@ -27,6 +27,29 @@ module.exports = {
             res.json(response)
         })
     },
+    get_allmoney_today_money : (req, res) => {
+        var time_from_allmoney = 0;
+        var time_to_allmoney = Number(new Date().getTime() / 1000);
+
+        var now_t = new Date();
+        var m = (now_t.getMonth() + 1) < 10 ? `0${now_t.getMonth() + 1}` : (now_t.getMonth() + 1);
+        var y = now_t.getFullYear();
+        var d = now_t.getDate();
+        var today = `${y}-${m}-${d}`;
+
+        var s_today = `${y}-${m}-${d} 00:00:00`;
+        var e_today = `${y}-${m}-${d} 23:59:59`;
+        var star_today = Number(new Date(s_today).getTime() / 1000);
+        var end_today = Number(new Date(e_today).getTime() / 1000);
+        // if(time_from === time_to){
+        //     time_to = time_to + 0.0001;
+        // };
+        let sql = 'SELECT get_all_money(?,?) AS all_money, get_all_current_money() AS all_current_money, get_all_use_money(?,?) AS all_use_money, ( SELECT COUNT(`user`.`id`) FROM `user` WHERE `user`.`active` = 1 and date(`user`.`created_at`) = ?) AS today_user, get_all_money(?,?) AS today_topup,  get_all_use_money(?,?) AS today_use_money LIMIT 1;'
+        db.query(sql,[time_from_allmoney ,time_to_allmoney,time_from_allmoney ,time_to_allmoney,today,star_today,end_today,star_today,end_today],(err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
     get_agency : (req, res) => {
         let sql = 'SELECT * FROM `user` WHERE is_agency = 1 AND active = 1;'
         // , get_all_bonus() AS all_bonus, get_all_month_money() AS all_month_money, get_all_withdraw_money() AS all_withdraw_money

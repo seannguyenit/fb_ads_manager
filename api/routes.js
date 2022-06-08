@@ -69,9 +69,11 @@ module.exports = function (app) {
   app.route('/api/Accounts/:id')
     .put(accCtrl.update)
     .delete(accCtrl.delete);
-
+    
   app.route('/api/agency_allmoney/:from/:to')
     .get(accCtrl.get_all_money);
+    app.route('/api/agency_allmoney_todaymoney')
+    .get(accCtrl.get_allmoney_today_money);
   app.route('/api/agency')
     .get(accCtrl.get_all_agency)
   app.route('/api/agency_reg')

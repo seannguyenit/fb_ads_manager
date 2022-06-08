@@ -19,6 +19,10 @@ async function init_date(){
         var m = (now_t.getMonth() + 1) < 10 ? `0${now_t.getMonth() + 1}` : (now_t.getMonth() + 1);
         var y = now_t.getFullYear();
         var d = now_t.getDate() - 7;
+        if(d <= 0 ){
+            m = "0"+(m - 1) 
+            d = 30 + d;
+        }
         from = `${y}-${m}-${d}`;
         time_from = from;
             // alert(time_from);
@@ -50,6 +54,10 @@ async function init_withdraw_all() {
         var m = (now_t.getMonth() + 1) < 10 ? `0${now_t.getMonth() + 1}` : (now_t.getMonth() + 1);
         var y = now_t.getFullYear();
         var d = now_t.getDate() - 7;
+        if(Number(d) <= 0 ){
+            m = "0"+(m - 1) 
+            d = 30 + d;
+        }
         from = `${y}-${m}-${d}`;
         time_from = Number(new Date(from).getTime()/1000);
             // alert(time_from);
