@@ -70,6 +70,9 @@ module.exports = {
     },
     action: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/action.html'))
+    },
+    config_general: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/config_general.html'))
     }
     // get_partial: (req,res)=>{
     //     let action = [req.params.action];

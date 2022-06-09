@@ -1,5 +1,6 @@
 'use strict'
 init_menu();
+menu_contacst();
 // history_login()
 /* menu */
 async function menu_get_template() {
@@ -24,6 +25,34 @@ async function menu_get_current_menu(id) {
             console.warn(error);
             return undefined;
         });
+}
+
+// Get infor admin contacts
+async function get_admin_contacts() {
+    return await fetch('/api/admin_contacts' /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+
+async function menu_contacst() {
+    var menu_contacts = document.getElementById('menu_contacts');
+    var data = await get_admin_contacts();
+    if (menu_contacts) {
+        if (data) {
+            data.forEach(f => {
+                menu_contacts.innerHTML = `
+            <a style="background-color: #2a2e3f;" class="nav-link dropdown-item active title-nav" href="${f.facebook}" target="blank"><i class="pd_r_5 fa fa-facebook-square" aria-hidden="true"></i>Facebook</a>
+            <a style="background-color: #2a2e3f;" class="nav-link dropdown-item active title-nav" href="${f.zalo}" target="blank"><i class="pd_r_5 fa fa-whatsapp" aria-hidden="true"></i>Zalo</a>
+            `;
+            })
+        }
+    }
 }
 
 async function init_menu() {

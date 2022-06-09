@@ -92,8 +92,8 @@ async function init_topup_all() {
                 <td>${format_time(f.time)}</td>
                 <td>${f.des}</td>
                 <td>
-                    <button class="btn btn-sm btn-primary" onclick="open_approved(${f.des},${f.id},${f.is_agency})">Duyệt</button>
-                    <button class="btn btn-sm btn-danger" onclick="topup_cancel(${f.id})">Hủy</button>
+                    <button class="btn btn-sm btn-primary" onclick="open_approved(${f.des},${f.id},${f.is_agency})"><i class="fa fa-check" aria-hidden="true"></i></button>
+                    <button class="btn btn-sm btn-danger" onclick="topup_cancel(${f.id})"><i class="fa fa-trash" aria-hidden="true"></i></button>
                 </td>
             </tr>`
         })

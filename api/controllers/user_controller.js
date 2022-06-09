@@ -382,11 +382,18 @@ module.exports = {
                         res.json({ok:1})
                     })
     },
-    agency_allcontacts: (req, res) => {
-        let sql = 'SELECT contacts.id,contacts.content,contacts.time,user.username FROM contacts left join user on user.id = contacts.user_id limit 20;'
+    admin_contacts: (req, res) => {
+        let sql = 'SELECT * FROM admin_contacts limit 1;'
             db.query(sql, (err, response) => {
                 if (err) throw err
                 res.json(response)
+            })
+    },
+    update_admin_contacts: (req, res) => {
+        let sql = 'UPDATE admin_contacts SET ? where id = 1'
+            db.query(sql,req.body,(err, response) => {
+                if (err) throw err
+                res.json({mess:"update success"});
             })
     },
     del_contacts: (req, res) => {

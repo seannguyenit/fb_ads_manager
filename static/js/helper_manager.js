@@ -10,7 +10,7 @@ function button_action_tool(params, method, class_lists, name) {
     var ele = document.createElement('button');
     ele.classList = class_lists.join(' ');
     ele.setAttribute("onclick", `${method}(${params})`);
-    ele.innerText = name;
+    ele.innerHTML = name;
     return ele.outerHTML;
 }
 

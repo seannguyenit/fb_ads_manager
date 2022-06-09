@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="../css/style_table.css" /> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -87,7 +88,7 @@
             <div class="container pt-5">
                 <h3> <i class=" pd_r_5 fa fa-user-circle-o" aria-hidden="true"></i>Quản Lý Tài Khoảng</h3>
                 <div class="col-md-12 d-flex flex-wrap mt-5 mb-5">
-                    <div style="background-color: #2E9AFE; height: 100px; border-radius: 5%;" class="m_l_5 col-md-3">
+                    <div style="background-color: #2E9AFE; min-height: 100px;min-width: 300px ; border-radius: 5%;" class="m_b_5 m_l_5 col-md-3">
                         <div class=" pd_l_15 m_t_2 float_left">
                             <img style="border-radius: 50%; width: 50px;height: 50px;" src="../img/avatar_user.png"
                                 alt="">
@@ -101,7 +102,7 @@
                             </div>
                         </div>
                     </div>
-                    <div style="background-color: #2E9AFE; height: 100px; border-radius: 5%;" class="m_l_5 col-md-3">
+                    <div style="background-color: #2E9AFE; min-height: 100px;min-width: 300px ; border-radius: 5%;" class="m_b_5 m_l_5 col-md-3">
                         <div class="pd_l_15 m_t_2 float_left">
                             <img style="border-radius: 50%; width: 50px;height: 50px;" src="../img/avatar_user.png"
                                 alt="">
@@ -114,7 +115,7 @@
                             </div>
                         </div>
                     </div>
-                    <div style="background-color: #2E9AFE; height: 100px; border-radius: 5%;" class="m_l_5 col-md-3">
+                    <div style="background-color: #2E9AFE;  min-height: 100px;min-width: 300px ; border-radius: 5%;" class="m_b_5 m_l_5 col-md-3">
                         <div class="pd_l_15 m_t_2 float_left">
                             <img style="border-radius: 50%; width: 50px;height: 50px;" src="../img/avatar_user.png"
                                 alt="">
@@ -130,35 +131,41 @@
                 </div>
             </div>
             <div style="margin-top: 2vw;" class="bg-main-color container">
-
-                <div class="col-12 pd_t_1 pb-2">
+               <div class="table">
+                <div class="table_header">
+                    <h5 style="color: white;">Danh Sách Thành Viên</h5>
+                    <div><button  onclick="open_modal(0)" class=" btn btn-primary add_new">Tạo User</button></div>
+                    <div> <input placeholder=" Nhập Mail tìm kiếm...." id="username"/> <button onclick="search_acc()" class="btn btn-primary">search</button> </div>
+                </div>
+               </div>
+                <!-- <div class="col-12 pd_t_1 pb-2">
                     <h5 class="">Danh sách thành viên</h5>
                     <button onclick="open_modal(0)" class="btn btn-primary">Tạo mới User</button>
                     <div class="float_left" id="m_logo">
-                        <!-- <button onclick="open_modal_logo()" class="btn btn-primary">logo</button> -->
-                    </div>
+                       
+                    </div> -->
                     <!-- <button onclick="paginate()" class="btn btn-primary">test</button> -->
                     <!-- <input type="text" id="sreach_user" name="sreach_user"> 
                         <button onclick="" class="btn btn-primary">search</button> -->
-                    <div class="float_right">
+                    <!-- <div class="float_right">
                         <label for="username" class="form-label"></label>
                         <input type="text" class="" id="username" placeholder="username...">
                         <button onclick="search_acc()" class="btn btn-primary">search</button>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-12">
-                    <table id="table_data" class="tablemanager table table-striped table-bordered table-sm"
+                    <table id="table_data" class="tablemanager text_center table_section table table-striped table-sm"
                         cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>stt</th>
-                                <th>Username</th>
+                                <th>Email</th>
                                 <th>Tổng nạp</th>
                                 <th>Tổng thưởng</th>
                                 <th id="month"></th>
-                                <th>SDT</th>
-                                <th>ĐC</th>
-                                <th>Ngày Tạo<br><span style="font-size: 10px;">(mm/dd/yyyy)</span></th>
+                                <!-- <th>SDT</th>
+                                <th>ĐC</th> -->
+                                <th>Ngày Tạo<br><span>(mm/dd/yyyy)</span></th>
                                 <th>Hạn ngày</th>
                                 <th class="disableFilterBy">Thao tác</th>
                             </tr>
@@ -169,7 +176,7 @@
                     </table>
                     <div class="modal fade " id="search_table" data-backdrop="static" data-keyboard="false"
                         tabindex="-1" aria-labelledby="search_table" aria-hidden="true">
-                        <table id="search_table" class="tablemanager table table-striped table-bordered table-sm"
+                        <table id="search_table" class="tablemanager text_center table table-striped table_section table-sm"
                             cellspacing="0" width="100%">
                             <thead>
                                 <tr>
@@ -192,7 +199,7 @@
 
                         </table>
                     </div>
-                    <div id="paginate"></div>
+                    <div class="pagination" id="paginate"></div>
 
                     <!-- /////////////////////// -->
                 </div>
@@ -283,7 +290,7 @@
                 <div id="pricing">
                 </div>
                 <div class="modal-body">
-                    <table class="table table-dark">
+                    <table class="table text_center table_section table-dark">
                         <thead>
                             <tr>
                                 <th>Stt</th>
@@ -335,7 +342,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <table class="table table-dark">
+                    <table class="table text_center table_section table-dark">
                         <thead>
                             <tr>
                                 <th>Stt</th>

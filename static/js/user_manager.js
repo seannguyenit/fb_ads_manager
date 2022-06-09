@@ -92,15 +92,13 @@ async function init_users_byname() {
                     <td>${get_format_VND(item.money)}</td> 
                     <td>${get_format_VND(item.bonus)}</td> 
                     <td>${get_format_VND(item.money_month)}</td>  
-                    <td>${item.phone || ''}</td>    
-                    <td>${item.add || ''}</td>
                     <td>${format_time(item.created_at) || ''}</td>  
                     <td>${format_time(item.limit_time) || ''}</td>
                         <td>
-                            ${button_action_tool(item.id, 'init_pricing_history', ['bg_btn','btn', 'btn-sm', 'btn-primary'], 'Gói DV')}
-                            ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary','bg_btn'], 'LS Tiền')}
-                            ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary','bg_btn'], 'edit')}
-                            ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], 'delete')}
+                            ${button_action_tool(item.id, 'init_pricing_history', ['bg_btn','btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-briefcase" aria-hidden="true"></i>')}
+                            ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary','bg_btn'], '<i class="fa fa-gift" aria-hidden="true"></i>')}
+                            ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary','bg_btn'], '<i class="fa fa-history" aria-hidden="true"></i>')}
+                            ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
                         </td>
                 </tr>`;
         });
@@ -548,15 +546,13 @@ async function init_users(cr_page, user_number_page) {
                 <td>${get_format_VND(item.money||'')}</td> 
                 <td>${get_format_VND(item.bonus||'')}</td> 
                 <td>${get_format_VND(item.money_month||'')}</td>   
-                <td>${item.phone || ''}</td>    
-                <td>${item.add || ''}</td>
                 <td>${format_time(item.created_at) || ''}</td>  
                 <td>${limit_date}</td>
                 <td>
-                    ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], 'Gói DV')}
-                    ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], 'LS Tiền')}
-                    ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], 'edit')}
-                    ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], 'delete')}
+                    ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'],'<i class="fa fa-briefcase" aria-hidden="true"></i>')}
+                    ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-gift" aria-hidden="true"></i>')}
+                    ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
+                    ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
                 </td>
             </tr>
         `;
@@ -574,18 +570,20 @@ async function paginate(each_page) {
 
     if (name.length == 0) {
         // Create Redirect Back
+        page.innerHTML += `<div><a class="font_size24 text_white" href="/home/users?page=${1}"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></div>`;
         if (Number(each_page) > 1) {
-            page.innerHTML += `<a class="font_size24" href="/home/users?page=${Number(each_page) - 1}"> << back </a>`;
+            page.innerHTML += `<div><a class="font_size24 text_white" href="/home/users?page=${Number(each_page) - 1}"><i class="fa fa-angle-left" aria-hidden="true"></i></a></div>`;
         }
         var user_count = Object.keys(user_some_list).length;
         var user_page = Math.ceil(Number(user_count) / 10);
         //  Number mid 
-        page.innerHTML += `<span class="font_size24">  ${each_page}  </span>`;
+        page.innerHTML += `<div><span class="font_size24">  ${each_page}  </span></div>`;
 
         // Create Redirect Next
         if (Number(each_page) < Number(user_page)) {
-            page.innerHTML += `<a class="font_size24" href="/home/users?page=${1 + Number(each_page)}"> next >></a>`;
+            page.innerHTML += `<div><a class="font_size24 text_white" href="/home/users?page=${1 + Number(each_page)}"><i class="fa fa-angle-right" aria-hidden="true"></i></a></div>`;
         }
+        page.innerHTML += `<div><a class="font_size24 text_white" href="/home/users?page=${user_page}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></div>`;
         return;
     } else {
         page.innerHTML = "";
@@ -701,6 +699,6 @@ async function save_edit_money(id) {
 // }
 
 // Open modal manager Logo
-function open_modal_logo() {
-    window.location.href = 'm_logo'
-}
+// function open_modal_logo() {
+//     window.location.href = 'm_logo'
+// }

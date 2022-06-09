@@ -36,7 +36,7 @@ async function init_logo(){
                     ${action}
                 </td>
                     <td >
-                        ${button_action_tool(item.id, 'logo_del', ['btn', 'btn-sm', 'btn-danger'], 'delete')}
+                        ${button_action_tool(item.id, 'logo_del', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
                     </td>
             </tr>`;
                 });                
