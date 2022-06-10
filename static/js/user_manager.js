@@ -541,15 +541,9 @@ async function init_users(cr_page, user_number_page) {
             <tr>
                 <td>${dt.indexOf(item) + 1}</td>    
                 <td>${item.username}</td> 
-<<<<<<< HEAD
                 <td>${get_format_VND(item.money || '')}</td> 
                 <td>${get_format_VND(item.bonus || '')}</td> 
                 <td>${get_format_VND(item.money_month || '')}</td> 
-=======
-                <td>${get_format_VND(item.money||'')}</td> 
-                <td>${get_format_VND(item.bonus||'')}</td> 
-                <td>${get_format_VND(item.money_month||'')}</td>   
->>>>>>> origin/quangtruong
                 <td>${format_time(item.created_at) || ''}</td>  
                 <td>${limit_date}</td>
                 <td>
