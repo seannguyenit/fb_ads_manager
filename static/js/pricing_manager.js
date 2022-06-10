@@ -82,8 +82,8 @@ async function init_pricing() {
                 <td>${item.limit_day}</td>
                 <td>${item.level}</td>
                 <td>
-                    ${button_action_tool(item.id, 'open_modal_pricing', ['btn', 'btn-sm', 'btn-primary'], 'edit')}
-                    ${button_action_tool(item.id, 'del_pricing', ['btn', 'btn-sm', 'btn-danger'], 'delete')}
+                    ${button_action_tool(item.id, 'open_modal_pricing', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
+                    ${button_action_tool(item.id, 'del_pricing', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
                 </td>
             </tr>
         `;

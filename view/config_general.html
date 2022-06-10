@@ -6,34 +6,30 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
 
 <body class="body-bg-custom">
     <!-- Top Bar -->
     <div class="header">
         <div class="d-flex">
-            <div class="p-2 flex-grow-1" id="img_logo"><a class="navbar-brand" href="/home/users"><img width="141.94px"
-                        height="68.99px" src="../img/logo.jpg" alt=""></a></div>
-
-            <div style="padding-top: 0px; padding-right: 6vw;" class="dropdown">
-                <div class=" dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    <img style="border-radius: 50%; margin-top: 1.5vw;" width="50px" height="50px"
-                        src="../img/avatar.png" alt="">
+            <div class="p-2 flex-grow-1" id="img_logo"><a class="navbar-brand" href="/home/users"><img height="68.99px" src="../img/logo.jpg"
+                        alt=""></a></div>
+           
+            <div style=" padding-right: 6vw;" class="dropdown">
+                <div  class=" dropdown-toggle" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                    <img style="border-radius: 50%; margin-top: 1.5vw;"
+                            width="50px" height="50px" src="../img/avatar.png" alt="">
                 </div>
-                <div style="padding-top: 0px; padding-right: 15vw;" class="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o" aria-hidden="true"></i>
-                        Tài
-                        Khoảng</a>
-                    <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
-                            aria-hidden="true"></i>Đăng xuất</a>
+                <div style="padding-top: 0px; padding-right: 15vw;" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o" aria-hidden="true"></i> Tài Khoảng</a>
+                    <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out" aria-hidden="true"></i>Đăng xuất</a>
                 </div>
             </div>
         </div>
@@ -86,136 +82,86 @@
         </div>
     </nav>
     <section>
-        <!-- <div>
-            <img src="../lib/2022/6/1--.png" alt="logo new">
-        </div> -->
         <div class="col-12">
             <div class="container pt-5">
-                <h3><i class=" pd_r_5 fa fa-pencil-square-o" aria-hidden="true"></i>Quản Lý Logo</h3>
+                <h3><i class=" pd_r_5 fa fa-pencil-square-o" aria-hidden="true"></i>Cấu Hình Chung</h3>
             </div>
-            <div style="margin-top: 2vw;" class="bg-main-color container">
+            <div style=" max-width: 60%; margin-top: 2vw;" class="bg-main-color container">
                 <div class="col-12 pd_t_1 pb-2">
-                    <button onclick="open_modal(0)" class="btn btn-primary">Thêm Logo</button>
-                    <!-- <div class="float_left" id="m_logo"></div> -->
+                    <button  onclick="open_modal_admin_contact(0)" class="float_right btn btn-primary">Thay ĐỔi</button>
+                    <!-- <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button> -->
+                    <h5>Cấu Hình Liên Hệ</h5>
                 </div>
                 <div class="col-12">
-                    <table id="table_data" class="tablemanager text_center table table-striped table_section table-sm"
-                        cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>stt</th>
-                                <th>Tên Logo</th>
-                                <th>Hình ảnh</th>
-                                <th>action</th>
-                                <th class="disableFilterBy">Thao tác</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                        <caption id="showing"></caption>
-                    </table>
+                    <div class="">
+                        <label style="width: 20%;" for="">Tên Admin </label>
+                        <input disabled style="width: 50%;" type="text" id="name_admin" value="admin">
+                    </div>
+                    <div class="">
+                        <label style="width: 20%;" for="">Số Điện Thoại</label>
+                        <input disabled style="width: 50%;" type="text" id="sdt_admim" value="0000000000">
+                    </div>
+                    <div class="">
+                        <label style="width: 20%;" for="">Email </label>
+                        <input disabled style="width: 50%;" type="text" id="Email_admin" value="http://localhost:3000/home/config_general">
+                    </div>
+                    <div class="">
+                        <label style="width: 20%;" for="">Link Facebook </label>
+                        <input disabled style="width: 50%;" type="text" id="link_fb" value="http://localhost:3000/home/config_general">
+                    </div>
+                    <div class="">
+                        <label style="width: 20%;" for="">Link Zalo </label>
+                        <input disabled style="width: 50%;" type="text" id="link_zl" value="http://localhost:3000/home/config_general">
+                    </div>
                 </div>
-                <!-- <div id="paginate"></div> -->
             </div>
-            <!-- /////////////////////// -->
-
-            <!-- ////////////////////// -->
-
-
         </div>
     </section>
-    <div class="modal fade" id="user_details" data-backdrop="static" data-keyboard="false" tabindex="-1"
-        aria-labelledby="user_details" aria-hidden="true">
+    <div class="modal fade" id="money_table" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="pricing_details" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal_title">Thêm Logo</h5>
+                    <h5 class="modal-title" id="modal_title">Thông tin admin</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body d-flex flex-wrap">
-                    <!-- <input hidden id="id" value="0" /> -->
-
-                    <!-- <form action="/api/logo" method="post" enctype="multipart/form-data">
-                        <label for="logo_name" class="form-label">Name Logo</label>
-                        <input type="text" class="form-control" id="logo_name" name="logo_name">
-                        <label for="logo_img" class="form-label">Tải ảnh lên</label>
-                        <input type="file" class="" id="logo_img" name="logo_img" > 
-                        <select name="type" id="type">
-                            <option value="1">On</option>
-                            <option value="0">Off</option>
-                        </select>
-                        <button>
-                            Save
-                        </button>
-                    </form> -->
-
-                    <div class="col-md-4">
-                        <label for="logo_name" class="form-label">Name Logo</label>
-                        <input type="text" class="form-control" id="logo_name" required>
+                    <div class="col-md-12">
+                        <label for="name" class="form-label">Tên Admin</label>
+                        <input type="text" class="form-control" id="detail_name_admin" value="name">
                     </div>
-                    <div class="col-md-4">
-                        <label for="logo_img" class="form-label">Tải ảnh lên</label>
-                        <input type="file" class="" id="logo_img_" name="logo_img_" required>
+                    <div class="col-md-12">
+                        <label for="headline" class="form-label">SĐT</label>
+                        <input type="text" class="form-control" id="detail_sdt_admim" value="0000000000">
                     </div>
-                    <div class="col-md-4">
-                        <label for="type" class="form-label">Hiển thị</label>
-                        <select name="type" id="type">
-                            <option value="1">On</option>
-                            <option value="0">Off</option>
-                        </select>
+                    <div class="col-md-12">
+                        <label for="headline" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="detail_email_admin" value="name@gmail.com" required>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="headline" class="form-label">Facebook</label>
+                        <input type="text" class="form-control" id="detail_link_fb" value="https://" required>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="headline" class="form-label">Zalo</label>
+                        <input type="text" class="form-control" id="detail_link_zl" value="https://" required>
                     </div>
                 </div>
                 <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
-                        class="btn btn-primary" onclick="save_()" data-dismiss="modal">Save</button><button
+                        class="btn btn-primary" onclick="save_admin_contacts()" data-dismiss="modal">Save</button><button
                         type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
             </div>
         </div>
     </div>
-
     <!-- Modal -->
-    <div class="modal fade" id="pricing_history_modal" tabindex="-1" role="dialog" aria-labelledby="pricing"
+    <!-- <div class="modal fade" id="money_table" tabindex="-1" role="dialog" aria-labelledby="money_table"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Lịch sử đăng ký gói</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div id="pricing">
-                </div>
-                <div class="modal-body">
-                    <table class="table table-dark">
-                        <thead>
-                            <tr>
-                                <th>Stt</th>
-                                <th>Ngày Mua</th>
-                                <th>Tên gói</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tb_pricing_his">
-
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="money_history" tabindex="-1" role="dialog" aria-labelledby="money_history"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Lịch sử nạp tiền</h5>
+                    <h5 class="modal-title red">Contacts</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -224,15 +170,13 @@
                     <table class="table table-dark">
                         <thead>
                             <tr>
-                                <th>Stt</th>
-                                <th>Mục đích</th>
-                                <th>Số tiền (VND)</th>
+                                <th>Tên</th>
+                                <th>Nội dung</th>
                                 <th>Thời gian</th>
+                                <th>Thao tác</th>
                             </tr>
                         </thead>
-                        <tbody id="tb_money_his">
-
-                        </tbody>
+                        <tbody id="table_data_money"></tbody>
                     </table>
                 </div>
                 <div class="modal-footer">
@@ -240,17 +184,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
-    <!-- <script src="../js/user_manager.js"></script> -->
+    <script src="../js/config_general.js"></script>
     <script src="../js/helper_manager.js"></script>
     <script src="../js/permission.js"></script>
-    <!-- <script src="../js/download_img.js"></script> -->
-    <script src="../js/manager_logo.js"></script>
-
-    <script defer src="../js/translator.js"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -259,9 +199,11 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
-<script>
+<!-- <script>
     let main_table = document.getElementById('table_data').children[1];
-    // init_logo();
-</script>
+    let showing = document.getElementById('showing');
+    init_articles();
+
+</script> -->
 
 </html>

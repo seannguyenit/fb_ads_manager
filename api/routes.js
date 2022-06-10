@@ -86,8 +86,9 @@ module.exports = function (app) {
     .get(accCtrl.get_agency_count)
   app.route('/api/contacts_ticket')
     .post(accCtrl.add_contacts);
-  app.route('/api/contacts')
-    .get(accCtrl.agency_allcontacts)
+  app.route('/api/admin_contacts')
+    .get(accCtrl.admin_contacts)
+    .post(accCtrl.update_admin_contacts);
   app.route('/api/contacts/:id')
     .put(accCtrl.del_contacts)
   app.route('/api/agency/:id')

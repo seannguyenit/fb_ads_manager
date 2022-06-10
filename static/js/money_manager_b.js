@@ -89,8 +89,8 @@ async function init_withdraw_all() {
                 <td>${format_time(f.time)}</td>
                 <td>${f.des}</td>
                 <td>
-                    <button class="btn btn-sm btn-primary" onclick="open_approved(${f.des},${f.id},${f.withdraw})">Duyệt</button>
-                    <button class="btn btn-sm btn-danger" onclick="topup_cancel(${f.id})">Hủy</button>
+                    <button class="btn btn-sm btn-primary" onclick="open_approved(${f.des},${f.id},${f.withdraw})"><i class="fa fa-check" aria-hidden="true"></i></button>
+                    <button class="btn btn-sm btn-danger" onclick="topup_cancel(${f.id})"><i class="fa fa-trash" aria-hidden="true"></i></button>
                 </td>
                
             </tr>`

@@ -19,13 +19,13 @@
 
     <div class="header">
         <div class="d-flex">
-            <div class="p-2 flex-grow-1" id="img_logo"><a class="navbar-brand" href="/home/page_box"><img
+            <div class="p-2 flex-grow-1 website" id="img_logo"><a class="navbar-brand" href="/home/page_box"><img
                         src="../img/logo.jpg" alt=""></a></div>
             <div style="padding-top:25px" class="d-flex">
                 <!-- <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
                             height="40px" src="../img/avatar_user.png" alt=""></a></div> -->
-                <div class="dropdown" style="padding-top: 5px;padding-right: 10px;">
-                    <div class=""  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                <div class="dropdown website" style="padding-top: 5px;padding-right: 10px;">
+                    <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <img style="border-radius: 50%;" width="40px" height="40px" src="../img/avatar_user.png" alt="">
                     </div>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <div style="padding-top:5px" class="dropdown">
+                <div style="padding-top:5px" class="dropdown website ">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
                         data-toggle="dropdown" data-lang="Language" aria-haspopup="true" aria-expanded="false">
 
@@ -52,7 +52,40 @@
     </div>
     <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
-            <a class="navbar-brand com-name" href="#">FB ads support</a>
+            <a class="navbar-brand com-name website" href="#">FB ads support</a>
+            <div class="navbar-toggler flex-grow-1" id="img_logo">
+                <a class="navbar-brand" href="/home/page_box"><img width="150px" height="41px" src="../img/logo.jpg"
+                        alt=""></a>
+                <a class="float_right" style="padding-top:20px; color: whitesmoke;" href="#"><i class="fa fa-bell"
+                        aria-hidden="true"></i></a>
+                <div style="padding-top:20px;color: whitesmoke; margin-right: 20px;" class="float_right dropdown">
+                    <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
+                        data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-language" aria-hidden="true"></i>
+                    </button> -->
+                    <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="fa fa-1x fa-language" aria-hidden="true"></i>
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="change_lang('en')" href="#">ENGLISH</a>
+                        <a class="dropdown-item" onclick="change_lang('vi')" href="#">VIỆT NAM</a>
+                    </div>
+                </div>
+
+                <div class="dropdown float_right" style="color: whitesmoke;padding-top: 20px; margin-right: 20px;">
+                    <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="fa fa-1x fa-user-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
+                                aria-hidden="true"></i> Tài Khoảng</a>
+                        <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
+                                aria-hidden="true"></i>Đăng xuất</a>
+                    </div>
+                </div>
+            </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                 aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -62,6 +95,22 @@
                     <a class="nav-link active title-nav" aria-current="page" href="/">Thông báo</a>
                     <a class="nav-link active title-nav" aria-current="page" href="/home/getcontent">Lấy nội dung</a>
 
+                </div>
+                <div class="collapse navbar-collapse" id="main_menu_nav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                data-lang="contact_and_support">
+                                LIÊN HỆ VÀ HỖ TRỢ
+                            </a>
+                            <div id="menu_contacts" style="background-color: #2a2e3f;" class="dropdown-menu"
+                                aria-labelledby="navbarDropdown">
+                                <!-- <a style="background-color: #2a2e3f;" class="nav-link dropdown-item active title-nav" href="#" target="blank">Facebook</a>
+                                <a style="background-color: #2a2e3f;" class="nav-link dropdown-item active title-nav" href="#" target="blank">Zalo</a> -->
+                            </div>
+                        </li>
+                    </ul>
                 </div>
                 <div class="navbar-nav user-info">
                     <div id="current_username" class="nav-link active" aria-current="page">
@@ -147,7 +196,7 @@
             <div class="container">
                 <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5 mb-5">
                     <h3><i class="pd_r_5 fa fa-history"></i><span data-lang="history_operation"></span></h3>
-                    <table class="table table-dark">
+                    <table class="table text_center table_section table-dark">
                         <caption data-lang="recent_trading_history">lịch sử giao dịch gần đây</caption>
                         <thead>
                             <tr>

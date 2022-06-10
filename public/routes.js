@@ -68,4 +68,6 @@ module.exports = function (app) {
     .get(homeCtrl.reg_suc);
   app.route('/recovery/success')
     .get(homeCtrl.rec_success);
+  app.route('/home/config_general')
+    .get(homeCtrl.config_general)
 };

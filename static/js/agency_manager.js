@@ -62,8 +62,8 @@ async function init_agency_reg() {
                     <td>${format_time(f.created_at)}</td>
                     <td>${format_time(f.agency_time)}</td>
                     <td>
-                    ${button_action_tool(f.id, 'agency_approved', ['btn', 'btn-sm', 'btn-primary'], 'Duyệt')}
-                    ${button_action_tool(f.id, 'agency_cancel', ['btn', 'btn-sm', 'btn-danger'], 'Hủy')}
+                    ${button_action_tool(f.id, 'agency_approved', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-check" aria-hidden="true"></i>')}
+                    ${button_action_tool(f.id, 'agency_cancel', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
                     </td>
                 </tr>`
         })
