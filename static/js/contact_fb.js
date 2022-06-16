@@ -49,10 +49,23 @@ async function acc_get_detail() {
 
 async function check_service() {
     var dt = await acc_get_detail();
+    var today = new Date().getTime();
+    var date = 0;
     if (dt) {
-        var today = new Date().getTime();
-        var date = new Date(dt.limit_time).getTime();
-        if (dt.limit_time === null) {
+        if(dt.total_day){
+            if(dt.limit_time){
+                const _date = new Date(dt.limit_time);
+                _date.setDate(_date.getDate() + dt.total_day);
+                 date = new Date(_date).getTime();
+            }else{
+                date = new Date(dt.limit_time_).getTime();
+            }
+        }
+        else{
+            date = new Date(dt.limit_time).getTime();
+        }
+       
+        if (date === 0) {
             alert("Mua gói dịch vụ để sử dụng !");
             window.location.href = 'pricing';
         } else if (date <= today) {
