@@ -166,7 +166,7 @@ async function change_pass() {
 }
 
 async function acc_get_detail() {
-     var cr = get_cr_user();
+    var cr = get_cr_user();
     return await fetch(`/api/accounts/${cr.id}` /*, options */)
         .then((response) => response.json())
         .then((data) => {
@@ -202,18 +202,18 @@ async function init_user() {
     get_current_finance().then(rs => {
         var cr = document.getElementById('money_cr');
         cr.innerHTML = `  <label class="control-label text-uppercase" >Số Dư</label>
-        <span style="padding-left: 8vmax;" >${ get_format_VND(rs.money)} Xu</span>`;
+        <span style="padding-left: 8vmax;" >${get_format_VND(rs.money)} Xu</span>`;
     })
-    if(dt){
-            user.innerHTML =`
+    if (dt) {
+        user.innerHTML = `
                 <div  class="control-label text-uppercase">Email</div>
                 <div style="padding-left: 8vmax;">${dt.username}</div>
             `;
-            at.innerHTML = `
+        at.innerHTML = `
             <div class="control-label text-uppercase">Ngày Tạo</div>
             <div  style="padding-left: 8vmax;">${format_time(dt.created_at)}</div>
             `;
-        }
+    }
 
 }
 
@@ -260,36 +260,50 @@ async function get_wrap_pricing_history(user_id) {
         });
 }
 
-async function acc_get_detail() {
-     var cr_u = get_cr_user();
-    return await fetch(`/api/accounts/${cr_u.id}` /*, options */)
-        .then((response) => response.json())
-        .then((data) => {
-            if (data != undefined) {
-                return data || {};
-            }
-        })
-        .catch((error) => {
-            console.warn(error);
-        });
-}
+// async function acc_get_detail() {
+//      var cr_u = get_cr_user();
+//     return await fetch(`/api/accounts/${cr_u.id}` /*, options */)
+//         .then((response) => response.json())
+//         .then((data) => {
+//             if (data != undefined) {
+//                 return data || {};
+//             }
+//         })
+//         .catch((error) => {
+//             console.warn(error);
+//         });
+// }
 
 // show name pricing
-async function show_pricing(){
+async function show_pricing() {
     var cr_u = get_cr_user();
     var data_limit = await get_wrap_pricing_history(cr_u.id);
     var rs = await acc_get_detail();
-    if(rs){
-        if(rs.limit_time){
-            document.getElementById("limit_đate").innerHTML = ` 
-            <span>${format_time(rs.limit_time)}</span>`
-        }else{
-            document.getElementById("limit_đate").innerHTML = ` 
-            <>Hết Hạn</span>`
+    if (rs) {
+        if (rs.total_day) {
+            if (rs.limit_time) {
+                const _date = new Date(rs.limit_time);
+                _date.setDate(_date.getDate() + rs.total_day);
+                var date = new Date(_date).getTime();
+                var limit_date = new Date(Number(date || 0)).toLocaleString();
+                document.getElementById("limit_đate").innerHTML = ` 
+                            <span>${(limit_date)}</span>`
+            } else {
+                document.getElementById("limit_đate").innerHTML = ` 
+                            <span>${format_time(rs.limit_time_)}</span>`
+            }
+
         }
+        else {
+            document.getElementById("limit_đate").innerHTML = ` 
+                            <span>${format_time(rs.limit_time)}</span>`
+        }
+    } else {
+        document.getElementById("limit_đate").innerHTML = ` 
+        <>Hết Hạn</span>`
     }
-    if(data_limit) {
-        data_limit.forEach(f =>{
+    if (data_limit) {
+        data_limit.forEach(f => {
             document.getElementById("name_pricing").innerHTML = `
             <span>${f.name} (${f.limit_day} Ngày)</span>`
             document.getElementById("rights").innerHTML = `
@@ -297,7 +311,7 @@ async function show_pricing(){
             document.getElementById("date_buy").innerHTML = `
             <span>${format_time(f.created_at)}</span>`
         });
-    } 
+    }
     else if (data_limit === null) {
         document.getElementById("name_pricing").innerHTML = `
         <span>null</span>`

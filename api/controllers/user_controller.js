@@ -29,7 +29,8 @@ module.exports = {
         })
     },
     get_allmoney_today_money : (req, res) => {
-        var time_from_allmoney = 0;
+        var from_allmoney = '2022-05-01 00:00:00';
+        var time_from_allmoney = Number(new Date(from_allmoney).getTime() / 1000);
         var time_to_allmoney = Number(new Date().getTime() / 1000);
 
         var now_t = new Date();

@@ -65,6 +65,12 @@ module.exports = {
     p_articles: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/p_articles.html'))
     },
+    p_support: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/p_support.html'))
+    },
+    p_guide: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/p_guide.html'))
+    },
     p_facebook: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/p_facebook.html'))
     },

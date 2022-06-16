@@ -153,8 +153,9 @@
                         <button onclick="search_acc()" class="btn btn-primary">search</button>
                     </div>
                 </div> -->
-                <div class="col-12">
-                    <table id="table_data" class="tablemanager text_center table_section table table-striped table-sm"
+                <input type="text" hidden value="" id="limit_day_pricing">
+                <div class="col-12 v-data-table__wrapper" >
+                    <table id="table_data" class="width_table_200 tablemanager text_center table_section table table-striped table-sm"
                         cellspacing="0" width="100%">
                         <thead>
                             <tr>
@@ -174,7 +175,7 @@
 
                         </tbody>
                     </table>
-                    <div class="modal fade " id="search_table" data-backdrop="static" data-keyboard="false"
+                    <!-- <div class="modal fade " id="search_table" data-backdrop="static" data-keyboard="false"
                         tabindex="-1" aria-labelledby="search_table" aria-hidden="true">
                         <table id="search_table" class="tablemanager text_center table table-striped table_section table-sm"
                             cellspacing="0" width="100%">
@@ -198,11 +199,12 @@
                             </tbody>
 
                         </table>
-                    </div>
-                    <div class="pagination" id="paginate"></div>
+                    </div> -->
+                   
 
                     <!-- /////////////////////// -->
                 </div>
+                <div class="pagination " id="paginate"></div>
                 <!-- ////////////////////// -->
 
             </div>

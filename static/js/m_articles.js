@@ -17,6 +17,9 @@ async function articles_get_all() {
 async function init_articles(){
     main_table.innerHTML = '';
     var dt = await articles_get_all();
+    // const date = new Date();
+    // date.setDate(date.getDate() + 30);
+    // alert(date);
     if (dt) {
         dt.forEach(item => {
             main_table.innerHTML += `
@@ -25,6 +28,7 @@ async function init_articles(){
                 <td>${item.name}</td>       
                 <td maxlength="20">${item.headline}</td>
                 <td><span>${item.content}</span></td>
+                <td>${item.video}</td>
                 <td>${new Date(Number(item.time * 1000 || 0)).toLocaleString()}</td>
                 <td>
                     ${button_action_tool(item.id, 'open_modal_articles', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
@@ -66,11 +70,13 @@ async function open_modal_articles(params) {
         $('#name').val(detail_dt.name || 'Quản Trị Viên');
         $('#headline').val(detail_dt.headline || '');
         $('#content').val(detail_dt.content || '');
+        $('#video').val(detail_dt.video || '');
     } else {
         $('#articles_id').val(0);
         $('#name').val('Quản Trị Viên');
         $('#headline').val('');
         $('#content').val('');
+        $('#video').val('');
 
     }
     $('#articles_details').modal('show');
@@ -87,6 +93,7 @@ async function save_articles() {
     var name = $("#name").val()
     var headline = $("#headline").val()
     var content = $("#content").val()
+    var video = $("#video").val()
     // alert(content);
     // return;
     var url = `/api/articles`;
@@ -97,7 +104,7 @@ async function save_articles() {
         meth = 'PUT';
         url = `/api/articles/${id}`;
     }
-    var data = { name: name, headline: headline, content: content};
+    var data = { name: name, headline: headline, content: content,video:video};
 
     let rs = await articles_save(url, data, meth);
     // console.log('Success:', rs);

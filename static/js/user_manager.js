@@ -84,23 +84,115 @@ async function init_users_byname() {
     var dt = await acc_get_byname(name);
     if (dt) {
         dt.forEach(item => {
+            var today = new Date().getTime();
+            if (item.total_day) {
+                if (item.limit_time) {
+                    const _date = new Date(item.limit_time);
+                    _date.setDate(_date.getDate() + item.total_day);
+                    var date = new Date(_date).getTime();
+                    var limit_date = new Date(Number(date || 0)).toLocaleString();
 
-            document.getElementById('table_data').querySelector('tbody').innerHTML += `
+                    if (Number(date) > Number(today)) {
+                        var limit_date = new Date(Number(date || 0)).toLocaleString();
+                    } else if (Number(date) != 0) {
+                        var limit_date = new Date(Number(date || 0)).toLocaleString() + "(hết hạn)";
+                        // await history_update(item.id);
+                    } else {
+                        var limit_date = "";
+                    }
+                    document.getElementById('table_data').querySelector('tbody').innerHTML += `
+                    <tr>
+                        <td>${dt.indexOf(item) + 1}</td>    
+                        <td>${item.username}</td> 
+                        <td>${get_format_VND(item.money || '')}</td> 
+                        <td>${get_format_VND(item.bonus || '')}</td> 
+                        <td>${get_format_VND(item.money_month || '')}</td>   
+                        <td>${format_time(item.created_at) || ''}</td>  
+                        <td>${limit_date}</td>
+                        <td>
+                            ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-briefcase" aria-hidden="true"></i>')}
+                            ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-gift" aria-hidden="true"></i>')}
+                            ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
+                            ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
+                        </td>
+                    </tr>
+                `;
+                } else {
+                    var date = new Date(item.limit_time_).getTime();
+                    // date_number = date.getTime();
+                    if (Number(date) > Number(today)) {
+                        var limit_date = format_time(item.limit_time_);
+                    } else if (Number(date) != 0) {
+                        var limit_date = format_time(item.limit_time_) + "(hết hạn)";
+                        // await history_update(item.id);
+                    } else {
+                        var limit_date = "";
+                    }
+                    document.getElementById('table_data').querySelector('tbody').innerHTML += `
                 <tr>
                     <td>${dt.indexOf(item) + 1}</td>    
                     <td>${item.username}</td> 
-                    <td>${get_format_VND(item.money)}</td> 
-                    <td>${get_format_VND(item.bonus)}</td> 
-                    <td>${get_format_VND(item.money_month)}</td>  
+                    <td>${get_format_VND(item.money || '')}</td> 
+                    <td>${get_format_VND(item.bonus || '')}</td> 
+                    <td>${get_format_VND(item.money_month || '')}</td>   
                     <td>${format_time(item.created_at) || ''}</td>  
-                    <td>${format_time(item.limit_time) || ''}</td>
-                        <td>
-                            ${button_action_tool(item.id, 'init_pricing_history', ['bg_btn','btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-briefcase" aria-hidden="true"></i>')}
-                            ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary','bg_btn'], '<i class="fa fa-gift" aria-hidden="true"></i>')}
-                            ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary','bg_btn'], '<i class="fa fa-history" aria-hidden="true"></i>')}
-                            ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
-                        </td>
-                </tr>`;
+                    <td>${limit_date}</td>
+                    <td>
+                        ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-briefcase" aria-hidden="true"></i>')}
+                        ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-gift" aria-hidden="true"></i>')}
+                        ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
+                        ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
+                    </td>
+                </tr>
+            `;
+                }
+
+            } else {
+                var date = new Date(item.limit_time).getTime();
+                // date_number = date.getTime();
+                if (Number(date) > Number(today)) {
+                    var limit_date = format_time(item.limit_time);
+                } else if (Number(date) != 0) {
+                    var limit_date = format_time(item.limit_time) + "(hết hạn)";
+                    // await history_update(item.id);
+                } else {
+                    var limit_date = "";
+                }
+                document.getElementById('table_data').querySelector('tbody').innerHTML += `
+            <tr>
+                <td>${dt.indexOf(item) + 1}</td>    
+                <td>${item.username}</td> 
+                <td>${get_format_VND(item.money || '')}</td> 
+                <td>${get_format_VND(item.bonus || '')}</td> 
+                <td>${get_format_VND(item.money_month || '')}</td>   
+                <td>${format_time(item.created_at) || ''}</td>  
+                <td>${limit_date}</td>
+                <td>
+                    ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-briefcase" aria-hidden="true"></i>')}
+                    ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-gift" aria-hidden="true"></i>')}
+                    ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
+                    ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
+                </td>
+            </tr>
+        `;
+            }
+
+            // document.getElementById('table_data').querySelector('tbody').innerHTML += `
+            //     <tr>
+            //         <td>${dt.indexOf(item) + 1}</td>    
+            //         <td>${item.username}</td> 
+            //         <td>${get_format_VND(item.money)}</td> 
+            //         <td>${get_format_VND(item.bonus)}</td> 
+            //         <td>${get_format_VND(item.money_month)}</td>  
+            //         <td>${format_time(item.created_at) || ''}</td>  
+            //         <td>${format_time(item.limit_time) || ''}</td>
+            //             <td>
+            //                 ${button_action_tool(item.id, 'init_pricing_history', ['bg_btn', 'btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-briefcase" aria-hidden="true"></i>')}
+            //                 ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary', 'bg_btn'], '<i class="fa fa-gift" aria-hidden="true"></i>')}
+            //                 ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary', 'bg_btn'], '<i class="fa fa-history" aria-hidden="true"></i>')}
+            //                 ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
+            //             </td>
+            //     </tr>`;
         });
     } else {
         document.getElementById('table_data').querySelector('tbody').innerHTML = 'Không Tìm Thấy Tên Phù Hợp';
@@ -395,7 +487,7 @@ async function init_pricing_history(id) {
             <option value="${item.id}">${item.name}</option>`
         });
         bt.innerHTML = `<button type="button"
-                    class="btn btn-primary" onclick="save_pricing_(${id})" data-dismiss="modal">Mua</button>`
+        class="btn btn-primary" onclick="save_pricing_(${id})" data-dismiss="modal">Mua</button>`
     }
 
     if (data_limit) {
@@ -526,34 +618,126 @@ async function init_users(cr_page, user_number_page) {
     if (dt) {
         dt.forEach(item => {
             var today = new Date().getTime();
-            var date = new Date(item.limit_time).getTime();
+            // var date = new Date(item.limit_time).getTime();
 
-            // date_number = date.getTime();
-            if (Number(date) > Number(today)) {
-                var limit_date = format_time(item.limit_time);
-            } else if (Number(date) != 0) {
-                var limit_date = format_time(item.limit_time) + "(hết hạn)";
-                // await history_update(item.id);
+            if (item.total_day) {
+                if (item.limit_time) {
+                    const _date = new Date(item.limit_time);
+                    _date.setDate(_date.getDate() + item.total_day);
+                    var date = new Date(_date).getTime();
+                    var limit_date = new Date(Number(date || 0)).toLocaleString();
+
+                    if (Number(date) > Number(today)) {
+                        var limit_date = new Date(Number(date || 0)).toLocaleString();
+                    } else if (Number(date) != 0) {
+                        var limit_date = new Date(Number(date || 0)).toLocaleString() + "(hết hạn)";
+                        // await history_update(item.id);
+                    } else {
+                        var limit_date = "";
+                    }
+                    document.getElementById('table_data').querySelector('tbody').innerHTML += `
+                    <tr>
+                        <td>${dt.indexOf(item) + 1}</td>    
+                        <td>${item.username}</td> 
+                        <td>${get_format_VND(item.money || '')}</td> 
+                        <td>${get_format_VND(item.bonus || '')}</td> 
+                        <td>${get_format_VND(item.money_month || '')}</td>   
+                        <td>${format_time(item.created_at) || ''}</td>  
+                        <td>${limit_date}</td>
+                        <td>
+                            ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-briefcase" aria-hidden="true"></i>')}
+                            ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-gift" aria-hidden="true"></i>')}
+                            ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
+                            ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
+                        </td>
+                    </tr>
+                `;
+                } else {
+                    var date = new Date(item.limit_time_).getTime();
+                    // date_number = date.getTime();
+                    if (Number(date) > Number(today)) {
+                        var limit_date = format_time(item.limit_time_);
+                    } else if (Number(date) != 0) {
+                        var limit_date = format_time(item.limit_time_) + "(hết hạn)";
+                        // await history_update(item.id);
+                    } else {
+                        var limit_date = "";
+                    }
+                    document.getElementById('table_data').querySelector('tbody').innerHTML += `
+                <tr>
+                    <td>${dt.indexOf(item) + 1}</td>    
+                    <td>${item.username}</td> 
+                    <td>${get_format_VND(item.money || '')}</td> 
+                    <td>${get_format_VND(item.bonus || '')}</td> 
+                    <td>${get_format_VND(item.money_month || '')}</td>   
+                    <td>${format_time(item.created_at) || ''}</td>  
+                    <td>${limit_date}</td>
+                    <td>
+                        ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-briefcase" aria-hidden="true"></i>')}
+                        ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-gift" aria-hidden="true"></i>')}
+                        ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
+                        ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
+                    </td>
+                </tr>
+            `;
+                }
+
             } else {
-                var limit_date = "";
-            }
-            document.getElementById('table_data').querySelector('tbody').innerHTML += `
+                var date = new Date(item.limit_time).getTime();
+                // date_number = date.getTime();
+                if (Number(date) > Number(today)) {
+                    var limit_date = format_time(item.limit_time);
+                } else if (Number(date) != 0) {
+                    var limit_date = format_time(item.limit_time) + "(hết hạn)";
+                    // await history_update(item.id);
+                } else {
+                    var limit_date = "";
+                }
+                document.getElementById('table_data').querySelector('tbody').innerHTML += `
             <tr>
                 <td>${dt.indexOf(item) + 1}</td>    
                 <td>${item.username}</td> 
                 <td>${get_format_VND(item.money || '')}</td> 
                 <td>${get_format_VND(item.bonus || '')}</td> 
-                <td>${get_format_VND(item.money_month || '')}</td> 
+                <td>${get_format_VND(item.money_month || '')}</td>   
                 <td>${format_time(item.created_at) || ''}</td>  
                 <td>${limit_date}</td>
                 <td>
-                    ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'],'<i class="fa fa-briefcase" aria-hidden="true"></i>')}
+                    ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-briefcase" aria-hidden="true"></i>')}
                     ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-gift" aria-hidden="true"></i>')}
                     ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
                     ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
                 </td>
             </tr>
         `;
+            }
+            // date_number = date.getTime();
+            //     if (Number(date) > Number(today)) {
+            //         var limit_date = format_time(item.limit_time);
+            //     } else if (Number(date) != 0) {
+            //         var limit_date = format_time(item.limit_time) + "(hết hạn)";
+            //         // await history_update(item.id);
+            //     } else {
+            //         var limit_date = "";
+            //     }
+            //     document.getElementById('table_data').querySelector('tbody').innerHTML += `
+            //     <tr>
+            //         <td>${dt.indexOf(item) + 1}</td>    
+            //         <td>${item.username}</td> 
+            //         <td>${new3}</td> 
+            //         <td>${get_format_VND(item.money||'')}</td> 
+            //         <td>${get_format_VND(item.bonus||'')}</td> 
+            //         <td>${get_format_VND(item.money_month||'')}</td>   
+            //         <td>${format_time(item.created_at) || ''}</td>  
+            //         <td>${limit_date}</td>
+            //         <td>
+            //             ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'],'<i class="fa fa-briefcase" aria-hidden="true"></i>')}
+            //             ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-gift" aria-hidden="true"></i>')}
+            //             ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
+            //             ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
+            //         </td>
+            //     </tr>
+            // `;
         });
     }
     // paginate(each_page);
@@ -605,13 +789,23 @@ async function pricing_get_all() {
 // save wrap_pricing 
 async function save_pricing_(id) {
     var pricing_id = document.getElementById("wrap_pricing").value;
+    var limit_day = 0 ;
     if (Number(pricing_id) === 0) {
         alert("Hãy chọn gói mà bạn muốn mua");
         return;
     }
+    var data_pricing = await pricing_get_all();
+    if(data_pricing){
+        data_pricing.forEach(item => {
+            if(Number(item.id) === Number(pricing_id)){
+                limit_day = item.limit_day;
+            }
+        })
+    }
+    
     var user_id = id;
     var pricing_active = 1;
-    var data = { user_id: user_id, pricing_id: pricing_id, pricing_active: pricing_active };
+    var data = { user_id: user_id, pricing_id: pricing_id, pricing_active: pricing_active,limit_day:limit_day};
     var url = `/api/pricing_insert_wrap`;
     var meth = 'POST';
 

@@ -27,7 +27,7 @@ async function init_default() {
                 ${get_format_VND(item.price)} VNĐ
             </div>
             </div>
-            <div class="text-center mt-2 mb-2"><button onclick="order_pricing(${item.id},'${item.name}',${item.price})" class="btn btn-primary" data-lang="buy_now">Mua ngay</button></div>
+            <div class="text-center mt-2 mb-2"><button onclick="order_pricing(${item.id},'${item.name}',${item.price},${item.limit_day})" class="btn btn-primary" data-lang="buy_now">Mua ngay</button></div>
     </div>`;
         });
     }
@@ -45,7 +45,7 @@ async function pricing_get_all() {
         });
 }
 
-async function order_pricing(id, name, price) {
+async function order_pricing(id, name, price,day) {
     if (!confirm(`Bạn có chắc chắn muốn gia hạn gói ${name} ?`)) {
         return;
     }
@@ -57,7 +57,7 @@ async function order_pricing(id, name, price) {
     var url = `/api/pricing_public`;
     var meth = 'POST';
 
-    var data_pricing = { user_id: cr_u, pricing_id: id, pricing_active: pricing_active};
+    var data_pricing = { user_id: cr_u, pricing_id: id, pricing_active: pricing_active,limit_day:day};
     var data_money = { user_id: cr_u, money: price };
     var data = { data_money: data_money, data_pricing: data_pricing }
     var rs = await fetch(url, {
@@ -98,15 +98,15 @@ async function get_wrap_pricing_history(user_id) {
 }
 
 // show name pricing
-async function show_pricing(){
-    var cr_u = get_cr_user();
-    var data_limit = await get_wrap_pricing_history(cr_u.id);
-    var p = document.getElementById("r_pricing");
-    p.innerHTML = '';
-    if(data_limit) {
-        data_limit.forEach(f =>{
-            p.innerHTML = `<h5 class="pd_l_15">Đang sử dụng : ${f.pricing_name} <h5>`
-        });
-    }
-}
+// async function show_pricing(){
+//     var cr_u = get_cr_user();
+//     var data_limit = await get_wrap_pricing_history(cr_u.id);
+//     var p = document.getElementById("r_pricing");
+//     p.innerHTML = '';
+//     if(data_limit) {
+//         data_limit.forEach(f =>{
+//             p.innerHTML = `<h5 class="pd_l_15">Đang sử dụng : ${f.pricing_name} <h5>`
+//         });
+//     }
+// }
 
