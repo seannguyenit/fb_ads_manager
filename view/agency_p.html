@@ -118,31 +118,45 @@
         <section>
             <div class="col-12">
 
-                <div class="container">
-                    <h3 style="padding-top: 50px;" class="pd_l_15"><i class=" pd_r_5 fa fa-users"
-                            aria-hidden="true"></i><span data-lang="Đại_lý"></span></h3>
-                    <hr />
-                    <!-- <button onclick="open_modal()" class="btn btn-primary m-auto">Góp Ý</button> -->
-                    <h4 data-lang="your_agency">Đại Lý Của Bạn</h4>
-                    <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5">
-                        <div class="col-md-7">
-                            <div class="form-group">
-                                <label class="" for="name_agency" data-lang="dealer_name:">Tên Đại Lý :</label>
-                                <input disabled class="form_control" type="text" name="name_agency" id="name_agency">
-                            </div>
-                            <div class="form-group">
-                                <label class="" for="des_agency" data-lang="describe:">Miêu Tả :</label>
-                                <input disabled class="form_control" type="text" name="des_agency" id="des_agency">
-                            </div>
-                            <div class="form-group">
-                                <label class="" for="id_agency" data-lang="coupon:">Mã Đại Lý :</label>
-                                <input disabled class="form_control" type="text" name="id_agency" id="id_agency">
-                            </div>
-                            <div class="form-group">
-                                <label class="" for="link_ref" data-lang="referral_link">Link giới thiệu :</label>
-                                <input disabled type="text" class="form_control" name="link_ref" id="link_ref"
-                                    aria-describedby="link_ref" placeholder="Vui lòng đăng ký làm đại lý !">
-                            </div>
+            <div class="container">
+                <h3 style="padding-top: 50px;" class="pd_l_15"><i class=" pd_r_5 fa fa-users"
+                        aria-hidden="true"></i><span data-lang="Đại_lý"></span></h3>
+                <hr />
+                <!-- <button onclick="open_modal()" class="btn btn-primary m-auto">Góp Ý</button> -->
+                <h4 data-lang="">Đại Lý Của Bạn</h4>
+                <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label class="" for="" data-lang="">Tên Đại Lý :</label>
+                            <input class="form_control" type="text" name="name_agency" id="name_agency">
+                        </div>
+                        <div class="form-group">
+                            <label class="" for="" data-lang="">Miêu Tả :</label>
+                            <input class="form_control" type="text" name="des_agency" id="des_agency">
+                        </div>
+                        <div class="form-group">
+                            <label class="" for="" data-lang="">Mã Đại Lý :</label>
+                            <input class="form_control" type="text" name="id_agency" id="id_agency">
+                        </div>
+                        <div class="form-group">
+                            <label class="" for="link_ref" data-lang="referral_link">Link giới thiệu :</label>
+                            <input type="text" class="form_control" name="link_ref" id="link_ref"
+                                aria-describedby="link_ref" placeholder="Vui lòng đăng ký làm đại lý !">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class=" pd_bt_10 form-group">
+                            <span for="" data-lang="">Ngày Tạo :</span> 
+                            <span class="form_control" id="created_day">11/11/11111</span>
+                        </div>
+                        <div class="form-group">
+                            <label id="lb_stt" data-lang="unregistered">Chưa đăng ký</label>
+                            <button id="btn_reg" onclick="agency_register()" class=" form_control btn btn-primary"
+                                data-lang="registration">Đăng ký</button>
+                        </div>
+                        <div class=" pd_bt_10 form-group">
+                            <span for="" data-lang="">Liên Hệ :</span> <span class="form_control" id="link_contacts"><a
+                                    href="">facebook.com</a></span>
                         </div>
                         <div class="col-md-5">
                             <div class=" pd_bt_10 form-group">
