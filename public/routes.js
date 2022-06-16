@@ -47,6 +47,10 @@ module.exports = function (app) {
     .get(homeCtrl.manager_articles);
   app.route('/home/p_articles')
     .get(homeCtrl.p_articles);
+    app.route('/home/p_support')
+    .get(homeCtrl.p_support);
+    app.route('/home/p_guide')
+    .get(homeCtrl.p_guide);
   app.route('/home/p_facebook')
     .get(homeCtrl.p_facebook);
   app.route('/home/action')

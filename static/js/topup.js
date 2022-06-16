@@ -134,3 +134,7 @@ function init_money() {
                 ${user_info}`;
             })
 }
+
+function topup_directly(){
+    $('#modal_topup_directly').modal('show');
+}

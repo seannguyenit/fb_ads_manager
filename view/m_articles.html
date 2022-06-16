@@ -89,10 +89,10 @@
             <div style=" margin-top: 2vw;" class="bg-main-color container">
                 <div class="col-12 pd_t_1 pb-2">
                     <button onclick="open_modal_articles(0)" class="btn btn-primary">Tạo mới</button>
-                    <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button>
+                    <!-- <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button> -->
                 </div>
-                <div class="col-12">
-                    <table id="table_data" class="tablemanager table table-striped text_center table_section table-sm"
+                <div class="col-12 v-data-table__wrapper" >
+                    <table id="table_data" class="width_table_200 tablemanager text_center table_section table table-striped table-sm"
                         cellspacing="0" width="100%">
                         <thead>
                             <tr>
@@ -101,6 +101,7 @@
                                 <!-- <th>Mô tả</th> -->
                                 <th>Tiêu đề</th>
                                 <th>Nội dung</th>
+                                <th>Link video</th>
                                 <th>Thời gian</th>
                                 <!-- <th>Trạng thái</th> -->
                                 <th class="disableFilterBy">Thao tác</th>
@@ -141,6 +142,10 @@
                             required></textarea>
                         <!-- <textarea class="form-control" name="contacts" id="content" cols="60" rows="5" required></textarea> -->
                         <!-- <input style="height:200px" type="text" class="form-control" id="money_withdraw" required> -->
+                    </div>
+                    <div class="col-md-12">
+                        <label for="video" class="form-label">Link Video</label>
+                        <input type="text" class="form-control" id="video" required>
                     </div>
                 </div>
                 <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"

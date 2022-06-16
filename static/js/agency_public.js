@@ -29,9 +29,9 @@ function get_lb_btn(info) {
         if (info.is_agency != null) {
             document.getElementById('btn_reg').disabled = 'true';
             if (info.is_agency == 0) {
-                document.getElementById('btn_reg').innerHTML = `<span data-lang="waiting_for_review">Đang chờ xét duyệt !<span>`
+                document.getElementById('btn_reg').innerHTML = `<span data-lang="waiting_for_review">Đang chờ xét duyệt<span>`
             } else {
-                document.getElementById('btn_reg').innerHTML = `<span data-lang="was_agency">Đã là đại lý !</span>`
+                document.getElementById('btn_reg').innerHTML = `<span data-lang="was_agency">Đã là đại lý</span>`
             }
         }
     }

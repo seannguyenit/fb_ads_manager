@@ -42,8 +42,10 @@
 
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%" src="../img/usa.jpg" alt="">ENGLISH</a>
-                        <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%" src="../img/vn.jpg" alt="">VIỆT NAM</a>
+                        <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
+                                src="../img/usa.jpg" alt="">ENGLISH</a>
+                        <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
+                                src="../img/vn.jpg" alt="">VIỆT NAM</a>
                     </div>
                 </div>
             </div>
@@ -68,8 +70,10 @@
                             <i class="fa fa-1x fa-language" aria-hidden="true"></i>
                         </div>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%" src="../img/usa.jpg" alt="">ENGLISH</a>
-                            <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%" src="../img/vn.jpg" alt="">VIỆT NAM</a>
+                            <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
+                                    src="../img/usa.jpg" alt="">ENGLISH</a>
+                            <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
+                                    src="../img/vn.jpg" alt="">VIỆT NAM</a>
                         </div>
                     </div>
 
@@ -111,33 +115,18 @@
                 </div>
             </div>
         </nav>
-        <section>
+        <section class="container">
             <div class="col-12">
-                <div class="container">
-                    <div class="col-md-12 d-flex flex-wrap mt-5 mb-5">
+                <div class="with100 container">
+                    <div class="with100 col-md-12 d-flex flex-wrap mt-5 mb-5">
                         <div class="col-12 with100">
-                            <h3 class="float_left"><i class="pd_r_5 fa fa-bell-o" aria-hidden="true"></i><span
-                                    data-lang="Thông_Báo"></span>
-                            </h3>
                             <!-- <button onclick="open_modal()" class="btn float_right btn-primary m-auto"
                             data-lang="comments">Góp Ý</button> -->
                         </div>
-                        <div  class="with100" id="table_data">
-                            <div class="box_articles">
-                                <div class="box-content">
-                                    <div class="box-left">
-                                        <img style="border-radius: 50%;" width="50px" height="50px"
-                                            src="../img/avatar.png" alt="">
-                                    </div>
-                                    <div class="box-right">
-                                        <span style="font-weight:bolder">Quản Trị viên</span>
-                                        <p>thời gian</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h5>Lorem</h5>
-                                    <p>Lorem i</p>
-                                </div>
+                        <div class="col-md-6 pd10 bg-main-color">
+                            <div style="min-height:350px ;" class="text_center" id="link_video">
+                                <img style="border-radius: 50%;" width="280px" height="223px" src="../img/support2.png"
+                                    alt="">
                             </div>
                         </div>
                     </div>
@@ -150,39 +139,13 @@
                 <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
         </nav>
     </div>
-    <!-- modal  -->
 
-    <div class="modal fade" id="contacts_ticket" tabindex="-1" role="dialog" aria-labelledby="money_ticket"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Contacts</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body d-flex">
-                    <div class="col-md-12">
-                        <label for="contacts" class="form-label" data-lang="content">Ý Kiến :</label>
-                        <textarea class="form-control" name="contacts" id="contacts" cols="60" rows="5"
-                            required></textarea>
-                        <!-- <input style="height:200px" type="text" class="form-control" id="money_withdraw" required> -->
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button onclick="save_ticket()" type="button" class="btn btn-primary">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
     <script src="../js/helper_manager.js"></script>
     <script src="../js/permission.js"></script>
     <script src="../js/money_manager.js"></script>
-    <script src="../js/p_articles.js"></script>
+    <script src="../js/p_guide.js"></script>
     <script defer src="../js/translator.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -193,10 +156,6 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <script>
-        let main_table = document.getElementById('table_data');
-        init_articles();        
-    </script>
 </body>
 
 

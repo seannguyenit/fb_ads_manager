@@ -29,14 +29,17 @@ function init_type() {
     var card_type_place = document.getElementById('card_type_place');
     card_type_place.innerHTML = '';
     if (!data_) return;
+    // card_type_place.innerHTML +=`<option selected>---- Chọn Loại Thẻ ---</option>`;
     data_.forEach(f => {
         if (f.status) {
-            card_type_place.innerHTML += `<div class="form-check form-check-inline">
-                <label class="form-check-label">
-                <input class="form-check-input" onchange="init_card_price()" data-name="${f.name}" type="radio" ${data_.indexOf(f) == 0 ? 'checked' : ''} name="card_type" id="card_type_${data_.indexOf(f) + 1}"
-                value="${f.id}"> ${f.name}
-                </label>
-                </div>`;
+           
+            card_type_place.innerHTML +=`<option data-name="${f.name}" ${data_.indexOf(f) == 0 ? 'checked' : ''} name="card_type" id="${f.name}" data_="${f.name}" value="${f.id}">${f.name}</option>`;
+            // card_type_place.innerHTML += `<div class="form-check form-check-inline">
+            //     <label class="form-check-label">
+            //     <input class="form-check-input" onchange="init_card_price()" data-name="${f.name}" type="radio" ${data_.indexOf(f) == 0 ? 'checked' : ''} name="card_type" id="card_type_${data_.indexOf(f) + 1}"
+            //     value="${f.id}"> ${f.name}
+            //     </label>
+            //     </div>`;
             init_card_price();
         }
     });
@@ -46,19 +49,22 @@ async function init_card_price() {
     var card_price_place = document.getElementById('card_price_place');
     card_price_place.innerHTML = '';
     if (!data_) return;
-    var card_type = document.getElementById('card_type_place').querySelector('input:checked').value;
+    var card_type =  document.getElementById('card_type_place').querySelector("option:checked").value;
+    console.log(card_type)
     var prices_obj = data_.find(f => { return Number(f.id) == Number(card_type) });
     var prices = prices_obj.prices;
+    // card_price_place.innerHTML +=`<option selected>---- Chọn Mệnh Giá ---</option>`;
     if (prices && card_type) {
         prices = prices.sort((a, b) => a.price - b.price);
         prices.forEach(p => {
             if (p.status) {
-                card_price_place.innerHTML += `<div class="form-check form-check-inline">
-            <label class="form-check-label">
-            <input class="form-check-input" onchange="show_info()" data-rate="${p.rate}" type="radio" ${prices.indexOf(p) == 0 ? 'checked' : ''} name="price" id="price_${prices.indexOf(p) + 1}"
-            value="${p.price}"> ${get_format_VND(p.price)} (-${p.rate}%)
-            </label>
-            </div>`;
+                card_price_place.innerHTML +=`<option data-rate="${p.rate}"  ${prices.indexOf(p) == 0 ? 'checked' : ''} name="price" id="${p.rate}" data_="${p.rate}" value="${p.price}"> ${get_format_VND(p.price)} (-${p.rate}%)</option>`;
+            //     card_price_place.innerHTML += `<div class="form-check form-check-inline">
+            // <label class="form-check-label">
+            // <input class="form-check-input" onchange="show_info()" data-rate="${p.rate}" type="radio" ${prices.indexOf(p) == 0 ? 'checked' : ''} name="price" id="price_${prices.indexOf(p) + 1}"
+            // value="${p.price}"> ${get_format_VND(p.price)} (-${p.rate}%)
+            // </label>
+            // </div>`;
             }
         })
     }
@@ -66,11 +72,11 @@ async function init_card_price() {
 }
 
 async function show_info() {
-    var real_get = document.getElementById('card_price_place').querySelector('input:checked').value - Math.floor((document.getElementById('card_price_place').querySelector('input:checked').value) / 100) * document.getElementById('card_price_place').querySelector('input:checked').dataset.rate;
+    var real_get = document.getElementById('card_price_place').querySelector("option:checked").value - Math.floor((document.getElementById('card_price_place').querySelector("option:checked").value) / 100) * document.getElementById('card_price_place').querySelector("option:checked").id;
     var places = document.getElementById('text_info').querySelectorAll('span');
-    places[0].innerText = document.getElementById('card_type_place').querySelector('input:checked').dataset.name;
-    places[1].innerText = document.getElementById('card_price_place').querySelector('input:checked').value;
-    places[2].innerText = document.getElementById('card_price_place').querySelector('input:checked').dataset.rate;
+    places[0].innerText = document.getElementById('card_type_place').querySelector("option:checked").id;
+    places[1].innerText = document.getElementById('card_price_place').querySelector("option:checked").value;
+    places[2].innerText = document.getElementById('card_price_place').querySelector("option:checked").id;
     places[3].innerText = get_format_VND(real_get);
 }
 
@@ -82,8 +88,8 @@ async function go_money() {
     var cr_u = get_cr_user();
     if (!cr_u) return;
     start_loading();
-    var card_type = document.getElementById('card_type_place').querySelector('input:checked').value;
-    var card_value = document.getElementById('card_price_place').querySelector('input:checked').value;
+    var card_type = document.getElementById('card_type_place').value;
+    var card_value = document.getElementById('card_price_place').value;
     var seri = document.getElementById('seri').value;
     var pin = document.getElementById('pin').value;
     if (seri.length === 0 || pin.length === 0) {
@@ -111,8 +117,8 @@ async function go_money() {
     if (rs) {
         if (rs.Code == 1) {
             // var money = document.getElementById('card_price_place').querySelector('input:checked').value - Math.floor((document.getElementById('card_price_place').querySelector('input:checked').value) / 100) * document.getElementById('card_price_place').querySelector('input:checked').dataset.rate;
-            var money = document.getElementById('card_price_place').querySelector('input:checked').value - Math.floor((document.getElementById('card_price_place').querySelector('input:checked').value) / 100) * document.getElementById('card_price_place').querySelector('input:checked').dataset.rate;
-            var rs_save = await ticket_save_({ money: money, des: 'Thẻ cào', user_id: cr_u.id, active: 1, task_id: rs.TaskId });
+            var money = document.getElementById('card_price_place').querySelector("option:checked").value - Math.floor((document.getElementById('card_price_place').querySelector("option:checked").value) / 100) * document.getElementById('card_price_place').querySelector("option:checked").id;
+            var rs_save = await _ticket_save_({ money: money, des: 'Thẻ cào', user_id: cr_u.id, active: 1, task_id: rs.TaskId });
             stop_loading();
             if (rs_save.ok) {
                 alert('Thẻ nạp thành công !')
@@ -135,7 +141,7 @@ async function go_money() {
     stop_loading();
 }
 
-async function ticket_save_(data) {
+async function _ticket_save_(data) {
     return await fetch('/api/money_success', {
         method: 'POST', // or 'PUT'
         headers: {

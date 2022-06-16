@@ -44,8 +44,10 @@
 
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" onclick="change_lang('en')" href="#">ENGLISH</a>
-                        <a class="dropdown-item" onclick="change_lang('vi')" href="#">VIỆT NAM</a>
+                        <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
+                                src="../img/usa.jpg" alt="">ENGLISH</a>
+                        <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
+                                src="../img/vn.jpg" alt="">VIỆT NAM</a>
                     </div>
                 </div>
             </div>
@@ -68,11 +70,17 @@
     </div>
     <div>
         <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
-            <div class="container-fluid">
+            <div class="container-fluid with100">
                 <a class="navbar-brand com-name website" href="#">FB ads support</a>
-                <div class="navbar-toggler flex-grow-1" id="img_logo">
-                    <a class="navbar-brand" href="/home/page_box"><img width="150px" height="41px" src="../img/logo.jpg" alt=""></a>
-                    <a class="float_right" style="padding-top:20px; color: whitesmoke;" href="#"><i class="fa fa-bell" aria-hidden="true"></i></a>
+                <button class="navbar-toggler with20" type="button" data-toggle="collapse" data-target="#main_menu_nav"
+                    aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-toggler text_center with75" id="img_logo">
+                    <a class="navbar-brand" href="/home/page_box"><img width="100px" height="41px" src="../img/logo.jpg"
+                            alt=""></a>
+                    <a class="float_right" style="padding-top:20px; color: whitesmoke;" href="#"><i class="fa fa-bell"
+                            aria-hidden="true"></i></a>
                     <div style="padding-top:20px;color: whitesmoke; margin-right: 20px;" class="float_right dropdown">
                         <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
                             data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
@@ -83,11 +91,13 @@
                             <i class="fa fa-1x fa-language" aria-hidden="true"></i>
                         </div>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" onclick="change_lang('en')" href="#">ENGLISH</a>
-                            <a class="dropdown-item" onclick="change_lang('vi')" href="#">VIỆT NAM</a>
+                            <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
+                                    src="../img/usa.jpg" alt="">ENGLISH</a>
+                            <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
+                                    src="../img/vn.jpg" alt="">VIỆT NAM</a>
                         </div>
                     </div>
-                    
+
                     <div class="dropdown float_right" style="color: whitesmoke;padding-top: 20px; margin-right: 20px;">
                         <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
@@ -101,10 +111,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_nav"
-                    aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+
                 <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between;">
                     <div id="main_menu" class="navbar-nav">
                         <a class="nav-link active title-nav" aria-current="page" href="/">Thông báo</a>
@@ -112,7 +119,7 @@
                             dung</a>
 
                     </div>
-                    <div class="collapse navbar-collapse" id="main_menu_nav">
+                    <!-- <div class="collapse navbar-collapse" id="main_menu_nav">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item dropdown">
                                 <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#"
@@ -122,135 +129,115 @@
                                 </a>
                                 <div id="menu_contacts" style="background-color: #2a2e3f;" class="dropdown-menu"
                                     aria-labelledby="navbarDropdown">
-                                    <!-- <a style="background-color: #2a2e3f;" class="nav-link dropdown-item active title-nav" href="#" target="blank">Facebook</a>
-                                    <a style="background-color: #2a2e3f;" class="nav-link dropdown-item active title-nav" href="#" target="blank">Zalo</a> -->
+                                   
                                 </div>
                             </li>
-                        </ul>
-                    </div>
-                    <div class="navbar-nav user-info">
-                        <div id="current_username" class="nav-link active" aria-current="page"><a
-                                class="title-nav">USER</a>
-                            <a class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng
-                                xuất)</a>
-                        </div>
+                        </ul> -->
+                </div>
+                <div class="navbar-nav user-info">
+                    <div id="current_username" class="nav-link active" aria-current="page"><a class="title-nav">USER</a>
+                        <a class="nav-link active" aria-current="page" onclick="acc_logout()" href="#">(Đăng
+                            xuất)</a>
                     </div>
                 </div>
+
             </div>
         </nav>
-        <section>
-            <div class="col-12">
-                <div class="container">
-                    <div class="col-md-12 d-flex flex-wrap mt-5">
-                        <div class="col-md-6">
-                            <h3><i class="pd_r_5 fa fa-info" aria-hidden="true"></i><span
-                                    data-lang="information_pricing"></span>
-                            </h3>
-                            <hr />
-                            <div class="col-md-12" id="">
-                                <div class="d-flex flex-row mb-3">
-                                    <div style="width: 28%;" class="control-label text-uppercase"
-                                        data-lang="name_pricing">tên gói :</div>
-                                    <div style="width: 60%; margin-left: 10%" id="name_pricing"></div>
-                                </div>
-                                <div class="d-flex flex-row mb-3">
-                                    <div style="width: 28%;" class="control-label text-uppercase" data-lang="rights">
-                                    </div>
-                                    <div style="width: 60%; margin-left: 10%" id="rights"></div>
-                                </div>
-                                <div class="d-flex flex-row mb-3">
-                                    <div style="width: 28%;" class="control-label text-uppercase" data-lang="date_buy">
-                                    </div>
-                                    <div style="width: 60%; margin-left: 10%" id="date_buy"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="d-flex flex-row mb-3">
-                                    <div style="width: 28%;" class="control-label text-uppercase"
-                                        data-lang="date_limit">Hạn ngày</div>
-                                    <div style="width: 60%; margin-left: 10%" id="limit_đate"></div>
-                                </div>
-                                <div class="d-flex flex-row mb-3">
-                                    <div style="padding-left: 8vmax;"> <button onclick="" class="btn btn-primary"
-                                            data-lang="buy_now">Mua
-                                            Gói</button></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <h3> <i class="pd_r_5 fa fa-facebook" aria-hidden="true"></i>
-                                <span data-lang="add_fb_tokens"></span>
-                            </h3>
-                            <hr />
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="control-label text-uppercase">Token FB</label>
-                                    <div class="d-flex">
-                                        <input class="form-control" id="token_fb" name="token_fb" type="text"
-                                            placeholder="" autofocus="">
-                                        <button onclick="add_token()" class="btn btn-warning"
-                                            data-lang="add">Thêm</button>
-                                    </div>
-                                </div>
-                                <div id="list_data_token" class="form-group pr-2"
-                                    style="height: 300px;overflow-y: scroll;">
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="col-12">
-                        <div class="container">
-                            <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5 mb-5">
-                                <h3> <i class="pd_r_5 fa fa-clock-o" aria-hidden="true"></i>
-                                    <span data-lang="Lịch_Sử_Đăng_Nhập"></span>
-                                </h3>
-                                <table class="table text_center table_section table-dark">
-                                    <caption data-lang="history_operation">lịch sử gần đây</caption>
-                                    <thead>
-                                        <tr>
-                                            <th>Stt</th>
-                                            <th data-lang="Tài_Khoản">Tên</th>
-                                            <th data-lang="active">Hoạt Động</th>
-                                            <th data-lang="time">Thời Gian</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tb_data">
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
     </div>
-    </section>
-    <!-- <section>
+
+    <div class="content">
+    <section>
         <div class="col-12">
             <div class="container">
-                <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5 mb-5">
-                    <table class="table table-dark">
-                        <caption>lịch sử giao dịch gần đây</caption>
-                        <thead>
-                            <tr>
-                                <th>Stt</th>
-                                <th>Gói</th>
-                            
-                                <th>Giá</th>
-                                <th>Thời Gian</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tb_data">
+                <div class="col-md-12 d-flex flex-wrap mt-5">
+                    <div class="col-md-6">
+                        <h3><i class="pd_r_5 fa fa-info" aria-hidden="true"></i><span
+                                data-lang="information_pricing"></span>
+                        </h3>
+                        <hr />
+                        <div class="col-md-12" id="">
+                            <div class="d-flex flex-row mb-3">
+                                <div style="width: 28%;" class="control-label text-uppercase" data-lang="name_pricing">
+                                    tên gói :</div>
+                                <div style="width: 60%; margin-left: 10%" id="name_pricing"></div>
+                            </div>
+                            <div class="d-flex flex-row mb-3">
+                                <div style="width: 28%;" class="control-label text-uppercase" data-lang="rights">
+                                </div>
+                                <div style="width: 60%; margin-left: 10%" id="rights"></div>
+                            </div>
+                            <div class="d-flex flex-row mb-3">
+                                <div style="width: 28%;" class="control-label text-uppercase" data-lang="date_buy">
+                                </div>
+                                <div style="width: 60%; margin-left: 10%" id="date_buy"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="d-flex flex-row mb-3">
+                                <div style="width: 28%;" class="control-label text-uppercase" data-lang="date_limit">Hạn
+                                    ngày</div>
+                                <div style="width: 60%; margin-left: 10%" id="limit_đate"></div>
+                            </div>
+                            <div class="d-flex flex-row mb-3">
+                                <div style="padding-left: 8vmax;"> <button onclick="" class="btn btn-primary"
+                                        data-lang="buy_now">Mua
+                                        Gói</button></div>
+                            </div>
+                        </div>
+                    </div>
 
-                        </tbody>
-                    </table>
+                    <div class="col-md-6">
+                        <h3> <i class="pd_r_5 fa fa-facebook" aria-hidden="true"></i>
+                            <span data-lang="add_fb_tokens"></span>
+                        </h3>
+                        <hr />
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label text-uppercase">Token FB</label>
+                                <div class="d-flex">
+                                    <input class="form-control" id="token_fb" name="token_fb" type="text" placeholder=""
+                                        autofocus="">
+                                    <button onclick="add_token()" class="btn btn-warning" data-lang="add">Thêm</button>
+                                </div>
+                            </div>
+                            <div id="list_data_token" class="form-group pr-2" style="height: 300px;overflow-y: scroll;">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-12">
+                    <div class="container">
+                        <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5 mb-5">
+                            <h3> <i class="pd_r_5 fa fa-clock-o" aria-hidden="true"></i>
+                                <span data-lang="Lịch_Sử_Đăng_Nhập"></span>
+                            </h3>
+                            <table class="table text_center table_section table-dark">
+                                <caption data-lang="history_operation">lịch sử gần đây</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Stt</th>
+                                        <th data-lang="Tài_Khoản">Tên</th>
+                                        <th data-lang="active">Hoạt Động</th>
+                                        <th data-lang="time">Thời Gian</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tb_data">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
+    </div>
+    <div class="footer">
+        <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color">
+                <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
+        </nav>
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
