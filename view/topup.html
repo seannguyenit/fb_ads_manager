@@ -292,6 +292,68 @@
                 </div>
                 <div class="text_center">
 
+        <!-- Modal -->
+        <div class="modal fade" id="modal_topup_directly" tabindex="-1" role="dialog"
+            aria-labelledby="modal_topup_directly" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" data-lang="top_up_with_card">Phiếu nạp Tiền</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <label for="money" class="form-label"  data-lang="card_type:">Loại Thẻ</label>
+                            <br>
+                            <select onchange="init_card_price()" style="min-height: 38px;" class="text-center with100 form-select" id="card_type_place"
+                                aria-label="Default select example">
+                                <option selected>---- Chọn Loại Thẻ ---</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <!-- <label for="des" class="form-label">Mã chuyển khoản</label>
+                            <input disabled type="text" class="form-control" id="des" required> -->
+                            <label for="money" class="form-label"  data-lang="denomination:">Mệnh Giá : </label>
+                            <br>
+                            <select onchange="show_info()" style="min-height: 38px;" class="text-center with100 form-select" id="card_price_place"
+                                aria-label="Default select example">
+                                <option selected>---- Chọn Mệnh Giá ---</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <label for="des" class="form-label" data-lang="number_seri">Mã Seri : </label>
+                            <input  type="text" class="form-control" id="" placeholder="Nhập Mã Seri" required >
+                        </div>
+                        <div class="col-md-12">
+                            <label for="des" class="form-label" data-lang="card_code">Mã Thẻ :</label>
+                            <input  type="text" class="form-control" id="" placeholder="Nhập Mã Thẻ" required>
+                        </div>
+                        <div id="text_info" class="col-md-12 row d-flex mt-2 mb-2 flex-column">
+                            <h4>
+                                <span1 data-lang="you're_cards"> Bạn đang nạp thẻ</span1> <span>Viettel</span>
+                                <span1 data-lang="denomination">mệnh giá :</span1> <span>10,000</span>
+                            </h4>
+                            <h4>
+                                <span1 data-lang="discount:">Chiết khấu:</span1> <span>17</span> %
+                            </h4>
+                            <h4>
+                                <span1 data-lang="real_recognition:"> Thực nhận : </span1><span>10,000</span> VND
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary float_left" data-dismiss="modal">Close</button>
+                        <button onclick="go_money()" type="button" class="btn btn-primary"  data-lang="recharged">Save</button>
+                    </div>
                 </div>
             </div>
         </div>
