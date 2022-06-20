@@ -55,6 +55,7 @@ body{
 .pd10{
     padding: 10px !important;
 }
+
 .pd_t_1{
     padding-top: 1vw;
 }
@@ -620,8 +621,8 @@ textarea::placeholder,input::placeholder { /* Chrome, Firefox, Opera, Safari 10.
     width: 75% !important;
 }
 .float_right{
-    float: right;
-}
+    float: right !important;
+} 
 .v-data-table__wrapper {
     overflow-x: auto;
     overflow-y: hidden;

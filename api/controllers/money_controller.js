@@ -44,6 +44,33 @@ module.exports = {
         }
 
     },
+    agency_move_money: (req, res) => {
+        get_current_finance(req.body.data_agency.user_id, (vl) => {
+            let money_cr = vl[0].money;
+            if (Number(req.body.data_agency.money) > Number(money_cr)) {
+                res.json({ mess: "số dư trong tài khoảng không đủ" })
+            }
+            else {
+                let data_agency = req.body.data_agency;
+                let data_user = req.body.data_user;
+                data_agency.time = new Date().getTime() / 1000;
+                data_user.time = new Date().getTime() / 1000;
+                data_agency.type = 0;
+                data_user.type = 1;
+                data_user.active = 1;
+                data_agency.active = 1;
+                let sql_agency = 'insert into money_history SET ?;'
+                db.query(sql_agency, data_agency, (err, response) => {
+                    if (err) throw err
+                    let sql_user = 'insert into money_history SET ?;'
+                    db.query(sql_user, data_user, (err, response) => {
+                        if (err) throw err
+                        res.json({ mess: "success" })
+                    })
+                })
+            }
+        })
+    },
     add_money: (req, res) => {
         get_current_finance(req.body.user_id, (vl) => {
             let money_bonus = vl[0].bonus;

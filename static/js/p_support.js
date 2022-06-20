@@ -14,17 +14,30 @@ async function get_admin_contacts() {
 }
 
 async function menu_contacst() {
+    var phone_admin = document.getElementById("phone_admin");
+    var email_admin = document.getElementById("email_admin");
+    var facebook_admin =  document.getElementById("facebook_admin");
+    var zalo_admin = document.getElementById("zalo_admin");
     var data = await get_admin_contacts();
         if (data) {
             data.forEach(f => {
-                document.getElementById("phone_admin").innerHTML = `
-               ${f.phone} (Vui lòng gửi tin nhắn)`;
-                document.getElementById("email_admin").innerHTML = `
+                if(phone_admin){
+                    phone_admin.innerHTML = `
+                    ${f.phone} (Vui lòng gửi tin nhắn)`;
+                }
+               if(email_admin){
+                email_admin.innerHTML = `
                 ${f.email}`;
-                document.getElementById("facebook_admin").innerHTML = `
-                <a href="${f.facebook}" target="blank">Facebook</a>`;
-                document.getElementById("zalo_admin").innerHTML = `
-                <a href="${f.zalo}" target="blank">Zalo</a>`;
+               }
+                if(facebook_admin){
+                    facebook_admin.innerHTML = `
+                    <a href="${f.facebook}" target="blank">Facebook</a>`;
+                }
+                if(zalo_admin){
+                    zalo_admin.innerHTML = `
+                    <a href="${f.zalo}" target="blank">Zalo</a>`;
+                }
+                
             })
         }
 }

@@ -48,6 +48,7 @@ module.exports = function (app) {
   app.route('/api/Accounts_search/:username')
     .put(accCtrl.get_byname)
     .get(accCtrl.get_byname);
+   
 
   app.route('/api/Accounts_history/:id')
     .put(accCtrl.update_history);
@@ -76,16 +77,22 @@ module.exports = function (app) {
     .get(accCtrl.get_allmoney_today_money);
   app.route('/api/agency')
     .get(accCtrl.get_all_agency)
+    app.route('/api/user_by_agency/:id')
+    .get(accCtrl.get_user_by_agency)
+    
   app.route('/api/agency_reg')
     .get(accCtrl.get_all_agency_reg)
 
   app.route('/api/agency_child/:id')
     .get(accCtrl.get_agency_child)
-
+  app.route('/api/email_child_search/:username/:id')
+    .get(accCtrl.get_bychildname);
+  app.route('/api/created_child_search/:from/:to/:id')
+    .get(accCtrl.get_childbycreated);
   app.route('/api/agency_count/:id')
     .get(accCtrl.get_agency_count)
-  app.route('/api/contacts_ticket')
-    .post(accCtrl.add_contacts);
+  app.route('/api/agency_move_money')
+    .post(moneyCtrl.agency_move_money);
   app.route('/api/admin_contacts')
     .get(accCtrl.admin_contacts)
     .post(accCtrl.update_admin_contacts);
@@ -95,6 +102,8 @@ module.exports = function (app) {
     .get(accCtrl.get_agency_info)
     .put(accCtrl.agency_reg);
 
+    // app.route('/api/infor_agency/:id')
+    // .get(accCtrl.get_agency_info_by_user);
   app.route('/api/agency_m/:id')
     .put(accCtrl.agency_app);
   app.route('/api/agency_m/cancel/:id')

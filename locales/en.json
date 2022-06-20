@@ -93,7 +93,15 @@
     "denomination" : "denomination :",
     "contact_and_support" : "CONTACT & SUPPORT",
     "Hổ_Trợ": "Support",
-    "Hướng_Dẫn" : "Guild"
+    "Hướng_Dẫn" : "Guild",
+    "star_day" : "Star day",
+    "end_day" : "End day",
+    "dealer_name:" : "Dealer name :",
+    "describe:" : "Describe :",
+    "coupon:" : "Coupon :",
+    "contact:" : "Contact :",
+    "transfer_user:" : "Transfer user :",
+    "transfer_money:" : "Amount to be transferred :"
 
 
 
