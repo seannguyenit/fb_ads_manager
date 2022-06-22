@@ -38,8 +38,8 @@
 
                 <div style="padding-top:5px" class=" website dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
-                        data-toggle="dropdown" data-lang="Language" aria-haspopup="true" aria-expanded="false">
-
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span id="img_lang">  </span><span data-lang="Language"></span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
@@ -53,7 +53,7 @@
     </div>
     <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid with100">
-            <a class="navbar-brand com-name website" href="#">FB ads support</a>
+            <!-- <a class="navbar-brand com-name website" href="#">FB ads support</a> -->
             <button class="navbar-toggler with20" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                 aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -115,146 +115,182 @@
         </div>
     </nav>
     <div class="content">
-    <section>
-        <div class="col-12">
+        <section>
+            <div class="col-12">
 
-            <div class="container">
-                <h3 style="padding-top: 50px;" class="pd_l_15"><i class=" pd_r_5 fa fa-users"
-                        aria-hidden="true"></i><span data-lang="Đại_lý"></span></h3>
-                <hr />
-                <!-- <button onclick="open_modal()" class="btn btn-primary m-auto">Góp Ý</button> -->
-                <h4 data-lang="">Đại Lý Của Bạn</h4>
-                <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5">
-                    <div class="col-md-7">
-                        <div class="form-group">
-                            <label class="" for="" data-lang="">Tên Đại Lý :</label>
-                            <input class="form_control" type="text" name="name_agency" id="name_agency">
-                        </div>
-                        <div class="form-group">
-                            <label class="" for="" data-lang="">Miêu Tả :</label>
-                            <input class="form_control" type="text" name="des_agency" id="des_agency">
-                        </div>
-                        <div class="form-group">
-                            <label class="" for="" data-lang="">Mã Đại Lý :</label>
-                            <input class="form_control" type="text" name="id_agency" id="id_agency">
-                        </div>
-                        <div class="form-group">
-                            <label class="" for="link_ref" data-lang="referral_link">Link giới thiệu :</label>
-                            <input type="text" class="form_control" name="link_ref" id="link_ref"
-                                aria-describedby="link_ref" placeholder="Vui lòng đăng ký làm đại lý !">
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class=" pd_bt_10 form-group">
-                            <span for="" data-lang="">Ngày Tạo :</span> 
-                            <span class="form_control" id="created_day">11/11/11111</span>
-                        </div>
-                        <div class="form-group">
-                            <label id="lb_stt" data-lang="unregistered">Chưa đăng ký</label>
-                            <button id="btn_reg" onclick="agency_register()" class=" form_control btn btn-primary"
-                                data-lang="registration">Đăng ký</button>
-                        </div>
-                        <div class=" pd_bt_10 form-group">
-                            <span for="" data-lang="">Liên Hệ :</span> <span class="form_control" id="link_contacts"><a
-                                    href="">facebook.com</a></span>
-                        </div>
-                        <div class="form-group">
-                            <label id="" data-lang="">Chuyển Tiền User :</label>
-                            <button id="" onclick="" class=" form_control btn btn-primary" data-lang="">Money</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- <hr /> -->
-    <section>
-        <div class="col-12">
-            <div class="container">
-                <div id="main_content" class="col-md-12 d-flex flex-wrap mt-2">
-                    <div class="container title-agency" data-lang="information_agency">
-                        Thông tin đại lý
-                    </div>
-                    <div class="col-md-12 d-flex flex-wrap">
-                        <div class="col-md-4">
-                            <div class="box-agency">
-                                <div>0</div>
-                                <div data-lang="total_top_up">Tổng tiền nạp</div>
+                <div class="container">
+                    <h3 style="padding-top: 50px;" class="pd_l_15"><i class=" pd_r_5 fa fa-users"
+                            aria-hidden="true"></i><span data-lang="Đại_lý"></span></h3>
+                    <hr />
+                    <!-- <button onclick="open_modal()" class="btn btn-primary m-auto">Góp Ý</button> -->
+                    <h4 data-lang="">Đại Lý Của Bạn</h4>
+                    <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5">
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <label class="" for="name_agency" data-lang="dealer_name:">Tên Đại Lý :</label>
+                                <input disabled class="form_control" type="text" name="name_agency" id="name_agency">
+                            </div>
+                            <div class="form-group">
+                                <label class="" for="des_agency" data-lang="describe:">Miêu Tả :</label>
+                                <input disabled class="form_control" type="text" name="des_agency" id="des_agency">
+                            </div>
+                            <div class="form-group">
+                                <label class="" for="id_agency" data-lang="coupon:">Mã Đại Lý :</label>
+                                <input disabled class="form_control" type="text" name="id_agency" id="id_agency">
+                            </div>
+                            <div class="form-group">
+                                <label class="" for="link_ref" data-lang="referral_link">Link giới thiệu :</label>
+                                <input disabled type="text" class="form_control" name="link_ref" id="link_ref"
+                                    aria-describedby="link_ref" placeholder="Vui lòng đăng ký làm đại lý !">
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="box-agency">
-                                <div>0</div>
-                                <div data-lang="number_of_top_up">Số lần nạp</div>
+                        <div class="col-md-5">
+                            <div class=" pd_bt_10 form-group">
+                                <span data-lang="creation_date:">Ngày Tạo :</span>
+                                <span class="form_control" id="created_day"></span>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="box-agency">
-                                <div>0</div>
-                                <div data-lang="new_registration">Đăng ký mới</div>
+                            <div class="form-group">
+                                <label id="lb_stt" data-lang="unregistered">Chưa đăng ký</label>
+                                <button id="btn_reg" onclick="agency_register()" class=" form_control btn btn-primary"
+                                    data-lang="registration">Đăng ký</button>
+                            </div>
+                            <div class=" pd_bt_10 form-group">
+                                <span for="" data-lang="contact:">Liên Hệ :</span> <span class="form_control"
+                                    id="facebook_admin"><a id="facebook_admin" href="">faceboo.com</a></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="btn_money" data-lang="transfer_user:">Chuyển Tiền User :</label>
+                                <button id="btn_money" disabled onclick="open_modal()"
+                                    class=" form_control btn btn-primary" data-lang="">Money</button>
+                            </div>
+                            <div class="form-group" id="btn_withdraw">
+                                <!-- <button  onclick=""
+                                    class=" form_control btn btn-primary" data-lang="Rút_Tiền"></button> -->
+                                    <!-- <a class="btn btn-primary" href="./withdraw">Nạp bằng thẻ cào (Đang bảo trì)</a> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- <hr /> -->
-    <section>
-        <div class="col-12">
-            <div class="container">
-                <div id="main_content" class="col-md-12 d-flex flex-wrap mt-2">
-                    <div class="container title-agency" data-lang="list_of_user">
-                        Danh sách tài khoảng
-                    </div>
-                    <div class="col-md-12 d-flex flex-wrap">
-                        <table class="table text_center table_section">
-                            <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th data-lang="Tài_Khoản">User</th>
-                                    <th data-lang="total_top_up">Tổng tiền nạp</th>
-                                    <th data-lang="creation_date">Ngày tạo</th>
-                                </tr>
-                            </thead>
-                            <tbody id="table_dt">
+        </section>
+        <!-- <hr /> -->
+        <section>
+            <div class="col-12">
+                <div class="container">
+                    <div id="main_content" class="table_header col-md-12 d-flex flex-wrap mt-2">
+                        <h5 class="title-agency" style="color: white;" data-lang="information_agency"> Thông tin
+                            đại lý
+                        </h5>
+                        <div class="table_header float_right">
+                            <div> <label for="from_date" data-lang="star_day">Từ ngày</label>
+                                <input type="date" class="form-control" name="from_date" id="from_date"
+                                    aria-describedby="from_date" placeholder="yyyy-MM-dd">
+                            </div>
 
-                            </tbody>
-                        </table>
+                            <div><label for="to_date" data-lang="end_day">Đến ngày</label>
+                                <input type="date" class="form-control" name="to_date" id="to_date"
+                                    aria-describedby="to_date" placeholder="yyyy-MM-dd">
+                            </div>
+                            <div><button style="margin-top: 30PX;" class="btn btn-primary" data-toggle="modal"
+                                    onclick="search_acc_by_created()" data-target="#detailId">search</button></div>
+                        </div>
+                        <div class="col-md-12 d-flex flex-wrap">
+                            <div class="col-md-4">
+                                <div class="box-agency">
+                                    <div>0</div>
+                                    <div data-lang="total_top_up">Tổng tiền nạp</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="box-agency">
+                                    <div>0</div>
+                                    <div data-lang="number_of_top_up">Số lần nạp</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="box-agency">
+                                    <div>0</div>
+                                    <div data-lang="new_registration">Đăng ký mới</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        <!-- <hr /> -->
+        <section>
+            <div class="col-12">
+                <div class="container">
+                    <div id="main_content" class="table_header col-md-12 d-flex flex-wrap mt-2">
+                        <h5 class="title-agency" style="color: white;" data-lang="list_of_user">Danh Sách Thành Viên
+                        </h5>
+                        <div> <input placeholder=" Nhập Mail tìm kiếm...." id="username" /> <button
+                                onclick="search_acc()" class="btn btn-primary">search</button> </div>
 
-    <!-- modal  -->
+                        <!-- <div class="container title-agency" data-lang="list_of_user">
+                        Danh sách tài khoảnggg
+                    </div> -->
+                        <div class="col-md-12 d-flex flex-wrap">
+                            <div class="col-12 v-data-table__wrapper">
+                                <table class="width_table_200 table text_center table_section">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th data-lang="Tài_Khoản">User</th>
+                                            <th data-lang="total_top_up">Tổng tiền nạp</th>
+                                            <th data-lang="creation_date">Ngày tạo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_dt">
 
-    <!-- <div class="modal fade" id="contacts_ticket" tabindex="-1" role="dialog" aria-labelledby="money_ticket" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Contacts</h5>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- modal  -->
+
+        <div class="modal fade" id="money_ticket" tabindex="-1" role="dialog" aria-labelledby="money_ticket"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" data-lang="transfer_user:">Chuyển Tiền Cho User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                </div>
-                <div class="modal-body d-flex">
-                    <div class="col-md-12">
-                        <label for="contacts" class="form-label">Ý Kiến :</label>
-                        <textarea class="form-control" name="contacts" id="contacts" cols="60" rows="5" required></textarea>
+                    </div>
+                    <div class="modal-body d-flex">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="email_user" class="form-label">Email :</label>
+                                <!-- <input  class="form_control" type="text" name="email_user" id="email_user" placeholder="nhập email ngươi dùng" required> -->
+                                <select name="option_user" class="form_control" id="option_user">
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="money" class="form-label" data-lang="transfer_money:">Tiền Cần CHuyển :</label>
+                                <input class="form_control" type="number" name="money" id="money" value="0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button onclick="save_ticket()" type="button" class="btn btn-primary">Save</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button onclick="save_ticket()" type="button" class="btn btn-primary">Save</button>
-                </div>
             </div>
-        </div>
-    </div> -->
+        </div> 
     </div>
     <div class="footer">
         <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color">
-                <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
+            <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
         </nav>
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -262,6 +298,7 @@
     <script src="../js/helper_manager.js"></script>
     <script src="../js/permission.js"></script>
     <script src="../js/agency_public.js"></script>
+    <script src="../js/p_support.js"></script>
     <script defer src="../js/translator.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

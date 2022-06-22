@@ -93,6 +93,7 @@ module.exports = {
             res.json(response)
         })
     },
+   
     update: (req, res) => {
         let data = req.body;
         let userId = req.params.id;
@@ -326,6 +327,28 @@ module.exports = {
             res.json(response)
         })
     },
+    get_user_by_agency: (req,res) => {
+        let sql = 'SELECT * from user where active = 1 and par_id = ?'
+        db.query(sql, [Number(req.params.id)], (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    } ,
+    get_bychildname: (req, res) => {
+        let username = '%'+req.params.username+'%';
+        let sql = 'SELECT `user`.`username`,(SELECT sum(money) FROM money_history where `active` = 1 and `type` =  1 and user_id = `user`.id) as total, `user`.`ref`, `user`.`is_agency`, `user`.`created_at` from `user` where `user`.par_id = ? and active = 1 and `user`.username like ?';
+        db.query(sql, [Number(req.params.id),username], (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    get_childbycreated: (req, res) => {
+        let sql = 'SELECT `user`.`username`,(SELECT sum(money) FROM money_history where `active` = 1 and `type` =  1 and user_id = `user`.id) as total, `user`.`ref`, `user`.`is_agency`, `user`.`created_at` from `user` where `user`.par_id = ? and active = 1 and (`user`.created_at >= ? and `user`.created_at <= ?);';
+        db.query(sql, [Number(req.params.id),req.params.from,req.params.to], (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
     get_agency_child: (req, res) => {
         let sql = 'SELECT `user`.`username`,(SELECT sum(money) FROM money_history where `active` = 1 and `type` =  1 and user_id = `user`.id) as total, `user`.`ref`, `user`.`is_agency`, `user`.`created_at` from `user` where `user`.par_id = ? and active = 1'
         db.query(sql, [Number(req.params.id)], (err, response) => {
@@ -341,12 +364,31 @@ module.exports = {
         })
     },
     get_agency_info: (req, res) => {
-        let sql = 'SELECT `user`.`username`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` from `user` where `user`.id = ? and active = 1 limit 1'
+        let sql = 'SELECT `user`.`username`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` from `user` where `user`.id = ? and active = 1 and is_agency = 1 limit 1'
         db.query(sql, [Number(req.params.id)], (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
+    // get_agency_info_by_user: (req, res) => {
+    //     get_infor_agency(req.params.id,(rs) => {
+    //         var par_id = rs[0].par_id;
+    //         if(par_id){
+    //             let sql = 'SELECT * from `user` where `user`.id = ? and active = 1 limit 1'
+    //             db.query(sql, [Number(par_id)], (err, response) => {
+    //                 if (err) throw err
+    //                 res.json(response)
+    //             })
+    //         }
+    //     })
+
+        
+    //     // let sql = 'SELECT `user`.`username`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` from `user` where `user`.id = ? and active = 1 limit 1'
+    //     // db.query(sql, [Number(req.params.id)], (err, response) => {
+    //     //     if (err) throw err
+    //     //     res.json(response)
+    //     // })
+    // },
     get_all_agency_reg: (req, res) => {
         let sql = 'SELECT `user`.`id`,get_current_money(`user`.`id`) as money, `user`.`username`, `user`.`is_admin`, `user`.`active`, `user`.`real_name`, `user`.`phone`, `user`.`add`, `user`.`created_at`, `user`.`created_by`, `user`.`is_public`, `user`.`par_id`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` FROM `user` where is_agency = 0 and `user`.`agency_time` is not null and active = 1'
         db.query(sql, [], (err, response) => {
@@ -375,15 +417,15 @@ module.exports = {
             res.json({ ok: 1 });
         })
     },
-    add_contacts: (req, res) => {
-                let data = req.body;
-                data.time = new Date().getTime() / 1000;
-                let sql = 'insert into contacts SET ?;'
-                    db.query(sql, data, (err, response) => {
-                        if (err) throw err
-                        res.json({ok:1})
-                    })
-    },
+    // agency_move_money: (req, res) => {
+    //             let data = req.body;
+    //             data.time = new Date().getTime() / 1000;
+    //             let sql = 'insert into contacts SET ?;'
+    //                 db.query(sql, data, (err, response) => {
+    //                     if (err) throw err
+    //                     res.json({ok:1})
+    //                 })
+    // },
     admin_contacts: (req, res) => {
         let sql = 'SELECT * FROM admin_contacts limit 1;'
             db.query(sql, (err, response) => {
@@ -467,3 +509,11 @@ function uuidv4() {
         return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
     });
 }
+
+// function get_infor_agency(id, callback) {
+//     let sql = 'select * from user where id = ? and active  = 1'
+//     db.query(sql, [Number(id)], (err, response) => {
+//         if (err) throw err
+//         callback(response)
+//     })
+// }

@@ -36,14 +36,16 @@
                     </div>
                 </div>
 
-                <div style="padding-top:5px" class="website dropdown">
+                <div style="padding-top:5px" id="btn_lang" class="website dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
-                        data-toggle="dropdown" data-lang="Language" aria-haspopup="true" aria-expanded="false">
-
+                        data-toggle="dropdown" data-lang="" aria-haspopup="true" aria-expanded="false">
+                        <span id="img_lang">  </span><span data-lang="Language"></span>
                     </button>
                     <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-                        <a class=" dropdown-item" onclick="change_lang('en')" href="#">  <img width="20%" height="20%" src="../img/usa.jpg" alt="">   ENGLISH</a>
-                        <a class=" dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%" src="../img/vn.jpg" alt="">VIỆT NAM</a>
+                        <a class=" dropdown-item" onclick="change_lang('en')" href="#"> <img width="20%" height="20%"
+                                src="../img/usa.jpg" alt=""> ENGLISH</a>
+                        <a class=" dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
+                                src="../img/vn.jpg" alt="">VIỆT NAM</a>
                     </div>
                 </div>
             </div>
@@ -51,7 +53,7 @@
     </div>
     <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid with100">
-            <a class="navbar-brand com-name website" href="#">FB ads support</a>
+            <!-- <a class="navbar-brand com-name website" href="#">FB ads support</a> -->
             <button class="navbar-toggler with20" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                 aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -67,8 +69,10 @@
                         <i class="fa fa-1x fa-language" aria-hidden="true"></i>
                     </div>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class=" dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%" src="../img/usa.jpg" alt=""> ENGLISH</a>
-                        <a class=" dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%" src="../img/vn.jpg" alt="">VIỆT NAM</a>
+                        <a class=" dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
+                                src="../img/usa.jpg" alt=""> ENGLISH</a>
+                        <a class=" dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
+                                src="../img/vn.jpg" alt="">VIỆT NAM</a>
                     </div>
                 </div>
 
@@ -111,177 +115,169 @@
         </div>
     </nav>
     <div class="content">
-    <section>
-        <div class="col-12">
-            <div class="container">
-                <!-- <div class="col-md-12 d-flex flex-wrap mt-2">
+        <section>
+            <div class="col-12">
+                <div class="container">
 
-                    <div class="col-md-10">
-                        <label for="user_token" class="form-label">User token</label>
-                        <input type="text" class="form-control" id="user_token" required>
-                    </div>
-                    <div class="col-md-2">
-                        <button onclick="run_()" class="btn btn-primary" style="margin-top: 30px;">Chạy</button>
-                    </div>
-                </div> -->
-                <div class="col-md-12 d-flex flex-wrap mt-2">
-                    <div class="col-md-4">
-                        <label for="list_pages" class="form-label" data-lang="Facebookuser"></label>
-                        <select class="form-select p-2 w-100" id="list_fb" onchange="set_combobox_data()" required>
-                            <option selected disabled value="">Choose...</option>
-                            <option>...</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="list_pages" class="form-label" data-lang="Page"></label>
-                        <select class="form-select p-2 w-100" id="list_pages" onchange="change_page_selected()"
-                            required>
-                            <option selected disabled value="">Choose...</option>
-                            <option>...</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="list_pages" class="form-label" data-lang="Adsuser"></label>
-                        <select class="form-select p-2 w-100" id="list_ads" required>
-                            <option selected disabled value="">Choose...</option>
-                            <option>...</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-12 d-flex flex-wrap mt-2">
-                    <div class="col-md-6 pt-4">
-                        <div class="box_review">
-                            <a onclick="select_file()"><img id="img_1" src="https://i.imgur.com/BDJYyka.jpg" /></a>
-                            <div class="d-flex justify-content-between content">
-                                <span data-select="review1">Like Page 👉 👉</span>
-                                <button data-select="review" class="btn">Like page</button>
-                                <input id="file-input" accept="video/mp4" type="file" name="name0"
-                                    style="display: none;" onchange="PreviewImage()" />
-                            </div>
+                    <div class="col-md-12 d-flex flex-wrap mt-2">
+                        <div class="col-md-4">
+                            <label for="list_pages" class="form-label" data-lang="Facebookuser"></label>
+                            <select class="form-select p-2 w-100" id="list_fb" onchange="set_combobox_data()" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="list_pages" class="form-label" data-lang="Page"></label>
+                            <select class="form-select p-2 w-100" id="list_pages" onchange="change_page_selected()"
+                                required>
+                                <option selected disabled value="">Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="list_pages" class="form-label" data-lang="Adsuser"></label>
+                            <select class="form-select p-2 w-100" id="list_ads" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option>...</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="col-md-6 pt-4">
-                        <div class="box_review">
-                            <a onclick="select_file1()"><img id="img_2" src="https://i.imgur.com/BDJYyka.jpg" /></a>
-                            <div class="d-flex justify-content-between content">
-                                <span data-select="review2">Like Page 👉 👉</span>
-                                <button data-select="review" class="btn">Like page</button>
-                                <input id="file-input1" type="file" accept=".gif, .jpg, .png" name="name1"
-                                    style="display: none;" onchange="PreviewImage1()" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 d-flex flex-wrap pt-4 pb-4">
-                    <nav class="w-100">
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link nav-left active" id="nav-home-tab" data-toggle="tab" role="tab"
-                                aria-controls="nav-home" aria-selected="true" onclick="set_card(1)"
-                                data-lang="card1"></a>
-                            <a class="nav-item nav-link nav-right" id="nav-profile-tab" data-toggle="tab" role="tab"
-                                aria-controls="nav-profile" aria-selected="false" onclick="set_card(2)"
-                                data-lang="card2"></a>
-                        </div>
-                    </nav>
-                    <div class="tab-content w-100" id="nav-tabContent">
-                        <div class="tab-pane fade show active d-flex flex-wrap p-4">
-                            <div class="col-md-6 p-2" data-select="card1">
-                                <label for="list_pages" class="form-label" data-lang="Buttons"></label>
-                                <select onchange="change_button()" class="form-select p-2 w-100" id="list_bts" required>
-                                    <option selected value="Like Page">Like Page</option>
-                                    <option value="No Button">No Button</option>
-                                    <option value="Learn More">Learn More</option>
-                                    <option value="Book Travel">Book Travel</option>
-                                    <option value="Contact Us">Contact Us</option>
-                                    <option value="Download">Download</option>
-                                    <option value="Get Quote ">Get Quote </option>
-                                    <option value="Install App ">Install App </option>
-                                    <option value="Listen Music">Listen Music</option>
-                                    <option value="Message Page">Message Page</option>
-                                    <option value="Open Link">Open Link</option>
-                                    <option value="Play Game">Play Game</option>
-                                    <option value="Shop Now">Shop Now</option>
-                                    <option value="Sign Up">Sign Up</option>
-                                    <option value="Subscribe">Subscribe</option>
-                                    <option value="Use App">Use App</option>
-                                    <option value="Watch More">Watch More</option>
-                                    <option value="Watch Video">Watch Video</option>
-                                    <option value="Apply Now">Apply Now</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 p-2" data-select="card1">
-                                <label for="title" class="form-label" data-lang="cardtitle"></label>
-                                <input oninput="change_title()" type="text" class="form-control" id="title"
-                                    value="Like Page 👉 👉">
-                            </div>
-                            <div class="col-md-12 p-2" style="display: none;" data-select="card2">
-                                <label for="link" class="form-label" data-lang="Linkoptional"></label>
-                                <input type="text" class="form-control" id="link">
-                            </div>
-                            <div class="col-md-12 p-2" data-select="card2">
-                                <div id="lib_img" class="img_lib custom_scroll">
-                                    <div class="img_item"><img width="100%" height="100%" /></div>
+                    <div class="col-md-12 d-flex flex-wrap mt-2">
+                        <div class="col-md-6 pt-4">
+                            <div class="box_review">
+                                <a onclick="select_file()"><img id="img_1" src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                                <div class="d-flex justify-content-between content">
+                                    <span data-select="review1">Like Page 👉 👉</span>
+                                    <button data-select="review" class="btn">Like page</button>
+                                    <input id="file-input" accept="video/mp4" type="file" name="name0"
+                                        style="display: none;" onchange="PreviewImage()" />
                                 </div>
                             </div>
-                            <div class="col-md-12 p-2">
-                                <!-- <label for="post_message" class="form-label">POST MESSAGE </label> -->
-                                <textarea rows="2" type="text" data-lang="Content" data-langtg="placeholder"
-                                    class="form-control" id="post_message"></textarea>
+                        </div>
+                        <div class="col-md-6 pt-4">
+                            <div class="box_review">
+                                <a onclick="select_file1()"><img id="img_2" src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                                <div class="d-flex justify-content-between content">
+                                    <span data-select="review2">Like Page 👉 👉</span>
+                                    <button data-select="review" class="btn">Like page</button>
+                                    <input id="file-input1" type="file" accept=".gif, .jpg, .png" name="name1"
+                                        style="display: none;" onchange="PreviewImage1()" />
+                                </div>
                             </div>
-                            <div class="col-md-12 p-2 d-flex">
-                                <fieldset class="w-100 p-3 rounded border">
-                                    <legend class="w-auto" data-lang="Schedule"></legend>
-                                    <div style="width: 90%;" class="m-auto d-flex justify-content-between">
-                                        <div style="width: 90%;">
-                                            <input style="width: 90%;" type="datetime-local" id="schedule_time"
-                                                name="schedule_time" disabled value="2018-06-12T19:30">
-                                        </div>
-                                        <div style="width: 90%;">
-                                            <div class="custom-control custom-switch" style="zoom: 1.2;">
-                                                <input style="width: 90%;" type="checkbox"
-                                                    onchange="change_check_schedule()" class="custom-control-input"
-                                                    id="is_schedule">
-                                                <label class="custom-control-label" style="width: 50px;"
-                                                    for="is_schedule"></label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 d-flex flex-wrap pt-4 pb-4">
+                        <nav class="w-100">
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link nav-left active" id="nav-home-tab" data-toggle="tab"
+                                    role="tab" aria-controls="nav-home" aria-selected="true" onclick="set_card(1)"
+                                    data-lang="card1"></a>
+                                <a class="nav-item nav-link nav-right" id="nav-profile-tab" data-toggle="tab" role="tab"
+                                    aria-controls="nav-profile" aria-selected="false" onclick="set_card(2)"
+                                    data-lang="card2"></a>
+                            </div>
+                        </nav>
+                        <div class="tab-content w-100" id="nav-tabContent">
+                            <div class="tab-pane fade show active d-flex flex-wrap p-4">
+                                <div class="col-md-6 p-2" data-select="card1">
+                                    <label for="list_pages" class="form-label" data-lang="Buttons"></label>
+                                    <select onchange="change_button()" class="form-select p-2 w-100" id="list_bts"
+                                        required>
+                                        <option selected value="Like Page">Like Page</option>
+                                        <option value="No Button">No Button</option>
+                                        <option value="Learn More">Learn More</option>
+                                        <option value="Book Travel">Book Travel</option>
+                                        <option value="Contact Us">Contact Us</option>
+                                        <option value="Download">Download</option>
+                                        <option value="Get Quote ">Get Quote </option>
+                                        <option value="Install App ">Install App </option>
+                                        <option value="Listen Music">Listen Music</option>
+                                        <option value="Message Page">Message Page</option>
+                                        <option value="Open Link">Open Link</option>
+                                        <option value="Play Game">Play Game</option>
+                                        <option value="Shop Now">Shop Now</option>
+                                        <option value="Sign Up">Sign Up</option>
+                                        <option value="Subscribe">Subscribe</option>
+                                        <option value="Use App">Use App</option>
+                                        <option value="Watch More">Watch More</option>
+                                        <option value="Watch Video">Watch Video</option>
+                                        <option value="Apply Now">Apply Now</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 p-2" data-select="card1">
+                                    <label for="title" class="form-label" data-lang="cardtitle"></label>
+                                    <input oninput="change_title()" type="text" class="form-control" id="title"
+                                        value="Like Page 👉 👉">
+                                </div>
+                                <div class="col-md-12 p-2" style="display: none;" data-select="card2">
+                                    <label for="link" class="form-label" data-lang="Linkoptional"></label>
+                                    <input type="text" class="form-control" id="link">
+                                </div>
+                                <div class="col-md-12 p-2" data-select="card2">
+                                    <div id="lib_img" class="img_lib custom_scroll">
+                                        <div class="img_item"><img width="100%" height="100%" /></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-2">
+                                    <!-- <label for="post_message" class="form-label">POST MESSAGE </label> -->
+                                    <textarea rows="2" type="text" data-lang="Content" data-langtg="placeholder"
+                                        class="form-control" id="post_message"></textarea>
+                                </div>
+                                <div class="col-md-12 p-2 d-flex">
+                                    <fieldset class="w-100 p-3 rounded border">
+                                        <legend class="w-auto" data-lang="Schedule"></legend>
+                                        <div style="width: 90%;" class="m-auto d-flex justify-content-between">
+                                            <div style="width: 90%;">
+                                                <input style="width: 90%;" type="datetime-local" id="schedule_time"
+                                                    name="schedule_time" disabled value="2018-06-12T19:30">
+                                            </div>
+                                            <div style="width: 90%;">
+                                                <div class="custom-control custom-switch" style="zoom: 1.2;">
+                                                    <input style="width: 90%;" type="checkbox"
+                                                        onchange="change_check_schedule()" class="custom-control-input"
+                                                        id="is_schedule">
+                                                    <label class="custom-control-label" style="width: 50px;"
+                                                        for="is_schedule"></label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </fieldset>
-                            </div>
+                                    </fieldset>
+                                </div>
 
-                            <div class="col-md-12 p-2">
-                                <button onclick="run_public()" class="btn btn-primary button-radius w-100"
-                                    data-lang="Public"></button>
-                            </div>
-                            <div class="col-md-12 p-2">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th data-lang="Facebookuser"></th>
-                                            <th data-lang="Page"></th>
-                                            <th data-lang="Linkpost"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="rs_tb">
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <!-- Link post <a class="btn btn-primary" id="rs_link" target="_blank">Link</a> -->
+                                <div class="col-md-12 p-2">
+                                    <button onclick="run_public()" class="btn btn-primary button-radius w-100"
+                                        data-lang="Public"></button>
+                                </div>
+                                <div class="col-md-12 p-2">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th data-lang="Facebookuser"></th>
+                                                <th data-lang="Page"></th>
+                                                <th data-lang="Linkpost"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="rs_tb">
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- Link post <a class="btn btn-primary" id="rs_link" target="_blank">Link</a> -->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     </div>
     <div class="footer">
         <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color">
-                <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
+            <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
         </nav>
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -298,6 +294,31 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
+        <script type="text/javascript">
+            function custom_template(obj){
+                    var data = $(obj.element).data();
+                    var text = $(obj.element).text();
+                    if(data && data['img_src']){
+                        img_src = data['img_src'];
+                        template = $("<div class=\"pd-t15\"><img src=\"" + img_src + "\" style=\"width:30px;height:30px;border-radius: 15px;\"/><span style=\"padding-left:5px ; color:black;\">" + text + "</span></div>");
+                        return template;
+                    }
+                }
+            var options = {
+                'templateSelection': custom_template,
+                'templateResult': custom_template,
+            }
+            $('#list_fb').select2(options);
+            $('.select2-container--default .select2-selection--single').css({'height': '40px'});
+            $('#list_pages').select2(options);
+            $('.select2-container--default .select2-selection--single').css({'height': '40px'});
+            $('#list_ads').select2(options);
+            $('.select2-container--default .select2-selection--single').css({'height': '40px'});
+        
+        </script>
 </body>
 
 

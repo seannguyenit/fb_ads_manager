@@ -93,7 +93,16 @@
     "denomination" : "mệnh giá :",
     "contact_and_support" : "LIÊN HỆ & HỖ TRỢ",
     "Hổ_Trợ": "Hổ Trợ",
-    "Hướng_Dẫn": "Hướng Dẫn"
+    "Hướng_Dẫn": "Hướng Dẫn",
+    "star_day" : "Ngày bắt đầu",
+    "end_day" : "Ngày kết thúc",
+    "dealer_name:" : "Tên đại lý :",
+    "describe:" : "Miêu tả :",
+    "coupon:" : "Mã đại lý :",
+    "contact:" : "Liên Hệ :",
+    "transfer_user:" : "Chuyển khoảng user :",
+    "transfer_money:": "Số tiền cần chuyển :"
+    
 
 
 
