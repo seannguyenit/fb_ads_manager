@@ -3,6 +3,11 @@ init_authen();
 init_logo();
 function change_lang(lang) {
     setCookie('lang', lang, 90000);
+    // if(lang === "en")
+    // {
+    //     document.getElementById('img_lang').innerHTML=`<img width="20px" height="20px"
+    //     src="../img/usa.jpg" alt="">`;
+    // }
     location.reload();
 }
 

@@ -39,8 +39,8 @@
 
                 <div style="padding-top:5px" class="dropdown website ">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
-                        data-toggle="dropdown" data-lang="Language" aria-haspopup="true" aria-expanded="false">
-
+                        data-toggle="dropdown" data-lang="" aria-haspopup="true" aria-expanded="false">
+                        <span id="img_lang">  </span><span data-lang="Language"></span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
@@ -54,7 +54,7 @@
     </div>
     <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid with100">
-            <a class="navbar-brand com-name website" href="#">FB ads support</a>
+            <!-- <a class="navbar-brand com-name website" href="#">FB ads support</a> -->
             <button class="navbar-toggler with20" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                 aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -213,23 +213,94 @@
                 </div>
             </div>
         </section>
+        <!-- Modal -->
+        <div class="modal fade" id="modal_topup_bank" tabindex="-1" role="dialog" aria-labelledby="modal_topup_bank"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header table_header">
+                        <div style="width:40%;margin-right: 10%;" class="">
+                            <button class="btn width100 btn-primary" onclick="topup_directly()" data-lang=""><i
+                                    class="fa fa-credit-card" aria-hidden="true"></i> Thẻ Cào</button>
+                        </div>
+                        <div style="width:40%" class="">
+                            <button class="btn width100 btn-primary" onclick="topup_bank()" data-lang=""><i
+                                    class="pd_r_5 fa fa-university" aria-hidden="true"></i> Ngân Hàng</button>
+                        </div>
+                        <!-- <a class="form-control bn btn-primary" href=""> <h5 class="modal-title" data-lang="top_up_with_card">Thẻ Cào</h5></a> 
+                   <a class="bn btn-primary" href=""> <h5 class="modal-title" data-lang="top_up_with_card">Ngân Hàng</h5></a>  -->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div style="background-color: red; margin-bottom: 10px;" class="col-md-12">
+                            <div>
+                                - Bạn vui lòng chuyển khoản chính xác nội dung để được cộng tiền nhanh nhất.
+                                - Nếu sau 10 phút từ khi tiền trong tài khoản của bạn bị trừ mà vẫn chưa được cộng tiền
+                                vui liên hệ Admin để được hỗ trợ.
+                                - Vui lòng không nạp từ bank khác qua bank này (tránh lỗi).
+                            </div>
+                        </div>
+                        <div  style="background-color: greenyellow; margin-bottom: 10px;" class="col-md-12">
+                            <div>
+                                - Bạn vui lòng chuyển khoản chính xác nội dung để được cộng tiền nhanh nhất.
+                                - Nếu sau 10 phút từ khi tiền trong tài khoản của bạn bị trừ mà vẫn chưa được cộng tiền
+                                vui liên hệ Admin để được hỗ trợ.
+                                - Vui lòng không nạp từ bank khác qua bank này (tránh lỗi).
+                            </div>
+                        </div>
+                        <div  style="background-color: greenyellow; margin-bottom: 10px;" class="col-md-12">
+                            <div>
+                                - Bạn vui lòng chuyển khoản chính xác nội dung để được cộng tiền nhanh nhất.
+                                - Nếu sau 10 phút từ khi tiền trong tài khoản của bạn bị trừ mà vẫn chưa được cộng tiền
+                                vui liên hệ Admin để được hỗ trợ.
+                                - Vui lòng không nạp từ bank khác qua bank này (tránh lỗi).
+                            </div>
+                        </div>
+
+                        <div  style="background-color: yellow; margin-bottom: 10px;" class="col-md-12">
+                            Lưu ý
+                            - Cố tình nạp dưới mức nạp không hỗ trợ
+                            - Nạp sai cú pháp, sai số tài khoản, sai ngân hàng sẽ bị trừ 20% phí giao dịch. Vd: nạp 100k
+                            sai nội dung sẽ chỉ nhận được 80k coin và phải liên hệ admin để cộng tay.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary float_left" data-dismiss="modal">Close</button>
+                        <!-- <button onclick="go_money()" type="button" class="btn btn-primary"
+                            data-lang="recharged">Save</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Modal -->
         <div class="modal fade" id="modal_topup_directly" tabindex="-1" role="dialog"
             aria-labelledby="modal_topup_directly" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" data-lang="top_up_with_card">Phiếu nạp Tiền</h5>
+                    <div class="modal-header table_header">
+                        <div style="width:40%;margin-right: 10%;" class="">
+                            <button class="btn width100 btn-primary" onclick="topup_directly()" data-lang=""><i
+                                    class="fa fa-credit-card" aria-hidden="true"></i> Thẻ Cào</button>
+                        </div>
+                        <div style="width:40%" class="">
+                            <button class="btn width100 btn-primary" onclick="topup_bank()" data-lang=""><i
+                                    class="pd_r_5 fa fa-university" aria-hidden="true"></i> Ngân Hàng</button>
+                        </div>
+                        <!-- <a class="form-control bn btn-primary" href=""> <h5 class="modal-title" data-lang="top_up_with_card">Thẻ Cào</h5></a> 
+                      <a class="bn btn-primary" href=""> <h5 class="modal-title" data-lang="top_up_with_card">Ngân Hàng</h5></a>  -->
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="col-md-12">
-                            <label for="money" class="form-label"  data-lang="card_type:">Loại Thẻ</label>
+                            <label for="money" class="form-label" data-lang="card_type:">Loại Thẻ</label>
                             <br>
-                            <select onchange="init_card_price()" style="min-height: 38px;" class="text-center with100 form-select" id="card_type_place"
+                            <select onchange="init_card_price()" style="min-height: 38px;"
+                                class="text-center with100 form-select" id="card_type_place"
                                 aria-label="Default select example">
                                 <option selected>---- Chọn Loại Thẻ ---</option>
                                 <option value="1">One</option>
@@ -240,15 +311,25 @@
                         <div class="col-md-12">
                             <!-- <label for="des" class="form-label">Mã chuyển khoản</label>
                             <input disabled type="text" class="form-control" id="des" required> -->
-                            <label for="money" class="form-label"  data-lang="denomination:">Mệnh Giá : </label>
+                            <label for="money" class="form-label" data-lang="denomination:">Mệnh Giá : </label>
                             <br>
-                            <select onchange="show_info()" style="min-height: 38px;" class="text-center with100 form-select" id="card_price_place"
+                            <select onchange="show_info()" style="min-height: 38px;"
+                                class="text-center with100 form-select" id="card_price_place"
                                 aria-label="Default select example">
                                 <option selected>---- Chọn Mệnh Giá ---</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="des" class="form-label" data-lang="number_seri">Mã Seri : </label>
+                            <input type="text" class="form-control" id="" placeholder="Nhập Mã Seri" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="des" class="form-label" data-lang="card_code">Mã Thẻ :</label>
+                            <input type="text" class="form-control" id="" placeholder="Nhập Mã Thẻ" required>
                         </div>
                         <div id="text_info" class="col-md-12 row d-flex mt-2 mb-2 flex-column">
                             <h4>
@@ -262,18 +343,11 @@
                                 <span1 data-lang="real_recognition:"> Thực nhận : </span1><span>10,000</span> VND
                             </h4>
                         </div>
-                        <div class="col-md-12">
-                            <label for="des" class="form-label" data-lang="number_seri">Mã Seri : </label>
-                            <input  type="text" class="form-control" id="" placeholder="Nhập Mã Seri" required >
-                        </div>
-                        <div class="col-md-12">
-                            <label for="des" class="form-label" data-lang="card_code">Mã Thẻ :</label>
-                            <input  type="text" class="form-control" id="" placeholder="Nhập Mã Thẻ" required>
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary float_left" data-dismiss="modal">Close</button>
-                        <button onclick="go_money()" type="button" class="btn btn-primary"  data-lang="recharged">Save</button>
+                        <button onclick="go_money()" type="button" class="btn btn-primary"
+                            data-lang="recharged">Save</button>
                     </div>
                 </div>
             </div>

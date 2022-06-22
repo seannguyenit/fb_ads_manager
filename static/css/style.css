@@ -13,6 +13,9 @@ body{
     bottom:0;
     width:100%;
  }
+ .width100{
+    width: 100%;
+ }
 /* .bg_menu_color{
     background-color: #2a2e3f
 } */
@@ -61,6 +64,9 @@ body{
 }
 .pd_t_15{
     padding-top: 1.5vw;
+}
+.pd-t15{
+    padding-top: 5px;
 }
 .pd_bt_10{
     padding-bottom: 10px;
@@ -146,7 +152,6 @@ a:hover{
         border-bottom: solid 1px white;
         padding-bottom: 10px;
     }
-    
     .login-form{
         width: 100%;
     }
@@ -157,8 +162,14 @@ a:hover{
         display: none !important;
     }
     .width_table_200{
-        width: 200% !important;
+        width: 500% !important;
         background-color: #2a2e3f !important;
+    }
+    .margin-bottom{
+        margin-bottom: 1rem !important;
+    }
+    .witdth25{
+        width: 25% !important;
     }
     .mg_t_20{
         margin-top: 20px !important;
@@ -175,6 +186,7 @@ a:hover{
     .btn{
         font-size: 0.9rem !important; 
     }
+
     
 }
 .v-r{
@@ -663,3 +675,11 @@ textarea::placeholder,input::placeholder { /* Chrome, Firefox, Opera, Safari 10.
 .content{
     min-height: 100%;
 }
+
+
+
+
+
+
+
+

@@ -137,4 +137,9 @@ function init_money() {
 
 function topup_directly(){
     $('#modal_topup_directly').modal('show');
+    $('#modal_topup_bank').modal('hide');
+}
+function topup_bank(){
+    $('#modal_topup_bank').modal('show');
+    $('#modal_topup_directly').modal('hide');
 }

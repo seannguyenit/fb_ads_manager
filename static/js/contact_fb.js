@@ -138,7 +138,7 @@ async function init_default() {
         var lst_cr_token = await get_all_token();
         if (lst_cr_token) {
             await lst_cr_token.forEach(f => {
-                combo_fb.innerHTML += `<option data-token="${f.token}" ${lst_cr_token.indexOf(f) == 0 ? "selected" : ""} value="${f.id}">${f.name}</option>`;
+                combo_fb.innerHTML += `<option data-token="${f.token}" ${lst_cr_token.indexOf(f) == 0 ? "selected" : ""} value="${f.id}" data-img_src="${f.picture}">${f.name}</option>`;
             });
             await set_combobox_data();
         }
@@ -164,12 +164,12 @@ async function set_combobox_data() {
     if (data_pages) {
         try {
             data_pages.forEach(page => {
-                combo_pages.innerHTML += `<option data-name="${page.name}" data-token="${page.access_token}" value="${page.id}">${page.name}-${page.id}</option>`;
+                combo_pages.innerHTML += `<option data-name="${page.name}" data-token="${page.access_token}" value="${page.id}" data-img_src="${page.picture.data.url}">${page.name}-${page.id}</option>`;
             });
             var data_ads_acc = await get_ads_acc_from_fb(f);
             if (data_ads_acc) {
                 data_ads_acc.forEach(ad => {
-                    combo_ads.innerHTML += `<option value="${ad.account_id}">${ad.account_id}</option>`;
+                    combo_ads.innerHTML += `<option value="${ad.account_id}" data-img_src="../img/avatar_user.png">${ad.account_id}</option>`;
                 });
             }
             change_page_selected();

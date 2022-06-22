@@ -38,8 +38,8 @@
 
                 <div style="padding-top:5px" class=" website dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
-                        data-toggle="dropdown" data-lang="Language" aria-haspopup="true" aria-expanded="false">
-
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span id="img_lang">  </span><span data-lang="Language"></span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
@@ -53,7 +53,7 @@
     </div>
     <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid with100">
-            <a class="navbar-brand com-name website" href="#">FB ads support</a>
+            <!-- <a class="navbar-brand com-name website" href="#">FB ads support</a> -->
             <button class="navbar-toggler with20" type="button" data-toggle="collapse" data-target="#main_menu_nav"
                 aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -162,6 +162,11 @@
                                 <label for="btn_money" data-lang="transfer_user:">Chuyển Tiền User :</label>
                                 <button id="btn_money" disabled onclick="open_modal()"
                                     class=" form_control btn btn-primary" data-lang="">Money</button>
+                            </div>
+                            <div class="form-group" id="btn_withdraw">
+                                <!-- <button  onclick=""
+                                    class=" form_control btn btn-primary" data-lang="Rút_Tiền"></button> -->
+                                    <!-- <a class="btn btn-primary" href="./withdraw">Nạp bằng thẻ cào (Đang bảo trì)</a> -->
                             </div>
                         </div>
                     </div>

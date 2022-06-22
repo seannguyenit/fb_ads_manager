@@ -14,11 +14,15 @@ async function init_agency_public() {
         document.getElementById('created_day').innerHTML = `${new Date(Number(cr_info.agency_time * 1000 || 0)).toLocaleString()}`
         get_lb_stt(cr_info);
         get_lb_btn(cr_info);
+        btn_withdraw();
     }
 
     await get_agency_count();
     await get_agency_child();
 
+}
+function btn_withdraw() {
+   document.getElementById('btn_withdraw').innerHTML= `<a class="form_control btn btn-primary" href="./withdraw" data-lang="Rút_Tiền">â</a> `
 }
 
 function get_lb_stt(info) {
