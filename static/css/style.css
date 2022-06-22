@@ -26,6 +26,9 @@ body{
     background-color: #5cd3b9;
     /* background-color: red; */
 }
+.select2-search{
+    display:none !important;
+}
 #user::before{
     font-family: "Font Awesome 5 Free";
     font-weight: 900;

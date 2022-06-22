@@ -67,7 +67,7 @@ async function init_menu() {
         if (!cr_url.includes('user_info') && lst_menu.filter(f => { return cr_url.includes(f.action) }).length == 0) {
             location.href = '/login'
         }
-        if (menu === null) {
+        if (menu) {
             lst_menu.forEach(item => {
                 if (item.type === 0) {
                     menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>`;
