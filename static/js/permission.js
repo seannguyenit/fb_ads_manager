@@ -57,6 +57,7 @@ async function menu_contacst() {
 
 async function init_menu() {
     var menu = document.getElementById('main_menu');
+        // var menu = document.getElementById('main_menu');
     var menu_ = document.getElementById('menu_money');
     var menu_general = document.getElementById('menu_');
     var cr_url = location.href;
@@ -68,24 +69,24 @@ async function init_menu() {
             location.href = '/login'
         }
         if (menu) {
-            lst_menu.forEach(item => {
-                if (item.type === 0) {
-                    menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>`;
-                }
-            });
-        } else {
+        //     lst_menu.forEach(item => {
+        //         if (item.type === 0) {
+        //             menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>`;
+        //         }
+        //     });
+        // } else {
             lst_menu.forEach(item => {
                 if (item.type === 0) {
                     menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>`;
                 }
 
-                if (item.type === 1) {
+                if (item.type === 1 && menu_) {
                     menu_.innerHTML += `
                         <a style="background-color: #2a2e3f;" class="nav-link dropdown-item active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>
                     `;
                     //     // <a class="dropdown-item" href="#">Action</a>
                 }
-                if (item.type === 2) {
+                if (item.type === 2 && menu_general) {
                     menu_general.innerHTML += `
                         <a style="background-color: #2a2e3f;" class="nav-link dropdown-item active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>
                     `;
