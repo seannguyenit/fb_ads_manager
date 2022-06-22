@@ -29,7 +29,7 @@ function init_type() {
     var card_type_place = document.getElementById('card_type_place');
     card_type_place.innerHTML = '';
     if (!data_) return;
-    // card_type_place.innerHTML +=`<option selected>---- Chọn Loại Thẻ ---</option>`;
+    card_type_place.innerHTML +=`<option selected>---- Chọn loại thẻ ---</option>`;
     data_.forEach(f => {
         if (f.status) {
            
@@ -47,13 +47,16 @@ function init_type() {
 
 async function init_card_price() {
     var card_price_place = document.getElementById('card_price_place');
-    card_price_place.innerHTML = '';
+    card_price_place.innerHTML = '<option selected>---- Chọn mệnh giá thẻ ---</option>';
     if (!data_) return;
     var card_type =  document.getElementById('card_type_place').querySelector("option:checked").value;
-    console.log(card_type)
+    // console.log(card_type)
     var prices_obj = data_.find(f => { return Number(f.id) == Number(card_type) });
+    if(!prices_obj){
+        return;
+    }
     var prices = prices_obj.prices;
-    // card_price_place.innerHTML +=`<option selected>---- Chọn Mệnh Giá ---</option>`;
+    // card_price_place.innerHTML +=``;
     if (prices && card_type) {
         prices = prices.sort((a, b) => a.price - b.price);
         prices.forEach(p => {

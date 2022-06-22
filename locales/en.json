@@ -101,7 +101,9 @@
     "coupon:" : "Coupon :",
     "contact:" : "Contact :",
     "transfer_user:" : "Transfer user :",
-    "transfer_money:" : "Amount to be transferred :"
+    "transfer_money:" : "Amount to be transferred :",
+    "card" : "Card",
+    "bank" : "Bank"
 
 
 

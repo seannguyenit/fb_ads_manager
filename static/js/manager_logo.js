@@ -21,19 +21,27 @@ async function init_logo(){
  main_table.innerHTML = '';
  if (dt) {
     dt.forEach(item => {
-        if(item.type === 1){
-            var action = ` <button onclick="edit_type(${item.id},${item.type})">On</button>`
+        if(Number(item.active) === 1){
+            var action = ` <button onclick="edit_active(${item.id},${item.active})">On</button>`
         }else{
-            var action = ` <button onclick="edit_type(${item.id},${item.type})">Off</button>`
+            var action = ` <button onclick="edit_active(${item.id},${item.active})">Off</button>`
+        }
+        if(Number(item.type) === 1 ){
+            var type = `<span>Main Logo</span>`
+        }if(Number(item.type) === 2){
+            var type = `<span>Image Login</span>`
         }
             
         main_table.innerHTML += `
             <tr>
                 <td>${dt.indexOf(item) + 1}</td>    
                 <td>${item.logo_name}</td> 
-                <td class="text_center"> <img src="${item.logo_img}" height="100vw" width="200vw" alt="logo tool264.com" /></td>    
+                <td class="text_center"> <img src="${item.logo_img}" height="100vw" width="200vw" alt="logo tool264.com" /></td> 
                 <td>
                     ${action}
+                </td>   
+                <td>
+                    ${type}
                 </td>
                     <td >
                         ${button_action_tool(item.id, 'logo_del', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
@@ -46,8 +54,8 @@ async function init_logo(){
 }
 
 // Edit type
-async function edit_type(id,type){
-    var rs = await fetch(`/api/menu_logo/${id}/${type}` /*, options */)
+async function edit_active(id,active){
+    var rs = await fetch(`/api/menu_logo/${id}/${active}` /*, options */)
         .then((response) => response.json())
         .then((data) => {
             return data;
@@ -89,6 +97,7 @@ async function save_(){
     if(logo_img){
     formData.append('file', logo_img);
     formData.append('name', logo_name);
+    formData.append('active', active);
     formData.append('type', type);
     const options = {
         method: 'POST',

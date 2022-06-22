@@ -12,6 +12,15 @@ function change_lang(lang) {
 }
 
 async function init_logo() {
+    var data_img = await get_img_login();
+    if(data_img){
+        data_img.forEach(item => {
+            if (document.getElementById('image_login')) {
+                document.getElementById('image_login').innerHTML = `<img src="${item.logo_img}" width="400px" alt="tool264.com entrance">`;
+            }
+
+        })
+    }
     var data = await get_img_logo();
     if (data) {
         data.forEach(item => {
@@ -75,6 +84,18 @@ function get_cr_user() {
     } catch (error) {
         return {};
     }
+}
+
+async function get_img_login() {
+    return await fetch(`/api/init_img_login` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
 }
 
 async function get_img_logo() {
