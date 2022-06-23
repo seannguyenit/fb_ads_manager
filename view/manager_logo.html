@@ -106,7 +106,8 @@
                                 <th>stt</th>
                                 <th>Tên Logo</th>
                                 <th>Hình ảnh</th>
-                                <th>action</th>
+                                <th>Hoạt động</th>
+                                <th>Loại</th>
                                 <th class="disableFilterBy">Thao tác</th>
                             </tr>
                         </thead>
@@ -159,11 +160,19 @@
                         <label for="logo_img" class="form-label">Tải ảnh lên</label>
                         <input type="file" class="" id="logo_img_" name="logo_img_" required>
                     </div>
-                    <div class="col-md-4">
-                        <label for="type" class="form-label">Hiển thị</label>
-                        <select name="type" id="type">
+                    <div class="col-md-6">
+                        <label for="active" class="form-label">Hiển thị</label>
+                        <select name="active" id="active">
                             <option value="1">On</option>
                             <option value="0">Off</option>
+                        </select>
+                       
+                    </div>
+                    <div style="margin-left: -80px;" class="col-md-4">
+                        <label for="type" class="form-label">Loại</label>
+                        <select name="type" id="type">
+                            <option value="1">Logo</option>
+                            <option value="2">Login</option>
                         </select>
                     </div>
                 </div>

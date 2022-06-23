@@ -101,7 +101,9 @@
     "coupon:" : "Mã đại lý :",
     "contact:" : "Liên Hệ :",
     "transfer_user:" : "Chuyển khoảng user :",
-    "transfer_money:": "Số tiền cần chuyển :"
+    "transfer_money:": "Số tiền cần chuyển :",
+    "card" : "Thẻ Cào",
+    "bank" : "Ngân Hàng"
     
 
 

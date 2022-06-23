@@ -59,21 +59,28 @@ module.exports = {
         })
     },
     get_img_logo: (req, res) => {
-        let sql = 'SELECT * from logo where type = 1 limit 1;'
+        let sql = 'SELECT * from logo where type = 1 and active = 1 limit 1;'
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    get_img_login: (req, res) => {
+        let sql = 'SELECT * from logo where type = 2 and active = 1 limit 1;'
         db.query(sql, (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
     edit_type_logo: (req, res) => {
-        var type = req.params.type;
-        if (Number(type) === 0) {
-            type = 1
+        var active = req.params.active;
+        if (Number(active) === 0) {
+            active = 1
         } else {
-            type = 0
+            active = 0
         }
-        let sql = 'update `logo` set `type` = ? where id = ?;'
-        db.query(sql, [type, req.params.id], (err, response) => {
+        let sql = 'update `logo` set `active` = ? where id = ?;'
+        db.query(sql, [active, req.params.id], (err, response) => {
             if (err) throw err
             res.json({ message: 'Success!' })
         })
@@ -145,8 +152,9 @@ module.exports = {
             let logo_img = "../lib/img/"+date+".jpg";
             let logo_name = fields.name;
             let type = fields.type;
-            let sql = 'insert into logo set logo_name = ?, logo_img = ?, type = ? '
-            db.query(sql, [logo_name, logo_img, type], (err, response) => {
+            let active = fields.active;
+            let sql = 'insert into logo set logo_name = ?, logo_img = ?,active = ?,type = ? '
+            db.query(sql, [logo_name, logo_img, active,type], (err, response) => {
                 if (err) throw err
                 res.json({ message: 'insert success!' })
             })

@@ -126,11 +126,14 @@ module.exports = function (app) {
     .post(upload, menuCtrl.insert_logo);
   app.route('/api/menu_logo')
     .get(menuCtrl.get_logo);
+    
+    app.route('/api/init_img_login')
+    .get(menuCtrl.get_img_login);
     app.route('/api/init_logo')
     .get(menuCtrl.get_img_logo);
   app.route('/api/menu_logo/:id')
     .put(menuCtrl.del_logo);
-  app.route('/api/menu_logo/:id/:type')
+  app.route('/api/menu_logo/:id/:active')
     .get(menuCtrl.edit_type_logo);
 
   app.route('/api/pricing_public/:user_id')

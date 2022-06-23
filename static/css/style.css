@@ -37,6 +37,9 @@ body{
 .body{
     font-family: "Times New Roman", Times, serif;
 }
+.mr_r_10{
+    margin-right: 10%;
+}
 .text_center{
     text-align: center !important;
 }
@@ -189,6 +192,12 @@ a:hover{
     .btn{
         font-size: 0.9rem !important; 
     }
+    .mr_r_10{
+        margin-right: 5% !important;
+    }
+    .font_size10{
+        font-size: 10px !important;
+    }
 
     
 }
@@ -200,7 +209,11 @@ a:hover{
 }
 
 
-
+.car_bank:hover{
+    color: #fff !important;
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+}
 
 .body-bg-custom{
     /* background-image: url(../img/Bokeh-on-Blue.jpg); */
