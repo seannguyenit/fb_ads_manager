@@ -140,6 +140,11 @@ a:hover{
 }
 
 @media only screen and (max-width: 1000px) {
+
+    .navbar .dropdown-menu-mobile{
+        left: -100px !important;
+    }
+
     .box_270{
         max-width: 100% !important;
     }
@@ -152,6 +157,11 @@ a:hover{
 }
 
 @media only screen and (max-width: 600px) {
+    
+    .navbar .dropdown-menu-mobile{
+        left: -100px !important;
+    }
+
     .com-name{
         border-bottom: solid 1px white;
         padding-bottom: 10px;
