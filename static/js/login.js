@@ -20,7 +20,8 @@ async function acc_login(user, pass) {
 }
 
 async function history_login(id) {
-    return await fetch(`/api/history_login/${id}` /*, options */)
+    var action = "Đăng Nhập";
+    return await fetch(`/api/history_login/${id}/${action}` /*, options */)
         .then((response) => response.json())
         .then((data) => {
             return data;

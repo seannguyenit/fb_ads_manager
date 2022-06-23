@@ -5,133 +5,133 @@ const r_url = "/api/fproxy";
 
 
 
-init_pricing_history();
+// init_pricing_history();
 init_user();
 // show_pricing()
 
 // load_token();
 
-async function add_token() {
-    var token = document.getElementById('token_fb').value;
-    if (!token || token.length == 0) return;
-    // var data_tk = await get_all_token();
-    // if(data_tk.length >= 1){
-    //     alert('Hệ thống đang thử nghiệm tối đa được 1 fb !')
-    //     return;
-    // }
-    var data_fb = await get_user_info_from_fb(token);
-    if (data_fb) {
-        if (data_fb.error) {
-            alert('Token đã hết hạn vui lòng nhập lại !')
-        } else {
-            await save_token({ token: token, name: data_fb.name, fb_id: data_fb.id, picture: data_fb.picture.data.url });
-            await load_token();
-        }
-    } else {
-        alert('Token đã hết hạn vui lòng nhập lại !')
-    }
-    document.getElementById('token_fb').value = '';
-}
+// async function add_token() {
+//     var token = document.getElementById('token_fb').value;
+//     if (!token || token.length == 0) return;
+//     // var data_tk = await get_all_token();
+//     // if(data_tk.length >= 1){
+//     //     alert('Hệ thống đang thử nghiệm tối đa được 1 fb !')
+//     //     return;
+//     // }
+//     var data_fb = await get_user_info_from_fb(token);
+//     if (data_fb) {
+//         if (data_fb.error) {
+//             alert('Token đã hết hạn vui lòng nhập lại !')
+//         } else {
+//             await save_token({ token: token, name: data_fb.name, fb_id: data_fb.id, picture: data_fb.picture.data.url });
+//             await load_token();
+//         }
+//     } else {
+//         alert('Token đã hết hạn vui lòng nhập lại !')
+//     }
+//     document.getElementById('token_fb').value = '';
+// }
 
-async function del_token(id) {
-    await delete_token(id);
-    load_token();
-}
+// async function del_token(id) {
+//     await delete_token(id);
+//     load_token();
+// }
 
-async function load_token() {
-    var place = document.getElementById('list_data_token');
-    place.innerHTML = '';
-    var data_tk = await get_all_token();
-    if (data_tk) {
-        data_tk.forEach(item => {
-            place.innerHTML += `<div class="table table-bordered">
-                <div>
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <img width="50" height="50" src="${item.picture}" />
-                            <span style="color: white;"
-                                class="control-label text-uppercase">${item.name}</span>
-                        </div>
-                        <button onclick="del_token(${item.id})" class="btn btn-danger">Xóa</button>
-                    </div>
-                </div>
-            </div>`;
-        });
-    }
-}
+// async function load_token() {
+//     var place = document.getElementById('list_data_token');
+//     place.innerHTML = '';
+//     var data_tk = await get_all_token();
+//     if (data_tk) {
+//         data_tk.forEach(item => {
+//             place.innerHTML += `<div class="table table-bordered">
+//                 <div>
+//                     <div class="d-flex justify-content-between">
+//                         <div>
+//                             <img width="50" height="50" src="${item.picture}" />
+//                             <span style="color: white;"
+//                                 class="control-label text-uppercase">${item.name}</span>
+//                         </div>
+//                         <button onclick="del_token(${item.id})" class="btn btn-danger">Xóa</button>
+//                     </div>
+//                 </div>
+//             </div>`;
+//         });
+//     }
+// }
 
-async function get_all_token() {
-    var cr_u = await get_cr_user();
-    return await fetch(`/api/token_fb/${cr_u.id}` /*, options */)
-        .then((response) => response.json())
-        .then((data) => {
-            return data;
-        })
-        .catch((error) => {
-            console.warn(error);
-            return undefined;
-        });
-}
-
-
-async function save_token(data) {
-    var cr_u = await get_cr_user();
-    data.user_id = cr_u.id;
-    return await fetch(`/api/token_fb`, {
-        method: 'POST', // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => response.json())
-        .then(data => {
-            return data
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
+// async function get_all_token() {
+//     var cr_u = await get_cr_user();
+//     return await fetch(`/api/token_fb/${cr_u.id}` /*, options */)
+//         .then((response) => response.json())
+//         .then((data) => {
+//             return data;
+//         })
+//         .catch((error) => {
+//             console.warn(error);
+//             return undefined;
+//         });
+// }
 
 
-async function delete_token(id) {
-    return await fetch(`/api/token_fb/${id}`, {
-        method: 'DELETE', // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    })
-        .then(response => response.json())
-        .then(data => {
-            return data
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
+// async function save_token(data) {
+//     var cr_u = await get_cr_user();
+//     data.user_id = cr_u.id;
+//     return await fetch(`/api/token_fb`, {
+//         method: 'POST', // or 'PUT'
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(data)
+//     })
+//         .then(response => response.json())
+//         .then(data => {
+//             return data
+//         })
+//         .catch(error => {
+//             console.error('Error:', error);
+//         });
+// }
 
 
-async function get_user_info_from_fb(token) {
-    const url = `https://graph.facebook.com/v14.0/me?fields=name,picture&access_token=${token}`;
-    return await fetch(
-        r_url,
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ url: url })
-        }
-    )
-        .then((response) => response.json())
-        .then((data) => {
-            return data;
-        })
-        .catch((error) => {
-            console.warn(error);
-            return undefined;
-        });
-}
+// async function delete_token(id) {
+//     return await fetch(`/api/token_fb/${id}`, {
+//         method: 'DELETE', // or 'PUT'
+//         headers: {
+//             'Content-Type': 'application/json',
+//         }
+//     })
+//         .then(response => response.json())
+//         .then(data => {
+//             return data
+//         })
+//         .catch(error => {
+//             console.error('Error:', error);
+//         });
+// }
+
+
+// async function get_user_info_from_fb(token) {
+//     const url = `https://graph.facebook.com/v14.0/me?fields=name,picture&access_token=${token}`;
+//     return await fetch(
+//         r_url,
+//         {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify({ url: url })
+//         }
+//     )
+//         .then((response) => response.json())
+//         .then((data) => {
+//             return data;
+//         })
+//         .catch((error) => {
+//             console.warn(error);
+//             return undefined;
+//         });
+// }
 
 async function change_pass() {
     var pass_ = document.getElementById('old_pass').value;
@@ -229,21 +229,27 @@ async function get_pricing_history() {
 }
 
 
-async function init_pricing_history() {
-    var tb = document.getElementById('tb_data');
-    tb.innerHTML = '';
-    var data = await get_pricing_history();
-    if (data) {
-        data.forEach(f => {
-            tb.innerHTML += `<tr>
-            <td>${data.indexOf(f) + 1}</td>
-            <td>${f.pricing_name}</td>
-            <td>${get_format_VND(f.price)}</td>
-            <td>${format_time(f.time)}</td>
-            </tr>`
-        });
-    }
-}
+// async function init_pricing_history() {
+//     var tb = document.getElementById('tb_data');
+//     tb.innerHTML = '';
+//     var data = await get_pricing_history();
+//     if (data) {
+//         data.forEach(f => {
+//             if(f.limit_time_ || f.limit_time){
+//                 var active = "Gia Hạn Gói";
+//             }else{
+//                 var active = "Mua Gói";
+//             }
+//             tb.innerHTML += `<tr>
+//             <td>${data.indexOf(f) + 1}</td>
+//             <td>${f.pricing_name}</td>
+//             <td>${active}</td>
+//             <td>${get_format_VND(f.price)}</td>
+//             <td>${format_time(f.time)}</td>
+//             </tr>`
+//         });
+//     }
+// }
 
 // Get Data (pricing_history join user join pricing) Desc limit 1
 async function get_wrap_pricing_history(user_id) {

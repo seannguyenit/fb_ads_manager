@@ -71,8 +71,8 @@ module.exports = {
     //     })
     // },
     pricing_histories: (req, res) => {
-        let sql = 'select PH.*,U.username,U.real_name,P.price,P.name as pricing_name from pricing_history AS PH left join `user` AS U on U.id = PH.user_id left join pricing as P on P.id = PH.pricing_id where PH.user_id = ? and PH.pricing_active = 1 GROUP BY PH.time order by PH.time DESC'
-        db.query(sql, [Number(req.params.user_id)], (err, response) => {
+        let sql = 'select PH.*,  (select Date_add(pricing_history.time,interval sum(pricing_history.limit_day) day) as limit_time_ from pricing_history where pricing_history.user_id = ? and pricing_history.pricing_active = 1 and pricing_history.limit_day != 0 limit 1) as limit_time_,  (select Date_add(PH.time,interval sum(P.limit_day)  day) as limit_time from pricing_history AS PH left join history_login AS LG on LG.user_id = PH.user_id left join pricing AS P on P.id = PH.pricing_id where PH.user_id = ? AND PH.pricing_active = 1 and PH.limit_day = 0 limit 1) as limit_time,U.username,U.real_name,P.price,P.name as pricing_name from pricing_history AS PH left join `user` AS U on U.id = PH.user_id left join pricing as P on P.id = PH.pricing_id where PH.user_id = ? and PH.pricing_active = 1 GROUP BY PH.time  DESC limit 10'
+        db.query(sql, [Number(req.params.user_id),Number(req.params.user_id),Number(req.params.user_id)], (err, response) => {
             if (err) throw err
             res.json(response)
         })
@@ -100,6 +100,7 @@ module.exports = {
         data_money.time = new Date().getTime() / 1000;
         data_money.active = 1;
         data_money.money_bonus = 0;
+        var action = "Mua Gói";
         let sql_check = 'SELECT get_current_money(?) as rmn;'
         db.query(sql_check, [Number(data_money.user_id)], (err, response) => {
             if (err) throw err
@@ -110,7 +111,11 @@ module.exports = {
                     let sql = 'INSERT INTO pricing_history SET ?;'
                     db.query(sql, [data_pricing], (err, response) => {
                         if (err) throw err
+                        let sql_active = 'insert into history_login set user_id = ? ,action = ?, time = ?; '
+                        db.query(sql_active, [data_money.user_id,action, data_money.time], (err, response) => {
+                            if (err) throw err
                         res.json({ message: 'save success!' })
+                        })
                     })
                 })
             } else {
