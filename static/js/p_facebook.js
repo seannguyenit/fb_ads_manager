@@ -217,35 +217,35 @@ async function init_user() {
 
 }
 
-async function get_pricing_history() {
-    var cr_u = get_cr_user();
-    return await fetch(`/api/pricing_public/${cr_u.id}` /*, options */)
-        .then((response) => response.json())
-        .then((data) => {
-            return data;
-        })
-        .catch((error) => {
-            console.warn(error);
-            return undefined;
-        });
-}
+// async function get_pricing_history() {
+//     var cr_u = get_cr_user();
+//     return await fetch(`/api/pricing_public/${cr_u.id}` /*, options */)
+//         .then((response) => response.json())
+//         .then((data) => {
+//             return data;
+//         })
+//         .catch((error) => {
+//             console.warn(error);
+//             return undefined;
+//         });
+// }
 
 
-async function init_pricing_history() {
-    var tb = document.getElementById('tb_data');
-    tb.innerHTML = '';
-    var data = await get_pricing_history();
-    if (data) {
-        data.forEach(f => {
-            tb.innerHTML += `<tr>
-            <td>${data.indexOf(f) + 1}</td>
-            <td>${f.pricing_name}</td>
-            <td>${get_format_VND(f.price)}</td>
-            <td>${format_time(f.time)}</td>
-            </tr>`
-        });
-    }
-}
+// async function init_pricing_history() {
+//     var tb = document.getElementById('tb_data');
+//     tb.innerHTML = '';
+//     var data = await get_pricing_history();
+//     if (data) {
+//         data.forEach(f => {
+//             tb.innerHTML += `<tr>
+//             <td>${data.indexOf(f) + 1}</td>
+//             <td>${f.pricing_name}</td>
+//             <td>${get_format_VND(f.price)}</td>
+//             <td>${format_time(f.time)}</td>
+//             </tr>`
+//         });
+//     }
+// }
 
 // Get Data (pricing_history join user join pricing) Desc limit 1
 async function get_wrap_pricing_history(user_id) {
