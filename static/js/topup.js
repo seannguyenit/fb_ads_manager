@@ -23,8 +23,11 @@ async function init_top_up() {
         })
     }
     var cr_u = get_cr_user();
+    if(document.getElementById('ticket_number')){
+        document.getElementById('ticket_number').innerText = get_number_by_id(cr_u.id);
+    }
     // document.getElementById('des').value = get_number_by_id(cr_u.id);
-    document.getElementById('ticket_number').innerText = get_number_by_id(cr_u.id);
+    
 }
 
 function open_ticket() {
@@ -135,11 +138,11 @@ function init_money() {
             })
 }
 
-function topup_directly(){
-    $('#modal_topup_directly').modal('show');
-    $('#modal_topup_bank').modal('hide');
-}
-function topup_bank(){
-    $('#modal_topup_bank').modal('show');
-    $('#modal_topup_directly').modal('hide');
-}
+// function topup_directly(){
+//     $('#modal_topup_directly').modal('show');
+//     $('#modal_topup_bank').modal('hide');
+// }
+// function topup_bank(){
+//     $('#modal_topup_bank').modal('show');
+//     $('#modal_topup_directly').modal('hide');
+// }
