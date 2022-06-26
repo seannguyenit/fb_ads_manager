@@ -61,7 +61,7 @@
     "successful_transfer:" : "Chuyển khoản thành công vui lòng nhấn nút :",
     "confirm" : "Xác nhận",
     "condition" : "Trạng thái",
-    "money_topup" : "Số tiền nạp (VNĐ)",
+    "money_topup" : "Số tiền nạp",
     "money_withdraw" : "Số tiền rút (VNĐ)",
     "bonus_withdraw" : " Rút tiền Bonus theo bước bên dưới",
     "note_withdraw_1" : "- Chỉ được tạo phiếu rút tiền một lần chờ admin duyệt để được rút thêm",

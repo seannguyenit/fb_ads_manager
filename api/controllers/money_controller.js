@@ -127,7 +127,14 @@ module.exports = {
         })
     },
     get_list_top_up: (req, res) => {
-        let sql = 'select * from money_history where user_id = ? and `type` = 1 and money >= 0 order by `time` DESC limit 20 ;'
+        let sql = 'select * from money_history where user_id = ? and `type` = 1 and money >= 0 and task_id IS NULL and (method = 1 or method = 0) order by `time` DESC limit 10 ;'
+        db.query(sql, Number(req.params.user_id), (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    get_list_top_up_card: (req, res) => {
+        let sql = 'select MH.*,CH.* from money_history as MH LEFT JOIN card_history as CH ON MH.task_id = CH.TaskId where user_id = ? and `type` = 1 and money >= 0 and task_id IS NOT NULL and method != 2 order by `time` DESC limit 10;'
         db.query(sql, Number(req.params.user_id), (err, response) => {
             if (err) throw err
             res.json(response)

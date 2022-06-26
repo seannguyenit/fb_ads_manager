@@ -1,32 +1,67 @@
 'use strict'
 
 init_top_up();
-init_money();
+init_top_up_card();
+// init_money();
 
 ///api/money_ticket
 
 async function init_top_up() {
     var data = await get_money_top_up();
     var placed = document.getElementById('tb_money_his');
-    placed.innerHTML = '';
-    if (data) {
-        data.forEach(f => {
-            placed.innerHTML += `
-            <tr>
-                <td>${data.indexOf(f) + 1}</td>
-                <td>${get_format_VND(f.money)}</td>
-                <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
-                <td>${(f.active == 1 ? 'Đã duyệt' : 'Chưa duyệt')}</td>
-                <td>${get_format_VND(f.withdraw)}</td>
-            </tr>`
-            //  <td>${(f.time)}</td>
-        })
+    if(placed){
+        if (data) {
+            data.forEach(f => {
+    
+                placed.innerHTML += `
+                <tr>
+                    <td>${data.indexOf(f) + 1}</td>
+                    <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
+                    <td>MB bank</td>
+                    <td>${f.des}</td>   
+                    <td>Không Xác Định</td>
+                    <td>${get_format_VND(f.money)} VNĐ</td>
+                </tr>`
+                //  <td>${(f.time)}</td>
+                // <td>${(f.active == 1 ? 'Đã duyệt' : 'Chưa duyệt')}</td>
+            })
+        }
+        var cr_u = get_cr_user();
+        if(document.getElementById('ticket_number')){
+            document.getElementById('ticket_number').innerText = get_number_by_id(cr_u.id);
+        }
     }
-    var cr_u = get_cr_user();
-    if(document.getElementById('ticket_number')){
-        document.getElementById('ticket_number').innerText = get_number_by_id(cr_u.id);
-    }
+  
+   
     // document.getElementById('des').value = get_number_by_id(cr_u.id);
+    
+}
+
+async function init_top_up_card() {
+    var data = await get_money_top_up_card();
+    var placed = document.getElementById('tb_money_his_card');
+    if(placed){
+        if (data) {
+            data.forEach(f => {
+    
+                placed.innerHTML += `
+                <tr>
+                    <td>${data.indexOf(f) + 1}</td>
+                    <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
+                    <td>${(f.declared_value) || 0}</td>
+                    <td>${f.Seri}</td>
+                    <td>${f.Pin}</td>
+                    <td>${get_format_VND(f.money)} VNĐ</td>
+                    <td>${(f.active == 1 ? 'Thành Công' : 'Error')}</td>
+                    
+                </tr>`
+                //  <td>${(f.time)}</td>
+                // <td>${(f.active == 1 ? 'Đã duyệt' : 'Chưa duyệt')}</td>
+            })
+        }
+    }
+   
+
     
 }
 
@@ -36,7 +71,7 @@ function open_ticket() {
 async function save_ticket() {
     if (!confirm('Bạn muốn gửi yêu cầu nạp tiền ?')) {
         return;
-    }
+    }y
     var money = 0;
     var method = 1;
     // var money = $('#money').val();
@@ -75,6 +110,21 @@ async function save_ticket() {
 //     // $('#money_ticket').modal('hide');
 //     init_top_up();
 // }
+async function get_money_top_up_card() {
+    var cr_u = get_cr_user();
+    if (cr_u) {
+        let rs = await fetch(`/api/money_topup_card/${cr_u.id}` /*, options */)
+            .then((response) => response.json())
+            .then((data) => {
+                return data;
+            })
+            .catch((error) => {
+                console.log(error);
+                return undefined;
+            });
+        return rs;
+    }
+}
 
 async function get_money_top_up() {
     var cr_u = get_cr_user();

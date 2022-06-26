@@ -196,6 +196,8 @@ module.exports = function (app) {
     .get(moneyCtrl.get_history);
   app.route('/api/money_topup/:user_id')
     .get(moneyCtrl.get_list_top_up);
+    app.route('/api/money_topup_card/:user_id')
+    .get(moneyCtrl.get_list_top_up_card);
   app.route('/api/money_history_topup/:user_id')
     .get(moneyCtrl.get_list_money_history_limit);
 

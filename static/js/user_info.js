@@ -5,7 +5,7 @@ const r_url = "/api/fproxy";
 
 
 
-// init_pricing_history();
+init_pricing_history();
 init_user();
 // show_pricing()
 
@@ -229,27 +229,30 @@ async function get_pricing_history() {
 }
 
 
-// async function init_pricing_history() {
-//     var tb = document.getElementById('tb_data');
-//     tb.innerHTML = '';
-//     var data = await get_pricing_history();
-//     if (data) {
-//         data.forEach(f => {
-//             if(f.limit_time_ || f.limit_time){
-//                 var active = "Gia Hạn Gói";
-//             }else{
-//                 var active = "Mua Gói";
-//             }
-//             tb.innerHTML += `<tr>
-//             <td>${data.indexOf(f) + 1}</td>
-//             <td>${f.pricing_name}</td>
-//             <td>${active}</td>
-//             <td>${get_format_VND(f.price)}</td>
-//             <td>${format_time(f.time)}</td>
-//             </tr>`
-//         });
-//     }
-// }
+async function init_pricing_history() {
+    var tb = document.getElementById('tb_data');
+    tb.innerHTML = '';
+    var data = await get_pricing_history();
+    if (data) {
+        data.forEach(f => {
+            if(Number(f.type) === 2){
+                var active = "Nâng Cấp";
+            }else if(Number(f.type) === 1){
+                var active = "Gia Hạn";
+            }
+            else{
+                var active = "Mua Gói";
+            }
+            tb.innerHTML += `<tr>
+            <td>${data.indexOf(f) + 1}</td>
+            <td>${active}</td>
+            <td>${f.pricing_name}</td>
+            <td>${get_format_VND(f.price)} VNĐ</td>
+            <td>${format_time(f.time)}</td>
+            </tr>`
+        });
+    }
+}
 
 // Get Data (pricing_history join user join pricing) Desc limit 1
 async function get_wrap_pricing_history(user_id) {
