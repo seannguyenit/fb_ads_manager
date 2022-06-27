@@ -43,7 +43,6 @@ async function init_top_up_card() {
     if(placed){
         if (data) {
             data.forEach(f => {
-    
                 placed.innerHTML += `
                 <tr>
                     <td>${data.indexOf(f) + 1}</td>

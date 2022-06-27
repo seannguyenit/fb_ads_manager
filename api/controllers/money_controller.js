@@ -72,48 +72,69 @@ module.exports = {
         })
     },
     add_money: (req, res) => {
-        get_current_finance(req.body.user_id, (vl) => {
+        get_current_finance_topup_bank(req.body.time, req.body.user_id, (vl) => {
             let money_bonus = vl[0].bonus;
             if (Number(req.body.withdraw) > Number(money_bonus)) {
                 res.json({ mess: "số dư trong tài khoảng không đủ" })
             }
             else {
-                let data = req.body;
-                data.type = 1;
-                // data.withdraw = 
-                data.time = new Date().getTime() / 1000;
-                // data.time = new Date().getTime()
-                var active = 0;
-                if (req.body.active && req.body.active == 1) {
-                    active = 1;
+                let total_money_today = vl[0].total_money_today
+                // Nếu đại lý rút tiền thì số tiền mặc định nạp trong ngày sẽ luôn lớn hơn số tiền đã nạp có ở DB trong ngày
+                if(req.body.withdraw){
+                    req.body.money = Number(total_money_today) + 1;
                 }
-                data.active = active;
-                // if ((data.task_id || 0) > 0) {
-                //{"Code":2,"Message":"Lấy dữ liệu thành công, thẻsai mệnh giá","CardSend":1000000.0,"CardValue":10000.0,"ValueReceive":4250.0}
-                // waitingForCardResult(data.task_id).then((rs) => {
-                // if (rs.Code == 2) {
-                // get_history_card(data.task_id, (rs) => {
-                //     // data.money = rs.ValueReceive;
-                //     data.money = rs.amount;
-                //     data.money_bonus = (data.money / 100) * 10;
-                //     let sql = 'insert into money_history SET ?;'
-                //     db.query(sql, data, (err, response) => {
-                //         if (err) throw err
-                //         res.json({ ok: 1 })
-                //     })
-                // });
-                // } 
-                // else {
-                //     res.json({ ok: 0, error: rs.Message });
-                // }
-                // });
-                // } else {
-                data.money_bonus = (data.money / 100) * 10;
-                let sql = 'insert into money_history SET ?;'
-                db.query(sql, data, (err, response) => {
-                    if (err) throw err
-                    res.json({ ok: 1 })
-                })
+                if (Number(req.body.money) > Number(total_money_today)) {
+                    let data = req.body;
+                    var active = 1;
+                    // nếu là yêu cầu rút tiền thì số tiên nạp sẽ là 0
+                    if(req.body.withdraw){
+                        data.money = 0;
+                        active = 0;
+                    }
+                    data.money = Number(req.body.money) - Number(total_money_today);
+                    data.type = 1;
+                    // data.withdraw = 
+                    if (data.time) {
+                        data.time = data.time;
+                    } else {
+                        data.time = new Date().getTime() / 1000;
+                    }
+                    // data.time = new Date().getTime()
+                    
+                    if (req.body.active && req.body.active == 1) {
+                        active = 1;
+                    }
+                    data.active = active;
+                    // if ((data.task_id || 0) > 0) {
+                    //{"Code":2,"Message":"Lấy dữ liệu thành công, thẻsai mệnh giá","CardSend":1000000.0,"CardValue":10000.0,"ValueReceive":4250.0}
+                    // waitingForCardResult(data.task_id).then((rs) => {
+                    // if (rs.Code == 2) {
+                    // get_history_card(data.task_id, (rs) => {
+                    //     // data.money = rs.ValueReceive;
+                    //     data.money = rs.amount;
+                    //     data.money_bonus = (data.money / 100) * 10;
+                    //     let sql = 'insert into money_history SET ?;'
+                    //     db.query(sql, data, (err, response) => {
+                    //         if (err) throw err
+                    //         res.json({ ok: 1 })
+                    //     })
+                    // });
+                    // } 
+                    // else {
+                    //     res.json({ ok: 0, error: rs.Message });
+                    // }
+                    // });
+                    // } else {
+                    data.money_bonus = (data.money / 100) * 10;
+                    let sql = 'insert into money_history SET ?;'
+                    db.query(sql, data, (err, response) => {
+                        if (err) throw err
+                        res.json({ ok: 1 })
+                    })
+                } else {
+                    res.json({ mess: "0" })
+                }
+
                 // }
             }
         });
@@ -252,6 +273,13 @@ function insert_history_card(data, callback) {
     })
 }
 
+function get_current_finance_topup_bank(time, id, callback) {
+    let sql = 'select id,username,get_topup_money_today(`user`.`id`,?) as total_money_today,get_current_money(`user`.`id`) as money,get_current_bonus(`user`.`id`) as bonus from `user` where id = ? limit 1'
+    db.query(sql, [time, Number(id)], (err, response) => {
+        if (err) throw err
+        callback(response)
+    })
+}
 function get_current_finance(id, callback) {
     let sql = 'select id,username,get_current_money(`user`.`id`) as money,get_current_bonus(`user`.`id`) as bonus from `user` where id = ? limit 1'
     db.query(sql, [Number(id)], (err, response) => {

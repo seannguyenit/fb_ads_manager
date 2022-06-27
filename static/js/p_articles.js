@@ -96,3 +96,38 @@ async function ticket_save_(data) {
             console.error('Error:', error);
         });
 }
+// get_api_mb_bank();
+
+//   get_api_mb_bank();
+// async function get_api_mb_bank() {
+//     const url = `https://api.web2m.com/historyapimbnotiv3/El@183972359/264264989999/1671AF59-63E1-CAFA-CC9A-C9AF95CE3D01`;
+//     return await fetch(
+//         '/api/fproxy',
+//         {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify({ url: url })
+//         }
+//     )
+//         .then((response) => response.json())
+//         .then((data) => {
+//             return data.data;
+//         })
+//         .catch((error) => {
+//             console.warn(error);
+//             return undefined;
+//         });
+// }
+// insert_bank();
+// async function insert_bank(){
+//     var data = await get_api_mb_bank();
+//     if(data){
+//         data.forEach(f=>{
+//             if(f.type === "IN"){
+//                 if(f.description === )
+//             }
+//         })
+//     }
+// }

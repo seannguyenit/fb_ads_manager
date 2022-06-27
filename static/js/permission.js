@@ -1,5 +1,6 @@
 'use strict'
 init_menu();
+insert_bank();
 menu_contacst();
 // history_login()
 /* menu */
@@ -131,3 +132,111 @@ async function add_menu_user(data, user_id) {
 //             return undefined;
 //         });
 // }
+// Get infor admin API MBbank
+async function get_admin_mbbank() {
+    return await fetch('/api/admin_mbbank' /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+
+// get_api_mb_bank();
+async function get_api_mb_bank(token, account, password) {
+    const url = `https://api.web2m.com/historyapimbnotiv3/${password}/${account}/${token}`;
+    return await fetch(
+        '/api/fproxy',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url })
+        }
+    )
+        .then((response) => response.json())
+        .then((data) => {
+            return data.data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+
+async function insert_bank() {
+    var infor_mbbank = await get_admin_mbbank();
+    if (infor_mbbank) {
+        var token = "";
+        var account = "";
+        var password = "";
+        infor_mbbank.forEach(f => {
+            token = f.token;
+            account = f.account;
+            password = f.password;
+        })
+        var rs = await get_api_mb_bank(token, account, password);
+        var cr_u = get_cr_user();
+        var id_user = get_number_by_id(cr_u.id)
+        var total = 0;
+        var d = new Date();
+        let y = d.getFullYear();
+        let m = (d.getMonth() + 1) < 10 ? `0${d.getMonth() + 1}` : (d.getMonth() + 1);
+        let dd = d.getDate();
+        var today = `${y}-${m}-${dd}`;
+        var today_ = "";
+        // var data = await get_api_mb_bank();
+        var method = 1;
+        var user_id = get_cr_user().id;
+        if (rs) {
+            if(rs.status){
+                rs.transactions.forEach(f => {
+                    if (f.type === "IN") {
+                        if (f.description === id_user) {
+                            let dd_ = f.transactionDate.substring(0, 2);
+                            let m_ = f.transactionDate.substring(3, 5);
+                            let y_ = f.transactionDate.substring(6, 10);
+                            today_ = `${y_}-${m_}-${dd_}`;
+                            if (Number(new Date(today_).getTime() / 1000) === Number(new Date(today).getTime() / 1000)) {
+                                total = Number(total) + Number(f.amount)
+                            }
+                        }
+                    }
+                })
+            }
+            var rs = await ticket_save_({ money: total, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000) });
+            if(rs.ok){
+                $('#money_ticket').modal('show');
+            }
+            }else{
+                alert("Lôi nạp qua MBbank liên hệ admin để sử lý");
+                // $('#money_ticket').modal('show');
+                return;
+               
+            }
+           
+    }
+
+}
+async function ticket_save_(data) {
+    return await fetch('/api/money_ticket', {
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data != undefined) {
+                return data || {};
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}

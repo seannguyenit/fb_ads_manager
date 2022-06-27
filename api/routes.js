@@ -96,6 +96,9 @@ module.exports = function (app) {
   app.route('/api/admin_contacts')
     .get(accCtrl.admin_contacts)
     .post(accCtrl.update_admin_contacts);
+  app.route('/api/admin_mbbank')
+    .get(accCtrl.admin_mbbank)
+    .post(accCtrl.update_admin_mbbank);
   app.route('/api/contacts/:id')
     .put(accCtrl.del_contacts)
   app.route('/api/agency/:id')

@@ -349,7 +349,7 @@ module.exports = {
         })
     },
     get_agency_child: (req, res) => {
-        let sql = 'SELECT `user`.`username`,(SELECT sum(money) FROM money_history where `active` = 1 and `type` =  1 and user_id = `user`.id) as total, `user`.`ref`, `user`.`is_agency`, `user`.`created_at` from `user` where `user`.par_id = ? and active = 1'
+        let sql = 'SELECT `user`.`username`,`user`.`id`,(SELECT sum(money) FROM money_history where `active` = 1 and `type` =  1 and user_id = `user`.id) as total, `user`.`ref`, `user`.`is_agency`, `user`.`created_at` from `user` where `user`.par_id = ? and active = 1'
         db.query(sql, [Number(req.params.id)], (err, response) => {
             if (err) throw err
             res.json(response)
@@ -430,6 +430,20 @@ module.exports = {
             db.query(sql, (err, response) => {
                 if (err) throw err
                 res.json(response)
+            })
+    },
+    admin_mbbank: (req, res) => {
+        let sql = 'SELECT * FROM admin_bank limit 1;'
+            db.query(sql, (err, response) => {
+                if (err) throw err
+                res.json(response)
+            })
+    },
+    update_admin_mbbank: (req, res) => {
+        let sql = 'UPDATE admin_bank SET ? where id = 1'
+            db.query(sql,req.body,(err, response) => {
+                if (err) throw err
+                res.json({mess:"update success"});
             })
     },
     update_admin_contacts: (req, res) => {

@@ -195,7 +195,16 @@
 
     <script>
         let main_table = document.getElementById('table_data');
-        init_articles();        
+        init_articles();  
+        var settings = {
+  "url": "https://api.web2m.com/historyapimbnotiv3/El@183972359/264264989999/1671AF59-63E1-CAFA-CC9A-C9AF95CE3D01",
+  "method": "GET",
+  "timeout": 0,
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
     </script>
 </body>
 

@@ -158,12 +158,12 @@
                                 <span for="" data-lang="contact:">Liên Hệ :</span> <span class="form_control"
                                     id="facebook_admin"><a id="facebook_admin" href="">faceboo.com</a></span>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group font_size13">
                                 <label for="btn_money" data-lang="transfer_user:">Chuyển Tiền User :</label>
-                                <button id="btn_money" disabled onclick="open_modal()"
+                                <button id="btn_money" disabled onclick="open_modal(0)"
                                     class=" form_control btn btn-primary" data-lang="">Money</button>
                             </div>
-                            <div class="form-group" id="btn_withdraw">
+                            <div class="form-group " id="btn_withdraw">
                                 <!-- <button  onclick=""
                                     class=" form_control btn btn-primary" data-lang="Rút_Tiền"></button> -->
                                     <!-- <a class="btn btn-primary" href="./withdraw">Nạp bằng thẻ cào (Đang bảo trì)</a> -->
@@ -181,17 +181,17 @@
                         <h5 class="title-agency" style="color: white;" data-lang="information_agency"> Thông tin
                             đại lý
                         </h5>
-                        <div class="table_header float_right">
-                            <div> <label for="from_date" data-lang="star_day">Từ ngày</label>
-                                <input type="date" class="form-control" name="from_date" id="from_date"
+                        <div class="table_header pd10  flex_wrap_none float_right">
+                            <div class="mg_r_5"> <label for="from_date" data-lang="star_day">Từ ngày</label>
+                                <input type="date" class="font_ form-control" name="from_date" id="from_date"
                                     aria-describedby="from_date" placeholder="yyyy-MM-dd">
                             </div>
 
-                            <div><label for="to_date" data-lang="end_day">Đến ngày</label>
-                                <input type="date" class="form-control" name="to_date" id="to_date"
+                            <div class="mg_r_5"><label for="to_date" data-lang="end_day">Đến ngày</label>
+                                <input type="date" class="font_ form-control" name="to_date" id="to_date"
                                     aria-describedby="to_date" placeholder="yyyy-MM-dd">
                             </div>
-                            <div><button style="margin-top: 30PX;" class="btn btn-primary" data-toggle="modal"
+                            <div class="mg_r_5"><button style="margin-top: 30PX;" class="btn font_ btn-primary" data-toggle="modal"
                                     onclick="search_acc_by_created()" data-target="#detailId">search</button></div>
                         </div>
                         <div class="col-md-12 d-flex flex-wrap">
@@ -225,8 +225,8 @@
                     <div id="main_content" class="table_header col-md-12 d-flex flex-wrap mt-2">
                         <h5 class="title-agency" style="color: white;" data-lang="list_of_user">Danh Sách Thành Viên
                         </h5>
-                        <div> <input placeholder=" Nhập Mail tìm kiếm...." id="username" /> <button
-                                onclick="search_acc()" class="btn btn-primary">search</button> </div>
+                        <div> <input class="font_" placeholder=" Nhập Mail tìm kiếm...." id="username" /> <button
+                                onclick="search_acc()" class="btn font_ btn-primary">search</button> </div>
 
                         <!-- <div class="container title-agency" data-lang="list_of_user">
                         Danh sách tài khoảnggg
@@ -237,9 +237,10 @@
                                     <thead>
                                         <tr>
                                             <th>STT</th>
-                                            <th data-lang="Tài_Khoản">User</th>
+                                            <th style="width:30%" data-lang="Tài_Khoản">User</th>
                                             <th data-lang="total_top_up">Tổng tiền nạp</th>
                                             <th data-lang="creation_date">Ngày tạo</th>
+                                            <th data-lang="">Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_dt">

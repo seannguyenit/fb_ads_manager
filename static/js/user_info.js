@@ -166,7 +166,7 @@ async function change_pass() {
 }
 
 async function acc_get_detail() {
-     var cr = get_cr_user();
+    var cr = get_cr_user();
     return await fetch(`/api/accounts/${cr.id}` /*, options */)
         .then((response) => response.json())
         .then((data) => {
@@ -202,17 +202,16 @@ async function init_user() {
     get_current_finance().then(rs => {
         var cr = document.getElementById('money_cr');
         cr.innerHTML = ` 
-                        <div>${ get_format_VND(rs.money)} VNĐ</div>`;
+                        <div>${get_format_VND(rs.money)} VNĐ</div>`;
     })
-    if(dt){
-            user.innerHTML =`
+    if (dt) {
+        user.innerHTML = `
                 <div>${dt.username}</div>
             `;
-            at.innerHTML = `
+        at.innerHTML = `
             <div>${format_time(dt.created_at)}</div>
             `;
-        }
-
+    }
 }
 
 async function get_pricing_history() {
@@ -235,12 +234,12 @@ async function init_pricing_history() {
     var data = await get_pricing_history();
     if (data) {
         data.forEach(f => {
-            if(Number(f.type) === 2){
+            if (Number(f.type) === 2) {
                 var active = "Nâng Cấp";
-            }else if(Number(f.type) === 1){
+            } else if (Number(f.type) === 1) {
                 var active = "Gia Hạn";
             }
-            else{
+            else {
                 var active = "Mua Gói";
             }
             tb.innerHTML += `<tr>
@@ -268,7 +267,7 @@ async function get_wrap_pricing_history(user_id) {
 }
 
 async function acc_get_detail() {
-     var cr_u = get_cr_user();
+    var cr_u = get_cr_user();
     return await fetch(`/api/accounts/${cr_u.id}` /*, options */)
         .then((response) => response.json())
         .then((data) => {
@@ -309,4 +308,154 @@ async function acc_get_detail() {
 //         });
 //     }
 // }
+const test = {
+    "status": false,
+    "message": "Thành công",
+    "transactions": [
+        {
+            "transactionID": "FT22134135100472",
+            "amount": "699000",
+            "description": "0002",
+            "transactionDate": "27/06/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22134180487605",
+            "amount": "300000",
+            "description": "0002",
+            "transactionDate": "14/05/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22134080801050",
+            "amount": "-1000000",
+            "description": "0002",
+            "transactionDate": "14/05/2022",
+            "type": "OUT"
+        },
+        {
+            "transactionID": "FT22134034103412",
+            "amount": "2700000",
+            "description": "0002",
+            "transactionDate": "14/05/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22134914178999",
+            "amount": "649000",
+            "description": "0002",
+            "transactionDate": "14/05/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22134803149214",
+            "amount": "7000",
+            "description": "0002",
+            "transactionDate": "14/05/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22134133490992",
+            "amount": "50000",
+            "description": "0002",
+            "transactionDate": "14/05/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22133601547858",
+            "amount": "500000",
+            "description": "0002",
+            "transactionDate": "13/05/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22133579510800",
+            "amount": "150000",
+            "description": "0002",
+            "transactionDate": "13/05/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22133836960009",
+            "amount": "450000",
+            "description": "0002",
+            "transactionDate": "13/05/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22133503028951",
+            "amount": "300000",
+            "description": "0002",
+            "transactionDate": "13/05/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22133278429839",
+            "amount": "101000",
+            "description": "0002",
+            "transactionDate": "13/05/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22133822413210",
+            "amount": "800000",
+            "description": "0002",
+            "transactionDate": "13/05/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22133367246831",
+            "amount": "110000",
+            "description": "0002",
+            "transactionDate": "13/05/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22133094165134",
+            "amount": "133000",
+            "description": "0002",
+            "transactionDate": "13/05/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22133700433079",
+            "amount": "-700000",
+            "description": "0002",
+            "transactionDate": "13/05/2022",
+            "type": "OUT"
+        },
+        {
+            "transactionID": "FT22133112371083",
+            "amount": "-24000000",
+            "description": "0002",
+            "transactionDate": "13/05/2022",
+            "type": "OUT"
+        },
+        {
+            "transactionID": "FT22133930452010",
+            "amount": "-10000000",
+            "description": "0002",
+            "transactionDate": "13/05/2022",
+            "type": "OUT"
+        },
+        {
+            "transactionID": "FT22133197013609",
+            "amount": "450000",
+            "description": "0002",
+            "transactionDate": "13/05/2022",
+            "type": "IN"
+        },
+        {
+            "transactionID": "FT22133469054829",
+            "amount": "110000",
+            "description": "0002",
+            "transactionDate": "27/06/2022",
+            "type": "IN"
+        }
+    ]
+}
+
+
+
+
 

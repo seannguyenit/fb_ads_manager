@@ -73,14 +73,16 @@ async function init_withdraw_money() {
     placed.innerHTML = '';
     if (data) {
         data.forEach(f => {
-            placed.innerHTML += `
-            <tr>
-                <td>${data.indexOf(f) + 1}</td>
-                <td>${get_format_VND(f.money)}</td>
-                <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
-                <td>${(f.active == 1 ? 'Đã duyệt' : 'Chưa duyệt')}</td>
-                <td>${get_format_VND(f.withdraw)}</td>
-            </tr>`
+            if(f.withdraw){
+                placed.innerHTML += `
+                <tr>
+                    <td>${data.indexOf(f) + 1}</td>
+                    <td>${get_format_VND(f.withdraw)}</td>
+                    <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
+                    <td>${(f.active == 1 ? 'Đã duyệt' : 'Chưa duyệt')}</td>
+                </tr>`
+            }
+           
         })
     }
     var cr_u = get_cr_user();
@@ -118,7 +120,7 @@ async function save_ticket2() {
         alert('Chưa nhập đúng thông tin !')
         return;
     }
-     var rs = await ticket_save_({ money: money, method: method, des: des, user_id: user_id, withdraw: withdraw});
+     var rs = await ticket_save_({ method: method, des: des, user_id: user_id, withdraw: withdraw});
     // var rs = await ticket_save_({des:des, user_id:user_id});
         let mess = rs.mess;
         if(mess != null){
