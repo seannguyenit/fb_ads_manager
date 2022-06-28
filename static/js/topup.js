@@ -9,15 +9,23 @@ init_top_up_card();
 async function init_top_up() {
     var data = await get_money_top_up();
     var placed = document.getElementById('tb_money_his');
+    var type = "MB bank";
     if(placed){
         if (data) {
             data.forEach(f => {
-    
+                if(Number(f.procedure) === 2){
+                    type = "MoMo"
+
+                }
+                else if(Number(f.procedure) === 3){
+                    type = "ACB bank"
+                }
+
                 placed.innerHTML += `
                 <tr>
                     <td>${data.indexOf(f) + 1}</td>
                     <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
-                    <td>MB bank</td>
+                    <td>${type}</td>
                     <td>${f.des}</td>   
                     <td>Không Xác Định</td>
                     <td>${get_format_VND(f.money)} VNĐ</td>
