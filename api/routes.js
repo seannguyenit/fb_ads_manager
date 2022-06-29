@@ -3,10 +3,10 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
   destination: function (req, file, next) {
-    next(null, `././static/img`);
+    next(null, `./lib/2022/6`);
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname + '--' + '.png');
+    cb(null, '1--' + '.png');
   }
 });
 const upload = multer(
@@ -15,7 +15,7 @@ const upload = multer(
       next(null, true);
     }, limits: { fileSize: 15 * 1000000 }
   }
-).single('logo_img');
+).single('file');
 module.exports = function (app) {
   let accCtrl = require('./controllers/user_controller');
   let menuCtrl = require('./controllers/menu_controller');
@@ -48,7 +48,7 @@ module.exports = function (app) {
   app.route('/api/Accounts_search/:username')
     .put(accCtrl.get_byname)
     .get(accCtrl.get_byname);
-   
+
 
   app.route('/api/Accounts_history/:id')
     .put(accCtrl.update_history);
@@ -70,16 +70,16 @@ module.exports = function (app) {
   app.route('/api/Accounts/:id')
     .put(accCtrl.update)
     .delete(accCtrl.delete);
-    
+
   app.route('/api/agency_allmoney/:from/:to')
     .get(accCtrl.get_all_money);
-    app.route('/api/agency_allmoney_todaymoney')
+  app.route('/api/agency_allmoney_todaymoney')
     .get(accCtrl.get_allmoney_today_money);
   app.route('/api/agency')
     .get(accCtrl.get_all_agency)
-    app.route('/api/user_by_agency/:id')
+  app.route('/api/user_by_agency/:id')
     .get(accCtrl.get_user_by_agency)
-    
+
   app.route('/api/agency_reg')
     .get(accCtrl.get_all_agency_reg)
 
@@ -96,14 +96,17 @@ module.exports = function (app) {
   app.route('/api/admin_contacts')
     .get(accCtrl.admin_contacts)
     .post(accCtrl.update_admin_contacts);
+  app.route('/api/admin_mbbank')
+    .get(accCtrl.admin_mbbank)
+    .post(accCtrl.update_admin_mbbank);
   app.route('/api/contacts/:id')
     .put(accCtrl.del_contacts)
   app.route('/api/agency/:id')
     .get(accCtrl.get_agency_info)
     .put(accCtrl.agency_reg);
 
-    // app.route('/api/infor_agency/:id')
-    // .get(accCtrl.get_agency_info_by_user);
+  // app.route('/api/infor_agency/:id')
+  // .get(accCtrl.get_agency_info_by_user);
   app.route('/api/agency_m/:id')
     .put(accCtrl.agency_app);
   app.route('/api/agency_m/cancel/:id')
@@ -126,10 +129,10 @@ module.exports = function (app) {
     .post(upload, menuCtrl.insert_logo);
   app.route('/api/menu_logo')
     .get(menuCtrl.get_logo);
-    
-    app.route('/api/init_img_login')
+
+  app.route('/api/init_img_login')
     .get(menuCtrl.get_img_login);
-    app.route('/api/init_logo')
+  app.route('/api/init_logo')
     .get(menuCtrl.get_img_logo);
   app.route('/api/menu_logo/:id')
     .put(menuCtrl.del_logo);
@@ -191,11 +194,18 @@ module.exports = function (app) {
 
   app.route('/api/money_ticket')
     .post(moneyCtrl.add_money);
+
+  app.route('/api/money_momo_ticket')
+    .post(moneyCtrl.add_money_momo);
+  app.route('/api/money_acb_ticket')
+    .post(moneyCtrl.add_money_acbbank);
   // .get(moneyCtrl.add_money);
   app.route('/api/money_history/:user_id')
     .get(moneyCtrl.get_history);
   app.route('/api/money_topup/:user_id')
     .get(moneyCtrl.get_list_top_up);
+  app.route('/api/money_topup_card/:user_id')
+    .get(moneyCtrl.get_list_top_up_card);
   app.route('/api/money_history_topup/:user_id')
     .get(moneyCtrl.get_list_money_history_limit);
 

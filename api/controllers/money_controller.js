@@ -72,50 +72,115 @@ module.exports = {
         })
     },
     add_money: (req, res) => {
-        get_current_finance(req.body.user_id, (vl) => {
+        get_current_finance_topup_bank(req.body.time, req.body.user_id, (vl) => {
             let money_bonus = vl[0].bonus;
             if (Number(req.body.withdraw) > Number(money_bonus)) {
                 res.json({ mess: "số dư trong tài khoảng không đủ" })
             }
             else {
-                let data = req.body;
-                data.type = 1;
-                // data.withdraw = 
-                data.time = new Date().getTime() / 1000;
-                // data.time = new Date().getTime()
-                var active = 0;
-                if (req.body.active && req.body.active == 1) {
-                    active = 1;
+                let total_money_today = vl[0].get_topup_money_mbbank_today
+                // Nếu đại lý rút tiền thì số tiền mặc định nạp trong ngày sẽ luôn lớn hơn số tiền đã nạp có ở DB trong ngày
+                if(req.body.withdraw){
+                    req.body.money = Number(total_money_today) + 1;
                 }
-                data.active = active;
-                // if ((data.task_id || 0) > 0) {
-                //{"Code":2,"Message":"Lấy dữ liệu thành công, thẻsai mệnh giá","CardSend":1000000.0,"CardValue":10000.0,"ValueReceive":4250.0}
-                // waitingForCardResult(data.task_id).then((rs) => {
-                // if (rs.Code == 2) {
-                // get_history_card(data.task_id, (rs) => {
-                //     // data.money = rs.ValueReceive;
-                //     data.money = rs.amount;
-                //     data.money_bonus = (data.money / 100) * 10;
-                //     let sql = 'insert into money_history SET ?;'
-                //     db.query(sql, data, (err, response) => {
-                //         if (err) throw err
-                //         res.json({ ok: 1 })
-                //     })
-                // });
-                // } 
-                // else {
-                //     res.json({ ok: 0, error: rs.Message });
-                // }
-                // });
-                // } else {
-                data.money_bonus = (data.money / 100) * 10;
-                let sql = 'insert into money_history SET ?;'
-                db.query(sql, data, (err, response) => {
-                    if (err) throw err
-                    res.json({ ok: 1 })
-                })
+                if (Number(req.body.money) > Number(total_money_today)) {
+                    let data = req.body;
+                    var active = 1;
+                    // nếu là yêu cầu rút tiền thì số tiên nạp sẽ là 0
+                    if(req.body.withdraw){
+                        data.money = 0;
+                        active = 0;
+                    }
+                    data.money = Number(req.body.money) - Number(total_money_today);
+                    data.type = 1;
+                    data.procedure = 1;
+                    // data.withdraw = 
+                    if (data.time) {
+                        data.time = data.time;
+                    } else {
+                        data.time = new Date().getTime() / 1000;
+                    }
+                    // data.time = new Date().getTime()
+                    
+                    if (req.body.active && req.body.active == 1) {
+                        active = 1;
+                    }
+                    data.active = active;
+
+                    data.money_bonus = (data.money / 100) * 10;
+                    let sql = 'insert into money_history SET ?;'
+                    db.query(sql, data, (err, response) => {
+                        if (err) throw err
+                        res.json({ ok: 1 })
+                    })
+                } else {
+                    res.json({ mess: "0" })
+                }
+
                 // }
             }
+        });
+
+    },
+    add_money_momo: (req, res) => {
+        get_current_finance_topup_bank(req.body.time, req.body.user_id, (vl) => {
+
+                let total_money_today = vl[0].get_topup_money_momo_today
+              
+                if (Number(req.body.money) > Number(total_money_today)) {
+                    let data = req.body;
+                    var active = 1;
+                    data.money = Number(req.body.money) - Number(total_money_today);
+                    data.type = 1;
+                    data.procedure = 2;
+                    
+                    if (req.body.active && req.body.active == 1) {
+                        active = 1;
+                    }
+                    data.active = active;
+
+                    data.money_bonus = (data.money / 100) * 10;
+                    let sql = 'insert into money_history SET ?;'
+                    db.query(sql, data, (err, response) => {
+                        if (err) throw err
+                        res.json({ ok: 1 })
+                    })
+                } else {
+                    res.json({ mess: "0" })
+                }
+
+                // }
+        });
+
+    },
+    add_money_acbbank: (req, res) => {
+        get_current_finance_topup_bank(req.body.time, req.body.user_id, (vl) => {
+
+                let total_money_today = vl[0].get_topup_money_abcbank_today
+              
+                if (Number(req.body.money) > Number(total_money_today)) {
+                    let data = req.body;
+                    var active = 1;
+                    data.money = Number(req.body.money) - Number(total_money_today);
+                    data.type = 1;
+                    data.procedure = 3;
+                    
+                    if (req.body.active && req.body.active == 1) {
+                        active = 1;
+                    }
+                    data.active = active;
+
+                    data.money_bonus = (data.money / 100) * 10;
+                    let sql = 'insert into money_history SET ?;'
+                    db.query(sql, data, (err, response) => {
+                        if (err) throw err
+                        res.json({ ok: 1 })
+                    })
+                } else {
+                    res.json({ mess: "0" })
+                }
+
+                // }
         });
 
     },
@@ -127,7 +192,14 @@ module.exports = {
         })
     },
     get_list_top_up: (req, res) => {
-        let sql = 'select * from money_history where user_id = ? and `type` = 1 and money >= 0 order by `time` DESC limit 20 ;'
+        let sql = 'select * from money_history where user_id = ? and `type` = 1 and money >= 0 and task_id IS NULL and (method = 1 or method = 0) order by `time` DESC limit 10 ;'
+        db.query(sql, Number(req.params.user_id), (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    get_list_top_up_card: (req, res) => {
+        let sql = 'select MH.*,CH.* from money_history as MH LEFT JOIN card_history as CH ON MH.task_id = CH.TaskId where user_id = ? and `type` = 1 and money >= 0 and task_id IS NOT NULL and method != 2 order by `time` DESC limit 10;'
         db.query(sql, Number(req.params.user_id), (err, response) => {
             if (err) throw err
             res.json(response)
@@ -245,6 +317,13 @@ function insert_history_card(data, callback) {
     })
 }
 
+function get_current_finance_topup_bank(time, id, callback) {
+    let sql = 'select id,username,get_topup_money_mbbank_today(`user`.`id`,?) as get_topup_money_mbbank_today,get_topup_money_momo_today(`user`.`id`,?) as get_topup_money_momo_today,get_topup_money_abcbank_today(`user`.`id`,?) as get_topup_money_abcbank_today,get_current_money(`user`.`id`) as money,get_current_bonus(`user`.`id`) as bonus from `user` where id = ? limit 1'
+    db.query(sql, [time,time, Number(id)], (err, response) => {
+        if (err) throw err
+        callback(response)
+    })
+}
 function get_current_finance(id, callback) {
     let sql = 'select id,username,get_current_money(`user`.`id`) as money,get_current_bonus(`user`.`id`) as bonus from `user` where id = ? limit 1'
     db.query(sql, [Number(id)], (err, response) => {

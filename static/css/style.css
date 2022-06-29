@@ -74,6 +74,9 @@ body{
 .pd-t15{
     padding-top: 5px;
 }
+.mr_b_15{
+    margin-bottom: -1.5vw !important;
+}
 .pd_bt_10{
     padding-bottom: 10px;
 }
@@ -211,8 +214,21 @@ a:hover{
     .font_size10{
         font-size: 10px !important;
     }
+    .font_size13{
+        font-size: 13.5px !important;
+    }
+    .flex_wrap_none{
+        flex-wrap: nowrap !important;
+    }
+    .font_{
+        padding: 0.5rem !important;
+        font-size: 0.7rem !important;
+    }
     h2 {
         font-size: 1.3rem !important;
+    }
+    .pd10 {
+        padding: 10px !important;
     }
     
 

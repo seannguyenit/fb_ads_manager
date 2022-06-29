@@ -109,6 +109,9 @@ async function get_agency_child() {
                         <td>${it.username}</td>
                         <td>${get_format_VND(it.total || 0)}</td>
                         <td>${format_time(it.created_at)}</td>
+                        <td>
+                        ${button_action_tool(it.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-usd" aria-hidden="true"></i>')}
+                        </td>
                     </tr>
                 `;
 
@@ -141,7 +144,7 @@ async function get_agency_count() {
 }
 
 // call api show option select email
-async function get_user_by_agency_info() {
+async function get_user_by_agency_info(id_u) {
     var list_user = document.getElementById('option_user');
     var cr_u = get_cr_user();
     if (cr_u) {
@@ -156,17 +159,22 @@ async function get_user_by_agency_info() {
                 console.log('Error:', error);
             });
         if (rs) {
-            list_user.innerHTML += `<option selected>---- Chọn email cần chuyển ---</option>`;
+            // list_user.innerHTML += `<option selected>---- Chọn email cần chuyển ---</option>`;
             rs.forEach(f => {
-                list_user.innerHTML += `<option value="${f.id}">${f.username}</option>`
+                if(Number(id_u) === Number(f.id)){
+                    list_user.innerHTML = `<option selected value="${f.id}">${f.username}</option>`;
+                }else{
+                    list_user.innerHTML += `<option value="${f.id}">${f.username}</option>`
+                }
+              
             })
         }
     }
 }
 
-async function open_modal() {
+async function open_modal(id_u) {
     $('#money_ticket').modal('show');
-    await get_user_by_agency_info();
+    await get_user_by_agency_info(id_u);
 
 }
 

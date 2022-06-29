@@ -27,7 +27,7 @@ async function init_default() {
                 ${get_format_VND(item.price)} VNĐ
             </div>
             </div>
-            <div class="text-center mt-2 mb-2"><button onclick="order_pricing(${item.id},'${item.name}',${item.price},${item.limit_day})" class="btn btn-primary" data-lang="buy_now">Mua ngay</button></div>
+            <div class="text-center mt-2 mb-2"><button onclick="order_pricing(${item.id},'${item.name}',${item.price},${item.limit_day},${item.level})" class="btn btn-primary" data-lang="buy_now">Mua ngay</button></div>
     </div>`;
         });
     }
@@ -45,19 +45,47 @@ async function pricing_get_all() {
         });
 }
 
-async function order_pricing(id, name, price,day) {
+async function acc_get_detail() {
+    var cr = get_cr_user();
+    return await fetch(`/api/accounts/${cr.id}` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data != undefined) {
+                return data || {};
+            }
+        })
+        .catch((error) => {
+            console.warn(error);
+        });
+}
+
+async function order_pricing(id, name, price,day,level) {
     if (!confirm(`Bạn có chắc chắn muốn gia hạn gói ${name} ?`)) {
         return;
     }
+    
+
     var pricing_active = 1; 
     var cr_u = get_cr_user().id;
+    var type = 0;
     // var data = await get_pricing_history(cr_u);
     // var add = $("#add").val()
-
+    var rs = await get_wrap_pricing_history(cr_u);
+    if(rs){
+        rs.forEach(f => {
+            if(Number(f.level) < Number(level)){
+            type = 2;
+        }else{
+            type = 1;
+        }
+        })
+       
+       
+    }
     var url = `/api/pricing_public`;
     var meth = 'POST';
 
-    var data_pricing = { user_id: cr_u, pricing_id: id, pricing_active: pricing_active,limit_day:day};
+    var data_pricing = { user_id: cr_u, pricing_id: id, pricing_active: pricing_active,limit_day:day,type : type};
     var data_money = { user_id: cr_u, money: price };
     var data = { data_money: data_money, data_pricing: data_pricing }
     var rs = await fetch(url, {
