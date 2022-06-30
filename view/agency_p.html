@@ -39,7 +39,7 @@
                 <div style="padding-top:5px" class=" website dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <span id="img_lang">  </span><span data-lang="Language"></span>
+                        <span id="img_lang"> </span><span data-lang="Language"></span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
@@ -123,7 +123,7 @@
                             aria-hidden="true"></i><span data-lang="Đại_lý"></span></h3>
                     <hr />
                     <!-- <button onclick="open_modal()" class="btn btn-primary m-auto">Góp Ý</button> -->
-                    <h4 data-lang="">Đại Lý Của Bạn</h4>
+                    <h4 data-lang="your_agency">Đại Lý Của Bạn</h4>
                     <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5">
                         <div class="col-md-7">
                             <div class="form-group">
@@ -158,15 +158,15 @@
                                 <span for="" data-lang="contact:">Liên Hệ :</span> <span class="form_control"
                                     id="facebook_admin"><a id="facebook_admin" href="">faceboo.com</a></span>
                             </div>
-                            <div class="form-group font_size13">
+                            <div class="form-group font_size13" id="">
                                 <label for="btn_money" data-lang="transfer_user:">Chuyển Tiền User :</label>
                                 <button id="btn_money" disabled onclick="open_modal(0)"
-                                    class=" form_control btn btn-primary" data-lang="">Money</button>
+                                    class=" form_control btn btn-primary" data-lang="money">Money</button>
                             </div>
                             <div class="form-group " id="btn_withdraw">
                                 <!-- <button  onclick=""
                                     class=" form_control btn btn-primary" data-lang="Rút_Tiền"></button> -->
-                                    <!-- <a class="btn btn-primary" href="./withdraw">Nạp bằng thẻ cào (Đang bảo trì)</a> -->
+                                <!-- <a class="btn btn-primary" href="./withdraw">Nạp bằng thẻ cào (Đang bảo trì)</a> -->
                             </div>
                         </div>
                     </div>
@@ -191,8 +191,9 @@
                                 <input type="date" class="font_ form-control" name="to_date" id="to_date"
                                     aria-describedby="to_date" placeholder="yyyy-MM-dd">
                             </div>
-                            <div class="mg_r_5"><button style="margin-top: 30PX;" class="btn font_ btn-primary" data-toggle="modal"
-                                    onclick="search_acc_by_created()" data-target="#detailId">search</button></div>
+                            <div class="mg_r_5"><button style="margin-top: 30PX;" class="btn font_ btn-primary"
+                                    data-toggle="modal" onclick="search_acc_by_created()"
+                                    data-target="#detailId">search</button></div>
                         </div>
                         <div class="col-md-12 d-flex flex-wrap">
                             <div class="col-md-4">
@@ -240,7 +241,7 @@
                                             <th style="width:30%" data-lang="Tài_Khoản">User</th>
                                             <th data-lang="total_top_up">Tổng tiền nạp</th>
                                             <th data-lang="creation_date">Ngày tạo</th>
-                                            <th data-lang="">Thao tác</th>
+                                            <th data-lang="action">Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_dt">
@@ -276,7 +277,8 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="money" class="form-label" data-lang="transfer_money:">Tiền Cần CHuyển :</label>
+                                <label for="money" class="form-label" data-lang="transfer_money:">Tiền Cần CHuyển
+                                    :</label>
                                 <input class="form_control" type="number" name="money" id="money" value="0">
                             </div>
                         </div>
@@ -287,7 +289,25 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
+    </div>
+    <div class="modal fade" id="bank_money_ticket" tabindex="-1" role="dialog" aria-labelledby="bank_money_ticket"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body text_center">
+                    <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
+                    <h4>Thành Công !</h4>
+                    <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
+                    <button type="button" class="btn btn-primary" onclick="location.reload()"
+                        data-dismiss="modal">OK</button>
+                </div>
+                <div class="text_center">
+
+                </div>
+            </div>
+        </div>
     </div>
     <div class="footer">
         <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color">

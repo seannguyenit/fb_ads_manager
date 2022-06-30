@@ -22,7 +22,8 @@ async function init_agency_public() {
 
 }
 function btn_withdraw() {
-   document.getElementById('btn_withdraw').innerHTML= `<a class="form_control btn btn-primary" href="./withdraw" data-lang="Rút_Tiền">â</a> `
+   document.getElementById('btn_withdraw').innerHTML= `<a class="form_control btn btn-primary" href="./withdraw" data-lang="Rút_Tiền">â</a> `;
+   
 }
 
 function get_lb_stt(info) {
@@ -146,6 +147,9 @@ async function get_agency_count() {
 // call api show option select email
 async function get_user_by_agency_info(id_u) {
     var list_user = document.getElementById('option_user');
+    if(list_user.value){
+        list_user.innerHTML ="";
+    }
     var cr_u = get_cr_user();
     if (cr_u) {
         var rs = await fetch(`/api/user_by_agency/${cr_u.id}`, {
@@ -161,9 +165,12 @@ async function get_user_by_agency_info(id_u) {
         if (rs) {
             // list_user.innerHTML += `<option selected>---- Chọn email cần chuyển ---</option>`;
             rs.forEach(f => {
-                if(Number(id_u) === Number(f.id)){
-                    list_user.innerHTML = `<option selected value="${f.id}">${f.username}</option>`;
-                }else{
+                if(id_u != 0) {
+                    if(Number(id_u) === Number(f.id)){
+                        list_user.innerHTML = `<option selected value="${f.id}">${f.username}</option>`;
+                    }
+                }
+                else{
                     list_user.innerHTML += `<option value="${f.id}">${f.username}</option>`
                 }
               
@@ -175,7 +182,7 @@ async function get_user_by_agency_info(id_u) {
 async function open_modal(id_u) {
     $('#money_ticket').modal('show');
     await get_user_by_agency_info(id_u);
-
+   
 }
 
 // move money to agency => user child
@@ -258,6 +265,9 @@ async function get_agency_bychild(username) {
                         <td>${it.username}</td>
                         <td>${get_format_VND(it.total || 0)}</td>
                         <td>${format_time(it.created_at)}</td>
+                        <td>
+                        ${button_action_tool(it.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-usd" aria-hidden="true"></i>')}
+                        </td>
                     </tr>
                 `;
 

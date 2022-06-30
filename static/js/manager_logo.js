@@ -31,6 +31,9 @@ async function init_logo(){
         }if(Number(item.type) === 2){
             var type = `<span>Image Login</span>`
         }
+        if(Number(item.type) === 3){
+            var type = `<span>Loading Page</span>`
+        }
             
         main_table.innerHTML += `
             <tr>

@@ -39,7 +39,7 @@
                 <div style="padding-top:5px" id="btn_lang" class="website dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
                         data-toggle="dropdown" data-lang="" aria-haspopup="true" aria-expanded="false">
-                        <span id="img_lang">  </span><span data-lang="Language"></span>
+                        <span id="img_lang"> </span><span data-lang="Language"></span>
                     </button>
                     <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
                         <a class=" dropdown-item" onclick="change_lang('en')" href="#"> <img width="20%" height="20%"
@@ -122,15 +122,16 @@
                     <div class="col-md-12 d-flex flex-wrap mt-2">
                         <div class="col-md-4 m_b_5">
                             <label for="list_pages" class="form-label" data-lang="Facebookuser"></label> <br>
-                            <select class="form-select p-2 w-100 login-form" id="list_fb" onchange="set_combobox_data()" required>
+                            <select class="form-select p-2 w-100 login-form" id="list_fb" onchange="set_combobox_data()"
+                                required>
                                 <option selected disabled value="">Choose...</option>
                                 <option>...</option>
                             </select>
                         </div>
                         <div class="col-md-4 m_b_5">
                             <label for="list_pages" class="form-label" data-lang="Page"></label> <br>
-                            <select class="form-select p-2 w-100 login-form" id="list_pages" onchange="change_page_selected()"
-                                required>
+                            <select class="form-select p-2 w-100 login-form" id="list_pages"
+                                onchange="change_page_selected()" required>
                                 <option selected disabled value="">Choose...</option>
                                 <option>...</option>
                             </select>
@@ -275,6 +276,24 @@
             </div>
         </section>
     </div>
+    <div class="modal fade" id="bank_money_ticket" tabindex="-1" role="dialog" aria-labelledby="bank_money_ticket"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body text_center">
+                    <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
+                    <h4>Thành Công !</h4>
+                    <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
+                    <button type="button" class="btn btn-primary" onclick="location.reload()"
+                        data-dismiss="modal">OK</button>
+                </div>
+                <div class="text_center">
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="footer">
         <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color">
             <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
@@ -294,31 +313,31 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
-        <script type="text/javascript">
-            function custom_template(obj){
-                    var data = $(obj.element).data();
-                    var text = $(obj.element).text();
-                    if(data && data['img_src']){
-                        img_src = data['img_src'];
-                        template = $("<div class=\"pd-t15\"><img src=\"" + img_src + "\" style=\"width:30px;height:30px;border-radius: 15px;\"/><span style=\"padding-left:5px ; color:black;\">" + text + "</span></div>");
-                        return template;
-                    }
-                }
-            var options = {
-                'templateSelection': custom_template,
-                'templateResult': custom_template,
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
+    <script type="text/javascript">
+        function custom_template(obj) {
+            var data = $(obj.element).data();
+            var text = $(obj.element).text();
+            if (data && data['img_src']) {
+                img_src = data['img_src'];
+                template = $("<div class=\"pd-t15\"><img src=\"" + img_src + "\" style=\"width:30px;height:30px;border-radius: 15px;\"/><span style=\"padding-left:5px ; color:black;\">" + text + "</span></div>");
+                return template;
             }
-            $('#list_fb').select2(options);
-            $('.select2-container--default .select2-selection--single').css({'height': '40px'});
-            $('#list_pages').select2(options);
-            $('.select2-container--default .select2-selection--single').css({'height': '40px'});
-            $('#list_ads').select2(options);
-            $('.select2-container--default .select2-selection--single').css({'height': '40px'});
-        
-        </script>
+        }
+        var options = {
+            'templateSelection': custom_template,
+            'templateResult': custom_template,
+        }
+        $('#list_fb').select2(options);
+        $('.select2-container--default .select2-selection--single').css({ 'height': '40px' });
+        $('#list_pages').select2(options);
+        $('.select2-container--default .select2-selection--single').css({ 'height': '40px' });
+        $('#list_ads').select2(options);
+        $('.select2-container--default .select2-selection--single').css({ 'height': '40px' });
+
+    </script>
 </body>
 
 

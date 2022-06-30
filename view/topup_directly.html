@@ -121,7 +121,7 @@
                 <div class="container">
                     <div class="col-md-12 d-flex flex-wrap mt-5 mb-5">
                         <div class="col-12">
-                            <h2><i class="pd_r_5 fa fa-university" aria-hidden="true"></i> <span data-lang="">Nạp TIền
+                            <h2><i class="pd_r_5 fa fa-university" aria-hidden="true"></i> <span data-lang="transfer_money_card">Nạp TIền
                                     Thẻ Cào</span></h2>
                             <!-- <a class="btn btn-primary" href="./topup_card">Nạp bằng thẻ cào (Đang bảo trì)</a> -->
                             <!-- <button class="btn btn-primary" onclick="topup_directly()" data-lang="with_scratch_card">Nạp
@@ -236,22 +236,22 @@
                         <h3><i class="pd_r_5 fa fa-history"></i><span data-lang="history_operation"></span></h3>
                         <div class="col-12 v-data-table__wrapper">
                             <table class="width_table_200 table text_center table_section">
-                            <caption data-lang="recent_trading_history">lịch sử giao dịch gần đây</caption>
-                            <thead>
-                                <tr>
-                                    <th>Stt</th>
-                                    <th data-lang="time">Thời gian</th>
-                                    <th data-lang="">Mệnh Giá</th>
-                                    <th data-lang="">Seri</th>
-                                    <th data-lang="">Mã thẻ</th>
-                                    <th data-lang="money_topup">Số tiền nạp</th>
-                                    <th data-lang="condition">Trạng thái</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tb_money_his_card">
+                                <caption data-lang="recent_trading_history">lịch sử giao dịch gần đây</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Stt</th>
+                                        <th data-lang="time">Thời gian</th>
+                                        <th data-lang="denomination">Mệnh Giá</th>
+                                        <th data-lang="">Seri</th>
+                                        <th data-lang="card_code">Mã thẻ</th>
+                                        <th data-lang="money_topup">Số tiền nạp</th>
+                                        <th data-lang="condition">Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tb_money_his_card">
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -402,6 +402,24 @@
                         <button onclick="go_money()" type="button" class="btn btn-primary"
                             data-lang="recharged">Save</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="bank_money_ticket" tabindex="-1" role="dialog" aria-labelledby="bank_money_ticket"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body text_center">
+                    <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
+                    <h4>Thành Công !</h4>
+                    <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
+                    <button type="button" class="btn btn-primary" onclick="location.reload()"
+                        data-dismiss="modal">OK</button>
+                </div>
+                <div class="text_center">
+
                 </div>
             </div>
         </div>

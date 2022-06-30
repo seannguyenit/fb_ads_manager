@@ -1,4 +1,28 @@
 //smoothy_ui_table();
+
+
+
+async function get_img_loading() {
+    return await fetch(`/api/init_img_loading` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+             return data[0].logo_img;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+// init_load_img();
+// async function init_load_img(){
+//  var load_img = await get_img_loading();
+// //  if(load_img){
+// //     load_img.forEach(f=>{
+// //         imssg = f.logo_img
+// //     })
+// //  }
+//  imssg = "222222222222";
+// }
 /**
  * 
  * @param {*} params 
@@ -85,10 +109,10 @@ function get_format_VND(str) {
     return pls + rs;
 }
 
-init_loading()
 
+init_loading();
 async function init_loading() {
-    document.body.innerHTML += `<div id="loading-element"><img src="../img/loading.gif"/></div>`;
+    document.body.innerHTML += `<div id="loading-element"><img src="../img/loading.gif"/></div>`;    
 }
 
 async function start_loading() {

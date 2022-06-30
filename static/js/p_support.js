@@ -15,6 +15,7 @@ async function get_admin_contacts() {
 
 async function menu_contacst() {
     var phone_admin = document.getElementById("phone_admin");
+    var name_admin = document.getElementById("nameadmin");
     var email_admin = document.getElementById("email_admin");
     var facebook_admin =  document.getElementById("facebook_admin");
     var zalo_admin = document.getElementById("zalo_admin");
@@ -36,6 +37,9 @@ async function menu_contacst() {
                 if(zalo_admin){
                     zalo_admin.innerHTML = `
                     <a href="${f.zalo}" target="blank">Zalo</a>`;
+                }
+                if(name_admin){
+                    name_admin.innerHTML=`${f.name}`
                 }
                 
             })

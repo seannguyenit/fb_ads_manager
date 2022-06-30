@@ -9,7 +9,6 @@ require('dotenv').config
 
 const port = process.env.PORT || 3000
 
-
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors({
@@ -29,3 +28,4 @@ server.listen(port, () => {
     console.log('listening on *:3000'); 
 });
 console.log('RESTful API server started on: ' + port);
+
