@@ -7,7 +7,7 @@ init_bank_topup();
 function init_bank_topup() {
     insert_mb_bank();
     insert_acb_bank();
-      insert_momo_bank();
+    insert_momo_bank();
     // ii();
 }
 // history_login()
@@ -283,9 +283,9 @@ async function insert_mb_bank() {
                 rs_bank.transactions.forEach( async (f) => {
                     var list_topup_ = await list_topup_today(user_id,Number(new Date(today).getTime() / 1000),1);
                     if (f.type === "IN") {
-                        var des =f.description
-                        var number =des.indexOf('m2v');
-                        var description = des.substring(Number(number) + 3,Number(number) + 7)
+                        var des =f.description.toLowerCase()
+                        var number =des.indexOf('napthe');
+                        var description = des.substring(Number(number) + 6,Number(number) + 10)
                         if (description === id_user) {
                             let dd_ = f.transactionDate.substring(0, 2);
                             let m_ = f.transactionDate.substring(3, 5);
@@ -355,9 +355,9 @@ async function insert_acb_bank() {
                 rs_acb_bank.transactions.forEach( async (f) => {
                     var list_topup_ = await list_topup_today(user_id,Number(new Date(today).getTime() / 1000),3);
                     if (f.type === "IN") {
-                        var des =f.description
-                        var number =des.indexOf('m2v');
-                        var description = des.substring(Number(number) + 3,Number(number) + 7)
+                        var des =f.description.toLowerCase()
+                        var number =des.indexOf('napthe');
+                        var description = des.substring(Number(number) + 6,Number(number) + 10)
                         if (description === id_user) {
                             let dd_ = f.transactionDate.substring(0, 2);
                             let m_ = f.transactionDate.substring(3, 5);
@@ -434,9 +434,9 @@ async function insert_momo_bank() {
                 rs_momo.momoMsg.tranList.forEach(async (f) => {
                     var list_topup_ = await list_topup_today(user_id,Number(new Date(today).getTime() / 1000),2);
                     if (Number(f.io) === 1) {
-                        var des =f.comment
-                        var number =des.indexOf('m2v');
-                        var description = des.substring(Number(number) + 3,Number(number) + 7)
+                        var des =f.comment.toLowerCase()
+                        var number =des.indexOf('napthe');
+                        var description = des.substring(Number(number) + 6,Number(number) + 10)
                         if (description === id_user) {;
                            today_ = f.finishTime;
                             if (Number(new Date(star_today).getTime() / 1000) < Number(new Date(today_).getTime() / 1000) < Number(new Date(end_today).getTime() / 1000)) {

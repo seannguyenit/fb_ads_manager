@@ -111,11 +111,8 @@ module.exports = {
                     let sql = 'INSERT INTO pricing_history SET ?;'
                     db.query(sql, [data_pricing], (err, response) => {
                         if (err) throw err
-                        let sql_active = 'insert into history_login set user_id = ? ,action = ?, time = ?; '
-                        db.query(sql_active, [data_money.user_id,action, data_money.time], (err, response) => {
-                            if (err) throw err
+
                         res.json({ message: 'save success!' })
-                        })
                     })
                 })
             } else {

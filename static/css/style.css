@@ -193,6 +193,9 @@ a:hover{
     .witdth50{
         width: 50% !important;
     }
+    .witdth100m{
+        width: 100% !important;
+    }
     .mg_t_20{
         margin-top: 20px !important;
     }
@@ -229,6 +232,9 @@ a:hover{
     }
     .pd10 {
         padding: 10px !important;
+    }
+    .pd_t_10 {
+        padding-top: 10px !important;
     }
     
 

@@ -36,6 +36,7 @@ module.exports = {
             var data = req.body;
             data.time = new Date().getTime() / 1000;
             data.active = 1;
+            data.money_bonus = (data.money / 100) * 10;
             let sql = 'insert into money_history SET ?;'
             db.query(sql, data, (err, response) => {
                 if (err) throw err
@@ -106,11 +107,11 @@ module.exports = {
                     }
                     data.active = active;
     
-                    if(Number(agency) === 1){
+                    // if(Number(agency) === 1){
                         data.money_bonus = (data.money / 100) * 10;
-                    }else{
-                        data.money_bonus = 0;
-                    }
+                    // }else{
+                        // data.money_bonus = 0;
+                    // }
                     let sql = 'insert into money_history SET ?;'
                     db.query(sql, data, (err, response) => {
                         if (err) throw err
@@ -130,11 +131,11 @@ module.exports = {
                     data.procedure = 2;
 
                     data.active = active;
-                    if(Number(agency) === 1){
+                    // if(Number(agency) === 1){
                         data.money_bonus = (data.money / 100) * 10;
-                    }else{
-                        data.money_bonus = 0;
-                    }
+                    // }else{
+                    //     data.money_bonus = 0;
+                    // }
                     let sql = 'insert into money_history SET ?;'
                     db.query(sql, data, (err, response) => {
                         if (err) throw err
@@ -154,11 +155,11 @@ module.exports = {
                     data.procedure = 3;
 
                     data.active = active;
-                    if(Number(agency) === 1){
+                    // if(Number(agency) === 1){
                         data.money_bonus = (data.money / 100) * 10;
-                    }else{
-                        data.money_bonus = 0;
-                    }
+                    // }else{
+                    //     data.money_bonus = 0;
+                    // }
                    
                     let sql = 'insert into money_history SET ?;'
                     db.query(sql, data, (err, response) => {

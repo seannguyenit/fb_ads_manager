@@ -249,3 +249,8 @@ async function admin_contacts_save(url, data, meth) {
             console.error('Error:', error);
         });
 }
+
+function move_money_momo() {
+    $('#momo_table').modal('hide');
+    $('#move_money_momo_table').modal('show');
+}

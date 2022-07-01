@@ -172,8 +172,8 @@ module.exports = {
     insert_his_login: (req, res) => {
         var time = new Date().getTime() / 1000;
         var action =req.params.action;
-        let sql = 'insert into history_login set user_id = ? ,action = ?, time = ?;'
-        db.query(sql, [req.params.id,action,time], (err, response) => {
+        let sql = 'insert into history_login set user_id = ? ,action = ?, time = ?,active = ?;'
+        db.query(sql, [req.params.id,action,time,req.params.active], (err, response) => {
             if (err) throw err
             res.json({ message: 'insert success!' })
         })
