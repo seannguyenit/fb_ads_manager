@@ -9,25 +9,44 @@ init_top_up_card();
 async function init_top_up() {
     var data = await get_money_top_up();
     var placed = document.getElementById('tb_money_his');
-    var type = "MB bank";
-    if(placed){
+    var type = "";
+    var user_name = "";
+    if (placed) {
         if (data) {
             data.forEach(f => {
-                if(Number(f.procedure) === 2){
-                    type = "MoMo"
+                switch (Number(f.procedure)) {
+                    case 1:
+                        type = "MB Bank";
+                        user_name = f.username;
+                        break;
+                    case 2:
+                        type = "MoMo"
+                        user_name = f.username;
+                        break;
+                    case 3:
+                        type = "ACB bank"
+                        user_name = f.username;
+                        break;
+                    default:
+                        type = "admin"
+                        user_name = "admin";
+                        break;
+                }
+                // if (Number(f.procedure) === 2) {
+                //     type = "MoMo"
 
-                }
-                else if(Number(f.procedure) === 3){
-                    type = "ACB bank"
-                }
+                // }
+                // else if (Number(f.procedure) === 3) {
+                //     type = "ACB bank"
+                // }
 
                 placed.innerHTML += `
                 <tr>
                     <td>${data.indexOf(f) + 1}</td>
                     <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
                     <td>${type}</td>
-                    <td>${f.des}</td>   
-                    <td>Không Xác Định</td>
+                    <td>${f.transactionID || ""}</td>   
+                    <td>${user_name}</td>
                     <td>${get_format_VND(f.money)} VNĐ</td>
                 </tr>`
                 //  <td>${(f.time)}</td>
@@ -35,20 +54,20 @@ async function init_top_up() {
             })
         }
         var cr_u = get_cr_user();
-        if(document.getElementById('ticket_number')){
-            document.getElementById('ticket_number').innerText = get_number_by_id(cr_u.id);
+        if (document.getElementById('ticket_number')) {
+            document.getElementById('ticket_number').innerText = "m2v" + get_number_by_id(cr_u.id);
         }
     }
-  
-   
+
+
     // document.getElementById('des').value = get_number_by_id(cr_u.id);
-    
+
 }
 
 async function init_top_up_card() {
     var data = await get_money_top_up_card();
     var placed = document.getElementById('tb_money_his_card');
-    if(placed){
+    if (placed) {
         if (data) {
             data.forEach(f => {
                 placed.innerHTML += `
@@ -56,8 +75,8 @@ async function init_top_up_card() {
                     <td>${data.indexOf(f) + 1}</td>
                     <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
                     <td>${(f.declared_value) || 0}</td>
-                    <td>${f.Seri}</td>
-                    <td>${f.Pin}</td>
+                    <td>${(f.Seri || "")}</td>
+                    <td>${(f.Pin || "")}</td>
                     <td>${get_format_VND(f.money)} VNĐ</td>
                     <td>${(f.active == 1 ? 'Thành Công' : 'Error')}</td>
                     
@@ -67,9 +86,9 @@ async function init_top_up_card() {
             })
         }
     }
-   
 
-    
+
+
 }
 
 function open_ticket() {
@@ -78,7 +97,7 @@ function open_ticket() {
 async function save_ticket() {
     if (!confirm('Bạn muốn gửi yêu cầu nạp tiền ?')) {
         return;
-    }y
+    } y
     var money = 0;
     var method = 1;
     // var money = $('#money').val();
@@ -90,7 +109,7 @@ async function save_ticket() {
         alert('Chưa nhập đúng thông tin !')
         return;
     }
-    var rs = await ticket_save_({ money: money,  method: method, des: des, user_id: user_id});
+    var rs = await ticket_save_({ money: money, method: method, des: des, user_id: user_id });
     // var rs = await ticket_save_({des:des, user_id:user_id});
     alert('Xong !');
     $('#money_ticket').modal('hide');
@@ -98,8 +117,8 @@ async function save_ticket() {
 }
 
 // async function save_ticket2() {
-    
-  
+
+
 //     // document.getElementById('des').value = get_number_by_id(cr_u.id);
 //     var money = 0;
 //     var method = 2;
@@ -182,17 +201,17 @@ async function get_current_finance() {
         });
 }
 function init_money() {
-            get_current_finance().then(rs => {
-                var cr = document.getElementById('cr_money_');
-                // let cr_money = get_format_VND(rs.money);
-                // <input type="hidden" value="${cr_money}" id="current_money">
-                // <a style="color:white">${money_bonus}</a>
-                // let money_bonus = '(Bonus : ' + get_format_VND(rs.bonus)  + ' VNĐ)'
-                // <a style="color:white" href="/home/user_info">${user_info}</a>
-                let user_info = rs.username + ' ( ' + get_format_VND(rs.money) + ' VNĐ )';
-                cr.innerHTML = `
+    get_current_finance().then(rs => {
+        var cr = document.getElementById('cr_money_');
+        // let cr_money = get_format_VND(rs.money);
+        // <input type="hidden" value="${cr_money}" id="current_money">
+        // <a style="color:white">${money_bonus}</a>
+        // let money_bonus = '(Bonus : ' + get_format_VND(rs.bonus)  + ' VNĐ)'
+        // <a style="color:white" href="/home/user_info">${user_info}</a>
+        let user_info = rs.username + ' ( ' + get_format_VND(rs.money) + ' VNĐ )';
+        cr.innerHTML = `
                 ${user_info}`;
-            })
+    })
 }
 
 // function topup_directly(){

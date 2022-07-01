@@ -433,16 +433,23 @@ module.exports = {
                 res.json(response)
             })
     },
-    admin_mbbank: (req, res) => {
-        let sql = 'SELECT * FROM admin_bank limit 1;'
+    list_topup_today: (req, res) => {
+        let sql = 'SELECT * FROM `money_history` where `user_id` = ? and `time` = ? and `procedure` = ?;'
+            db.query(sql,[req.params.id, req.params.time,req.params.proce] ,(err, response) => {
+                if (err) throw err
+                res.json(response)
+            })
+    },
+    admin_bank: (req, res) => {
+        let sql = 'SELECT * FROM admin_bank;'
             db.query(sql, (err, response) => {
                 if (err) throw err
                 res.json(response)
             })
     },
-    update_admin_mbbank: (req, res) => {
-        let sql = 'UPDATE admin_bank SET ? where id = 1'
-            db.query(sql,req.body,(err, response) => {
+    update_admin_bank: (req, res) => {
+        let sql = 'UPDATE admin_bank SET ? where type = ?'
+            db.query(sql,[req.body,req.body.type],(err, response) => {
                 if (err) throw err
                 res.json({mess:"update success"});
             })

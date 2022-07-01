@@ -88,7 +88,7 @@
             </div>
             <div style="margin-top: 2vw;" class="bg-main-color container">
                 <div class="col-12 pd_t_1 pb-2">
-                    <button  onclick="open_modal_admin_mbbank(0)" class="float_right btn btn-primary">Thay ĐỔi</button>
+                    <button  onclick="open_modal_admin_mbbank()" class="float_right btn btn-primary">Thay ĐỔi</button>
                     <!-- <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button> -->
                   
                     <h5>Thông Tin API MBbank</h5>
@@ -105,6 +105,44 @@
                     <div class="">
                         <label style="width: 20%;" for="">Mật Khẩu MBbank </label>
                         <input disabled style="width: 50%;" type="password" id="pass_mbbank" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 2vw;" class="bg-main-color container">
+                <div class="col-12 pd_t_1 pb-2">
+                    <button  onclick="open_modal_admin_acbbank()" class="float_right btn btn-primary">Thay ĐỔi</button>
+                    <!-- <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button> -->
+                  
+                    <h5>Thông Tin API ACBbank</h5>
+                </div>
+                <div class="col-12">
+                    <div class="">
+                        <label style="width: 20%;" for="">Token ACBbank </label>
+                        <input disabled style="width: 50%;" type="text" id="token_acbbank" value="">
+                    </div>
+                    <div class="">
+                        <label style="width: 20%;" for="">Tài Khoảng ACBbank</label>
+                        <input disabled style="width: 50%;" type="text" id="account_acbbank" value="">
+                    </div>
+                    <div class="">
+                        <label style="width: 20%;" for="">Mật Khẩu ACBbank </label>
+                        <input disabled style="width: 50%;" type="password" id="pass_acbbank" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 2vw;" class="bg-main-color container">
+                <div class="col-12 pd_t_1 pb-2">
+                    <button  onclick="open_modal_admin_momo()" class="float_right btn btn-primary">Thay ĐỔi</button>
+                    <!-- <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button> -->
+                  
+                    <h5>Thông Tin API MoMo</h5>
+                </div>
+                <div class="col-12">
+                    <div class="">
+                        <label style="width: 20%;" for="">Token MoMo </label>
+                        <input disabled style="width: 50%;" type="text" id="token_momo" value="">
                     </div>
                 </div>
             </div>
@@ -165,15 +203,15 @@
                     </div>
                     <div class="col-md-12">
                         <label for="headline" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="detail_email_admin" value="name@gmail.com" required>
+                        <input type="text" class="form-control" id="detail_email_admin" value="name@gmail.com" >
                     </div>
                     <div class="col-md-12">
                         <label for="headline" class="form-label">Facebook</label>
-                        <input type="text" class="form-control" id="detail_link_fb" value="https://" required>
+                        <input type="text" class="form-control" id="detail_link_fb" value="https://" >
                     </div>
                     <div class="col-md-12">
                         <label for="headline" class="form-label">Zalo</label>
-                        <input type="text" class="form-control" id="detail_link_zl" value="https://" required>
+                        <input type="text" class="form-control" id="detail_link_zl" value="https://" >
                     </div>
                 </div>
                 <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
@@ -183,7 +221,7 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="api_table" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="mb_table" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="pricing_details" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -204,11 +242,63 @@
                     </div>
                     <div class="col-md-12">
                         <label for="headline" class="form-label">Mật Khẩu MBbank</label>
-                        <input type="text" class="form-control" id="detail_pass_mbbank" value="" required>
+                        <input type="text" class="form-control" id="detail_pass_mbbank" value="" >
                     </div>
                 </div>
                 <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
                         class="btn btn-primary" onclick="save_admin_mbbank()" data-dismiss="modal">Save</button><button
+                        type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="acb_table" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="pricing_details" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal_title">Thông tin api ACBbank</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex flex-wrap">
+                    <div class="col-md-12">
+                        <label for="name" class="form-label">Token ACBbank</label>
+                        <input type="text" class="form-control" id="detail_token_acbbank" value="">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="headline" class="form-label">Tài Khoảng ACBbank</label>
+                        <input type="text" class="form-control" id="detail_account_acbbank" value="">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="headline" class="form-label">Mật Khẩu ACBbank</label>
+                        <input type="text" class="form-control" id="detail_pass_acbbank" value="" >
+                    </div>
+                </div>
+                <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
+                        class="btn btn-primary" onclick="save_admin_acbbank()" data-dismiss="modal">Save</button><button
+                        type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="momo_table" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="pricing_details" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal_title">Thông tin api MoMo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex flex-wrap">
+                    <div class="col-md-12">
+                        <label for="name" class="form-label">Token MoMo</label>
+                        <input type="text" class="form-control" id="detail_token_momo" value="">
+                    </div>
+                </div>
+                <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
+                        class="btn btn-primary" onclick="save_admin_momo()" data-dismiss="modal">Save</button><button
                         type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
             </div>
         </div>

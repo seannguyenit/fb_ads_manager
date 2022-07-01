@@ -19,48 +19,28 @@ async function init_articles() {
     var dt = await articles_get_all();
     if (dt) {
         dt.forEach(item => {
+            if(item.video){
+                main_table.innerHTML += '';
+            }else{
+                main_table.innerHTML += `
+                <div class="box_articles" style="padding:1vw">
+                    <div  class="with100 box-content">
+                        <div class="box-left"><img style="border-radius: 50%;" width="50px" height="50px" src="../img/avatar.png" alt=""></div>
+                        <div class="box-right"><span style="font-weight:bolder">${item.name}</span> 
+                                <p>${new Date(Number(item.time * 1000 || 0)).toLocaleString()}</p>
+                        </div>
+                    </div>
+                    <div class="with100" style="padding:1vw">
+                            <h5>${item.headline}</h5>
+                            <p>${item.content}</p>
+                    </div>
+                </div                
+`;
+            }
         
-        //     if(item.video){
-        //         var link_video = item.video.slice(0, 24) + "embed/" + item.video.slice(24);
-        //         main_table.innerHTML += `
-        //                 <div class="box_articles with100" style="padding:1vw">
-        //                     <div  class="box-content with100">
-        //                         <div class="box-left"><img style="border-radius: 50%;" width="50px" height="50px" src="../img/avatar.png" alt=""></div>
-        //                         <div class="box-right"><span style="font-weight:bolder">${item.name}</span> 
-        //                                 <p>${new Date(Number(item.time * 1000 || 0)).toLocaleString()}</p>
-        //                         </div>
-        //                     </div>
-        //                     <div class="with100" style="padding:1vw">
-        //                             <h5 class="" >${item.headline}</h5>
-        //                             <p class="" >${item.content}</p>
-        //                             <p class="" ><a href="${item.video}" target="_blank">${link_video}</a></p>
-        //                             <iframe width="80%" height="100%" src="${link_video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    
-        //                     </div>
-        //                 </div                
-        // `;}else{
-            main_table.innerHTML += `
-                        <div class="box_articles" style="padding:1vw">
-                            <div  class="with100 box-content">
-                                <div class="box-left"><img style="border-radius: 50%;" width="50px" height="50px" src="../img/avatar.png" alt=""></div>
-                                <div class="box-right"><span style="font-weight:bolder">${item.name}</span> 
-                                        <p>${new Date(Number(item.time * 1000 || 0)).toLocaleString()}</p>
-                                </div>
-                            </div>
-                            <div class="with100" style="padding:1vw">
-                                    <h5>${item.headline}</h5>
-                                    <p>${item.content}</p>
-                            </div>
-                        </div                
-        `;
+            
         });
-        // smoothy_ui_table();
-        // if(Number(dt.length) != 0 ){
-        //     showing.innerHTML = "Showing 1 to "+ dt.length + " of " + dt.length + " entries";
-        // }
-        // else{
-        //     showing.innerHTML = "";
-        // }
+
     }
 }
 
@@ -96,38 +76,3 @@ async function ticket_save_(data) {
             console.error('Error:', error);
         });
 }
-// get_api_mb_bank();
-
-//   get_api_mb_bank();
-// async function get_api_mb_bank() {
-//     const url = `https://api.web2m.com/historyapimbnotiv3/El@183972359/264264989999/1671AF59-63E1-CAFA-CC9A-C9AF95CE3D01`;
-//     return await fetch(
-//         '/api/fproxy',
-//         {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify({ url: url })
-//         }
-//     )
-//         .then((response) => response.json())
-//         .then((data) => {
-//             return data.data;
-//         })
-//         .catch((error) => {
-//             console.warn(error);
-//             return undefined;
-//         });
-// }
-// insert_bank();
-// async function insert_bank(){
-//     var data = await get_api_mb_bank();
-//     if(data){
-//         data.forEach(f=>{
-//             if(f.type === "IN"){
-//                 if(f.description === )
-//             }
-//         })
-//     }
-// }

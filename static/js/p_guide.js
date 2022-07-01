@@ -21,9 +21,15 @@ async function init_guide() {
         dt.forEach(item => {
             if(item.video){
                 var link_video = item.video.slice(0, 24) + "embed/" + item.video.slice(24);
-                document.getElementById("link_video").innerHTML=`
-                <iframe width="100%" height="300px" src="${link_video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>${item.content_video} sssss</p>
+                document.getElementById("link_video").innerHTML +=`
+                                <div class="col-md-6 ">
+                                <div class="text_left pricing_benefit d-flex flex-column">
+                                    <div class="container text_center">
+                                    <iframe width="100%" height="300px" src="${link_video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <p style="font-size: 24px !important;">${item.content_video} sssss</p>
+                                    </div>
+                                </div>
+                        </div>
                 `;
             }
             

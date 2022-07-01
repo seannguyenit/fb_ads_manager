@@ -1,6 +1,7 @@
 `use strict`
 init_authen();
 init_logo();
+
 function change_lang(lang) {
     setCookie('lang', lang, 90000);
     // if(lang === "en")

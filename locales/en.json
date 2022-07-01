@@ -29,6 +29,7 @@
     "creation_date:" : "Creation date :",
     "creation_date" : "Creation date",
     "money:" : "Money :",
+    "money" : "Money",
     "price" : "Price",
     "time" : "Time",
     "save" : "Save",
@@ -90,7 +91,7 @@
     "card_code" : "Card code",
     "recharged" : "Recharged",
     "you're_cards" : "You're recharged cards",
-    "denomination" : "denomination :",
+    "denomination" : "denomination",
     "contact_and_support" : "CONTACT & SUPPORT",
     "Hổ_Trợ": "Support",
     "Hướng_Dẫn" : "Guild",
@@ -103,7 +104,21 @@
     "transfer_user:" : "Transfer user :",
     "transfer_money:" : "Amount to be transferred :",
     "card" : "Card",
-    "bank" : "Bank"
+    "bank" : "Bank",
+    "your_agency" : "Your Agency",
+    "action" : "Action",
+    "transfer_money_bank" : "Transfer Money Bank",
+    "transfer_money_card" : "Transfer Money Card",
+    "node11":"- Please transfer the correct content to get the fastest money added.",
+    "node12":"- If after 10 minutes from the time the money in your account is deducted but has not yet been added fun contact admin for support.",
+    "node13":"- Please do not load from another bank through this bank (avoid errors).",
+    "node14":"- Wrong syntax, wrong account number, wrong bank will be deducted 20% of the transaction fee. For example, loading 100k of the wrong content will only receive 80k coins and must contact the admin to join hands.",
+    "type" : "Type",
+    "transaction_code" : "Transaction Code",
+    "name" : "Name",
+    "bank_name" : "Bank name:",
+    "account_holder" : "Account holder:",
+    "minimum_topup" : "Minimum topup:"
 
 
 

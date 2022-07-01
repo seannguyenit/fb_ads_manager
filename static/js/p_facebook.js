@@ -323,3 +323,6 @@ async function show_pricing() {
 
 }
 
+function model_pricing(){
+    window.location.href = 'pricing';
+}

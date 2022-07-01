@@ -29,6 +29,7 @@
     "creation_date:" : "Ngày tạo :",
     "creation_date" : "Ngày tạo",
     "money:" : "Số dư :",
+    "money" : "Chuyển khoảng",
     "price" : "Đơn giá",
     "time" : "Thời gian",
     "save" : "Lưu",
@@ -56,7 +57,7 @@
     "note_topup_3" : "- Sau 30 phút không cộng tiền liên hệ zalo : 0987533112 để được hỗ trợ",
     "bankMB" : "Chuyển tiền vào ngân hàng MB",
     "account_name" : "Tên tài khoản",
-    "account_number" : "Số tài khoảnh",
+    "account_number" : "Số tài khoản",
     "transfer_contents" : "Nội dung chuyển khoản",
     "successful_transfer:" : "Chuyển khoản thành công vui lòng nhấn nút :",
     "confirm" : "Xác nhận",
@@ -103,7 +104,21 @@
     "transfer_user:" : "Chuyển khoảng user :",
     "transfer_money:": "Số tiền cần chuyển :",
     "card" : "Thẻ Cào",
-    "bank" : "Ngân Hàng"
+    "bank" : "Ngân Hàng",
+    "your_agency" : "Đại Lý Của Bạn",
+    "action" : "Thao tác",
+    "transfer_money_bank" : "Nạp Tiền Chuyển Khoảng",
+    "transfer_money_card" : "Nạp Tiền Thẻ Cào",
+    "node11":"- Bạn vui lòng chuyển khoản chính xác nội dung để được cộng tiền nhanh nhất.",
+    "node12":"- Nếu sau 10 phút từ khi tiền trong tài khoản của bạn bị trừ mà vẫn chưa được cộng tiền vui liên hệ Admin để được hỗ trợ.",
+    "node13":"- Vui lòng không nạp từ bank khác qua bank này (tránh lỗi).",
+    "node14":"- Nạp sai cú pháp, sai số tài khoản, sai ngân hàng sẽ bị trừ 20% phí giao dịch. Vd: nạp 100k sai nội dung sẽ chỉ nhận được 80k coin và phải liên hệ admin để cộng tay.",
+    "type" : "Loại",
+    "transaction_code" : "Mã Giao Dịch",
+    "name" : "Người Chuyển",
+    "bank_name" : "Tên Ngân Hàng:",
+    "account_holder" : "Chủ tài khoản:",
+    "minimum_topup" : "Nạp tối thiêu:"
     
 
 

@@ -72,6 +72,13 @@ module.exports = {
             res.json(response)
         })
     },
+    get_img_loading: (req, res) => {
+        let sql = 'SELECT * from logo where type = 3 and active = 1 limit 1;'
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
     edit_type_logo: (req, res) => {
         var active = req.params.active;
         if (Number(active) === 0) {

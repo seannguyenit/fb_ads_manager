@@ -96,15 +96,16 @@ module.exports = function (app) {
   app.route('/api/admin_contacts')
     .get(accCtrl.admin_contacts)
     .post(accCtrl.update_admin_contacts);
-  app.route('/api/admin_mbbank')
-    .get(accCtrl.admin_mbbank)
-    .post(accCtrl.update_admin_mbbank);
+  app.route('/api/admin_bank')
+    .get(accCtrl.admin_bank)
+    .post(accCtrl.update_admin_bank);
   app.route('/api/contacts/:id')
     .put(accCtrl.del_contacts)
   app.route('/api/agency/:id')
     .get(accCtrl.get_agency_info)
     .put(accCtrl.agency_reg);
-
+  app.route('/api/list_topup_today/:id/:time/:proce')
+    .get(accCtrl.list_topup_today)
   // app.route('/api/infor_agency/:id')
   // .get(accCtrl.get_agency_info_by_user);
   app.route('/api/agency_m/:id')
@@ -132,6 +133,8 @@ module.exports = function (app) {
 
   app.route('/api/init_img_login')
     .get(menuCtrl.get_img_login);
+    app.route('/api/init_img_loading')
+    .get(menuCtrl.get_img_loading);
   app.route('/api/init_logo')
     .get(menuCtrl.get_img_logo);
   app.route('/api/menu_logo/:id')
