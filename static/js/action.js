@@ -28,6 +28,7 @@ async function init_data_history(){
                     <td>${item.username}</td>
                     <td>${item.action}</td>
                     <td>${new Date(Number(item.time * 1000 || 0)).toLocaleString()}</td>
+                    <td>IP ${item.active || 0}</td>
                 <tr>
             `;
         })

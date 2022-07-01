@@ -55,7 +55,7 @@ async function init_top_up() {
         }
         var cr_u = get_cr_user();
         if (document.getElementById('ticket_number')) {
-            document.getElementById('ticket_number').innerText = "m2v" + get_number_by_id(cr_u.id);
+            document.getElementById('ticket_number').innerText = "napthe" + get_number_by_id(cr_u.id);
         }
     }
 

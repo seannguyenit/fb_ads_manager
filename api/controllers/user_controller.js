@@ -14,7 +14,7 @@ module.exports = {
         })
         // let sql = 'CALL `user_getbyname`(?)';
     },
-    get_all_money : (req, res) => {
+    get_all_money: (req, res) => {
         var time_from = req.params.from;
         var time_to = req.params.to;
         // if(time_from === time_to){
@@ -22,12 +22,12 @@ module.exports = {
         // };
         let sql = 'SELECT get_all_money(?,?) AS all_money, get_all_bonus(?,?) AS all_bonus, get_all_withdraw_money(?,?) AS all_withdraw_money LIMIT 1;'
         // , get_all_bonus() AS all_bonus, get_all_month_money() AS all_month_money, get_all_withdraw_money() AS all_withdraw_money
-        db.query(sql,[time_from ,time_to, time_from ,time_to, time_from ,time_to ],(err, response) => {
+        db.query(sql, [time_from, time_to, time_from, time_to, time_from, time_to], (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
-    get_allmoney_today_money : (req, res) => {
+    get_allmoney_today_money: (req, res) => {
         var from_allmoney = '2022-05-01 00:00:00';
         var time_from_allmoney = Number(new Date(from_allmoney).getTime() / 1000);
         var time_to_allmoney = Number(new Date().getTime() / 1000);
@@ -46,35 +46,35 @@ module.exports = {
         //     time_to = time_to + 0.0001;
         // };
         let sql = 'SELECT get_all_money(?,?) AS all_money, get_all_current_money() AS all_current_money, get_all_use_money(?,?) AS all_use_money, ( SELECT COUNT(`user`.`id`) FROM `user` WHERE `user`.`active` = 1 and date(`user`.`created_at`) = ?) AS today_user, get_all_money(?,?) AS today_topup,  get_all_use_money(?,?) AS today_use_money LIMIT 1;'
-        db.query(sql,[time_from_allmoney ,time_to_allmoney,time_from_allmoney ,time_to_allmoney,today,star_today,end_today,star_today,end_today],(err, response) => {
+        db.query(sql, [time_from_allmoney, time_to_allmoney, time_from_allmoney, time_to_allmoney, today, star_today, end_today, star_today, end_today], (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
-    get_agency : (req, res) => {
+    get_agency: (req, res) => {
         let sql = 'SELECT * FROM `user` WHERE is_agency = 1 AND active = 1;'
         // , get_all_bonus() AS all_bonus, get_all_month_money() AS all_month_money, get_all_withdraw_money() AS all_withdraw_money
-        db.query(sql,(err, response) => {
+        db.query(sql, (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
-    get_sub_agency : (req, res) => {
+    get_sub_agency: (req, res) => {
         let sql = 'SELECT * FROM `user` WHERE par_id != 0 AND active = 1;'
         // , get_all_bonus() AS all_bonus, get_all_month_money() AS all_month_money, get_all_withdraw_money() AS all_withdraw_money
-        db.query(sql,(err, response) => {
+        db.query(sql, (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
     get2: (req, res) => {
         let sql = 'CALL `user_getalllimit`(?,?)'
-        db.query(sql,[req.params.cr_page,req.params.user_number_page] ,(err, response) => {
+        db.query(sql, [req.params.cr_page, req.params.user_number_page], (err, response) => {
             if (err) throw err
             res.json(response)
         })
         // let sql = 'CALL `user_getbyname`(?)';
-        
+
     },
     detail: (req, res) => {
         let sql = 'CALL `user_getdetail`(?)'
@@ -85,14 +85,14 @@ module.exports = {
         })
     },
     get_byname: (req, res) => {
-        let username = '%'+req.params.username+'%';
+        let username = '%' + req.params.username + '%';
         let sql = 'CALL `user_getbyname`(?)'
         db.query(sql, [username], (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
-   
+
     update: (req, res) => {
         let data = req.body;
         let userId = req.params.id;
@@ -129,7 +129,7 @@ module.exports = {
     update_history: (req, res) => {
         var active = 0;
         let sql = 'Update pricing_history SET pricing_active = ? WHERE user_id = ?'
-        db.query(sql, [active,req.params.id], (err, response) => {
+        db.query(sql, [active, req.params.id], (err, response) => {
             if (err) throw err
             res.json({ message: 'Update success!' })
         })
@@ -285,10 +285,15 @@ module.exports = {
     },
     store_token: (req, res) => {
         let data = req.body;
+        var time = new Date().getTime() / 1000;
         let sql = 'INSERT INTO user_token_fb SET ?;'
         db.query(sql, [data], (err, response) => {
             if (err) throw err
-            res.json({ ok: 1 });
+            let sql_active = 'insert into history_login set user_id = ? ,action = ?, time = ?, active = ?; '
+            db.query(sql_active, [data.user_id, "Gia Hạn Token", time,data.token], (err, response) => {
+                if (err) throw err
+                res.json({ ok: 1 });
+            })
         })
     },
     del_token: (req, res) => {
@@ -321,29 +326,29 @@ module.exports = {
     },
     get_all_agency: (req, res) => {
         let sql = 'CALL `user_getbyagency`(0)';
-            db.query(sql, (err, response) => {
+        db.query(sql, (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
-    get_user_by_agency: (req,res) => {
+    get_user_by_agency: (req, res) => {
         let sql = 'SELECT * from user where active = 1 and par_id = ?'
         db.query(sql, [Number(req.params.id)], (err, response) => {
             if (err) throw err
             res.json(response)
         })
-    } ,
+    },
     get_bychildname: (req, res) => {
-        let username = '%'+req.params.username+'%';
+        let username = '%' + req.params.username + '%';
         let sql = 'SELECT `user`.`username`,(SELECT sum(money) FROM money_history where `active` = 1 and `type` =  1 and user_id = `user`.id) as total, `user`.`ref`, `user`.`is_agency`, `user`.`created_at` from `user` where `user`.par_id = ? and active = 1 and `user`.username like ?';
-        db.query(sql, [Number(req.params.id),username], (err, response) => {
+        db.query(sql, [Number(req.params.id), username], (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
     get_childbycreated: (req, res) => {
         let sql = 'SELECT `user`.`username`,(SELECT sum(money) FROM money_history where `active` = 1 and `type` =  1 and user_id = `user`.id) as total, `user`.`ref`, `user`.`is_agency`, `user`.`created_at` from `user` where `user`.par_id = ? and active = 1 and (`user`.created_at >= ? and `user`.created_at <= ?);';
-        db.query(sql, [Number(req.params.id),req.params.from,req.params.to], (err, response) => {
+        db.query(sql, [Number(req.params.id), req.params.from, req.params.to], (err, response) => {
             if (err) throw err
             res.json(response)
         })
@@ -381,7 +386,7 @@ module.exports = {
     //         }
     //     })
 
-        
+
     //     // let sql = 'SELECT `user`.`username`, `user`.`ref`, `user`.`is_agency`, `user`.`agency_time` from `user` where `user`.id = ? and active = 1 limit 1'
     //     // db.query(sql, [Number(req.params.id)], (err, response) => {
     //     //     if (err) throw err
@@ -427,45 +432,45 @@ module.exports = {
     // },
     admin_contacts: (req, res) => {
         let sql = 'SELECT * FROM admin_contacts limit 1;'
-            db.query(sql, (err, response) => {
-                if (err) throw err
-                res.json(response)
-            })
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
     },
     list_topup_today: (req, res) => {
         let sql = 'SELECT * FROM `money_history` where `user_id` = ? and `time` = ? and `procedure` = ?;'
-            db.query(sql,[req.params.id, req.params.time,req.params.proce] ,(err, response) => {
-                if (err) throw err
-                res.json(response)
-            })
+        db.query(sql, [req.params.id, req.params.time, req.params.proce], (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
     },
     admin_bank: (req, res) => {
         let sql = 'SELECT * FROM admin_bank;'
-            db.query(sql, (err, response) => {
-                if (err) throw err
-                res.json(response)
-            })
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
     },
     update_admin_bank: (req, res) => {
         let sql = 'UPDATE admin_bank SET ? where type = ?'
-            db.query(sql,[req.body,req.body.type],(err, response) => {
-                if (err) throw err
-                res.json({mess:"update success"});
-            })
+        db.query(sql, [req.body, req.body.type], (err, response) => {
+            if (err) throw err
+            res.json({ mess: "update success" });
+        })
     },
     update_admin_contacts: (req, res) => {
         let sql = 'UPDATE admin_contacts SET ? where id = 1'
-            db.query(sql,req.body,(err, response) => {
-                if (err) throw err
-                res.json({mess:"update success"});
-            })
+        db.query(sql, req.body, (err, response) => {
+            if (err) throw err
+            res.json({ mess: "update success" });
+        })
     },
     del_contacts: (req, res) => {
         let sql = 'delete from contacts where id = ?;'
-            db.query(sql,[req.params.id], (err, response) => {
-                if (err) throw err
-                res.json({ok:1})
-            })
+        db.query(sql, [req.params.id], (err, response) => {
+            if (err) throw err
+            res.json({ ok: 1 })
+        })
     },
 
     get_articles: (req, res) => {
