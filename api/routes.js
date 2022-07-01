@@ -3,10 +3,10 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
   destination: function (req, file, next) {
-    next(null, `././static/img`);
+    next(null, `./lib/2022/6`);
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname + '--' + '.png');
+    cb(null, '1--' + '.png');
   }
 });
 const upload = multer(
@@ -15,7 +15,7 @@ const upload = multer(
       next(null, true);
     }, limits: { fileSize: 15 * 1000000 }
   }
-).single('logo_img');
+).single('file');
 module.exports = function (app) {
   let accCtrl = require('./controllers/user_controller');
   let menuCtrl = require('./controllers/menu_controller');

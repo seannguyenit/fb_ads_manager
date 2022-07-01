@@ -132,9 +132,9 @@ async function init_users_byname() {
                 <tr>
                     <td>${dt.indexOf(item) + 1}</td>    
                     <td>${item.username}</td> 
-                    <td>${get_format_VND(item.money)}</td> 
-                    <td>${get_format_VND(item.bonus)}</td> 
-                    <td>${get_format_VND(item.money_month)}</td>  
+                    <td>${get_format_VND(item.money || '')}</td> 
+                    <td>${get_format_VND(item.bonus || '')}</td> 
+                    <td>${get_format_VND(item.money_month || '')}</td>   
                     <td>${format_time(item.created_at) || ''}</td>  
                     <td>${limit_date}</td>
                     <td>
@@ -699,7 +699,7 @@ async function init_users(cr_page, user_number_page) {
                 <td>${item.username}</td> 
                 <td>${get_format_VND(item.money || '')}</td> 
                 <td>${get_format_VND(item.bonus || '')}</td> 
-                <td>${get_format_VND(item.money_month || '')}</td> 
+                <td>${get_format_VND(item.money_month || '')}</td>   
                 <td>${format_time(item.created_at) || ''}</td>  
                 <td>${limit_date}</td>
                 <td>
