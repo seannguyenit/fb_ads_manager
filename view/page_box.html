@@ -127,6 +127,7 @@
                                 <option selected disabled value="">Choose...</option>
                                 <option>...</option>
                             </select>
+                            <label for="" id="error_token"></label>
                         </div>
                         <div class="col-md-4 m_b_5">
                             <label for="list_pages" class="form-label" data-lang="Page"></label> <br>
@@ -276,7 +277,22 @@
             </div>
         </section>
     </div>
-    <div class="modal fade" id="bank_money_ticket" tabindex="-1" role="dialog" aria-labelledby="bank_money_ticket"
+    <dialog id="bank_money_ticket"><div class="modal-dialog" role="document">
+        <div style="border: 0px;" class="modal-content">
+
+            <div class="modal-body text_center">
+                <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
+                <h4>Thành Công !</h4>
+                <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
+                <button type="button" class="btn btn-primary" onclick="location.reload()"
+                    data-dismiss="modal">OK</button>
+            </div>
+            <div class="text_center">
+
+            </div>
+        </div>
+    </div></dialog>
+    <!-- <dialog class="modal fade" id="bank_money_ticket" tabindex="-1" role="dialog" aria-labelledby="bank_money_ticket"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -293,7 +309,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </dialog> -->
     <div class="footer">
         <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color">
             <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
@@ -317,6 +333,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
     <script type="text/javascript">
+
         function custom_template(obj) {
             var data = $(obj.element).data();
             var text = $(obj.element).text();

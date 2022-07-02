@@ -4,12 +4,14 @@ init_menu();
 // insert_bank();
 menu_contacst();
 init_bank_topup();
+
 function init_bank_topup() {
     insert_mb_bank();
     insert_acb_bank();
     insert_momo_bank();
     // ii();
 }
+
 // history_login()
 /* menu */
 async function menu_get_template() {
@@ -269,7 +271,7 @@ async function insert_mb_bank() {
         var d = new Date();
         let y = d.getFullYear();
         let m = (d.getMonth() + 1) < 10 ? `0${d.getMonth() + 1}` : (d.getMonth() + 1);
-        let dd = d.getDate();
+        let dd = (d.getDate()) < 10 ? `0${d.getDate() }` : (d.getDate());
         var today = `${y}-${m}-${dd}`;
         var today_ = "";
         var method = 1;
@@ -297,7 +299,8 @@ async function insert_mb_bank() {
                                     if(Number(list_count) === 0){
                                         var rs = await ticket_save_mb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000),transactionID:f.transactionID });
                                         if (rs.ok) {
-                                             $('#bank_money_ticket').modal('show');}
+                                            document.getElementById("bank_money_ticket").showModal();
+                                        }
                                     }else{
                                         let list_tranid =  list_topup_.filter(s => Number(s.transactionID) === f.transactionID)
                                         let list_count_tranid = Object.keys(list_tranid).length;
@@ -306,7 +309,8 @@ async function insert_mb_bank() {
                                         }else{
                                             var rss = await ticket_save_mb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000),transactionID:f.transactionID });
                                             if (rss.ok) {
-                                                $('#bank_money_ticket').modal('show');}
+                                                document.getElementById("bank_money_ticket").showModal();
+                                            }
                                         }
                                        
                                     }
@@ -324,6 +328,7 @@ async function insert_mb_bank() {
 }
 
 async function insert_acb_bank() {
+   
     var infor_acbbank = await get_admin_bank();
    
         var token_bank = "";
@@ -341,7 +346,7 @@ async function insert_acb_bank() {
         var d = new Date();
         let y = d.getFullYear();
         let m = (d.getMonth() + 1) < 10 ? `0${d.getMonth() + 1}` : (d.getMonth() + 1);
-        let dd = d.getDate();
+        let dd = (d.getDate()) < 10 ? `0${d.getDate() }` : (d.getDate());
         var today = `${y}-${m}-${dd}`;
         var today_ = "";
         var method = 1;
@@ -369,7 +374,9 @@ async function insert_acb_bank() {
                                     if(Number(list_count) === 0){
                                         var rs = await ticket_save_acb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000),transactionID:f.transactionID });
                                         if (rs.ok) {
-                                             $('#bank_money_ticket').modal('show');}
+                                            //  $('#bank_money_ticket').modal('show')
+                                             document.getElementById("bank_money_ticket").showModal();
+                                            }
                                     }else{
                                         let list_tranid =  list_topup_.filter(s => Number(s.transactionID) === f.transactionID)
                                         let list_count_tranid = Object.keys(list_tranid).length;
@@ -378,7 +385,8 @@ async function insert_acb_bank() {
                                         }else{
                                             var rss = await ticket_save_acb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000),transactionID:f.transactionID });
                                             if (rss.ok) {
-                                                $('#bank_money_ticket').modal('show');}
+                                                document.getElementById("bank_money_ticket").showModal();
+                                            }
                                         }
                                        
                                     }
@@ -417,7 +425,7 @@ async function insert_momo_bank() {
         var d = new Date();
         let y = d.getFullYear();
         let m = (d.getMonth() + 1) < 10 ? `0${d.getMonth() + 1}` : (d.getMonth() + 1);
-        let dd = d.getDate();
+        let dd = (d.getDate()) < 10 ? `0${d.getDate() }` : (d.getDate());
         var star_today = `${y}-${m}-${dd} 00:00:00`;
         var end_today = `${y}-${m}-${dd} 23:59:59`;
         var today = `${y}-${m}-${dd}`;
@@ -445,7 +453,9 @@ async function insert_momo_bank() {
                                     if(Number(list_count) === 0){
                                         var rs = await ticket_save_momo({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000),transactionID:f.tranId });
                                         if (rs.ok) {
-                                             $('#bank_money_ticket').modal('show');}
+                                            //  $('#bank_money_ticket').modal('show')
+                                             document.getElementById("bank_money_ticket").showModal();
+                                            }
                                     }else{
                                         let list_tranid =  list_topup_.filter(s => Number(s.transactionID) === f.tranId)
                                         let list_count_tranid = Object.keys(list_tranid).length;
@@ -454,7 +464,7 @@ async function insert_momo_bank() {
                                         }else{
                                             var rss = await ticket_save_acb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000),transactionID:f.tranId });
                                             if (rss.ok) {
-                                                $('#bank_money_ticket').modal('show');}
+                                                document.getElementById("bank_money_ticket").showModal();}
                                         }
                                        
                                     }
