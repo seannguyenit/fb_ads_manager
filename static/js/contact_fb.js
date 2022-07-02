@@ -164,7 +164,7 @@ async function set_combobox_data() {
     if (data_pages) {
         try {
             data_pages.forEach(page => {
-                combo_pages.innerHTML += `<option data-name="${page.name}" data-token="${page.access_token}" value="${page.id}" data-img_src="${page.picture.data.url}">${page.name}-${page.id}</option>`;
+                combo_pages.innerHTML += `<option data-name="${page.name}" data-token="${page.access_token}" value="${page.id}" data-img_src="${page.picture.data.url}">${page.name}</option>`;
             });
             var data_ads_acc = await get_ads_acc_from_fb(f);
             if (data_ads_acc) {
