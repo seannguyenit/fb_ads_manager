@@ -177,13 +177,19 @@ async function set_combobox_data() {
             var cr_page = get_page_value();
             document.getElementById('link').value = `https://www.facebook.com/${cr_page}`;
         } catch (error) {
-            alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
+            if(document.getElementById('error_token')){
+                document.getElementById('error_token').innerHTML=` <h5 style="color:red">Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !</h5>`;  
+            }
+            // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
         }
         await change_card_element();
         document.getElementById('img_1').src = 'https://i.imgur.com/BDJYyka.jpg';
         document.getElementById('img_2').src = document.querySelector('div[class="img_item active"]').children[0].src;
     } else {
-        alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
+        if(document.getElementById('error_token')){
+            document.getElementById('error_token').innerHTML=` <h5 style="color:red">Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !</h5>`;  
+        }
+        // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
     }
     stop_loading();
 
