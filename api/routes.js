@@ -112,7 +112,8 @@ module.exports = function (app) {
     .put(accCtrl.agency_app);
   app.route('/api/agency_m/cancel/:id')
     .put(accCtrl.agency_cancel);
-
+    app.route('/api/action_bank/:id/:action')
+    .get(accCtrl.edit_action_bank);
   app.route('/api/menu')
     .get(menuCtrl.get_template);
   app.route('/api/menu/:id')

@@ -37,22 +37,55 @@ async function open_data_admin_mbbank() {
     var data = await get_admin_bank();
     if (data) {
         data.forEach(f => {
+           
             if(Number(f.type) === 1){
+                if(Number(f.action) === 1){
+                    var action = ` <button onclick="edit_active(${f.id},${f.action})">On</button>`
+                }else{
+                    var action = ` <button onclick="edit_active(${f.id},${f.action})">Off</button>`
+                }
                 document.getElementById('token_mbbank').value = `${f.token}`
                 document.getElementById('account_mbbank').value = `${f.account}`
                 document.getElementById('pass_mbbank').value = `${f.password}`
+                document.getElementById('action_mb').innerHTML =`${action}`
             }
             if(Number(f.type) === 2){
+                if(Number(f.action) === 1){
+                    var action = ` <button onclick="edit_active(${f.id},${f.action})">On</button>`
+                }else{
+                    var action = ` <button onclick="edit_active(${f.id},${f.action})">Off</button>`
+                }
                 document.getElementById('token_acbbank').value = `${f.token}`
                 document.getElementById('account_acbbank').value = `${f.account}`
                 document.getElementById('pass_acbbank').value = `${f.password}`
+                document.getElementById('action_acb').innerHTML =`${action}`
             }
             if(Number(f.type) === 3){
+                if(Number(f.action) === 1){
+                    var action = ` <button onclick="edit_active(${f.id},${f.action})">On</button>`
+                }else{
+                    var action = ` <button onclick="edit_active(${f.id},${f.action})">Off</button>`
+                }
                 document.getElementById('token_momo').value = `${f.token}`
+                document.getElementById('action_momo').innerHTML =`${action}`
             }
            
         })
     }
+}
+
+async function edit_active(id,action){
+    var rs = await fetch(`/api/action_bank/${id}/${action}` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => { 
+            console.warn(error);
+            return undefined;
+        });
+
+        window.location.href = 'config_general';
 }
 
 // modal Show admin_mbbank
@@ -90,8 +123,10 @@ async function open_modal_admin_momo(){
     var data = await get_admin_bank();
     if (data) {
         data.forEach(f => {
+            
             if(Number(f.type) === 3){
             document.getElementById('detail_token_momo').value = `${f.token}`
+           
             }
         })
     }

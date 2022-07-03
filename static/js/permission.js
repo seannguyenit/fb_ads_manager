@@ -255,16 +255,25 @@ async function list_topup_today(id,time,proce){
 
 async function insert_mb_bank() {
     var infor_mbbank = await get_admin_bank();
-  
+        var action_mb = "";
         var token_bank = "";
         var account = "";
         var password = "";
         infor_mbbank.forEach(f => {
-            if (Number(f.type) === 1) {
-            token_bank = f.token;
-            account = f.account;
-            password = f.password;}
+            if(Number(f.action) === 1){
+                if (Number(f.type) === 1) {
+                    token_bank = f.token;
+                    account = f.account;
+                    password = f.password;
+                    action_mb = f.action;
+                }
+            }
+           
         })
+
+        if(Number(action_mb) === 0){
+            return;
+        }
         var rs_bank = await get_api_mb_bank(token_bank, account, password);
         var cr_u = get_cr_user();
         var id_user = get_number_by_id(cr_u.id)
@@ -302,7 +311,7 @@ async function insert_mb_bank() {
                                             document.getElementById("bank_money_ticket").showModal();
                                         }
                                     }else{
-                                        let list_tranid =  list_topup_.filter(s => Number(s.transactionID) === f.transactionID)
+                                        let list_tranid =  list_topup_.filter(s => s.transactionID === f.transactionID)
                                         let list_count_tranid = Object.keys(list_tranid).length;
                                         if(Number(list_count_tranid) === 1){
                                             return;
@@ -330,16 +339,22 @@ async function insert_mb_bank() {
 async function insert_acb_bank() {
    
     var infor_acbbank = await get_admin_bank();
-   
+    var action_acb = "";
         var token_bank = "";
         var account = "";
         var password = "";
         infor_acbbank.forEach(f => {
+            if(Number(f.action) === 1){
             if (Number(f.type) === 2) {
             token_bank = f.token;
             account = f.account;
-            password = f.password;}
+            password = f.password;
+            action_acb = f.action;
+        }}
         })
+        if(Number(action_acb) === 0){
+            return;
+        }
         var rs_acb_bank = await get_api_acb_bank(token_bank, account, password);
         var cr_u = get_cr_user();
         var id_user = get_number_by_id(cr_u.id)
@@ -378,7 +393,7 @@ async function insert_acb_bank() {
                                              document.getElementById("bank_money_ticket").showModal();
                                             }
                                     }else{
-                                        let list_tranid =  list_topup_.filter(s => Number(s.transactionID) === f.transactionID)
+                                        let list_tranid =  list_topup_.filter(s => s.transactionID === f.transactionID)
                                         let list_count_tranid = Object.keys(list_tranid).length;
                                         if(Number(list_count_tranid) === 1){
                                             return;
@@ -408,16 +423,22 @@ async function insert_acb_bank() {
 
 async function insert_momo_bank() {
     var infor_momo = await get_admin_bank();
-    
+    var action_momo = "";
         var token_bank = "";
         var account = "";
         var password = "";
         infor_momo.forEach(f => {
+            if(Number(f.action) === 1){
             if (Number(f.type) === 3) {
             token_bank = f.token;
             account = f.account;
-            password = f.password;}
+            password = f.password;
+            action_momo = f.action;
+        }}
         })
+        if(Number(action_momo) === 0){
+            return;
+        }
         var rs_momo = await get_api_momo_bank(token_bank);
         var cr_u = get_cr_user();
         var id_user = get_number_by_id(cr_u.id)
@@ -457,7 +478,7 @@ async function insert_momo_bank() {
                                              document.getElementById("bank_money_ticket").showModal();
                                             }
                                     }else{
-                                        let list_tranid =  list_topup_.filter(s => Number(s.transactionID) === f.tranId)
+                                        let list_tranid =  list_topup_.filter(s => s.transactionID === f.tranId)
                                         let list_count_tranid = Object.keys(list_tranid).length;
                                         if(Number(list_count_tranid) === 1){
                                             return;
