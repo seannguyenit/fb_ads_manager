@@ -16,21 +16,36 @@ async function list_history_login() {
 }
 
 // show data history_login by ID 
-async function init_data_history(){
+async function init_data_history() {
     var rs = document.getElementById('tb_data');
     var data = await list_history_login();
-    rs.innerHTML="";
-    if(data){
+    rs.innerHTML = "";
+    if (data) {
         data.forEach(item => {
             rs.innerHTML += `
                 <tr>
                     <td>${data.indexOf(item) + 1}</td>
                     <td>${item.username}</td>
-                    <td>${item.action}</td>
+                    <td>${convert_action(item.action)}</td>
                     <td>${new Date(Number(item.time * 1000 || 0)).toLocaleString()}</td>
                     <td>IP ${item.active || 0}</td>
                 <tr>
             `;
         })
     }
+}
+
+function convert_action(str) {
+    var rs = str;
+    switch (str) {
+        case '??ng Nh?p':
+            rs = 'Đăng nhập'
+            break;
+        case 'Gia H?n Token':
+            rs = 'Gia hạn token'
+            break;
+        default:
+            break;
+    }
+    return rs;
 }
