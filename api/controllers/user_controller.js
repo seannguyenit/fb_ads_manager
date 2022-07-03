@@ -459,6 +459,19 @@ module.exports = {
             res.json({ mess: "update success" });
         })
     },
+    edit_action_bank: (req, res) => {
+        var action = req.params.action;
+        if (Number(action) === 0) {
+            action = 1
+        } else {
+            action = 0
+        }
+        let sql = 'update `admin_bank` set `action` = ? where id = ?;'
+        db.query(sql, [action, req.params.id], (err, response) => {
+            if (err) throw err
+            res.json({ message: 'Success!' })
+        })
+    },
     update_admin_contacts: (req, res) => {
         let sql = 'UPDATE admin_contacts SET ? where id = 1'
         db.query(sql, req.body, (err, response) => {

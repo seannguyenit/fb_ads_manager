@@ -18,18 +18,21 @@
     <!-- Top Bar -->
     <div class="header">
         <div class="d-flex">
-            <div class="p-2 flex-grow-1" id="img_logo"><a class="navbar-brand" href="/home/users"><img height="68.99px" src="../img/logo.jpg"
-                        alt=""></a></div>
-           
+            <div class="p-2 flex-grow-1" id="img_logo"><a class="navbar-brand" href="/home/users"><img height="68.99px"
+                        src="../img/logo.jpg" alt=""></a></div>
+
             <div style=" padding-right: 6vw;" class="dropdown">
-                <div  class=" dropdown-toggle" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                    <img style="border-radius: 60%; margin-top: 1.5vw;"
-                            width="50px" height="50px" src="../img/avatar.png" alt="">
+                <div class=" dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <img style="border-radius: 60%; margin-top: 1.5vw;" width="50px" height="50px"
+                        src="../img/avatar.png" alt="">
                 </div>
-                <div style="padding-top: 0px; padding-right: 15vw;" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o" aria-hidden="true"></i> Tài Khoảng</a>
-                    <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out" aria-hidden="true"></i>Đăng xuất</a>
+                <div style="padding-top: 0px; padding-right: 15vw;" class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o" aria-hidden="true"></i>
+                        Tài Khoảng</a>
+                    <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
+                            aria-hidden="true"></i>Đăng xuất</a>
                 </div>
             </div>
         </div>
@@ -88,9 +91,9 @@
             </div>
             <div style="margin-top: 2vw;" class="bg-main-color container">
                 <div class="col-12 pd_t_1 pb-2">
-                    <button  onclick="open_modal_admin_mbbank()" class="float_right btn btn-primary">Thay ĐỔi</button>
+                    <button onclick="open_modal_admin_mbbank()" class="float_right btn btn-primary">Thay ĐỔi</button>
                     <!-- <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button> -->
-                  
+
                     <h5>Thông Tin API MBbank</h5>
                 </div>
                 <div class=" pd10 col-12">
@@ -104,16 +107,21 @@
                     </div>
                     <div class="pd_t_10">
                         <label class="witdth100m" style="width: 30%;" for="">Mật Khẩu MBbank </label>
-                        <input class="witdth100m" disabled style="width: 60%;" type="password" id="pass_mbbank" value="">
+                        <input class="witdth100m" disabled style="width: 60%;" type="password" id="pass_mbbank"
+                            value="">
+                    </div>
+                    <div class="pd_t_10">
+                        <label class="witdth100m" style="width: 30%;" for="">Hoạt Động </label>
+                        <span class="witdth100m"  style="width: 60%;" id="action_mb"></span>
                     </div>
                 </div>
             </div>
 
             <div style="margin-top: 2vw;" class="bg-main-color container">
                 <div class="col-12 pd_t_1 pb-2">
-                    <button  onclick="open_modal_admin_acbbank()" class="float_right btn btn-primary">Thay ĐỔi</button>
+                    <button onclick="open_modal_admin_acbbank()" class="float_right btn btn-primary">Thay ĐỔi</button>
                     <!-- <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button> -->
-                  
+
                     <h5>Thông Tin API ACBbank</h5>
                 </div>
                 <div class=" pd10 col-12">
@@ -123,62 +131,79 @@
                     </div>
                     <div class="pd_t_10">
                         <label class="witdth100m" style="width: 30%;" for="">Tài Khoảng ACBbank</label>
-                        <input class="witdth100m" disabled style="width: 60%;" type="text" id="account_acbbank" value="">
+                        <input class="witdth100m" disabled style="width: 60%;" type="text" id="account_acbbank"
+                            value="">
                     </div>
                     <div class="pd_t_10">
                         <label class="witdth100m" style="width: 30%;" for="">Mật Khẩu ACBbank </label>
-                        <input class="witdth100m" disabled style="width: 60%;" type="password" id="pass_acbbank" value="">
+                        <input class="witdth100m" disabled style="width: 60%;" type="password" id="pass_acbbank"
+                            value="">
+                    </div>
+                    <div class="pd_t_10">
+                        <label class="witdth100m" style="width: 30%;" for="">Hoạt Động </label>
+                        <span class="witdth100m"  style="width: 60%;" id="action_acb"></span>
                     </div>
                 </div>
             </div>
 
             <div style="margin-top: 2vw;" class="bg-main-color container">
                 <div class="col-12 pd_t_1 pb-2">
-                    <button  onclick="open_modal_admin_momo()" class="float_right btn btn-primary">Thay ĐỔi</button>
+                    <button onclick="open_modal_admin_momo()" class="float_right btn btn-primary">Thay ĐỔi</button>
                     <!-- <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button> -->
-                  
+
                     <h5>Thông Tin API MoMo</h5>
                 </div>
-                <div class="pd10 col-12 pd_t_10">
+                <div class="pd10 col-12">
+                    <div class="pd_t_10">
                         <label class="witdth100m" style="width: 30%;" for="">Token MoMo </label>
                         <input class="witdth100m" disabled style="width: 60%;" type="text" id="token_momo" value="">
+                    </div>
+                    <div class="pd_t_10">
+                        <label class="witdth100m" style="width: 30%;" for="">Hoạt Động </label>
+                        <span class="witdth100m"  style="width: 60%;" id="action_momo"></span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12">
-            <!-- <div class="container pt-5">
+            <div class="col-12">
+                <!-- <div class="container pt-5">
                 <h3><i class=" pd_r_5 fa fa-pencil-square-o" aria-hidden="true"></i>Cấu Hình Chung</h3>
             </div> -->
-            <div style=" margin-top: 2vw;" class="bg-main-color container">
-                <div class=" col-12 pd_t_1 pb-2">
-                    <button  onclick="open_modal_admin_contact(0)" class="float_right btn btn-primary">Thay ĐỔi</button>
-                    <!-- <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button> -->
-                    <h5>Cấu Hình Liên Hệ</h5>
-                </div>
-                <div class="col-12 pd10">
-                    <div class="pd_t_10">
-                        <label class="witdth100m" style="width: 30%;" for="">Tên Admin </label>
-                        <input class="witdth100m" disabled style="width: 60%;" type="text" id="name_admin" value="admin">
+                <div style=" margin-top: 2vw;" class="bg-main-color container">
+                    <div class=" col-12 pd_t_1 pb-2">
+                        <button onclick="open_modal_admin_contact(0)" class="float_right btn btn-primary">Thay
+                            ĐỔi</button>
+                        <!-- <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button> -->
+                        <h5>Cấu Hình Liên Hệ</h5>
                     </div>
-                    <div class="pd_t_10">
-                        <label class="witdth100m" style="width: 30%;" for="">Số Điện Thoại</label>
-                        <input class="witdth100m" disabled style="width: 60%;" type="text" id="sdt_admim" value="0000000000">
-                    </div>
-                    <div class="pd_t_10">
-                        <label class="witdth100m" style="width: 30%;" for="">Email </label>
-                        <input class="witdth100m" disabled style="width: 60%;" type="text" id="Email_admin" value="http://localhost:3000/home/config_general">
-                    </div>
-                    <div class="pd_t_10">
-                        <label class="witdth100m" style="width: 30%;" for="">Link Facebook </label>
-                        <input class="witdth100m" disabled style="width: 60%;" type="text" id="link_fb" value="http://localhost:3000/home/config_general">
-                    </div>
-                    <div class="pd_t_10">
-                        <label class="witdth100m" style="width: 30%;" for="">Link Zalo </label>
-                        <input class="witdth100m" disabled style="width: 60%;" type="text" id="link_zl" value="http://localhost:3000/home/config_general">
+                    <div class="col-12 pd10">
+                        <div class="pd_t_10">
+                            <label class="witdth100m" style="width: 30%;" for="">Tên Admin </label>
+                            <input class="witdth100m" disabled style="width: 60%;" type="text" id="name_admin"
+                                value="admin">
+                        </div>
+                        <div class="pd_t_10">
+                            <label class="witdth100m" style="width: 30%;" for="">Số Điện Thoại</label>
+                            <input class="witdth100m" disabled style="width: 60%;" type="text" id="sdt_admim"
+                                value="0000000000">
+                        </div>
+                        <div class="pd_t_10">
+                            <label class="witdth100m" style="width: 30%;" for="">Email </label>
+                            <input class="witdth100m" disabled style="width: 60%;" type="text" id="Email_admin"
+                                value="http://localhost:3000/home/config_general">
+                        </div>
+                        <div class="pd_t_10">
+                            <label class="witdth100m" style="width: 30%;" for="">Link Facebook </label>
+                            <input class="witdth100m" disabled style="width: 60%;" type="text" id="link_fb"
+                                value="http://localhost:3000/home/config_general">
+                        </div>
+                        <div class="pd_t_10">
+                            <label class="witdth100m" style="width: 30%;" for="">Link Zalo </label>
+                            <input class="witdth100m" disabled style="width: 60%;" type="text" id="link_zl"
+                                value="http://localhost:3000/home/config_general">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     <div class="modal fade" id="money_table" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="pricing_details" aria-hidden="true">
@@ -201,20 +226,21 @@
                     </div>
                     <div class="col-md-12">
                         <label for="headline" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="detail_email_admin" value="name@gmail.com" >
+                        <input type="text" class="form-control" id="detail_email_admin" value="name@gmail.com">
                     </div>
                     <div class="col-md-12">
                         <label for="headline" class="form-label">Facebook</label>
-                        <input type="text" class="form-control" id="detail_link_fb" value="https://" >
+                        <input type="text" class="form-control" id="detail_link_fb" value="https://">
                     </div>
                     <div class="col-md-12">
                         <label for="headline" class="form-label">Zalo</label>
-                        <input type="text" class="form-control" id="detail_link_zl" value="https://" >
+                        <input type="text" class="form-control" id="detail_link_zl" value="https://">
                     </div>
                 </div>
                 <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
-                        class="btn btn-primary" onclick="save_admin_contacts()" data-dismiss="modal">Save</button><button
-                        type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+                        class="btn btn-primary" onclick="save_admin_contacts()"
+                        data-dismiss="modal">Save</button><button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close</button></div>
             </div>
         </div>
     </div>
@@ -240,7 +266,7 @@
                     </div>
                     <div class="col-md-12">
                         <label for="headline" class="form-label">Mật Khẩu MBbank</label>
-                        <input type="text" class="form-control" id="detail_pass_mbbank" value="" >
+                        <input type="text" class="form-control" id="detail_pass_mbbank" value="">
                     </div>
                 </div>
                 <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
@@ -270,8 +296,9 @@
                     </div>
                     <div class="col-md-12">
                         <label for="headline" class="form-label">Mật Khẩu ACBbank</label>
-                        <input type="text" class="form-control" id="detail_pass_acbbank" value="" >
+                        <input type="text" class="form-control" id="detail_pass_acbbank" value="">
                     </div>
+
                 </div>
                 <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
                         class="btn btn-primary" onclick="save_admin_acbbank()" data-dismiss="modal">Save</button><button
@@ -297,9 +324,10 @@
                 </div>
                 <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
                         class="btn btn-primary" onclick="save_admin_momo()" data-dismiss="modal">Save</button>
-                        <button type="button"
-                        class="btn btn-primary" onclick="move_money_momo()" data-dismiss="modal">Chuyển Tiền</button><button
-                        type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+                    <button type="button" class="btn btn-primary" onclick="move_money_momo()"
+                        data-dismiss="modal">Chuyển Tiền</button><button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
@@ -316,32 +344,31 @@
                 <div class="modal-body d-flex flex-wrap">
                     <div class="col-md-12">
                         <label for="name" class="form-label">Chọn nguồn tiền:</label>
-                        <input type="text" class="form-control" id="detail_token_momo" value="">
+                        <input type="text" class="form-control" id="momo_chuyen" value="">
                     </div>
                     <div class="col-md-12">
                         <label for="name" class="form-label">Số MoMo người nhận:</label>
-                        <input type="text" class="form-control" id="detail_token_momo" value="">
+                        <input type="text" class="form-control" id="momo_nhan" value="">
                     </div>
                     <div class="col-md-12">
                         <label for="name" class="form-label">Số tiền:</label>
-                        <input type="text" class="form-control" id="detail_token_momo" value="">
+                        <input type="text" class="form-control" id="money_momo" value="">
                     </div>
                     <div class="col-md-12">
                         <label for="name" class="form-label">Nội dung:</label>
-                        <input type="text" class="form-control" id="detail_token_momo" value="">
+                        <input type="text" class="form-control" id="comment_momo" value="">
                     </div>
                     <div class="col-md-12">
                         <label for="name" class="form-label">Mật khẩu:</label>
-                        <input type="text" class="form-control" id="detail_token_momo" value="">
+                        <input type="text" class="form-control" id="pass_momo" value="">
                     </div>
                     <div class="col-md-12">
                         <label for="name" class="form-label">Token MoMo</label>
-                        <input type="text" class="form-control" id="detail_token_momo" value="">
+                        <input type="text" class="form-control" id="token_momo_chuyen" value="">
                     </div>
                 </div>
                 <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
-                       
-                        class="btn btn-primary" onclick="move_money_momo()" data-dismiss="modal">Chuyển Tiền</button><button
+                        class="btn btn-primary" onclick="" data-dismiss="modal">Chuyển Tiền</button><button
                         type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
             </div>
         </div>
