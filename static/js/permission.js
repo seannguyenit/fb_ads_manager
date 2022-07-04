@@ -467,7 +467,7 @@ async function insert_momo_bank() {
                         var number =des.indexOf('napthe');
                         var description = des.substring(Number(number) + 6,Number(number) + 10)
                         if (description === id_user) {;
-                           today_ = f.finishTime;
+                           today_ = f.clientTime;
                             if (Number(new Date(star_today).getTime() / 1000) < Number(new Date(today_).getTime() / 1000) < Number(new Date(end_today).getTime() / 1000)) {
                                 if(list_topup_){
                                     var list_count = Object.keys(list_topup_).length;
@@ -483,7 +483,7 @@ async function insert_momo_bank() {
                                         if(Number(list_count_tranid) === 1){
                                             return;
                                         }else{
-                                            var rss = await ticket_save_acb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today).getTime() / 1000),transactionID:f.tranId });
+                                            var rss = await ticket_save_momo({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today).getTime() / 1000),transactionID:f.tranId });
                                             if (rss.ok) {
                                                 document.getElementById("bank_money_ticket").showModal();}
                                         }
