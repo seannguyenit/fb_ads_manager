@@ -311,7 +311,7 @@ async function insert_mb_bank() {
                                             document.getElementById("bank_money_ticket").showModal();
                                         }
                                     }else{
-                                        let list_tranid =  list_topup_.filter(s => s.transactionID === f.transactionID)
+                                        let list_tranid =  list_topup_.filter(s => (s.transactionID).toString() === (f.transactionID).toString())
                                         let list_count_tranid = Object.keys(list_tranid).length;
                                         if(Number(list_count_tranid) === 1){
                                             return;
@@ -393,7 +393,7 @@ async function insert_acb_bank() {
                                              document.getElementById("bank_money_ticket").showModal();
                                             }
                                     }else{
-                                        let list_tranid =  list_topup_.filter(s => s.transactionID === f.transactionID)
+                                        let list_tranid =  list_topup_.filter(s => (s.transactionID).toString() === (f.transactionID).toString())
                                         let list_count_tranid = Object.keys(list_tranid).length;
                                         if(Number(list_count_tranid) === 1){
                                             return;
@@ -478,7 +478,7 @@ async function insert_momo_bank() {
                                              document.getElementById("bank_money_ticket").showModal();
                                             }
                                     }else{
-                                        let list_tranid =  list_topup_.filter(s => s.transactionID === f.tranId)
+                                        let list_tranid =  list_topup_.filter(s => (s.transactionID).toString() === (f.tranId).toString())
                                         let list_count_tranid = Object.keys(list_tranid).length;
                                         if(Number(list_count_tranid) === 1){
                                             return;
