@@ -177,7 +177,7 @@ module.exports = {
         })
     },
     get_list_top_up: (req, res) => {
-        let sql = 'select MH.*,U.username from money_history as MH left join user as U on MH.user_id = U.id where MH.user_id = ? and `type` = 1 and money >= 0 and task_id IS NULL and (method = 1 or method = 0) order by `time` DESC limit 10;'
+        let sql = 'select MH.*,U.username from money_history as MH left join user as U on MH.user_id = U.id where MH.user_id = ? and `type` = 1 and money >= 0 and task_id IS NULL and (method = 1 or method = 0) order by `id` DESC limit 10;'
         db.query(sql, Number(req.params.user_id), (err, response) => {
             if (err) throw err
             res.json(response)
