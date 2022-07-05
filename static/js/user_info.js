@@ -206,7 +206,7 @@ async function init_user() {
     })
     if (dt) {
         user.innerHTML = `
-                <div>${dt.username}</div>
+                ${dt.username}
             `;
         at.innerHTML = `
             <div>${format_time(dt.created_at)}</div>

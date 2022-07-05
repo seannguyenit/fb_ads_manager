@@ -20,13 +20,15 @@ async function init_guide() {
     if (dt) {
         dt.forEach(item => {
             if(item.video){
-                var link_video = item.video.slice(0, 24) + "embed/" + item.video.slice(24);
+                var number =item.video.indexOf('youtube.com');
+                var number2 =item.video.indexOf('watch?');
+                var link_video = item.video.slice(0, (number + 12)) + "embed/" + item.video.slice((number2 + 8));
                 document.getElementById("link_video").innerHTML +=`
                                 <div class="col-md-6 ">
                                 <div class="text_left pricing_benefit d-flex flex-column">
                                     <div class="container text_center">
                                     <iframe width="100%" height="300px" src="${link_video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    <p style="font-size: 24px !important;">${item.content_video} sssss</p>
+                                    <p style="font-size: 24px !important;">${item.content_video}</p>
                                     </div>
                                 </div>
                         </div>

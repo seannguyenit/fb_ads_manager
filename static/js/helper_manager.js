@@ -123,3 +123,37 @@ async function start_loading() {
 async function stop_loading() {
     document.getElementById('loading-element').style.display = "none";
 }
+
+init_loading1();
+async function init_loading1() {
+    if(document.getElementById('loading')){
+        document.getElementById('loading').innerHTML += `<div class="absolute_load" id="loading-element1" style="display:none;"><img src="../img/loading.gif" style="width: 100px;padding-top: 100px;margin-left: 80px;"/></div>`;    
+    }
+    
+}
+
+async function start_loading1() {
+    document.getElementById('loading-element1').style.display = "block";
+}
+
+
+async function stop_loading1() {
+    document.getElementById('loading-element1').style.display = "none";
+}
+
+init_loading2();
+async function init_loading2() {
+    if(document.getElementById('loading1')){
+        document.getElementById('loading1').innerHTML += `<div class="absolute_load" id="loading-element2" style="display:none;"><img src="../img/loading.gif" style="width: 100px;padding-top: 100px;margin-left: 80px;"/></div>`;    
+    }
+   
+}
+
+async function start_loading2() {
+    document.getElementById('loading-element2').style.display = "block";
+}
+
+
+async function stop_loading1() {
+    document.getElementById('loading-element2').style.display = "none";
+}

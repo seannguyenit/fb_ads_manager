@@ -58,7 +58,7 @@
                 aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-toggler text_center with75" id="img_logo">
+            <div class="navbar-toggler border_none text_center with75" id="img_logo">
                 <a class="navbar-brand" href="/home/page_box"><img width="100px" height="41px" src="../img/logo.jpg"
                         alt=""></a>
                 <a class="float_right" style="padding-top:20px; color: whitesmoke;" href="#"><i class="fa fa-bell"
@@ -118,8 +118,10 @@
         <section>
             <div class="col-12">
                 <div class="container">
-
+                    <div id="error_token"> </div>
+                    
                     <div class="col-md-12 d-flex flex-wrap mt-2">
+                        
                         <div class="col-md-4 m_b_5">
                             <label for="list_pages" class="form-label" data-lang="Facebookuser"></label> <br>
                             <select class="form-select p-2 w-100 login-form" id="list_fb" onchange="set_combobox_data()"
@@ -127,7 +129,7 @@
                                 <option selected disabled value="">Choose...</option>
                                 <option>...</option>
                             </select>
-                            <label for="" id="error_token"></label>
+                            
                         </div>
                         <div class="col-md-4 m_b_5">
                             <label for="list_pages" class="form-label" data-lang="Page"></label> <br>
@@ -146,18 +148,22 @@
                         </div>
                     </div>
                     <div class="col-md-12 d-flex flex-wrap mt-2">
-                        <div class="col-md-6 pt-4">
-                            <div class="box_review">
-                                <a onclick="select_file()"><img id="img_1" src="https://i.imgur.com/BDJYyka.jpg" /></a>
-                                <div class="d-flex justify-content-between content">
-                                    <span data-select="review1">Like Page 👉 👉</span>
-                                    <button data-select="review" class="btn">Like page</button>
-                                    <input id="file-input" accept="video/mp4" type="file" name="name0"
-                                        style="display: none;" onchange="PreviewImage()" />
+                        <div class="relative_load  pt-4 col-md-6"  id="loading">
+                            <div class="col-md-6 absolute_load1">
+                                <div class="box_review">
+                                    <a onclick="select_file()"><img id="img_1" src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                                    <div class="d-flex justify-content-between content">
+                                        <span data-select="review1">Like Page 👉 👉</span>
+                                        <button data-select="review" class="btn">Like page</button>
+                                        <input id="file-input" accept="video/mp4" type="file" name="name0"
+                                            style="display: none;" onchange="PreviewImage()" />
+                                    </div>
                                 </div>
                             </div>
+                            
                         </div>
-                        <div class="col-md-6 pt-4">
+                        <div class="relative_load  pt-4 col-md-6"  id="loading1">
+                        <div class="col-md-6 absolute_load1">
                             <div class="box_review">
                                 <a onclick="select_file1()"><img id="img_2" src="https://i.imgur.com/BDJYyka.jpg" /></a>
                                 <div class="d-flex justify-content-between content">
@@ -168,6 +174,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
                     <div class="col-md-12 d-flex flex-wrap pt-4 pb-4">
                         <nav class="w-100">

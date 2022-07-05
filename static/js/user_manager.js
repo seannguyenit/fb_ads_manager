@@ -637,6 +637,7 @@ async function init_users(cr_page, user_number_page) {
                     } else {
                         var limit_date = "";
                     }
+                  
                     document.getElementById('table_data').querySelector('tbody').innerHTML += `
                     <tr>
                         <td>${dt.indexOf(item) + 1}</td>    

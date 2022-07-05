@@ -4,6 +4,7 @@ body{
     height:100%;
     /* font-family: cursive; */
 }
+
 /* .container {
     min-height:100%;
     position:relative;
@@ -58,6 +59,9 @@ body{
 .m_l_5{
     margin-left: 3vw;
 }
+.m_l_-7{
+    margin-left: -7vw;
+}
 .m_b_5{
     margin-bottom: 5px;
 }
@@ -73,6 +77,12 @@ body{
 }
 .pd-t15{
     padding-top: 5px;
+}
+.pd-t10{
+    padding-top: 10px;
+}
+.pd-t13{
+    padding-top: 13px;
 }
 .mr_b_15{
     margin-bottom: -1.5vw !important;
@@ -138,7 +148,40 @@ a:hover{
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     float: right;
 }
+.box_flex-wrap{
+    width: 100%;
+    min-height: 50px;
+    background-color: rgb(240, 80, 80);
+    margin: 0% auto;
+    /* hiển thị theo chiều ngan  */
+    display: flex; 
+    /* hiển thị theo chiều ngan nhưng đổi hướng  */
+    flex-direction: row;
+    /* căn chỉnh xuống dòng của các khối  */
+    flex-wrap: wrap;
+}
 
+.box-wrap{
+    text-align: left;
+    width: 15%;
+   
+}
+.relative_load{
+    position: relative;
+}
+.absolute_load{
+    z-index: 1;
+    opacity: 0.5;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 30px;
+    left: 140px;
+}
+.absolute_load1{
+    position: absolute;
+    left: 100px;
+}
 @media only screen and (max-width: 1000px) {
     .box_270{
         max-width: 100% !important;
@@ -150,13 +193,20 @@ a:hover{
         text-align: center ;
     }
 }
-
 @media only screen and (max-width: 600px) {
     .com-name{
         border-bottom: solid 1px white;
         padding-bottom: 10px;
     }
-    
+    .m_l_-7{
+        margin-left: 0px !important;
+    }
+    .m_l_10{
+        margin-left: 10px ;
+    }
+    .pd_t_m_15{
+        padding-top: 1.5vw !important;
+    }
     .title-nav{
         border-bottom: solid 1px white;
         padding-bottom: 10px;
@@ -167,6 +217,9 @@ a:hover{
     .login-img{
         display:none !important
     }
+    .t_center{
+       text-align: center !important;
+    }
     .website{
         display: none !important;
     }
@@ -174,8 +227,29 @@ a:hover{
         width: 500% !important;
         background-color: #2a2e3f !important;
     }
+    .width_table_300{
+        width: 300% !important;
+        background-color: #2a2e3f !important;
+    }
+    .border_none{
+        border: none !important;
+    }
+    .width_table_450{
+        width: 450px !important;
+        background-color: #2a2e3f !important;
+    }
+    .width_table_620{
+        width: 620px !important;
+        background-color: #2a2e3f !important;
+    }
     .margin-bottom{
         margin-bottom: 1rem !important;
+    }
+    .width70{
+        width: 70% !important;
+    }
+    .pd0{
+        padding: 0px !important;
     }
     .witdth25{
         width: 25% !important;
@@ -226,7 +300,18 @@ a:hover{
     .pd_t_10 {
         padding-top: 10px !important;
     }
-    
+    .pd-none{
+        padding: none !important;
+    }
+    .absolute_load1{
+        left: 0px !important;
+    }
+    .absolute_load{
+        left: 50px !important;
+    }
+    body{
+        font-size: 0.9rem !important; 
+    }
 
     
 }
@@ -308,6 +393,10 @@ select,textarea,input{
     background-color: dimgray !important;
     color: #ffffff !important;
     border-radius: 0.5rem !important;
+}
+.none_from{
+    background-color: #2a2e3f !important;
+    border: none !important;
 }
 
 table{
@@ -468,6 +557,7 @@ hr{
     border: solid 1px ; 
     border-radius: 10px; width: 290px;
     margin: auto;
+    min-height: 350px;
 }
 .box_review span{
     font-weight: 700;
