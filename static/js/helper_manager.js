@@ -154,6 +154,6 @@ async function start_loading2() {
 }
 
 
-async function stop_loading1() {
+async function stop_loading2() {
     document.getElementById('loading-element2').style.display = "none";
 }
