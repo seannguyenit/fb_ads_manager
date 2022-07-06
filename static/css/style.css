@@ -198,11 +198,13 @@ a:hover{
         border-bottom: solid 1px white;
         padding-bottom: 10px;
     }
+    .box_flex-wrap{
+        width: 96% !important;}
     .m_l_-7{
         margin-left: 0px !important;
     }
     .m_l_10{
-        margin-left: 10px ;
+        margin-left: 15px !important;
     }
     .pd_t_m_15{
         padding-top: 1.5vw !important;
@@ -318,6 +320,7 @@ a:hover{
     .float_left_m{
         float: left !important;
     }
+    
 
     
 }
