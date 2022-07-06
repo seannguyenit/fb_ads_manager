@@ -225,7 +225,13 @@ async function update_history() {
     if (data) {
         data.forEach(item => {
             var today = new Date().getTime();
-            var date = new Date(item.limit_time).getTime();
+            var date = 0;
+            if(!item.limit_time){
+                date = new Date(item.limit_time_).getTime();
+            }else{
+                date = new Date(item.limit_time).getTime();
+            }
+            
             if (Number(date) != 0 && Number(date) < Number(today)) {
                 id = item.id;
                 //  alert(id);
@@ -793,6 +799,9 @@ async function pricing_get_all() {
 async function save_pricing_(id) {
     var pricing_id = document.getElementById("wrap_pricing").value;
     var limit_day = 0 ;
+    var level = 0 ;
+    var limit_fb = 0 ;
+    var limit_request = 0 ;
     if (Number(pricing_id) === 0) {
         alert("Hãy chọn gói mà bạn muốn mua");
         return;
@@ -802,13 +811,16 @@ async function save_pricing_(id) {
         data_pricing.forEach(item => {
             if(Number(item.id) === Number(pricing_id)){
                 limit_day = item.limit_day;
+                level = item.level;
+                limit_fb = item.limit_fb;
+                limit_request = item.limit_request;
             }
         })
     }
     
     var user_id = id;
     var pricing_active = 1;
-    var data = { user_id: user_id, pricing_id: pricing_id, pricing_active: pricing_active,limit_day:limit_day};
+    var data = { user_id: user_id, pricing_id: pricing_id, pricing_active: pricing_active,limit_day:limit_day,level:level,limit_fb:limit_fb,limit_request:limit_request};
     var url = `/api/pricing_insert_wrap`;
     var meth = 'POST';
 
