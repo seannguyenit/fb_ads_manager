@@ -635,6 +635,11 @@ async function public_data() {
         return;
     }
 
+    if (call_to_ac != 'LIKE_PAGE'){
+        data.object_story_spec.link_data.child_attachments[0].call_to_action = {type: call_to_ac};
+        data.object_story_spec.link_data.child_attachments[1].call_to_action = {type: call_to_ac};
+    }
+
     // console.log(data);
     var url = `https://graph.facebook.com/v14.0/act_${ads_id}/adcreatives`;
 
