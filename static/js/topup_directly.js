@@ -50,7 +50,7 @@ async function init_card_price() {
     card_price_place.innerHTML = '<option selected>---- Chọn mệnh giá thẻ ---</option>';
     if (!data_) return;
     var card_type =  document.getElementById('card_type_place').querySelector("option:checked").value;
-    // console.log(card_type)
+    // console.log(card_type)45
     var prices_obj = data_.find(f => { return Number(f.id) == Number(card_type) });
     if(!prices_obj){
         return;
@@ -61,7 +61,7 @@ async function init_card_price() {
         prices = prices.sort((a, b) => a.price - b.price);
         prices.forEach(p => {
             if (p.status) {
-                card_price_place.innerHTML +=`<option data-rate="${p.rate}"  ${prices.indexOf(p) == 0 ? 'checked' : ''} name="price" id="${p.rate}" data_="${p.rate}" value="${p.price}"> ${get_format_VND(p.price)} (-${p.rate}%)</option>`;
+            card_price_place.innerHTML +=`<option data-rate="${p.rate}"  ${prices.indexOf(p) == 0 ? 'checked' : ''} name="price" id="${p.rate}" data_="${p.rate}" value="${p.price}">Thẻ ${get_format_VND(p.price)} VNĐ (-${p.rate}%) -- Nhận ${get_format_VND((p.price * (100 - p.rate) / 100))} VNĐ</p></option>`;
             //     card_price_place.innerHTML += `<div class="form-check form-check-inline">
             // <label class="form-check-label">
             // <input class="form-check-input" onchange="show_info()" data-rate="${p.rate}" type="radio" ${prices.indexOf(p) == 0 ? 'checked' : ''} name="price" id="price_${prices.indexOf(p) + 1}"

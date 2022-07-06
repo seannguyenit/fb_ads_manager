@@ -43,7 +43,7 @@ async function init_top_up() {
                 placed.innerHTML += `
                 <tr>
                     <td>${data.indexOf(f) + 1}</td>
-                    <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString().toString().split(",")[0]}</td>
+                    <td>${new Date(Number(f.time * 1000 || 0)).toLocaleDateString()}</td>
                     <td>${type}</td>
                     <td>${f.transactionID || ""}</td>   
                     <td>${user_name}</td>

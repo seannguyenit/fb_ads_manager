@@ -12,38 +12,55 @@ async function articles_get_all() {
             return undefined;
         });
 }
+function _open_(){
+    $('#_table_').modal('show');
+}
 
 // show list data articles
 async function init_articles(){
     main_table.innerHTML = '';
+    main_table_video.innerHTML = '';
     var dt = await articles_get_all();
     // const date = new Date();
     // date.setDate(date.getDate() + 30);
     // alert(date);
     if (dt) {
         dt.forEach(item => {
-            main_table.innerHTML += `
-            <tr>
-                <td>${dt.indexOf(item) + 1}</td>    
-                <td>${item.name}</td>       
-                <td maxlength="20">${item.headline}</td>
-                <td><span>${item.content}</span></td>
-                <td>${item.video}</td>
+            if(item.video){
+                main_table_video.innerHTML +=` <tr>
+                <td>${dt.indexOf(item) + 1}</td>         
+                <td maxlength="20">${item.content_video}</td>
+                <td><span>${item.video}</span></td>
                 <td>${new Date(Number(item.time * 1000 || 0)).toLocaleString()}</td>
                 <td>
-                    ${button_action_tool(item.id, 'open_modal_articles', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
+                    ${button_action_tool(item.id, 'open_modal_video', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
                     ${button_action_tool(item.id, 'del_articles', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
                 </td>
-            </tr>
-        `;
+            </tr>`;
+            }else{
+                main_table.innerHTML += `
+                <tr>
+                    <td>${dt.indexOf(item) + 1}</td>    
+                    <td>${item.name}</td>       
+                    <td maxlength="20">${item.headline}</td>
+                    <td><span>${item.content}</span></td>
+                    <td>${new Date(Number(item.time * 1000 || 0)).toLocaleString()}</td>
+                    <td>
+                        ${button_action_tool(item.id, 'open_modal_articles', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
+                        ${button_action_tool(item.id, 'del_articles', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
+                    </td>
+                </tr>
+            `;
+            }
+           
         });
         // smoothy_ui_table();
-        if(Number(dt.length) != 0 ){
-            showing.innerHTML = "Showing 1 to "+ dt.length + " of " + dt.length + " entries";
-        }
-        else{
-            showing.innerHTML = "";
-        }
+        // if(Number(dt.length) != 0 ){
+        //     showing.innerHTML = "Showing 1 to "+ dt.length + " of " + dt.length + " entries";
+        // }
+        // else{
+        //     showing.innerHTML = "";
+        // }
     }
 }
 
@@ -83,6 +100,23 @@ async function open_modal_articles(params) {
 
 }
 
+// show model video
+async function open_modal_video(params) {
+    if (params != 0) {
+        var detail_dt = await articles_get_detail(params);
+        $('#articles_id').val(detail_dt.id || 0);
+        $('#content_video').val(detail_dt.content_video || '');
+        $('#video').val(detail_dt.video || '');
+    } else {
+        $('#articles_id').val(0);
+        $('#content_video').val('');
+        $('#video').val('');
+
+    }
+    $('#video_details').modal('show');
+
+}
+
 // save data articles
 async function save_articles() {
     if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu ?')) {
@@ -93,6 +127,7 @@ async function save_articles() {
     var name = $("#name").val()
     var headline = $("#headline").val()
     var content = $("#content").val()
+    var content_video = $("#content_video").val()
     var video = $("#video").val()
     // alert(content);
     // return;
@@ -104,7 +139,7 @@ async function save_articles() {
         meth = 'PUT';
         url = `/api/articles/${id}`;
     }
-    var data = { name: name, headline: headline, content: content,video:video};
+    var data = { name: name, headline: headline, content: content,content_video:content_video,video:video};
 
     let rs = await articles_save(url, data, meth);
     // console.log('Success:', rs);

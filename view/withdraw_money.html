@@ -59,7 +59,7 @@
                 aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-toggler text_center with75" id="img_logo">
+            <div class="navbar-toggler border_none text_center with75" id="img_logo">
                 <a class="navbar-brand" href="/home/page_box"><img width="100px" height="41px" src="../img/logo.jpg"
                         alt=""></a>
                 <a class="float_right" style="padding-top:20px; color: whitesmoke;" href="#"><i class="fa fa-bell"
@@ -133,7 +133,7 @@
                             <div class="pricing_title" id="current_bonus">
                                 Bonus Money
                             </div>
-                            <div class="pricing_benefit d-flex flex-column" style="height:100px">
+                            <div class="pricing_benefit d-flex flex-column" style="min-height:100px">
                                 <span><span style="font-weight: bolder;"><span data-lang="note:"> Chú
                                             ý:</span></span><br />
                                     <span data-lang="note_withdraw_1"> - Chỉ được tạo phiếu rút tiền một lần chờ admin
@@ -171,7 +171,8 @@
             <div class="container">
                 <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5 mb-5">
                     <h3><i class="pd_r_5 fa fa-history"></i><span data-lang="history_operation"></span></h3>
-                    <table class="table text_center table_section table-dark">
+                    <div class="col-12 v-data-table__wrapper">
+                        <table class="width_table_450 table text_center table_section">
                         <caption data-lang="recent_trading_history">lịch sử giao dịch gần đây</caption>
                         <thead>
                             <tr>
@@ -191,6 +192,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </section>
 
     <!-- Modal -->

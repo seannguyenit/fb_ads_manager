@@ -84,15 +84,15 @@
     <section>
         <div class="col-12">
             <div class="container pt-5">
-                <h3><i class=" pd_r_5 fa fa-pencil-square-o" aria-hidden="true"></i>Quản Lý Bài Viết</h3>
+                
             </div>
             <div style=" margin-top: 2vw;" class="bg-main-color container">
+                <h3><i class=" pd_r_5 fa fa-pencil-square-o" aria-hidden="true"></i>Quản Lý Bài Viết</h3>
                 <div class="col-12 pd_t_1 pb-2">
                     <button onclick="open_modal_articles(0)" class="btn btn-primary">Tạo mới</button>
-                    <!-- <button onclick="open_data_contacts()" class="btn btn-primary m_b_5 float_right">Contacts</button> -->
                 </div>
                 <div class="col-12 v-data-table__wrapper" >
-                    <table id="table_data" class="width_table_200 tablemanager text_center table_section table table-striped table-sm"
+                    <table id="table_data" class="width_table_300 tablemanager text_center table_section table table-striped table-sm"
                         cellspacing="0" width="100%">
                         <thead>
                             <tr>
@@ -100,8 +100,35 @@
                                 <th>Tên</th>
                                 <!-- <th>Mô tả</th> -->
                                 <th>Tiêu đề</th>
-                                <th>Nội dung</th>
-                                <th>Link video</th>
+                                <th  style="width:30%">Nội dung</th>
+                                <!-- <th>Link video</th> -->
+                                <th>Thời gian</th>
+                                <!-- <th>Trạng thái</th> -->
+                                <th class="disableFilterBy">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                        <caption id="showing"></caption>
+                    </table>
+                </div>
+            </div>
+            <div style=" margin-top: 2vw;" class="bg-main-color container">
+                <h3><i class=" pd_r_5 fa fa-pencil-square-o" aria-hidden="true"></i>Quản Lý Video Hướng Dẫn</h3>
+                <div class="col-12 pd_t_1 pb-2">
+                    <button onclick="open_modal_video(0)" class="btn btn-primary">Tạo mới</button>
+                    <button onclick="_open_()" class="btn btn-primary m_b_5 float_right">Lưu ý</button>
+                </div>
+                <div class="col-12 v-data-table__wrapper" >
+                    <table id="table_data_video" class="width_table_300 tablemanager text_center table_section table table-striped table-sm"
+                        cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+
+                                <th>TIêu đề</th>
+                                <th style="width:30%">Link video</th>
                                 <th>Thời gian</th>
                                 <!-- <th>Trạng thái</th> -->
                                 <th class="disableFilterBy">Thao tác</th>
@@ -130,22 +157,46 @@
                     <input hidden id="articles_id" value="0" />
                     <div class="col-md-6">
                         <label for="name" class="form-label">Tên</label>
-                        <input disabled type="text" class="form-control" id="name" value="Quản Trị Viên" required />
+                        <input disabled type="text" class="form-control" id="name" value="Quản Trị Viên"  />
                     </div>
                     <div class="col-md-12">
                         <label for="headline" class="form-label">Tiêu đề</label>
-                        <input type="text" class="form-control" id="headline" required>
+                        <input type="text" class="form-control" id="headline" >
                     </div>
                     <div class="col-md-12">
                         <label for="contacts" class="form-label">Nội Dung :</label>
                         <textarea class="form-control" name="contacts" id="content" cols="60" rows="5"
-                            required></textarea>
+                            ></textarea>
                         <!-- <textarea class="form-control" name="contacts" id="content" cols="60" rows="5" required></textarea> -->
                         <!-- <input style="height:200px" type="text" class="form-control" id="money_withdraw" required> -->
                     </div>
+
+                </div>
+                <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
+                        class="btn btn-primary" onclick="save_articles()" data-dismiss="modal">Save</button><button
+                        type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="video_details" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="pricing_details" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal_title">Thông tin Video</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex flex-wrap">
+                    <input hidden id="articles_id" value="0" />
+                    <div class="col-md-12">
+                        <label for="headline" class="form-label">Tiêu đề</label>
+                        <input type="text" class="form-control" id="content_video" >
+                    </div>
                     <div class="col-md-12">
                         <label for="video" class="form-label">Link Video</label>
-                        <input type="text" class="form-control" id="video" required>
+                        <input type="text" class="form-control" id="video" >
                     </div>
                 </div>
                 <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
@@ -155,35 +206,27 @@
         </div>
     </div>
     <!-- Modal -->
-    <!-- <div class="modal fade" id="money_table" tabindex="-1" role="dialog" aria-labelledby="money_table"
+    <div class="modal fade" id="_table_" tabindex="-1" role="dialog" aria-labelledby="_table_"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title red">Contacts</h5>
+                    <h5 class="modal-title red">Lưu Ý</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-dark">
-                        <thead>
-                            <tr>
-                                <th>Tên</th>
-                                <th>Nội dung</th>
-                                <th>Thời gian</th>
-                                <th>Thao tác</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table_data_money"></tbody>
-                    </table>
+                    <p>Lưu link video xin hãy lưu bằng đường dẫn trực tiếp</p>
+                    <p>VD : https://www.youtube.com/watch?v=s5p_wlnPNAo</p>
+                    <img width="100%" src="../img/luu_y.png" alt="">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
@@ -200,7 +243,9 @@
 </body>
 <script>
     let main_table = document.getElementById('table_data').children[1];
-    let showing = document.getElementById('showing');
+    // let showing = document.getElementById('showing');
+    let main_table_video = document.getElementById('table_data_video').children[1];
+    
     init_articles();
 
 </script>

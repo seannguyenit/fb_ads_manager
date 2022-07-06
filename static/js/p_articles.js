@@ -32,7 +32,10 @@ async function init_articles() {
                     </div>
                     <div class="with100" style="padding:1vw">
                             <h5>${item.headline}</h5>
-                            <p>${item.content}</p>
+                            <p>
+                            <textarea disabled class="form-control none_from" name="contacts" id="" value="" cols="60" rows="5"
+                            >${item.content}</textarea>
+                            </p>
                     </div>
                 </div                
 `;
