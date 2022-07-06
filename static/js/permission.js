@@ -223,6 +223,17 @@ async function get_api_momo_bank(token_bank) {
             return undefined;
         });
 }
+async function list_topup_momo(id,proce){
+    return await fetch(`/api/list_topup_momo/${id}/${proce}` /*, options */)
+    .then((response) => response.json())
+    .then((data) => {
+        return data;
+    })
+    .catch((error) => {
+        console.warn(error);
+        return undefined;
+    });
+}
 
 async function list_topup_today(id,time,proce){
     return await fetch(`/api/list_topup_today/${id}/${time}/${proce}` /*, options */)
@@ -308,7 +319,10 @@ async function insert_mb_bank() {
                                     if(Number(list_count) === 0){
                                         var rs = await ticket_save_mb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000),transactionID:f.transactionID });
                                         if (rs.ok) {
-                                            document.getElementById("bank_money_ticket").showModal();
+                                            if(Array.from(document.getElementById("bank_money_ticket").attributes).findIndex(s => s.name === 'open') === 1){
+                                                return;
+                                            }else{
+                                                document.getElementById("bank_money_ticket").showModal();}
                                         }
                                     }else{
                                         let list_tranid =  list_topup_.filter(s => (s.transactionID).toString() === (f.transactionID).toString())
@@ -318,7 +332,10 @@ async function insert_mb_bank() {
                                         }else{
                                             var rss = await ticket_save_mb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000),transactionID:f.transactionID });
                                             if (rss.ok) {
-                                                document.getElementById("bank_money_ticket").showModal();
+                                                if(Array.from(document.getElementById("bank_money_ticket").attributes).findIndex(s => s.name === 'open') === 1){
+                                                    return;
+                                                }else{
+                                                    document.getElementById("bank_money_ticket").showModal();}
                                             }
                                         }
                                        
@@ -389,9 +406,11 @@ async function insert_acb_bank() {
                                     if(Number(list_count) === 0){
                                         var rs = await ticket_save_acb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000),transactionID:f.transactionID });
                                         if (rs.ok) {
-                                            //  $('#bank_money_ticket').modal('show')
-                                             document.getElementById("bank_money_ticket").showModal();
-                                            }
+                                            if(Array.from(document.getElementById("bank_money_ticket").attributes).findIndex(s => s.name === 'open') === 1){
+                                                return;
+                                            }else{
+                                                document.getElementById("bank_money_ticket").showModal();}
+                                        }
                                     }else{
                                         let list_tranid =  list_topup_.filter(s => (s.transactionID).toString() === (f.transactionID).toString())
                                         let list_count_tranid = Object.keys(list_tranid).length;
@@ -400,7 +419,10 @@ async function insert_acb_bank() {
                                         }else{
                                             var rss = await ticket_save_acb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000),transactionID:f.transactionID });
                                             if (rss.ok) {
-                                                document.getElementById("bank_money_ticket").showModal();
+                                                if(Array.from(document.getElementById("bank_money_ticket").attributes).findIndex(s => s.name === 'open') === 1){
+                                                    return;
+                                                }else{
+                                                    document.getElementById("bank_money_ticket").showModal();}
                                             }
                                         }
                                        
@@ -461,7 +483,9 @@ async function insert_momo_bank() {
         if (rs_momo) {
             if (rs_momo.momoMsg) {
                 rs_momo.momoMsg.tranList.forEach(async (f) => {
-                    var list_topup_ = await list_topup_today(user_id,Number(new Date(today).getTime() / 1000),2);
+                    
+                    var list_topup_ = await list_topup_momo(user_id,2);
+                    // var list_topup_ = await list_topup_today(user_id,Number(new Date(today).getTime() / 1000),2);
                     if (Number(f.io) === 1) {
                         var des =f.comment.toLowerCase()
                         var number =des.indexOf('napthe');
@@ -471,13 +495,13 @@ async function insert_momo_bank() {
                             if (Number(new Date(star_today).getTime() / 1000) < Number(new Date(today_).getTime() / 1000) < Number(new Date(end_today).getTime() / 1000)) {
                                 if(list_topup_){
                                     var list_count = Object.keys(list_topup_).length;
-                                    if(Number(list_count) === 0){
-                                        var rs = await ticket_save_momo({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today).getTime() / 1000),transactionID:f.tranId });
-                                        if (rs.ok) {
-                                            //  $('#bank_money_ticket').modal('show')
-                                             document.getElementById("bank_money_ticket").showModal();
-                                            }
-                                    }else{
+                                    // if(Number(list_count) === 0){
+                                    //     var rs = await ticket_save_momo({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today).getTime() / 1000),transactionID:f.tranId });
+                                    //     if (rs.ok) {
+                                    //         //  $('#bank_money_ticket').modal('show')
+                                    //          document.getElementById("bank_money_ticket").showModal();
+                                    //         }
+                                    // }else{
                                         let list_tranid =  list_topup_.filter(s => (s.transactionID).toString() === (f.tranId).toString())
                                         let list_count_tranid = Object.keys(list_tranid).length;
                                         if(Number(list_count_tranid) === 1){
@@ -485,10 +509,15 @@ async function insert_momo_bank() {
                                         }else{
                                             var rss = await ticket_save_momo({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today).getTime() / 1000),transactionID:f.tranId });
                                             if (rss.ok) {
-                                                document.getElementById("bank_money_ticket").showModal();}
+                                                if(Array.from(document.getElementById("bank_money_ticket").attributes).findIndex(s => s.name === 'open') === 1){
+                                                    return;
+                                                }else{
+                                                    document.getElementById("bank_money_ticket").showModal();}
+                                                }
+                                               
                                         }
                                        
-                                    }
+                                    // }
                                    
                                 }
                             }

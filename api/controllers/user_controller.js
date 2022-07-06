@@ -444,6 +444,13 @@ module.exports = {
             res.json(response)
         })
     },
+    list_topup_momo: (req, res) => {
+        let sql = 'SELECT money_history.id,money_history.procedure,money_history.transactionID FROM `money_history` where `user_id` = ? and `procedure` = ?;'
+        db.query(sql, [req.params.id, req.params.proce], (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
     admin_bank: (req, res) => {
         let sql = 'SELECT * FROM admin_bank;'
         db.query(sql, (err, response) => {
