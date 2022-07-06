@@ -126,44 +126,44 @@
                     <h4 data-lang="your_agency">Đại Lý Của Bạn</h4>
                     <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5">
                         <div class="col-md-7">
-                            <div class="form-group">
+                            <div class="form-group min-height50px">
                                 <label class="" for="name_agency" data-lang="dealer_name:">Tên Đại Lý :</label>
-                                <input disabled class="form_control" type="text" name="name_agency" id="name_agency">
+                                <input disabled class="witdth100m form_control" type="text" name="name_agency" id="name_agency">
                             </div>
-                            <div class="form-group">
-                                <label class="" for="des_agency" data-lang="describe:">Miêu Tả :</label>
-                                <input disabled class="form_control" type="text" name="des_agency" id="des_agency">
+                            <div class="form-group  min-height50px">
+                                <label class="pd_t_10" for="des_agency" data-lang="describe:">Miêu Tả :</label>
+                                <input disabled class="witdth100m form_control" type="text" name="des_agency" id="des_agency">
                             </div>
-                            <div class="form-group">
-                                <label class="" for="id_agency" data-lang="coupon:">Mã Đại Lý :</label>
-                                <input disabled class="form_control" type="text" name="id_agency" id="id_agency">
+                            <div class="form-group  min-height50px">
+                                <label class="pd_t_10" for="id_agency" data-lang="coupon:">Mã Đại Lý :</label>
+                                <input disabled class="witdth100m form_control" type="text" name="id_agency" id="id_agency">
                             </div>
-                            <div class="form-group">
-                                <label class="" for="link_ref" data-lang="referral_link">Link giới thiệu :</label>
-                                <input disabled type="text" class="form_control" name="link_ref" id="link_ref"
+                            <div class="form-group  min-height50px">
+                                <label class="pd_t_10" for="link_ref" data-lang="referral_link">Link giới thiệu :</label>
+                                <input disabled type="text" class="witdth100m form_control" name="link_ref" id="link_ref"
                                     aria-describedby="link_ref" placeholder="Vui lòng đăng ký làm đại lý !">
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <div class=" pd_bt_10 form-group">
-                                <span data-lang="creation_date:">Ngày Tạo :</span>
-                                <span class="form_control" id="created_day"></span>
+                            <div class="pd_t_10 pd_bt_10 min-height50px form-group">
+                                <span class="" data-lang="creation_date:">Ngày Tạo :</span>
+                                <span style="padding: 0px !important;" class="form_control  witdth100m" id="created_day"></span>
                             </div>
-                            <div class="form-group">
-                                <label id="lb_stt" data-lang="unregistered">Chưa đăng ký</label>
-                                <button id="btn_reg" onclick="agency_register()" class=" form_control btn btn-primary"
+                            <div class="form-group min-height50px">
+                                <label id="lb_stt" class="witdth100m" data-lang="unregistered">Chưa đăng ký</label>
+                                <button id="btn_reg" onclick="agency_register()" class=" form_control btn float_left_m btn-primary"
                                     data-lang="registration">Đăng ký</button>
                             </div>
-                            <div class=" pd_bt_10 form-group">
-                                <span for="" data-lang="contact:">Liên Hệ :</span> <span class="form_control"
+                            <div class="form-group pd_t_10 min-height50px">
+                                <span  for="" class="witdth100m" data-lang="contact:">Liên Hệ :</span> <span style="padding: 0px !important;" class="witdth100m form_control"
                                     id="facebook_admin"><a id="facebook_admin" href="">faceboo.com</a></span>
                             </div>
-                            <div class="form-group font_size13" id="">
-                                <label for="btn_money" data-lang="transfer_user:">Chuyển Tiền User :</label>
+                            <div class="form-group  min-height50px" id="">
+                                <label class="" for="btn_money" data-lang="transfer_user:">Chuyển Tiền User :</label>
                                 <button id="btn_money" disabled onclick="open_modal(0)"
-                                    class=" form_control btn btn-primary" data-lang="money">Money</button>
+                                    class=" form_control float_left_m  btn btn-primary" data-lang="money">Money</button>
                             </div>
-                            <div class="form-group " id="btn_withdraw">
+                            <div class=" form-group min-height50px pd_t_10" id="btn_withdraw">
                                 <!-- <button  onclick=""
                                     class=" form_control btn btn-primary" data-lang="Rút_Tiền"></button> -->
                                 <!-- <a class="btn btn-primary" href="./withdraw">Nạp bằng thẻ cào (Đang bảo trì)</a> -->
@@ -196,19 +196,19 @@
                                     data-target="#detailId">search</button></div>
                         </div>
                         <div class="col-md-12 d-flex flex-wrap">
-                            <div class="col-md-4">
+                            <div class="margin-bottom col-md-4">
                                 <div class="box-agency">
                                     <div>0</div>
                                     <div data-lang="total_top_up">Tổng tiền nạp</div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="margin-bottom col-md-4">
                                 <div class="box-agency">
                                     <div>0</div>
                                     <div data-lang="number_of_top_up">Số lần nạp</div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class=" col-md-4">
                                 <div class="box-agency">
                                     <div>0</div>
                                     <div data-lang="new_registration">Đăng ký mới</div>
@@ -226,7 +226,7 @@
                     <div id="main_content" class="table_header col-md-12 d-flex flex-wrap mt-2">
                         <h5 class="title-agency" style="color: white;" data-lang="list_of_user">Danh Sách Thành Viên
                         </h5>
-                        <div> <input class="font_" placeholder=" Nhập Mail tìm kiếm...." id="username" /> <button
+                        <div class="margin-bottom"> <input class="font_" placeholder=" Nhập Mail tìm kiếm...." id="username" /> <button
                                 onclick="search_acc()" class="btn font_ btn-primary">search</button> </div>
 
                         <!-- <div class="container title-agency" data-lang="list_of_user">

@@ -137,7 +137,7 @@ a:hover{
     width: 60%;
     height: calc(1.5em + .75rem + 2px);
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 1rem !important;
     font-weight: 400;
     line-height: 1.5;
     color: white;
@@ -269,9 +269,9 @@ a:hover{
     .v-f{
         border-left: 1px solid #383d52 !important; 
     }
-    .form_control{
+    /* .form_control{
         width: 50% !important;
-    }
+    } */
     .btn{
         font-size: 0.9rem !important; 
     }
@@ -304,13 +304,19 @@ a:hover{
         padding: none !important;
     }
     .absolute_load1{
-        left: 0px !important;
+        left: -10px !important;
     }
     .absolute_load{
         left: 50px !important;
     }
     body{
         font-size: 0.9rem !important; 
+    }
+    .min-height50px{
+        min-height: 50px;
+    }
+    .float_left_m{
+        float: left !important;
     }
 
     
