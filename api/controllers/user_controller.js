@@ -222,13 +222,13 @@ module.exports = {
     },
     start_request: (req, res) => {
         let data = req.body;
-        let sql_current_pricing = 'call get_current_pricing_info(?)'
-        db.query(sql_current_pricing, [Number(data.user_id)], (err, response) => {
+        let sql_current_pricing = 'SELECT P.*,(SELECT count(id) as existed FROM request_history where user_id = ? and date(FROM_UNIXTIME(`time`)) = date(now()) and `status` = 1) as number_today,Date_add(PH.time,interval sum(P.limit_day) day) as limit_time FROM (select TB1.id,PRC.name,TB1.user_id,TB1.pricing_id,TB1.pricing_active,TB1.time,TB1.created_at,TB1.type,if(TB1.limit_day = 0,PRC.limit_day,TB1.limit_day) as limit_day,if(TB1.limit_fb = 0,PRC.limit_fb,TB1.limit_fb) as limit_fb,if(TB1.limit_request = 0,PRC.limit_request,TB1.limit_request) as limit_request,if(TB1.level = 0,PRC.level,TB1.level) as level from (SELECT * FROM pricing_history where user_id = ? order by time desc limit 1) as TB1 left join pricing AS PRC on TB1.pricing_id = PRC.id) as PH left join pricing AS P on P.id = PH.pricing_id where PH.user_id = ? and P.active = 1 order by PH.time desc limit 1;'
+        db.query(sql_current_pricing, [Number(data.user_id),Number(data.user_id),Number(data.user_id)], (err, response) => {
             if (err) throw error
-            if (response[0][0]) {
-                let limit_time = Number(response[0][0].limit_time || 0);
-                let limit_request = response[0][0].limit_request || 0;
-                let number_today = response[0][0].number_today || 0;
+            if (response[0]) {
+                let limit_time = Number(response[0].limit_time || 0);
+                let limit_request = response[0].limit_request || 0;
+                let number_today = response[0].number_today || 0;
                 let now_ = Math.floor(new Date().getTime() / 1000);
                 if (limit_time < now_) {
                     res.json({ error: 'Bạn chưa đăng ký gia hạn !' })
