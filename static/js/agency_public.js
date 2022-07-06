@@ -22,7 +22,7 @@ async function init_agency_public() {
 
 }
 function btn_withdraw() {
-   document.getElementById('btn_withdraw').innerHTML= `<a class="form_control btn btn-primary" href="./withdraw" data-lang="Rút_Tiền">â</a> `;
+   document.getElementById('btn_withdraw').innerHTML= `<a class="form_control float_left_m btn btn-primary" href="./withdraw" data-lang="Rút_Tiền">â</a> `;
    
 }
 
