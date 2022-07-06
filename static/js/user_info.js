@@ -246,7 +246,7 @@ async function init_pricing_history() {
             <td>${data.indexOf(f) + 1}</td>
             <td>${active}</td>
             <td>${f.pricing_name}</td>
-            <td>${get_format_VND(f.price)} VNĐ</td>
+            <td>${get_format_VND(f.price)}</td>
             <td>${format_time(f.time)}</td>
             </tr>`
         });

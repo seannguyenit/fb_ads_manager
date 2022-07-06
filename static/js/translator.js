@@ -27,12 +27,18 @@ async function translator() {
         });
     }
     if(crr_lang === "en"){
-        document.getElementById('img_lang').innerHTML=`<img width="20px" height="20px"
-        src="../img/usa.jpg" alt="">`;
+        if(document.getElementById('img_lang')){
+            document.getElementById('img_lang').innerHTML=`<img width="20px" height="20px"
+            src="../img/usa.jpg" alt="">`;
+        }
+       
     }
     else{
-        document.getElementById('img_lang').innerHTML=`<img width="20px" height="20px"
-        src="../img/vn.jpg" alt="">`;
+        if(document.getElementById('img_lang')){
+            document.getElementById('img_lang').innerHTML=`<img width="20px" height="20px"
+            src="../img/vn.jpg" alt="">`;
+        }
+       
     }
 }
 

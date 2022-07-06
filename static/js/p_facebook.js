@@ -296,7 +296,7 @@ async function show_pricing() {
         }
         else {
             document.getElementById("limit_đate").innerHTML = ` 
-                            <span>${format_time(rs.limit_time)}</span>`
+                            <span>${format_time(rs.limit_time) || "" }</span>`
         }
     } else {
         document.getElementById("limit_đate").innerHTML = ` 
@@ -314,11 +314,11 @@ async function show_pricing() {
     }
     else if (data_limit === null) {
         document.getElementById("name_pricing").innerHTML = `
-        <span>null</span>`
+        <span></span>`
         document.getElementById("rights").innerHTML = `
-        <span>null</span>`
+        <span></span>`
         document.getElementById("date_buy").innerHTML = `
-        <span>null}</span>`
+        <span></span>`
     }
 
 }
