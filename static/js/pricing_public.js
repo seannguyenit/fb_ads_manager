@@ -27,7 +27,7 @@ async function init_default() {
                 ${get_format_VND(item.price)} VNĐ
             </div>
             </div>
-            <div class="text-center mt-2 mb-2"><button onclick="order_pricing(${item.id},'${item.name}',${item.price},${item.limit_day},${item.level})" class="btn btn-primary" data-lang="buy_now">Mua ngay</button></div>
+            <div class="text-center mt-2 mb-2"><button onclick="order_pricing(${item.id},'${item.name}',${item.price},${item.limit_day},${item.level},${item.limit_fb},${item.limit_request})" class="btn btn-primary" data-lang="buy_now">Mua ngay</button></div>
     </div>`;
         });
     }
@@ -59,7 +59,7 @@ async function acc_get_detail() {
         });
 }
 
-async function order_pricing(id, name, price,day,level) {
+async function order_pricing(id, name, price,day,level,limit_fb,limit_request) {
     if (!confirm(`Bạn có chắc chắn muốn gia hạn gói ${name} ?`)) {
         return;
     }
@@ -85,7 +85,7 @@ async function order_pricing(id, name, price,day,level) {
     var url = `/api/pricing_public`;
     var meth = 'POST';
 
-    var data_pricing = { user_id: cr_u, pricing_id: id, pricing_active: pricing_active,limit_day:day,type : type};
+    var data_pricing = { user_id: cr_u, pricing_id: id, pricing_active: pricing_active,limit_day:day,type : type,level:level,limit_fb:limit_fb,limit_request:limit_request};
     var data_money = { user_id: cr_u, money: price };
     var data = { data_money: data_money, data_pricing: data_pricing }
     var rs = await fetch(url, {
