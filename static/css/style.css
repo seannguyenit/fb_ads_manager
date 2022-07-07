@@ -192,11 +192,27 @@ a:hover{
     .text_center{
         text-align: center ;
     }
+    .absolute_load1{
+        left: 0px ;
+    }
+    .wth{
+        width: 100% ;
+    }
 }
 @media only screen and (max-width: 600px) {
     .com-name{
         border-bottom: solid 1px white;
         padding-bottom: 10px;
+    }
+    .margin-right_fb_as_ad{
+        margin-right: 0px !important;
+        padding-right: 0px !important;
+        border-right: solid 0px white !important;
+        border-left: solid 1px white;
+        padding-left: 10px;
+    }
+    .margin-top_avar_ad{
+        margin-top: 5vw !important;
     }
     .box_flex-wrap{
         width: 96% !important;}
@@ -355,6 +371,9 @@ a:hover{
     bottom: 0;
     z-index: 0;
     color: white;
+}
+.p-_4 {
+    padding: 1.5rem;
 }
 
 .bg-main-color{
