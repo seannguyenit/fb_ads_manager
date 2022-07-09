@@ -6,23 +6,23 @@
     <meta charset="utf-8">
 
 
-    <style>
+    <!-- <style>
         .main-content img {
             max-width: 100% !important;
             height: auto !important;
         }
-    </style>
+    </style> -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../collect/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../collect/bootstrap.css" rel="stylesheet" type="text/css">
 
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="../collect/main.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../collect/main.css"> -->
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <!-- Font-icon css-->
 
-    <style>
+    <!-- <style>
         #particles-js {
             /*color: #ffffff;*/
             /* background-image: url(../img/Bokeh-on-Blue.jpg); */
@@ -76,13 +76,88 @@
         .text_white{
             color: #ffffff o !important;
         }
-    </style>
+    </style> -->
 
 </head>
 
 <body class="app sidebar-mini">
+    <section class="login-content">
 
-    <main class="position-relative" style="min-height: 100vh;">
+        <div class="login-box rounded py-4 px-3 px-lg-5">
+            <div class="px-4 mb-3">
+                <div class="w-100 text-center" id="logo_login_center">
+                    <img src="../img/logo.jpg" width="200vw" alt="logo tool264.com" />
+                </div>
+                <h4 class="text-center blue-color-text">Đăng ký tài khoản mới</h4>
+                <!-- <h6 class="text-center">Vui lòng nhập Email để tìm kiếm tài khoảng của bạn</h6> -->
+                <!-- <img src="" alt="" class="img-fluid"> -->
+            </div>
+            <!-- <form class="login-form"> -->
+            <!-- <input type="hidden" name="_token" value="iyDxZDf2Q5FVqsv3pfnFP4FMvxe0q6ikI8bduICa">                <h3 class="login-head text-uppercase">Đăng nhập</h3> -->
+
+            <!-- <form> -->
+            <div class="d-flex flex-wrap w-75 m-auto">
+                <div class="login-form">
+                    <input id="ref" type="hidden" name="ref" value="">
+
+
+                    <div class="form-group">
+                        <label class="control-label text-uppercase">email</label>
+                        <input class="form-control" id="user" name="username" type="text" placeholder="" autofocus="">
+                    </div>
+               
+                    <div class="form-group">
+                        <label class="control-label text-uppercase">SDT</label>
+                        <input class="form-control" id="phone" name="phone" type="phone" placeholder="" autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label text-uppercase">mật khẩu</label>
+                        <input class="form-control" id="pass" name="password" type="password" placeholder="" autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label text-uppercase">xác nhận mật khẩu</label>
+                        <input class="form-control" id="pass_confirm" name="pass_confirm" type="password" placeholder=""
+                            autofocus="">
+                    </div>
+    
+    
+                    <div class="form-group btn-container mb-3">
+                        <button onclick="register()" class="btn btn-primary btn-block text-uppercase">Đăng ký</button>
+                       
+                    </div>
+
+                </div>
+                <div class="login-img" id="image_login">
+                    <img src="../img/right.jpg" width="400px" alt="tool264.com entrance" />
+                </div>
+            </div>
+            <!-- </form> -->
+
+
+
+
+
+
+
+
+
+
+            <!-- </form> -->
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </section>
+    <!-- <main class="position-relative" style="min-height: 100vh;">
         <div id="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="1366"
                 height="537"></canvas></div>
         <section class="login-content">
@@ -92,10 +167,9 @@
             <div class="login-box rounded py-4 px-3 px-lg-5">
                 <div class="px-4 mb-3">
                     <div class="text-center com-name-login">FB ads support</div>
-                    <!-- <img src="" alt="" class="img-fluid"> -->
+                 
                 </div>
-                <!-- <form class="login-form"> -->
-                <!-- <input type="hidden" name="_token" value="iyDxZDf2Q5FVqsv3pfnFP4FMvxe0q6ikI8bduICa">                <h3 class="login-head text-uppercase">Đăng nhập</h3> -->
+           
 
                 <input id="ref" type="hidden" name="ref" value="">
 
@@ -104,10 +178,7 @@
                     <label class="control-label text-uppercase">email</label>
                     <input class="form-control" id="user" name="username" type="text" placeholder="" autofocus="">
                 </div>
-                <!-- <div class="form-group">
-                    <label class="control-label text-uppercase">email</label>
-                    <input class="form-control" id="email" name="email" type="email" placeholder="" autofocus="">
-                </div> -->
+           
                 <div class="form-group">
                     <label class="control-label text-uppercase">SDT</label>
                     <input class="form-control" id="phone" name="phone" type="phone" placeholder="" autofocus="">
@@ -125,7 +196,7 @@
 
                 <div class="form-group btn-container mb-3">
                     <button onclick="register()" class="btn btn-primary btn-block text-uppercase">Đăng ký</button>
-                    <!-- <a class="btn btn-warning btn-block text-uppercase" href="https://adsconex.com/system/register">Đăng ký ngay</a> -->
+                   
                 </div>
 
 
@@ -138,7 +209,7 @@
 
 
 
-                <!-- </form> -->
+
 
 
 
@@ -153,7 +224,7 @@
 
             </div>
         </section>
-    </main>
+    </main> -->
 
     <!-- Essential javascripts for application to work-->
 
@@ -168,7 +239,7 @@
     <script defer src="../js/translator.js"></script>
 
 
-    <script>
+    <!-- <script>
         particlesJS("particles-js", {
             "particles": {
                 "number": {
@@ -279,7 +350,7 @@
             },
             "retina_detect": true
         });
-    </script>
+    </script> -->
 
 </body>
 

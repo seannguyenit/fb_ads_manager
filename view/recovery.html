@@ -6,23 +6,24 @@
     <meta charset="utf-8">
 
 
-    <style>
+    <!-- <style>
         .main-content img {
             max-width: 100% !important;
             height: auto !important;
         }
-    </style>
+    </style> -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../collect/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../collect/bootstrap.css" rel="stylesheet" type="text/css">
 
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="../collect/main.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../collect/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <!-- Font-icon css-->
 
-    <style>
+    <!-- <style>
         #particles-js {
             /*color: #ffffff;*/
             /* background-image: url(../img/Bokeh-on-Blue.jpg); */
@@ -70,41 +71,107 @@
             padding: 16px;
             max-width: 100%;
         }
-    </style>
+    </style> -->
 
 </head>
 
 <body class="app sidebar-mini">
+    <section class="login-content">
 
-    <main class="position-relative" style="min-height: 100vh;">
-        <div id="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="1366"
-                height="537"></canvas></div>
-        <section class="login-content">
-
-
-
-            <div class="login-box rounded py-4 px-3 px-lg-5">
-                <div class="px-4 mb-3">
-                    <div class="text-center com-name-login">Tìm tài khoảng của bạn</div>
-                    <!-- <img src="" alt="" class="img-fluid"> -->
-                    <p>Vui lòng nhập Email để tìm kiếm tài khoảng của bạn</p>
+        <div class="login-box rounded py-4 px-3 px-lg-5">
+            <div class="px-4 mb-3">
+                <div class="w-100 text-center" id="logo_login_center">
+                    <img src="../img/logo.jpg" width="200vw" alt="logo tool264.com" />
                 </div>
+                <h4 class="text-center blue-color-text">Tìm tài khoảng của bạn</h4>
+                <h6 class="text-center">Vui lòng nhập Email để tìm kiếm tài khoảng của bạn</h6>
+                <!-- <img src="" alt="" class="img-fluid"> -->
+            </div>
+            <!-- <form class="login-form"> -->
+            <!-- <input type="hidden" name="_token" value="iyDxZDf2Q5FVqsv3pfnFP4FMvxe0q6ikI8bduICa">                <h3 class="login-head text-uppercase">Đăng nhập</h3> -->
+
+            <!-- <form> -->
+            <div class="d-flex flex-wrap w-75 m-auto">
+                <div class="login-form">
+                    <div class="form-group">
+                        <label class="control-label text-uppercase">email</label>
+                        <input class="form-control" id="user" name="username" type="text" placeholder="" autofocus="">
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label class="control-label text-uppercase">mật khẩu</label>
+                        <input class="form-control" id="pass" name="password" type="password" placeholder=""
+                            autofocus="">
+                    </div> -->
+
+                    <div class="form-group btn-container mb-3">
+                        <button onclick="recovery_()" class="btn btn-primary btn-block text-uppercase blue-color-bg">Tìm Kiếm</button>
+                            <!-- <button onclick="recovery_()" class="btn btn-primary btn-block text-uppercase"></button> --> 
+                        <!-- <div class="d-flex flex-column mt-2">
+                            <a href="/register">Đăng ký ngay ?</a>
+                            <a href="/recovery">Quên mật khẩu ?</a>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="login-img" id="image_login">
+                    <img src="../img/right.jpg" width="400px" alt="tool264.com entrance" />
+                </div>
+            </div>
+            <!-- </form> -->
+
+
+
+
+
+
+
+
+
+
+            <!-- </form> -->
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </section>
+    <!-- <main class="position-relative" style="min-height: 100vh;"> -->
+        <!-- <div id="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="1366"
+                height="537"></canvas></div> -->
+        <!-- <section class="login-content"> -->
+
+
+
+            <!-- <div class="login-box rounded py-4 px-3 px-lg-5">
+                <div class="px-4 mb-3">
+                    <div class="text-center com-name-login">Tìm tài khoảng của bạn</div> -->
+                    <!-- <img src="" alt="" class="img-fluid"> -->
+                    <!-- <p>Vui lòng nhập Email để tìm kiếm tài khoảng của bạn</p>
+                </div> -->
                 <!-- <form class="login-form"> -->
                 <!-- <input type="hidden" name="_token" value="iyDxZDf2Q5FVqsv3pfnFP4FMvxe0q6ikI8bduICa">                <h3 class="login-head text-uppercase">Đăng nhập</h3> -->
 
-                <input id="ref" type="hidden" name="ref" value="">
+                <!-- <input id="ref" type="hidden" name="ref" value=""> -->
 
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="control-label text-uppercase">email</label>
                     <input class="form-control" id="user" name="username" type="text" placeholder="" autofocus="">
                 </div>
 
 
                 <div class="form-group btn-container mb-3">
-                    <button onclick="recovery_()" class="btn btn-primary btn-block text-uppercase">Tìm Kiếm</button>
+                    <button onclick="recovery_()" class="btn btn-primary btn-block text-uppercase">Tìm Kiếm</button> -->
                     <!-- <a class="btn btn-warning btn-block text-uppercase" href="https://adsconex.com/system/register">Đăng ký ngay</a> -->
-                </div>
+                <!-- </div> -->
 
 
 
@@ -129,9 +196,9 @@
 
 
 
-            </div>
-        </section>
-    </main>
+            <!-- </div>
+        </section> -->
+    <!-- </main> -->
 
     <!-- Modal -->
     <div id="ticket_message">
@@ -150,7 +217,7 @@
     <script src="../js/recovery.js"></script>
     <script defer src="../js/translator.js"></script>
 
-
+<!-- 
     <script>
         particlesJS("particles-js", {
             "particles": {
@@ -262,7 +329,7 @@
             },
             "retina_detect": true
         });
-    </script>
+    </script> -->
 
 </body>
 
