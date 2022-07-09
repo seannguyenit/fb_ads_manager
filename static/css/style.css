@@ -293,6 +293,9 @@ a:hover{
     .btn{
         font-size: 0.9rem !important; 
     }
+    .width120{
+        width: 120px !important;
+    }
     .mr_r_10{
         margin-right: 5% !important;
     }
