@@ -52,19 +52,19 @@ async function check_service() {
     var today = new Date().getTime();
     var date = 0;
     if (dt) {
-        if(dt.total_day){
-            if(dt.limit_time){
+        if (dt.total_day) {
+            if (dt.limit_time) {
                 const _date = new Date(dt.limit_time);
                 _date.setDate(_date.getDate() + dt.total_day);
-                 date = new Date(_date).getTime();
-            }else{
+                date = new Date(_date).getTime();
+            } else {
                 date = new Date(dt.limit_time_).getTime();
             }
         }
-        else{
+        else {
             date = new Date(dt.limit_time).getTime();
         }
-       
+
         if (date === 0) {
             alert("Mua gói dịch vụ để sử dụng !");
             window.location.href = 'pricing';
@@ -177,10 +177,10 @@ async function set_combobox_data() {
             var cr_page = get_page_value();
             document.getElementById('link').value = `https://www.facebook.com/${cr_page}`;
         } catch (error) {
-            if(document.getElementById('error_token')){
-                document.getElementById('error_token').innerHTML=`<div class="col-md-12 pd0 mt-2">  <div class="box_flex-wrap m_l_10 col-md-12 ">
+            if (document.getElementById('error_token')) {
+                document.getElementById('error_token').innerHTML = `<div class="col-md-12 pd0 mt-2">  <div class="box_flex-wrap m_l_10 col-md-12 ">
                 <div class="box-wrap  pd-t10 pd_t_m_15"><i style="width:20%" class="fa  fa-2x fa-exclamation-triangle" aria-hidden="true"></i></div> 
-                 <div style="width:80% !important" class="pd-t13 m_l_-7 pd0 box-wrap">Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !</div></div> </div>`;  
+                 <div style="width:80% !important" class="pd-t13 m_l_-7 pd0 box-wrap">Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !</div></div> </div>`;
             }
             // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
         }
@@ -188,10 +188,10 @@ async function set_combobox_data() {
         document.getElementById('img_1').src = 'https://i.imgur.com/BDJYyka.jpg';
         document.getElementById('img_2').src = document.querySelector('div[class="img_item active"]').children[0].src;
     } else {
-        if(document.getElementById('error_token')){
-            document.getElementById('error_token').innerHTML=` <div class="col-md-12 pd0 mt-2">  <div class="box_flex-wrap m_l_10 col-md-12 ">
+        if (document.getElementById('error_token')) {
+            document.getElementById('error_token').innerHTML = ` <div class="col-md-12 pd0 mt-2">  <div class="box_flex-wrap m_l_10 col-md-12 ">
             <div class="box-wrap  pd-t10 pd_t_m_15"><i style="width:20%" class="fa  fa-2x fa-exclamation-triangle" aria-hidden="true"></i></div> 
-             <div style="width:80% !important" class="pd-t13 m_l_-7 pd0 box-wrap">Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !</div></div> </div>`;  
+             <div style="width:80% !important" class="pd-t13 m_l_-7 pd0 box-wrap">Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !</div></div> </div>`;
         }
         // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
     }
@@ -635,10 +635,12 @@ async function public_data() {
         return;
     }
 
-    if (call_to_ac != 'LIKE_PAGE'){
-        data.object_story_spec.link_data.child_attachments[0].call_to_action = {type: call_to_ac};
-        data.object_story_spec.link_data.child_attachments[1].call_to_action = {type: call_to_ac};
+    if (call_to_ac != 'LIKE_PAGE') {
+        data.object_story_spec.link_data.child_attachments[0].call_to_action = { type: call_to_ac };
+        data.object_story_spec.link_data.child_attachments[1].call_to_action = { type: call_to_ac };
     }
+
+    //data.object_story_spec.link_data.child_attachments = [...data.object_story_spec.link_data.child_attachments,...data.object_story_spec.link_data.child_attachments];
 
     // console.log(data);
     var url = `https://graph.facebook.com/v14.0/act_${ads_id}/adcreatives`;
