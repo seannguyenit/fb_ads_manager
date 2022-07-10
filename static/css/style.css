@@ -133,6 +133,11 @@ a:hover{
 .login-img{
     width: 50%;
 }
+.col-md-4_ {
+    /* -ms-flex: 0 0 33.333333%; */
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
 .form_control{
     width: 60%;
     height: calc(1.5em + .75rem + 2px);
@@ -182,6 +187,13 @@ a:hover{
     position: absolute;
     left: 100px;
 }
+/* @media only screen and (min-width: 600px) {
+    .col-md-6_ {
+        flex: 0 0 50%;
+        max-width: 50%;
+}
+} */
+
 @media only screen and (max-width: 1000px) {
 
     .navbar .dropdown-menu-mobile{
@@ -202,6 +214,16 @@ a:hover{
     }
     .wth{
         width: 100% ;
+    }
+    .t1000_center{
+        text-align: center ;
+     }
+     .t1000_left{
+        text-align: left !important;
+     }
+     .box-wrap{
+        width: 20%;
+       
     }
 }
 @media only screen and (max-width: 600px) {
