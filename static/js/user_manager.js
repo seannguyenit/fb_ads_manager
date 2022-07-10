@@ -226,12 +226,24 @@ async function update_history() {
         data.forEach(item => {
             var today = new Date().getTime();
             var date = 0;
-            if(!item.limit_time){
-                date = new Date(item.limit_time_).getTime();
-            }else{
+            if (item.total_day) {
+                if (item.limit_time) {
+                    const _date = new Date(item.limit_time);
+                    _date.setDate(_date.getDate() + item.total_day);
+                     date = new Date(_date).getTime();
+                }else{
+                     date = new Date(item.limit_time_).getTime();
+                }
+            }
+            else{
                 date = new Date(item.limit_time).getTime();
             }
-            
+            // if(item.limit_time_){
+            //     date = new Date(item.limit_time_).getTime();
+            // }else{
+            //     date = new Date(item.limit_time).getTime();
+            // }
+         
             if (Number(date) != 0 && Number(date) < Number(today)) {
                 id = item.id;
                 //  alert(id);
@@ -240,6 +252,7 @@ async function update_history() {
         }
         )
     };
+    // alert(id);
     await history_update(id);
     //  alert(id);
 }
