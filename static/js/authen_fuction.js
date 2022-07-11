@@ -31,6 +31,10 @@ async function init_logo() {
             }
             if (document.getElementById('logo_login_center')) {
                 document.getElementById('logo_login_center').innerHTML = ` <img src="${item.logo_img}" width="200vw" height="97.17vw" alt="logo tool264.com" />`;
+            } 
+            if(document.getElementById('img_logo_mobie')){
+                document.getElementById('img_logo_mobie').innerHTML =` <a style="margin-left: -15px;" class="navbar-brand" href="/home/page_box" id=""><img width="100px" height="41px" src="${item.logo_img}"
+                alt=""></a>`;
             }
         })
     }
