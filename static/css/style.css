@@ -216,8 +216,8 @@ a:hover {
     position: absolute;
     width: 100px;
     height: 100px;
-    top: 30px;
-    left: 140px;
+    top: 15%;
+    left: 28%;
 }
 
 .absolute_load1 {
@@ -266,6 +266,17 @@ a:hover {
         max-width: 50%;
 }
 } */
+@media only screen and (max-width: 1200px) {
+    .absolute_load {
+        left: 35%;
+    }
+}
+@media only screen and (max-width: 750px) {
+    .absolute_load {
+        left: 25% !important
+    }
+}
+
 
 @media only screen and (max-width: 1000px) {
 
@@ -307,6 +318,9 @@ a:hover {
     }
     .mg_t_20 {
         margin-top: 20px !important;
+    }
+    .absolute_load {
+        left: 17%;
     }
 }
 
@@ -487,7 +501,7 @@ a:hover {
     }
 
     .absolute_load {
-        left: 50px !important;
+        left: 13% !important;
     }
 
     body {
