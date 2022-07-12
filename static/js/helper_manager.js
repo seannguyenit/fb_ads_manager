@@ -6,13 +6,14 @@ async function get_img_loading() {
     return await fetch(`/api/init_img_loading` /*, options */)
         .then((response) => response.json())
         .then((data) => {
-             return data[0].logo_img;
+             return data;
         })
         .catch((error) => {
             console.warn(error);
             return undefined;
         });
 }
+
 // init_load_img();
 // async function init_load_img(){
 //  var load_img = await get_img_loading();
@@ -126,8 +127,16 @@ async function stop_loading() {
 
 init_loading1();
 async function init_loading1() {
+    var text = await get_img_loading();
+    var img = ""
+    if(text){
+        text.forEach(f=> {
+            img = f.logo_img
+        })
+       
+    }
     if(document.getElementById('loading')){
-        document.getElementById('loading').innerHTML += `<div class="absolute_load" id="loading-element1" style="display:none;"><img src="../img/loading.gif" style="width: 100px;padding-top: 100px;margin-left: 80px;"/></div>`;    
+        document.getElementById('loading').innerHTML += `<div class="absolute_load" id="loading-element1" style="display:none;"><img src="${img}" style="width: 50px;padding-top: 100%;margin-left: 100%;"/></div>`;    
     }
     
 }
@@ -143,8 +152,16 @@ async function stop_loading1() {
 
 init_loading2();
 async function init_loading2() {
+    var text = await get_img_loading();
+    var img = ""
+    if(text){
+        text.forEach(f=> {
+            img = f.logo_img
+        })
+       
+    }
     if(document.getElementById('loading1')){
-        document.getElementById('loading1').innerHTML += `<div class="absolute_load" id="loading-element2" style="display:none;"><img src="../img/loading.gif" style="width: 100px;padding-top: 100px;margin-left: 80px;"/></div>`;    
+        document.getElementById('loading1').innerHTML += `<div class="absolute_load" id="loading-element2" style="display:none;"><img src="../img/loader.gif" style="width: 50px;padding-top: 100%;margin-left: 100%;"/></div>`;    
     }
    
 }

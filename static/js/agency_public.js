@@ -22,7 +22,7 @@ async function init_agency_public() {
 
 }
 function btn_withdraw() {
-   document.getElementById('btn_withdraw').innerHTML= `<a class="form_control float_left_m btn btn-primary" href="./withdraw" data-lang="Rút_Tiền">â</a> `;
+   document.getElementById('btn_withdraw').innerHTML= `<a class="form_control wth float_left_m btn btn-primary" href="./withdraw" data-lang="Rút_Tiền">â</a> `;
    
 }
 
@@ -105,7 +105,7 @@ async function get_agency_child() {
 
             rs.forEach(it => {
                 document.getElementById('table_dt').innerHTML += `
-                    <tr>
+                    <tr class="tr">
                         <td>${rs.indexOf(it) + 1}</td>    
                         <td>${it.username}</td>
                         <td>${get_format_VND(it.total || 0)}</td>
@@ -260,7 +260,7 @@ async function get_agency_bychild(username) {
     if (rs) {
         rs.forEach(it => {
             document.getElementById('table_dt').innerHTML += `
-                    <tr>
+                    <tr class="tr">
                         <td>${rs.indexOf(it) + 1}</td>    
                         <td>${it.username}</td>
                         <td>${get_format_VND(it.total || 0)}</td>
@@ -325,7 +325,7 @@ async function search_acc_by_created() {
     if (rs) {
         rs.forEach(it => {
         document.getElementById('table_dt').innerHTML += `
-            <tr>
+            <tr class="tr">
                 <td>${rs.indexOf(it) + 1}</td>    
                 <td>${it.username}</td>
                 <td>${get_format_VND(it.total || 0)}</td>

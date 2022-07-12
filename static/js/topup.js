@@ -41,7 +41,7 @@ async function init_top_up() {
                 // }
 
                 placed.innerHTML += `
-                <tr>
+                <tr class="tr">
                     <td>${data.indexOf(f) + 1}</td>
                     <td>${new Date(Number(f.time * 1000 || 0)).toLocaleDateString()}</td>
                     <td>${type}</td>
@@ -71,7 +71,7 @@ async function init_top_up_card() {
         if (data) {
             data.forEach(f => {
                 placed.innerHTML += `
-                <tr>
+                <tr class="tr">
                     <td>${data.indexOf(f) + 1}</td>
                     <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
                     <td>${(f.declared_value) || 0}</td>

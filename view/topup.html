@@ -16,7 +16,6 @@
 
 <body class="body-bg-custom">
     <!-- Top Bar -->
-
     <div class="header">
         <div class="d-flex">
             <div class="p-2 flex-grow-1 website" id="img_logo"><a class="navbar-brand" href="/home/page_box"><img
@@ -24,7 +23,7 @@
             <div style="padding-top:25px" class="d-flex">
                 <!-- <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
                             height="40px" src="../img/avatar_user.png" alt=""></a></div> -->
-                <div class="dropdown website" style="padding-top: 5px;padding-right: 10px;">
+                <div class="dropdown website " style="padding-top: 5px;padding-right: 10px;">
                     <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <img style="border-radius: 50%;" width="40px" height="40px" src="../img/avatar_user.png" alt="">
@@ -37,9 +36,10 @@
                     </div>
                 </div>
 
-                <div style="padding-top:5px" class="dropdown website ">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
-                        data-toggle="dropdown" data-lang="" aria-haspopup="true" aria-expanded="false">
+                <div style="padding-top:5px" class="website dropdown">
+                    <button class="btn btn_lang btn-secondary dropdown-toggle" type="button"
+                        id="dropdownMenuButton_lang" data-toggle="dropdown" data-lang="" aria-haspopup="true"
+                        aria-expanded="false">
                         <span id="img_lang"> </span><span data-lang="Language"></span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -52,24 +52,25 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
+    <nav class="navbar navbar-expand-sm navbar-light bg-main-color_none bg-main-color_clinet">
         <div class="container-fluid with100">
             <!-- <a class="navbar-brand com-name website" href="#">FB ads support</a> -->
-            <button class="navbar-toggler border_none with20" type="button" data-toggle="collapse" data-target="#main_menu_nav"
-            aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-toggler border_none text_center with75" id="img_logo">
-            <span id="img_logo_mobie">
-                <a style="margin-left: -15px;" class="navbar-brand" href="/home/page_box" id=""><img width="100px" height="41px" src="../img/logo.jpg"
-                    alt=""></a>
-            </span>
-            <!-- <a class="float_right" style="padding-top:20px; color: whitesmoke;" href="#"><i class="fa fa-bell"
+            <button class="navbar-toggler focus border_none with20" type="button" data-toggle="collapse"
+                data-target="#main_menu_nav" aria-controls="main_menu_nav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-toggler border_none text_center with75" id="img_logo">
+                <span id="img_logo_mobie">
+                    <a style="margin-left: -15px;" class="navbar-brand" href="/home/page_box" id=""><img width="100px"
+                            height="41px" src="../img/logo.jpg" alt=""></a>
+                </span>
+                <!-- <a class="float_right" style="padding-top:20px; color: whitesmoke;" href="#"><i class="fa fa-bell"
                     aria-hidden="true"></i></a> -->
-            <div style="padding-top:20px;color: whitesmoke;" class="float_right dropdown">
+                <div style="padding-top:20px;color: whitesmoke;" class="float_right dropdown">
                     <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <i class="fa fa-1x fa-language" aria-hidden="true"></i>
+                        <i style="color: #000;" class="fa fa-1x fa-language" aria-hidden="true"></i>
                     </div>
                     <div class="dropdown-menu dropdown-menu-mobile" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
@@ -82,7 +83,7 @@
                 <div class="dropdown float_right" style="color: whitesmoke;padding-top: 20px; margin-right: 20px;">
                     <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <i class="fa fa-1x fa-user-circle-o" aria-hidden="true"></i>
+                        <i style="color: #000;" class="fa fa-1x fa-user-circle-o" aria-hidden="true"></i>
                     </div>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
@@ -93,8 +94,8 @@
                 </div>
             </div>
 
-            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between;">
-                <div id="main_menu" class="navbar-nav">
+            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between; ">
+                <div id="main_menu" class="navbar-nav ">
                 </div>
                 <!-- <div class="collapse navbar-collapse" id="main_menu_nav">
                     <ul class="navbar-nav mr-auto">
@@ -118,13 +119,14 @@
         </div>
     </nav>
     <div class="content">
-        <section>
+        <section >
             <div class="col-12 pd0">
-                <div class="container pd0">
-                    <div class="col-md-12 d-flex pd0 flex-wrap mt-5 mb-5">
+                <div class="container">
+                    <div  style="background-color: #fff;box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;" class="col-md-12 d-flex pd0 font-weight-550 flex-wrap mt-3 mb-3">
                         <div class="col-12">
-                            <h2><i class="pd_r_5 fa fa-university" aria-hidden="true"></i> <span data-lang="transfer_money_bank">Nạp TIền
-                                    Chuyển Khoảng</span></h2>
+                            <h3 class="text_blue pd-t10"><i class="pd_r_5 fa fa-university" aria-hidden="true"></i> <span
+                                    data-lang="transfer_money_bank">Nạp TIền
+                                    Chuyển Khoảng</span></h3>
                             <!-- <a class="btn btn-primary" href="./topup_card">Nạp bằng thẻ cào (Đang bảo trì)</a> -->
                             <!-- <button class="btn btn-primary" onclick="topup_directly()" data-lang="with_scratch_card">Nạp
                                 bằng
@@ -144,33 +146,36 @@
                                     Cào</span></a>
                         </div>
                         <div class="col-md-12">
-                            <div class="pricing ">
+                            <div  style=" box-shadow: 0 5px 15px 5px rgb(80 102 224/8%) !important;" class="pricing ">
                                 <div class="text_left pricing_benefit d-flex flex-column">
                                     <div class="container">
-                                        <span data-lang="node11">- Bạn vui lòng chuyển khoản chính xác nội dung để được cộng tiền nhanh
+                                        <span data-lang="node11">- Bạn vui lòng chuyển khoản chính xác nội dung để được
+                                            cộng tiền nhanh
                                             nhất.</span> <br>
-                                        <span data-lang="node12"> - Nếu sau 10 phút từ khi tiền trong tài khoản của bạn bị trừ mà vẫn chưa
+                                        <span data-lang="node12"> - Nếu sau 10 phút từ khi tiền trong tài khoản của bạn
+                                            bị trừ mà vẫn chưa
                                             được cộng tiền vui liên hệ Admin để được hỗ trợ.</span> <br>
-                                        <span data-lang="node13">- Vui lòng không nạp từ bank khác qua bank này (tránh lỗi).</span>
+                                        <span data-lang="node13">- Vui lòng không nạp từ bank khác qua bank này (tránh
+                                            lỗi).</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                     
+
                         <div class="col-md-6">
-                            <div class="pricing ">
+                            <div  style=" box-shadow: 0 5px 15px 5px rgb(80 102 224/8%) !important;" class="pricing ">
                                 <div class="text_left pricing_benefit d-flex flex-column">
                                     <div class="container">
-                                        <span data-lang="bank_name"> Tên Ngân Hàng: </span>Mb Bank <br>
+                                        <span data-lang="bank_name"> Tên Ngân Hàng: </span> Mb Bank <br>
                                         <span data-lang="account_number"> Số tài khoản:</span>: 264264989999 <br>
                                         <span data-lang="account_holder"> Chủ tài khoản:</span> NGUYEN QUOC TAI <br>
-                                        <span data-lang="minimum_topup"> Nạp tối thiểu: </span>10,000 VNĐ
+                                        <span data-lang="minimum_topup"> Nạp tối thiểu: </span> 10,000 VNĐ
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="pricing ">
+                            <div  style=" box-shadow: 0 5px 15px 5px rgb(80 102 224/8%) !important;" class="pricing ">
                                 <div class="text_left pricing_benefit d-flex flex-column">
                                     <div class="container">
                                         <span data-lang="bank_name"> Tên bank: </span> ACB Bank <br>
@@ -182,13 +187,13 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="pricing ">
+                            <div  style=" box-shadow: 0 5px 15px 5px rgb(80 102 224/8%) !important;" class="pricing ">
                                 <div class="text_left pricing_benefit d-flex flex-column">
                                     <div class="container">
-                                        <span data-lang="bank_name"> Tên Ngân Hàng: </span>MoMo <br>
+                                        <span data-lang="bank_name"> Tên Ngân Hàng: </span> MoMo <br>
                                         <span data-lang="account_number"> Số tài khoản:</span>: 0987533112 <br>
                                         <span data-lang="account_holder"> Chủ tài khoản:</span> NGUYEN QUOC TAI <br>
-                                        <span data-lang="minimum_topup"> Nạp tối thiểu: </span>10,000 VNĐ
+                                        <span data-lang="minimum_topup"> Nạp tối thiểu: </span> 10,000 VNĐ
                                     </div>
                                 </div>
                             </div>
@@ -197,7 +202,7 @@
                             <h5 class="pd_t_15 mr_b_15" data-lang="transfer_contents">Nội dung chuyển khoản</h5>
                         </div>
                         <div class="col-md-12">
-                            <div class="pricing text_center">
+                            <div style=" box-shadow: 0 5px 15px 5px rgb(80 102 224/8%) !important;" class="pricing text_center">
                                 <!-- <div class="pricing_title">
                                     <i class="pd_r_5 fa fa-university" aria-hidden="true"></i><span
                                         data-lang="bankMB"></span>
@@ -228,7 +233,7 @@
                         </div>
                         <div class="col-md-12">
 
-                            <div class="pricing ">
+                            <div style=" box-shadow: 0 5px 15px 5px rgb(80 102 224/8%) !important;" class="pricing ">
                                 <!-- <div class="pricing_title" id="cr_money_">
                                 </div> -->
 
@@ -236,10 +241,11 @@
                                     <div class="container">
                                         <span>
                                             <span style="font-weight: bolder;" data-lang="note:">Chú ý:</span><br />
-                                            
+
                                             <span data-lang="note_topup_2">- Nhập đúng nội dung chuyển
                                                 khoản</span><br />
-                                            <span data-lang="node14">- Nạp sai cú pháp, sai số tài khoản, sai ngân hàng sẽ bị
+                                            <span data-lang="node14">- Nạp sai cú pháp, sai số tài khoản, sai ngân hàng
+                                                sẽ bị
                                                 trừ 20% phí giao dịch. Vd: nạp 100k sai nội dung sẽ chỉ nhận được 80k
                                                 coin và phải liên hệ admin để cộng tay.</span>
 
@@ -247,6 +253,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
                         </div>
 
                         <!-- <div class="container">
@@ -256,60 +263,59 @@
                             - Sau 30 phút không cộng tiền liên hệ zalo : 0987533112 để được hỗ trợ
                         </span>
                     </div> -->
+                   
                     </div>
                 </div>
             </div>
-    </div>
-    </section>
-    <section>
-        <div class="col-12">
-            <div class="container pd0">
-                <div id="main_content" class="col-md-12 pd0 d-flex flex-wrap mt-5 mb-5">
-                    <h3><i class="pd_r_5 fa fa-history"></i><span data-lang="history_operation"></span></h3>
-                    <div class="col-12 v-data-table__wrapper">
-                        <table class="width_table_300 table text_center table_section">
-                            <caption data-lang="recent_trading_history">lịch sử giao dịch gần đây</caption>
-                            <thead>
-                                <tr>
-                                    <th style="width:10%">Stt</th>
-                                    <th data-lang="time">Thời gian</th>
-                                    <th data-lang="tpe">loại</th>
-                                    <th data-lang="transaction_code">Mã Giao Dịch</th>
-                                    <th style="width:25%" data-lang="name">Ngươi Chuyển</th>
-                                    <th data-lang="money_topup">Số tiền nạp (VND)</th>
-                                    <!-- <th data-lang="">Nội Dung</th> -->
-                                </tr>
-                            </thead>
-                            <tbody id="tb_money_his">
+             <div class="col-12">
+                <div class="container pd0">
+                    <div style="background-color: #fff;box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;" id="main_content" class="col-md-12 pd0 d-flex flex-wrap mb-3">
+                        <h3 class="pd10 text_blue"><i class="pd_r_5 fa fa-history"></i><span data-lang="history_operation"></span></h3>
+                        <div class="col-12 v-data-table__wrapper">
+                            <table class="width_table_300 table text_center table_section">
+                                <caption data-lang="recent_trading_history">lịch sử giao dịch gần đây</caption>
+                                <thead>
+                                    <tr>
+                                        <th style="width:10%">Stt</th>
+                                        <th data-lang="time">Thời gian</th>
+                                        <th data-lang="tpe">loại</th>
+                                        <th data-lang="transaction_code">Mã Giao Dịch</th>
+                                        <th style="width:25%" data-lang="name">Ngươi Chuyển</th>
+                                        <th data-lang="money_topup">Số tiền nạp (VND)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text_black" id="tb_money_his">
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </section>
+        </section>
 
     </div>
-    <dialog id="bank_money_ticket"><div class="modal-dialog" role="document">
-        <div style="border: 0px;" class="modal-content">
+    <dialog id="bank_money_ticket">
+        <div class="modal-dialog" role="document">
+            <div style="border: 0px;" class="modal-content">
 
-            <div class="modal-body text_center">
-                <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
-                <h4>Thành Công !</h4>
-                <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
-                <button type="button" class="btn btn-primary" onclick="location.reload()"
-                    data-dismiss="modal">OK</button>
-            </div>
-            <div class="text_center">
+                <div class="modal-body text_center">
+                    <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
+                    <h4>Thành Công !</h4>
+                    <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
+                    <button type="button" class="btn btn-primary" onclick="location.reload()"
+                        data-dismiss="modal">OK</button>
+                </div>
+                <div class="text_center">
 
+                </div>
             </div>
         </div>
-    </div></dialog>
+    </dialog>
     <div class="footer">
-        <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color">
-            <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
+        <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color_clinet">
+                <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
         </nav>
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

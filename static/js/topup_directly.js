@@ -3,7 +3,7 @@ var data_;
 
 init_default();
 async function init_default() {
-    start_loading();
+    // start_loading();
     var url = `https://api.autocard365.com/api/cardrate?apikey=${api_key}`;
     let data = await fetch(
         '/api/fproxy',
@@ -22,7 +22,7 @@ async function init_default() {
         data_ = data.Data.sort();
         init_type();
     }
-    stop_loading();
+    // stop_loading();
 }
 
 function init_type() {
@@ -90,7 +90,7 @@ async function go_money() {
     }
     var cr_u = get_cr_user();
     if (!cr_u) return;
-    start_loading();
+    // start_loading();
     var card_type = document.getElementById('card_type_place').value;
     var card_value = document.getElementById('card_price_place').value;
     var seri = document.getElementById('seri').value;
@@ -122,22 +122,22 @@ async function go_money() {
             // var money = document.getElementById('card_price_place').querySelector('input:checked').value - Math.floor((document.getElementById('card_price_place').querySelector('input:checked').value) / 100) * document.getElementById('card_price_place').querySelector('input:checked').dataset.rate;
             //var money = document.getElementById('card_price_place').querySelector('input:checked').value - Math.floor((document.getElementById('card_price_place').querySelector('input:checked').value) / 100) * document.getElementById('card_price_place').querySelector('input:checked').dataset.rate;
             var rs_save = await ticket_save_({ money: 0, des: 'Thẻ cào', user_id: cr_u.id, active: 1, task_id: rs.TaskId, type: 1, time: Math.floor((new Date()).getTime() / 1000) });
-            stop_loading();
+            // stop_loading();
             alert('Thẻ nạp thành công vui lòng chờ 3-5 phút để tiền về tài khoản ! Nếu sau đó tk chưa có tiền vui lòng liên hệ admin !')
         } else {
             if (rs.Message && rs.Message.length > 0) {
                 stop_loading();
                 alert(rs.Message);
             } else {
-                stop_loading();
+                // stop_loading();
                 alert('Thẻ bị lỗi !')
             }
         }
     } else {
-        stop_loading();
+        // stop_loading();
         alert('Nạp thất bại ! Thẻ bị lỗi !');
     }
-    stop_loading();
+    // stop_loading();
 }
 
 async function ticket_save_(data) {

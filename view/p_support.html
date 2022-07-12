@@ -23,7 +23,7 @@
             <div style="padding-top:25px" class="d-flex">
                 <!-- <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
                             height="40px" src="../img/avatar_user.png" alt=""></a></div> -->
-                <div class="dropdown website" style="padding-top: 5px;padding-right: 10px;">
+                <div class="dropdown website " style="padding-top: 5px;padding-right: 10px;">
                     <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <img style="border-radius: 50%;" width="40px" height="40px" src="../img/avatar_user.png" alt="">
@@ -36,10 +36,11 @@
                     </div>
                 </div>
 
-                <div style="padding-top:5px" class="dropdown website">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
-                        data-toggle="dropdown" data-lang="" aria-haspopup="true" aria-expanded="false">
-                        <span id="img_lang">  </span><span data-lang="Language"></span>
+                <div style="padding-top:5px" class="website dropdown">
+                    <button class="btn btn_lang btn-secondary dropdown-toggle" type="button"
+                        id="dropdownMenuButton_lang" data-toggle="dropdown" data-lang="" aria-haspopup="true"
+                        aria-expanded="false">
+                        <span id="img_lang"> </span><span data-lang="Language"></span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
@@ -51,92 +52,93 @@
             </div>
         </div>
     </div>
-    <div class="content">
-        <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
-            <div class="container-fluid with100">
-                <!-- <a class="navbar-brand com-name website" href="#">FB ads support</a> -->
-                <button class="navbar-toggler border_none with20" type="button" data-toggle="collapse" data-target="#main_menu_nav"
-                    aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-toggler border_none text_center with75" id="img_logo">
-                    <span id="img_logo_mobie">
-                        <a style="margin-left: -15px;" class="navbar-brand" href="/home/page_box" id=""><img width="100px" height="41px" src="../img/logo.jpg"
-                            alt=""></a>
-                    </span>
-                    <!-- <a class="float_right" style="padding-top:20px; color: whitesmoke;" href="#"><i class="fa fa-bell"
-                            aria-hidden="true"></i></a> -->
-                    <div style="padding-top:20px;color: whitesmoke;" class="float_right dropdown">
-                        <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <i class="fa fa-1x fa-language" aria-hidden="true"></i>
-                        </div>
-                        <div class="dropdown-menu dropdown-menu-mobile" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
-                                    src="../img/usa.jpg" alt="">ENGLISH</a>
-                            <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
-                                    src="../img/vn.jpg" alt="">VIỆT NAM</a>
-                        </div>
+    <nav class="navbar navbar-expand-sm navbar-light bg-main-color_none bg-main-color_clinet">
+        <div class="container-fluid with100">
+            <!-- <a class="navbar-brand com-name website" href="#">FB ads support</a> -->
+            <button class="navbar-toggler focus border_none with20" type="button" data-toggle="collapse"
+                data-target="#main_menu_nav" aria-controls="main_menu_nav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-toggler border_none text_center with75" id="img_logo">
+                <span id="img_logo_mobie">
+                    <a style="margin-left: -15px;" class="navbar-brand" href="/home/page_box" id=""><img width="100px"
+                            height="41px" src="../img/logo.jpg" alt=""></a>
+                </span>
+                <!-- <a class="float_right" style="padding-top:20px; color: whitesmoke;" href="#"><i class="fa fa-bell"
+                    aria-hidden="true"></i></a> -->
+                <div style="padding-top:20px;color: whitesmoke;" class="float_right dropdown">
+                    <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i style="color: #000;" class="fa fa-1x fa-language" aria-hidden="true"></i>
                     </div>
-
-                    <div class="dropdown float_right" style="color: whitesmoke;padding-top: 20px; margin-right: 20px;">
-                        <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <i class="fa fa-1x fa-user-circle-o" aria-hidden="true"></i>
-                        </div>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
-                                    aria-hidden="true"></i> Tài Khoảng</a>
-                            <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
-                                    aria-hidden="true"></i>Đăng xuất</a>
-                        </div>
+                    <div class="dropdown-menu dropdown-menu-mobile" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
+                                src="../img/usa.jpg" alt="">ENGLISH</a>
+                        <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
+                                src="../img/vn.jpg" alt="">VIỆT NAM</a>
                     </div>
                 </div>
 
-                <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between;">
-                    <div id="main_menu" class="navbar-nav">
+                <div class="dropdown float_right" style="color: whitesmoke;padding-top: 20px; margin-right: 20px;">
+                    <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i style="color: #000;" class="fa fa-1x fa-user-circle-o" aria-hidden="true"></i>
                     </div>
-                    <!-- <div class="collapse navbar-collapse" id="main_menu_nav">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item dropdown">
-                                <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#"
-                                    id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false" data-lang="contact_and_support">
-                                    LIÊN HỆ VÀ HỖ TRỢ
-                                </a>
-                                <div id="menu_contacts" style="background-color: #2a2e3f;" class="dropdown-menu"
-                                    aria-labelledby="navbarDropdown">
-                                </div>
-                            </li>
-                        </ul>
-                    </div> -->
-                    <div class="navbar-nav user-info">
-                        <div id="current_username" class="nav-link active" aria-current="page">
-                        </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
+                                aria-hidden="true"></i> Tài Khoảng</a>
+                        <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
+                                aria-hidden="true"></i>Đăng xuất</a>
                     </div>
                 </div>
             </div>
-        </nav>
-        <section class="container pd0">
+
+            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between; ">
+                <div id="main_menu" class="navbar-nav ">
+                </div>
+                <!-- <div class="collapse navbar-collapse" id="main_menu_nav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                data-lang="contact_and_support">
+                                LIÊN HỆ VÀ HỖ TRỢ
+                            </a>
+                            <div id="menu_contacts" style="background-color: #2a2e3f;" class="dropdown-menu"
+                                aria-labelledby="navbarDropdown">
+                            </div>
+                        </li>
+                    </ul>
+                </div> -->
+                <div class="navbar-nav user-info">
+                    <div id="current_username" class="nav-link active" aria-current="page">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <section class="container">
             <div class="col-12 pd0">
-                <div class="with100 container">
-                    <div class="with100 pd0 col-md-12 d-flex flex-wrap mt-5 mb-5">
+                <div style="background-color: #fff;box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;"  class="with100 font-weight-550 container mt-3 mb-3">
+                    <div class="with100 pd0 col-md-12 d-flex flex-wrap ">
                         <div class="col-12 with100">
-                            <h3 class="float_left"><i class="pd_r_5 fa fa-headphones" aria-hidden="true"></i>                                <span
+                            <h3 class="text_blue pd-t10"><i class="pd_r_5 fa fa-headphones" aria-hidden="true"></i>                                <span
                                     data-lang="Hổ_Trợ"></span>
                             </h3>
                             <!-- <button onclick="open_modal()" class="btn float_right btn-primary m-auto"
                             data-lang="comments">Góp Ý</button> -->
                         </div>
-                        <div class="col-md-6 pd10 bg-main-color">
+                        <div class="col-md-6 pd10">
                             <div class="text_center">
                                 <img style="border-radius: 50%;" width="250px" height="223px" src="../img/support2.png"
                                     alt="">
                             </div>
                         </div>
-                        <div class="col-md-6 pd10 bg-main-color">
+                        <div class="col-md-6 pd10">
                             <div class="text_center">
-                                <h5>Liên hệ với chúng tôi</h5>
+                                <h4>Liên hệ với chúng tôi</h4>
                                 <p id="nameadmin">Công Ty TNHH Công Nghệ Arthur</p>
                             </div>
                             <div class="col-md-12">
@@ -201,8 +203,8 @@
         </div>
     </div></dialog>
     <div class="footer">
-        <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color">
-                <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
+        <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color_clinet">
+            <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
         </nav>
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

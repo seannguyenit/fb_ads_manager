@@ -23,7 +23,7 @@ async function init_data_history() {
     if (data) {
         data.forEach(item => {
             rs.innerHTML += `
-                <tr>
+                <tr class="tr">
                     <td>${data.indexOf(item) + 1}</td>
                     <td>${item.username}</td>
                     <td>${convert_action(item.action)}</td>

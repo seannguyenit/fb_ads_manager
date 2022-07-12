@@ -28,14 +28,14 @@ async function translator() {
     }
     if(crr_lang === "en"){
         if(document.getElementById('img_lang')){
-            document.getElementById('img_lang').innerHTML=`<img width="20px" height="20px"
+            document.getElementById('img_lang').innerHTML=`<img width="15px" height="15px"
             src="../img/usa.jpg" alt="">`;
         }
        
     }
     else{
         if(document.getElementById('img_lang')){
-            document.getElementById('img_lang').innerHTML=`<img width="20px" height="20px"
+            document.getElementById('img_lang').innerHTML=`<img width="15px" height="15px"
             src="../img/vn.jpg" alt="">`;
         }
        

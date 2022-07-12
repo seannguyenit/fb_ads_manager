@@ -9,8 +9,13 @@ async function init_default() {
     if (data) {
         data.forEach(item => {
             place_.innerHTML += ` <div class="col-md-4">
-        <div class="pricing">
-            <div class="pricing_title">
+        <div style="background-color: #fff;box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;margin: 0;
+        margin-top: 0px;
+        margin-bottom: 40px;
+      padding: 0;
+      border: 0;
+      outline: none; position: relative;" class="pricing">
+            <div style="background: rgba(0, 0, 0, 0) linear-gradient(45deg, rgb(55, 166, 250), rgb(170, 18, 210)) repeat scroll 0% 0%;color:white;" class="pricing_title">
             <i class=" pd_r_5 fa fa-shopping-cart" aria-hidden="true"></i>
             ${item.name}
             </div>
@@ -25,9 +30,11 @@ async function init_default() {
             </div>
             <div class="pricing_cost">
                 ${get_format_VND(item.price)} VNĐ
+                <br>
+                <br>
             </div>
             </div>
-            <div class="text-center mt-2 mb-2"><button onclick="order_pricing(${item.id},'${item.name}',${item.price},${item.limit_day},${item.level},${item.limit_fb},${item.limit_request})" class="btn btn-primary" data-lang="buy_now">Mua ngay</button></div>
+            <div class="text-center absolute_buy mt-2 mb-2"><button style="border-radius: 25px;" onclick="order_pricing(${item.id},'${item.name}',${item.price},${item.limit_day},${item.level},${item.limit_fb},${item.limit_request})" class="btn btn-primary" data-lang="">  <i class=" pd_r_5 fa fa-shopping-cart" aria-hidden="true"></i></button></div>
     </div>`;
         });
     }

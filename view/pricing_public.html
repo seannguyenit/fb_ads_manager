@@ -29,7 +29,7 @@
                         <img style="border-radius: 50%;" width="40px" height="40px" src="../img/avatar_user.png" alt="">
                     </div>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
+                        <a class="dropdown-item" href="./user_info"><i  class="pd_r_5 fa fa-user-o"
                                 aria-hidden="true"></i> Tài Khoảng</a>
                         <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
                                 aria-hidden="true"></i>Đăng xuất</a>
@@ -37,7 +37,7 @@
                 </div>
 
                 <div style="padding-top:5px" class="website dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
+                    <button class="btn btn_lang btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
                         data-toggle="dropdown" data-lang="" aria-haspopup="true" aria-expanded="false">
                         <span id="img_lang">  </span><span data-lang="Language"></span>
                     </button>
@@ -51,10 +51,10 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
+    <nav class="navbar navbar-expand-sm navbar-light bg-main-color_none bg-main-color_clinet">
         <div class="container-fluid with100">
             <!-- <a class="navbar-brand com-name website" href="#">FB ads support</a> -->
-            <button class="navbar-toggler border_none with20" type="button" data-toggle="collapse" data-target="#main_menu_nav"
+            <button class="navbar-toggler focus border_none with20" type="button" data-toggle="collapse" data-target="#main_menu_nav"
             aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -68,7 +68,7 @@
             <div style="padding-top:20px;color: whitesmoke;" class="float_right dropdown">
                     <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <i class="fa fa-1x fa-language" aria-hidden="true"></i>
+                        <i style="color: #000;" class="fa fa-1x fa-language" aria-hidden="true"></i>
                     </div>
                     <div class="dropdown-menu dropdown-menu-mobile" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
@@ -81,7 +81,7 @@
                 <div class="dropdown float_right" style="color: whitesmoke;padding-top: 20px; margin-right: 20px;">
                     <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <i class="fa fa-1x fa-user-circle-o" aria-hidden="true"></i>
+                        <i style="color: #000;" class="fa fa-1x fa-user-circle-o" aria-hidden="true"></i>
                     </div>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
@@ -92,8 +92,8 @@
                 </div>
             </div>
 
-            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between;">
-                <div id="main_menu" class="navbar-nav">
+            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between; ">
+                <div id="main_menu" class="navbar-nav ">
                 </div>
                 <!-- <div class="collapse navbar-collapse" id="main_menu_nav">
                     <ul class="navbar-nav mr-auto">
@@ -119,7 +119,7 @@
     <div class="content">
     <section>
         <div class="col-12">
-            <div class="container pd0">
+            <div class="container  mt-3 pd0">
                 <!-- <div style="padding-top:20px" id="r_pricing">
                 </div> -->
                 <div id="main_content" class="col-md-12 pd0 d-flex flex-wrap mt-2">
@@ -167,7 +167,7 @@
         </div>
     </div></dialog>
     <div class="footer">
-        <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color">
+        <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color_clinet">
                 <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
         </nav>
     </div>
