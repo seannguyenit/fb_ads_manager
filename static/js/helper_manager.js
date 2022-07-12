@@ -136,7 +136,7 @@ async function init_loading1() {
        
     }
     if(document.getElementById('loading')){
-        document.getElementById('loading').innerHTML += `<div class="absolute_load" id="loading-element1" style="display:none;"><img src="${img}" style="width: 50px;padding-top: 100%;margin-left: 100%;"/></div>`;    
+        document.getElementById('loading').innerHTML += `<div class="absolute_load" id="loading-element1" style="display:none;"><img src="${img}" style="width: 50px;height: 50px;"/></div>`;    
     }
     
 }
@@ -161,7 +161,7 @@ async function init_loading2() {
        
     }
     if(document.getElementById('loading1')){
-        document.getElementById('loading1').innerHTML += `<div class="absolute_load" id="loading-element2" style="display:none;"><img src="${img}" style="width: 50px;padding-top: 100%;margin-left: 100%;"/></div>`;    
+        document.getElementById('loading1').innerHTML += `<div class="absolute_load" id="loading-element2" style="display:none;"><img src="${img}" style="width: 50px;height: 50px;"/></div>`;    
     }
    
 }

@@ -120,7 +120,9 @@ body {
 .pd_l_15 {
     padding-left: 15px !important;
 }
-
+.mr_0{
+    margin: auto;
+}
 .pd_r_5 {
     padding-right: 20px;
 }
@@ -216,14 +218,14 @@ a:hover {
     position: absolute;
     width: 100px;
     height: 100px;
-    top: 15%;
-    left: 28%;
+    top: 35%;
+    left: 40%;
 }
 
-.absolute_load1 {
+/* .absolute_load1 {
     position: absolute;
-    left: 100px;
-}
+    left: 10%;
+} */
 
 .absolute_buy {
     position: absolute;
@@ -273,17 +275,20 @@ a:hover {
 }
 } */
 @media only screen and (max-width: 1200px) {
-    .absolute_load {
+    /* .absolute_load {
         left: 35%;
-    }
+    } */
     .mr_t_10_ {
         margin-top: 10px ;
     }
+    .mr_0{
+        margin: 0px !important;
+    }
 }
 @media only screen and (max-width: 750px) {
-    .absolute_load {
+    /* .absolute_load {
         left: 25% !important
-    }
+    } */
     .mr_t_10_ {
         margin-top: 10px ;
     }
@@ -311,9 +316,9 @@ a:hover {
         text-align: center;
     }
 
-    .absolute_load1 {
+    /* .absolute_load1 {
         left: 0px;
-    }
+    } */
 
     .wth {
         width: 100%;
@@ -334,9 +339,9 @@ a:hover {
     .mg_t_20 {
         margin-top: 20px !important;
     }
-    .absolute_load {
+    /* .absolute_load {
         left: 17%;
-    }
+    } */
 }
 
 @media only screen and (max-width: 600px) {
@@ -518,9 +523,9 @@ a:hover {
         left: -10px !important;
     }
 
-    .absolute_load {
+    /* .absolute_load {
         left: 13% !important;
-    }
+    } */
 
     body {
         font-size: 0.9rem !important;
