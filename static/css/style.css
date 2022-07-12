@@ -212,7 +212,7 @@ a:hover {
 
 .absolute_load {
     z-index: 1;
-    opacity: 0.5;
+    opacity: 1;
     position: absolute;
     width: 100px;
     height: 100px;
