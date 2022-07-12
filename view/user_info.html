@@ -17,8 +17,6 @@
 
 <body class="body-bg-custom">
     <!-- Top Bar -->
-
-
     <div class="header">
         <div class="d-flex">
             <div class="p-2 flex-grow-1 website" id="img_logo"><a class="navbar-brand" href="/home/page_box"><img
@@ -26,13 +24,13 @@
             <div style="padding-top:25px" class="d-flex">
                 <!-- <div class=""><a class="navbar-brand" href="#"> <img style="border-radius: 50%;" width="40px"
                             height="40px" src="../img/avatar_user.png" alt=""></a></div> -->
-                <div class="dropdown website" style="padding-top: 5px;padding-right: 10px;">
+                <div class="dropdown website " style="padding-top: 5px;padding-right: 10px;">
                     <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <img style="border-radius: 50%;" width="40px" height="40px" src="../img/avatar_user.png" alt="">
                     </div>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
+                        <a class="dropdown-item" href="./user_info"><i  class="pd_r_5 fa fa-user-o"
                                 aria-hidden="true"></i> Tài Khoảng</a>
                         <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
                                 aria-hidden="true"></i>Đăng xuất</a>
@@ -40,24 +38,24 @@
                 </div>
 
                 <div style="padding-top:5px" class="website dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
+                    <button class="btn btn_lang btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
                         data-toggle="dropdown" data-lang="" aria-haspopup="true" aria-expanded="false">
-                        <span id="img_lang"> </span><span data-lang="Language"></span>
+                        <span id="img_lang">  </span><span data-lang="Language"></span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
-                                src="../img/usa.jpg" alt="">ENGLISH</a>
+                            src="../img/usa.jpg" alt="">ENGLISH</a>
                         <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
-                                src="../img/vn.jpg" alt="">VIỆT NAM</a>
+                            src="../img/vn.jpg" alt="">VIỆT NAM</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
+    <nav class="navbar navbar-expand-sm navbar-light bg-main-color_none bg-main-color_clinet">
         <div class="container-fluid with100">
             <!-- <a class="navbar-brand com-name website" href="#">FB ads support</a> -->
-            <button class="navbar-toggler border_none with20" type="button" data-toggle="collapse" data-target="#main_menu_nav"
+            <button class="navbar-toggler focus border_none with20" type="button" data-toggle="collapse" data-target="#main_menu_nav"
             aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -71,20 +69,20 @@
             <div style="padding-top:20px;color: whitesmoke;" class="float_right dropdown">
                     <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <i class="fa fa-1x fa-language" aria-hidden="true"></i>
+                        <i style="color: #000;" class="fa fa-1x fa-language" aria-hidden="true"></i>
                     </div>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu dropdown-menu-mobile" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
-                                src="../img/usa.jpg" alt="">ENGLISH</a>
+                            src="../img/usa.jpg" alt="">ENGLISH</a>
                         <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
-                                src="../img/vn.jpg" alt="">VIỆT NAM</a>
+                            src="../img/vn.jpg" alt="">VIỆT NAM</a>
                     </div>
                 </div>
 
                 <div class="dropdown float_right" style="color: whitesmoke;padding-top: 20px; margin-right: 20px;">
                     <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <i class="fa fa-1x fa-user-circle-o" aria-hidden="true"></i>
+                        <i style="color: #000;" class="fa fa-1x fa-user-circle-o" aria-hidden="true"></i>
                     </div>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
@@ -95,23 +93,23 @@
                 </div>
             </div>
 
-            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between;">
-                <div id="main_menu" class="navbar-nav">
+            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between; ">
+                <div id="main_menu" class="navbar-nav ">
                 </div>
                 <!-- <div class="collapse navbar-collapse" id="main_menu_nav">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item dropdown">
-                                <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#"
-                                    id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false" data-lang="contact_and_support">
-                                    LIÊN HỆ VÀ HỖ TRỢ
-                                </a>
-                                <div id="menu_contacts" style="background-color: #2a2e3f;" class="dropdown-menu"
-                                    aria-labelledby="navbarDropdown">
-                                </div>
-                            </li>
-                        </ul>
-                    </div> -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a style="color: aliceblue;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                data-lang="contact_and_support">
+                                LIÊN HỆ VÀ HỖ TRỢ
+                            </a>
+                            <div id="menu_contacts" style="background-color: #2a2e3f;" class="dropdown-menu"
+                                aria-labelledby="navbarDropdown">
+                            </div>
+                        </li>
+                    </ul>
+                </div> -->
                 <div class="navbar-nav user-info">
                     <div id="current_username" class="nav-link active" aria-current="page">
                     </div>
@@ -121,11 +119,10 @@
     </nav>
     <div class="content">
         <section>
-            <div class="col-12">
-                <div class="container pd0">
-                    <div class="col-md-12 d-flex pd0 flex-wrap mt-5">
-                        <div class="v-r col-md-7 pd10 bg-main-color">
-                            <h3 style="text-align: center;"><i class="pd_r_5 fa fa-user-o"></i><span
+                <div class="container font-weight-550">
+                    <div class="d-flex  flex-wrap mt-3">
+                        <div class="v-r mr_t_b10 mb-3 col-md-7 pd10 bg-main-color" style="background-color: #fff;box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;">
+                            <h3 class="text_blue" style="text-align: center;"><i class="pd_r_5 fa fa-user-o"></i><span
                                     data-lang="information_user"></span></h3>
                             <hr />
                             <div class="col-md-12">
@@ -153,25 +150,25 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="v-f pd10 mg_t_20 col-md-5 bg-main-color">
-                            <h3 style="text-align: center;"> <i class=" pd_r_5 fa fa-unlock-alt"
+                        <div style="background-color: #fff;box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;" class="v-f mb-3 mr_t_b10 pd10 col-md-5 bg-main-color">
+                            <h3 class="text_blue" style="text-align: center;"> <i class=" pd_r_5 fa fa-unlock-alt"
                                     aria-hidden="true"></i><span data-lang="change_password"></span></h3>
                             <hr />
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label text-uppercase" data-lang="old_password"></label>
-                                    <input class="form-control" id="old_pass" name="old_pass" type="password"
+                                    <input class="form-control input_user" id="old_pass" name="old_pass" type="password"
                                         placeholder="" autofocus="">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label text-uppercase" data-lang="new_password"></label>
-                                    <input class="form-control" id="new_pass" name="new_pass" type="password"
+                                    <input class="form-control input_user" id="new_pass" name="new_pass" type="password"
                                         placeholder="" autofocus="">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label text-uppercase"
                                         data-lang="confirm_new_password"></label>
-                                    <input class="form-control" id="confirm_pass" name="confirm_pass" type="password"
+                                    <input class="form-control input_user" id="confirm_pass" name="confirm_pass" type="password"
                                         placeholder="" autofocus="">
                                 </div>
                                 <div class="form-group text-center">
@@ -200,13 +197,12 @@
                     </div> -->
                     </div>
                 </div>
-            </div>
         </section>
         <section>
             <div class="col-12">
-                <div class="container pd0">
-                    <div id="main_content" class="col-md-12 pd0 d-flex flex-wrap mt-5 mb-5">
-                        <h3><i class="pd_r_5 fa fa-history"></i><span data-lang="history_operation"></span></h3>
+                <div class="container pd0 pd0_web">
+                    <div style="background-color: #fff;box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;" id="main_content" class="col-md-12 pd0 d-flex flex-wrap mt-3 mb-5">
+                        <h3 class="text_blue pd10"><i class="pd_r_5 fa fa-history"></i><span data-lang="history_operation"></span></h3>
                         <div class="col-12 v-data-table__wrapper">
                             <table class="width_table_450 table text_center table_section">
                                 <caption data-lang="recent_trading_history"></caption>
@@ -220,7 +216,7 @@
                                         <th data-lang="time">Thời Gian</th>
                                     </tr>
                                 </thead>
-                                <tbody id="tb_data">
+                                <tbody class="text_black" id="tb_data">
 
                                 </tbody>
                             </table>
@@ -230,7 +226,7 @@
             </div>
             <!-- <div class="col-12">
                     <div class="container">
-                        <div id="main_content" class="col-md-12 d-flex flex-wrap mt-5 mb-5">
+                        <div id="main_content" class="col-md-12 d-flex flex-wrap mt-3 mb-5">
                             <h3> <i class="pd_r_5 fa fa-clock-o" aria-hidden="true"></i>
                                 <span data-lang="Lịch_Sử_Đăng_Nhập"></span>
                             </h3>
@@ -269,7 +265,7 @@
         </div>
     </div></dialog>
     <div class="footer">
-        <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color">
+        <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color_clinet">
             <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
         </nav>
     </div>

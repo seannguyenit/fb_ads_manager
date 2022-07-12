@@ -242,7 +242,7 @@ async function init_pricing_history() {
             else {
                 var active = "Mua Gói";
             }
-            tb.innerHTML += `<tr>
+            tb.innerHTML += `<tr class="tr">
             <td>${data.indexOf(f) + 1}</td>
             <td>${active}</td>
             <td>${f.pricing_name}</td>

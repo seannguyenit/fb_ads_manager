@@ -75,7 +75,7 @@ async function init_withdraw_money() {
         data.forEach(f => {
             if(f.withdraw){
                 placed.innerHTML += `
-                <tr>
+                <tr class="tr">
                     <td>${data.indexOf(f) + 1}</td>
                     <td>${get_format_VND(f.withdraw)}</td>
                     <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>

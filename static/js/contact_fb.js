@@ -123,7 +123,7 @@ async function get_list_page(token, id) {
 }
 
 async function init_default() {
-    start_loading();
+    // start_loading();
     try {
         document.getElementById('rs_tb').innerHTML = '';
         change_card_element();
@@ -145,14 +145,14 @@ async function init_default() {
         await change_card_element();
         f_l = 0;
     } catch (error) {
-        stop_loading();
+        // stop_loading();
     }
 
-    stop_loading();
+    // stop_loading();
 }
 
 async function set_combobox_data() {
-    start_loading();
+    // start_loading();
     cr_video1 = null;
     cr_video2 = null;
     var f = get_token_user();
@@ -178,8 +178,8 @@ async function set_combobox_data() {
             document.getElementById('link').value = `https://www.facebook.com/${cr_page}`;
         } catch (error) {
             if (document.getElementById('error_token')) {
-                document.getElementById('error_token').innerHTML = `<div class="col-md-12 pd0 mt-2">  <div class="box_flex-wrap m_l_10 col-md-12 ">
-                <div class="box-wrap  pd-t10 pd_t_m_15"><i style="width:20%" class="fa  fa-2x fa-exclamation-triangle" aria-hidden="true"></i></div> 
+                document.getElementById('error_token').innerHTML = `<div class="col-md-12 pd0 mt-2">  <div class="box_flex-wrap  col-md-12 ">
+                <div class="box-wrap  pd-t10 "><i style="width:20%" class="fa  fa-2x fa-exclamation-triangle" aria-hidden="true"></i></div> 
                  <div style="width:80% !important" class="pd-t13 m_l_-7 pd0 box-wrap">Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !</div></div> </div>`;
             }
             // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
@@ -189,13 +189,13 @@ async function set_combobox_data() {
         document.getElementById('img_2').src = document.querySelector('div[class="img_item active"]').children[0].src;
     } else {
         if (document.getElementById('error_token')) {
-            document.getElementById('error_token').innerHTML = ` <div class="col-md-12 pd0 mt-2">  <div class="box_flex-wrap m_l_10 col-md-12 ">
-            <div class="box-wrap  pd-t10 pd_t_m_15"><i style="width:20%" class="fa  fa-2x fa-exclamation-triangle" aria-hidden="true"></i></div> 
+            document.getElementById('error_token').innerHTML = ` <div class="col-md-12 pd0 mt-2">  <div class="box_flex-wrap  col-md-12 ">
+            <div class="box-wrap  pd-t10 "><i style="width:20%" class="fa  fa-2x fa-exclamation-triangle" aria-hidden="true"></i></div> 
              <div style="width:80% !important" class="pd-t13 m_l_-7 pd0 box-wrap">Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !</div></div> </div>`;
         }
         // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
     }
-    stop_loading();
+    // stop_loading();
 
 
 }
@@ -569,7 +569,7 @@ async function get_thumbnails_from_api(url) {
 }
 
 async function public_data() {
-    start_loading();
+    // start_loading();
 
     var token = get_token_user();
     var page_id = get_page_value();
@@ -834,7 +834,7 @@ async function after_public(s2, check_request) {
     var fb = get_token_user_text();
     var page_id = get_token_page_text();
     var link = `https://www.facebook.com/permalink.php?story_fbid=${s2.effective_object_story_id.split('_')[1]}&id=${s2.effective_object_story_id.split('_')[0]}`;
-    row_rs.innerHTML += `<tr><td>${fb}</td><td>${page_id}</td><td><a class="btn btn-primary" href="${link}" id="rs_link" target="_blank">Link</a></td></tr>`;
+    row_rs.innerHTML += `<tr class="tr"><td>${fb}</td><td>${page_id}</td><td><a class="btn btn-primary" href="${link}" id="rs_link" target="_blank">Link</a></td></tr>`;
     await end_request(1, check_request.time);
 }
 

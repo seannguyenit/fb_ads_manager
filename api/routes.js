@@ -130,7 +130,7 @@ module.exports = function (app) {
     .get(menuCtrl.list_history_login);
 
   app.route('/api/logo')
-    .post(upload, menuCtrl.insert_logo);
+    .post(menuCtrl.insert_logo);
   app.route('/api/menu_logo')
     .get(menuCtrl.get_logo);
 

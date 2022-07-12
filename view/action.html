@@ -36,9 +36,10 @@
                     </div>
                 </div>
 
-                <div style="padding-top:5px" class=" website dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div style="padding-top:5px" class="website dropdown">
+                    <button class="btn btn_lang btn-secondary dropdown-toggle" type="button"
+                        id="dropdownMenuButton_lang" data-toggle="dropdown" data-lang="" aria-haspopup="true"
+                        aria-expanded="false">
                         <span id="img_lang"> </span><span data-lang="Language"></span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -51,26 +52,27 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
+    <nav class="navbar navbar-expand-sm navbar-light bg-main-color_none bg-main-color_clinet">
         <div class="container-fluid with100">
             <!-- <a class="navbar-brand com-name website" href="#">FB ads support</a> -->
-            <button class="navbar-toggler border_none with20" type="button" data-toggle="collapse" data-target="#main_menu_nav"
-                    aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-toggler border_none text_center with75" id="img_logo">
-                    <span id="img_logo_mobie">
-                        <a style="margin-left: -15px;" class="navbar-brand" href="/home/page_box" id=""><img width="100px" height="41px" src="../img/logo.jpg"
-                            alt=""></a>
-                    </span>
-                    <!-- <a class="float_right" style="padding-top:20px; color: whitesmoke;" href="#"><i class="fa fa-bell"
-                            aria-hidden="true"></i></a> -->
-                    <div style="padding-top:20px;color: whitesmoke;" class="float_right dropdown">
+            <button class="navbar-toggler focus border_none with20" type="button" data-toggle="collapse"
+                data-target="#main_menu_nav" aria-controls="main_menu_nav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-toggler border_none text_center with75" id="img_logo">
+                <span id="img_logo_mobie">
+                    <a style="margin-left: -15px;" class="navbar-brand" href="/home/page_box" id=""><img width="100px"
+                            height="41px" src="../img/logo.jpg" alt=""></a>
+                </span>
+                <!-- <a class="float_right" style="padding-top:20px; color: whitesmoke;" href="#"><i class="fa fa-bell"
+                    aria-hidden="true"></i></a> -->
+                <div style="padding-top:20px;color: whitesmoke;" class="float_right dropdown">
                     <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <i class="fa fa-1x fa-language" aria-hidden="true"></i>
+                        <i style="color: #000;" class="fa fa-1x fa-language" aria-hidden="true"></i>
                     </div>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu dropdown-menu-mobile" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
                                 src="../img/usa.jpg" alt="">ENGLISH</a>
                         <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
@@ -81,7 +83,7 @@
                 <div class="dropdown float_right" style="color: whitesmoke;padding-top: 20px; margin-right: 20px;">
                     <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <i class="fa fa-1x fa-user-circle-o" aria-hidden="true"></i>
+                        <i style="color: #000;" class="fa fa-1x fa-user-circle-o" aria-hidden="true"></i>
                     </div>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
@@ -92,8 +94,8 @@
                 </div>
             </div>
 
-            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between;">
-                <div id="main_menu" class="navbar-nav">
+            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between; ">
+                <div id="main_menu" class="navbar-nav ">
                 </div>
                 <!-- <div class="collapse navbar-collapse" id="main_menu_nav">
                     <ul class="navbar-nav mr-auto">
@@ -116,32 +118,33 @@
             </div>
         </div>
     </nav>
+    <div class="content">
     <section>
         <div class="col-12 pd0">
-            <div class="container pd0">
-                <div class="col-md-12 d-flex flex-wrap mt-5 mb-5">
+            <div class="container">
+                <div style="background-color: #fff;box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;"  class="col-md-12 d-flex flex-wrap mt-3 mb-3">
                     <div class="col-12">
-                        <h3> <i class="pd_r_5 fa fa-clock-o" aria-hidden="true"></i>
+                        <h3 class="text_blue pd-t10"> <i class="pd_r_5 fa fa-clock-o" aria-hidden="true"></i>
                             <span data-lang="Lịch_Sử_Đăng_Nhập"></span>
                         </h3>
                     </div>
                     <div class="col-12 pd0">
                         <div class="container">
-                            <div id="main_content" class="col-md-12 pd0 d-flex flex-wrap mt-5 mb-5">
+                            <div id="main_content" class="col-md-12 pd0 d-flex flex-wrap mb-3">
                                 <div class="v-data-table__wrapper">
                                     <table class="width_table_300 table text_center table_section">
                                     <caption data-lang="history_operation">lịch sử gần đây</caption>
                                     <thead>
                                         <tr>
-                                            <th style="width:5%">Stt</th>
-                                            <th style="width:30%" data-lang="Tài_Khoản">Tên</th>
+                                            <th style="width:6%">Stt</th>
+                                            <th style="width:29%" data-lang="Tài_Khoản">Tên</th>
                                             
                                             <th style="width:15%" data-lang="active">Hoạt Động</th>
-                                            <th style="width:20%" data-lang="time">Thời Gian</th>
-                                            <th style="width:30%" data-lang="content:">content</th>
+                                            <th style="width:21%" data-lang="time">Thời Gian</th>
+                                            <th style="width:29%" data-lang="content:">content</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="tb_data">
+                                    <tbody class="text_black" id="tb_data">
 
                                     </tbody>
                                 </table>
@@ -154,6 +157,7 @@
             </div>
         </div>
     </section>
+</div>
     <dialog id="bank_money_ticket"><div class="modal-dialog" role="document">
         <div style="border: 0px;" class="modal-content">
 
@@ -187,11 +191,11 @@
         </div>
     </div>
 </div> -->
-    <div class="footer">
-        <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color">
-            <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
-        </nav>
-    </div>
+<div class="footer">
+    <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color_clinet">
+        <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
+    </nav>
+</div>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>

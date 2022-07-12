@@ -88,18 +88,18 @@ async function init_menu() {
             // } else {
             lst_menu.forEach(item => {
                 if (item.type === 0) {
-                    menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>`;
+                    menu.innerHTML += `<a style=" color: white ;" class="nav-link font-weight-bold text_black_mobie active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>`;
                 }
 
                 if (item.type === 1 && menu_) {
                     menu_.innerHTML += `
-                        <a style="background-color: #2a2e3f;" class="nav-link dropdown-item active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>
+                        <a style="background-color: #2a2e3f; color: #ffff;" class="nav-link font-weight-bold dropdown-item active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>
                     `;
                     //     // <a class="dropdown-item" href="#">Action</a>
                 }
                 if (item.type === 2 && menu_general) {
                     menu_general.innerHTML += `
-                        <a style="background-color: #2a2e3f;" class="nav-link dropdown-item active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>
+                        <a style="background-color: #2a2e3f; color: #ffff;" class="nav-link font-weight-bold dropdown-item active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>
                     `;
                     //     // <a class="dropdown-item" href="#">Action</a>
                 }

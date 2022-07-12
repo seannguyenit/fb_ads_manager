@@ -29,32 +29,32 @@
                         <img style="border-radius: 50%;" width="40px" height="40px" src="../img/avatar_user.png" alt="">
                     </div>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
+                        <a class="dropdown-item" href="./user_info"><i  class="pd_r_5 fa fa-user-o"
                                 aria-hidden="true"></i> Tài Khoảng</a>
                         <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
                                 aria-hidden="true"></i>Đăng xuất</a>
                     </div>
                 </div>
 
-                <div style="padding-top:5px" class=" website dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span id="img_lang"> </span><span data-lang="Language"></span>
+                <div style="padding-top:5px" class="website dropdown">
+                    <button class="btn btn_lang btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_lang"
+                        data-toggle="dropdown" data-lang="" aria-haspopup="true" aria-expanded="false">
+                        <span id="img_lang">  </span><span data-lang="Language"></span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
-                                src="../img/usa.jpg" alt="">ENGLISH</a>
+                            src="../img/usa.jpg" alt="">ENGLISH</a>
                         <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
-                                src="../img/vn.jpg" alt="">VIỆT NAM</a>
+                            src="../img/vn.jpg" alt="">VIỆT NAM</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
+    <nav class="navbar navbar-expand-sm navbar-light bg-main-color_none bg-main-color_clinet">
         <div class="container-fluid with100">
             <!-- <a class="navbar-brand com-name website" href="#">FB ads support</a> -->
-            <button class="navbar-toggler border_none with20" type="button" data-toggle="collapse" data-target="#main_menu_nav"
+            <button class="navbar-toggler focus border_none with20" type="button" data-toggle="collapse" data-target="#main_menu_nav"
             aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -68,20 +68,20 @@
             <div style="padding-top:20px;color: whitesmoke;" class="float_right dropdown">
                     <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <i class="fa fa-1x fa-language" aria-hidden="true"></i>
+                        <i style="color: #000;" class="fa fa-1x fa-language" aria-hidden="true"></i>
                     </div>
                     <div class="dropdown-menu dropdown-menu-mobile" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
-                                src="../img/usa.jpg" alt="">ENGLISH</a>
+                            src="../img/usa.jpg" alt="">ENGLISH</a>
                         <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
-                                src="../img/vn.jpg" alt="">VIỆT NAM</a>
+                            src="../img/vn.jpg" alt="">VIỆT NAM</a>
                     </div>
                 </div>
 
                 <div class="dropdown float_right" style="color: whitesmoke;padding-top: 20px; margin-right: 20px;">
                     <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <i class="fa fa-1x fa-user-circle-o" aria-hidden="true"></i>
+                        <i style="color: #000;" class="fa fa-1x fa-user-circle-o" aria-hidden="true"></i>
                     </div>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
@@ -92,8 +92,8 @@
                 </div>
             </div>
 
-            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between;">
-                <div id="main_menu" class="navbar-nav">
+            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between; ">
+                <div id="main_menu" class="navbar-nav ">
                 </div>
                 <!-- <div class="collapse navbar-collapse" id="main_menu_nav">
                     <ul class="navbar-nav mr-auto">
@@ -116,44 +116,44 @@
             </div>
         </div>
     </nav>
-    <div class="content">
+    <div class="content ">
         <section>
             <div class="col-12">
 
-                <div class="container pd0">
-                    <h3 style="padding-top: 50px;" class="pd_l_15"><i class=" pd_r_5 fa fa-users"
+                <div style="background-color: #fff;box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;margin-bottom: 20px;" class="container mt-3 font-weight-550 pd0" >
+                    <h3 style="padding-top: 20px;" class="pd_l_15 text_blue"><i class=" pd_r_5 fa fa-users"
                             aria-hidden="true"></i><span data-lang="Đại_lý"></span></h3>
                     <hr />
                     <!-- <button onclick="open_modal()" class="btn btn-primary m-auto">Góp Ý</button> -->
-                    <h4 data-lang="your_agency">Đại Lý Của Bạn</h4>
-                    <div id="main_content" class="col-md-12 pd0 d-flex flex-wrap mt-5">
+                    <h4 class="text_blue pd10" data-lang="your_agency">Đại Lý Của Bạn</h4>
+                    <div id="main_content" class="col-md-12 pd0 d-flex flex-wrap mt-3">
                         <div class="col-md-7">
                             <div class="form-group min-height50px">
                                 <label class="" for="name_agency" data-lang="dealer_name:">Tên Đại Lý :</label>
-                                <input disabled class="witdth100m form_control" type="text" name="name_agency" id="name_agency">
+                                <input disabled class="witdth100m input_user font-weight-550 form_control" type="text" name="name_agency" id="name_agency">
                             </div>
                             <div class="form-group  min-height50px">
                                 <label class="pd_t_10" for="des_agency" data-lang="describe:">Miêu Tả :</label>
-                                <input disabled class="witdth100m form_control" type="text" name="des_agency" id="des_agency">
+                                <input disabled class="witdth100m input_user font-weight-550 form_control" type="text" name="des_agency" id="des_agency">
                             </div>
                             <div class="form-group  min-height50px">
                                 <label class="pd_t_10" for="id_agency" data-lang="coupon:">Mã Đại Lý :</label>
-                                <input disabled class="witdth100m form_control" type="text" name="id_agency" id="id_agency">
+                                <input disabled class="witdth100m input_user font-weight-550 form_control" type="text" name="id_agency" id="id_agency">
                             </div>
                             <div class="form-group  min-height50px">
                                 <label class="pd_t_10" for="link_ref" data-lang="referral_link">Link giới thiệu :</label>
-                                <input disabled type="text" class="witdth100m form_control" name="link_ref" id="link_ref"
+                                <input disabled type="text" class="witdth100m input_user font-weight-550 form_control" name="link_ref" id="link_ref"
                                     aria-describedby="link_ref" placeholder="Vui lòng đăng ký làm đại lý !">
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="pd_t_10 pd_bt_10 min-height50px form-group">
                                 <span class="" data-lang="creation_date:">Ngày Tạo :</span>
-                                <span style="padding: 0px !important;" class="form_control  witdth100m" id="created_day"></span>
+                                <span style="padding: 0px !important;" class="form_control font-weight-550 text_black witdth100m" id="created_day"></span>
                             </div>
                             <div class="form-group min-height50px">
                                 <label id="lb_stt" class="witdth100m" data-lang="unregistered">Chưa đăng ký</label>
-                                <button id="btn_reg" onclick="agency_register()" class=" form_control btn float_left_m btn-primary"
+                                <button id="btn_reg" onclick="agency_register()" class=" form_control wth btn float_left_m btn-primary"
                                     data-lang="registration">Đăng ký</button>
                             </div>
                             <div class="form-group pd_t_10 min-height50px">
@@ -163,7 +163,7 @@
                             <div class="form-group  min-height50px" id="">
                                 <label class="witdth100m" for="btn_money" data-lang="transfer_user:">Chuyển Tiền User :</label>
                                 <button id="btn_money" disabled onclick="open_modal(0)"
-                                    class=" form_control float_left_m  btn btn-primary" data-lang="money">Money</button>
+                                    class="wth form_control float_left_m  btn btn-primary" data-lang="money">Money</button>
                             </div>
                             <div class=" form-group min-height50px pd_t_10" id="btn_withdraw">
                                 <!-- <button  onclick=""
@@ -172,70 +172,58 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <!-- <hr /> -->
-        <section>
-            <div class="col-12">
-                <div class="container pd0">
+
                     <div id="main_content" class="table_header pd0 col-md-12 d-flex flex-wrap mt-2">
-                        <h5 class="title-agency" style="color: white;" data-lang="information_agency"> Thông tin
+                        <h5 class="title-agency pd10" data-lang="information_agency"> Thông tin
                             đại lý
                         </h5>
                         <div class="table_header pd10  flex_wrap_none float_right">
                             <div class="mg_r_5"> <label for="from_date" data-lang="star_day">Từ ngày</label>
-                                <input type="date" class="font_ form-control" name="from_date" id="from_date"
+                                <input type="date" class="font_ input_user form-control" name="from_date" id="from_date"
                                     aria-describedby="from_date" placeholder="yyyy-MM-dd">
                             </div>
 
                             <div class="mg_r_5"><label for="to_date" data-lang="end_day">Đến ngày</label>
-                                <input type="date" class="font_ form-control" name="to_date" id="to_date"
+                                <input  type="date" class="font_ form-control input_user" name="to_date" id="to_date"
                                     aria-describedby="to_date" placeholder="yyyy-MM-dd">
                             </div>
                             <div class="mg_r_5"><button style="margin-top: 30PX;" class="btn font_ btn-primary"
                                     data-toggle="modal" onclick="search_acc_by_created()"
                                     data-target="#detailId">search</button></div>
                         </div>
-                        <div class="col-md-12 d-flex flex-wrap">
-                            <div class="margin-bottom col-md-4">
-                                <div class="box-agency">
-                                    <div>0</div>
+                        <div class=" m_t_2 col-md-12 d-flex flex-wrap">
+                            <div class="margin-bottom col-md-4 mg_t_20">
+                                <div  style=" box-shadow: 0 5px 15px 5px rgb(80 102 224/8%) !important;" class="box-agency">
+                                    <div style="color: #4caf50 !important;">0</div>
                                     <div data-lang="total_top_up">Tổng tiền nạp</div>
                                 </div>
                             </div>
-                            <div class="margin-bottom col-md-4">
-                                <div class="box-agency">
-                                    <div>0</div>
+                            <div class="margin-bottom col-md-4 mg_t_20">
+                                <div style=" box-shadow: 0 5px 15px 5px rgb(80 102 224/8%) !important;" class="box-agency">
+                                    <div style="color:#2196f3 !important">0</div>
                                     <div data-lang="number_of_top_up">Số lần nạp</div>
                                 </div>
                             </div>
-                            <div class=" col-md-4">
-                                <div class="box-agency">
-                                    <div>0</div>
+                            <div class=" col-md-4 mg_t_20">
+                                <div  style=" box-shadow: 0 5px 15px 5px rgb(80 102 224/8%) !important;" class="box-agency">
+                                    <div style="color: #ffeb3b!important;">0</div>
                                     <div data-lang="new_registration">Đăng ký mới</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <!-- <hr /> -->
-        <section>
-            <div class="col-12">
-                <div class="container pd0">
+
                     <div id="main_content" class="table_header pd0 col-md-12 d-flex flex-wrap mt-2">
-                        <h5 class="title-agency" style="color: white;" data-lang="list_of_user">Danh Sách Thành Viên
+                        <h5 class="title-agency pd10 text_blue"  data-lang="list_of_user">Danh Sách Thành Viên
                         </h5>
-                        <div class="margin-bottom"> <input class="font_" placeholder=" Nhập Mail tìm kiếm...." id="username" /> <button
+                        <div class="margin-bottom m_l_10"> <input class="font_ input_user" placeholder=" Nhập Mail tìm kiếm...." id="username" /> <button
                                 onclick="search_acc()" class="btn font_ btn-primary">search</button> </div>
 
                         <!-- <div class="container title-agency" data-lang="list_of_user">
                         Danh sách tài khoảnggg
                     </div> -->
-                        <div class="col-md-12 pd0 d-flex flex-wrap">
-                            <div class="col-12 pd0 v-data-table__wrapper">
+                        <div class="col-md-12   d-flex flex-wrap">
+                            <div class="col-12   v-data-table__wrapper">
                                 <table class="width_table_620 table text_center table_section">
                                     <thead>
                                         <tr>
@@ -246,14 +234,14 @@
                                             <th data-lang="action">Thao tác</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="table_dt">
+                                    <tbody class="text_black" id="table_dt">
 
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>  
             </div>
         </section>
 
@@ -309,8 +297,8 @@
         </div>
     </div></dialog>
     <div class="footer">
-        <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color">
-            <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
+        <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color_clinet">
+                <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
         </nav>
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

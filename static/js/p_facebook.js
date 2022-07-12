@@ -49,8 +49,8 @@ async function load_token() {
                     <div class="d-flex justify-content-between">
                         <div>
                             <img width="50" height="50" src="${item.picture}" />
-                            <span style="color: white;"
-                                class="control-label text-uppercase">${item.name}</span>
+                            <span
+                                class="control-label">${item.name}</span>
                         </div>
                         <button onclick="del_token(${item.id})" class="btn btn-danger"  data-lang="delete">Xóa</button>
                     </div>
