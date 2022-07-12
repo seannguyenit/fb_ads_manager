@@ -231,6 +231,12 @@ a:hover {
     left: 45%;
 
 }
+.dropdown-menu{
+ left: -30px !important;
+}
+.dropdown-item{
+    font-size: 0.8rem;
+}
 
 .btn_lang {
     background-color: #fafafa !important;
@@ -270,10 +276,16 @@ a:hover {
     .absolute_load {
         left: 35%;
     }
+    .mr_t_10_ {
+        margin-top: 10px ;
+    }
 }
 @media only screen and (max-width: 750px) {
     .absolute_load {
         left: 25% !important
+    }
+    .mr_t_10_ {
+        margin-top: 10px ;
     }
 }
 
@@ -282,6 +294,9 @@ a:hover {
 
     .navbar .dropdown-menu-mobile {
         left: -100px !important;
+    }
+    .mr_t_10_ {
+        margin-top: 10px ;
     }
 
     .box_270 {
@@ -326,6 +341,9 @@ a:hover {
 
 @media only screen and (max-width: 600px) {
 
+    .navbar .dropdown-menu{
+        left: -100px !important;
+    }
     .navbar .dropdown-menu-mobile {
         left: -100px !important;
     }
