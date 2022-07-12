@@ -26,7 +26,7 @@ async function init_logo() {
     if (data) {
         data.forEach(item => {
             if (document.getElementById('img_logo')) {
-                document.getElementById('img_logo').innerHTML = `<a class="navbar-brand" href="/home/users"><img width="141.94px" height="68.99px"
+                document.getElementById('img_logo').innerHTML = `<a class="navbar-brand" href="#"><img width="141.94px" height="68.99px"
                 src="${item.logo_img}" alt=""></a>`;
             }
             if (document.getElementById('logo_login_center')) {
