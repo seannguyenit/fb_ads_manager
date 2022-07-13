@@ -227,6 +227,7 @@ a:hover {
     left: 10%;
 } */
 
+
 .absolute_buy {
     position: absolute;
     top: 70%;
@@ -235,6 +236,8 @@ a:hover {
 }
 .dropdown-menu{
  left: -30px !important;
+ min-width: 5rem !important;
+ border: 0px !important;
 }
 .dropdown-item{
     font-size: 0.8rem;
@@ -410,6 +413,9 @@ a:hover {
     .website {
         display: none !important;
     }
+    .border_0{
+        border: 0px;
+    }
 
     .width_table_200 {
         width: 500% !important;
@@ -418,6 +424,10 @@ a:hover {
 
     .width_table_300 {
         width: 300% !important;
+        /* background-color: #2a2e3f !important; */
+    }
+    .width_table_350 {
+        width: 350% !important;
         /* background-color: #2a2e3f !important; */
     }
 
