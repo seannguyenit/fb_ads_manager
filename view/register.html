@@ -80,7 +80,7 @@
 
 </head>
 
-<body class="app sidebar-mini">
+<body class="app sidebar-mini body-bg-custom font-weight-550">
     <section class="login-content">
 
         <div class="login-box rounded py-4 px-3 px-lg-5">
@@ -88,7 +88,7 @@
                 <div class="w-100 text-center" id="logo_login_center">
                     <img src="../img/logo.jpg" width="200vw" alt="logo tool264.com" />
                 </div>
-                <h4 class="text-center blue-color-text">Đăng ký tài khoản mới</h4>
+                <h4 class="text-center text_blue">Đăng ký tài khoản mới</h4>
                 <!-- <h6 class="text-center">Vui lòng nhập Email để tìm kiếm tài khoảng của bạn</h6> -->
                 <!-- <img src="" alt="" class="img-fluid"> -->
             </div>
@@ -96,40 +96,42 @@
             <!-- <input type="hidden" name="_token" value="iyDxZDf2Q5FVqsv3pfnFP4FMvxe0q6ikI8bduICa">                <h3 class="login-head text-uppercase">Đăng nhập</h3> -->
 
             <!-- <form> -->
-            <div class="d-flex flex-wrap w-75 m-auto">
-                <div class="login-form">
+            <div class="w-75 m-auto">
+                <div class="login-form m-auto">
                     <input id="ref" type="hidden" name="ref" value="">
 
 
                     <div class="form-group">
                         <label class="control-label text-uppercase">email</label>
-                        <input class="form-control" id="user" name="username" type="text" placeholder="" autofocus="">
+                        <input class="form-control input_user" id="user" name="username" type="text" placeholder="" autofocus="">
                     </div>
                
                     <div class="form-group">
                         <label class="control-label text-uppercase">SDT</label>
-                        <input class="form-control" id="phone" name="phone" type="phone" placeholder="" autofocus="">
+                        <input class="form-control input_user" id="phone" name="phone" type="phone" placeholder="" autofocus="">
                     </div>
                     <div class="form-group">
                         <label class="control-label text-uppercase">mật khẩu</label>
-                        <input class="form-control" id="pass" name="password" type="password" placeholder="" autofocus="">
+                        <input class="form-control input_user" id="pass" name="password" type="password" placeholder="" autofocus="">
                     </div>
                     <div class="form-group">
                         <label class="control-label text-uppercase">xác nhận mật khẩu</label>
-                        <input class="form-control" id="pass_confirm" name="pass_confirm" type="password" placeholder=""
+                        <input class="form-control input_user" id="pass_confirm" name="pass_confirm" type="password" placeholder=""
                             autofocus="">
                     </div>
     
     
                     <div class="form-group btn-container mb-3">
                         <button onclick="register()" class="btn btn-primary btn-block text-uppercase">Đăng ký</button>
-                       
+                        <div class="d-flex flex-column mt-2">
+                            <a style="color: #000;" href="/login">Đăng nhập ?</a>
+                        </div>
                     </div>
 
                 </div>
-                <div class="login-img" id="image_login">
+                <!-- <div class="login-img" id="image_login">
                     <img src="../img/right.jpg" width="400px" alt="tool264.com entrance" />
-                </div>
+                </div> -->
             </div>
             <!-- </form> -->
 
