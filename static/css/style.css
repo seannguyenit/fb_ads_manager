@@ -211,7 +211,11 @@ a:hover {
 .relative_load {
     position: relative;
 }
-
+.absolute_center_h{
+    position:absolute;
+    top:10%;
+    left:30%;
+}
 .absolute_load {
     z-index: 1;
     opacity: 1;
@@ -536,7 +540,9 @@ a:hover {
     /* .absolute_load {
         left: 13% !important;
     } */
-
+    .w-50__{
+width: 100% !important;
+    }
     body {
         font-size: 0.9rem !important;
     }
@@ -629,7 +635,9 @@ a:hover {
 .p-_4 {
     padding: 1.5rem;
 }
-
+.w-50__{
+    width: 50% ;
+        }
 .bg-main-color {
     background-color: #2a2e3f;
 }
