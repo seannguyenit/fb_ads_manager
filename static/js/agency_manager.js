@@ -92,7 +92,9 @@ async function agency_approved(id) {
                 console.error('Error:', error);
             });
     }
-    alert('Xong !')
+    var mess = 'Xong !';
+    toast_success(mess);
+    // alert('Xong !')
     init_agency_manager();
 }
 
@@ -114,7 +116,9 @@ async function agency_cancel(id) {
                 console.error('Error:', error);
             });
     }
-    alert('Xong !')
+    // alert('Xong !')
+    var mess = 'Xong !';
+    toast_success(mess);
     init_agency_manager();
 }
 

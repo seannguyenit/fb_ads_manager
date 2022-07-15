@@ -177,6 +177,8 @@ async function set_combobox_data() {
             var cr_page = get_page_value();
             document.getElementById('link').value = `https://www.facebook.com/${cr_page}`;
         } catch (error) {
+            var mess = 'Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !'
+            toast_error(mess)
             if (document.getElementById('error_token')) {
                 document.getElementById('error_token').innerHTML = `<div class="col-md-12 pd0 mt-2">  <div class="box_flex-wrap  col-md-12 ">
                 <div class="box-wrap  pd-t10 "><i style="width:20%" class="fa  fa-2x fa-exclamation-triangle" aria-hidden="true"></i></div> 
@@ -188,7 +190,10 @@ async function set_combobox_data() {
         document.getElementById('img_1').src = 'https://i.imgur.com/BDJYyka.jpg';
         document.getElementById('img_2').src = document.querySelector('div[class="img_item active"]').children[0].src;
     } else {
+        var mess = 'Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !'
+            toast_error(mess)
         if (document.getElementById('error_token')) {
+           
             document.getElementById('error_token').innerHTML = ` <div class="col-md-12 pd0 mt-2">  <div class="box_flex-wrap  col-md-12 ">
             <div class="box-wrap  pd-t10 "><i style="width:20%" class="fa  fa-2x fa-exclamation-triangle" aria-hidden="true"></i></div> 
              <div style="width:80% !important" class="pd-t13 m_l_-7 pd0 box-wrap">Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !</div></div> </div>`;

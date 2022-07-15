@@ -138,7 +138,9 @@ async function change_pass() {
     var new_pass_ = document.getElementById('new_pass').value;
     var confirm_pass = document.getElementById('confirm_pass').value;
     if (confirm_pass != new_pass_) {
-        alert('Mật khẩu xác nhận chưa đúng !')
+        var mess = 'Mật khẩu xác nhận chưa đúng !';
+        toast_error(mess)
+        // alert('Mật khẩu xác nhận chưa đúng !')
         return;
     }
     var cr_u = await get_cr_user();
@@ -158,8 +160,11 @@ async function change_pass() {
             console.error('Error:', error);
         });
     if (rs.error) {
-        alert(rs.error);
+        toast_error(rs.error);
+        // alert(rs.error);
     } else {
+        // var mess = 'Đổi mật khẩu thành công ! Quay lại trang đăng nhập !';
+        // toast_success(mess);
         alert('Đổi mật khẩu thành công ! Quay lại trang đăng nhập !')
         window.location.href = '/login'
     }

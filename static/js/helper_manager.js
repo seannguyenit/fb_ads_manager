@@ -6,7 +6,7 @@ async function get_img_loading() {
     return await fetch(`/api/init_img_loading` /*, options */)
         .then((response) => response.json())
         .then((data) => {
-             return data;
+            return data;
         })
         .catch((error) => {
             console.warn(error);
@@ -113,7 +113,7 @@ function get_format_VND(str) {
 
 init_loading();
 async function init_loading() {
-    document.body.innerHTML += `<div id="loading-element"><img src="../img/loading.gif"/></div>`;    
+    document.body.innerHTML += `<div id="loading-element"><img src="../img/loading.gif"/></div>`;
 }
 
 async function start_loading() {
@@ -129,16 +129,16 @@ init_loading1();
 async function init_loading1() {
     var text = await get_img_loading();
     var img = ""
-    if(text){
-        text.forEach(f=> {
+    if (text) {
+        text.forEach(f => {
             img = f.logo_img
         })
-       
+
     }
-    if(document.getElementById('loading')){
-        document.getElementById('loading').innerHTML += `<div class="absolute_load" id="loading-element1" style="display:none;"><img src="${img}" style="width: 50px;height: 50px;"/></div>`;    
+    if (document.getElementById('loading')) {
+        document.getElementById('loading').innerHTML += `<div class="absolute_load" id="loading-element1" style="display:none;"><img src="${img}" style="width: 50px;height: 50px;"/></div>`;
     }
-    
+
 }
 
 async function start_loading1() {
@@ -154,16 +154,16 @@ init_loading2();
 async function init_loading2() {
     var text = await get_img_loading();
     var img = ""
-    if(text){
-        text.forEach(f=> {
+    if (text) {
+        text.forEach(f => {
             img = f.logo_img
         })
-       
+
     }
-    if(document.getElementById('loading1')){
-        document.getElementById('loading1').innerHTML += `<div class="absolute_load" id="loading-element2" style="display:none;"><img src="${img}" style="width: 50px;height: 50px;"/></div>`;    
+    if (document.getElementById('loading1')) {
+        document.getElementById('loading1').innerHTML += `<div class="absolute_load" id="loading-element2" style="display:none;"><img src="${img}" style="width: 50px;height: 50px;"/></div>`;
     }
-   
+
 }
 
 async function start_loading2() {
@@ -173,4 +173,50 @@ async function start_loading2() {
 
 async function stop_loading2() {
     document.getElementById('loading-element2').style.display = "none";
+}
+
+function toast_error(message) {
+    const toast = document.getElementById('toast');
+    if (toast) {
+        toast.innerHTML = `
+        <div class="toast__main border_left_red">
+            <div class="toast__icon">
+                <i class="fa fa-bug" aria-hidden="true"></i>
+            </div>
+            <div class="toast__body">
+                <h3 class="toast__title">
+                </h3>
+                <p class="toast__msg">
+                ${message}
+                </p>
+            </div>
+            <div class="toast__close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+        </div>    
+        `;
+    }
+}
+
+function toast_success(message) {
+    const toast = document.getElementById('toast');
+    if (toast) {
+        toast.innerHTML = `
+        <div class="toast__main border_left_grend">
+            <div class="toast__icon__">
+            <i class="fa fa-check-circle" aria-hidden="true"></i>
+            </div>
+            <div class="toast__body">
+                <h3 class="toast__title">
+                </h3>
+                <p class="toast__msg__">
+                ${message}
+                </p>
+            </div>
+            <div class="toast__close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+        </div>    
+        `;
+    }
 }

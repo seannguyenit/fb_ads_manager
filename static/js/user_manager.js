@@ -399,7 +399,9 @@ async function save__() {
     var real_name = $("#real_name").val()
     var rs_check = await check_username();
     if (!rs_check) {
-        alert('email bị trùng !')
+        var mess = 'email bị trùng !';
+        toast_error(mess)
+        // alert('email bị trùng !')
         return;
     }
 
@@ -436,7 +438,9 @@ async function save_() {
     var created_at = new Date();
     var rs_check = await check_username();
     if (!rs_check) {
-        alert('email bị trùng !')
+        var mess = 'email bị trùng !';
+        toast_error(mess)
+        // alert('email bị trùng !')
         return;
     }
 
@@ -469,7 +473,9 @@ async function search_acc() {
     var username = $('#username').val();
     if (username.length == 0) {
         // var username = $('#username').val();
-        alert('Bạn hãy nhập tên muốn tìm !!');
+        var mess ='Bạn hãy nhập tên muốn tìm !!';
+        toast_error(mess)
+        // alert('Bạn hãy nhập tên muốn tìm !!');
         return;
     }
     await acc_search(username);
@@ -814,7 +820,9 @@ async function save_pricing_(id) {
     var limit_fb = 0 ;
     var limit_request = 0 ;
     if (Number(pricing_id) === 0) {
-        alert("Hãy chọn gói mà bạn muốn mua");
+        var mess ="Hãy chọn gói mà bạn muốn mua";
+        toast_error(mess)
+        // alert("Hãy chọn gói mà bạn muốn mua");
         return;
     }
     var data_pricing = await pricing_get_all();
@@ -866,11 +874,15 @@ async function save_edit_money(id) {
     // }
     var money = document.getElementById("_money").value;
     if (Number(money) === 0 || Number(money) === null) {
-        alert("Hãy nhận số tiền bạn muốn");
+        var mess ="Hãy nhận số tiền bạn muốn";
+        toast_error(mess)
+        // alert("Hãy nhận số tiền bạn muốn");
         return;
     }
     if (Number(edit_money) === 0) {
-        alert("Hãy chọn trạng thái bạn muốn muốn");
+        var mess ="Hãy nhận số tiền bạn muốn";
+        toast_error(mess)
+        // alert("Hãy chọn trạng thái bạn muốn muốn");
         return;
     }
     var user_id = id;
@@ -895,11 +907,15 @@ async function save_edit_money(id) {
             console.error('Error:', error);
         });
     if (rs.mess) {
-        alert(rs.mess);
+        // var mess ="Hãy nhận số tiền bạn muốn";
+        toast_error(rs.mess)
+        // alert(rs.mess);
         return;
     }
     if (rs.ok = 1) {
-        alert("thay đổi tiền thành công")
+        var mess ="thay đổi tiền thành công";
+        toast_success(mess)
+        // alert("thay đổi tiền thành công")
     }
     get_user_limit()
     // init_users(cr_page, user_number_page);

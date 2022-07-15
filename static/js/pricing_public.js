@@ -112,8 +112,12 @@ async function order_pricing(id, name, price,day,level,limit_fb,limit_request) {
             console.error('Error:', error);
         });
     if (rs.error) {
-        alert(rs.error);
+        toast_error(rs.error);
+        // location.reload();
+        // alert(rs.error);
     } else {
+        // var mess = 'Gia hạn thành công !'
+        // toast_success(mess);
         alert('Gia hạn thành công !')
         location.reload();
     }
