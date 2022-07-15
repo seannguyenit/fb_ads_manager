@@ -121,6 +121,7 @@
     <div class="content">
         <section >
             <div class="col-12 pd0">
+                
                 <div class="container">
                     <div  style="background-color: #fff;box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;" class="col-md-12 d-flex pd0 font-weight-550 flex-wrap mt-3 mb-3">
                         <div class="col-12">
@@ -167,7 +168,8 @@
                                 <div class="text_left pricing_benefit d-flex flex-column">
                                     <div class="container">
                                         <span data-lang="bank_name"> Tên Ngân Hàng: </span> Mb Bank <br>
-                                        <span data-lang="account_number"> Số tài khoản:</span>: 264264989999 <br>
+                                        <span data-lang="account_number"> Số tài khoản:</span> 
+                                        <a href="#" onclick="copy_near_span('copy_number_mb')" id="copy_number_mb">264264989999 </a><br>
                                         <span data-lang="account_holder"> Chủ tài khoản:</span> NGUYEN QUOC TAI <br>
                                         <span data-lang="minimum_topup"> Nạp tối thiểu: </span> 10,000 VNĐ
                                     </div>
@@ -179,7 +181,8 @@
                                 <div class="text_left pricing_benefit d-flex flex-column">
                                     <div class="container">
                                         <span data-lang="bank_name"> Tên bank: </span> ACB Bank <br>
-                                        <span data-lang="account_number"> Số tài khoản:</span>: 3818321 <br>
+                                        <span data-lang="account_number"> Số tài khoản:</span> 
+                                        <a href="#" onclick="copy_near_span('copy_number_acb')" id="copy_number_acb">3818321 </a><br>
                                         <span data-lang="account_holder"> Chủ tài khoản:</span> NGUYEN QUOC TAI <br>
                                         <span data-lang="minimum_topup"> Nạp tối thiểu: </span> 10,000 VNĐ
                                     </div>
@@ -191,7 +194,8 @@
                                 <div class="text_left pricing_benefit d-flex flex-column">
                                     <div class="container">
                                         <span data-lang="bank_name"> Tên Ngân Hàng: </span> MoMo <br>
-                                        <span data-lang="account_number"> Số tài khoản:</span>: 0987533112 <br>
+                                        <span data-lang="account_number"> Số tài khoản:</span>
+                                         <a href="#" onclick="copy_near_span('copy_number_momo')" id="copy_number_momo">0987533112</a> <br>
                                         <span data-lang="account_holder"> Chủ tài khoản:</span> NGUYEN QUOC TAI <br>
                                         <span data-lang="minimum_topup"> Nạp tối thiểu: </span> 10,000 VNĐ
                                     </div>
@@ -220,8 +224,9 @@
                                             khoản</span> -->
                                 <br>
                                 <span> <span id="ticket_number"></span>
-                                    <span><button style="width:60px" onclick="copy_near_span(this)"
-                                            class="btn btn-primary btn-sm">Copy</button></span></span>
+                                    <span><button style="width:60px" onclick="copy_near_span('ticket_number')"
+                                            class="btn btn-primary btn-sm">Copy</button></span>
+                                        </span>
                                 <br>
                                 <!-- <span data-lang="successful_transfer:">Chuyển khoản thành công vui lòng nhấn nút
                                         :</span> -->
@@ -296,6 +301,8 @@
         </section>
 
     </div>
+    <div id="toast"> 
+    </div>
     <dialog id="bank_money_ticket">
         <div class="modal-dialog" role="document">
             <div style="border: 0px;" class="modal-content">
@@ -313,6 +320,24 @@
             </div>
         </div>
     </dialog>
+    <div class="modal fade" id="copy_number" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="copy_number" aria-hidden="true">
+        <div class="modal-dialog">
+            <div style="border: 0px;" class="modal-content">
+
+                <div class="modal-body text_center">
+                    <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
+                    <h4>Thông báo</h4>
+                    <p>Đã sao chép thành công !!</p>
+                    <button type="button" class="btn btn-primary" 
+                        data-dismiss="modal">Tôi đã hiểu</button>
+                </div>
+                <div class="text_center">
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="footer">
         <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color_clinet">
                 <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
@@ -334,16 +359,25 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script>
-        function copy_near_span(ele) {
-            var parent = ele.parentNode;
-            var copyText = parent.querySelector('span');
-            /* Select the text field */
-            // copyText.select();
-            // copyText.setSelectionRange(0, 99999); /* For mobile devices */
+        // function copy_near_span(ele) {
+        //     var parent = ele.parentNode;
+        //     var copyText = parent.querySelector('span');
+        //     /* Select the text field */
+        //     // copyText.select();
+        //     // copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
-            /* Copy the text inside the text field */
-            navigator.clipboard.writeText(copyText.innerText);
-        }
+        //     /* Copy the text inside the text field */
+        //     navigator.clipboard.writeText(copyText.innerText);
+        // }
+        function copy_near_span(id)
+            {
+            var r = document.createRange();
+            r.selectNode(document.getElementById(id));
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(r);
+            document.execCommand('copy');
+            $('#copy_number').modal('show');
+            }
     </script>
 </body>
 

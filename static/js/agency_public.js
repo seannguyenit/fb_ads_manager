@@ -76,7 +76,9 @@ async function agency_register() {
         })
             .then(response => response.text())
             .then(r => {
-                alert('Đăng ký thành công ! Vui lòng chờ quản trị viên xét duyệt !')
+                var mess = 'Đăng ký thành công ! Vui lòng chờ quản trị viên xét duyệt !';
+                toast_success(mess)
+                // alert('Đăng ký thành công ! Vui lòng chờ quản trị viên xét duyệt !')
                 return r;
             })
             .catch(error => {
@@ -195,7 +197,9 @@ async function save_ticket() {
     var user_id = $('#option_user').val();
     var money = $('#money').val();
     if (Number(money) < 10000) {
-        alert("Vui lòng chuyển từ 10.000 VNĐ trở lên");
+        var mess = 'Vui lòng chuyển từ 10.000 VNĐ trở lên';
+        toast_error(mess)
+        // alert("Vui lòng chuyển từ 10.000 VNĐ trở lên");
         return;
     }
 
@@ -203,7 +207,8 @@ async function save_ticket() {
     var data_user = ({ user_id: user_id, money: money })
     var rs = await ticket_save_({ data_agency: data_agency, data_user: data_user });
     if (rs) {
-        alert(rs.mess);
+        toast_success(rs.mess)
+        // alert(rs.mess);
     }
 
     $('#money_ticket').modal('hide');
@@ -235,7 +240,9 @@ async function search_acc() {
     var username = $('#username').val();
     if (username.length == 0) {
         // var username = $('#username').val();
-        alert('Bạn hãy nhập tên muốn tìm !!');
+        var mess = 'Bạn hãy nhập tên muốn tìm !!'
+        // alert('Bạn hãy nhập tên muốn tìm !!');
+        toast_error(mess)
         return;
     }
     // await acc_search(username);

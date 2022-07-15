@@ -41,33 +41,39 @@ async function open_data_admin_mbbank() {
             if(Number(f.type) === 1){
                 if(Number(f.action) === 1){
                     var action = ` <button onclick="edit_active(${f.id},${f.action})">On</button>`
+                    document.getElementById('token_mbbank').value = `${f.token}`
+                    document.getElementById('account_mbbank').value = `${f.account}`
+                    document.getElementById('pass_mbbank').value = `${f.password}`
+                    document.getElementById('action_mb').innerHTML =`${action}`   
                 }else{
                     var action = ` <button onclick="edit_active(${f.id},${f.action})">Off</button>`
+                    document.getElementById('action_mb').innerHTML =`${action}`   
                 }
-                document.getElementById('token_mbbank').value = `${f.token}`
-                document.getElementById('account_mbbank').value = `${f.account}`
-                document.getElementById('pass_mbbank').value = `${f.password}`
-                document.getElementById('action_mb').innerHTML =`${action}`
+                                
             }
             if(Number(f.type) === 2){
                 if(Number(f.action) === 1){
                     var action = ` <button onclick="edit_active(${f.id},${f.action})">On</button>`
+                    document.getElementById('token_acbbank').value = `${f.token}`
+                    document.getElementById('account_acbbank').value = `${f.account}`
+                    document.getElementById('pass_acbbank').value = `${f.password}`
+                    document.getElementById('action_acb').innerHTML =`${action}`
                 }else{
                     var action = ` <button onclick="edit_active(${f.id},${f.action})">Off</button>`
+                    document.getElementById('action_acb').innerHTML =`${action}`
                 }
-                document.getElementById('token_acbbank').value = `${f.token}`
-                document.getElementById('account_acbbank').value = `${f.account}`
-                document.getElementById('pass_acbbank').value = `${f.password}`
-                document.getElementById('action_acb').innerHTML =`${action}`
+               
             }
             if(Number(f.type) === 3){
                 if(Number(f.action) === 1){
                     var action = ` <button onclick="edit_active(${f.id},${f.action})">On</button>`
+                    document.getElementById('token_momo').value = `${f.token}`
+                    document.getElementById('action_momo').innerHTML =`${action}`
                 }else{
                     var action = ` <button onclick="edit_active(${f.id},${f.action})">Off</button>`
+                    document.getElementById('action_momo').innerHTML =`${action}`
                 }
-                document.getElementById('token_momo').value = `${f.token}`
-                document.getElementById('action_momo').innerHTML =`${action}`
+               
             }
            
         })
@@ -93,10 +99,11 @@ async function open_modal_admin_mbbank(){
     var data = await get_admin_bank();
     if (data) {
         data.forEach(f => {
-            if(Number(f.type) === 1){
-            document.getElementById('detail_token_mbbank').value = `${f.token}`
-            document.getElementById('detail_account_mbbank').value = `${f.account}`
-            document.getElementById('detail_pass_mbbank').value = `${f.password}`
+            if(Number(f.type) === 1 && Number(f.action) === 1 ){
+            document.getElementById('detail_action_mbbank').value = `${f.action}`;
+            document.getElementById('detail_token_mbbank').value = `${f.token}`;
+            document.getElementById('detail_account_mbbank').value = `${f.account}`;
+            document.getElementById('detail_pass_mbbank').value = `${f.password}`;
             }
         })
     }
@@ -108,7 +115,8 @@ async function open_modal_admin_acbbank(){
     var data = await get_admin_bank();
     if (data) {
         data.forEach(f => {
-            if(Number(f.type) === 2){
+            if(Number(f.type) === 2 && Number(f.action) === 1){
+            document.getElementById('detail_action_acbbank').value = `${f.action}`;
             document.getElementById('detail_token_acbbank').value = `${f.token}`
             document.getElementById('detail_account_acbbank').value = `${f.account}`
             document.getElementById('detail_pass_acbbank').value = `${f.password}`
@@ -124,7 +132,8 @@ async function open_modal_admin_momo(){
     if (data) {
         data.forEach(f => {
             
-            if(Number(f.type) === 3){
+            if(Number(f.type) === 3 && Number(f.action) === 1){
+            document.getElementById('detail_action_momo').value = `${f.action}`;
             document.getElementById('detail_token_momo').value = `${f.token}`
            
             }
@@ -138,7 +147,10 @@ async function save_admin_mbbank(){
     if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu ?')) {
         return;
     }
-    if (!validate_()) return;
+    if(!$("#detail_action_mbbank").val()){
+        alert("API MBbank không hoạt động");
+        return;
+    }
     var token = $("#detail_token_mbbank").val();
     var account = $("#detail_account_mbbank").val();
     var password = $("#detail_pass_mbbank").val();
@@ -158,7 +170,10 @@ async function save_admin_acbbank(){
     if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu ?')) {
         return;
     }
-    if (!validate_()) return;
+    if(!$("#detail_action_acbbank").val()){
+        alert("API ACBbank không hoạt động");
+        return;
+    }
     var token = $("#detail_token_acbbank").val();
     var account = $("#detail_account_acbbank").val();
     var password = $("#detail_pass_acbbank").val();
@@ -178,7 +193,10 @@ async function save_admin_momo(){
     if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu ?')) {
         return;
     }
-    if (!validate_()) return;
+    if(!$("#detail_action_momo").val()){
+        alert("API MoMo không hoạt động");
+        return;
+    }
     var token = $("#detail_token_momo").val();
 
     var url = `/api/admin_bank`;

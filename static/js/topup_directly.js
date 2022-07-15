@@ -85,7 +85,7 @@ async function show_info() {
 
 async function go_money() {
     var t = document.getElementById('text_info').innerText;
-    if (!confirm(t + '?')) {
+    if (!confirm(t)) {
         return;
     }
     var cr_u = get_cr_user();
@@ -96,7 +96,9 @@ async function go_money() {
     var seri = document.getElementById('seri').value;
     var pin = document.getElementById('pin').value;
     if (seri.length === 0 || pin.length === 0) {
-        alert('Vui lòng nhập thẻ !');
+        var mess = 'Vui lòng nhập thẻ !'
+        toast_error(mess);
+        // alert('Vui lòng nhập thẻ !');
         return;
     }
     var data = { ApiKey: api_key, Pin: pin, Seri: seri, CardType: card_type, CardValue: card_value, requestid: `${cr_u.id},${Math.floor((new Date()).getTime() / 1000)}` }
@@ -114,7 +116,7 @@ async function go_money() {
             return result;
         })
         .catch(error => {
-            stop_loading();
+            // stop_loading();
             console.error('Error:', error);
         });
     if (rs) {
@@ -123,19 +125,26 @@ async function go_money() {
             //var money = document.getElementById('card_price_place').querySelector('input:checked').value - Math.floor((document.getElementById('card_price_place').querySelector('input:checked').value) / 100) * document.getElementById('card_price_place').querySelector('input:checked').dataset.rate;
             var rs_save = await ticket_save_({ money: 0, des: 'Thẻ cào', user_id: cr_u.id, active: 1, task_id: rs.TaskId, type: 1, time: Math.floor((new Date()).getTime() / 1000) });
             // stop_loading();
-            alert('Thẻ nạp thành công vui lòng chờ 3-5 phút để tiền về tài khoản ! Nếu sau đó tk chưa có tiền vui lòng liên hệ admin !')
+            var mess = 'Thẻ nạp thành công vui lòng chờ 3-5 phút để tiền về tài khoản ! Nếu sau đó tk chưa có tiền vui lòng liên hệ admin !'
+            toast_success(mess)
+            // alert('Thẻ nạp thành công vui lòng chờ 3-5 phút để tiền về tài khoản ! Nếu sau đó tk chưa có tiền vui lòng liên hệ admin !')
         } else {
             if (rs.Message && rs.Message.length > 0) {
-                stop_loading();
-                alert(rs.Message);
+                // stop_loading();
+                toast_success(rs.Message)
+                // alert(rs.Message);
             } else {
                 // stop_loading();
-                alert('Thẻ bị lỗi !')
+                var mess = 'Thẻ bị lỗi !'
+                toast_error(mess);
+                // alert('Thẻ bị lỗi !')
             }
         }
     } else {
         // stop_loading();
-        alert('Nạp thất bại ! Thẻ bị lỗi !');
+        var mess = 'Nạp thất bại ! Thẻ bị lỗi !';
+        toast_error(mess);
+        // alert('Nạp thất bại ! Thẻ bị lỗi !');
     }
     // stop_loading();
 }
