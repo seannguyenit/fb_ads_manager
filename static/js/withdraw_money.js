@@ -76,10 +76,10 @@ async function init_withdraw_money() {
             if(f.withdraw){
                 placed.innerHTML += `
                 <tr class="tr">
-                    <td>${data.indexOf(f) + 1}</td>
-                    <td>${get_format_VND(f.withdraw)}</td>
-                    <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
-                    <td>${(f.active == 1 ? 'Đã duyệt' : 'Chưa duyệt')}</td>
+                    <td class="text-left">${data.indexOf(f) + 1}</td>
+                    <td class="text-left green--text">${get_format_VND(f.withdraw)}</td>
+                    <td class="text-left">${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
+                    <td class="text-left">${(f.active == 1 ? 'Đã duyệt' : 'Chưa duyệt')}</td>
                 </tr>`
             }
            

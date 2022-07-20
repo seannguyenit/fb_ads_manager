@@ -110,43 +110,7 @@
         </div>
     </nav> -->
     
-    <div id="toast"> 
-    </div>
-    <dialog id="bank_money_ticket">
-        <div class="modal-dialog" role="document">
-            <div style="border: 0px;" class="modal-content">
-
-                <div class="modal-body text_center">
-                    <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
-                    <h4>Thành Công !</h4>
-                    <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
-                    <button type="button" class="btn btn-primary" onclick="location.reload()"
-                        data-dismiss="modal">OK</button>
-                </div>
-                <div class="text_center">
-
-                </div>
-            </div>
-        </div>
-    </dialog>
-    <div class="modal fade" id="copy_number" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    aria-labelledby="copy_number" aria-hidden="true">
-        <div class="modal-dialog">
-            <div style="border: 0px;" class="modal-content">
-
-                <div class="modal-body text_center">
-                    <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
-                    <h4>Thông báo</h4>
-                    <p>Đã sao chép thành công !!</p>
-                    <button type="button" class="btn btn-primary" 
-                        data-dismiss="modal">Tôi đã hiểu</button>
-                </div>
-                <div class="text_center">
-
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <div id="__nuxt">
         <!---->
         <div id="__layout">
@@ -180,8 +144,8 @@
                                                             style="padding-bottom: 105.758%;"></div>
                                                         <div class="v-image__image v-image__image--cover"
                                                             style=" background-position: center center;">
-                                                            <span><img src="../img/1657506390119.jpg" width="100%"
-                                                                    height="100%" alt="" srcset=""></span>
+                                                            <span id="img_logo"><img src="../img/1657506390119.jpg"
+                                                                    width="100%" height="100%" alt="" srcset=""></span>
                                                         </div>
                                                         <div class="v-responsive__content" style="width: 330px;"></div>
                                                     </div>
@@ -198,7 +162,8 @@
                                                             </fieldset>
                                                             <div class="v-text-field__slot"><input
                                                                     style="background-color: #fafafa !important; color:rgb(44, 44, 44) !important"
-                                                                    id="input-287" placeholder="Nhập từ khóa"
+                                                                    id="input-287" data-lang="enter_keywords"
+                                                                    data-langtg="placeholder" placeholder="Nhập từ khóa"
                                                                     type="text"></div>
                                                         </div>
                                                         <div class="v-text-field__details">
@@ -222,8 +187,10 @@
                                                             src="../img/avatar_user.png" alt="">
                                                     </div>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="./user_info"> Tài Khoảng</a>
-                                                        <a class="dropdown-item" onclick="acc_logout()">Đăng xuất</a>
+                                                        <a class="dropdown-item" href="./user_info"
+                                                            data-lang="Tài_Khoản"> Tài Khoảng</a>
+                                                        <a class="dropdown-item" onclick="acc_logout()"
+                                                            data-lang="Logout">Đăng xuất</a>
                                                     </div>
                                                 </div>
                                                 <div class="v-menu" style="position: relative; z-index: 99;">
@@ -261,14 +228,16 @@
                                     <div tabindex="-1" class="v-list-item theme--light">
                                         <div class="d-flex align-center">
                                             <div class="v-image v-responsive theme--light" id="imageLogo"
-                                                style="height: 35px; width: 35px;">
+                                            style="max-height: 40px; width: 60px;">
                                                 <div class="v-responsive__sizer" style="padding-bottom: 105.758%;">
                                                 </div>
                                                 <div class="v-image__image v-image__image--cover"
-                                                    style="background-image: url(&quot;https://zsocial.vn/images/logo4.png&quot;); background-position: center center;">
+                                                    style="background-position: center center;">
+                                                    <span id="menu_img_logo"><img src="../img/1657506390119.jpg" width="100%"
+                                                            height="100%" alt="" srcset=""></span>
                                                 </div>
                                                 <div class="v-responsive__content" style="width: 330px;"></div>
-                                            </div> <span class="black--text ml-4">PROXYV6.NET</span>
+                                            </div> <span class="black--text ml-4">M2v.me</span>
                                         </div>
                                     </div>
                                     <hr role="separator" aria-orientation="horizontal" class="v-divider theme--light">
@@ -276,7 +245,8 @@
                                         <div id="menu_user_mobie">
                                         </div>
                                         <div style="padding-top:5px;margin-left: 20px;" class=" dropdown">
-                                            <button class="btn btn_lang btn-secondary dropdown-toggle" type="button"
+                                            <button style="background-color: #fff !important;"
+                                                class="btn btn_lang btn-secondary dropdown-toggle" type="button"
                                                 id="dropdownMenuButton_lang" data-toggle="dropdown" data-lang=""
                                                 aria-haspopup="true" aria-expanded="false">
                                                 <span id="img_lang_mobie" style="margin-right: 3px;"> </span><span
@@ -295,7 +265,8 @@
                                                 class="v-btn v-btn--text theme--light v-size--default"><span
                                                     class="v-btn__content"><i aria-hidden="true"
                                                         class="v-icon notranslate blue--text fas fa-power-off theme--light"
-                                                        style="font-size: 18px;"></i> <span class="ml-5 blue--text">Đăng
+                                                        style="font-size: 18px;"></i> <span class="ml-5 blue--text"
+                                                        data-lang="Logout">Đăng
                                                         Xuất</span></span></button></div>
                                     </div>
                                 </div>
@@ -445,7 +416,7 @@
                                                                         <tr>
                                                                             <th style="border-top: 0px;width:10% ;background-color: #fff;color: rgba(0,0,0,.6);">Stt</th>
                                                                             <th style="border-top: 0px;width:15% ;background-color: #fff;color: rgba(0,0,0,.6);"data-lang="time">Thời gian</th>
-                                                                            <th style="border-top: 0px;width:15% ;background-color: #fff;color: rgba(0,0,0,.6);"data-lang="tpe">loại</th>
+                                                                            <th style="border-top: 0px;width:15% ;background-color: #fff;color: rgba(0,0,0,.6);"data-lang="type">loại</th>
                                                                             <th style="border-top: 0px;width:20% ;background-color: #fff;color: rgba(0,0,0,.6);"data-lang="transaction_code">Mã Giao Dịch</th>
                                                                             <th style="border-top: 0px;width:35% ;background-color: #fff;color: rgba(0,0,0,.6);"style="width:25%" data-lang="name">Ngươi Chuyển</th>
                                                                             <th style="border-top: 0px;width:15% ;background-color: #fff;color: rgba(0,0,0,.6);"data-lang="money_topup">Số tiền nạp (VND)</th>
@@ -471,10 +442,47 @@
                                 <div class="text-center white--text col col-12">
                                     2022 —
                                     <strong>Powered by
-                                        <a href="http://Ztech.Asia" target="_blank" rel="noopener noreferrer"
-                                            class="text-decoration-none white--text">Ztech.Asia</a></strong>
+                                        <a href="#" target="_blank" rel="noopener noreferrer"
+                                            class="text-decoration-none white--text">Arthur Company</a></strong>
                                 </div>
                             </footer>
+                        </div>
+                        <div id="toast"> 
+                        </div>
+                        <dialog id="bank_money_ticket">
+                            <div class="modal-dialog" role="document">
+                                <div style="border: 0px;" class="modal-content">
+                    
+                                    <div class="modal-body text_center">
+                                        <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
+                                        <h4>Thành Công !</h4>
+                                        <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
+                                        <button type="button" class="btn btn-primary" onclick="location.reload()"
+                                            data-dismiss="modal">OK</button>
+                                    </div>
+                                    <div class="text_center">
+                    
+                                    </div>
+                                </div>
+                            </div>
+                        </dialog>
+                        <div class="modal fade" id="copy_number" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                        aria-labelledby="copy_number" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div style="border: 0px;" class="modal-content">
+                    
+                                    <div class="modal-body text_center">
+                                        <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
+                                        <h4>Thông báo</h4>
+                                        <p>Đã sao chép thành công !!</p>
+                                        <button type="button" class="btn btn-primary" 
+                                            data-dismiss="modal">Tôi đã hiểu</button>
+                                    </div>
+                                    <div class="text_center">
+                    
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </main>
                 </div>

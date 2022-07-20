@@ -341,14 +341,14 @@ module.exports = {
     },
     get_bychildname: (req, res) => {
         let username = '%' + req.params.username + '%';
-        let sql = 'SELECT `user`.`username`,(SELECT sum(money) FROM money_history where `active` = 1 and `type` =  1 and user_id = `user`.id) as total, `user`.`ref`, `user`.`is_agency`, `user`.`created_at` from `user` where `user`.par_id = ? and active = 1 and `user`.username like ?';
+        let sql = 'SELECT `user`.`id`,`user`.`username`,(SELECT sum(money) FROM money_history where `active` = 1 and `type` =  1 and user_id = `user`.id) as total, `user`.`ref`, `user`.`is_agency`, `user`.`created_at` from `user` where `user`.par_id = ? and active = 1 and `user`.username like ?';
         db.query(sql, [Number(req.params.id), username], (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
     get_childbycreated: (req, res) => {
-        let sql = 'SELECT `user`.`username`,(SELECT sum(money) FROM money_history where `active` = 1 and `type` =  1 and user_id = `user`.id) as total, `user`.`ref`, `user`.`is_agency`, `user`.`created_at` from `user` where `user`.par_id = ? and active = 1 and (`user`.created_at >= ? and `user`.created_at <= ?);';
+        let sql = 'SELECT `user`.`id`,`user`.`username`,(SELECT sum(money) FROM money_history where `active` = 1 and `type` =  1 and user_id = `user`.id) as total, `user`.`ref`, `user`.`is_agency`, `user`.`created_at` from `user` where `user`.par_id = ? and active = 1 and (`user`.created_at >= ? and `user`.created_at <= ?);';
         db.query(sql, [Number(req.params.id), req.params.from, req.params.to], (err, response) => {
             if (err) throw err
             res.json(response)

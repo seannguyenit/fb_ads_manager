@@ -22,32 +22,14 @@
 
 <body class="body-bg-custom">
 
-    <div id="toast"> 
-    </div>
-    <dialog id="bank_money_ticket">
-        <div class="modal-dialog" role="document">
-            <div style="border: 0px;" class="modal-content">
-
-                <div class="modal-body text_center">
-                    <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
-                    <h4>Thành Công !</h4>
-                    <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
-                    <button type="button" class="btn btn-primary" onclick="location.reload()"
-                        data-dismiss="modal">OK</button>
-                </div>
-                <div class="text_center">
-
-                </div>
-            </div>
-        </div>
-    </dialog>
+  
 
     <div id="__nuxt">
         <!---->
         <div id="__layout">
             <div data-app="true" class="v-application v-application--is-ltr theme--light" id="app">
                 <div class="v-application--wrap">
-                    <main class="v-main" style="padding: 0px;" data-booted="true">
+                    <main class="v-main" data-booted="true" style="padding: 0px;">
                         <div class="v-main__wrap">
                             <div id="cover_menu" class="v-overlay v-overlay--absolute v-overlay--active theme--dark"
                                 style="display: none;z-index: 7;">
@@ -65,18 +47,18 @@
                                                 py-2
                                                 px-lg-0 col col-12">
                                             <div class="d-flex align-center">
-                                                <div class="d-flex justify-end d-lg-none mr-2"><button id="menu_control"
-                                                        type="button"
+                                                <div class="d-flex justify-end d-lg-none mr-2"><button type="button"
+                                                        id="menu_control"
                                                         class="v-icon notranslate v-icon--link mdi mdi-view-headline theme--light"></button>
-                                                </div>
-                                                <a href="page_box" class="nuxt-link-active">
-                                                    <div class="v-image v-responsive theme--light" style="width: 100px;
+                                                </div> <a href="/" class="nuxt-link-active">
+                                                    <div class="v-image v-responsive theme--light" style="width: 60px;
                                                     max-height: 40px;">
                                                         <div class="v-responsive__sizer"
                                                             style="padding-bottom: 105.758%;"></div>
                                                         <div class="v-image__image v-image__image--cover"
                                                             style=" background-position: center center;">
-                                                            <span><img src="../img/1657506390119.jpg" width="100%" height="100%" alt="" srcset=""></span>
+                                                            <span id="img_logo"><img src="../img/1657506390119.jpg" width="100%"
+                                                                    height="100%" alt="" srcset=""></span>
                                                         </div>
                                                         <div class="v-responsive__content" style="width: 330px;"></div>
                                                     </div>
@@ -91,8 +73,10 @@
                                                                 <legend style="width: 0px;"><span
                                                                         class="notranslate">​</span></legend>
                                                             </fieldset>
-                                                            <div class="v-text-field__slot"><input style="background-color: #fafafa !important; color:rgb(44, 44, 44) !important" id="input-19"
-                                                                    placeholder="Nhập từ khóa" type="text"></div>
+                                                            <div class="v-text-field__slot"><input
+                                                                    style="background-color: #fafafa !important; color:rgb(44, 44, 44) !important"
+                                                                    id="input-287"  data-lang="enter_keywords" data-langtg="placeholder" placeholder="Nhập từ khóa"
+                                                                    type="text"></div>
                                                         </div>
                                                         <div class="v-text-field__details">
                                                             <div class="v-messages theme--light">
@@ -100,7 +84,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div> 
+                                                </div>
                                                 <i aria-hidden="true"
                                                     class="v-icon notranslate c-pointer mr-4 far fa-envelope theme--light"></i>
                                                 <i aria-hidden="true"
@@ -108,28 +92,36 @@
                                                 <div class="v-menu">
                                                     <!---->
                                                 </div>
-                                                    <div class="dropdown " style="padding-right: 10px;">
-                                                        <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                                            aria-expanded="false">
-                                                            <img style="border-radius: 50%;" width="35px" height="35px" src="../img/avatar_user.png" alt="">
-                                                        </div>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a class="dropdown-item" href="./user_info"> Tài Khoảng</a>
-                                                            <a class="dropdown-item" onclick="acc_logout()">Đăng xuất</a>
-                                                        </div>
+                                                <div class="dropdown " style="padding-right: 10px;">
+                                                    <div class="" id="dropdownMenuButton" data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">
+                                                        <img style="border-radius: 50%;" width="35px" height="35px"
+                                                            src="../img/avatar_user.png" alt="">
                                                     </div>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="./user_info" data-lang="Tài_Khoản"> Tài Khoảng</a>
+                                                        <a class="dropdown-item" onclick="acc_logout()" data-lang="Logout">Đăng xuất</a>
+                                                    </div>
+                                                </div>
                                                 <div class="v-menu" style="position: relative; z-index: 99;">
                                                     <!---->
-                                                </div><div class=" dropdown">
-                                                    <button class="btn btn_lang btn-secondary dropdown-toggle" type="button"
-                                                        id="dropdownMenuButton_lang" data-toggle="dropdown" data-lang="" aria-haspopup="true"
+                                                </div>
+                                                <div class=" dropdown">
+                                                    <button class="btn btn_lang btn-secondary dropdown-toggle"
+                                                        type="button" id="dropdownMenuButton_lang"
+                                                        data-toggle="dropdown" data-lang="" aria-haspopup="true"
                                                         aria-expanded="false">
-                                                        <span id="img_lang" style="margin-right: 3px;"> </span><span style="text-transform:none" data-lang="Language"></span>
+                                                        <span id="img_lang" style="margin-right: 3px;"> </span><span
+                                                            style="text-transform:none" data-lang="Language"></span>
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a style="text-transform:none" class="dropdown-item" onclick="change_lang('en')" href="#"><img style="margin-right: 3px;" width="20%" height="20%"
+                                                        <a style="text-transform:none" class="dropdown-item"
+                                                            onclick="change_lang('en')" href="#"><img
+                                                                style="margin-right: 3px;" width="20%" height="20%"
                                                                 src="../img/usa.jpg" alt="">English</a>
-                                                        <a style="text-transform:none" class="dropdown-item" onclick="change_lang('vi')" href="#"><img style="margin-right: 3px;" width="20%" height="20%"
+                                                        <a style="text-transform:none" class="dropdown-item"
+                                                            onclick="change_lang('vi')" href="#"><img
+                                                                style="margin-right: 3px;" width="20%" height="20%"
                                                                 src="../img/vn.jpg" alt="">Việt Nam</a>
                                                     </div>
                                                 </div>
@@ -139,49 +131,51 @@
                                 </div>
                             </div>
                             <aside
-                                class="v-navigation-drawer v-navigation-drawer--absolute v-navigation-drawer--close v-navigation-drawer--is-mobile v-navigation-drawer--temporary theme--light"
-                                style="height: 100%; top: 0px; transform: translateX(-100%); width: 256px;"
-                                data-booted="true">
+                                class="v-navigation-drawer v-navigation-drawer--absolute v-navigation-drawer--close v-navigation-drawer--temporary theme--light"
+                                data-booted="true"
+                                style="height: 100%; top: 0px; transform: translateX(-100%); width: 256px;">
                                 <div class="v-navigation-drawer__content">
                                     <div tabindex="-1" class="v-list-item theme--light">
                                         <div class="d-flex align-center">
-                                            <div class="v-image v-responsive theme--light"
-                                                style="height: 35px; width: 35px;" id="imageLogo">
+                                            <div class="v-image v-responsive theme--light" id="imageLogo"
+                                            style="max-height: 40px; width: 60px;">
                                                 <div class="v-responsive__sizer" style="padding-bottom: 105.758%;">
                                                 </div>
                                                 <div class="v-image__image v-image__image--cover"
-                                                    style="background-image: url(&quot;https://zsocial.vn/images/logo4.png&quot;); background-position: center center;">
+                                                    style="background-position: center center;">
+                                                    <span id="menu_img_logo"><img src="../img/1657506390119.jpg" width="100%"
+                                                        height="100%" alt="" srcset=""></span>
                                                 </div>
                                                 <div class="v-responsive__content" style="width: 330px;"></div>
-                                            </div> <span class="black--text ml-4">PROXYV6.NET</span>
+                                            </div> <span class="black--text ml-4">M2v.me</span>
                                         </div>
                                     </div>
                                     <hr role="separator" aria-orientation="horizontal" class="v-divider theme--light">
                                     <div id="heightLogout">
-                                        <div id="menu_user_mobie"> 
-                                           
-                                            
+                                        <div id="menu_user_mobie">
                                         </div>
                                         <div style="padding-top:5px;margin-left: 20px;" class=" dropdown">
-                                            <button class="btn btn_lang btn-secondary dropdown-toggle" type="button"
-                                                id="dropdownMenuButton_lang" data-toggle="dropdown" data-lang="" aria-haspopup="true"
-                                                aria-expanded="false">
-                                                <span id="img_lang_mobie" style="margin-right: 3px;"> </span><span style="text-transform:none" data-lang="Language"></span>
+                                            <button style="background-color: #fff !important;" class="btn btn_lang btn-secondary dropdown-toggle" type="button"
+                                                id="dropdownMenuButton_lang" data-toggle="dropdown" data-lang=""
+                                                aria-haspopup="true" aria-expanded="false">
+                                                <span id="img_lang_mobie" style="margin-right: 3px;"> </span><span
+                                                    style="text-transform:none" data-lang="Language"></span>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a style="text-transform:none" class="dropdown-item" onclick="change_lang('en')" href="#"><img style="margin-right: 3px;" width="20%" height="20%"
-                                                        src="../img/usa.jpg" alt="">English</a>
-                                                <a style="text-transform:none" class="dropdown-item" onclick="change_lang('vi')" href="#"><img style="margin-right: 3px;" width="20%" height="20%"
-                                                        src="../img/vn.jpg" alt="">Việt Nam</a>
+                                                <a style="text-transform:none" class="dropdown-item"
+                                                    onclick="change_lang('en')" href="#"><img style="margin-right: 3px;"
+                                                        width="20%" height="20%" src="../img/usa.jpg" alt="">English</a>
+                                                <a style="text-transform:none" class="dropdown-item"
+                                                    onclick="change_lang('vi')" href="#"><img style="margin-right: 3px;"
+                                                        width="20%" height="20%" src="../img/vn.jpg" alt="">Việt Nam</a>
                                             </div>
                                         </div>
                                         <div class="d-flex mt-4 ml-2"><button type="button"
                                                 class="v-btn v-btn--text theme--light v-size--default"><span
                                                     class="v-btn__content"><i aria-hidden="true"
                                                         class="v-icon notranslate blue--text fas fa-power-off theme--light"
-                                                        style="font-size: 18px;"></i> <span class="ml-5 blue--text">Đăng
-                                                        Xuất</span></span></button>
-                                        </div>
+                                                        style="font-size: 18px;"></i> <span class="ml-5 blue--text" data-lang="Logout">Đăng
+                                                        Xuất</span></span></button></div>
                                     </div>
                                 </div>
                                 <div class="v-navigation-drawer__border"></div>
@@ -208,7 +202,7 @@
                                                                 aria-hidden="true"
                                                                 class="v-icon notranslate mr-2 mdi mdi-plus-circle theme--light white--text"
                                                                 style="font-size: 18px;"></i>
-                                                            Nâng cấp gói
+                                                            <span data-lang="updatePackge">Nâng cấp gói</span>
                                                         </span></span></button></div>
                                         </div>
                                         <div class="row mx-4 mx-sm-4 mx-lg-0" id="main_content">
@@ -231,6 +225,25 @@
                             </footer>
                             
                         </div>
+                        <div id="toast"> 
+                        </div>
+                        <dialog id="bank_money_ticket">
+                            <div class="modal-dialog" role="document">
+                                <div style="border: 0px;" class="modal-content">
+                    
+                                    <div class="modal-body text_center">
+                                        <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
+                                        <h4>Thành Công !</h4>
+                                        <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
+                                        <button type="button" class="btn btn-primary" onclick="location.reload()"
+                                            data-dismiss="modal">OK</button>
+                                    </div>
+                                    <div class="text_center">
+                    
+                                    </div>
+                                </div>
+                            </div>
+                        </dialog>
                     </main>
                 </div>
             </div>
@@ -241,6 +254,7 @@
     <script src="../js/permission.js"></script>
     <script src="../js/pricing_public.js"></script>
     <script defer src="../js/translator.js"></script>
+    <script src="../js/menu_mobile_control.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"

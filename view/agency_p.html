@@ -246,58 +246,7 @@
         </section>
 
     </div> -->
-    <div class="modal fade" id="money_ticket" tabindex="-1" role="dialog" aria-labelledby="money_ticket"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" data-lang="transfer_user:">Chuyển Tiền Cho User</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body d-flex">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="email_user" class="form-label">Email :</label>
-                            <!-- <input  class="form_control" type="text" name="email_user" id="email_user" placeholder="nhập email ngươi dùng" required> -->
-                            <select name="option_user" class="form_control" id="option_user">
 
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="money" class="form-label" data-lang="transfer_money:">Tiền Cần CHuyển
-                                :</label>
-                            <input class="form_control" type="number" name="money" id="money" value="0">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button onclick="save_ticket()" type="button" class="btn btn-primary">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="toast">
-    </div>
-    <dialog id="bank_money_ticket">
-        <div class="modal-dialog" role="document">
-            <div style="border: 0px;" class="modal-content">
-
-                <div class="modal-body text_center">
-                    <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
-                    <h4>Thành Công !</h4>
-                    <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
-                    <button type="button" class="btn btn-primary" onclick="location.reload()"
-                        data-dismiss="modal">OK</button>
-                </div>
-                <div class="text_center">
-
-                </div>
-            </div>
-        </div>
-    </dialog>
 
     <div id="__nuxt">
         <!---->
@@ -332,7 +281,7 @@
                                                             style="padding-bottom: 105.758%;"></div>
                                                         <div class="v-image__image v-image__image--cover"
                                                             style=" background-position: center center;">
-                                                            <span><img src="../img/1657506390119.jpg" width="100%"
+                                                            <span id="img_logo"><img src="../img/1657506390119.jpg" width="100%"
                                                                     height="100%" alt="" srcset=""></span>
                                                         </div>
                                                         <div class="v-responsive__content" style="width: 330px;"></div>
@@ -350,7 +299,7 @@
                                                             </fieldset>
                                                             <div class="v-text-field__slot"><input
                                                                     style="background-color: #fafafa !important; color:rgb(44, 44, 44) !important"
-                                                                    id="input-287" placeholder="Nhập từ khóa"
+                                                                    id="input-287"  data-lang="enter_keywords" data-langtg="placeholder" placeholder="Nhập từ khóa"
                                                                     type="text"></div>
                                                         </div>
                                                         <div class="v-text-field__details">
@@ -374,8 +323,8 @@
                                                             src="../img/avatar_user.png" alt="">
                                                     </div>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="./user_info"> Tài Khoảng</a>
-                                                        <a class="dropdown-item" onclick="acc_logout()">Đăng xuất</a>
+                                                        <a class="dropdown-item" href="./user_info" data-lang="Tài_Khoản"> Tài Khoảng</a>
+                                                        <a class="dropdown-item" onclick="acc_logout()" data-lang="Logout">Đăng xuất</a>
                                                     </div>
                                                 </div>
                                                 <div class="v-menu" style="position: relative; z-index: 99;">
@@ -413,14 +362,16 @@
                                     <div tabindex="-1" class="v-list-item theme--light">
                                         <div class="d-flex align-center">
                                             <div class="v-image v-responsive theme--light" id="imageLogo"
-                                                style="height: 35px; width: 35px;">
+                                            style="max-height: 40px; width: 60px;">
                                                 <div class="v-responsive__sizer" style="padding-bottom: 105.758%;">
                                                 </div>
                                                 <div class="v-image__image v-image__image--cover"
-                                                    style="background-image: url(&quot;https://zsocial.vn/images/logo4.png&quot;); background-position: center center;">
+                                                    style="background-position: center center;">
+                                                    <span id="menu_img_logo"><img src="../img/1657506390119.jpg" width="100%"
+                                                        height="100%" alt="" srcset=""></span>
                                                 </div>
                                                 <div class="v-responsive__content" style="width: 330px;"></div>
-                                            </div> <span class="black--text ml-4">PROXYV6.NET</span>
+                                            </div> <span class="black--text ml-4">M2v.me</span>
                                         </div>
                                     </div>
                                     <hr role="separator" aria-orientation="horizontal" class="v-divider theme--light">
@@ -428,7 +379,7 @@
                                         <div id="menu_user_mobie">
                                         </div>
                                         <div style="padding-top:5px;margin-left: 20px;" class=" dropdown">
-                                            <button class="btn btn_lang btn-secondary dropdown-toggle" type="button"
+                                            <button style="background-color: #fff !important;" class="btn btn_lang btn-secondary dropdown-toggle" type="button"
                                                 id="dropdownMenuButton_lang" data-toggle="dropdown" data-lang=""
                                                 aria-haspopup="true" aria-expanded="false">
                                                 <span id="img_lang_mobie" style="margin-right: 3px;"> </span><span
@@ -447,7 +398,7 @@
                                                 class="v-btn v-btn--text theme--light v-size--default"><span
                                                     class="v-btn__content"><i aria-hidden="true"
                                                         class="v-icon notranslate blue--text fas fa-power-off theme--light"
-                                                        style="font-size: 18px;"></i> <span class="ml-5 blue--text">Đăng
+                                                        style="font-size: 18px;"></i> <span class="ml-5 blue--text" data-lang="Logout">Đăng
                                                         Xuất</span></span></button></div>
                                     </div>
                                 </div>
@@ -473,15 +424,17 @@
                                                         <header
                                                             class="primary--text px-2 v-sheet theme--light v-toolbar v-toolbar--flat"
                                                             style="height: 64px;">
-                                                            <div class="v-toolbar__content" style="height: 64px;color: #2196f3;display: flex;padding-left: 12px!important;"><i
-                                                                    aria-hidden="true"
+                                                            <div class="v-toolbar__content"
+                                                                style="height: 64px;color: #2196f3;display: flex;padding-left: 12px!important;">
+                                                                <i aria-hidden="true"
                                                                     class="v-icon notranslate blue--text fas fa-users theme--light"></i>
-                                                                <div style="font-size: 1.25rem;padding-left: 12px!important;padding-top: 14px;" class="v-toolbar__title pl-3">
+                                                                <div style="font-size: 1.25rem;padding-left: 12px!important;padding-top: 14px;"
+                                                                    class="v-toolbar__title pl-3" data-lang="Đại_lý">
                                                                     Đại Lý
                                                                 </div>
                                                             </div>
                                                         </header>
-                                                        
+
                                                     </div>
                                                     <hr role="separator" aria-orientation="horizontal"
                                                         class="v-divider theme--light">
@@ -489,13 +442,14 @@
                                                         <div>
                                                             <div class="row">
                                                                 <div class="col col-12">
-                                                                    <h2 class="blue--text">Đại Lý Của Bạn</h2>
+                                                                    <h2 class="blue--text" data-lang="your_agency">Đại
+                                                                        Lý Của Bạn</h2>
                                                                 </div>
                                                                 <div class="col-sm-7 col-12">
                                                                     <div class="d-sm-flex align-center pa-0 col col-12">
                                                                         <div
                                                                             class="pb-0 pb-sm-3 py-md-2 col-sm-4 col-12">
-                                                                            <p class=" mb-0">
+                                                                            <p class=" mb-0" data-lang="dealer_name:">
                                                                                 Tên đại lý:
                                                                             </p>
                                                                         </div>
@@ -512,7 +466,10 @@
                                                                                             </legend>
                                                                                         </fieldset>
                                                                                         <div class="v-text-field__slot">
-                                                                                            <input style="background-color: #fff !important; color:rgb(44, 44, 44) !important" name="name_agency" id="name_agency"
+                                                                                            <input
+                                                                                                style="background-color: #fff !important; color:rgb(44, 44, 44) !important"
+                                                                                                name="name_agency"
+                                                                                                id="name_agency"
                                                                                                 readonly="readonly"
                                                                                                 type="text">
                                                                                         </div>
@@ -532,7 +489,7 @@
                                                                     <div class="d-sm-flex align-center pa-0 col col-12">
                                                                         <div
                                                                             class="pb-0 pb-sm-3 py-md-2 col-sm-4 col-12">
-                                                                            <p class=" mb-0">
+                                                                            <p class=" mb-0" data-lang="describe:">
                                                                                 Miêu tả:
                                                                             </p>
                                                                         </div>
@@ -549,7 +506,10 @@
                                                                                             </legend>
                                                                                         </fieldset>
                                                                                         <div class="v-text-field__slot">
-                                                                                            <input style="background-color: #fff !important; color:rgb(44, 44, 44) !important" name="des_agency" id="des_agency"
+                                                                                            <input
+                                                                                                style="background-color: #fff !important; color:rgb(44, 44, 44) !important"
+                                                                                                name="des_agency"
+                                                                                                id="des_agency"
                                                                                                 readonly="readonly"
                                                                                                 type="text">
                                                                                         </div>
@@ -567,8 +527,8 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="d-sm-flex align-center pa-0 col col-12">
-                                                                        <div
-                                                                            class="pb-0 pb-sm-3 py-md-2 col-sm-4 col-12">
+                                                                        <div class="pb-0 pb-sm-3 py-md-2 col-sm-4 col-12"
+                                                                            data-lang="coupon:">
                                                                             <p class=" mb-0">
                                                                                 Mã đại lý:
                                                                             </p>
@@ -586,7 +546,10 @@
                                                                                             </legend>
                                                                                         </fieldset>
                                                                                         <div class="v-text-field__slot">
-                                                                                            <input style="background-color: #fff !important; color:rgb(44, 44, 44) !important" name="id_agency" id="id_agency"
+                                                                                            <input
+                                                                                                style="background-color: #fff !important; color:rgb(44, 44, 44) !important"
+                                                                                                name="id_agency"
+                                                                                                id="id_agency"
                                                                                                 readonly="readonly"
                                                                                                 type="text">
                                                                                         </div>
@@ -623,8 +586,11 @@
                                                                                             </legend>
                                                                                         </fieldset>
                                                                                         <div class="v-text-field__slot">
-                                                                                            <input style="background-color: #fff !important; color:rgb(44, 44, 44) !important" name="link_ref" id="link_ref"
-                                                                                            aria-describedby="link_ref"
+                                                                                            <input
+                                                                                                style="background-color: #fff !important; color:rgb(44, 44, 44) !important"
+                                                                                                name="link_ref"
+                                                                                                id="link_ref"
+                                                                                                aria-describedby="link_ref"
                                                                                                 readonly="readonly"
                                                                                                 type="text">
                                                                                         </div>
@@ -646,7 +612,7 @@
                                                                     <div class="d-sm-flex align-center pa-0 col col-12">
                                                                         <div
                                                                             class="pb-0 pb-sm-3 py-md-2 col-sm-6 col-md-4 offset-md-2 col-12">
-                                                                            <p class=" mb-0" >
+                                                                            <p class=" mb-0" data-lang="creation_date:">
                                                                                 Ngày tạo:
                                                                             </p>
                                                                         </div>
@@ -666,23 +632,28 @@
                                                                         <div id="hideBottomInput"
                                                                             class="pt-1 pt-sm-3 py-md-2 col-sm-6 col-12">
                                                                             <p class="mb-0 red--text">
-                                                                                <button id="btn_reg" onclick="agency_register()" class="elevation-0 width59 v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default" style="background-color: rgb(51, 152, 220); border-color: rgb(51, 152, 220);color: #fff; width: 65%;"><span
-                                                                                    class="v-btn__content"><span
-                                                                                        class="white--text" data-lang="registration" >
-                                                                                       
-                                                                                    </span></span></button>
+                                                                                <button id="btn_reg"
+                                                                                    onclick="agency_register()"
+                                                                                    class="elevation-0 width59 v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default"
+                                                                                    style="background-color: rgb(51, 152, 220); border-color: rgb(51, 152, 220);color: #fff; width: 65%;"><span
+                                                                                        class="v-btn__content"><span
+                                                                                            class="white--text"
+                                                                                            data-lang="registration">
+
+                                                                                        </span></span></button>
                                                                             </p>
                                                                         </div>
                                                                     </div>
                                                                     <div class="d-sm-flex align-center pa-0 col col-12">
                                                                         <div
                                                                             class="pb-0 pt-md-2 col-sm-6 col-md-4 offset-md-2 col-12">
-                                                                            <p class=" mb-0">
+                                                                            <p class=" mb-0" data-lang="contact:">
                                                                                 Liên hệ:
                                                                             </p>
                                                                         </div>
                                                                         <div id="hideBottomInput"
-                                                                            class="pt-1 pt-sm-3 pb-sm-0 pt-md-2 col-sm-6 col-12" id="">
+                                                                            class="pt-1 pt-sm-3 pb-sm-0 pt-md-2 col-sm-6 col-12"
+                                                                            id="">
                                                                             <a href="https://m.facebook.com/profile.php?id=100082149867254"
                                                                                 target="_blank"
                                                                                 class="text-decoration-none">
@@ -694,7 +665,8 @@
                                                                             class="pb-0 col-sm-6 col-md-4 offset-md-2 col-12">
                                                                         </div>
                                                                         <div id="hideBottomInput"
-                                                                            class="pt-1 pb-sm-0 col-sm-6 col-12">
+                                                                            class="pt-1 pb-sm-0 col-sm-6 col-12"
+                                                                            data-lang="spanagency">
                                                                             (Để được duyệt đại lý)
                                                                         </div>
                                                                     </div>
@@ -702,19 +674,21 @@
                                                                         class="d-sm-flex align-center pa-0 mt-2 col col-12">
                                                                         <div
                                                                             class="pb-0 pt-md-2 col-sm-6 col-md-4 offset-md-2 col-12">
-                                                                            <p class=" mb-0">
+                                                                            <p class=" mb-0" data-lang="transfer_user:">
                                                                                 Chuyển khoản user
                                                                             </p>
                                                                         </div>
                                                                         <div id="hideBottomInput"
-                                                                            class="pt-1 pt-sm-3 pb-sm-0 pt-md-2 col-sm-6 col-12" >
-                                                                            <button type="button" id="btn_money" disabled onclick="open_modal(0)"
+                                                                            class="pt-1 pt-sm-3 pb-sm-0 pt-md-2 col-sm-6 col-12">
+                                                                            <button type="button" id="btn_money"
+                                                                                disabled onclick="open_modal(0)"
                                                                                 class="elevation-0 v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default"
                                                                                 aria-haspopup="true"
                                                                                 aria-expanded="false"
                                                                                 style="background-color: rgb(51, 152, 220); border-color: rgb(51, 152, 220);"><span
                                                                                     class="v-btn__content"><span
-                                                                                        class="white--text">
+                                                                                        class="white--text"
+                                                                                        data-lang="money">
                                                                                         Chuyển khoản
                                                                                     </span></span></button><span
                                                                                 class="v-tooltip v-tooltip--bottom">
@@ -728,239 +702,261 @@
                                                                         </div>
                                                                         <div id="hideBottomInput"
                                                                             class="pt-1 pb-sm-0 col-sm-6 col-12" id="">
-                                                                            <span id="btn_withdraw"></div></span>
-                                                                        </div>
+                                                                            <span id="btn_withdraw">
+                                                                        </div></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="row mb-4">
-                                                                <div class="pb-0 col col-12">
-                                                                    <div
-                                                                        class="d-flex align-center justify-space-between">
-                                                                        <div>
-                                                                            <h2 class="black--text">Thông tin đại lý
-                                                                            </h2>
-                                                                        </div>
-                                                                        <div class="d-flex justify-end">
+                                                        </div>
+                                                        <div class="row mb-4">
+                                                            <div class="pb-0 col col-12">
+                                                                <div class="d-flex align-center justify-space-between">
+                                                                    <div>
+                                                                        <h2 class="black--text"
+                                                                            data-lang="information_agency">Thông tin đại
+                                                                            lý
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="d-flex justify-end">
+                                                                        <div class="d-sm-flex align-center justify-end">
                                                                             <div
-                                                                                class="d-sm-flex align-center justify-end">
-                                                                                <div
-                                                                                    class="d-flex align-center justify-space-between">
-                                                                                    <div id="inputDate" class="mr-4">
-                                                                                        <p class="mb-1 ml-8">Ngày bắt
-                                                                                            đầu</p>
-                                                                                        <div class="v-menu"
-                                                                                            id="hideBottomInput">
-                                                                                            <!---->
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="v-input v-input--is-label-active v-input--is-dirty v-input--is-readonly v-input--dense theme--light v-text-field v-text-field--is-booted v-text-field--enclosed v-text-field--outlined">
-                                                                                            <div
-                                                                                                class="v-input__prepend-outer">
-                                                                                                <div
-                                                                                                    class="v-input__icon v-input__icon--prepend">
-                                                                                                    <i aria-hidden="true"
-                                                                                                        class="v-icon notranslate mdi mdi-calendar theme--light"></i>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="v-input__control">
-                                                                                                <div
-                                                                                                    class="v-input__slot">
-                                                                                                    <fieldset
-                                                                                                        aria-hidden="true">
-                                                                                                        <legend
-                                                                                                            style="width: 0px;">
-                                                                                                            <span
-                                                                                                                class="notranslate">​</span>
-                                                                                                        </legend>
-                                                                                                    </fieldset>
-                                                                                                    <div
-                                                                                                        class="v-text-field__slot font_03">
-                                                                                                        <input style="background-color: #fff !important; color:rgb(44, 44, 44) !important"
-                                                                                                        name="from_date" id="from_date"
-                                                                                                        aria-describedby="from_date" placeholder="yyyy-MM-dd"
-                                                                                                            type="date">
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div
-                                                                                                    class="v-text-field__details">
-                                                                                                    <div
-                                                                                                        class="v-messages theme--light">
-                                                                                                        <div
-                                                                                                            class="v-messages__wrapper">
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
+                                                                                class="d-flex align-center justify-space-between">
+                                                                                <div id="inputDate" class="mr-4">
+                                                                                    <p class="mb-1 ml-8"
+                                                                                        data-lang="star_day">Ngày bắt
+                                                                                        đầu</p>
+                                                                                    <div class="v-menu"
+                                                                                        id="hideBottomInput">
+                                                                                        <!---->
                                                                                     </div>
-                                                                                    <div id="inputDate" class="mr-sm-4">
-                                                                                        <p class="mb-1 ml-8">Ngày kết
-                                                                                            thúc</p>
-                                                                                        <div class="v-menu"
-                                                                                            id="hideBottomInput">
-                                                                                            <!---->
-                                                                                        </div>
+                                                                                    <div
+                                                                                        class="v-input v-input--is-label-active v-input--is-dirty v-input--is-readonly v-input--dense theme--light v-text-field v-text-field--is-booted v-text-field--enclosed v-text-field--outlined">
                                                                                         <div
-                                                                                            class="v-input v-input--is-label-active v-input--is-dirty v-input--is-readonly v-input--dense theme--light v-text-field v-text-field--is-booted v-text-field--enclosed v-text-field--outlined">
+                                                                                            class="v-input__prepend-outer">
                                                                                             <div
-                                                                                                class="v-input__prepend-outer">
+                                                                                                class="v-input__icon v-input__icon--prepend">
+                                                                                                <i aria-hidden="true"
+                                                                                                    class="v-icon notranslate mdi mdi-calendar theme--light"></i>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="v-input__control">
+                                                                                            <div class="v-input__slot">
+                                                                                                <fieldset
+                                                                                                    aria-hidden="true">
+                                                                                                    <legend
+                                                                                                        style="width: 0px;">
+                                                                                                        <span
+                                                                                                            class="notranslate">​</span>
+                                                                                                    </legend>
+                                                                                                </fieldset>
                                                                                                 <div
-                                                                                                    class="v-input__icon v-input__icon--prepend">
-                                                                                                    <i aria-hidden="true"
-                                                                                                        class="v-icon notranslate mdi mdi-calendar theme--light"></i>
+                                                                                                    class="v-text-field__slot font_03">
+                                                                                                    <input
+                                                                                                        style="background-color: #fff !important; color:rgb(44, 44, 44) !important"
+                                                                                                        name="from_date"
+                                                                                                        id="from_date"
+                                                                                                        aria-describedby="from_date"
+                                                                                                        placeholder="yyyy-MM-dd"
+                                                                                                        type="date">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div
-                                                                                                class="v-input__control">
+                                                                                                class="v-text-field__details">
                                                                                                 <div
-                                                                                                    class="v-input__slot">
-                                                                                                    <fieldset
-                                                                                                        aria-hidden="true">
-                                                                                                        <legend
-                                                                                                            style="width: 0px;">
-                                                                                                            <span
-                                                                                                                class="notranslate">​</span>
-                                                                                                        </legend>
-                                                                                                    </fieldset>
+                                                                                                    class="v-messages theme--light">
                                                                                                     <div
-                                                                                                        class="v-text-field__slot font_03">
-                                                                                                        <input style="background-color: #fff !important; color:rgb(44, 44, 44) !important"
-                                                                                                        name="to_date" id="to_date"
-                                                                                                        aria-describedby="to_date" placeholder="yyyy-MM-dd"
-                                                                                                            type="date">
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div
-                                                                                                    class="v-text-field__details">
-                                                                                                    <div
-                                                                                                        class="v-messages theme--light">
-                                                                                                        <div
-                                                                                                            class="v-messages__wrapper">
-                                                                                                        </div>
+                                                                                                        class="v-messages__wrapper">
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div
-                                                                                    class="d-flex justify-end justify-sm-start mb-2 mb-sm-0">
-                                                                                    <button type="button" onclick="search_acc_by_created()"  data-target="#detailId"
-                                                                                        class="elevation-0 v-btn v-btn--outlined theme--light v-size--default"
-                                                                                        id="buttonHover"
-                                                                                        style="color: rgb(51, 152, 220); caret-color: rgb(51, 152, 220);"><span
-                                                                                            class="v-btn__content">
-                                                                                            Tìm kiếm</span></button>
+                                                                                <div id="inputDate" class="mr-sm-4">
+                                                                                    <p class="mb-1 ml-8"
+                                                                                        data-lang="end_day">Ngày kết
+                                                                                        thúc</p>
+                                                                                    <div class="v-menu"
+                                                                                        id="hideBottomInput">
+                                                                                        <!---->
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="v-input v-input--is-label-active v-input--is-dirty v-input--is-readonly v-input--dense theme--light v-text-field v-text-field--is-booted v-text-field--enclosed v-text-field--outlined">
+                                                                                        <div
+                                                                                            class="v-input__prepend-outer">
+                                                                                            <div
+                                                                                                class="v-input__icon v-input__icon--prepend">
+                                                                                                <i aria-hidden="true"
+                                                                                                    class="v-icon notranslate mdi mdi-calendar theme--light"></i>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="v-input__control">
+                                                                                            <div class="v-input__slot">
+                                                                                                <fieldset
+                                                                                                    aria-hidden="true">
+                                                                                                    <legend
+                                                                                                        style="width: 0px;">
+                                                                                                        <span
+                                                                                                            class="notranslate">​</span>
+                                                                                                    </legend>
+                                                                                                </fieldset>
+                                                                                                <div
+                                                                                                    class="v-text-field__slot font_03">
+                                                                                                    <input
+                                                                                                        style="background-color: #fff !important; color:rgb(44, 44, 44) !important"
+                                                                                                        name="to_date"
+                                                                                                        id="to_date"
+                                                                                                        aria-describedby="to_date"
+                                                                                                        placeholder="yyyy-MM-dd"
+                                                                                                        type="date">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div
+                                                                                                class="v-text-field__details">
+                                                                                                <div
+                                                                                                    class="v-messages theme--light">
+                                                                                                    <div
+                                                                                                        class="v-messages__wrapper">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-6 col-lg-4 col-12">
-                                                                    <div class="rounded-lg  pa-sm-8 pa-4 v-card v-sheet theme--light"
-                                                                        style="box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;">
-                                                                        <div class="justify-center align-center box-agency">
-                                                                            <div  class="text-h5 mb-0 font-weight-bold green--text text-center"></div>
-                                                                            <div>
-                                                                                 <span>Tổng tiền nạp</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-6 col-lg-4 col-12">
-                                                                    <div class="rounded-lg mx-sm-0 mt-4 mt-sm-0 pa-sm-8 pa-4 v-card v-sheet theme--light"
-                                                                        style="box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;">
-                                                                        <div class="justify-center box-agency">
-                                                                            <div  class="text-h5 mb-0 font-weight-bold blue--text text-center"></div>
-                                                                            <div>
-                                                                                 <span>Số lần nạp</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-6 col-lg-4 col-12">
-                                                                    <div class="rounded-lg  mt-4 mt-sm-0 pa-sm-8 pa-4 v-card v-sheet theme--light"
-                                                                        style="box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;">
-                                                                        <div class="justify-center box-agency">
-                                                                            <div  class="text-h5 mb-0 font-weight-bold yellow--text text-center"></div>
-                                                                            <div>
-                                                                               <span>Đăng kí mới</span>
+                                                                            <div
+                                                                                class="d-flex justify-end justify-sm-start mb-2 mb-sm-0">
+                                                                                <button type="button"
+                                                                                    onclick="search_acc_by_created()"
+                                                                                    data-target="#detailId"
+                                                                                    class="elevation-0 v-btn v-btn--outlined theme--light v-size--default"
+                                                                                    id="buttonHover"
+                                                                                    style="color: rgb(51, 152, 220); caret-color: rgb(51, 152, 220);"><span
+                                                                                        class="v-btn__content"
+                                                                                        data-lang="search">
+                                                                                        Tìm kiếm</span></button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="mt-6">
+                                                            <div class="col-sm-6 col-lg-4 col-12">
+                                                                <div class="rounded-lg  pa-sm-8 pa-4 v-card v-sheet theme--light"
+                                                                    style="box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;">
+                                                                    <div class="justify-center align-center box-agency">
+                                                                        <div
+                                                                            class="text-h5 mb-0 font-weight-bold green--text text-center">
+                                                                        </div>
+                                                                        <div>
+                                                                            <span data-lang="total_top_up">Tổng tiền
+                                                                                nạp</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-lg-4 col-12">
+                                                                <div class="rounded-lg mx-sm-0 mt-4 mt-sm-0 pa-sm-8 pa-4 v-card v-sheet theme--light"
+                                                                    style="box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;">
+                                                                    <div class="justify-center box-agency">
+                                                                        <div
+                                                                            class="text-h5 mb-0 font-weight-bold blue--text text-center">
+                                                                        </div>
+                                                                        <div>
+                                                                            <span data-lang="number_of_top_up">Số lần
+                                                                                nạp</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-lg-4 col-12">
+                                                                <div class="rounded-lg  mt-4 mt-sm-0 pa-sm-8 pa-4 v-card v-sheet theme--light"
+                                                                    style="box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;">
+                                                                    <div class="justify-center box-agency">
+                                                                        <div
+                                                                            class="text-h5 mb-0 font-weight-bold yellow--text text-center">
+                                                                        </div>
+                                                                        <div>
+                                                                            <span data-lang="new_registration">Đăng kí
+                                                                                mới</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-6">
+                                                            <div class="d-flex align-center justify-space-between mt-6">
+                                                                <h2 class="blue--text" data-lang="list_of_user">Danh
+                                                                    sách thành viên</h2>
                                                                 <div
-                                                                    class="d-flex align-center justify-space-between mt-6">
-                                                                    <h2 class="blue--text">Danh sách thành viên</h2>
-                                                                    <div
-                                                                        class="mt-6 mt-sm-0 d-flex justify-end align-center">
-                                                                        <div id="search" class="d-flex">
-                                                                            <div id="hideBottomInput">
-                                                                                <div
-                                                                                    class="v-input mr-2 v-input--dense theme--light v-text-field v-text-field--is-booted v-text-field--enclosed v-text-field--outlined v-text-field--placeholder v-text-field--rounded">
-                                                                                    <div class="v-input__control">
-                                                                                        <div class="v-input__slot">
-                                                                                            <fieldset
-                                                                                                aria-hidden="true">
-                                                                                                <legend
-                                                                                                    style="width: 0px;">
-                                                                                                    <span
-                                                                                                        class="notranslate">​</span>
-                                                                                                </legend>
-                                                                                            </fieldset>
-                                                                                            <div
-                                                                                                class="v-text-field__slot">
-                                                                                                <input id="username" style="background-color: #fff !important; color:rgb(44, 44, 44) !important"
-                                                                                                    placeholder="Nhập từ khóa"
-                                                                                                    type="text">
-                                                                                            </div>
+                                                                    class="mt-6 mt-sm-0 d-flex justify-end align-center">
+                                                                    <div id="search" class="d-flex">
+                                                                        <div id="hideBottomInput">
+                                                                            <div
+                                                                                class="v-input mr-2 v-input--dense theme--light v-text-field v-text-field--is-booted v-text-field--enclosed v-text-field--outlined v-text-field--placeholder v-text-field--rounded">
+                                                                                <div class="v-input__control">
+                                                                                    <div class="v-input__slot">
+                                                                                        <fieldset aria-hidden="true">
+                                                                                            <legend style="width: 0px;">
+                                                                                                <span
+                                                                                                    class="notranslate">​</span>
+                                                                                            </legend>
+                                                                                        </fieldset>
+                                                                                        <div class="v-text-field__slot">
+                                                                                            <input id="username" data-lang="enter_keywords" data-langtg="placeholder"
+                                                                                                style="background-color: #fff !important; color:rgb(44, 44, 44) !important"
+                                                                                                placeholder="Nhập từ khóa"
+                                                                                                type="text">
                                                                                         </div>
+                                                                                    </div>
+                                                                                    <div class="v-text-field__details">
                                                                                         <div
-                                                                                            class="v-text-field__details">
+                                                                                            class="v-messages theme--light">
                                                                                             <div
-                                                                                                class="v-messages theme--light">
-                                                                                                <div
-                                                                                                    class="v-messages__wrapper">
-                                                                                                </div>
+                                                                                                class="v-messages__wrapper">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div> <button type="button"   onclick="search_acc()" 
-                                                                                class="elevation-0 ml-4 ml-sm-0 v-btn v-btn--outlined theme--light v-size--default"
-                                                                                id="buttonHover"
-                                                                                style="color: rgb(51, 152, 220); caret-color: rgb(51, 152, 220);"><span
-                                                                                    class="v-btn__content" 
-                                                                                   >Tìm
-                                                                                    kiếm</span></button>
-                                                                        </div>
+                                                                            </div>
+                                                                        </div> <button type="button"
+                                                                            onclick="search_acc()"
+                                                                            class="elevation-0 ml-4 ml-sm-0 v-btn v-btn--outlined theme--light v-size--default"
+                                                                            id="buttonHover"
+                                                                            style="color: rgb(51, 152, 220); caret-color: rgb(51, 152, 220);"><span
+                                                                                class="v-btn__content"
+                                                                                data-lang="search">Tìm
+                                                                                kiếm</span></button>
                                                                     </div>
                                                                 </div>
-                                                                <div
-                                                                    class="v-data-table scrollTable c-pointer mt-3 v-data-table--fixed-header theme--light">
-                                                                    <div class="col-12   v-data-table__wrapper">
-                                                                        <table class="width_table_620 table table_section">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);">STT</th>
-                                                                                    <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);width:30%" data-lang="Tài_Khoản">User</th>
-                                                                                    <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);" data-lang="total_top_up">Tổng tiền nạp</th>
-                                                                                    <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);" data-lang="creation_date">Ngày tạo</th>
-                                                                                    <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);" data-lang="action">Thao tác</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody class="text_black" id="table_dt">
-                                        
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                                
                                                             </div>
+                                                            <div
+                                                                class="v-data-table scrollTable c-pointer mt-3 v-data-table--fixed-header theme--light">
+                                                                <div class="col-12   v-data-table__wrapper">
+                                                                    <table class="width_table_620 table table_section">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th
+                                                                                    style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);">
+                                                                                    STT</th>
+                                                                                <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);width:30%"
+                                                                                    data-lang="Tài_Khoản">User</th>
+                                                                                <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);"
+                                                                                    data-lang="total_top_up">Tổng tiền
+                                                                                    nạp</th>
+                                                                                <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);"
+                                                                                    data-lang="creation_date">Ngày tạo
+                                                                                </th>
+                                                                                <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);"
+                                                                                    data-lang="action">Thao tác</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody class="text_black" id="table_dt">
+
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -968,23 +964,77 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                            <footer class="v-footer v-sheet theme--light v-footer--absolute" id="bgLinear"
-                                data-booted="true" style="left: 0px; right: 0px; bottom: 0px;">
-                                <div class="text-center white--text col col-12">
-                                    2022 —
-                                    <strong>Powered by
-                                        <a href="http://Ztech.Asia" target="_blank" rel="noopener noreferrer"
-                                            class="text-decoration-none white--text">Ztech.Asia</a></strong>
-                                </div>
-                            </footer>
 
                         </div>
-                    </main>
+                        <footer class="v-footer v-sheet theme--light v-footer--absolute" id="bgLinear"
+                            data-booted="true" style="left: 0px; right: 0px; bottom: 0px;">
+                            <div class="text-center white--text col col-12">
+                                2022 —
+                                <strong>Powered by
+                                    <a href="#" target="_blank" rel="noopener noreferrer"
+                                        class="text-decoration-none white--text">Arthur Company</a></strong>
+                            </div>
+                        </footer>
+
                 </div>
+                <div class="modal fade" id="money_ticket" tabindex="-1" role="dialog" aria-labelledby="money_ticket"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" data-lang="transfer_user:">Chuyển Tiền Cho User</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body d-flex">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="email_user" class="form-label">Email :</label>
+                                        <!-- <input  class="form_control" type="text" name="email_user" id="email_user" placeholder="nhập email ngươi dùng" required> -->
+                                        <select name="option_user" class="form_control" id="option_user">
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="money" class="form-label" data-lang="transfer_money:">Tiền Cần
+                                            CHuyển
+                                            :</label>
+                                        <input class="form_control" type="number" name="money" id="money" value="0">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button onclick="save_ticket()" type="button" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="toast">
+                </div>
+                <dialog id="bank_money_ticket">
+                    <div class="modal-dialog" role="document">
+                        <div style="border: 0px;" class="modal-content">
+
+                            <div class="modal-body text_center">
+                                <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
+                                <h4>Thành Công !</h4>
+                                <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
+                                <button type="button" class="btn btn-primary" onclick="location.reload()"
+                                    data-dismiss="modal">OK</button>
+                            </div>
+                            <div class="text_center">
+
+                            </div>
+                        </div>
+                    </div>
+                </dialog>
+                </main>
             </div>
         </div>
+    </div>
 
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -993,6 +1043,8 @@
     <script src="../js/permission.js"></script>
     <script src="../js/agency_public.js"></script>
     <script src="../js/p_support.js"></script>
+    <script src="../js/menu_mobile_control.js"></script>
+
     <script defer src="../js/translator.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

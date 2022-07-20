@@ -26,7 +26,11 @@ async function init_logo() {
     if (data) {
         data.forEach(item => {
             if (document.getElementById('img_logo')) {
-                document.getElementById('img_logo').innerHTML = `<a class="navbar-brand" href="#"><img height="68.99px"
+                document.getElementById('img_logo').innerHTML = `<a href="#"><img width="100%" height="100%"
+                src="${item.logo_img}" alt=""></a>`;
+            }
+            if (document.getElementById('menu_img_logo')) {
+                document.getElementById('menu_img_logo').innerHTML = `<a href="#"><img width="100%" height="100%"
                 src="${item.logo_img}" alt=""></a>`;
             }
             if (document.getElementById('logo_login_center')) {

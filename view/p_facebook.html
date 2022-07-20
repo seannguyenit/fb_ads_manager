@@ -180,25 +180,7 @@
             </div>
     </section>
     </div> -->
-    <div id="toast">
-    </div>
-    <dialog id="bank_money_ticket">
-        <div class="modal-dialog" role="document">
-            <div style="border: 0px;" class="modal-content">
-
-                <div class="modal-body text_center">
-                    <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
-                    <h4>Thành Công !</h4>
-                    <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
-                    <button type="button" class="btn btn-primary" onclick="location.reload()"
-                        data-dismiss="modal">OK</button>
-                </div>
-                <div class="text_center">
-
-                </div>
-            </div>
-        </div>
-    </dialog>
+    
     <!-- <div class="footer">
         <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color_clinet">
             <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
@@ -213,12 +195,12 @@
                     <main class="v-main" data-booted="true" style="padding: 0px;">
                         <div class="v-main__wrap">
                             <div id="cover_menu" class="v-overlay v-overlay--absolute v-overlay--active theme--dark"
-                            style="display: none;z-index: 7;">
-                            <div class="v-overlay__scrim"
-                                style="opacity: 0.46; background-color: rgb(33, 33, 33); border-color: rgb(33, 33, 33);">
+                                style="display: none;z-index: 7;">
+                                <div class="v-overlay__scrim"
+                                    style="opacity: 0.46; background-color: rgb(33, 33, 33); border-color: rgb(33, 33, 33);">
+                                </div>
+                                <div class="v-overlay__content"></div>
                             </div>
-                            <div class="v-overlay__content"></div>
-                        </div>
                             <div class="row no-gutters">
                                 <div class="container px-4 px-lg-0" style="max-width: 1400px;">
                                     <div class="row no-gutters">
@@ -228,7 +210,8 @@
                                                 py-2
                                                 px-lg-0 col col-12">
                                             <div class="d-flex align-center">
-                                                <div class="d-flex justify-end d-lg-none mr-2"><button type="button" id="menu_control"
+                                                <div class="d-flex justify-end d-lg-none mr-2"><button type="button"
+                                                        id="menu_control"
                                                         class="v-icon notranslate v-icon--link mdi mdi-view-headline theme--light"></button>
                                                 </div> <a href="/" class="nuxt-link-active">
                                                     <div class="v-image v-responsive theme--light" style="width: 60px;
@@ -237,8 +220,8 @@
                                                             style="padding-bottom: 105.758%;"></div>
                                                         <div class="v-image__image v-image__image--cover"
                                                             style=" background-position: center center;">
-                                                            <span><img src="../img/1657506390119.jpg" width="100%"
-                                                                    height="100%" alt="" srcset=""></span>
+                                                            <span id="img_logo"><img src="../img/1657506390119.jpg"
+                                                                    width="100%" height="100%" alt="" srcset=""></span>
                                                         </div>
                                                         <div class="v-responsive__content" style="width: 330px;"></div>
                                                     </div>
@@ -255,7 +238,8 @@
                                                             </fieldset>
                                                             <div class="v-text-field__slot"><input
                                                                     style="background-color: #fafafa !important; color:rgb(44, 44, 44) !important"
-                                                                    id="input-287" placeholder="Nhập từ khóa"
+                                                                    id="input-287" data-lang="enter_keywords"
+                                                                    data-langtg="placeholder" placeholder="Nhập từ khóa"
                                                                     type="text"></div>
                                                         </div>
                                                         <div class="v-text-field__details">
@@ -279,8 +263,10 @@
                                                             src="../img/avatar_user.png" alt="">
                                                     </div>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="./user_info"> Tài Khoảng</a>
-                                                        <a class="dropdown-item" onclick="acc_logout()">Đăng xuất</a>
+                                                        <a class="dropdown-item" href="./user_info"
+                                                            data-lang="Tài_Khoản"> Tài Khoảng</a>
+                                                        <a class="dropdown-item" onclick="acc_logout()"
+                                                            data-lang="Logout">Đăng xuất</a>
                                                     </div>
                                                 </div>
                                                 <div class="v-menu" style="position: relative; z-index: 99;">
@@ -318,14 +304,16 @@
                                     <div tabindex="-1" class="v-list-item theme--light">
                                         <div class="d-flex align-center">
                                             <div class="v-image v-responsive theme--light" id="imageLogo"
-                                                style="height: 35px; width: 35px;">
+                                            style="max-height: 40px; width: 60px;">
                                                 <div class="v-responsive__sizer" style="padding-bottom: 105.758%;">
                                                 </div>
                                                 <div class="v-image__image v-image__image--cover"
-                                                    style="background-image: url(&quot;https://zsocial.vn/images/logo4.png&quot;); background-position: center center;">
+                                                    style="background-position: center center;">
+                                                    <span id="menu_img_logo"><img src="../img/1657506390119.jpg" width="100%"
+                                                            height="100%" alt="" srcset=""></span>
                                                 </div>
                                                 <div class="v-responsive__content" style="width: 330px;"></div>
-                                            </div> <span class="black--text ml-4">PROXYV6.NET</span>
+                                            </div> <span class="black--text ml-4">M2v.me</span>
                                         </div>
                                     </div>
                                     <hr role="separator" aria-orientation="horizontal" class="v-divider theme--light">
@@ -333,7 +321,8 @@
                                         <div id="menu_user_mobie">
                                         </div>
                                         <div style="padding-top:5px;margin-left: 20px;" class=" dropdown">
-                                            <button class="btn btn_lang btn-secondary dropdown-toggle" type="button"
+                                            <button style="background-color: #fff !important;"
+                                                class="btn btn_lang btn-secondary dropdown-toggle" type="button"
                                                 id="dropdownMenuButton_lang" data-toggle="dropdown" data-lang=""
                                                 aria-haspopup="true" aria-expanded="false">
                                                 <span id="img_lang_mobie" style="margin-right: 3px;"> </span><span
@@ -352,7 +341,8 @@
                                                 class="v-btn v-btn--text theme--light v-size--default"><span
                                                     class="v-btn__content"><i aria-hidden="true"
                                                         class="v-icon notranslate blue--text fas fa-power-off theme--light"
-                                                        style="font-size: 18px;"></i> <span class="ml-5 blue--text">Đăng
+                                                        style="font-size: 18px;"></i> <span class="ml-5 blue--text"
+                                                        data-lang="Logout">Đăng
                                                         Xuất</span></span></button></div>
                                     </div>
                                 </div>
@@ -361,7 +351,7 @@
                             <div id="bgLinear" class="row d-none d-lg-block no-gutters">
                                 <div class="container pa-0" style="max-width: 1400px;">
                                     <div class="row no-gutters">
-                                        <div id="main_menu__" class="d-md-flex align-center py-3 col col-12"> 
+                                        <div id="main_menu__" class="d-md-flex align-center py-3 col col-12">
                                             <!---->
                                         </div>
                                     </div>
@@ -370,19 +360,19 @@
                             <div class="row no-gutters">
                                 <div class="container px-0 px-sm-0 px-md-16 px-lg-0" style="max-width: 1400px;">
                                     <div id="container" class="mb-16">
-                                        <div class="row">
                                             <div class="col-sm-7 col-12">
                                                 <div
                                                     class="rounded-lg boxShadow pa-4 heightauto v-card v-sheet theme--light">
                                                     <div class="row mb-6">
                                                         <div class="col col-12">
-                                                            <div class="d-flex align-center"><button  style="background-color: #2196f3;" type="button"
+                                                            <div class="d-flex align-center"><button
+                                                                    style="background-color: #2196f3;" type="button"
                                                                     class="elevation-0 v-btn v-btn--is-elevated v-btn--fab v-btn--has-bg v-btn--round theme--light v-size--x-small primary"><span
                                                                         class="v-btn__content"><i aria-hidden="true"
                                                                             class="v-icon notranslate fas fa-info theme--light"
                                                                             style="font-size: 14px;"></i></span></button>
                                                                 <h4 class="ml-2" style="
-                                                                margin-top: 10px;">
+                                                                margin-top: 10px;" data-lang="PackageInformation">
                                                                     Thông tin gói
                                                                 </h4>
                                                             </div>
@@ -390,13 +380,14 @@
                                                         <div class="pa-0 col col-12">
                                                             <div class="d-flex align-center col col-12">
                                                                 <div class="col-sm-4 col-5">
-                                                                    <h6 class="mb-0 ">Tên gói:</h6>
+                                                                    <h6 class="mb-0 " data-lang="name_pricing">Tên gói:
+                                                                    </h6>
                                                                 </div>
                                                                 <div class="col-sm-8 col-7" id="name_pricing"></div>
                                                             </div>
                                                             <div class="d-flex align-center col col-12">
                                                                 <div class="col-sm-4 col-5">
-                                                                    <h6 class="mb-0 ">Quyền lợi:
+                                                                    <h6 class="mb-0 " data-lang="rights">Quyền lợi:
                                                                     </h6>
                                                                 </div>
                                                                 <div class="col-sm-8 col-7">
@@ -407,7 +398,7 @@
                                                                                     style="font-size: 14px; color: rgb(60, 138, 205); caret-color: rgb(60, 138, 205);"></i>
                                                                             </div>
                                                                             <div class="ml-1 black--text" id="rights">
-                                                                               
+
                                                                             </div>
                                                                         </div>
                                                                         <div class="mx-1"><span
@@ -417,8 +408,9 @@
                                                                                     class="v-icon notranslate mb-1 fab fa-facebook theme--light"
                                                                                     style="font-size: 15px; color: rgb(60, 138, 205); caret-color: rgb(60, 138, 205);"></i>
                                                                             </div>
-                                                                            <div class="ml-1 black--text" id="request_fb">
-                                                                               
+                                                                            <div class="ml-1 black--text"
+                                                                                id="request_fb">
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -426,28 +418,33 @@
                                                             </div>
                                                             <div class="d-flex align-center col col-12">
                                                                 <div class="col-sm-4 col-5">
-                                                                    <h6 class="mb-0 ">Hết hạn trong:</h6>
+                                                                    <h6 class="mb-0 " data-lang="date_limit">Hết hạn
+                                                                        trong:</h6>
                                                                 </div>
-                                                                <div class="col-sm-8 col-7"><span class="red--text"  id="limit_đate">
-                                                                       
+                                                                <div class="col-sm-8 col-7"><span class="red--text"
+                                                                        id="limit_đate">
+
                                                                     </span></div>
                                                             </div>
                                                             <div class="d-flex align-center col col-12">
                                                                 <div class="col-sm-4 col-5">
-                                                                    <h6 class="mb-0 ">Ngày mua:</h6>
+                                                                    <h6 class="mb-0 " data-lang="date_buy">Ngày mua:
+                                                                    </h6>
                                                                 </div>
                                                                 <div class="col-sm-8 col-7" id="date_buy">
                                                                 </div>
                                                             </div>
                                                             <div class="d-flex align-center col col-12">
                                                                 <div class="col-sm-4 col-5">
-                                                                    <h6 class="mb-0 ">Gia hạn gói:</h6>
+                                                                    <h6 class="mb-0 " data-lang="renewalpackage">Gia hạn
+                                                                        gói:</h6>
                                                                 </div>
-                                                                <div class="col-sm-8 col-7"><button type="button" onclick="model_pricing()"
+                                                                <div class="col-sm-8 col-7"><button type="button"
+                                                                        onclick="model_pricing()"
                                                                         class="elevation-0 v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default"
                                                                         style="background-color: rgb(51, 152, 220); border-color: rgb(51, 152, 220);"><span
                                                                             class="v-btn__content"><span
-                                                                                class="white--text">
+                                                                                class="white--text" data-lang="renew">
                                                                                 Gia hạn
                                                                             </span></span></button></div>
                                                             </div>
@@ -460,7 +457,8 @@
                                                     style="height: 100%;">
                                                     <div class="row">
                                                         <div class="col col-12">
-                                                            <div class="d-flex align-center"><button style="background-color: #2196f3;" type="button"
+                                                            <div class="d-flex align-center"><button
+                                                                    style="background-color: #2196f3;" type="button"
                                                                     class="elevation-0 v-btn v-btn--is-elevated v-btn--fab v-btn--has-bg v-btn--round theme--light v-size--x-small primary"><span
                                                                         class="v-btn__content"><i aria-hidden="true"
                                                                             class="v-icon notranslate fab fa-facebook-f theme--light"
@@ -483,9 +481,11 @@
                                                                                             class="notranslate">​</span>
                                                                                     </legend>
                                                                                 </fieldset>
-                                                                                <div class="v-text-field__slot"><input  style="background-color: #fff !important; color:rgb(44, 44, 44) !important"
+                                                                                <div class="v-text-field__slot"><input
+                                                                                        style="background-color: #fff !important; color:rgb(44, 44, 44) !important"
                                                                                         placeholder="Nhập facebook token của bạn"
-                                                                                        type="text" id="token_fb" name="token_fb"></div>
+                                                                                        type="text" id="token_fb"
+                                                                                        name="token_fb"></div>
                                                                             </div>
                                                                             <div class="v-text-field__details">
                                                                                 <div class="v-messages theme--light">
@@ -502,19 +502,22 @@
                                                                                     aria-hidden="true"
                                                                                     class="v-icon notranslate fas fa-plus-circle theme--light"
                                                                                     style="font-size: 14px; color: rgb(255, 255, 255); caret-color: rgb(255, 255, 255);"></i>
-                                                                                <span class="white--text ml-1">Thêm
+                                                                                <span class="white--text ml-1"
+                                                                                    data-lang="add_token">Thêm
                                                                                     token</span>
                                                                             </div>
                                                                         </span></button>
                                                                 </div>
                                                                 <div class="mt-5">
-                                                                    <h5 class="text-center">Tài khoản facebook của bạn
+                                                                    <h5 class="text-center"
+                                                                        data-lang="your_facebook_account">Tài khoản
+                                                                        facebook của bạn
                                                                     </h5>
                                                                 </div>
                                                                 <div class="mt-4">
-                                                                    <div
-                                                                        class="d-flex align-center justify-space-between" id="list_data_token">
-                                                                        
+                                                                    <div class="d-flex align-center justify-space-between"
+                                                                        id="list_data_token">
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -522,7 +525,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -532,10 +534,29 @@
                                     2022 —
                                     <strong>Powered by
                                         <a href="http://Ztech.Asia" target="_blank" rel="noopener noreferrer"
-                                            class="text-decoration-none white--text">Ztech.Asia</a></strong>
+                                            class="text-decoration-none white--text">Arthur Company</a></strong>
                                 </div>
                             </footer>
                         </div>
+                        <div id="toast">
+                        </div>
+                        <dialog id="bank_money_ticket">
+                            <div class="modal-dialog" role="document">
+                                <div style="border: 0px;" class="modal-content">
+                    
+                                    <div class="modal-body text_center">
+                                        <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
+                                        <h4>Thành Công !</h4>
+                                        <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
+                                        <button type="button" class="btn btn-primary" onclick="location.reload()"
+                                            data-dismiss="modal">OK</button>
+                                    </div>
+                                    <div class="text_center">
+                    
+                                    </div>
+                                </div>
+                            </div>
+                        </dialog>
                     </main>
                 </div>
             </div>
@@ -547,6 +568,7 @@
     <script src="../js/authen_fuction.js"></script>
     <script src="../js/helper_manager.js"></script>
     <script src="../js/permission.js"></script>
+    <script src="../js/menu_mobile_control.js"></script>
     <script src="../js/p_facebook.js"></script>
     <script defer src="../js/translator.js"></script>
 

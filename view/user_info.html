@@ -202,25 +202,7 @@
             
         </section>
     </div> -->
-    <div id="toast">
-    </div>
-    <dialog id="bank_money_ticket">
-        <div class="modal-dialog" role="document">
-            <div style="border: 0px;" class="modal-content">
-
-                <div class="modal-body text_center">
-                    <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
-                    <h4>Thành Công !</h4>
-                    <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
-                    <button type="button" class="btn btn-primary" onclick="location.reload()"
-                        data-dismiss="modal">OK</button>
-                </div>
-                <div class="text_center">
-
-                </div>
-            </div>
-        </div>
-    </dialog>
+   
     <!-- <div class="footer">
         <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color_clinet">
             <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
@@ -260,7 +242,7 @@
                                                             style="padding-bottom: 105.758%;"></div>
                                                         <div class="v-image__image v-image__image--cover"
                                                             style=" background-position: center center;">
-                                                            <span><img src="../img/1657506390119.jpg" width="100%"
+                                                            <span id="img_logo"><img src="../img/1657506390119.jpg" width="100%"
                                                                     height="100%" alt="" srcset=""></span>
                                                         </div>
                                                         <div class="v-responsive__content" style="width: 330px;"></div>
@@ -278,7 +260,7 @@
                                                             </fieldset>
                                                             <div class="v-text-field__slot"><input
                                                                     style="background-color: #fafafa !important; color:rgb(44, 44, 44) !important"
-                                                                    id="input-287" placeholder="Nhập từ khóa"
+                                                                    id="input-287"  data-lang="enter_keywords" data-langtg="placeholder" placeholder="Nhập từ khóa"
                                                                     type="text"></div>
                                                         </div>
                                                         <div class="v-text-field__details">
@@ -302,8 +284,8 @@
                                                             src="../img/avatar_user.png" alt="">
                                                     </div>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="./user_info"> Tài Khoảng</a>
-                                                        <a class="dropdown-item" onclick="acc_logout()">Đăng xuất</a>
+                                                        <a class="dropdown-item" href="./user_info" data-lang="Tài_Khoản"> Tài Khoảng</a>
+                                                        <a class="dropdown-item" onclick="acc_logout()" data-lang="Logout">Đăng xuất</a>
                                                     </div>
                                                 </div>
                                                 <div class="v-menu" style="position: relative; z-index: 99;">
@@ -341,14 +323,16 @@
                                     <div tabindex="-1" class="v-list-item theme--light">
                                         <div class="d-flex align-center">
                                             <div class="v-image v-responsive theme--light" id="imageLogo"
-                                                style="height: 35px; width: 35px;">
+                                            style="max-height: 40px; width: 60px;">
                                                 <div class="v-responsive__sizer" style="padding-bottom: 105.758%;">
                                                 </div>
                                                 <div class="v-image__image v-image__image--cover"
-                                                    style="background-image: url(&quot;https://zsocial.vn/images/logo4.png&quot;); background-position: center center;">
+                                                    style="background-position: center center;">
+                                                    <span id="menu_img_logo"><img src="../img/1657506390119.jpg" width="100%"
+                                                        height="100%" alt="" srcset=""></span>
                                                 </div>
                                                 <div class="v-responsive__content" style="width: 330px;"></div>
-                                            </div> <span class="black--text ml-4">PROXYV6.NET</span>
+                                            </div> <span class="black--text ml-4">M2v.me</span>
                                         </div>
                                     </div>
                                     <hr role="separator" aria-orientation="horizontal" class="v-divider theme--light">
@@ -356,7 +340,7 @@
                                         <div id="menu_user_mobie">
                                         </div>
                                         <div style="padding-top:5px;margin-left: 20px;" class=" dropdown">
-                                            <button class="btn btn_lang btn-secondary dropdown-toggle" type="button"
+                                            <button style="background-color: #fff !important;" class="btn btn_lang btn-secondary dropdown-toggle" type="button"
                                                 id="dropdownMenuButton_lang" data-toggle="dropdown" data-lang=""
                                                 aria-haspopup="true" aria-expanded="false">
                                                 <span id="img_lang_mobie" style="margin-right: 3px;"> </span><span
@@ -375,7 +359,7 @@
                                                 class="v-btn v-btn--text theme--light v-size--default"><span
                                                     class="v-btn__content"><i aria-hidden="true"
                                                         class="v-icon notranslate blue--text fas fa-power-off theme--light"
-                                                        style="font-size: 18px;"></i> <span class="ml-5 blue--text">Đăng
+                                                        style="font-size: 18px;"></i> <span class="ml-5 blue--text" data-lang="Logout">Đăng
                                                         Xuất</span></span></button></div>
                                     </div>
                                 </div>
@@ -402,7 +386,7 @@
                                                             <div class="v-toolbar__content" style="height: 56px;color: #2196f3;display: flex;padding-left: 12px!important;"><i
                                                                     aria-hidden="true"
                                                                     class="v-icon notranslate blue--text fas fa-user theme--light"></i>
-                                                                <div style="font-size: 1.25rem;padding-left: 12px!important;padding-top: 14px;" class="v-toolbar__title pl-3">
+                                                                <div style="font-size: 1.25rem;padding-left: 12px!important;padding-top: 14px;" class="v-toolbar__title pl-3" data-lang="information_user">
                                                                     Thông tin tài khoản
                                                                 </div>
                                                             </div>
@@ -418,7 +402,7 @@
                                                         </div>
                                                         <div class="d-flex align-center col col-12">
                                                             <div class="col-sm-4 col-5">
-                                                                <h6 class="mb-0 ">Số dư:
+                                                                <h6 class="mb-0 " data-lang="balance">Số dư:
                                                                 </h6>
                                                             </div>
                                                             <div class="col-sm-8 col-7" id="money_cr">
@@ -426,20 +410,20 @@
                                                         </div>
                                                         <div class="d-flex align-center col col-12">
                                                             <div class="col-sm-4 col-5">
-                                                                <h6 class="mb-0 ">Ngày tạo:</h6>
+                                                                <h6 class="mb-0 "    data-lang="creation_date:">Ngày tạo:</h6>
                                                             </div>
                                                             <div class="col-sm-8 col-7" id="create_at_infor">
                                                             </div>
                                                         </div>
                                                         <div class="d-flex align-center col col-12">
                                                             <div class="col-sm-4 col-5">
-                                                                <h6 class="mb-0">Đăng xuất tất cả</h6>
+                                                                <h6 class="mb-0" data-lang="logoutall">Đăng xuất tất cả</h6>
                                                             </div>
                                                             <div class="col-sm-8 col-7"><button type="button" onclick="acc_logout()"
                                                                     class="elevation-0 v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default"
                                                                     style="background-color: rgb(51, 152, 220); border-color: rgb(51, 152, 220);"><span
                                                                         class="v-btn__content"><span
-                                                                            class="white--text">
+                                                                            class="white--text" data-lang="Logout">
                                                                             Đăng xuất
                                                                         </span></span></button></div>
                                                         </div>
@@ -454,7 +438,7 @@
                                                             <div class="v-toolbar__content" style="height: 56px;height: 56px;color: #2196f3;display: flex;padding-left: 12px!important;"><i
                                                                     aria-hidden="true"
                                                                     class="v-icon notranslate blue--text fas fa-lock theme--light"></i>
-                                                                <div style="font-size: 1.25rem;padding-left: 12px!important;padding-top: 14px;" class="v-toolbar__title pl-3">
+                                                                <div style="font-size: 1.25rem;padding-left: 12px!important;padding-top: 14px;" class="v-toolbar__title pl-3" data-lang="change_password">
                                                                     Thay đổi mật khẩu
                                                                 </div>
                                                             </div>
@@ -463,7 +447,7 @@
                                                     <div class="row pa-5 no-gutters">
                                                         <div class="d-md-flex align-center col col-12">
                                                             <div class="pb-0 pb-md-4 col-md-5 col-12">
-                                                                <h6 class="mb-0">Mật khẩu hiện tại: </h6>
+                                                                <h6 class="mb-0" data-lang="old_password">Mật khẩu hiện tại: </h6>
                                                             </div>
                                                             <div id="hideBottomInput"
                                                                 class="py-0 pb-lg-2 col-md-7 col-12">
@@ -477,7 +461,7 @@
                                                                                 </legend>
                                                                             </fieldset>
                                                                             <div class="v-text-field__slot"><input  style="background-color: #fff !important; color:rgb(44, 44, 44) !important"
-                                                                                    placeholder="Mật khẩu hiện tại"
+                                                                                    placeholder="Mật khẩu hiện tại" data-lang="old_password." data-langtg="placeholder"
                                                                                     type="password" id="old_pass" name="old_pass"></div>
                                                                             <div class="v-input__append-inner">
                                                                                 <div
@@ -499,7 +483,7 @@
                                                         </div>
                                                         <div class="d-md-flex align-center col col-12">
                                                             <div class="pb-0 pb-md-4 col-md-5 col-12">
-                                                                <h6 class="mb-0 ">Mật khẩu mới: </h6>
+                                                                <h6 class="mb-0 " data-lang="new_password">Mật khẩu mới: </h6>
                                                             </div>
                                                             <div id="hideBottomInput"
                                                                 class="py-0 pb-lg-2 col-md-7 col-12">
@@ -512,7 +496,7 @@
                                                                                         class="notranslate">​</span>
                                                                                 </legend>
                                                                             </fieldset>
-                                                                            <div class="v-text-field__slot"><input  style="background-color: #fff !important; color:rgb(44, 44, 44) !important"                                                                                    placeholder="Mật khẩu mới"
+                                                                            <div class="v-text-field__slot"><input data-lang="new_password." data-langtg="placeholder"  style="background-color: #fff !important; color:rgb(44, 44, 44) !important"                                                                                    placeholder="Mật khẩu mới"
                                                                                     type="password" id="new_pass" name="new_pass"></div>
                                                                             <div class="v-input__append-inner">
                                                                                 <div
@@ -534,7 +518,7 @@
                                                         </div>
                                                         <div class="d-md-flex align-center col col-12">
                                                             <div class="pb-0 pb-md-4 col-md-5 col-12">
-                                                                <h6 class="mb-0 ">Nhập lại mật khẩu mới: </h6>
+                                                                <h6 class="mb-0 " data-lang="confirm_new_password">Nhập lại mật khẩu mới: </h6>
                                                             </div>
                                                             <div id="hideBottomInput" class="pt-0 col-md-7 col-12">
                                                                 <div
@@ -546,7 +530,7 @@
                                                                                         class="notranslate">​</span>
                                                                                 </legend>
                                                                             </fieldset>
-                                                                            <div class="v-text-field__slot"><input  style="background-color: #fff !important; color:rgb(44, 44, 44) !important"                                                                                    placeholder="Nhập lại mật khẩu mới"
+                                                                            <div class="v-text-field__slot"><input data-lang="confirm_new_password." data-langtg="placeholder" style="background-color: #fff !important; color:rgb(44, 44, 44) !important"                                                                                    placeholder="Nhập lại mật khẩu mới"
                                                                                     type="password" id="confirm_pass" name="confirm_pass"></div>
                                                                             <div class="v-input__append-inner">
                                                                                 <div
@@ -572,7 +556,7 @@
                                                                 class="d-flex justify-end py-0 col-sm-7 col-12"><button style="background-color: #2196f3;"
                                                                     type="button"  onclick="change_pass()"
                                                                     class="elevation-0 mt-4 v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default primary"><span
-                                                                        class="v-btn__content"><span>Lưu</span></span></button>
+                                                                        class="v-btn__content"><span data-lang="save">Lưu</span></span></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -587,7 +571,7 @@
                                                                 <div class="v-toolbar__content" style="height: 56px;height: 56px;color: #2196f3;display: flex;padding-left: 12px!important;"><i
                                                                         aria-hidden="true"
                                                                         class="v-icon notranslate blue--text fas fa-history theme--light"></i>
-                                                                    <div style="font-size: 1.25rem;padding-left: 12px!important;padding-top: 14px;" class="v-toolbar__title pl-3">
+                                                                    <div data-lang="history_operation" style="font-size: 1.25rem;padding-left: 12px!important;padding-top: 14px;" class="v-toolbar__title pl-3">
                                                                         Lịch sử hoạt động
                                                                     </div>
                                                                 </div>
@@ -601,8 +585,8 @@
                                                                     <thead>
                                                                         <tr>
                                                                             <th style="border-top: 0px;width:10% ; text-align: left;background-color: #fff;color: rgba(0,0,0,.6);">Stt</th>
-                                                                            <th style="border-top: 0px;width:20% ; text-align: left;background-color: #fff;color: rgba(0,0,0,.6);" data-lang="">Tên</th>
-                                                                            <th style="border-top: 0px;width:20% ; text-align: left;background-color: #fff;color: rgba(0,0,0,.6);" data-lang="">Gói</th>
+                                                                            <th style="border-top: 0px;width:20% ; text-align: left;background-color: #fff;color: rgba(0,0,0,.6);" data-lang="name.">Tên</th>
+                                                                            <th style="border-top: 0px;width:20% ; text-align: left;background-color: #fff;color: rgba(0,0,0,.6);" data-lang="package">Gói</th>
                                     
                                                                             <th style="border-top: 0px;width:25% ; text-align: left;background-color: #fff;color: rgba(0,0,0,.6);" data-lang="price">Giá</th>
                                                                             <th style="border-top: 0px;width:25% ; text-align: left;background-color: #fff;color: rgba(0,0,0,.6);" data-lang="time">Thời Gian</th>
@@ -630,12 +614,31 @@
                                 <div class="text-center white--text col col-12">
                                     2022 —
                                     <strong>Powered by
-                                        <a href="http://Ztech.Asia" target="_blank" rel="noopener noreferrer"
-                                            class="text-decoration-none white--text">Ztech.Asia</a></strong>
+                                        <a href="#" target="_blank" rel="noopener noreferrer"
+                                            class="text-decoration-none white--text">Arthur Company</a></strong>
                                 </div>
                             </footer>
 
                         </div>
+                        <div id="toast">
+                        </div>
+                        <dialog id="bank_money_ticket">
+                            <div class="modal-dialog" role="document">
+                                <div style="border: 0px;" class="modal-content">
+                    
+                                    <div class="modal-body text_center">
+                                        <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
+                                        <h4>Thành Công !</h4>
+                                        <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
+                                        <button type="button" class="btn btn-primary" onclick="location.reload()"
+                                            data-dismiss="modal">OK</button>
+                                    </div>
+                                    <div class="text_center">
+                    
+                                    </div>
+                                </div>
+                            </div>
+                        </dialog>
                     </main>
                 </div>
             </div>
@@ -647,6 +650,7 @@
     <script src="../js/helper_manager.js"></script>
     <script src="../js/permission.js"></script>
     <script src="../js/user_info.js"></script>
+    <script src="../js/menu_mobile_control.js"></script>
     <!-- <script src="../js/action.js"></script> -->
     <script defer src="../js/translator.js"></script>
 

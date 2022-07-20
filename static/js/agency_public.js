@@ -337,6 +337,9 @@ async function search_acc_by_created() {
                 <td class="text-left">${it.username}</td>
                 <td class="text-left">${get_format_VND(it.total || 0)}</td>
                 <td class="text-left">${format_time(it.created_at)}</td>
+                <td class="text-left">
+                ${button_action_tool(it.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-usd" aria-hidden="true"></i>')}
+                        </td>
             </tr>
             `
         })

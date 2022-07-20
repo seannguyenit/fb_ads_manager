@@ -209,8 +209,8 @@
                                                             style="padding-bottom: 105.758%;"></div>
                                                         <div class="v-image__image v-image__image--cover"
                                                             style=" background-position: center center;">
-                                                            <span><img src="../img/1657506390119.jpg" width="100%"
-                                                                    height="100%" alt="" srcset=""></span>
+                                                            <span id="img_logo"><img src="../img/1657506390119.jpg"
+                                                                    width="100%" height="100%" alt="" srcset=""></span>
                                                         </div>
                                                         <div class="v-responsive__content" style="width: 330px;"></div>
                                                     </div>
@@ -227,7 +227,8 @@
                                                             </fieldset>
                                                             <div class="v-text-field__slot"><input
                                                                     style="background-color: #fafafa !important; color:rgb(44, 44, 44) !important"
-                                                                    id="input-287" placeholder="Nhập từ khóa"
+                                                                    id="input-287" data-lang="enter_keywords"
+                                                                    data-langtg="placeholder" placeholder="Nhập từ khóa"
                                                                     type="text"></div>
                                                         </div>
                                                         <div class="v-text-field__details">
@@ -251,8 +252,10 @@
                                                             src="../img/avatar_user.png" alt="">
                                                     </div>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="./user_info"> Tài Khoảng</a>
-                                                        <a class="dropdown-item" onclick="acc_logout()">Đăng xuất</a>
+                                                        <a class="dropdown-item" href="./user_info"
+                                                            data-lang="Tài_Khoản"> Tài Khoảng</a>
+                                                        <a class="dropdown-item" onclick="acc_logout()"
+                                                            data-lang="Logout">Đăng xuất</a>
                                                     </div>
                                                 </div>
                                                 <div class="v-menu" style="position: relative; z-index: 99;">
@@ -290,14 +293,16 @@
                                     <div tabindex="-1" class="v-list-item theme--light">
                                         <div class="d-flex align-center">
                                             <div class="v-image v-responsive theme--light" id="imageLogo"
-                                                style="height: 35px; width: 35px;">
+                                            style="max-height: 40px; width: 60px;">
                                                 <div class="v-responsive__sizer" style="padding-bottom: 105.758%;">
                                                 </div>
                                                 <div class="v-image__image v-image__image--cover"
-                                                    style="background-image: url(&quot;https://zsocial.vn/images/logo4.png&quot;); background-position: center center;">
+                                                    style="background-position: center center;">
+                                                    <span id="menu_img_logo"><img src="../img/1657506390119.jpg" width="100%"
+                                                            height="100%" alt="" srcset=""></span>
                                                 </div>
                                                 <div class="v-responsive__content" style="width: 330px;"></div>
-                                            </div> <span class="black--text ml-4">PROXYV6.NET</span>
+                                            </div> <span class="black--text ml-4">M2v.me</span>
                                         </div>
                                     </div>
                                     <hr role="separator" aria-orientation="horizontal" class="v-divider theme--light">
@@ -305,7 +310,8 @@
                                         <div id="menu_user_mobie">
                                         </div>
                                         <div style="padding-top:5px;margin-left: 20px;" class=" dropdown">
-                                            <button class="btn btn_lang btn-secondary dropdown-toggle" type="button"
+                                            <button style="background-color: #fff !important;"
+                                                class="btn btn_lang btn-secondary dropdown-toggle" type="button"
                                                 id="dropdownMenuButton_lang" data-toggle="dropdown" data-lang=""
                                                 aria-haspopup="true" aria-expanded="false">
                                                 <span id="img_lang_mobie" style="margin-right: 3px;"> </span><span
@@ -324,7 +330,8 @@
                                                 class="v-btn v-btn--text theme--light v-size--default"><span
                                                     class="v-btn__content"><i aria-hidden="true"
                                                         class="v-icon notranslate blue--text fas fa-power-off theme--light"
-                                                        style="font-size: 18px;"></i> <span class="ml-5 blue--text">Đăng
+                                                        style="font-size: 18px;"></i> <span class="ml-5 blue--text"
+                                                        data-lang="Logout">Đăng
                                                         Xuất</span></span></button></div>
                                     </div>
                                 </div>
@@ -344,7 +351,7 @@
                                     <div id="container" class="mt-7 mb-16">
                                         <div class="row mx-4 mx-sm-4 mx-lg-0">
                                             <div class="pt-0 col col-12" id="table_data">
-                                              
+
                                             </div>
                                         </div>
                                     </div>
@@ -376,6 +383,7 @@
     <script src="../js/money_manager.js"></script>
     <script src="../js/p_articles.js"></script>
     <script defer src="../js/translator.js"></script>
+    <script src="../js/menu_mobile_control.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"

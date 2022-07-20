@@ -54,20 +54,20 @@ async function init_default() {
               <div
                 style="height: 160px; width: 100%;${color_pring[data.indexOf(item) + 1]}">
                 <div class="d-flex justify-center align-center" style="height: 100%;">
-                  <h3 class="text-center white--text">
-                  ${item.name} (  ${item.limit_day} Ngày )
-                  </h3>
+                  <h4 class="text-center white--text">
+                  ${item.name} (  ${item.limit_day} <span data-lang="day"> Ngày</span> )
+                  </h4>
                 </div>
               </div>
               <div class="px-4">
                 <div class="d-flex justify-center">
                   <p class="mb-0 white--text rounded-xl"
                     style="font-size: 24px; position: relative; top: -25px; background-color: rgb(73, 102, 170); padding: 4px 24px;">
-                    ${get_format_VND(item.price)} Xu
+                    ${get_format_VND(item.price)} VNĐ
                   </p>
                 </div>
                 <div class="d-flex justify-center">
-                  <h3 style="color: rgb(88, 108, 155);">Quyền Lợi</h3>
+                  <h5 style="color: rgb(88, 108, 155);"><span data-lang="rights.">Quyền Lợi</span></h5>
                 </div>
                 <div class="d-flex justify-center">
                   <div>
@@ -76,7 +76,7 @@ async function init_default() {
                           style="font-size: 14px; color: rgb(60, 138, 205); caret-color: rgb(60, 138, 205);"></i>
                       </div>
                       <div class="ml-3">
-                      ${item.limit_day} ngày dùng
+                      ${item.limit_day} <span data-lang="day_usage"> ngày dùng</span>
                       </div>
                     </div>
                     <div class="d-flex align-center animation-content mt-2">
@@ -217,30 +217,3 @@ async function get_wrap_pricing_history(user_id) {
 //     }
 // }
 
-document.getElementById('cover_menu').addEventListener('click', () => {
-    close_menu();
-})
-
-document.getElementById('menu_control').addEventListener('click', () => {
-    let as = document.querySelector('aside');
-    if (as.classList.contains('v-navigation-drawer--open')) {
-        close_menu();
-    } else {
-        open_menu();
-    }
-})
-
-
-function open_menu() {
-    let as = document.querySelector('aside');
-    as.classList.replace('v-navigation-drawer--close', 'v-navigation-drawer--open');
-    as.style.transform = 'translateX(0%)';
-    document.getElementById('cover_menu').style.display = 'block'
-}
-
-function close_menu() {
-    let as = document.querySelector('aside');
-    as.classList.replace('v-navigation-drawer--open', 'v-navigation-drawer--close');
-    as.style.transform = 'translateX(-100%)';
-    document.getElementById('cover_menu').style.display = 'none'
-}

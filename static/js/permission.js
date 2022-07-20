@@ -107,18 +107,18 @@ async function init_menu() {
                         `;
                     }
                     if (menu_user) {
-                        menu_user.innerHTML += `<a style="padding-left:10px"
+                        menu_user.innerHTML += `<a style="padding-left:15px"
                         class="
                                text-decoration-none
                                white--text
                                ml-4 ml-sm-4 ml-lg-0
                                d-none d-md-block
                                " aria-current="page" href="/home/${item.action}">
-                       <div><i aria-hidden="true" class="v-icon notranslate white--text mr-1 ${item.icon} theme--light" style="font-size: 20px;"></i><span style="font-size: 18px;" data-lang="${item.name}">${item.name}</span></div>
+                       <div><i aria-hidden="true" class="v-icon notranslate white--text mr-1 ${item.icon} theme--light" style="font-size: 20px;"></i><span style="font-size: 16px; color: #fff ;" data-lang="${item.name}">${item.name}</span></div>
                    </a> `;
                     }
                     if (menu) {
-                        menu.innerHTML += `<a style=" color: white ;" class="nav-link font-weight-bold text_black_mobie active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>`;
+                        menu.innerHTML += `<a style=" color: #fff ;" class="nav-link font-weight-bold text_black_mobie active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>`;
                     }
 
                 }
