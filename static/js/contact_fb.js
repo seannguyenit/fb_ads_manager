@@ -839,7 +839,7 @@ async function after_public(s2, check_request) {
     var fb = get_token_user_text();
     var page_id = get_token_page_text();
     var link = `https://www.facebook.com/permalink.php?story_fbid=${s2.effective_object_story_id.split('_')[1]}&id=${s2.effective_object_story_id.split('_')[0]}`;
-    row_rs.innerHTML += `<tr class="tr"><td>${fb}</td><td>${page_id}</td><td><a class="btn btn-primary" href="${link}" id="rs_link" target="_blank">Link</a></td></tr>`;
+    row_rs.innerHTML += `<tr class="tr"><td class="text-left">${fb}</td><td class="text-left">${page_id}</td><td class="text-left"><a class="btn btn-primary" href="${link}" id="rs_link" target="_blank">Link</a></td></tr>`;
     await end_request(1, check_request.time);
 }
 

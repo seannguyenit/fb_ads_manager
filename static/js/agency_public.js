@@ -22,7 +22,7 @@ async function init_agency_public() {
 
 }
 function btn_withdraw() {
-   document.getElementById('btn_withdraw').innerHTML= `<a style="width: 65% !important;" class="btn btn-primary" href="./withdraw" data-lang="Rút_Tiền">Rút Tiền</a>`;
+   document.getElementById('btn_withdraw').innerHTML= `<a style="width: 65% ;" class="btn width59 btn-primary" href="./withdraw" data-lang="Rút_Tiền">Rút Tiền</a>`;
    
 }
 
@@ -110,7 +110,7 @@ async function get_agency_child() {
                     <tr class="tr text-left">
                         <td class="text-left">${rs.indexOf(it) + 1}</td>    
                         <td class="text-left">${it.username}</td>
-                        <td class="text-left">${get_format_VND(it.total || 0)}</td>
+                        <td class="text-left green--text">${get_format_VND(it.total || 0)}</td>
                         <td class="text-left">${format_time(it.created_at)}</td>
                         <td class="text-left">
                         ${button_action_tool(it.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-usd" aria-hidden="true"></i>')}

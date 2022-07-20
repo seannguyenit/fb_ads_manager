@@ -73,13 +73,13 @@ async function init_top_up_card() {
             data.forEach(f => {
                 placed.innerHTML += `
                 <tr class="tr">
-                    <td>${data.indexOf(f) + 1}</td>
-                    <td>${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
-                    <td>${(f.declared_value) || 0}</td>
-                    <td>${(f.Seri || "")}</td>
-                    <td>${(f.Pin || "")}</td>
-                    <td>${get_format_VND(f.money)} VNĐ</td>
-                    <td>${(f.active == 1 ? 'Thành Công' : 'Error')}</td>
+                    <td class="text-left">${data.indexOf(f) + 1}</td>
+                    <td class="text-left green--text">${new Date(Number(f.time * 1000 || 0)).toLocaleString()}</td>
+                    <td class="text-left green--text">${get_format_VND(f.declared_value) || 0} VNĐ</td>
+                    <td class="text-left green--text">${(f.Seri || "")}</td>
+                    <td class="text-left green--text">${(f.Pin || "")}</td>
+                    <td class="text-left green--text">${get_format_VND(f.money)} VNĐ</td>
+                    <td class="text-left">${(f.active == 1 ? 'Thành Công' : 'Error')}</td>
                     
                 </tr>`
                 //  <td>${(f.time)}</td>

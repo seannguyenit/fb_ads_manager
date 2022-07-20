@@ -107,7 +107,7 @@ async function init_menu() {
                                ml-4 ml-sm-4 ml-lg-0
                                d-none d-md-block
                                " aria-current="page" href="/home/${item.action}">
-                       <div><i aria-hidden="true" class="v-icon notranslate white--text mr-1 ${item.icon} theme--light" style="font-size: 20px;"></i><span data-lang="${item.name}">${item.name}</span></div>
+                       <div><i aria-hidden="true" class="v-icon notranslate white--text mr-1 ${item.icon} theme--light" style="font-size: 20px;"></i><span style="font-size: 18px;" data-lang="${item.name}">${item.name}</span></div>
                    </a> `;
                     }
                    if(menu){

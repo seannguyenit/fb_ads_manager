@@ -443,7 +443,13 @@ a:hover {
         width: 450px !important;
         /* background-color: #2a2e3f !important; */
     }
-
+    .width_table_550 {
+        width: 550px !important;
+        /* background-color: #2a2e3f !important; */
+    }
+    .width59{
+        width: 59% !important;
+    }
     .width_table_620 {
         width: 620px !important;
         /* background-color: #2a2e3f !important; */
