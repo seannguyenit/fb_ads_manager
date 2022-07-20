@@ -80,6 +80,8 @@ async function init_menu() {
     var menu_general = document.getElementById('menu_');
     var menu_user = document.getElementById('main_menu__');
     var cr_url = location.href;
+    var cr_url_menu = location.pathname;
+    // alert(cr_url_menu)
     if (menu || menu_user) {
         // menu.innerHTML = '';
         // menu_user.innerHTML = '';
@@ -97,24 +99,29 @@ async function init_menu() {
             // } else {
             lst_menu.forEach(item => {
                 if (item.type === 0) {
+                    var style_ = ""
+                    if (cr_url_menu === `/home/${item.action}`) {
+                        style_ = 'nuxt-link-active';
+                    }
                     if (menu_user_mobie) {
                         menu_user_mobie.innerHTML += `
                         <div id="activeMenu" class="d-flex mt-4 ml-2" style="width: 100%;">
                             <a class="text-decoration-none ml-4" style="color: rgb(45, 52, 54);font-size:16px;" aria-current="page" href="/home/${item.action}">
-                            <div><i aria-hidden="true" class="v-icon notranslate mr-1 ${item.icon} theme--light" style="font-size: 20px; color: rgb(45, 52, 54); caret-color: rgb(45, 52, 54);"></i><span class="ml-6" data-lang="${item.name}">${item.name}</span></div>
+                            <div  class="d-flex align-center ${style_}"><i aria-hidden="true" class="v-icon notranslate mr-1 ${item.icon} theme--light" style="font-size: 20px; "></i><span class="ml-6" data-lang="${item.name}">${item.name}</span></div>
                             </a>
                         </div>
                         `;
                     }
                     if (menu_user) {
-                        menu_user.innerHTML += `<a style="padding-left:15px"
+
+                        menu_user.innerHTML += `<a style="max-height: 56px !important;padding-left:15px"
                         class="
                                text-decoration-none
                                white--text
                                ml-4 ml-sm-4 ml-lg-0
                                d-none d-md-block
                                " aria-current="page" href="/home/${item.action}">
-                       <div><i aria-hidden="true" class="v-icon notranslate white--text mr-1 ${item.icon} theme--light" style="font-size: 20px;"></i><span style="font-size: 16px; color: #fff ;" data-lang="${item.name}">${item.name}</span></div>
+                       <div class="white--text d-flex align-center ${style_}"><i aria-hidden="true" class=" notranslate mr-1 ${item.icon} theme--light" style="font-size: 19px;"></i><span style="font-size: 16px;" data-lang="${item.name}">${item.name}</span></div>
                    </a> `;
                     }
                     if (menu) {
@@ -267,8 +274,8 @@ async function list_topup_momo(id, proce) {
         });
 }
 
-async function list_topup_today(id, time, proce) {
-    return await fetch(`/api/list_topup_today/${id}/${time}/${proce}` /*, options */)
+async function list_topup_today(id, proce) {
+    return await fetch(`/api/list_topup_today/${id}/${proce}` /*, options */)
         .then((response) => response.json())
         .then((data) => {
             return data;
@@ -425,7 +432,7 @@ async function insert_acb_bank() {
     if (rs_acb_bank) {
         if (rs_acb_bank.status) {
             rs_acb_bank.transactions.forEach(async (f) => {
-                var list_topup_ = await list_topup_today(user_id, Number(new Date(today).getTime() / 1000), 3);
+                var list_topup_ = await list_topup_today(user_id, 3);
                 if (f.type === "IN") {
                     var des = f.description.toLowerCase()
                     var number = des.indexOf('napthe');
@@ -435,39 +442,39 @@ async function insert_acb_bank() {
                         let m_ = f.transactionDate.substring(3, 5);
                         let y_ = f.transactionDate.substring(6, 10);
                         today_ = `${y_}-${m_}-${dd_}`;
-                        if (Number(new Date(today_).getTime() / 1000) === Number(new Date(today).getTime() / 1000)) {
-                            if (list_topup_) {
-                                var list_count = Object.keys(list_topup_).length;
-                                if (Number(list_count) === 0) {
-                                    var rs = await ticket_save_acb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000), transactionID: f.transactionID });
-                                    if (rs.ok) {
+                        // if (Number(new Date(today_).getTime() / 1000) === Number(new Date(today).getTime() / 1000)) {
+                        if (list_topup_) {
+                            // var list_count = Object.keys(list_topup_).length;
+                            // if (Number(list_count) === 0) {
+                            //     var rs = await ticket_save_acb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000), transactionID: f.transactionID });
+                            //     if (rs.ok) {
+                            //         if (Array.from(document.getElementById("bank_money_ticket").attributes).findIndex(s => s.name === 'open') === 1) {
+                            //             return;
+                            //         } else {
+                            //             document.getElementById("bank_money_ticket").showModal();
+                            //         }
+                            //     }
+                            // } else {
+                                let list_tranid = list_topup_.filter(s => (s.transactionID).toString() === (f.transactionID).toString())
+                                let list_count_tranid = Object.keys(list_tranid).length;
+                                if (Number(list_count_tranid) === 1) {
+                                    return;
+                                } else {
+                                    var rss = await ticket_save_acb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000), transactionID: f.transactionID });
+                                    if (rss.ok) {
                                         if (Array.from(document.getElementById("bank_money_ticket").attributes).findIndex(s => s.name === 'open') === 1) {
                                             return;
                                         } else {
                                             document.getElementById("bank_money_ticket").showModal();
                                         }
                                     }
-                                } else {
-                                    let list_tranid = list_topup_.filter(s => (s.transactionID).toString() === (f.transactionID).toString())
-                                    let list_count_tranid = Object.keys(list_tranid).length;
-                                    if (Number(list_count_tranid) === 1) {
-                                        return;
-                                    } else {
-                                        var rss = await ticket_save_acb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000), transactionID: f.transactionID });
-                                        if (rss.ok) {
-                                            if (Array.from(document.getElementById("bank_money_ticket").attributes).findIndex(s => s.name === 'open') === 1) {
-                                                return;
-                                            } else {
-                                                document.getElementById("bank_money_ticket").showModal();
-                                            }
-                                        }
-                                    }
-
                                 }
 
-                            }
+                            // }
 
                         }
+
+                        // }
                     }
                 }
             })
