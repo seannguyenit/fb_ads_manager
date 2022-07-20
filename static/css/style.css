@@ -251,7 +251,7 @@ a:hover {
     background-color: #fafafa !important;
     color: #000 !important;
     border: 0px !important;
-    font-size: 0.7rem !important;
+    font-size: 0.8rem !important;
     padding-top: 10px;
 }
 
@@ -269,7 +269,7 @@ a:hover {
 }
 
 .pd0_web {
-    padding: 0px ;
+    padding: 0px !important;
 }
 .font-weight-550{
     font-weight: 550;
@@ -524,6 +524,10 @@ a:hover {
     .pd10 {
         padding: 10px !important;
     }
+    .pd_f_r10 {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
 
     .pd_t_10 {
         padding-top: 10px !important;
@@ -541,10 +545,16 @@ a:hover {
         left: 13% !important;
     } */
     .w-50__{
-width: 100% !important;
+        width: 100% !important;
+    }
+    .w-100__{
+        width: 100% !important;
+    }
+    .font_03{
+        font-size: 0.3rem;
     }
     body {
-        font-size: 0.9rem !important;
+        font-size: 1rem !important;
     }
 
     .min-height50px {
@@ -1080,7 +1090,7 @@ hr {
 textarea::placeholder,
 input::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: white !important;
+    color: rgb(112, 110, 110) !important;
     opacity: 1;
     /* Firefox */
 }
@@ -1088,13 +1098,13 @@ input::placeholder {
 textarea::placeholder,
 input:-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: white !important;
+    color: rgb(112, 110, 110) !important;
 }
 
 textarea::placeholder,
 input::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: white !important;
+    color: rgb(112, 110, 110) !important;
 }
 
 .custom_scroll::-webkit-scrollbar {

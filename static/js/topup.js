@@ -42,12 +42,12 @@ async function init_top_up() {
 
                 placed.innerHTML += `
                 <tr class="tr">
-                    <td>${data.indexOf(f) + 1}</td>
-                    <td>${new Date(Number(f.time * 1000 || 0)).toLocaleDateString()}</td>
-                    <td>${type}</td>
-                    <td>${f.transactionID || ""}</td>   
-                    <td>${user_name}</td>
-                    <td>${get_format_VND(f.money)} VNĐ</td>
+                    <td class="text-left">${data.indexOf(f) + 1}</td>
+                    <td class="text-left">${new Date(Number(f.time * 1000 || 0)).toLocaleDateString()}</td>
+                    <td class="text-left ">${type}</td>
+                    <td class="text-left green--text">${f.transactionID || ""}</td>   
+                    <td class="text-left">${user_name}</td>
+                    <td class="text-left green--text">${get_format_VND(f.money)} VNĐ</td>
                 </tr>`
                 //  <td>${(f.time)}</td>
                 // <td>${(f.active == 1 ? 'Đã duyệt' : 'Chưa duyệt')}</td>

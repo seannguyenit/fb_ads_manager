@@ -24,14 +24,28 @@ async function init_guide() {
                 var number2 =item.video.indexOf('watch?');
                 var link_video = item.video.slice(0, (number + 12)) + "embed/" + item.video.slice((number2 + 8));
                 document.getElementById("link_video").innerHTML +=`
-                                <div class="col-md-6 pd0">
-                                <div style="background-color: #fff;box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;"  class="text_left mr_t_b10 mb-3 font-weight-550 pricing_benefit pd0 d-flex flex-column">
-                                    <div class="pd0 text_center">
-                                    <iframe width="100%" height="300px" src="${link_video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    <p style="font-size: 24px !important;">${item.content_video}</p>
-                                    </div>
-                                </div>
+
+                        <div class="pa-3 col-sm-4 col-12">
+                        <div class="rounded-lg mb-8 card-tutorials v-card v-sheet theme--light"
+                            id="scrollTable"><iframe
+                                src="${link_video}"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen="allowfullscreen"
+                                style="width: 100%; height: 300px;"></iframe>
+                            <div class="pa-4">
+                                <h5 class="font-weight-bold">${item.content_video}</h5>
+                                <div class="d-flex mt-4 text-footer"><i aria-hidden="true"
+                                        class="v-icon notranslate mdi mdi-account theme--light"
+                                        style="color: rgb(51, 152, 220); caret-color: rgb(51, 152, 220);"></i><span
+                                        class="blue--text lighten-3"><a
+                                            href="#" target="_blank"
+                                            class="text-decoration-none ml-1">
+                                            M2v.me
+                                        </a></span></div>
+                            </div>
                         </div>
+                    </div>
                 `;
             }
             
@@ -39,4 +53,36 @@ async function init_guide() {
         });
 
     }
+}
+
+function model_pricing(){
+    window.location.href = 'pricing';
+}
+
+document.getElementById('cover_menu').addEventListener('click', () => {
+    close_menu();
+})
+
+document.getElementById('menu_control').addEventListener('click', () => {
+    let as = document.querySelector('aside');
+    if (as.classList.contains('v-navigation-drawer--open')) {
+        close_menu();
+    } else {
+        open_menu();
+    }
+})
+
+
+function open_menu() {
+    let as = document.querySelector('aside');
+    as.classList.replace('v-navigation-drawer--close', 'v-navigation-drawer--open');
+    as.style.transform = 'translateX(0%)';
+    document.getElementById('cover_menu').style.display = 'block'
+}
+
+function close_menu() {
+    let as = document.querySelector('aside');
+    as.classList.replace('v-navigation-drawer--open', 'v-navigation-drawer--close');
+    as.style.transform = 'translateX(-100%)';
+    document.getElementById('cover_menu').style.display = 'none'
 }

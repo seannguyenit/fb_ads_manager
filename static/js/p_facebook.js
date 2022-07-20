@@ -48,19 +48,40 @@ async function load_token() {
     var data_tk = await get_all_token();
     if (data_tk) {
         data_tk.forEach(item => {
-            place.innerHTML += `<div class="table table-bordered">
+            place.innerHTML += `
+            <div class="d-flex align-center">
+                 <div class="d-flex align-center"><img
+                    src="${item.picture}"
+                    alt="" width="35px" height="35px"
+                    class="rounded-xl"></div>
                 <div>
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <img width="50" height="50" src="${item.picture}" />
-                            <span
-                                class="control-label">${item.name}</span>
-                        </div>
-                        <button onclick="del_token(${item.id})" class="btn btn-danger"  data-lang="delete">Xóa</button>
-                    </div>
-                </div>
+                    <p class="mb-0 ml-3">
+                    ${item.name}
+                     </p>
+            </div>
+            </div>
+                <div><button type="button" onclick="del_token(${item.id})"
+                    class="elevation-0 v-btn v-btn--is-elevated v-btn--fab v-btn--has-bg v-btn--round theme--light v-size--x-small red"><span
+                    class="v-btn__content"><i
+                        aria-hidden="true"
+                        class="v-icon notranslate far fa-trash-alt theme--light"
+                        style="font-size: 14px; color: rgb(255, 255, 255); caret-color: rgb(255, 255, 255);"></i></span></button>
             </div>`;
         });
+                    
+            
+    //     <div class="table table-bordered">
+    //     <div>
+    //         <div class="d-flex justify-content-between">
+    //             <div>
+    //                 <img width="50" height="50" src="${item.picture}" />
+    //                 <span
+    //                     class="control-label">${item.name}</span>
+    //             </div>
+    //             <button onclick="del_token(${item.id})" class="btn btn-danger"  data-lang="delete">Xóa</button>
+    //         </div>
+    //     </div>
+    // </div>
     }
 }
 
@@ -291,42 +312,70 @@ async function show_pricing() {
                 var date = new Date(_date).getTime();
                 var limit_date = new Date(Number(date || 0)).toLocaleString();
                 document.getElementById("limit_đate").innerHTML = ` 
-                            <span>${(limit_date)}</span>`
+                           ${(limit_date)}`;
             } else {
                 document.getElementById("limit_đate").innerHTML = ` 
-                            <span>${format_time(rs.limit_time_)}</span>`
+                            ${format_time(rs.limit_time_)}`
             }
 
         }
         else {
             document.getElementById("limit_đate").innerHTML = ` 
-                            <span>${format_time(rs.limit_time) || "" }</span>`
+                            ${format_time(rs.limit_time) || "" }`
         }
     } else {
         document.getElementById("limit_đate").innerHTML = ` 
-        <>Hết Hạn</span>`
+        Hết Hạn`
     }
     if (data_limit) {
         data_limit.forEach(f => {
             document.getElementById("name_pricing").innerHTML = `
-            <span>${f.name} (${f.limit_day} Ngày)</span>`
+            ${f.name} (${f.limit_day} Ngày)`
             document.getElementById("rights").innerHTML = `
-            <span>${f.limit_request} Request/Ngày</span>`
+            ${f.limit_request} Request/Ngày`
+            document.getElementById("request_fb").innerHTML = `
+            ${f.limit_fb} Facebook Accounts`
             document.getElementById("date_buy").innerHTML = `
-            <span>${format_time(f.created_at)}</span>`
+            ${format_time(f.created_at)}`
         });
     }
     else if (data_limit === null) {
-        document.getElementById("name_pricing").innerHTML = `
-        <span></span>`
-        document.getElementById("rights").innerHTML = `
-        <span></span>`
-        document.getElementById("date_buy").innerHTML = `
-        <span></span>`
+        document.getElementById("name_pricing").innerHTML = ``
+        document.getElementById("rights").innerHTML = ``
+        document.getElementById("request_fb").innerHTML = ``
+        document.getElementById("date_buy").innerHTML = ``
     }
 
 }
 
 function model_pricing(){
     window.location.href = 'pricing';
+}
+
+document.getElementById('cover_menu').addEventListener('click', () => {
+    close_menu();
+})
+
+document.getElementById('menu_control').addEventListener('click', () => {
+    let as = document.querySelector('aside');
+    if (as.classList.contains('v-navigation-drawer--open')) {
+        close_menu();
+    } else {
+        open_menu();
+    }
+})
+
+
+function open_menu() {
+    let as = document.querySelector('aside');
+    as.classList.replace('v-navigation-drawer--close', 'v-navigation-drawer--open');
+    as.style.transform = 'translateX(0%)';
+    document.getElementById('cover_menu').style.display = 'block'
+}
+
+function close_menu() {
+    let as = document.querySelector('aside');
+    as.classList.replace('v-navigation-drawer--open', 'v-navigation-drawer--close');
+    as.style.transform = 'translateX(-100%)';
+    document.getElementById('cover_menu').style.display = 'none'
 }

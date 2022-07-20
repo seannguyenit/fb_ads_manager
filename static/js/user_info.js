@@ -240,19 +240,19 @@ async function init_pricing_history() {
     if (data) {
         data.forEach(f => {
             if (Number(f.type) === 2) {
-                var active = "Nâng Cấp";
+                var active = '<span style="background-color: rgb(39, 174, 96);border-radius: 12px;padding: 5px; border-color: rgb(39, 174, 96);color:#fff !important">Nâng Cấp</span>';
             } else if (Number(f.type) === 1) {
-                var active = "Gia Hạn";
+                var active = '<span style="background-color: rgb(243, 156, 18);border-radius: 12px;padding: 5px; border-color: rgb(243, 156, 18);color:#fff !important">Gia Hạn</span>';
             }
             else {
-                var active = "Mua Gói";
+                var active = '<span style="background-color: #2196f3;border-radius: 12px;padding: 5px; border-color: #2196f3;color:#fff !important">Mua Gói</span>';
             }
             tb.innerHTML += `<tr class="tr">
-            <td>${data.indexOf(f) + 1}</td>
-            <td>${active}</td>
-            <td>${f.pricing_name}</td>
-            <td>${get_format_VND(f.price)}</td>
-            <td>${format_time(f.time)}</td>
+            <td style="text-align: left;">${data.indexOf(f) + 1}</td>
+            <td style="text-align: left;">${active}</td>
+            <td style="text-align: left;">${f.pricing_name}</td>
+            <td style="text-align: left;color: #4caf50 !important;">${get_format_VND(f.price)} VNĐ</td>
+            <td style="text-align: left;">${format_time(f.time)}</td>
             </tr>`
         });
     }
@@ -283,6 +283,33 @@ async function acc_get_detail() {
         .catch((error) => {
             console.warn(error);
         });
+}
+document.getElementById('cover_menu').addEventListener('click', () => {
+    close_menu();
+})
+
+document.getElementById('menu_control').addEventListener('click', () => {
+    let as = document.querySelector('aside');
+    if (as.classList.contains('v-navigation-drawer--open')) {
+        close_menu();
+    } else {
+        open_menu();
+    }
+})
+
+
+function open_menu() {
+    let as = document.querySelector('aside');
+    as.classList.replace('v-navigation-drawer--close', 'v-navigation-drawer--open');
+    as.style.transform = 'translateX(0%)';
+    document.getElementById('cover_menu').style.display = 'block'
+}
+
+function close_menu() {
+    let as = document.querySelector('aside');
+    as.classList.replace('v-navigation-drawer--open', 'v-navigation-drawer--close');
+    as.style.transform = 'translateX(-100%)';
+    document.getElementById('cover_menu').style.display = 'none'
 }
 
 // show name pricing

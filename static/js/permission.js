@@ -67,19 +67,21 @@ async function menu_contacst() {
 }
 
 async function init_menu() {
-    var menu = document.getElementById('main_menu');
-    // var menu = document.getElementById('main_menu');
+    var menu = document.getElementById('main_menu')
+    var menu_user_mobie = document.getElementById('menu_user_mobie')
     var menu_ = document.getElementById('menu_money');
     var menu_general = document.getElementById('menu_');
+    var menu_user = document.getElementById('main_menu__');
     var cr_url = location.href;
-    if (menu) {
-        menu.innerHTML = '';
+    if (menu || menu_user) {
+        // menu.innerHTML = '';
+        // menu_user.innerHTML = '';
         var cr_user = get_cr_user();
         var lst_menu = await menu_get_current_menu(cr_user.id);
         if (!cr_url.includes('user_info') && lst_menu.filter(f => { return cr_url.includes(f.action) }).length == 0) {
             location.href = '/login'
         }
-        if (menu) {
+        if (menu || menu_user) {
             //     lst_menu.forEach(item => {
             //         if (item.type === 0) {
             //             menu.innerHTML += `<a class="nav-link active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>`;
@@ -88,7 +90,30 @@ async function init_menu() {
             // } else {
             lst_menu.forEach(item => {
                 if (item.type === 0) {
+                    if(menu_user_mobie){
+                        menu_user_mobie.innerHTML += `
+                        <div id="activeMenu" class="d-flex mt-4 ml-2" style="width: 100%;">
+                            <a class="text-decoration-none ml-4" style="color: rgb(45, 52, 54);font-size:16px;" aria-current="page" href="/home/${item.action}">
+                            <div><i aria-hidden="true" class="v-icon notranslate mr-1 ${item.icon} theme--light" style="font-size: 20px; color: rgb(45, 52, 54); caret-color: rgb(45, 52, 54);"></i><span class="ml-6" data-lang="${item.name}">${item.name}</span></div>
+                            </a>
+                        </div>
+                        `;
+                    }
+                    if(menu_user){
+                        menu_user.innerHTML +=`<a style="padding-left:10px"
+                        class="
+                               text-decoration-none
+                               white--text
+                               ml-4 ml-sm-4 ml-lg-0
+                               d-none d-md-block
+                               " aria-current="page" href="/home/${item.action}">
+                       <div><i aria-hidden="true" class="v-icon notranslate white--text mr-1 ${item.icon} theme--light" style="font-size: 20px;"></i><span data-lang="${item.name}">${item.name}</span></div>
+                   </a> `;
+                    }
+                   if(menu){
                     menu.innerHTML += `<a style=" color: white ;" class="nav-link font-weight-bold text_black_mobie active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>`;
+                   }
+                   
                 }
 
                 if (item.type === 1 && menu_) {
