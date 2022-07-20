@@ -4,9 +4,11 @@ const r_url = "/api/fproxy";
 // const r_url = `${window.location.protocol}//${window.location.hostname}/proxy/`;
 
 
+async function init_() {
+    await init_user();
+    await init_pricing_history();
+}
 
-init_pricing_history();
-init_user();
 // show_pricing()
 
 // load_token();
@@ -221,7 +223,7 @@ async function init_user() {
 
 async function get_pricing_history() {
     var cr_u = get_cr_user();
-    return await fetch(`/api/pricing_public/${cr_u.id}` /*, options */)
+    return await fetch(`/api/pricing_public/${cr_u.id || 0}` /*, options */)
         .then((response) => response.json())
         .then((data) => {
             return data;

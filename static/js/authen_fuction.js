@@ -26,11 +26,11 @@ async function init_logo() {
     if (data) {
         data.forEach(item => {
             if (document.getElementById('img_logo')) {
-                document.getElementById('img_logo').innerHTML = `<a class="navbar-brand" href="#"><img width="141.94px" height="68.99px"
+                document.getElementById('img_logo').innerHTML = `<a class="navbar-brand" href="#"><img height="68.99px"
                 src="${item.logo_img}" alt=""></a>`;
             }
             if (document.getElementById('logo_login_center')) {
-                document.getElementById('logo_login_center').innerHTML = ` <img src="${item.logo_img}" width="200vw" height="97.17vw" alt="logo tool264.com" />`;
+                document.getElementById('logo_login_center').innerHTML = ` <img src="${item.logo_img}" height="97.17vw" alt="logo tool264.com" />`;
             } 
             if(document.getElementById('img_logo_mobie')){
                 document.getElementById('img_logo_mobie').innerHTML =` <a style="margin-left: -15px;" class="navbar-brand" href="/home/page_box" id=""><img width="100px" height="41px" src="${item.logo_img}"

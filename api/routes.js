@@ -114,7 +114,7 @@ module.exports = function (app) {
     .put(accCtrl.agency_app);
   app.route('/api/agency_m/cancel/:id')
     .put(accCtrl.agency_cancel);
-    app.route('/api/action_bank/:id/:action')
+  app.route('/api/action_bank/:id/:action')
     .get(accCtrl.edit_action_bank);
   app.route('/api/menu')
     .get(menuCtrl.get_template);
@@ -136,7 +136,7 @@ module.exports = function (app) {
 
   app.route('/api/init_img_login')
     .get(menuCtrl.get_img_login);
-    app.route('/api/init_img_loading')
+  app.route('/api/init_img_loading')
     .get(menuCtrl.get_img_loading);
   app.route('/api/init_logo')
     .get(menuCtrl.get_img_logo);
