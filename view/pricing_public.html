@@ -194,7 +194,7 @@
                                 <div class="container px-0 px-sm-0 px-md-16 px-lg-0" style="max-width: 1400px;">
                                     <div id="container" class="mt-4 mb-16">
                                         <div class="col col-12">
-                                            <div class="d-flex justify-end"><button type="button"
+                                            <div class="d-flex justify-end"><button type="button" onclick="open_modal()"
                                                     class="elevation-0 v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default"
                                                     style="background-color: rgb(51, 152, 220); border-color: rgb(51, 152, 220);"><span
                                                         class="v-btn__content"><span
@@ -225,6 +225,37 @@
                             </footer>
                             
                         </div>
+                        <div class="modal fade" id="pricing_ticket" tabindex="-1" role="dialog" aria-labelledby="pricing_ticket"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="v-card__title header-modal d-flex align-center justify-space-between py-0 px-4">
+                                <p class="mb-0 title white--text">Nâng cấp gói</p>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="v-card__text pt-3 pb-0 px-4">
+                                <div class="mt-1">
+                                        <p for="email_user" class="mb-1 black--text">Gói nâng cấp</p>
+                                        <!-- <input  class="form_control" type="text" name="email_user" id="email_user" placeholder="nhập email ngươi dùng" required> -->
+                                        <select name="option_pricing" style="width: 100%;" class="form_control" id="option_pricing">
+
+                                        </select>
+                                        <br>
+                                        <span class="ml-3 caption">
+                                            <span class="red--text">Lưu ý</span>: Sau khi nâng cấp không thể hoàn tác
+                                        </span>
+                                </div>
+                            </div>
+                            <div class="v-card__actions d-flex justify-center align-center py-4">
+                              <span><button onclick="check_order_pricing()" type="button" class="elevation-0 text-white v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default" style="background-color: rgb(51, 152, 220); border-color: rgb(51, 152, 220);">Nâng Cấp</button></span>  
+                               <span><button type="button" style="margin-left: 10px;" class="elevation-0 text-white v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default red" data-dismiss="modal">Hủy</button></span> 
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
                         <div id="toast"> 
                         </div>
                         <dialog id="bank_money_ticket">

@@ -74,11 +74,14 @@ async function menu_contacst() {
 }
 
 async function init_menu() {
-    var menu = document.getElementById('main_menu')
-    var menu_user_mobie = document.getElementById('menu_user_mobie')
+    var menu = document.getElementById('main_menu');
+    var menu_user_mobie = document.getElementById('menu_user_mobie');
     var menu_ = document.getElementById('menu_money');
     var menu_general = document.getElementById('menu_');
     var menu_user = document.getElementById('main_menu__');
+    if(menu){
+        menu.innerHTML=""
+    }
     var cr_url = location.href;
     var cr_url_menu = location.pathname;
     // alert(cr_url_menu)

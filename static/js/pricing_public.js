@@ -11,8 +11,10 @@ async function init_default() {
         'background: rgba(0, 0, 0, 0) linear-gradient(45deg, rgb(0, 160, 199), rgb(0, 60, 252)) repeat scroll 0% 0%;',
         'background: rgba(0, 0, 0, 0) linear-gradient(45deg, rgb(46, 244, 255), rgb(139, 220, 147)) repeat scroll 0% 0%;',
     ]
-    var menu = document.getElementById('main_menu');
+    var option_pricing = document.getElementById('option_pricing');
     var place_ = document.getElementById('main_content');
+    var btnsave = document.getElementById('btnSave');
+    
     place_.innerHTML = '';
     var data = await pricing_get_all();
     if (data) {
@@ -48,6 +50,8 @@ async function init_default() {
             // </div>`;
             // var s = 1;
             // alert(s++);
+            // ${item.id},'${item.name}',${item.price},${item.limit_day},${item.level},${item.limit_fb},${item.limit_request}
+            option_pricing.innerHTML +=`<option value="${item.id}"> ${item.name} (  ${item.limit_day} <span data-lang="day"> Ngày</span> )</option>`;
             place_.innerHTML += `    
             <div class="my-4 col-sm-6 col-md-4 col-lg-3 col-12">
             <div class="rounded-xl boxShadow-hover c-pointer pos-relative v-card v-sheet theme--light pb-6">
@@ -108,6 +112,17 @@ async function init_default() {
     }
 }
 
+async function check_order_pricing(){
+    var id_p =  $('#option_pricing').val();
+    var data = await pricing_get_all();
+    if (data) {
+        data.forEach(item => {
+            if(Number(item.id) === Number(id_p)){
+             order_pricing(item.id,item.name,item.price,item.limit_day,item.level,item.limit_fb,item.limit_request);
+            }
+        })
+    }
+}
 async function pricing_get_all() {
     return await fetch(`/api/pricing` /*, options */)
         .then((response) => response.json())
@@ -217,3 +232,6 @@ async function get_wrap_pricing_history(user_id) {
 //     }
 // }
 
+ function open_modal() {
+    $('#pricing_ticket').modal('show');
+}
