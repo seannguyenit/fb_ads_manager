@@ -82,7 +82,7 @@ async function init_withdraw_all() {
     
     if (rs) {
         rs.forEach(f => {
-                located.innerHTML += `<tr>
+                located.innerHTML += `<tr  class="table_admin">
                 <td>${rs.indexOf(f) + 1}</td>
                 <td>${f.username}</td>
                 <td>${(f.withdraw || 0) > 0 ? (get_format_VND(f.withdraw || 0)) : 'Chưa nhập'}</td>
@@ -96,12 +96,12 @@ async function init_withdraw_all() {
             </tr>`
         })
     }    
-    if(Number(rs.length) != 0 ){
-        document.getElementById('showing').innerHTML = "Showing 1 to "+ rs.length + " of " + rs.length + " entries";
-    }
-    else{
-        document.getElementById('showing').innerHTML = "";
-    }
+    // if(Number(rs.length) != 0 ){
+    //     document.getElementById('showing').innerHTML = "Showing 1 to "+ rs.length + " of " + rs.length + " entries";
+    // }
+    // else{
+    //     document.getElementById('showing').innerHTML = "";
+    // }
 }
 
 async function open_approved(des,id,withdraw) {

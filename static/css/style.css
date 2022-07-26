@@ -374,7 +374,7 @@ a:hover {
     }
 
     .margin-top_avar_ad {
-        margin-top: 5vw !important;
+        /* margin-top: 5vw !important; */
     }
 
     .box_flex-wrap {
@@ -430,6 +430,7 @@ a:hover {
         width: 300% !important;
         /* background-color: #2a2e3f !important; */
     }
+   
     .width_table_350 {
         width: 350% !important;
         /* background-color: #2a2e3f !important; */

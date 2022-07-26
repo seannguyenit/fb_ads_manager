@@ -14,7 +14,7 @@ module.exports = function (app) {
   app.route('/recovery_save')
     .get(auth_Ctrl.recovery_save);
   app.route('')
-    .get(homeCtrl.page_box);
+    .get(homeCtrl.user_info);
 
   // app.route('')
   //   .get(homeCtrl.get);

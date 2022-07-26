@@ -9,15 +9,20 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="../css/style_table.css" /> -->
+    <link rel="stylesheet" type="text/css" href="../css/styleadmin.css" />
+    <link href="../css/pricing/style.css" rel="stylesheet" type="text/css">
+
+    <link data-n-head="1" rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;display=swap">
+    <link data-n-head="1" rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
 
-<body class="body-bg-custom_ad">
+<body style="background-color: #383d52;" class="ltr main-body app horizontal horizontal-hover dark-theme">
     <!-- Top Bar -->
-    <div class="header">
+    <!-- <div class="header">
         <div class="d-flex">
             <div class="p-2 flex-grow-1" id="img_logo_admin"><a class="navbar-brand" href="/home/users"><img height="68.99px"
                         src="" alt=""></a></div>
@@ -35,8 +40,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
+    </div> -->
+    <!-- <nav class="navbar navbar-expand-sm navbar-light bg-main-color">
         <div class="container-fluid">
             <button class="navbar-toggler border_none" type="button" data-toggle="collapse" data-target="#main_menu_nav"
             aria-controls="main_menu_nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,8 +87,8 @@
                 </div>
             </div>
         </div>
-    </nav>
-    <section>
+    </nav> -->
+    <!-- <section>
         <div class="col-12">
             <div class="container pt-5">
                 <h3> <i class=" pd_r_5 fa fa-user-circle-o" aria-hidden="true"></i>Quản Lý Tài Khoảng</h3>
@@ -96,7 +101,7 @@
                         </div>
                         <div class=" pd_r_5 text_center m_t_2 float_right">
                             <h5>Tổng Thành Viên</h5>
-                            <!-- <br> -->
+                         
                             <div id="total_user">
                                 <h5>0</h5>
                             </div>
@@ -109,7 +114,7 @@
                         </div>
                         <div class=" pd_r_5 text_center m_t_2 float_right">
                             <h5>Tổng Đại Lý</h5>
-                            <!-- <br> -->
+                            
                             <div id="total_agency">
                                 <h5>0</h5>
                             </div>
@@ -122,7 +127,7 @@
                         </div>
                         <div class=" text_center m_t_2 float_right">
                             <h5>Tổng Cộng Tác viên</h5>
-                            <!-- <br> -->
+                        
                             <div id="total_sub_agency">
                                 <h5>0</h5>
                             </div>
@@ -138,21 +143,7 @@
                     <div> <input style="width:170px" placeholder=" Nhập Mail tìm kiếm...." id="username"/> <button onclick="search_acc()" class=" btn btn-primary">search</button> </div>
                 </div>
                </div>
-                <!-- <div class="col-12 pd_t_1 pb-2">
-                    <h5 class="">Danh sách thành viên</h5>
-                    <button onclick="open_modal(0)" class="btn btn-primary">Tạo mới User</button>
-                    <div class="float_left" id="m_logo">
-                       
-                    </div> -->
-                    <!-- <button onclick="paginate()" class="btn btn-primary">test</button> -->
-                    <!-- <input type="text" id="sreach_user" name="sreach_user"> 
-                        <button onclick="" class="btn btn-primary">search</button> -->
-                    <!-- <div class="float_right">
-                        <label for="username" class="form-label"></label>
-                        <input type="text" class="" id="username" placeholder="username...">
-                        <button onclick="search_acc()" class="btn btn-primary">search</button>
-                    </div>
-                </div> -->
+              
                 <input type="text" hidden value="" id="limit_day_pricing">
                 <div class="col-12 v-data-table__wrapper" >
                     <table id="table_data" class="width_table_300 tablemanager text_center table_section table table-striped table-sm"
@@ -164,8 +155,7 @@
                                 <th>Tổng nạp</th>
                                 <th>Tổng thưởng</th>
                                 <th style="width:15%" id="month"></th>
-                                <!-- <th>SDT</th>
-                                <th>ĐC</th> -->
+                               
                                 <th>Ngày Tạo<br><span style="font-size: 10px;">(mm/dd/yyyy)</span></th>
                                 <th>Hạn ngày</th>
                                 <th class="disableFilterBy">Thao tác</th>
@@ -175,42 +165,15 @@
 
                         </tbody>
                     </table>
-                    <!-- <div class="modal fade " id="search_table" data-backdrop="static" data-keyboard="false"
-                        tabindex="-1" aria-labelledby="search_table" aria-hidden="true">
-                        <table id="search_table" class="tablemanager text_center table table-striped table_section table-sm"
-                            cellspacing="0" width="100%">
-                            <thead>
-                                <tr>
-                                    <th>stt</th>
-                                    <th>Username</th>
-                                    <th>Tổng nạp</th>
-                                    <th>Tổng thưởng</th>
-                                    <th id="month"></th>
-                                    <th>Tên</th>
-                                    <th>SDT</th>
-                                    <th>ĐC</th>
-                                    <th>hạn ngày</th>
-
-                                    <th class="disableFilterBy">Thao tác</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-
-                        </table>
-                    </div> -->
-                   
-
-                    <!-- /////////////////////// -->
+                    
                 </div>
                 <div class="pagination " id="paginate"></div>
-                <!-- ////////////////////// -->
+              
 
             </div>
         </div>
-    </section>
-    <div id="toast"> 
+    </section> -->
+    <div id="toast">
     </div>
     <div class="modal fade" id="user_details" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="user_details" aria-hidden="true">
@@ -329,14 +292,16 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <span class="">Thay đổi số dư : </span><br>
-                        <select style="height: 30px;" class="form-select" id="edit_money" aria-label="Default select example">
+                        <select style="height: 30px;" class="form-select" id="edit_money"
+                            aria-label="Default select example">
                             <option selected value="0">--Trạng Thái--</option>
                             <option value="1">Cộng Tiền</option>
                             <option value="2">Trừ tiền</option>
                             <!-- <option value="3">Three</option> -->
                         </select>
                         <div>
-                            <input class="width120" type="number" style="width: 150px;" id="_money" placeholder="money..">
+                            <input class="width120" type="number" style="width: 150px;" id="_money"
+                                placeholder="money..">
                         </div>
                         <div id="save_edit_money">
                             <!-- <button type="button" style="height: 30px;" class="btn btn-primary" onclick=""
@@ -366,6 +331,275 @@
             </div>
         </div>
     </div>
+
+    <div class="horizontalMenucontainer">
+
+        <div id="global-loader" style="display: none;">
+
+        </div>
+
+
+        <div class="page">
+            <div>
+
+                <div style="background-color: #2a2e3f !important;border-bottom: 1px solid #383d52;box-shadow: 0 0 10px rgb(20 28 43 / 80%);"
+                    class="main-header sticky nav nav-item hor-header" style="margin-bottom: -63px;">
+                    <div class="main-container container">
+                        <div class="main-header-left ">
+                            <div class="responsive-logo">
+                                <a href="#" class="header-logo" style="max-width: 100px;max-height: 60px;">
+                                    <span id="img_logo"><img src="../img/1657506390119.jpg" width="100%" height="100%"
+                                            alt="" srcset=""></span>
+                                </a>
+                            </div>
+                            <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
+                                <button id="menu_admin_mobile" class="btn" onclick="open_menu_admin_mobile()"><i
+                                        style="color: #fff;" class="fa fa-bars"></i></button>
+                            </div>
+                            <div class="logo-horizontal" style="max-width: 100px;max-height: 60px;">
+                                <a href="#" class="header-logo">
+                                    <span id="img_logo"><img src="../img/1657506390119.jpg" width="100%" height="100%"
+                                            alt="" srcset=""></span>
+                                </a>
+                            </div>
+                            <div style="margin-bottom: 0px;"
+                                class="main-header-center ms-4 d-sm-none d-md-none d-lg-block form-group">
+                                <input
+                                    style="background-color: #2a2e3f !important;border: 1px solid #383d52;width: 280px;"
+                                    class="form-control" placeholder="Nhập từ khóa tìm kiếm..." type="search">
+                                <button style="background-color: #2a2e3f !important;border: 1px solid #383d52;"
+                                    class="btn"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                        <div class="main-header-right">
+                            <div class="dropdown">
+                                <div class=" dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <img class="margin-top_avar_ad" style="border-radius: 60%;" width="40px"
+                                        height="40px" src="../img/avatar.png" alt="">
+                                </div>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
+                                            aria-hidden="true"></i>
+                                        Tài Khoảng</a>
+                                    <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
+                                            aria-hidden="true"></i>Đăng xuất</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jumps-prevent" style="padding-top: 63px;"></div>
+
+
+                <div class="sticky" style="margin-bottom: -63px;">
+                    <aside style="background-color: #2a2e3f !important;box-shadow: 0 0 10px rgb(20 28 43 / 80%);"
+                        class="app-sidebar ps horizontal-main">
+                        <div class="main-sidebar-header active">
+
+                        </div>
+                        <div class="main-sidemenu container">
+                            <div class="slide-left disabled d-none" id="slide-left"><svg
+                                    xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24"
+                                    viewBox="0 0 24 24">
+                                    <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z">
+                                    </path>
+                                </svg></div>
+                            <div class="d_fl">
+                                <ul class="side-menu" id="main_menu">
+                                    <li class="side-item side-item-category">Main</li>
+                                </ul>
+                                <ul class="side-menu">
+                                    <li class="slide">
+                                        <a class="side-menu__item" data-bs-toggle="slide" onclick="dick_play_block()"
+                                            href="#">
+                                            <img src="../img/banking.svg" alt="" class="side-menu__icon">
+                                            <span class="side-menu__label">Quản Lý Tiền <i class="fa fa-angle-down"
+                                                    aria-hidden="true"></i></span>
+                                        </a>
+                                        <ul id="menu_money" class="slide-menu">
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul class="side-menu">
+                                    <li class="slide">
+                                        <a class="side-menu__item" data-bs-toggle="slide" onclick="dick_play_block__()"
+                                            href="#">
+                                            <img src="../img/gear.svg" alt="" class="side-menu__icon">
+                                            <span class="side-menu__label">Quản Lý Chung <i class="fa fa-angle-down"
+                                                    aria-hidden="true"></i></span>
+                                        </a>
+                                        <ul id="menu_" class="slide-menu">
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                        </div>
+                    </aside>
+                </div>
+                <div class="jumps-prevent" style="padding-top: 63px;"></div>
+
+            </div>
+            <div class="main-content horizontal-content">
+
+                <div class="main-container container">
+
+                    <div class="breadcrumb-header justify-content-between">
+                        <div class="left-content">
+                            <span style="color: #fff;font-size: 21px;" class="main-content-title mg-b-0 mg-b-lg-1">Danh
+                                sách thành viên</span>
+                        </div>
+                        <div class="justify-content-center mt-2">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item tx-15"><a style="color: #fff !important;" href="#">M2v.me</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page"
+                                    style="color: #38acb3 !important;">Danh sách thành viên</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div style="background-color: black !important;border: 0.1px solid #383d52 !important;"
+                                class="card bg-info-gradient text-white ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="icon1 mt-2 text-center">
+                                                <i class="fas fa-user-circle tx-40"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mt-0 text-center">
+                                                <span class="text-white">Tổng thành viên</span>
+                                                <h2 class="text-white mb-0" id="total_user">0</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="background-color: black !important;border: 0.1px solid #383d52 !important;"
+                                class="card bg-info-gradient text-white ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="icon1 mt-2 text-center">
+                                                <i class="fas fa-user-circle tx-40"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mt-0 text-center">
+                                                <span class="text-white">Tổng cộng tác viên</span>
+                                                <h2 class="text-white mb-0" id="total_sub_agency">0</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="background-color: black !important;border: 0.1px solid #383d52 !important;"
+                                class="card bg-info-gradient text-white ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="icon1 mt-2 text-center">
+                                                <i class="fas fa-user-circle tx-40"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mt-0 text-center">
+                                                <span class="text-white">Tổng đại lý</span>
+                                                <h2 class="text-white mb-0" id="total_agency">0</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background-color: #2a2e3f !important; color: #fff;margin-bottom: 30px;"
+                            class="card">
+                            <div class="card-body iconfont text-start">
+                                <div class="d-flex justify-content-between">
+                                    <h4 class="card-title mb-3">Danh sách thành viên</h4>
+                                </div>
+                                <div class="text-center mb-3">
+                                    <div class="margin-bottom"><button onclick="open_modal(0)"
+                                            class=" btn btn-primary add_new">Tạo User</button></div>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <input type="text"
+                                        style="background-color: #2a2e3f !important;border: 1px solid #383d52 !important;"
+                                        class="form-control"
+                                        placeholder="Nhập id, fullname, email, username tìm kiếm ..." name="search"
+                                        value="" id="username">
+                                    <button onclick="search_acc()" class="btn btn-primary" type="submit"><i
+                                            class="fa fa-search"></i>
+                                        Tìm kiếm</button>
+                                </div>
+
+                                <input type="text" hidden value="" id="limit_day_pricing">
+                                <div class="col-12 v-data-table__wrapper">
+                                    <table style="border: 1px solid  #383d52 !important;" id="table_data"
+                                        class="width_table_350 tablemanager text_center table_section table table-striped table-sm"
+                                        cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr class="table_admin">
+                                                <th style="background-color: #2a2e3f !important;width:10%;">stt
+                                                </th>
+                                                <th style="background-color: #2a2e3f !important;width:25%;">Email</th>
+                                                <th style="background-color: #2a2e3f !important;">Tổng <br>
+                                                    nạp</th>
+                                                <th style="background-color: #2a2e3f !important;width:12%;">Tổng <br>
+                                                    thưởng</th>
+                                                <th style="background-color: #2a2e3f !important; width:15%;" id="month">
+                                                </th>
+
+                                                <th style="background-color: #2a2e3f !important;width:13%;">Ngày
+                                                    Tạo<br><span style="font-size: 10px;">(mm/dd/yyyy)</span>
+                                                </th>
+                                                <th style="background-color: #2a2e3f !important;">Hạn <br>
+                                                    ngày</th>
+                                                <th style="background-color: #2a2e3f !important;"
+                                                    class="disableFilterBy">Thao <br> tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="pagination " id="paginate"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="background-color: #2a2e3f;border: 1px solid #2a2e3f;color: #fff;" class="main-footer">
+                <div class="col-md-12 col-sm-12 text-center">
+                    <div class="container-fluid pd-t-0-f ht-100p">
+                        2022 — Powered by <a href="#" class="text-primary">Arthur Company</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
     <script src="../js/user_manager.js"></script>
@@ -373,6 +607,7 @@
     <script src="../js/permission.js"></script>
     <script src="../js/pricing_manager.js"></script>
     <script src="../js/money_manager.js"></script>
+    <script src="../js/menu_admin_mobile.js"></script>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

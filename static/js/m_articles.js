@@ -27,7 +27,7 @@ async function init_articles(){
     if (dt) {
         dt.forEach(item => {
             if(item.video){
-                main_table_video.innerHTML +=` <tr>
+                main_table_video.innerHTML +=` <tr class="table_admin">
                 <td>${dt.indexOf(item) + 1}</td>         
                 <td maxlength="20">${item.content_video}</td>
                 <td><span>${item.video}</span></td>
@@ -39,7 +39,7 @@ async function init_articles(){
             </tr>`;
             }else{
                 main_table.innerHTML += `
-                <tr>
+                <tr class="table_admin">
                     <td>${dt.indexOf(item) + 1}</td>    
                     <td>${item.name}</td>       
                     <td maxlength="20">${item.headline}</td>

@@ -75,7 +75,7 @@
         if (data) {
             data.forEach(f => {
                 main_table.innerHTML += `
-                <tr>
+                <tr class="border_table_ad" style=" color: #fff;">
                     <td>${get_format_VND(f.all_money) || 0} VNĐ</td>
                     <td>${get_format_VND(f.all_bonus)||0} VNĐ </td>
                     <td>${get_format_VND(f.all_withdraw_money)||0} VNĐ</td>
@@ -102,13 +102,13 @@
         var data = await get_allmoney_todaymoney();
         if (data) {
             data.forEach(f => {
-                document.getElementById('total_money_user').innerHTML = `<h5>${get_format_VND(f.all_current_money)} VNĐ</h5>`
-                document.getElementById('total_topup').innerHTML = `<h5>${get_format_VND(f.all_money)} VNĐ</h5>`
-                document.getElementById('total_use_money').innerHTML = `<h5>${get_format_VND(f.all_use_money)} VNĐ</h5>`
+                document.getElementById('total_money_user').innerHTML = `${get_format_VND(f.all_current_money)} VNĐ`
+                document.getElementById('total_topup').innerHTML = `${get_format_VND(f.all_money)} VNĐ`
+                document.getElementById('total_use_money').innerHTML = `${get_format_VND(f.all_use_money)} VNĐ`
 
-                document.getElementById('today_user').innerHTML = `<h5>${(f.today_user)} User</h5>`
-                document.getElementById('today_topup').innerHTML = `<h5>${get_format_VND(f.today_topup)} VNĐ</h5>`
-                document.getElementById('today_use_money').innerHTML = `<h5>${get_format_VND(f.today_use_money)} VNĐ</h5>`
+                document.getElementById('today_user').innerHTML = `${(f.today_user)} User`
+                document.getElementById('today_topup').innerHTML = `${get_format_VND(f.today_topup)} VNĐ`
+                document.getElementById('today_use_money').innerHTML = `${get_format_VND(f.today_use_money)} VNĐ`
             })
         }
     }

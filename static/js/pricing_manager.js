@@ -73,7 +73,7 @@ async function init_pricing() {
     if (dt) {
         dt.forEach(item => {
             main_table.innerHTML += `
-            <tr>
+            <tr class="table_admin">
                 <td>${dt.indexOf(item) + 1}</td>    
                 <td>${item.name}</td>     
                 <td>${get_format_VND(item.price)}</td>    
@@ -89,12 +89,12 @@ async function init_pricing() {
         `;
         });
         // smoothy_ui_table();
-        if(Number(dt.length) != 0 ){
-            showing.innerHTML = "Showing 1 to "+ dt.length + " of " + dt.length + " entries";
-        }
-        else{
-            showing.innerHTML = "";
-        }
+        // if(Number(dt.length) != 0 ){
+        //     showing.innerHTML = "Showing 1 to "+ dt.length + " of " + dt.length + " entries";
+        // }
+        // else{
+        //     showing.innerHTML = "";
+        // }
     }
 }
 async function open_modal_pricing(params) {

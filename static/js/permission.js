@@ -79,9 +79,6 @@ async function init_menu() {
     var menu_ = document.getElementById('menu_money');
     var menu_general = document.getElementById('menu_');
     var menu_user = document.getElementById('main_menu__');
-    if(menu){
-        menu.innerHTML=""
-    }
     var cr_url = location.href;
     var cr_url_menu = location.pathname;
     // alert(cr_url_menu)
@@ -128,20 +125,33 @@ async function init_menu() {
                    </a> `;
                     }
                     if (menu) {
-                        menu.innerHTML += `<a style=" color: #fff ;" class="nav-link font-weight-bold text_black_mobie active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>`;
+                        menu.innerHTML += `
+                        <li class="slide">
+                                    <a class="side-menu__item"aria-current="page" href="/home/${item.action}" data-lang="${item.name}">
+                                        <img src="${item.icon}" alt="" class="side-menu__icon"> <span
+                                            class="side-menu__label">${item.name}</span>
+                                    </a>
+                        </li>
+                        `
+                        // menu.innerHTML += `<a style=" color: #fff ;padding: 1rem 1rem !important" class="nav-link font-weight-bold text_black_mobie active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>`;
                     }
 
                 }
 
                 if (item.type === 1 && menu_) {
-                    menu_.innerHTML += `
-                        <a style="background-color: #2a2e3f; color: #ffff;" class="nav-link font-weight-bold dropdown-item active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>
-                    `;
+                    menu_.innerHTML +=`
+                    <li><a class="slide-item" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">
+                    ${item.name}</a></li>
+                    `
+                    // menu_.innerHTML += `
+                    //     <a style="background-color: #2a2e3f; color: #ffff;" class="nav-link font-weight-bold dropdown-item active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>
+                    // `;
                     //     // <a class="dropdown-item" href="#">Action</a>
                 }
                 if (item.type === 2 && menu_general) {
                     menu_general.innerHTML += `
-                        <a style="background-color: #2a2e3f; color: #ffff;" class="nav-link font-weight-bold dropdown-item active title-nav${cr_url.includes(item.action) ? " selected" : ""}" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">${item.name}</a>
+                    <li><a class="slide-item" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">
+                    ${item.name}</a></li>
                     `;
                     //     // <a class="dropdown-item" href="#">Action</a>
                 }
