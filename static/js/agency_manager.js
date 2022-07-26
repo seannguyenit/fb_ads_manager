@@ -22,7 +22,7 @@ async function init_agency_all() {
     located.innerHTML = '';
     if (rs) {
         rs.forEach(f => {
-            located.innerHTML += `<tr>
+            located.innerHTML += `<tr class="table_admin">
                 <td>${rs.indexOf(f) + 1}</td>
                 <td>${f.username}</td>
                 <td>${get_format_VND(f.total_user || 0)}</td>
@@ -33,11 +33,11 @@ async function init_agency_all() {
             </tr>`
         })
     }
-    if(Number(rs.length) != 0 ){
-        document.getElementById('showing').innerHTML = "Showing 1 to "+ rs.length + " of " + rs.length + " entries";
-    }else{
-        document.getElementById('showing').innerHTML = "";
-    }
+    // if(Number(rs.length) != 0 ){
+    //     document.getElementById('showing').innerHTML = "Showing 1 to "+ rs.length + " of " + rs.length + " entries";
+    // }else{
+    //     document.getElementById('showing').innerHTML = "";
+    // }
 }
 
 async function init_agency_reg() {
@@ -55,7 +55,7 @@ async function init_agency_reg() {
     located.innerHTML = '';
     if (rs) {
         rs.forEach(f => {
-            located.innerHTML += `<tr>
+            located.innerHTML += `<tr class="table_admin">
                     <td>${rs.indexOf(f) + 1}</td>
                     <td>${f.username}</td>
                     <td>${get_format_VND(f.money || 0)}</td>
@@ -68,11 +68,11 @@ async function init_agency_reg() {
                 </tr>`
         })
     }
-    if(Number(rs.length) != 0 ){
-        document.getElementById('showing1').innerHTML = "Showing 1 to "+ rs.length + " of " + rs.length + " entries";
-    }else{
-        document.getElementById('showing1').innerHTML = "";
-    }
+    // if(Number(rs.length) != 0 ){
+    //     document.getElementById('showing1').innerHTML = "Showing 1 to "+ rs.length + " of " + rs.length + " entries";
+    // }else{
+    //     document.getElementById('showing1').innerHTML = "";
+    // }
 }
 
 async function agency_approved(id) {

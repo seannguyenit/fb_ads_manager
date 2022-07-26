@@ -22,9 +22,11 @@ async function init_logo(){
  if (dt) {
     dt.forEach(item => {
         if(Number(item.active) === 1){
-            var action = ` <button onclick="edit_active(${item.id},${item.active})">On</button>`
+            var action = ` <button style="background-color: gray;padding: 5px;
+            margin-top: 10px;" onclick="edit_active(${item.id},${item.active})">On</button>`
         }else{
-            var action = ` <button onclick="edit_active(${item.id},${item.active})">Off</button>`
+            var action = ` <button style="background-color: gray;padding: 5px;
+            margin-top: 10px;" onclick="edit_active(${item.id},${item.active})">Off</button>`
         }
         if(Number(item.type) === 1 ){
             var type = `<span>Main Logo</span>`
@@ -36,7 +38,7 @@ async function init_logo(){
         }
             
         main_table.innerHTML += `
-            <tr>
+            <tr class="table_admin">
                 <td>${dt.indexOf(item) + 1}</td>    
                 <td>${item.logo_name}</td> 
                 <td class="text_center"> <img src="${item.logo_img}" height="100vw" width="200vw" alt="logo tool264.com" /></td> 

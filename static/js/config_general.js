@@ -40,37 +40,43 @@ async function open_data_admin_mbbank() {
            
             if(Number(f.type) === 1){
                 if(Number(f.action) === 1){
-                    var action = ` <button onclick="edit_active(${f.id},${f.action})">On</button>`
+                    var action = ` <button style="background-color: #383d52;padding: 5px;
+                    margin-top: 10px;" onclick="edit_active(${f.id},${f.action})">On</button>`
                     document.getElementById('token_mbbank').value = `${f.token}`
                     document.getElementById('account_mbbank').value = `${f.account}`
                     document.getElementById('pass_mbbank').value = `${f.password}`
                     document.getElementById('action_mb').innerHTML =`${action}`   
                 }else{
-                    var action = ` <button onclick="edit_active(${f.id},${f.action})">Off</button>`
+                    var action = ` <button style="background-color: #383d52 ;   padding: 5px;
+                    margin-top: 10px;" onclick="edit_active(${f.id},${f.action})">Off</button>`
                     document.getElementById('action_mb').innerHTML =`${action}`   
                 }
                                 
             }
             if(Number(f.type) === 2){
                 if(Number(f.action) === 1){
-                    var action = ` <button onclick="edit_active(${f.id},${f.action})">On</button>`
+                    var action = ` <button style="background-color: #383d52;    padding: 5px;
+                    margin-top: 10px;" onclick="edit_active(${f.id},${f.action})">On</button>`
                     document.getElementById('token_acbbank').value = `${f.token}`
                     document.getElementById('account_acbbank').value = `${f.account}`
                     document.getElementById('pass_acbbank').value = `${f.password}`
                     document.getElementById('action_acb').innerHTML =`${action}`
                 }else{
-                    var action = ` <button onclick="edit_active(${f.id},${f.action})">Off</button>`
+                    var action = ` <button style="background-color: #383d52;    padding: 5px;
+                    margin-top: 10px;" onclick="edit_active(${f.id},${f.action})">Off</button>`
                     document.getElementById('action_acb').innerHTML =`${action}`
                 }
                
             }
             if(Number(f.type) === 3){
                 if(Number(f.action) === 1){
-                    var action = ` <button onclick="edit_active(${f.id},${f.action})">On</button>`
+                    var action = ` <button style="background-color: #383d52;    padding: 5px;
+                    margin-top: 10px;" onclick="edit_active(${f.id},${f.action})">On</button>`
                     document.getElementById('token_momo').value = `${f.token}`
                     document.getElementById('action_momo').innerHTML =`${action}`
                 }else{
-                    var action = ` <button onclick="edit_active(${f.id},${f.action})">Off</button>`
+                    var action = ` <button style="background-color: #383d52;    padding: 5px;
+                    margin-top: 10px;" onclick="edit_active(${f.id},${f.action})">Off</button>`
                     document.getElementById('action_momo').innerHTML =`${action}`
                 }
                
