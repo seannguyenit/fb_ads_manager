@@ -1,6 +1,5 @@
 'use strict'
 get_user_limit();
-update_history();
 // init_all_money();
 cr_month();
 
@@ -219,8 +218,7 @@ async function acc_save(url, data, meth) {
         });
 }
 
-async function update_history() {
-    var data = await acc_get_all();
+async function update_history(data) {
     var id = 0;
     if (data) {
         data.forEach(item => {
@@ -230,12 +228,12 @@ async function update_history() {
                 if (item.limit_time) {
                     const _date = new Date(item.limit_time);
                     _date.setDate(_date.getDate() + item.total_day);
-                     date = new Date(_date).getTime();
-                }else{
-                     date = new Date(item.limit_time_).getTime();
+                    date = new Date(_date).getTime();
+                } else {
+                    date = new Date(item.limit_time_).getTime();
                 }
             }
-            else{
+            else {
                 date = new Date(item.limit_time).getTime();
             }
             // if(item.limit_time_){
@@ -243,7 +241,7 @@ async function update_history() {
             // }else{
             //     date = new Date(item.limit_time).getTime();
             // }
-         
+
             if (Number(date) != 0 && Number(date) < Number(today)) {
                 id = item.id;
                 //  alert(id);
@@ -447,12 +445,12 @@ async function save_() {
     var url = `/api/accounts`;
     var meth = 'POST';
     const formData = new FormData();
-    var data = { username: username, pass: pass, real_name: real_name, phone: '0', add: 'none'};
+    var data = { username: username, pass: pass, real_name: real_name, phone: '0', add: 'none' };
 
     if (id != 0) {
         meth = 'PUT';
         url = `/api/accounts/${id}`;
-    }else{
+    } else {
         data.created_at = created_at;
     }
 
@@ -473,7 +471,7 @@ async function search_acc() {
     var username = $('#username').val();
     if (username.length == 0) {
         // var username = $('#username').val();
-        var mess ='Bạn hãy nhập tên muốn tìm !!';
+        var mess = 'Bạn hãy nhập tên muốn tìm !!';
         toast_error(mess)
         // alert('Bạn hãy nhập tên muốn tìm !!');
         return;
@@ -622,47 +620,81 @@ async function init_users(cr_page, user_number_page) {
     ta.innerHTML = '';
     tsa.innerHTML = '';
     // total_agency.innerHTML = '';
-    var user_list = await acc_get_all();
-    var agency_list = await acc_get_agency();
-    var sub_agency_list = await acc_get_sub_agency();
-    // var sub_agency_list = await acc_get_sub_agency();
-    if (user_list) {
-        var user = Object.keys(user_list).length;
-        total_user.innerHTML = `<h5>${user}</h5>`;
+    acc_get_all().then((user_list) => {
+        if (user_list) {
+            var user = Object.keys(user_list).length;
+            total_user.innerHTML = `<h5>${user}</h5>`;
 
-    }
-    if (agency_list) {
-        var agency = Object.keys(agency_list).length;
-        total_agency.innerHTML = `<h5>${agency}</h5>`;
-    }
-    if (sub_agency_list) {
-        var sub_agency = Object.keys(sub_agency_list).length;
-        total_sub_agency.innerHTML = `<h5>${sub_agency}</h5>`;
-    }
-    var dt = await user_limit(cr_page, user_number_page);
-    if (dt) {
-        dt.forEach(item => {
-            var today = new Date().getTime();
-            // var date = new Date(item.limit_time).getTime();
+            //27-07-2022 Sean
+            //chuyen tu goi chung tu dau qua day de han che goi sever nhiu lan
+            update_history(user_list);
+        }
+    });
+    acc_get_agency().then((agency_list) => {
+        if (agency_list) {
+            var agency = Object.keys(agency_list).length;
+            total_agency.innerHTML = `<h5>${agency}</h5>`;
+        }
+    });
+    acc_get_sub_agency().then((sub_agency_list) => {
+        if (sub_agency_list) {
+            var sub_agency = Object.keys(sub_agency_list).length;
+            total_sub_agency.innerHTML = `<h5>${sub_agency}</h5>`;
+        }
+    });
 
-            if (item.total_day) {
-                if (item.limit_time) {
-                    const _date = new Date(item.limit_time);
-                    _date.setDate(_date.getDate() + item.total_day);
-                    var date = new Date(_date).getTime();
-                    var limit_date = new Date(Number(date || 0)).toLocaleString();
+    var dt = await user_limit(cr_page, user_number_page).then(dt => {
+        if (dt) {
+            dt.forEach(item => {
+                var today = new Date().getTime();
+                // var date = new Date(item.limit_time).getTime();
 
-                    if (Number(date) > Number(today)) {
+                if (item.total_day) {
+                    if (item.limit_time) {
+                        const _date = new Date(item.limit_time);
+                        _date.setDate(_date.getDate() + item.total_day);
+                        var date = new Date(_date).getTime();
                         var limit_date = new Date(Number(date || 0)).toLocaleString();
-                    } else if (Number(date) != 0) {
-                        var limit_date = new Date(Number(date || 0)).toLocaleString() + "(hết hạn)";
-                        // await history_update(item.id);
+
+                        if (Number(date) > Number(today)) {
+                            var limit_date = new Date(Number(date || 0)).toLocaleString();
+                        } else if (Number(date) != 0) {
+                            var limit_date = new Date(Number(date || 0)).toLocaleString() + "(hết hạn)";
+                            // await history_update(item.id);
+                        } else {
+                            var limit_date = "";
+                        }
+
+                        document.getElementById('table_data').querySelector('tbody').innerHTML += `
+                        <tr class="table_admin">
+                            <td>${dt.indexOf(item) + 1}</td>    
+                            <td>${item.username}</td> 
+                            <td>${get_format_VND(item.money || '')}</td> 
+                            <td>${get_format_VND(item.bonus || '')}</td> 
+                            <td>${get_format_VND(item.money_month || '')}</td>   
+                            <td>${format_time(item.created_at) || ''}</td>  
+                            <td>${limit_date}</td>
+                            <td>
+                                ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-briefcase" aria-hidden="true"></i>')}
+                                ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-gift" aria-hidden="true"></i>')}
+                                ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
+                                ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
+                            </td>
+                        </tr>
+                    `;
                     } else {
-                        var limit_date = "";
-                    }
-                  
-                    document.getElementById('table_data').querySelector('tbody').innerHTML += `
-                    <tr class="table_admin">
+                        var date = new Date(item.limit_time_).getTime();
+                        // date_number = date.getTime();
+                        if (Number(date) > Number(today)) {
+                            var limit_date = format_time(item.limit_time_);
+                        } else if (Number(date) != 0) {
+                            var limit_date = format_time(item.limit_time_) + "(hết hạn)";
+                            // await history_update(item.id);
+                        } else {
+                            var limit_date = "";
+                        }
+                        document.getElementById('table_data').querySelector('tbody').innerHTML += `
+                    <tr  class="table_admin">
                         <td>${dt.indexOf(item) + 1}</td>    
                         <td>${item.username}</td> 
                         <td>${get_format_VND(item.money || '')}</td> 
@@ -678,14 +710,14 @@ async function init_users(cr_page, user_number_page) {
                         </td>
                     </tr>
                 `;
+                    }
+
                 } else {
-                    var date = new Date(item.limit_time_).getTime();
-                    // date_number = date.getTime();
+                    var date = new Date(item.limit_time).getTime();
                     if (Number(date) > Number(today)) {
-                        var limit_date = format_time(item.limit_time_);
+                        var limit_date = format_time(item.limit_time);
                     } else if (Number(date) != 0) {
-                        var limit_date = format_time(item.limit_time_) + "(hết hạn)";
-                        // await history_update(item.id);
+                        var limit_date = format_time(item.limit_time) + "(hết hạn)";
                     } else {
                         var limit_date = "";
                     }
@@ -707,66 +739,9 @@ async function init_users(cr_page, user_number_page) {
                 </tr>
             `;
                 }
-
-            } else {
-                var date = new Date(item.limit_time).getTime();
-                // date_number = date.getTime();
-                if (Number(date) > Number(today)) {
-                    var limit_date = format_time(item.limit_time);
-                } else if (Number(date) != 0) {
-                    var limit_date = format_time(item.limit_time) + "(hết hạn)";
-                    // await history_update(item.id);
-                } else {
-                    var limit_date = "";
-                }
-                document.getElementById('table_data').querySelector('tbody').innerHTML += `
-            <tr  class="table_admin">
-                <td>${dt.indexOf(item) + 1}</td>    
-                <td>${item.username}</td> 
-                <td>${get_format_VND(item.money || '')}</td> 
-                <td>${get_format_VND(item.bonus || '')}</td> 
-                <td>${get_format_VND(item.money_month || '')}</td>   
-                <td>${format_time(item.created_at) || ''}</td>  
-                <td>${limit_date}</td>
-                <td>
-                    ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-briefcase" aria-hidden="true"></i>')}
-                    ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-gift" aria-hidden="true"></i>')}
-                    ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
-                    ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
-                </td>
-            </tr>
-        `;
-            }
-            // date_number = date.getTime();
-            //     if (Number(date) > Number(today)) {
-            //         var limit_date = format_time(item.limit_time);
-            //     } else if (Number(date) != 0) {
-            //         var limit_date = format_time(item.limit_time) + "(hết hạn)";
-            //         // await history_update(item.id);
-            //     } else {
-            //         var limit_date = "";
-            //     }
-            //     document.getElementById('table_data').querySelector('tbody').innerHTML += `
-            //     <tr>
-            //         <td>${dt.indexOf(item) + 1}</td>    
-            //         <td>${item.username}</td> 
-            //         <td>${new3}</td> 
-            //         <td>${get_format_VND(item.money||'')}</td> 
-            //         <td>${get_format_VND(item.bonus||'')}</td> 
-            //         <td>${get_format_VND(item.money_month||'')}</td>   
-            //         <td>${format_time(item.created_at) || ''}</td>  
-            //         <td>${limit_date}</td>
-            //         <td>
-            //             ${button_action_tool(item.id, 'init_pricing_history', ['btn', 'btn-sm', 'btn-primary'],'<i class="fa fa-briefcase" aria-hidden="true"></i>')}
-            //             ${button_action_tool(item.id, 'init_money_history', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-gift" aria-hidden="true"></i>')}
-            //             ${button_action_tool(item.id, 'open_modal', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-history" aria-hidden="true"></i>')}
-            //             ${button_action_tool(item.id, 'del_acc', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
-            //         </td>
-            //     </tr>
-            // `;
-        });
-    }
-    // paginate(each_page);
+            });
+        }
+    });
 }
 
 /// Cearte  Page Paginate
@@ -815,20 +790,20 @@ async function pricing_get_all() {
 // save wrap_pricing 
 async function save_pricing_(id) {
     var pricing_id = document.getElementById("wrap_pricing").value;
-    var limit_day = 0 ;
-    var level = 0 ;
-    var limit_fb = 0 ;
-    var limit_request = 0 ;
+    var limit_day = 0;
+    var level = 0;
+    var limit_fb = 0;
+    var limit_request = 0;
     if (Number(pricing_id) === 0) {
-        var mess ="Hãy chọn gói mà bạn muốn mua";
+        var mess = "Hãy chọn gói mà bạn muốn mua";
         toast_error(mess)
         // alert("Hãy chọn gói mà bạn muốn mua");
         return;
     }
     var data_pricing = await pricing_get_all();
-    if(data_pricing){
+    if (data_pricing) {
         data_pricing.forEach(item => {
-            if(Number(item.id) === Number(pricing_id)){
+            if (Number(item.id) === Number(pricing_id)) {
                 limit_day = item.limit_day;
                 level = item.level;
                 limit_fb = item.limit_fb;
@@ -836,10 +811,10 @@ async function save_pricing_(id) {
             }
         })
     }
-    
+
     var user_id = id;
     var pricing_active = 1;
-    var data = { user_id: user_id, pricing_id: pricing_id, pricing_active: pricing_active,limit_day:limit_day,level:level,limit_fb:limit_fb,limit_request:limit_request};
+    var data = { user_id: user_id, pricing_id: pricing_id, pricing_active: pricing_active, limit_day: limit_day, level: level, limit_fb: limit_fb, limit_request: limit_request };
     var url = `/api/pricing_insert_wrap`;
     var meth = 'POST';
 
@@ -874,13 +849,13 @@ async function save_edit_money(id) {
     // }
     var money = document.getElementById("_money").value;
     if (Number(money) === 0 || Number(money) === null) {
-        var mess ="Hãy nhận số tiền bạn muốn";
+        var mess = "Hãy nhận số tiền bạn muốn";
         toast_error(mess)
         // alert("Hãy nhận số tiền bạn muốn");
         return;
     }
     if (Number(edit_money) === 0) {
-        var mess ="Hãy nhận số tiền bạn muốn";
+        var mess = "Hãy nhận số tiền bạn muốn";
         toast_error(mess)
         // alert("Hãy chọn trạng thái bạn muốn muốn");
         return;
@@ -913,7 +888,7 @@ async function save_edit_money(id) {
         return;
     }
     if (rs.ok = 1) {
-        var mess ="thay đổi tiền thành công";
+        var mess = "thay đổi tiền thành công";
         toast_success(mess)
         // alert("thay đổi tiền thành công")
     }

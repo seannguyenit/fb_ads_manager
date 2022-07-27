@@ -1,6 +1,20 @@
 //smoothy_ui_table();
 
 
+init_page_();
+
+async function init_page_() {
+    var text = await get_img_loading();
+    var img = ""
+    if (text && text[0]) {
+        img = text[0].logo_img;
+    }
+    await Promise.all([
+        init_loading1(img),
+        init_loading2(img),
+    ]);
+}
+
 
 async function get_img_loading() {
     return await fetch(`/api/init_img_loading` /*, options */)
@@ -125,16 +139,7 @@ async function stop_loading() {
     document.getElementById('loading-element').style.display = "none";
 }
 
-init_loading1();
-async function init_loading1() {
-    var text = await get_img_loading();
-    var img = ""
-    if (text) {
-        text.forEach(f => {
-            img = f.logo_img
-        })
-
-    }
+async function init_loading1(img) {
     if (document.getElementById('loading')) {
         document.getElementById('loading').innerHTML += `<div class="absolute_load" id="loading-element1" style="display:none;"><img src="${img}" style="width: 50px;height: 50px;"/></div>`;
     }
@@ -150,16 +155,7 @@ async function stop_loading1() {
     document.getElementById('loading-element1').style.display = "none";
 }
 
-init_loading2();
-async function init_loading2() {
-    var text = await get_img_loading();
-    var img = ""
-    if (text) {
-        text.forEach(f => {
-            img = f.logo_img
-        })
-
-    }
+async function init_loading2(img) {
     if (document.getElementById('loading1')) {
         document.getElementById('loading1').innerHTML += `<div class="absolute_load" id="loading-element2" style="display:none;"><img src="${img}" style="width: 50px;height: 50px;"/></div>`;
     }

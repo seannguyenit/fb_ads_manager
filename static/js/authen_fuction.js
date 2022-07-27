@@ -14,7 +14,7 @@ function change_lang(lang) {
 
 async function init_logo() {
     var data_img = await get_img_login();
-    if(data_img){
+    if (data_img) {
         data_img.forEach(item => {
             if (document.getElementById('image_login')) {
                 document.getElementById('image_login').innerHTML = `<img src="${item.logo_img}" width="400px" alt="tool264.com entrance">`;
@@ -35,9 +35,9 @@ async function init_logo() {
             }
             if (document.getElementById('logo_login_center')) {
                 document.getElementById('logo_login_center').innerHTML = ` <img src="${item.logo_img}" height="97.17vw" alt="logo tool264.com" />`;
-            } 
-            if(document.getElementById('img_logo_admin')){
-                document.getElementById('img_logo_admin').innerHTML =` <a class="navbar-brand" href="/home/users"><img height="68.99px"
+            }
+            if (document.getElementById('img_logo_admin')) {
+                document.getElementById('img_logo_admin').innerHTML = ` <a class="navbar-brand" href="/home/users"><img height="68.99px"
                 src="${item.logo_img}" alt=""></a>`;
             }
         })
@@ -121,7 +121,7 @@ async function get_img_logo() {
 
 async function get_current_finance() {
     var cr_u = get_cr_user();
-    return await fetch(`/api/finance/${cr_u.id}` /*, options */)
+    var data = await fetch(`/api/finance/${cr_u.id}` /*, options */)
         .then((response) => response.json())
         .then((data) => {
             return data[0];
@@ -130,6 +130,11 @@ async function get_current_finance() {
             console.warn(error);
             return undefined;
         });
+    if (data.ok === 0) {
+        return null;
+    } else {
+        return data;
+    }
 }
 
 async function menu_get_current_menu() {
