@@ -34,7 +34,7 @@ async function init_logo() {
                 src="${item.logo_img}" alt=""></a>`;
             }
             if (document.getElementById('logo_login_center')) {
-                document.getElementById('logo_login_center').innerHTML = ` <img src="${item.logo_img}" height="97.17vw" alt="logo tool264.com" />`;
+                document.getElementById('logo_login_center').innerHTML = ` <img src="${item.logo_img}" width="100%" height="100%" alt="logo tool264.com" />`;
             }
             if (document.getElementById('img_logo_admin')) {
                 document.getElementById('img_logo_admin').innerHTML = ` <a class="navbar-brand" href="/home/users"><img height="68.99px"
