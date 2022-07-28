@@ -15,6 +15,7 @@ async function init_page() {
 function init_bank_topup() {
     var cr_user = get_cr_user();
     if (cr_user && cr_user.is_admin === 1) return;
+    if (window.location.href.includes('localhost')) return;
     insert_mb_bank();
     insert_acb_bank();
     insert_momo_bank();

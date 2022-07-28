@@ -180,9 +180,7 @@ async function set_combobox_data() {
             var mess = 'Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !'
             toast_error(mess)
             if (document.getElementById('error_token')) {
-                document.getElementById('error_token').innerHTML = `<div class="col-md-12 pd0 mt-2">  <div class="box_flex-wrap  col-md-12 ">
-                <div class="box-wrap  pd-t10 "><i style="width:20%" class="fa  fa-2x fa-exclamation-triangle" aria-hidden="true"></i></div> 
-                 <div style="width:80% !important" class="pd-t13 m_l_-7 pd0 box-wrap">Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !</div></div> </div>`;
+                document.getElementById('error_token').innerText = `Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !`;
             }
             // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
         }
@@ -194,9 +192,7 @@ async function set_combobox_data() {
         toast_error(mess)
         if (document.getElementById('error_token')) {
 
-            document.getElementById('error_token').innerHTML = ` <div class="col-md-12 pd0 mt-2">  <div class="box_flex-wrap  col-md-12 ">
-            <div class="box-wrap  pd-t10 "><i style="width:20%" class="fa  fa-2x fa-exclamation-triangle" aria-hidden="true"></i></div> 
-             <div style="width:80% !important" class="pd-t13 m_l_-7 pd0 box-wrap">Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !</div></div> </div>`;
+            document.getElementById('error_token').innerText = `Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !`;
         }
         // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
     }
@@ -211,19 +207,28 @@ async function load_lib_img(v1) {
     img_p.innerHTML = '';
     if (cr_video1 && cr_video1.thumbnails.data) {
         cr_video1.thumbnails.data.forEach(f => {
-            img_p.innerHTML += `<div onclick="change_img(this)" data-type="video1" class="img_item"><img src="${f.uri}" width="195" height="100%"/></div>`;
+            img_p.innerHTML += ` <div class="ma-3"><div onclick="change_img(this)" data-type="video1"><img src="${f.uri}" alt=""
+            style="border: 3px solid rgb(52, 152, 219); border-radius: 8px;"
+            width="195px"
+            height="250px"/></div></div>`;
         });
     }
     if (cr_video2 && cr_video2.thumbnails.data) {
         cr_video2.thumbnails.data.forEach(f => {
-            img_p.innerHTML += `<div onclick="change_img(this)" data-type="video2" class="img_item"><img src="${f.uri}" width="195" height="100%"/></div>`;
+            img_p.innerHTML += ` <div class="ma-3"><div onclick="change_img(this)" data-type="video2"><img src="${f.uri}" alt=""
+            style="border: 3px solid rgb(52, 152, 219); border-radius: 8px;"
+            width="195px"
+            height="250px"/></div></div>`;
         });
     }
 
     var lst_img = await get_img_acc_from_ad(get_token_ads(), tk);
     if (lst_img) {
         lst_img.forEach(im => {
-            img_p.innerHTML += `<div onclick="change_img(this)" data-type="image" class="img_item"><img src="${im.url}" width="195" height="100%"/></div>`;
+            img_p.innerHTML += ` <div class="ma-3"><div onclick="change_img(this)" data-type="image"><img src="${im.url}" alt=""
+            style="border: 3px solid rgb(52, 152, 219); border-radius: 8px;"
+            width="195px"
+            height="250px"/></div></div>`;
         });
     }
 

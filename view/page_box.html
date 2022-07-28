@@ -11,6 +11,9 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link href="../css/pricing/style.css" rel="stylesheet" type="text/css">
     <link href="../css/pricing/cssmore.css" rel="stylesheet" type="text/css">
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <link href="../css/style_table.css" rel="stylesheet" type="text/css">
+
     <link data-n-head="1" rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;display=swap">
     <link data-n-head="1" rel="stylesheet" type="text/css"
@@ -20,271 +23,6 @@
 </head>
 
 <body class="body-bg-custom custom_scroll">
-    <!-- Top Bar -->
-    <!-- <div class="header">
-        <div class="d-flex">
-            <div class="p-2 flex-grow-1 website" id="img_logo"><a class="navbar-brand" href="/home/page_box"><img
-                        src="../img/logo.jpg" alt=""></a></div>
-            <div style="padding-top:25px" class="d-flex">
-              
-                <div class="dropdown website " style="padding-top: 5px;padding-right: 10px;">
-                    <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <img style="border-radius: 50%;" width="40px" height="40px" src="../img/avatar_user.png" alt="">
-                    </div>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
-                                aria-hidden="true"></i> Tài Khoảng</a>
-                        <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
-                                aria-hidden="true"></i>Đăng xuất</a>
-                    </div>
-                </div>
-
-                <div style="padding-top:5px" class="website dropdown">
-                    <button class="btn btn_lang btn-secondary dropdown-toggle" type="button"
-                        id="dropdownMenuButton_lang" data-toggle="dropdown" data-lang="" aria-haspopup="true"
-                        aria-expanded="false">
-                        <span id="img_lang"> </span><span data-lang="Language"></span>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
-                                src="../img/usa.jpg" alt="">ENGLISH</a>
-                        <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
-                                src="../img/vn.jpg" alt="">VIỆT NAM</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- <nav class="navbar navbar-expand-sm navbar-light bg-main-color_none bg-main-color_clinet">
-        <div class="container-fluid with100">
-           
-            <button class="navbar-toggler focus border_none with20" type="button" data-toggle="collapse"
-                data-target="#main_menu_nav" aria-controls="main_menu_nav" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-toggler border_none text_center with75" id="img_logo">
-                <span id="img_logo_mobie">
-                    <a style="margin-left: -15px;" class="navbar-brand" href="/home/page_box" id=""><img width="100px"
-                            height="41px" src="../img/logo.jpg" alt=""></a>
-                </span>
-                
-                <div style="padding-top:20px;color: whitesmoke;" class="float_right dropdown">
-                    <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <i style="color: #000;" class="fa fa-1x fa-language" aria-hidden="true"></i>
-                    </div>
-                    <div class="dropdown-menu dropdown-menu-mobile" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" onclick="change_lang('en')" href="#"><img width="20%" height="20%"
-                                src="../img/usa.jpg" alt="">ENGLISH</a>
-                        <a class="dropdown-item" onclick="change_lang('vi')" href="#"><img width="20%" height="20%"
-                                src="../img/vn.jpg" alt="">VIỆT NAM</a>
-                    </div>
-                </div>
-
-                <div class="dropdown float_right" style="color: whitesmoke;padding-top: 20px; margin-right: 20px;">
-                    <div class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <i style="color: #000;" class="fa fa-1x fa-user-circle-o" aria-hidden="true"></i>
-                    </div>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
-                                aria-hidden="true"></i> Tài Khoảng</a>
-                        <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
-                                aria-hidden="true"></i>Đăng xuất</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="collapse navbar-collapse" id="main_menu_nav" style="justify-content: space-between; ">
-                <div id="main_menu" class="navbar-nav ">
-                </div>
-               
-                <div class="navbar-nav user-info">
-                    <div id="current_username" class="nav-link active" aria-current="page">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav> -->
-    <!-- <div class="content">
-        <section>
-            <div class="col-12">
-               
-                <div style="background-color: #fff;box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;" class="container font-weight-550 mt-3 mb-3 pd0">
-                    <div class="pd-t10 text_white" id="error_token"> </div>
-                    
-                    <div class="col-md-12 t1000_center pd0 d-flex flex-wrap mt-2">
-                        
-                        <div class="wth col-md-4 t1000_left m_b_5">
-                            <label for="list_pages" class="form-label" data-lang="Facebookuser"></label> <br>
-                            <select class="form-select p-2 w-100 login-form" id="list_fb" onchange="set_combobox_data()"
-                                required>
-                                <option selected disabled value="">Choose...</option>
-                                <option>...</option>
-                            </select>
-                            
-                        </div>
-                        <div class="wth col-md-4 t1000_left m_b_5">
-                            <label for="list_pages" class="form-label" data-lang="Page"></label> <br>
-                            <select class="form-select p-2 w-100 login-form" id="list_pages"
-                                onchange="change_page_selected()" required>
-                                <option selected disabled value="">Choose...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <div class="wth t1000_left col-md-4">
-                            <label for="list_pages" class="form-label" data-lang="Adsuser"></label> <br>
-                            <select class="form-select p-2 w-100 login-form" id="list_ads" required>
-                                <option selected disabled value="">Choose...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-12 pd0 d-flex flex-wrap mt-2">
-                        <div class="pt-4 col-md-6" >
-                                <div class="box_review  relative_load" id="loading">
-                                    <a onclick="select_file()"><img id="img_1" src="https://i.imgur.com/BDJYyka.jpg" /></a>
-                                    <div class="d-flex justify-content-between content">
-                                        <span data-select="review1">Like Page 👉 👉</span>
-                                        <button data-select="review" class="btn">Like page</button>
-                                        <input id="file-input" accept="video/mp4" type="file" name="name0"
-                                            style="display: none;" onchange="PreviewImage()" />
-                                    </div>
-                            </div>
-                            
-                        </div>
-                        <div class="pt-4 col-md-6" >
-                            <div class="box_review  relative_load"  id="loading1">
-                                <a onclick="select_file1()"><img id="img_2" src="https://i.imgur.com/BDJYyka.jpg" /></a>
-                                <div class="d-flex justify-content-between content">
-                                    <span data-select="review2">Like Page 👉 👉</span>
-                                    <button data-select="review" class="btn">Like page</button>
-                                    <input id="file-input1" type="file" accept=".gif, .jpg, .png" name="name1"
-                                        style="display: none;" onchange="PreviewImage1()" />
-                                </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-md-12 d-flex flex-wrap pt-4 pb-4">
-                        <nav class="w-100">
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a style="background-color: rgb(188, 212, 246);" class="nav-item nav-link nav-left active" id="nav-home-tab" data-toggle="tab"
-                                    role="tab" aria-controls="nav-home" aria-selected="true" onclick="set_card(1)"
-                                    data-lang="card1"></a>
-                                <a style="background-color: rgb(188, 212, 246);" class="nav-item nav-link nav-right" id="nav-profile-tab" data-toggle="tab" role="tab"
-                                    aria-controls="nav-profile" aria-selected="false" onclick="set_card(2)"
-                                    data-lang="card2"></a>
-                            </div>
-                        </nav>
-                        <div class="tab-content w-100" id="nav-tabContent">
-                            <div  class="tab-pane fade show active d-flex flex-wrap pd0 p-_4">
-                                <div class="col-md-6 p-2" data-select="card1">
-                                    <label for="list_pages" class="form-label" data-lang="Buttons"></label>
-                                    <select onchange="change_button()" class="form-select input_user p-2 w-100" id="list_bts"
-                                        required>
-                                        <option selected value="Like Page">Like Page</option>
-                                        <option value="No Button">No Button</option>
-                                        <option value="Learn More">Learn More</option>
-                                        <option value="Book Travel">Book Travel</option>
-                                        <option value="Contact Us">Contact Us</option>
-                                        <option value="Download">Download</option>
-                                        <option value="Get Quote ">Get Quote </option>
-                                        <option value="Install App ">Install App </option>
-                                        <option value="Listen Music">Listen Music</option>
-                                        <option value="Message Page">Message Page</option>
-                                        <option value="Open Link">Open Link</option>
-                                        <option value="Play Game">Play Game</option>
-                                        <option value="Shop Now">Shop Now</option>
-                                        <option value="Sign Up">Sign Up</option>
-                                        <option value="Subscribe">Subscribe</option>
-                                        <option value="Use App">Use App</option>
-                                        <option value="Watch More">Watch More</option>
-                                        <option value="Watch Video">Watch Video</option>
-                                        <option value="Apply Now">Apply Now</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 p-2" data-select="card1">
-                                    <label for="title" class="form-label" data-lang="cardtitle"></label>
-                                    <input oninput="change_title()" type="text" class="form-control input_user" id="title"
-                                        value="Like Page 👉 👉">
-                                </div>
-                                <div class="col-md-12 p-2" style="display: none;" data-select="card2">
-                                    <label for="link" class="form-label" data-lang="Linkoptional"></label>
-                                    <input type="text" class="form-control input_user" id="link">
-                                </div>
-                                <div class="col-md-12 p-2" data-select="card2">
-                                    <div id="lib_img" class="img_lib custom_scroll">
-                                        <div class="img_item"><img width="100%" height="100%" /></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 p-2">
-                                   
-                                    <textarea rows="2" type="text" data-lang="Content" data-langtg="placeholder"
-                                        class="form-control" id="post_message"></textarea>
-                                </div>
-                                <div class="col-md-12 p-2 d-flex">
-                                    <fieldset class="w-100 p-3 rounded border">
-                                        <legend class="w-auto" data-lang="Schedule"></legend>
-                                        <div style="width: 90%;" class="m-auto d-flex justify-content-between">
-                                            <div style="width: 90%;">
-                                                <input class="input_user" style="width: 90%;" type="datetime-local" id="schedule_time"
-                                                    name="schedule_time" disabled value="2018-06-12T19:30">
-                                            </div>
-                                            <div style="width: 90%;">
-                                                <div class="custom-control custom-switch" style="zoom: 1.2;">
-                                                    <input type="checkbox"
-                                                        onchange="change_check_schedule()" class="custom-control-input"
-                                                        id="is_schedule">
-                                                    <label class="custom-control-label" style="width: 50px;"
-                                                        for="is_schedule"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-
-                                <div class="col-md-12 p-2">
-                                    <button onclick="run_public()" class="btn btn-primary button-radius w-100"
-                                        data-lang="Public"></button>
-                                </div>
-                                <div class="col-md-12 p-2">
-                                    <div class="col-12 v-data-table__wrapper">
-                                        <table class="width_table_620 table text_center table_section">
-                                        <thead>
-                                            <tr>
-                                                <th data-lang="Facebookuser"></th>
-                                                <th data-lang="Page"></th>
-                                                <th data-lang="Linkpost"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="text_black" id="rs_tb">
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                  
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div> -->
- 
-   
-    <!-- <div class="footer">
-        <nav style="min-height: 56px;" class=" pd_t_15 text_white text_center bg-main-color_clinet">
-            <a style="color: white;" href="">2022 -- Powered by Arthur Company</a>
-        </nav>
-    </div> -->
-
-
     <div id="__nuxt">
         <!---->
         <div id="__layout">
@@ -407,8 +145,8 @@
                                                 </div>
                                                 <div class="v-image__image v-image__image--cover"
                                                     style="background-position: center center;">
-                                                    <span id="menu_img_logo"><img src="../img/1657506390119.jpg" width="100%"
-                                                            height="100%" alt="" srcset=""></span>
+                                                    <span id="menu_img_logo"><img src="../img/1657506390119.jpg"
+                                                            width="100%" height="100%" alt="" srcset=""></span>
                                                 </div>
                                                 <div class="v-responsive__content" style="width: 330px;"></div>
                                             </div> <span class="black--text ml-4">M2v.me</span>
@@ -455,178 +193,374 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="margin-bottom:70px" class="row no-gutters">
-                                <div class="container px-0 px-sm-0 px-lg-0 pd0_web" style="max-width: 1400px;">
-                                    <div class="content">
-                                        <section>
-                                            <div class="col-12">
-                                               
-                                                <div style="background-color: #fff;box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;" class="container font-weight-550 mt-3 mb-3 pd0">
-                                                    <div class="pd-t10 text_white" id="error_token"> </div>
-                                                    
-                                                    <div class="col-md-12 t1000_center pd0 d-flex flex-wrap mt-2">
-                                                        
-                                                        <div class="wth col-md-4 t1000_left m_b_5">
-                                                            <label for="list_pages" class="form-label" data-lang="Facebookuser"></label> <br>
-                                                            <select class="form-select p-2 w-100 login-form" id="list_fb" onchange="set_combobox_data()"
-                                                                required>
-                                                                <option selected disabled value="">Choose...</option>
-                                                                <option>...</option>
-                                                            </select>
-                                                            
-                                                        </div>
-                                                        <div class="wth col-md-4 t1000_left m_b_5">
-                                                            <label for="list_pages" class="form-label" data-lang="Page"></label> <br>
-                                                            <select class="form-select p-2 w-100 login-form" id="list_pages"
-                                                                onchange="change_page_selected()" required>
-                                                                <option selected disabled value="">Choose...</option>
-                                                                <option>...</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="wth t1000_left col-md-4">
-                                                            <label for="list_pages" class="form-label" data-lang="Adsuser"></label> <br>
-                                                            <select class="form-select p-2 w-100 login-form" id="list_ads" required>
-                                                                <option selected disabled value="">Choose...</option>
-                                                                <option>...</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 pd0 d-flex flex-wrap mt-2">
-                                                        <div class="pt-4 col-md-6" >
-                                                                <div class="box_review  relative_load" id="loading">
-                                                                    <a onclick="select_file()"><img id="img_1" src="https://i.imgur.com/BDJYyka.jpg" /></a>
-                                                                    <div class="d-flex justify-content-between content">
-                                                                        <span data-select="review1">Like Page 👉 👉</span>
-                                                                        <button data-select="review" class="btn">Like page</button>
-                                                                        <input id="file-input" accept="video/mp4" type="file" name="name0"
-                                                                            style="display: none;" onchange="PreviewImage()" />
-                                                                    </div>
-                                                            </div>
-                                                            
-                                                        </div>
-                                                        <div class="pt-4 col-md-6" >
-                                                            <div class="box_review  relative_load"  id="loading1">
-                                                                <a onclick="select_file1()"><img id="img_2" src="https://i.imgur.com/BDJYyka.jpg" /></a>
-                                                                <div class="d-flex justify-content-between content">
-                                                                    <span data-select="review2">Like Page 👉 👉</span>
-                                                                    <button data-select="review" class="btn">Like page</button>
-                                                                    <input id="file-input1" type="file" accept=".gif, .jpg, .png" name="name1"
-                                                                        style="display: none;" onchange="PreviewImage1()" />
-                                                                </div>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div class="col-md-12 d-flex flex-wrap pt-4 pb-4">
-                                                        <nav class="w-100">
-                                                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                                <a style="background-color: rgb(188, 212, 246);" class="nav-item nav-link nav-left active" id="nav-home-tab" data-toggle="tab"
-                                                                    role="tab" aria-controls="nav-home" aria-selected="true" onclick="set_card(1)"
-                                                                    data-lang="card1"></a>
-                                                                <a style="background-color: rgb(188, 212, 246);" class="nav-item nav-link nav-right" id="nav-profile-tab" data-toggle="tab" role="tab"
-                                                                    aria-controls="nav-profile" aria-selected="false" onclick="set_card(2)"
-                                                                    data-lang="card2"></a>
-                                                            </div>
-                                                        </nav>
-                                                        <div class="tab-content w-100" id="nav-tabContent">
-                                                            <div  class="tab-pane fade show active d-flex flex-wrap pd0 p-_4">
-                                                                <div class="col-md-6 p-2" data-select="card1">
-                                                                    <label for="list_pages" class="form-label" data-lang="Buttons"></label>
-                                                                    <select onchange="change_button()" style="padding: 0.36rem!important;" class="form-select input_user w-100 border" id="list_bts"
-                                                                        required>
-                                                                        <option selected value="Like Page">Like Page</option>
-                                                                        <option value="No Button">No Button</option>
-                                                                        <option value="Learn More">Learn More</option>
-                                                                        <option value="Book Travel">Book Travel</option>
-                                                                        <option value="Contact Us">Contact Us</option>
-                                                                        <option value="Download">Download</option>
-                                                                        <option value="Get Quote ">Get Quote </option>
-                                                                        <option value="Install App ">Install App </option>
-                                                                        <option value="Listen Music">Listen Music</option>
-                                                                        <option value="Message Page">Message Page</option>
-                                                                        <option value="Open Link">Open Link</option>
-                                                                        <option value="Play Game">Play Game</option>
-                                                                        <option value="Shop Now">Shop Now</option>
-                                                                        <option value="Sign Up">Sign Up</option>
-                                                                        <option value="Subscribe">Subscribe</option>
-                                                                        <option value="Use App">Use App</option>
-                                                                        <option value="Watch More">Watch More</option>
-                                                                        <option value="Watch Video">Watch Video</option>
-                                                                        <option value="Apply Now">Apply Now</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-md-6 p-2" data-select="card1">
-                                                                    <label for="title" class="form-label" data-lang="cardtitle"></label>
-                                                                    <input oninput="change_title()" type="text" class="form-control input_user" id="title"
-                                                                        value="Like Page 👉 👉">
-                                                                </div>
-                                                                <div class="col-md-12 p-2" style="display: none;" data-select="card2">
-                                                                    <label for="link" class="form-label" data-lang="Linkoptional"></label>
-                                                                    <input type="text" class="form-control input_user" id="link">
-                                                                </div>
-                                                                <div class="col-md-12 p-2" data-select="card2">
-                                                                    <div id="lib_img" class="img_lib custom_scroll">
-                                                                        <div class="img_item"><img width="100%" height="100%" /></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12 p-2">
-                                                                   
-                                                                    <textarea style="background-color: #fff !important; color: black !important;" rows="3" type="text" data-lang="Content" data-langtg="placeholder"
-                                                                        class="form-control" id="post_message"></textarea>
-                                                                </div>
-                                                                <div class="col-md-12 p-2 d-flex">
-                                                                    <fieldset class="w-100 p-3 rounded border">
-                                                                        <legend class="w-auto" data-lang="Schedule"></legend>
-                                                                        <div style="width: 90%;" class="m-auto d-flex justify-content-between">
-                                                                            <div style="width: 90%;">
-                                                                                <input class="input_user border" style="width: 90%;padding: 0.2rem;" type="datetime-local" id="schedule_time"
-                                                                                    name="schedule_time" disabled value="2018-06-12T19:30">
+                            <div class="row no-gutters">
+                                <div class="container px-0 px-sm-0 px-md-16 px-lg-0" style="max-width: 1400px;">
+                                    <div id="container" class="mt-4 mb-16">
+                                        <div class="v-window mx-1 v-item-group theme--light v-tabs-items"
+                                            style="background-color: inherit;">
+                                            <div class="v-window__container">
+                                                <div class="v-window-item v-window-item--active">
+                                                    <div class="container">
+                                                        <div id="container" class="mb-16">
+                                                            <div class="row">
+                                                                <div
+                                                                    class="rounded-lg pl-2 pl-sm-4 pl-md-0 pr-2 pr-sm-4 pr-xl-0 pt-0 col-lg-12 col-12">
+                                                                    <div
+                                                                        class="white pa-0 rounded-lg boxShadow fheight col col-12">
+                                                                        <div id="hideBottomInput" class="row ma-3">
+                                                                            <div class="col col-12">
+                                                                                <div role="alert"
+                                                                                    class="v-alert mb-0 v-sheet theme--dark v-alert--prominent error">
+                                                                                    <div class="v-alert__wrapper"><i
+                                                                                            aria-hidden="true"
+                                                                                            class="v-icon notranslate v-alert__icon mdi mdi-alert theme--dark"></i>
+                                                                                        <div class="v-alert__content">
+                                                                                            <div
+                                                                                                class="row align-center">
+                                                                                                <div class="col"
+                                                                                                    id="error_token">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
-                                                                            <div style="width: 90%;">
-                                                                                <div class="custom-control custom-switch" style="zoom: 1.2;">
-                                                                                    <input type="checkbox"
-                                                                                        onchange="change_check_schedule()" class="custom-control-input"
-                                                                                        id="is_schedule">
-                                                                                    <label class="custom-control-label" style="width: 50px;"
-                                                                                        for="is_schedule"></label>
+                                                                            <div class="col col-12">
+                                                                                <div class="d-flex align-center"><button
+                                                                                        type="button"
+                                                                                        class="elevation-0 v-btn v-btn--is-elevated v-btn--fab v-btn--has-bg v-btn--round theme--light v-size--x-small primary"><span
+                                                                                            class="v-btn__content"><i
+                                                                                                aria-hidden="true"
+                                                                                                class="v-icon notranslate ml-1 fas fa-user-edit theme--light"
+                                                                                                style="font-size: 12px;"></i></span></button>
+                                                                                    <h3 class="ml-2 mb-0">
+                                                                                        Soạn bài viết
+                                                                                    </h3>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12 t1000_center p-0 d-flex flex-wrap">
+
+                                                                                <div class="wth col-md-4 t1000_left m_b_5">
+                                                                                    <label for="list_pages" class="form-label"
+                                                                                        data-lang="Facebookuser"></label> <br>
+                                                                                    <select class="form-select p-2 w-100 login-form"
+                                                                                        id="list_fb" onchange="set_combobox_data()" required>
+                                                                                        <option selected disabled value="">Choose...</option>
+                                                                                        <option>...</option>
+                                                                                    </select>
+                                                
+                                                                                </div>
+                                                                                <div class="wth col-md-4 t1000_left m_b_5">
+                                                                                    <label for="list_pages" class="form-label"
+                                                                                        data-lang="Page"></label> <br>
+                                                                                    <select class="form-select p-2 w-100 login-form"
+                                                                                        id="list_pages" onchange="change_page_selected()"
+                                                                                        required>
+                                                                                        <option selected disabled value="">Choose...</option>
+                                                                                        <option>...</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <div class="wth t1000_left col-md-4">
+                                                                                    <label for="list_pages" class="form-label"
+                                                                                        data-lang="Adsuser"></label> <br>
+                                                                                    <select class="form-select p-2 w-100 login-form"
+                                                                                        id="list_ads" required>
+                                                                                        <option selected disabled value="">Choose...</option>
+                                                                                        <option>...</option>
+                                                                                    </select>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </fieldset>
+                                                                        <div class="row ma-3">
+                                                                            <div class="col-md-12 pd0 d-flex flex-wrap">
+                                                                                <div class="pt-2 col-md-6">
+                                                                                    <div class="box_review  relative_load" id="loading">
+                                                                                        <a onclick="select_file()"><img id="img_1"
+                                                                                                src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                                                                                        <div class="d-flex justify-content-between content">
+                                                                                            <span data-select="review1">Like Page 👉 👉</span>
+                                                                                            <button data-select="review" class="btn">Like
+                                                                                                page</button>
+                                                                                            <input id="file-input" accept="video/mp4"
+                                                                                                type="file" name="name0" style="display: none;"
+                                                                                                onchange="PreviewImage()" />
+                                                                                        </div>
+                                                                                    </div>
+                                                
+                                                                                </div>
+                                                                                <div class="pt-2 col-md-6">
+                                                                                    <div class="box_review  relative_load" id="loading1">
+                                                                                        <a onclick="select_file1()"><img id="img_2"
+                                                                                                src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                                                                                        <div class="d-flex justify-content-between content">
+                                                                                            <span data-select="review2">Like Page 👉 👉</span>
+                                                                                            <button data-select="review" class="btn">Like
+                                                                                                page</button>
+                                                                                            <input id="file-input1" type="file"
+                                                                                                accept=".gif, .jpg, .png" name="name1"
+                                                                                                style="display: none;"
+                                                                                                onchange="PreviewImage1()" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            
+                                                                        </div>
+                                                                        <div class="row ma-3">
+                                                                            <div class="pt-0 col col-12">
+                                                                                <div class="d-flex fheight rounded">
+                                                                                    <div class="button-card rounded-l-xl py-3 fheight c-pointer d-flex align-center justify-center button-card-active white--text"
+                                                                                    onclick="set_card(1)"  
+                                                                                    style="width: 50%;">
+                                                                                        <p data-lang="card1"  
+                                                                                            class="text-uppercase title mb-0">
+                                                                                            card 1</p>
+                                                                                    </div>
+                                                                                    <div class="button-card rounded-r-xl button-card-right py-3 fheight c-pointer d-flex align-center justify-center button-card-noactive grey-opacity-text"
+                                                                                    onclick="set_card(2)"
+                                                                                    style="width: 50%;">
+                                                                                        <p data-lang="card2"  
+                                                                                            class="text-uppercase title mb-0">
+                                                                                            card 2</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col col-12">
+                                                                                <div class="card-display rounded pa-3">
+                                                                                    <div id="hideBottomInput"
+                                                                                        class="row">
+                                                                                        <div class="col-sm-6 col-12"
+                                                                                            data-select="card1">
+                                                                                            <label for="list_pages"
+                                                                                                class="form-label"
+                                                                                                data-lang="Buttons"></label>
+                                                                                            <select
+                                                                                                onchange="change_button()"
+                                                                                                style="padding: 0.36rem!important;"
+                                                                                                class="form-select input_user w-100 border"
+                                                                                                id="list_bts" required>
+                                                                                                <option selected
+                                                                                                    value="Like Page">
+                                                                                                    Like Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="No Button">No
+                                                                                                    Button</option>
+                                                                                                <option
+                                                                                                    value="Learn More">
+                                                                                                    Learn More</option>
+                                                                                                <option
+                                                                                                    value="Book Travel">
+                                                                                                    Book Travel</option>
+                                                                                                <option
+                                                                                                    value="Contact Us">
+                                                                                                    Contact Us</option>
+                                                                                                <option
+                                                                                                    value="Download">
+                                                                                                    Download</option>
+                                                                                                <option
+                                                                                                    value="Get Quote ">
+                                                                                                    Get Quote </option>
+                                                                                                <option
+                                                                                                    value="Install App ">
+                                                                                                    Install App
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Listen Music">
+                                                                                                    Listen Music
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Message Page">
+                                                                                                    Message Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Open Link">
+                                                                                                    Open Link</option>
+                                                                                                <option
+                                                                                                    value="Play Game">
+                                                                                                    Play Game</option>
+                                                                                                <option
+                                                                                                    value="Shop Now">
+                                                                                                    Shop Now</option>
+                                                                                                <option value="Sign Up">
+                                                                                                    Sign Up</option>
+                                                                                                <option
+                                                                                                    value="Subscribe">
+                                                                                                    Subscribe</option>
+                                                                                                <option value="Use App">
+                                                                                                    Use App</option>
+                                                                                                <option
+                                                                                                    value="Watch More">
+                                                                                                    Watch More</option>
+                                                                                                <option
+                                                                                                    value="Watch Video">
+                                                                                                    Watch Video</option>
+                                                                                                <option
+                                                                                                    value="Apply Now">
+                                                                                                    Apply Now</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 p-2"
+                                                                                            data-select="card1">
+                                                                                            <label for="title"
+                                                                                                class="form-label"
+                                                                                                data-lang="cardtitle"></label>
+                                                                                            <input
+                                                                                                oninput="change_title()"
+                                                                                                type="text"
+                                                                                                style="margin-top: 4px"
+                                                                                                class="form-control input_user"
+                                                                                                id="title"
+                                                                                                value="Like Page 👉 👉">
+                                                                                        </div>
+                                                                                        <!---->
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="d-flex align-center"
+                                                                                            data-select="card2"
+                                                                                            style="width: 100%; overflow-x: auto; white-space: nowrap;">
+                                                                                            <div class="d-flex align-center"
+                                                                                                id="lib_img"
+                                                                                                style="width: 100%; overflow-x: auto; white-space: nowrap;">
+
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div id="hideBottomInput"
+                                                                                class="border-input col col-12">
+                                                                                <div
+                                                                                    class="v-input v-textarea v-input--dense theme--light v-text-field v-text-field--is-booted v-text-field--enclosed v-text-field--outlined v-text-field--placeholder">
+                                                                                    <div class="v-input__control">
+                                                                                        <div class="v-input__slot">
+                                                                                            <fieldset
+                                                                                                aria-hidden="true">
+                                                                                                <legend
+                                                                                                    style="width: 0px;">
+                                                                                                    <span
+                                                                                                        class="notranslate">​</span>
+                                                                                                </legend>
+                                                                                            </fieldset>
+                                                                                            <div
+                                                                                                class="v-text-field__slot">
+                                                                                                <textarea id="input-145"
+                                                                                                    placeholder="Nội dung"
+                                                                                                    rows="3"></textarea>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="v-text-field__details">
+                                                                                            <div
+                                                                                                class="v-messages theme--light">
+                                                                                                <div
+                                                                                                    class="v-messages__wrapper">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row ma-3">
+                                                                            <div class="col-md-12 p-2 d-flex">
+                                                                                <fieldset class="w-100 p-3 rounded border">
+                                                                                    <legend class="w-auto" data-lang="Schedule">
+                                                                                    </legend>
+                                                                                    <div style="width: 90%;"
+                                                                                        class="m-auto d-flex justify-content-between">
+                                                                                        <div style="width: 90%;">
+                                                                                            <input class="input_user border"
+                                                                                                style="width: 90%;padding: 0.2rem;"
+                                                                                                type="datetime-local"
+                                                                                                id="schedule_time"
+                                                                                                name="schedule_time" disabled
+                                                                                                value="2018-06-12T19:30">
+                                                                                        </div>
+                                                                                        <div style="width: 90%;">
+                                                                                            <div class="custom-control custom-switch"
+                                                                                                style="zoom: 1.2;">
+                                                                                                <input type="checkbox"
+                                                                                                    onchange="change_check_schedule()"
+                                                                                                    class="custom-control-input"
+                                                                                                    id="is_schedule">
+                                                                                                <label class="custom-control-label"
+                                                                                                    style="width: 50px;"
+                                                                                                    for="is_schedule"></label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </fieldset>
+                                                                            </div>
+                                    
+                                                                            <div class="col col-12"><button
+                                                                                    type="button"
+                                                                                    class="white--text rounded-xl elevation-0 v-btn v-btn--block v-btn--disabled v-btn--has-bg theme--light v-size--default"
+                                                                                    style="height: 48px;"
+                                                                                    disabled="disabled"><span
+                                                                                        class="v-btn__content"><span>Đăng
+                                                                                            bài</span></span></button>
+                                                                            </div>
+                                                                            <div class="col-md-12 p-2">
+                                                                                <div
+                                                                                    class="col-12 v-data-table__wrapper">
+                                                                                    <table
+                                                                                        class="width_table_620 table table_section">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);"
+                                                                                                    111
+                                                                                                    data-lang="Facebookuser">
+                                                                                                </th>
+                                                                                                <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);"
+                                                                                                    data-lang="Page">
+                                                                                                </th>
+                                                                                                <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);"
+                                                                                                    data-lang="Linkpost">
+                                                                                                </th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody class="text_black"
+                                                                                            id="rs_tb">
+                                                                                            <tr>
+                                                                                                <td></td>
+                                                                                                <td></td>
+                                                                                                <td></td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                
-                                                                <div class="col-md-12 p-2">
-                                                                    <button onclick="run_public()" class="btn btn-primary button-radius w-100"
-                                                                        data-lang="Public"></button>
-                                                                </div>
-                                                                <div class="col-md-12 p-2">
-                                                                    <div class="col-12 v-data-table__wrapper">
-                                                                        <table class="width_table_620 table table_section">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);"111 data-lang="Facebookuser"></th>
-                                                                                <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);" data-lang="Page"></th>
-                                                                                <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);" data-lang="Linkpost"></th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody class="text_black" id="rs_tb">
-                                                                            <tr>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                  
+                                                                <div
+                                                                    class="rounded-lg pl-2 pl-sm-4 pl-md-0 pl-xl-3 pt-0 pr-2 pr-sm-4 pr-md-0 col-lg-6 col-12">
                                                                 </div>
                                                             </div>
+                                                            <!---->
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!---->
+                                                <!---->
+                                                <!---->
+                                                <!---->
+                                                <!---->
                                             </div>
-                                        </section>
+                                        </div>
                                     </div>
                                 </div>
+                                <div role="dialog" class="v-dialog__container">
+                                    <!---->
+                                </div>
+                                <div role="dialog" class="v-dialog__container d-none">
+                                    <!---->
+                                </div>
                             </div>
+
                             <footer class="v-footer v-sheet theme--light v-footer--absolute" id="bgLinear"
                                 data-booted="true" style="left: 0px; right: 0px; bottom: 0px;">
                                 <div class="text-center white--text col col-12">
@@ -637,29 +571,32 @@
                                 </div>
                             </footer>
                         </div>
-                        <div id="toast"> 
+                        <div id="toast">
                         </div>
-                        <dialog id="bank_money_ticket"><div class="modal-dialog" role="document">
-                            <div style="border: 0px;" class="modal-content">
-                    
-                                <div class="modal-body text_center">
-                                    <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset=""></p>
-                                    <h4>Thành Công !</h4>
-                                    <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
-                                    <button type="button" class="btn btn-primary" onclick="location.reload()"
-                                        data-dismiss="modal">OK</button>
-                                </div>
-                                <div class="text_center">
-                    
+                        <dialog id="bank_money_ticket">
+                            <div class="modal-dialog" role="document">
+                                <div style="border: 0px;" class="modal-content">
+
+                                    <div class="modal-body text_center">
+                                        <p><img width="100px" height="100px" src="../img/check.png" alt="" srcset="">
+                                        </p>
+                                        <h4>Thành Công !</h4>
+                                        <p>Tài khoản của bạn đã được cộng thêm tiền!</p>
+                                        <button type="button" class="btn btn-primary" onclick="location.reload()"
+                                            data-dismiss="modal">OK</button>
+                                    </div>
+                                    <div class="text_center">
+
+                                    </div>
                                 </div>
                             </div>
-                        </div></dialog>
+                        </dialog>
                     </main>
                 </div>
             </div>
         </div>
     </div>
-  
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
     <script src="../js/helper_manager.js"></script>
