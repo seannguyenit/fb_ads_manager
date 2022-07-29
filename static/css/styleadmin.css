@@ -92,6 +92,9 @@ License        :   Licensed under ThemeForest License
 /*alerts*/
 /*navigation*/
 /*dark colors*/
+.bg_383d52{
+  background-color: #2a2e3f !important;
+}
 .table_admin th{
   color:#fff;
 }

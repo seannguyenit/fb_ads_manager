@@ -521,7 +521,7 @@ async function init_pricing_history(id) {
     }
     if (data) {
         data.forEach(f => {
-            tb.innerHTML += `<tr><td>${data.indexOf(f) + 1}</td><td>${format_time(f.time)}</td><td>${f.pricing_name}</td></tr>`
+            tb.innerHTML += `<tr  class="table_admin bg_383d52"><td>${data.indexOf(f) + 1}</td><td>${format_time(f.time)}</td><td>${f.pricing_name}</td></tr>`
         });
     }
     $('#pricing_history_modal').modal('show')
@@ -533,12 +533,12 @@ async function init_money_history(id) {
     var tb = document.getElementById('tb_money_his');
     tb.innerHTML = '';
     var bn_money = document.getElementById('save_edit_money');
-    bn_money.innerHTML = `<button type="button" style="height: 30px;" class="btn btn-primary" onclick="save_edit_money(${id})"
+    bn_money.innerHTML = `<button type="button" style="height: 30px;line-height: 10px;" class="btn btn-primary" onclick="save_edit_money(${id})"
     data-dismiss="modal">Save</button>`;
     var data = await get_money_history(id);
     if (data) {
         data.forEach(f => {
-            tb.innerHTML += `<tr>
+            tb.innerHTML += `<tr class="table_admin bg_383d52">
             <td>${data.indexOf(f) + 1}</td>
             <td>${types[f.type] || ''}</td>
             <td>${(f.type == 0 ? '-' : '+') + (f.money)}</td>
