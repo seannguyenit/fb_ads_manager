@@ -408,9 +408,9 @@
     padding:20px 15px!important
    }
    .back {
-    background-image:url(/img/pattern2.f511812.png);
-    background-repeat:repeat
-   }
+    background-image: url(/img/img_log.png);
+    background-repeat: repeat;
+}
    .back:before {
     content:"";
     background:rgba(232,233,245,.8);
