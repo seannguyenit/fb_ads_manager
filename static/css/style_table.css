@@ -1,3 +1,7 @@
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 5px !important;
+}
+
 .card-display {
     border:1px solid #d3d3d3;
     border-radius:4px
