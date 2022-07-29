@@ -153,6 +153,7 @@ async function start_loading1() {
 
 
 async function stop_loading1() {
+    document.getElementById('loading').style.opacity = "1";
     document.getElementById('loading-element1').style.display = "none";
 }
 
@@ -170,6 +171,7 @@ async function start_loading2() {
 
 
 async function stop_loading2() {
+    document.getElementById('loading2').style.opacity = "1";
     document.getElementById('loading-element2').style.display = "none";
 }
 
