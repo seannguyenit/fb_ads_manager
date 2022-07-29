@@ -26,19 +26,19 @@ async function init_logo() {
     if (data) {
         data.forEach(item => {
             if (document.getElementById('img_logo')) {
-                document.getElementById('img_logo').innerHTML = `<a href="#"><img width="100%" height="100%"
-                src="${item.logo_img}" alt=""></a>`;
+                document.getElementById('img_logo').innerHTML = `<img width="100%" height="100%"
+                src="${item.logo_img}" alt="">`;
             }
             if (document.getElementById('menu_img_logo')) {
-                document.getElementById('menu_img_logo').innerHTML = `<a href="#"><img width="100%" height="100%"
-                src="${item.logo_img}" alt=""></a>`;
+                document.getElementById('menu_img_logo').innerHTML = `<img width="100%" height="100%"
+                src="${item.logo_img}" alt="">`;
             }
             if (document.getElementById('logo_login_center')) {
                 document.getElementById('logo_login_center').innerHTML = ` <img src="${item.logo_img}" width="100%" height="100%" alt="logo tool264.com" />`;
             }
             if (document.getElementById('img_logo_admin')) {
-                document.getElementById('img_logo_admin').innerHTML = ` <a class="navbar-brand" href="/home/users"><img height="68.99px"
-                src="${item.logo_img}" alt=""></a>`;
+                document.getElementById('img_logo_admin').innerHTML = `<img height="68.99px"
+                src="${item.logo_img}" alt="">`;
             }
         })
     }

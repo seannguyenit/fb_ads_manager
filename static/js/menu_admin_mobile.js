@@ -1,9 +1,15 @@
+
+document.getElementById('cover_menu').addEventListener('click', () => {
+    open_menu_admin_mobile();
+})
 function open_menu_admin_mobile() {
     let as = document.querySelector('aside');
     if(as.style.left === '0px'){
         as.style.left = '';
+        document.getElementById('cover_menu').style.display = 'none'
     }else{
         as.style.left = '0px';
+        document.getElementById('cover_menu').style.display = 'block'
     }
 
 }
