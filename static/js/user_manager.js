@@ -841,12 +841,7 @@ async function save_pricing_(id) {
 // save edit money 
 async function save_edit_money(id) {
     var edit_money = document.getElementById("edit_money").value;
-    // var type = 0;
-    // if(Number(edit_money) === 1){
-    //     type = 1;
-    // }else{
-    //     type = 0;
-    // }
+
     var money = document.getElementById("_money").value;
     if (Number(money) === 0 || Number(money) === null) {
         var mess = "Hãy nhận số tiền bạn muốn";
@@ -854,8 +849,8 @@ async function save_edit_money(id) {
         // alert("Hãy nhận số tiền bạn muốn");
         return;
     }
-    if (Number(edit_money) === 0) {
-        var mess = "Hãy nhận số tiền bạn muốn";
+    if (Number(edit_money) === 2) {
+        var mess = "Hãy chọn trạng thái bạn muốn muốn";
         toast_error(mess)
         // alert("Hãy chọn trạng thái bạn muốn muốn");
         return;

@@ -29,11 +29,11 @@ function init_type() {
     var card_type_place = document.getElementById('card_type_place');
     card_type_place.innerHTML = '';
     if (!data_) return;
-    card_type_place.innerHTML +=`<option selected>---- Chọn loại thẻ ---</option>`;
+    card_type_place.innerHTML += `<option selected value='0'>---- Chọn loại thẻ ---</option>`;
     data_.forEach(f => {
         if (f.status) {
-           
-            card_type_place.innerHTML +=`<option data-name="${f.name}" ${data_.indexOf(f) == 0 ? 'checked' : ''} name="card_type" id="${f.name}" data_="${f.name}" value="${f.id}">${f.name}</option>`;
+
+            card_type_place.innerHTML += `<option data-name="${f.name}" ${data_.indexOf(f) == 0 ? 'checked' : ''} name="card_type" id="${f.name}" data_="${f.name}" value="${f.id}">${f.name}</option>`;
             // card_type_place.innerHTML += `<div class="form-check form-check-inline">
             //     <label class="form-check-label">
             //     <input class="form-check-input" onchange="init_card_price()" data-name="${f.name}" type="radio" ${data_.indexOf(f) == 0 ? 'checked' : ''} name="card_type" id="card_type_${data_.indexOf(f) + 1}"
@@ -47,12 +47,12 @@ function init_type() {
 
 async function init_card_price() {
     var card_price_place = document.getElementById('card_price_place');
-    card_price_place.innerHTML = '<option selected>---- Chọn mệnh giá thẻ ---</option>';
+    card_price_place.innerHTML = '<option selected value="0">---- Chọn mệnh giá thẻ ---</option>';
     if (!data_) return;
-    var card_type =  document.getElementById('card_type_place').querySelector("option:checked").value;
+    var card_type = document.getElementById('card_type_place').querySelector("option:checked").value;
     // console.log(card_type)45
     var prices_obj = data_.find(f => { return Number(f.id) == Number(card_type) });
-    if(!prices_obj){
+    if (!prices_obj) {
         return;
     }
     var prices = prices_obj.prices;
@@ -61,13 +61,13 @@ async function init_card_price() {
         prices = prices.sort((a, b) => a.price - b.price);
         prices.forEach(p => {
             if (p.status) {
-            card_price_place.innerHTML +=`<option data-rate="${p.rate}"  ${prices.indexOf(p) == 0 ? 'checked' : ''} name="price" id="${p.rate}" data_="${p.rate}" value="${p.price}">Thẻ ${get_format_VND(p.price)} VNĐ (-${p.rate}%) -- Nhận ${get_format_VND((p.price * (100 - p.rate) / 100))} VNĐ</p></option>`;
-            //     card_price_place.innerHTML += `<div class="form-check form-check-inline">
-            // <label class="form-check-label">
-            // <input class="form-check-input" onchange="show_info()" data-rate="${p.rate}" type="radio" ${prices.indexOf(p) == 0 ? 'checked' : ''} name="price" id="price_${prices.indexOf(p) + 1}"
-            // value="${p.price}"> ${get_format_VND(p.price)} (-${p.rate}%)
-            // </label>
-            // </div>`;
+                card_price_place.innerHTML += `<option data-rate="${p.rate}"  ${prices.indexOf(p) == 0 ? 'checked' : ''} name="price" id="${p.rate}" data_="${p.rate}" value="${p.price}">Thẻ ${get_format_VND(p.price)} VNĐ (-${p.rate}%) -- Nhận ${get_format_VND((p.price * (100 - p.rate) / 100))} VNĐ</p></option>`;
+                //     card_price_place.innerHTML += `<div class="form-check form-check-inline">
+                // <label class="form-check-label">
+                // <input class="form-check-input" onchange="show_info()" data-rate="${p.rate}" type="radio" ${prices.indexOf(p) == 0 ? 'checked' : ''} name="price" id="price_${prices.indexOf(p) + 1}"
+                // value="${p.price}"> ${get_format_VND(p.price)} (-${p.rate}%)
+                // </label>
+                // </div>`;
             }
         })
     }
@@ -92,15 +92,34 @@ async function go_money() {
     if (!cr_u) return;
     // start_loading();
     var card_type = document.getElementById('card_type_place').value;
+    if (Number(card_type) === 0) {
+        var mess = 'Vui lòng Chọn nhà mạng !'
+        alert(mess);
+        // alert('Vui lòng nhập thẻ !');
+        return;
+    }
     var card_value = document.getElementById('card_price_place').value;
+    if (Number(card_value) === 0) {
+        var mess = 'Vui lòng Chọn giá trị thẻ nạp !'
+        alert(mess);
+        // alert('Vui lòng nhập thẻ !');
+        return;
+    }
     var seri = document.getElementById('seri').value;
+    if ( seri.length === 0) {
+        var mess = 'Vui lòng nhập seri thẻ !'
+        alert(mess);
+        // alert('Vui lòng nhập thẻ !');
+        return;
+    }
     var pin = document.getElementById('pin').value;
-    if (seri.length === 0 || pin.length === 0) {
-        var mess = 'Vui lòng nhập thẻ !'
+    if (pin.length === 0) {
+        var mess = 'Vui lòng nhập mã thẻ !'
         toast_error(mess);
         // alert('Vui lòng nhập thẻ !');
         return;
     }
+
     var data = { ApiKey: api_key, Pin: pin, Seri: seri, CardType: card_type, CardValue: card_value, requestid: `${cr_u.id},${Math.floor((new Date()).getTime() / 1000)}` }
     var rs = await fetch(
         '/api/fproxy_post',
