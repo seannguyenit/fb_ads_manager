@@ -147,6 +147,7 @@ async function init_loading1(img) {
 }
 
 async function start_loading1() {
+    document.getElementById('loading').style.opacity = "0.5";
     document.getElementById('loading-element1').style.display = "block";
 }
 
@@ -163,6 +164,7 @@ async function init_loading2(img) {
 }
 
 async function start_loading2() {
+    document.getElementById('loading2').style.opacity = "0.5";
     document.getElementById('loading-element2').style.display = "block";
 }
 
