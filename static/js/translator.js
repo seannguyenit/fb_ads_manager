@@ -39,11 +39,11 @@ async function translator() {
     }
     else{
         if(document.getElementById('img_lang')){
-            document.getElementById('img_lang').innerHTML=`<img width="15px" height="15px"
+            document.getElementById('img_lang').innerHTML=`<img style="margin-bottom:4.5px" width="15px" height="15px"
             src="../img/usa.jpg" alt="">`;
         }
         if(document.getElementById('img_lang_mobie')){
-            document.getElementById('img_lang_mobie').innerHTML=`<img width="15px" height="15px"
+            document.getElementById('img_lang_mobie').innerHTML=`<img style="margin-bottom:4.5px" width="15px" height="15px"
             src="../img/usa.jpg" alt="">`;
         }
        
