@@ -332,7 +332,7 @@ async function show_pricing() {
             document.getElementById("name_pricing").innerHTML = `
             ${f.name} (${f.limit_day} Ngày)`
             document.getElementById("rights").innerHTML = `
-            ${f.limit_request} Request`
+            ${f.limit_request} Post/day`
             document.getElementById("request_fb").innerHTML = `
             ${f.limit_fb} Facebook Accounts`
             document.getElementById("date_buy").innerHTML = `

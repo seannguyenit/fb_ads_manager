@@ -244,7 +244,7 @@ async function load_lib_img(v1) {
     } else {
         if (img_p.querySelector('[data-type="image"]')) {
             img_p.querySelector('[data-type="image"]').classList.add('active');
-            change_img_selected();
+            change_img_selected(img_p.querySelector('[data-type="image"]'));
         }
     }
 
@@ -284,6 +284,7 @@ async function change_img(ele) {
     change_img_selected(ele);
 }
 async function change_img_selected(ele) {
+    if(!ele) return;
     if (cr_card == 1 && f_l == 0) {
         document.getElementById('img_1').src = ele.querySelector('img').src;
     } else {
@@ -333,6 +334,7 @@ async function change_card_element() {
 }
 
 async function PreviewImage() {
+    const card = 1;
     start_loading1();
     try {
         var oFReader = new FileReader();
@@ -345,7 +347,7 @@ async function PreviewImage() {
         oFReader.onload = function (oFREvent) {
             // document.getElementById("img_1").src = oFREvent.target.result;
         };
-        var new_obj = await upload_and_return_url(document.getElementById("file-input"), get_token_ads(), get_token_user());
+        var new_obj = await upload_and_return_url(document.getElementById("file-input"), get_token_ads(), get_token_user(),1);
         if (new_obj) {
             document.getElementById("img_1").src = new_obj.images[document.getElementById("file-input").files[0].name].url
             document.getElementById("img_1").dataset.hash = new_obj.images[document.getElementById("file-input").files[0].name].hash
@@ -359,6 +361,7 @@ async function PreviewImage() {
 };
 
 async function PreviewImage1() {
+    const card = 2;
     start_loading2();
     try {
         var oFReader = new FileReader();
@@ -371,7 +374,7 @@ async function PreviewImage1() {
         oFReader.onload = function (oFREvent) {
             // document.getElementById("img_2").src = oFREvent.target.result;
         };
-        var new_obj = await upload_and_return_url(document.getElementById("file-input1"), get_token_ads(), get_token_user());
+        var new_obj = await upload_and_return_url(document.getElementById("file-input1"), get_token_ads(), get_token_user(),2);
         if (new_obj) {
             document.getElementById("img_2").src = new_obj.images[document.getElementById("file-input1").files[0].name].url
             document.getElementById("img_2").dataset.hash = new_obj.images[document.getElementById("file-input1").files[0].name].hash
@@ -475,7 +478,7 @@ async function get_img_acc_from_ad(id, token) {
     return rs.data;
 }
 
-async function upload_and_return_url(file_element, ads_id, token) {
+async function upload_and_return_url(file_element, ads_id, token,card) {
     if (!file_element || !ads_id || !token) {
         alert('Chưa đầy đủ thông tin !');
         return;
@@ -536,7 +539,7 @@ async function upload_and_return_url(file_element, ads_id, token) {
                 var new_id = vd_rs.id;
                 if (new_id) {
                     var thumbnails_details = await get_thumbnails_video(new_id);
-                    if (cr_card == 1) {
+                    if (card == 1) {
                         cr_video1 = thumbnails_details;
                         load_lib_img(true)
                     } else {
@@ -682,7 +685,7 @@ async function public_data() {
         })
         .catch(error => {
             console.error('Error:', error);
-            stop_loading();
+            // stop_loading();
         });
     return rs;
 }
@@ -707,7 +710,7 @@ async function get_step2(id) {
         })
         .catch((error) => {
             console.warn(error);
-            stop_loading();
+            // stop_loading();
             return undefined;
         });
 }
@@ -832,7 +835,7 @@ async function run_public() {
                         await after_public(s2, check_request);
                     }
                 } catch (error) {
-                    stop_loading();
+                    // stop_loading();
                 }
             } else {
                 alert('Đã xảy ra lỗi về phân quyền trên page !')
@@ -844,11 +847,11 @@ async function run_public() {
                 alert(JSON.stringify(rs.error));
             }
             await end_request(0, check_request.time, JSON.stringify({ result: rs, param: get_param_err() }))
-            stop_loading();
+            // stop_loading();
             return;
         }
     }
-    stop_loading();
+    // stop_loading();
 }
 
 async function after_public(s2, check_request) {
@@ -856,7 +859,8 @@ async function after_public(s2, check_request) {
     var fb = get_token_user_text();
     var page_id = get_token_page_text();
     var link = `https://www.facebook.com/permalink.php?story_fbid=${s2.effective_object_story_id.split('_')[1]}&id=${s2.effective_object_story_id.split('_')[0]}`;
-    row_rs.innerHTML += `<tr class="tr"><td class="text-left">${fb}</td><td class="text-left">${page_id}</td><td class="text-left"><a class="btn btn-primary" href="${link}" id="rs_link" target="_blank">Link</a></td></tr>`;
+    row_rs.innerHTML += `<tr class="tr"><td class="text-left">${fb}</td><td class="text-left">${page_id}</td><td class="text-left"><a class="btn btn-primary" style="
+    color: #fff;" href="${link}" id="rs_link" target="_blank">Link</a></td></tr>`;
     await end_request(1, check_request.time);
 }
 

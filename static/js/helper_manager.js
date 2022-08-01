@@ -165,13 +165,13 @@ async function init_loading2(img) {
 }
 
 async function start_loading2() {
-    document.getElementById('loading2').style.opacity = "0.5";
+    document.getElementById('loading1').style.opacity = "0.5";
     document.getElementById('loading-element2').style.display = "block";
 }
 
 
 async function stop_loading2() {
-    document.getElementById('loading2').style.opacity = "1";
+    document.getElementById('loading1').style.opacity = "1";
     document.getElementById('loading-element2').style.display = "none";
 }
 
