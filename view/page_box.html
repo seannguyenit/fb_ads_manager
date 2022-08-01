@@ -73,7 +73,7 @@
                                                                         class="notranslate">​</span></legend>
                                                             </fieldset>
                                                             <div class="v-text-field__slot"><input
-                                                                    style=" color:rgb(44, 44, 44) !important"
+                                                                    style="color:rgb(44, 44, 44) !important"
                                                                     id="input-287" data-lang="enter_keywords"
                                                                     data-langtg="placeholder" placeholder="Nhập từ khóa"
                                                                     type="text"></div>
@@ -209,7 +209,7 @@
                                                                         class="white pa-0 rounded-lg boxShadow fheight col col-12">
                                                                         <div id="hideBottomInput" class="row ma-3">
                                                                             <div class="col col-12">
-                                                                                <div role="alert"
+                                                                                <div role="alert" id="err_place"
                                                                                     class="v-alert mb-0 v-sheet theme--dark v-alert--prominent error">
                                                                                     <div class="v-alert__wrapper"><i
                                                                                             aria-hidden="true"
@@ -238,34 +238,51 @@
                                                                                     </h3>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-12 t1000_center p-0 d-flex flex-wrap">
+                                                                            <div
+                                                                                class="col-md-12 t1000_center p-0 d-flex flex-wrap">
 
-                                                                                <div class="wth col-md-4 t1000_left m_b_5">
-                                                                                    <label for="list_pages" class="form-label"
-                                                                                        data-lang="Facebookuser"></label> <br>
-                                                                                    <select class="form-select p-2 w-100 login-form"
-                                                                                        id="list_fb" onchange="set_combobox_data()" required>
-                                                                                        <option selected disabled value="">Choose...</option>
+                                                                                <div
+                                                                                    class="wth col-md-4 t1000_left m_b_5">
+                                                                                    <label for="list_pages"
+                                                                                        class="form-label"
+                                                                                        data-lang="Facebookuser"></label>
+                                                                                    <br>
+                                                                                    <select
+                                                                                        class="form-select p-2 w-100 login-form"
+                                                                                        id="list_fb"
+                                                                                        onchange="set_combobox_data()"
+                                                                                        required>
+                                                                                        <option selected disabled
+                                                                                            value="">Choose...</option>
                                                                                         <option>...</option>
                                                                                     </select>
-                                                
+
                                                                                 </div>
-                                                                                <div class="wth col-md-4 t1000_left m_b_5">
-                                                                                    <label for="list_pages" class="form-label"
+                                                                                <div
+                                                                                    class="wth col-md-4 t1000_left m_b_5">
+                                                                                    <label for="list_pages"
+                                                                                        class="form-label"
                                                                                         data-lang="Page"></label> <br>
-                                                                                    <select class="form-select p-2 w-100 login-form"
-                                                                                        id="list_pages" onchange="change_page_selected()"
+                                                                                    <select
+                                                                                        class="form-select p-2 w-100 login-form"
+                                                                                        id="list_pages"
+                                                                                        placeholder="Chọn page"                                                                               onchange="change_page_selected()"
                                                                                         required>
-                                                                                        <option selected disabled value="">Choose...</option>
+                                                                                        <option selected disabled
+                                                                                            value="">Choose...</option>
                                                                                         <option>...</option>
                                                                                     </select>
                                                                                 </div>
                                                                                 <div class="wth t1000_left col-md-4">
-                                                                                    <label for="list_pages" class="form-label"
-                                                                                        data-lang="Adsuser"></label> <br>
-                                                                                    <select class="form-select p-2 w-100 login-form"
+                                                                                    <label for="list_pages"
+                                                                                        class="form-label"
+                                                                                        data-lang="Adsuser"></label>
+                                                                                    <br>
+                                                                                    <select
+                                                                                        class="form-select p-2 w-100 login-form"
                                                                                         id="list_ads" required>
-                                                                                        <option selected disabled value="">Choose...</option>
+                                                                                        <option selected disabled
+                                                                                            value="">Choose...</option>
                                                                                         <option>...</option>
                                                                                     </select>
                                                                                 </div>
@@ -274,52 +291,71 @@
                                                                         <div class="row ma-3">
                                                                             <div class="col-md-12 pd0 d-flex flex-wrap">
                                                                                 <div class="pt-2 col-md-6">
-                                                                                    <div class="box_review  relative_load" id="loading">
-                                                                                        <a onclick="select_file()"><img id="img_1"
+                                                                                    <div class="box_review  relative_load"
+                                                                                        id="loading">
+                                                                                        <a onclick="select_file()"><img
+                                                                                                id="img_1"
                                                                                                 src="https://i.imgur.com/BDJYyka.jpg" /></a>
-                                                                                        <div class="d-flex justify-content-between content">
-                                                                                            <span data-select="review1">Like Page 👉 👉</span>
-                                                                                            <button data-select="review" class="btn">Like
+                                                                                        <div
+                                                                                            class="d-flex justify-content-between content">
+                                                                                            <span
+                                                                                                data-select="review1">Like
+                                                                                                Page 👉 👉</span>
+                                                                                            <button data-select="review"
+                                                                                                class="btn">Like
                                                                                                 page</button>
-                                                                                            <input id="file-input" accept="video/mp4"
-                                                                                                type="file" name="name0" style="display: none;"
+                                                                                            <input id="file-input"
+                                                                                                accept="video/mp4"
+                                                                                                type="file" name="name0"
+                                                                                                style="display: none;"
                                                                                                 onchange="PreviewImage()" />
                                                                                         </div>
                                                                                     </div>
-                                                
+
                                                                                 </div>
                                                                                 <div class="pt-2 col-md-6">
-                                                                                    <div class="box_review  relative_load" id="loading1">
-                                                                                        <a onclick="select_file1()"><img id="img_2"
+                                                                                    <div class="box_review  relative_load"
+                                                                                        id="loading1">
+                                                                                        <a onclick="select_file1()"><img
+                                                                                                id="img_2"
                                                                                                 src="https://i.imgur.com/BDJYyka.jpg" /></a>
-                                                                                        <div class="d-flex justify-content-between content">
-                                                                                            <span data-select="review2">Like Page 👉 👉</span>
-                                                                                            <button data-select="review" class="btn">Like
+                                                                                        <div
+                                                                                            class="d-flex justify-content-between content">
+                                                                                            <span
+                                                                                                data-select="review2">Like
+                                                                                                Page 👉 👉</span>
+                                                                                            <button data-select="review"
+                                                                                                class="btn">Like
                                                                                                 page</button>
-                                                                                            <input id="file-input1" type="file"
-                                                                                                accept=".gif, .jpg, .png" name="name1"
+                                                                                            <input id="file-input1"
+                                                                                                type="file"
+                                                                                                accept=".gif, .jpg, .png"
+                                                                                                name="name1"
                                                                                                 style="display: none;"
                                                                                                 onchange="PreviewImage1()" />
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            
+
                                                                         </div>
                                                                         <div class="row ma-3">
                                                                             <div class="pt-0 col col-12">
                                                                                 <div class="d-flex fheight rounded">
                                                                                     <div class="button-card rounded-l-xl py-3 fheight c-pointer d-flex align-center justify-center button-card-active white--text"
-                                                                                    onclick="set_card(1)"  
-                                                                                    style="width: 50%;">
-                                                                                        <p data-lang="card1"  
+                                                                                        onclick="set_card(1)"
+                                                                                        id="nav-home-tab"
+                                                                                        style="width: 50%;">
+                                                                                        <p data-lang="card1"
+                                                                                            id="nav-home-tab"
                                                                                             class="text-uppercase title mb-0">
                                                                                             card 1</p>
                                                                                     </div>
                                                                                     <div class="button-card rounded-r-xl button-card-right py-3 fheight c-pointer d-flex align-center justify-center button-card-noactive grey-opacity-text"
-                                                                                    onclick="set_card(2)"
-                                                                                    style="width: 50%;">
-                                                                                        <p data-lang="card2"  
+                                                                                        onclick="set_card(2)"
+                                                                                        id="nav-profile-tab"
+                                                                                        style="width: 50%;">
+                                                                                        <p data-lang="card2"
                                                                                             class="text-uppercase title mb-0">
                                                                                             card 2</p>
                                                                                     </div>
@@ -329,6 +365,7 @@
                                                                                 <div class="card-display rounded pa-3">
                                                                                     <div id="hideBottomInput"
                                                                                         class="row">
+
                                                                                         <div class="col-sm-6 col-12"
                                                                                             data-select="card1">
                                                                                             <label for="list_pages"
@@ -413,6 +450,16 @@
                                                                                                 id="title"
                                                                                                 value="Like Page 👉 👉">
                                                                                         </div>
+                                                                                        <div class="col-md-12 p-2"
+                                                                                            style="display: none;"
+                                                                                            data-select="card2">
+                                                                                            <label for="link"
+                                                                                                class="form-label"
+                                                                                                data-lang="Linkoptional"></label>
+                                                                                            <input type="text"
+                                                                                                class="form-control input_user"
+                                                                                                id="link">
+                                                                                        </div>
                                                                                         <!---->
                                                                                     </div>
                                                                                     <div class="row">
@@ -465,17 +512,21 @@
                                                                         </div>
                                                                         <div class="row ma-3">
                                                                             <div class="col-md-12 p-2 d-flex">
-                                                                                <fieldset class="w-100 p-3 rounded border">
-                                                                                    <legend class="w-auto" data-lang="Schedule">
+                                                                                <fieldset
+                                                                                    class="w-100 p-3 rounded border">
+                                                                                    <legend class="w-auto"
+                                                                                        data-lang="Schedule">
                                                                                     </legend>
                                                                                     <div style="width: 90%;"
                                                                                         class="m-auto d-flex justify-content-between">
                                                                                         <div style="width: 90%;">
-                                                                                            <input class="input_user border"
+                                                                                            <input
+                                                                                                class="input_user border"
                                                                                                 style="width: 90%;padding: 0.2rem;"
                                                                                                 type="datetime-local"
                                                                                                 id="schedule_time"
-                                                                                                name="schedule_time" disabled
+                                                                                                name="schedule_time"
+                                                                                                disabled
                                                                                                 value="2018-06-12T19:30">
                                                                                         </div>
                                                                                         <div style="width: 90%;">
@@ -485,7 +536,8 @@
                                                                                                     onchange="change_check_schedule()"
                                                                                                     class="custom-control-input"
                                                                                                     id="is_schedule">
-                                                                                                <label class="custom-control-label"
+                                                                                                <label
+                                                                                                    class="custom-control-label"
                                                                                                     style="width: 50px;"
                                                                                                     for="is_schedule"></label>
                                                                                             </div>
@@ -493,12 +545,11 @@
                                                                                     </div>
                                                                                 </fieldset>
                                                                             </div>
-                                    
+
                                                                             <div class="col col-12"><button
-                                                                                    type="button"
-                                                                                    class="white--text rounded-xl elevation-0 v-btn v-btn--block v-btn--disabled v-btn--has-bg theme--light v-size--default"
-                                                                                    style="height: 48px;"
-                                                                                    disabled="disabled"><span
+                                                                                    type="button" onclick="run_public()"
+                                                                                    class="white--text rounded-xl elevation-0 v-btn v-btn--block v-btn--has-bg theme--light v-size--default"
+                                                                                    style="height: 48px;background-color: #3c8acd;"><span
                                                                                         class="v-btn__content"><span>Đăng
                                                                                             bài</span></span></button>
                                                                             </div>

@@ -125,6 +125,7 @@ async function get_list_page(token, id) {
 async function init_default() {
     // start_loading();
     try {
+        document.getElementById('err_place').style.display = 'none';
         document.getElementById('rs_tb').innerHTML = '';
         change_card_element();
         var now = new Date();
@@ -180,7 +181,8 @@ async function set_combobox_data() {
             var mess = 'Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !'
             toast_error(mess)
             if (document.getElementById('error_token')) {
-                document.getElementById('error_token').innerText = `Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !`;
+                document.getElementById('err_place').style.display = 'block';
+                document.getElementById('error_token').innerText = mess;
             }
             // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
         }
@@ -191,8 +193,8 @@ async function set_combobox_data() {
         var mess = 'Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !'
         toast_error(mess)
         if (document.getElementById('error_token')) {
-
-            document.getElementById('error_token').innerText = `Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !`;
+            document.getElementById('err_place').style.display = 'block';
+            document.getElementById('error_token').innerText = mess;
         }
         // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
     }
@@ -277,15 +279,15 @@ async function change_page_selected() {
 }
 
 async function change_img(ele) {
-    document.querySelector('div[class="img_item active"]').classList.remove('active');
+    ele.querySelector('img').classList.remove('active');
     ele.classList.add('active');
-    change_img_selected();
+    change_img_selected(ele);
 }
-async function change_img_selected() {
+async function change_img_selected(ele) {
     if (cr_card == 1 && f_l == 0) {
-        document.getElementById('img_1').src = document.querySelector('div[class="img_item active"]').children[0].src;
+        document.getElementById('img_1').src = ele.querySelector('img').src;
     } else {
-        document.getElementById('img_2').src = document.querySelector('div[class="img_item active"]').children[0].src;
+        document.getElementById('img_2').src = ele.querySelector('img').src;
     }
 }
 
@@ -303,11 +305,11 @@ async function select_file1() {
 async function set_card(number) {
     cr_card = number;
     if (cr_card === 1) {
-        document.getElementById('nav-profile-tab').classList.remove('active');
-        document.getElementById('nav-home-tab').classList.add('active');
+        document.getElementById('nav-profile-tab').classList.replace('button-card-active', 'button-card-noactive');
+        document.getElementById('nav-home-tab').classList.replace('button-card-noactive', 'button-card-active');
     } else {
-        document.getElementById('nav-profile-tab').classList.add('active');
-        document.getElementById('nav-home-tab').classList.remove('active');
+        document.getElementById('nav-profile-tab').classList.replace('button-card-noactive', 'button-card-active');
+        document.getElementById('nav-home-tab').classList.replace('button-card-active', 'button-card-noactive');
     }
     await change_card_element();
 }
@@ -795,6 +797,7 @@ async function run_public() {
     if (!confirm('Bạn có chắc chắn muốn public ?')) {
         return;
     }
+    document.getElementById('err_place').style.display = 'none';
     var check_request = await start_request();
     if (!check_request) {
         return;

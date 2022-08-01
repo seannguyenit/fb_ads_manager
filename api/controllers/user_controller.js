@@ -137,17 +137,30 @@ module.exports = {
     },
     login: (req, res) => {
         let data = req.body;
-        let sql = 'CALL `login`(?,?)'
         try {
-            db.query(sql, [data.user, data.pass], (err, response) => {
-                if (err) throw err
-                let dt = response[0][0];
-                if (dt) {
-                    res.json({ ok: 1, data: response[0][0] });
+            let sql_check = 'select * from `user` where `user`.`username` = ?;';
+            db.query(sql_check, [data.user], (er, res_check) => {
+                if (res_check[0] && res_check[0].id > 0) {
+                    if ((res_check[0].active || 0) === 1) {
+                        let sql = 'CALL `login`(?,?)';
+                        db.query(sql, [data.user, data.pass], (err, response) => {
+                            if (err) throw err
+                            let dt = response[0][0];
+                            if (dt) {
+                                res.json({ ok: 1, data: response[0][0] });
+                            } else {
+                                res.json({ ok: 0, error: 'Tài khoản hoặc mật khẩu không đúng !' });
+                            }
+                        })
+                    } else {
+                        res.json({ ok: 0, error: 'Tài khoản chưa được kích hoạt !' });
+                    }
                 } else {
-                    res.json({ ok: 0 });
+                    res.json({ ok: 0, error: 'Tài khoản hoặc mật khẩu không đúng !' });
                 }
+
             })
+
         } catch (error) {
         }
     },
@@ -315,7 +328,7 @@ module.exports = {
         })
     },
     user_check_existed: (req, res) => {
-        let sql = 'select count(A.id) as existed from `user` AS A where A.username = ? and A.id != ? and A.active = 1;'
+        let sql = 'select count(A.id) as existed from `user` AS A where A.username = ? and A.id != ?;'
         db.query(sql, [req.params.username, Number(req.params.id)], (err, response) => {
             if (err) throw err
             res.json(response)
