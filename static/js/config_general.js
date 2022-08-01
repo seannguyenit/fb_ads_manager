@@ -45,11 +45,13 @@ async function open_data_admin_mbbank() {
                     document.getElementById('token_mbbank').value = `${f.token}`
                     document.getElementById('account_mbbank').value = `${f.account}`
                     document.getElementById('pass_mbbank').value = `${f.password}`
-                    document.getElementById('action_mb').innerHTML =`${action}`   
+                    document.getElementById('action_mb').innerHTML =`${action}` 
+                    document.getElementById('type_action_mb').innerHTML =`${f.action}`   
                 }else{
                     var action = ` <button style="background-color: #383d52 ;   padding: 5px;
                     margin-top: 10px;" onclick="edit_active(${f.id},${f.action})">Off</button>`
                     document.getElementById('action_mb').innerHTML =`${action}`   
+                    document.getElementById('type_action_mb').innerHTML =`${f.action}`   
                 }
                                 
             }
@@ -61,11 +63,13 @@ async function open_data_admin_mbbank() {
                     document.getElementById('account_acbbank').value = `${f.account}`
                     document.getElementById('pass_acbbank').value = `${f.password}`
                     document.getElementById('action_acb').innerHTML =`${action}`
+                    document.getElementById('type_action_acb').innerHTML =`${f.action}`   
                 }else{
                     var action = ` <button style="background-color: #383d52;    padding: 5px;
                     margin-top: 10px;" onclick="edit_active(${f.id},${f.action})">Off</button>`
                     document.getElementById('action_acb').innerHTML =`${action}`
-                }
+                    document.getElementById('type_action_acb').innerHTML =`${f.action}`   
+                } 
                
             }
             if(Number(f.type) === 3){
@@ -74,10 +78,12 @@ async function open_data_admin_mbbank() {
                     margin-top: 10px;" onclick="edit_active(${f.id},${f.action})">On</button>`
                     document.getElementById('token_momo').value = `${f.token}`
                     document.getElementById('action_momo').innerHTML =`${action}`
+                    document.getElementById('type_action_momo').innerHTML =`${f.action}`   
                 }else{
                     var action = ` <button style="background-color: #383d52;    padding: 5px;
                     margin-top: 10px;" onclick="edit_active(${f.id},${f.action})">Off</button>`
                     document.getElementById('action_momo').innerHTML =`${action}`
+                    document.getElementById('type_action_momo').innerHTML =`${f.action}`   
                 }
                
             }
@@ -101,65 +107,65 @@ async function edit_active(id,action){
 }
 
 // modal Show admin_mbbank
-async function open_modal_admin_mbbank(){
-    var data = await get_admin_bank();
-    if (data) {
-        data.forEach(f => {
-            if(Number(f.type) === 1 && Number(f.action) === 1 ){
-            document.getElementById('detail_action_mbbank').value = `${f.action}`;
-            document.getElementById('detail_token_mbbank').value = `${f.token}`;
-            document.getElementById('detail_account_mbbank').value = `${f.account}`;
-            document.getElementById('detail_pass_mbbank').value = `${f.password}`;
-            }
-        })
-    }
-    $('#mb_table').modal('show')
-}
+// async function open_modal_admin_mbbank(){
+//     var data = await get_admin_bank();
+//     if (data) {
+//         data.forEach(f => {
+//             if(Number(f.type) === 1 && Number(f.action) === 1 ){
+//             document.getElementById('detail_action_mbbank').value = `${f.action}`;
+//             document.getElementById('detail_token_mbbank').value = `${f.token}`;
+//             document.getElementById('detail_account_mbbank').value = `${f.account}`;
+//             document.getElementById('detail_pass_mbbank').value = `${f.password}`;
+//             }
+//         })
+//     }
+//     $('#mb_table').modal('show')
+// }
 
 // modal Show admin_acbbank
-async function open_modal_admin_acbbank(){
-    var data = await get_admin_bank();
-    if (data) {
-        data.forEach(f => {
-            if(Number(f.type) === 2 && Number(f.action) === 1){
-            document.getElementById('detail_action_acbbank').value = `${f.action}`;
-            document.getElementById('detail_token_acbbank').value = `${f.token}`
-            document.getElementById('detail_account_acbbank').value = `${f.account}`
-            document.getElementById('detail_pass_acbbank').value = `${f.password}`
-            }
-        })
-    }
-    $('#acb_table').modal('show')
-}
+// async function open_modal_admin_acbbank(){
+//     var data = await get_admin_bank();
+//     if (data) {
+//         data.forEach(f => {
+//             if(Number(f.type) === 2 && Number(f.action) === 1){
+//             document.getElementById('detail_action_acbbank').value = `${f.action}`;
+//             document.getElementById('detail_token_acbbank').value = `${f.token}`
+//             document.getElementById('detail_account_acbbank').value = `${f.account}`
+//             document.getElementById('detail_pass_acbbank').value = `${f.password}`
+//             }
+//         })
+//     }
+//     $('#acb_table').modal('show')
+// }
 
 // modal Show admin_momo
-async function open_modal_admin_momo(){
-    var data = await get_admin_bank();
-    if (data) {
-        data.forEach(f => {
+// async function open_modal_admin_momo(){
+//     var data = await get_admin_bank();
+//     if (data) {
+//         data.forEach(f => {
             
-            if(Number(f.type) === 3 && Number(f.action) === 1){
-            document.getElementById('detail_action_momo').value = `${f.action}`;
-            document.getElementById('detail_token_momo').value = `${f.token}`
+//             if(Number(f.type) === 3 && Number(f.action) === 1){
+//             document.getElementById('detail_action_momo').value = `${f.action}`;
+//             document.getElementById('detail_token_momo').value = `${f.token}`
            
-            }
-        })
-    }
-    $('#momo_table').modal('show')
-}
+//             }
+//         })
+//     }
+//     $('#momo_table').modal('show')
+// }
 
 // Update data mbbank
 async function save_admin_mbbank(){
-    if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu ?')) {
+    if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu MB bank ?')) {
         return;
     }
-    if(!$("#detail_action_mbbank").val()){
+    if(Number($("#type_action_mb").val()) === 0){
         alert("API MBbank không hoạt động");
         return;
     }
-    var token = $("#detail_token_mbbank").val();
-    var account = $("#detail_account_mbbank").val();
-    var password = $("#detail_pass_mbbank").val();
+    var token = $("#token_mbbank").val();
+    var account = $("#account_mbbank").val();
+    var password = $("#pass_mbbank").val();
 
     var url = `/api/admin_bank`;
     var meth = 'POST';
@@ -173,16 +179,16 @@ async function save_admin_mbbank(){
 
 // Update data acbbank
 async function save_admin_acbbank(){
-    if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu ?')) {
+    if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu ACB bank?')) {
         return;
     }
-    if(!$("#detail_action_acbbank").val()){
+    if(Number($("#type_action_acb").val()) === 0){
         alert("API ACBbank không hoạt động");
         return;
     }
-    var token = $("#detail_token_acbbank").val();
-    var account = $("#detail_account_acbbank").val();
-    var password = $("#detail_pass_acbbank").val();
+    var token = $("#token_acbbank").val();
+    var account = $("#account_acbbank").val();
+    var password = $("#pass_acbbank").val();
 
     var url = `/api/admin_bank`;
     var meth = 'POST';
@@ -196,14 +202,14 @@ async function save_admin_acbbank(){
 
 // Update data momo
 async function save_admin_momo(){
-    if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu ?')) {
+    if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu MoMo?')) {
         return;
     }
-    if(!$("#detail_action_momo").val()){
+    if(Number($("#type_action_momo").val()) === 0){
         alert("API MoMo không hoạt động");
         return;
     }
-    var token = $("#detail_token_momo").val();
+    var token = $("#token_momo").val();
 
     var url = `/api/admin_bank`;
     var meth = 'POST';
@@ -252,31 +258,31 @@ async function open_data_admin_contacts() {
 }
 
 // modal Show admin_contacts
-async function open_modal_admin_contact(){
-    var data = await get_admin_contacts();
-    if (data) {
-        data.forEach(f => {
-            document.getElementById('detail_name_admin').value = `${f.name}`
-            document.getElementById('detail_sdt_admim').value = `${f.phone}`
-            document.getElementById('detail_email_admin').value = `${f.email}`
-            document.getElementById('detail_link_fb').value = `${f.facebook}`
-            document.getElementById('detail_link_zl').value = `${f.zalo}`
-        })
-    }
-    $('#money_table').modal('show');
-}
+// async function open_modal_admin_contact(){
+//     var data = await get_admin_contacts();
+//     if (data) {
+//         data.forEach(f => {
+//             document.getElementById('detail_name_admin').value = `${f.name}`
+//             document.getElementById('detail_sdt_admim').value = `${f.phone}`
+//             document.getElementById('detail_email_admin').value = `${f.email}`
+//             document.getElementById('detail_link_fb').value = `${f.facebook}`
+//             document.getElementById('detail_link_zl').value = `${f.zalo}`
+//         })
+//     }
+//     $('#money_table').modal('show');
+// }
 
 // Update data
 async function save_admin_contacts(){
-    if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu ?')) {
+    if (!confirm('Bạn có chắc chắn muốn thay đổi dữ liệu hỗ trợ?')) {
         return;
     }
-    if (!validate_()) return;
-    var name = $("#detail_name_admin").val();
-    var phone = $("#detail_sdt_admim").val();
-    var email = $("#detail_email_admin").val();
-    var facebook = $("#detail_link_fb").val();
-    var zalo = $("#detail_link_zl").val();
+    // if (!validate_()) return;
+    var name = $("#name_admin").val();
+    var phone = $("#sdt_admim").val();
+    var email = $("#Email_admin").val();
+    var facebook = $("#link_fb").val();
+    var zalo = $("#link_zl").val();
 
     var url = `/api/admin_contacts`;
     var meth = 'POST';
@@ -309,7 +315,7 @@ async function admin_contacts_save(url, data, meth) {
         });
 }
 
-function move_money_momo() {
-    $('#momo_table').modal('hide');
-    $('#move_money_momo_table').modal('show');
-}
+// function move_money_momo() {
+//     $('#momo_table').modal('hide');
+//     $('#move_money_momo_table').modal('show');
+// }
