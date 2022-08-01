@@ -307,7 +307,7 @@ module.exports = {
         db.query(sql, [data], (err, response) => {
             if (err) throw err
             let sql_active = 'insert into history_login set user_id = ? ,action = ?, time = ?, active = ?; '
-            db.query(sql_active, [data.user_id, "Gia Hạn Token", time, data.token], (err, response) => {
+            db.query(sql_active, [data.user_id, "Gia Hạn Token", time, req.params.ip], (err, response) => {
                 if (err) throw err
                 res.json({ ok: 1 });
             })
