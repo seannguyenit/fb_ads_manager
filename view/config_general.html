@@ -541,7 +541,7 @@
                                                 </h6>
                                             </div>
                                             <div class="col-md-9">
-                                                <input disabled
+                                                <input 
                                                     style="background-color: #2a2e3f !important; color:#c0c2c7 !important;border: 0.5px solid #383d52 !important;"
                                                     type="text" class="form-control" name="title" value=""
                                                     placeholder="" id="token_mbbank">
@@ -556,7 +556,7 @@
                                                 </h6>
                                             </div>
                                             <div class="col-md-9">
-                                                <input disabled
+                                                <input 
                                                     style="background-color: #2a2e3f !important; color:#c0c2c7 !important;border: 0.5px solid #383d52 !important;"
                                                     type="text" class="form-control" name="domain" value=""
                                                     placeholder="" id="account_mbbank">
@@ -571,10 +571,10 @@
                                                 </h6>
                                             </div>
                                             <div class="col-md-9">
-                                                <input disabled
+                                                <input 
                                                     style="background-color: #2a2e3f !important; color:#c0c2c7 !important;border: 0.5px solid #383d52 !important;"
-                                                    type="password" class="form-control" name="keyword" value=""
-                                                    placeholder="" type="password" id="pass_mbbank">
+                                                    type="text" class="form-control" name="keyword" value=""
+                                                    placeholder=""  id="pass_mbbank">
                                             </div>
                                         </div>
                                     </div>
@@ -588,11 +588,12 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <span id="action_mb"></span>
+                                                <input hidden type="text" id="type_action_mb">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <button type="" onclick="open_modal_admin_mbbank()"
+                                    <button type="" onclick="save_admin_mbbank()"
                                         class="btn btn-primary btn-lg btn-block"><i class="fa fa-save"></i> Thay
                                         đổi</button>
 
@@ -613,7 +614,7 @@
                                                 </h6>
                                             </div>
                                             <div class="col-md-9">
-                                                <input disabled
+                                                <input 
                                                     style="background-color: #2a2e3f !important; color:#c0c2c7 !important;border: 0.5px solid #383d52 !important;"
                                                     type="text" class="form-control" name="title" value=""
                                                     placeholder="" id="token_acbbank">
@@ -628,7 +629,7 @@
                                                 </h6>
                                             </div>
                                             <div class="col-md-9">
-                                                <input disabled
+                                                <input 
                                                     style="background-color: #2a2e3f !important; color:#c0c2c7 !important;border: 0.5px solid #383d52 !important;"
                                                     type="text" class="form-control" name="domain" value=""
                                                     placeholder="" id="account_acbbank">
@@ -643,10 +644,10 @@
                                                 </h6>
                                             </div>
                                             <div class="col-md-9">
-                                                <input disabled
+                                                <input 
                                                     style="background-color: #2a2e3f !important; color:#c0c2c7 !important;border: 0.5px solid #383d52 !important;"
-                                                    type="password" class="form-control" name="keyword" value=""
-                                                    placeholder="" type="password" id="pass_acbbank">
+                                                    type="text" class="form-control" name="keyword" value=""
+                                                    placeholder=""  id="pass_acbbank">
                                             </div>
                                         </div>
                                     </div>
@@ -660,11 +661,12 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <span id="action_acb"></span>
+                                                <input hidden type="text" id="type_action_acb">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <button type="" onclick="open_modal_admin_acbbank()"
+                                    <button type="" onclick="save_admin_acbbank()"
                                         class="btn btn-primary btn-lg btn-block"><i class="fa fa-save"></i> Thay
                                         đổi</button>
                                 </div>
@@ -684,7 +686,7 @@
                                                 </h6>
                                             </div>
                                             <div class="col-md-9">
-                                                <input disabled
+                                                <input 
                                                     style="background-color: #2a2e3f !important; color:#c0c2c7 !important;border: 0.5px solid #383d52 !important;"
                                                     type="text" class="form-control" name="fullname_admin" value=""
                                                     placeholder="Nhập tên admin" id="name_admin">
@@ -699,7 +701,7 @@
                                                 </h6>
                                             </div>
                                             <div class="col-md-9">
-                                                <input disabled
+                                                <input 
                                                     style="background-color: #2a2e3f !important; color:#c0c2c7 !important;border: 0.5px solid #383d52 !important;"
                                                     type="number" class="form-control" name="" value=""
                                                     placeholder="Nhập tên admin" id="sdt_admim">
@@ -714,7 +716,7 @@
                                                 </h6>
                                             </div>
                                             <div class="col-md-9">
-                                                <input disabled
+                                                <input 
                                                     style="background-color: #2a2e3f !important; color:#c0c2c7 !important;border: 0.5px solid #383d52 !important;"
                                                     type="text" class="form-control" name="" value=""
                                                     placeholder="Nhập tên admin" id="Email_admin">
@@ -730,7 +732,7 @@
                                                 </h6>
                                             </div>
                                             <div class="col-md-9">
-                                                <input disabled
+                                                <input 
                                                     style="background-color: #2a2e3f !important; color:#c0c2c7 !important;border: 0.5px solid #383d52 !important;"
                                                     type="text" class="form-control" name="fb_admin" value=""
                                                     placeholder="Nhập link facebook của admin" id="link_fb">
@@ -746,14 +748,14 @@
                                                 </h6>
                                             </div>
                                             <div class="col-md-9">
-                                                <input disabled
+                                                <input 
                                                     style="background-color: #2a2e3f !important; color:#c0c2c7 !important;border: 0.5px solid #383d52 !important;"
                                                     type="text" class="form-control" name="zalo_admin" value=""
                                                     placeholder="Nhập link zalo của admin" id="link_zl">
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="" onclick="open_modal_admin_contact(0)"
+                                    <button type="" onclick="save_admin_contacts(0)"
                                         class="btn btn-primary btn-lg btn-block"><i class="fa fa-save"></i> Thay
                                         đổi</button>
 
@@ -773,7 +775,7 @@
                                                 </h6>
                                             </div>
                                             <div class="col-md-9">
-                                                <input disabled
+                                                <input 
                                                     style="background-color: #2a2e3f !important; color:#c0c2c7 !important;border: 0.5px solid #383d52 !important;"
                                                     type="text" class="form-control" name="title" value=""
                                                     placeholder="" id="token_momo">
@@ -790,11 +792,12 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <span id="action_momo"></span>
+                                                <input hidden type="text" id="type_action_momo">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <button type="" onclick="open_modal_admin_momo()"
+                                    <button type="" onclick="save_admin_momo()"
                                         class="btn btn-primary btn-lg btn-block"><i class="fa fa-save"></i> Thay
                                         đổi</button>
                                 </div>
