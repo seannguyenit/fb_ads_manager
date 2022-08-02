@@ -17,7 +17,7 @@ async function init_logo() {
     if (data_img) {
         data_img.forEach(item => {
             if (document.getElementById('image_login')) {
-                document.getElementById('image_login').innerHTML = `<img src="${item.logo_img}" width="400px" alt="tool264.com entrance">`;
+                document.getElementById('image_login').innerHTML = `<img src="${item.logo_img}" width="400px" alt="m2v.me entrance">`;
             }
 
         })
@@ -34,7 +34,7 @@ async function init_logo() {
                 src="${item.logo_img}" alt="">`;
             }
             if (document.getElementById('logo_login_center')) {
-                document.getElementById('logo_login_center').innerHTML = ` <img src="${item.logo_img}" width="100%" height="100%" alt="logo tool264.com" />`;
+                document.getElementById('logo_login_center').innerHTML = ` <img src="${item.logo_img}" width="100%" height="100%" alt="logo m2v.me" />`;
             }
             if (document.getElementById('img_logo_admin')) {
                 document.getElementById('img_logo_admin').innerHTML = `<img height="68.99px"

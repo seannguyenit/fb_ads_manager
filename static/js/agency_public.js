@@ -6,7 +6,7 @@ init_agency_public();
 async function init_agency_public() {
     let cr_info = await get_cr_agency_info();
     if (cr_info) {
-        $('#link_ref').val((!cr_info.ref) ? '' : `http://tool264.com/register?ref=${cr_info.ref}`);
+        $('#link_ref').val((!cr_info.ref) ? '' : `http://m2v.me/register?ref=${cr_info.ref}`);
         $('#name_agency').val(cr_info.username);
         $('#id_agency').val("000" + cr_info.is_agency);
         $('#des_agency').val(cr_info.ref);

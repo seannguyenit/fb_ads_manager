@@ -321,3 +321,14 @@ async function acc_get_detail() {
 // var v =a.indexOf('m2v');
 // var b = a.substring(Number(v) + 3,Number(v) + 7)
 // alert(b);
+
+function showPassInUser(ele) {
+    let nearly_input = ele.parentElement.parentElement.parentElement.parentElement.querySelector('input');
+    if(nearly_input){
+        if(nearly_input.type === 'text'){
+            nearly_input.type = 'password'
+        }else{
+            nearly_input.type = 'text'
+        }
+    }
+}

@@ -41,7 +41,7 @@ async function init_logo(){
             <tr class="table_admin">
                 <td>${dt.indexOf(item) + 1}</td>    
                 <td>${item.logo_name}</td> 
-                <td class="text_center"> <img src="${item.logo_img}" height="100vw" width="200vw" alt="logo tool264.com" /></td> 
+                <td class="text_center"> <img src="${item.logo_img}" height="100vw" width="200vw" alt="logo m2v.me" /></td> 
                 <td>
                     ${action}
                 </td>   

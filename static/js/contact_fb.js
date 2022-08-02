@@ -144,10 +144,10 @@ async function init_default() {
             await set_combobox_data();
         }
         await change_card_element();
-        f_l = 0;
     } catch (error) {
         // stop_loading();
     }
+    f_l = 0;
 
     // stop_loading();
 }
@@ -284,7 +284,7 @@ async function change_img(ele) {
     change_img_selected(ele);
 }
 async function change_img_selected(ele) {
-    if(!ele) return;
+    if (!ele) return;
     if (cr_card == 1 && f_l == 0) {
         document.getElementById('img_1').src = ele.querySelector('img').src;
     } else {
@@ -347,7 +347,7 @@ async function PreviewImage() {
         oFReader.onload = function (oFREvent) {
             // document.getElementById("img_1").src = oFREvent.target.result;
         };
-        var new_obj = await upload_and_return_url(document.getElementById("file-input"), get_token_ads(), get_token_user(),1);
+        var new_obj = await upload_and_return_url(document.getElementById("file-input"), get_token_ads(), get_token_user(), 1);
         if (new_obj) {
             document.getElementById("img_1").src = new_obj.images[document.getElementById("file-input").files[0].name].url
             document.getElementById("img_1").dataset.hash = new_obj.images[document.getElementById("file-input").files[0].name].hash
@@ -374,7 +374,7 @@ async function PreviewImage1() {
         oFReader.onload = function (oFREvent) {
             // document.getElementById("img_2").src = oFREvent.target.result;
         };
-        var new_obj = await upload_and_return_url(document.getElementById("file-input1"), get_token_ads(), get_token_user(),2);
+        var new_obj = await upload_and_return_url(document.getElementById("file-input1"), get_token_ads(), get_token_user(), 2);
         if (new_obj) {
             document.getElementById("img_2").src = new_obj.images[document.getElementById("file-input1").files[0].name].url
             document.getElementById("img_2").dataset.hash = new_obj.images[document.getElementById("file-input1").files[0].name].hash
@@ -478,7 +478,7 @@ async function get_img_acc_from_ad(id, token) {
     return rs.data;
 }
 
-async function upload_and_return_url(file_element, ads_id, token,card) {
+async function upload_and_return_url(file_element, ads_id, token, card) {
     if (!file_element || !ads_id || !token) {
         alert('Chưa đầy đủ thông tin !');
         return;
