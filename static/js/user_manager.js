@@ -490,6 +490,34 @@ async function del_acc(id) {
     init_users(cr_page, user_number_page);
 }
 
+async function clean_acc() {
+    if (!confirm('Bạn có chắc chắn muốn làm sạch dữ liệu user ?')) {
+        return;
+    }
+    const method = async () => {
+        var url = `/api/clean_user`;
+        var meth = 'DELETE';
+        return await fetch(url, {
+            method: meth, // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => response.json())
+            .then(result => {
+                alert(result.message)
+                // return result;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    };
+    method().then(() => {
+        get_user_limit()
+        init_users(cr_page, user_number_page);
+    });
+}
+
 // show history pricing and name pricing
 async function init_pricing_history(id) {
     var tb = document.getElementById('tb_pricing_his');

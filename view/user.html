@@ -295,8 +295,7 @@
                         <span class="">Thay đổi số dư : </span><br>
                         <select style="height: 30px;color: black;
                         border: 1px solid black;
-                        padding-left: 15px;" class="form-select" id="edit_money"
-                            aria-label="Default select example">
+                        padding-left: 15px;" class="form-select" id="edit_money" aria-label="Default select example">
                             <option selected value="2">--Trạng Thái--</option>
                             <option value="1">Cộng Tiền</option>
                             <option value="0">Trừ tiền</option>
@@ -305,8 +304,7 @@
                         <div>
                             <input class="width120" type="number" style="width: 150px;    height: 30px;
                             border: 1px solid black;
-                            padding-left: 10px;" id="_money"
-                                placeholder="money..">
+                            padding-left: 10px;" id="_money" placeholder="money..">
                         </div>
                         <div id="save_edit_money">
                             <!-- <button type="button" style="height: 30px;" class="btn btn-primary" onclick=""
@@ -346,7 +344,7 @@
 
         <div class="page">
             <div>
-              
+
                 <div style="background-color: #2a2e3f !important;border-bottom: 1px solid #383d52;box-shadow: 0 0 10px rgb(20 28 43 / 80%);"
                     class="main-header sticky nav nav-item hor-header" style="margin-bottom: -63px;">
                     <div class="main-container container">
@@ -397,12 +395,12 @@
                 <div class="jumps-prevent" style="padding-top: 63px;"></div>
 
                 <div id="cover_menu" class="v-overlay v-overlay--absolute v-overlay--active theme--dark"
-                style="display: none;z-index: 7;">
-                <div class="v-overlay__scrim"
-                    style="opacity: 0.46; background-color: rgb(33, 33, 33); border-color: rgb(33, 33, 33);">
+                    style="display: none;z-index: 7;">
+                    <div class="v-overlay__scrim"
+                        style="opacity: 0.46; background-color: rgb(33, 33, 33); border-color: rgb(33, 33, 33);">
+                    </div>
+                    <div class="v-overlay__content"></div>
                 </div>
-                <div class="v-overlay__content"></div>
-            </div>
                 <div class="sticky" style="margin-bottom: -63px;">
                     <aside style="background-color: #2a2e3f !important;box-shadow: 0 0 10px rgb(20 28 43 / 80%);"
                         class="app-sidebar ps horizontal-main">
@@ -546,8 +544,11 @@
                                     <h4 class="card-title mb-3">Danh sách thành viên</h4>
                                 </div>
                                 <div class="text-center mb-3">
-                                    <div class="margin-bottom"><button onclick="open_modal(0)"
-                                            class=" btn btn-primary add_new">Tạo User</button></div>
+                                    <div class="margin-bottom"><button onclick="clean_acc()"
+                                            class=" btn btn-danger add_new">Dọn dẹp thành viên</button>
+                                        <button onclick="open_modal(0)" class=" btn btn-primary add_new">Tạo
+                                            User</button>
+                                    </div>
                                 </div>
 
                                 <div class="input-group mb-3">
