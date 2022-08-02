@@ -1236,6 +1236,9 @@ input::-ms-input-placeholder {
 .content {
     min-height: 100%;
 }
+.table td, .table th {
+    vertical-align: middle !important;
+}
 
 .toast__main {
     display: flex;
