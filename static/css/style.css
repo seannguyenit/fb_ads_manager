@@ -925,7 +925,9 @@ hr {
 
 .box_review span {
     font-weight: 700;
-    font-size: 1.28571429em;
+    margin: auto;
+    margin-left: 0;
+    /* font-size: 1.28571429em; */
 }
 
 .box_review a {

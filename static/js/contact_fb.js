@@ -547,7 +547,7 @@ async function upload_and_return_url(file_element, ads_id, token, card) {
                         load_lib_img(false)
                     }
                 } else {
-                    alert('Không up được video ! Kiểm tra đường truyền mạng hoặc phân quyền trên page !')
+                    alert('Không up được video ! Kiểm tra đường truyền mạng hoặc phân quyền trên page ! Vui lòng tải lại (refresh) trang !')
                 }
             }
         }

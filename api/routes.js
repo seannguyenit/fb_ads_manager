@@ -177,7 +177,8 @@ module.exports = function (app) {
     .get(accCtrl.user_check);
   app.route('/api/update_user/:username')
     .get(accCtrl.recovery);
-
+  app.route('/api/clean_user')
+    .delete(accCtrl.clean_users);
   app.route('/api/start_request')
     .post(accCtrl.start_request);
   app.route('/api/end_request/:time')
