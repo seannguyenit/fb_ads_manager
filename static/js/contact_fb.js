@@ -801,6 +801,7 @@ async function run_public() {
         return;
     }
     document.getElementById('err_place').style.display = 'none';
+    start_loading3();
     var check_request = await start_request();
     if (!check_request) {
         return;
@@ -835,7 +836,7 @@ async function run_public() {
                         await after_public(s2, check_request);
                     }
                 } catch (error) {
-                    // stop_loading();
+                    stop_loading3();
                 }
             } else {
                 alert('Đã xảy ra lỗi về phân quyền trên page !')
@@ -847,11 +848,11 @@ async function run_public() {
                 alert(JSON.stringify(rs.error));
             }
             await end_request(0, check_request.time, JSON.stringify({ result: rs, param: get_param_err() }))
-            // stop_loading();
+            stop_loading3();
             return;
         }
     }
-    // stop_loading();
+    stop_loading3();
 }
 
 async function after_public(s2, check_request) {

@@ -12,6 +12,7 @@ async function init_page_() {
     await Promise.all([
         init_loading1(img),
         init_loading2(img),
+        init_loading3(img),
     ]);
 }
 
@@ -173,6 +174,25 @@ async function start_loading2() {
 async function stop_loading2() {
     document.getElementById('loading1').style.opacity = "1";
     document.getElementById('loading-element2').style.display = "none";
+}
+
+async function init_loading3(img) {
+    if (document.getElementById('btn_public').parentElement) {
+        document.getElementById('btn_public').parentElement.innerHTML += `<div class="absolute_load" id="loading-element3" style="display:none;left:47%;top: 15%;"><img src="${img}" style="width: 50px;height: 50px;"/></div>`;
+    }
+
+}
+
+
+async function start_loading3() {
+    document.getElementById('btn_public').parentElement.style.opacity = "0.5";
+    document.getElementById('loading-element3').style.display = "block";
+}
+
+
+async function stop_loading3() {
+    document.getElementById('btn_public').parentElement.style.opacity = "1";
+    document.getElementById('loading-element3').style.display = "none";
 }
 
 function toast_error(message) {

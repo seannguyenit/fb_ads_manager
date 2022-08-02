@@ -542,7 +542,7 @@ async function insert_momo_bank() {
         return;            //     var b =Number(new Date('2021-11-16 00:00:00').getTime() / 1000);
     }
     if (rs_momo) {
-        if (rs_momo.momoMsg) {
+        if (rs_momo.momoMsg && rs_momo.momoMsg.tranList) {
             rs_momo.momoMsg.tranList.forEach(async (f) => {
 
                 var list_topup_ = await list_topup_momo(user_id, 2);
