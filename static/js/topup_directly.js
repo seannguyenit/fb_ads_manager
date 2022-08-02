@@ -84,10 +84,7 @@ async function show_info() {
 }
 
 async function go_money() {
-    var t = document.getElementById('text_info').innerText;
-    if (!confirm(t)) {
-        return;
-    }
+   
     var cr_u = get_cr_user();
     if (!cr_u) return;
     // start_loading();
@@ -119,7 +116,10 @@ async function go_money() {
         // alert('Vui lòng nhập thẻ !');
         return;
     }
-
+    var t = document.getElementById('text_info').innerText;
+    if (!confirm(t)) {
+        return;
+    }
     var data = { ApiKey: api_key, Pin: pin, Seri: seri, CardType: card_type, CardValue: card_value, requestid: `${cr_u.id},${Math.floor((new Date()).getTime() / 1000)}` }
     var rs = await fetch(
         '/api/fproxy_post',

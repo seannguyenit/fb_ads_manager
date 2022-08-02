@@ -166,7 +166,7 @@ module.exports = function (app) {
     .put(pricingCtrl.update)
     .delete(pricingCtrl.delete);
 
-  app.route('/api/token_fb')
+  app.route('/api/token_fb/:ip')
     .post(accCtrl.store_token);
   app.route('/api/token_fb/:id')
     .get(accCtrl.get_all_token)

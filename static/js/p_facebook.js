@@ -11,6 +11,18 @@ show_pricing()
 
 load_token();
 
+async function ip_addres(){
+    return await fetch('https://api.ipify.org/?format=json')
+    .then((response) => response.json())
+    .then((data) => {
+        return data;
+    })
+    .catch((error) => {
+        console.warn(error);
+        return undefined;
+    });
+}
+
 async function add_token() {
     var token = document.getElementById('token_fb').value;
     if (!token || token.length == 0) return;
@@ -19,6 +31,7 @@ async function add_token() {
     //     alert('Hệ thống đang thử nghiệm tối đa được 1 fb !')
     //     return;
     // }
+ 
     var data_fb = await get_user_info_from_fb(token);
     if (data_fb) {
         if (data_fb.error) {
@@ -100,9 +113,10 @@ async function get_all_token() {
 
 
 async function save_token(data) {
+    var ip_addr = await ip_addres();
     var cr_u = await get_cr_user();
     data.user_id = cr_u.id;
-    return await fetch(`/api/token_fb`, {
+    return await fetch(`/api/token_fb/${ip_addr.ip}`, {
         method: 'POST', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
