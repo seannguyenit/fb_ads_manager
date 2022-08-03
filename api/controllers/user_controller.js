@@ -455,8 +455,8 @@ module.exports = {
         })
     },
     list_topup_today: (req, res) => {
-        let sql = 'SELECT * FROM `money_history` where `user_id` = ? and `procedure` = ?;'
-        db.query(sql, [req.params.id, req.params.proce], (err, response) => {
+        let sql = 'SELECT * FROM `money_history` where `user_id` = ? and `procedure` = ? and `time` = ?;'
+        db.query(sql, [req.params.id, req.params.proce,req.params.time], (err, response) => {
             if (err) throw err
             res.json(response)
         })

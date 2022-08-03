@@ -25,7 +25,7 @@ function init_bank_topup() {
 // history_login()
 /* menu */
 async function menu_get_template() {
-    return await fetch(`/api/menu` /*, options */)
+    return await fetch(`/api/menu` /*, options */ )
         .then((response) => response.json())
         .then((data) => {
             return data;
@@ -290,8 +290,8 @@ async function list_topup_momo(id, proce) {
         });
 }
 
-async function list_topup_today(id, proce) {
-    return await fetch(`/api/list_topup_today/${id}/${proce}` /*, options */)
+async function list_topup_today(id, time,proce) {
+    return await fetch(`/api/list_topup_today/${id}/${time}/${proce}` /*, options */)
         .then((response) => response.json())
         .then((data) => {
             return data;
@@ -351,14 +351,11 @@ async function insert_mb_bank() {
     var today_ = "";
     var method = 1;
     var user_id = get_cr_user().id;
-    var is_admin = get_cr_user().is_admin
-    if (is_admin === 1) {
-        return;
-    }
+    var list_topup_ = await list_topup_today(user_id, Number(new Date(today).getTime() / 1000), 1);
+
     if (rs_bank) {
         if (rs_bank.status) {
             rs_bank.transactions.forEach(async (f) => {
-                var list_topup_ = await list_topup_today(user_id, Number(new Date(today).getTime() / 1000), 1);
                 if (f.type === "IN") {
                     var des = f.description.toLowerCase()
                     var number = des.indexOf('napthe');
@@ -383,7 +380,7 @@ async function insert_mb_bank() {
                                 } else {
                                     let list_tranid = list_topup_.filter(s => (s.transactionID).toString() === (f.transactionID).toString())
                                     let list_count_tranid = Object.keys(list_tranid).length;
-                                    if (Number(list_count_tranid) === 1) {
+                                    if (Number(list_count_tranid) > 0) {
                                         return;
                                     } else {
                                         var rss = await ticket_save_mb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000), transactionID: f.transactionID });
@@ -441,14 +438,11 @@ async function insert_acb_bank() {
     var today_ = "";
     var method = 1;
     var user_id = get_cr_user().id;
-    var is_admin = get_cr_user().is_admin
-    if (is_admin === 1) {
-        return;
-    }
+    var list_topup_ = await list_topup_momo(user_id, 3);
     if (rs_acb_bank) {
         if (rs_acb_bank.status) {
             rs_acb_bank.transactions.forEach(async (f) => {
-                var list_topup_ = await list_topup_today(user_id, 3);
+              
                 if (f.type === "IN") {
                     var des = f.description.toLowerCase()
                     var number = des.indexOf('napthe');
@@ -473,7 +467,7 @@ async function insert_acb_bank() {
                             // } else {
                             let list_tranid = list_topup_.filter(s => (s.transactionID).toString() === (f.transactionID).toString())
                             let list_count_tranid = Object.keys(list_tranid).length;
-                            if (Number(list_count_tranid) === 1) {
+                            if (Number(list_count_tranid) > 0) {
                                 return;
                             } else {
                                 var rss = await ticket_save_acb({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today_).getTime() / 1000), transactionID: f.transactionID });
@@ -537,26 +531,23 @@ async function insert_momo_bank() {
     var today_ = "";
     var method = 1;
     var user_id = get_cr_user().id;
-    var is_admin = get_cr_user().is_admin
-    if (is_admin === 1) {
-        return;            //     var b =Number(new Date('2021-11-16 00:00:00').getTime() / 1000);
-    }
+    var list_topup_ = await list_topup_momo(user_id, 2);
     if (rs_momo) {
         if (rs_momo.momoMsg) {
             rs_momo.momoMsg.tranList.forEach(async (f) => {
 
-                var list_topup_ = await list_topup_momo(user_id, 2);
+             
                 // var list_topup_ = await list_topup_today(user_id,Number(new Date(today).getTime() / 1000),2);
                 if (Number(f.io) === 1) {
                     var des = f.comment.toLowerCase()
                     var number = des.indexOf('napthe');
                     var description = des.substring(Number(number) + 6, Number(number) + 10)
                     if (description === id_user) {
-                        ;
+                        
                         today_ = f.clientTime;
                         if (Number(new Date(star_today).getTime() / 1000) < Number(new Date(today_).getTime() / 1000) < Number(new Date(end_today).getTime() / 1000)) {
                             if (list_topup_) {
-                                var list_count = Object.keys(list_topup_).length;
+                                // var list_count = Object.keys(list_topup_).length;
                                 // if(Number(list_count) === 0){
                                 //     var rs = await ticket_save_momo({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today).getTime() / 1000),transactionID:f.tranId });
                                 //     if (rs.ok) {
@@ -566,7 +557,7 @@ async function insert_momo_bank() {
                                 // }else{
                                 let list_tranid = list_topup_.filter(s => (s.transactionID).toString() === (f.tranId).toString())
                                 let list_count_tranid = Object.keys(list_tranid).length;
-                                if (Number(list_count_tranid) === 1) {
+                                if (Number(list_count_tranid) > 0) {
                                     return;
                                 } else {
                                     var rss = await ticket_save_momo({ money: f.amount, method: method, des: id_user, user_id: user_id, time: Number(new Date(today).getTime() / 1000), transactionID: f.tranId });
