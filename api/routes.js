@@ -104,7 +104,7 @@ module.exports = function (app) {
   app.route('/api/agency/:id')
     .get(accCtrl.get_agency_info)
     .put(accCtrl.agency_reg);
-  app.route('/api/list_topup_today/:id/:proce')
+  app.route('/api/list_topup_today/:id/:time/:proce')
     .get(accCtrl.list_topup_today)
   app.route('/api/list_topup_momo/:id/:proce')
     .get(accCtrl.list_topup_momo)
