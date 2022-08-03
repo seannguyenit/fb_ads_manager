@@ -75,7 +75,7 @@ const sendMail_recovery = (to, key_recovery) => {
   const options = {
     from: adminEmail, // địa chỉ admin email bạn dùng để gửi
     to: to, // địa chỉ gửi đến
-    subject: subject, // Tiêu đề của mail
+    subject: 'Đổi mật khẩu m2v.me', // Tiêu đề của mail
     html: `<h3>Chao mừng bạn đã đến m2v.me</h3><div>Bấm vào link để Thay đổi mật khẩu: </div><a target="_blank" href="https://m2v.me/recovery_save?key=${key_recovery}">Kích hoạt</a>` // Phần nội dung mail mình sẽ dùng html thay vì thuần văn bản thông thường.
   }
   // hàm transporter.sendMail() này sẽ trả về cho chúng ta một Promise

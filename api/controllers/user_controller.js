@@ -129,9 +129,18 @@ module.exports = {
     },
     clean_users: (req, res) => {
         let sql = 'update `user` AS U left join (SELECT user_id,FROM_UNIXTIME(max(time)) as time FROM history_login group by user_id) as TB on TB.user_id = U.id set U.active = 0 where datediff(CURRENT_DATE(),ifnull(TB.time,U.created_at)) >= 90 and U.is_admin = 0 and ifnull(is_agency,0) = 0 and active = 1 and get_current_money(U.id) <= 0;'
-        db.query(sql, [], (err, response) => {
-            if (err) throw err
-            res.json({ message: 'Clean success!' })
+        let newSQl = 'delete from `user` where active = 0;'
+        db.query(sql, [], (err, response1) => {
+            if (err) {
+                res.json({ message: 'Clean fail!' })
+            } else {
+                db.query(newSQl, [], (err2, response2) => {
+                    if (err2) { res.json({ message: 'Clean fail!' }) }
+                    else {
+                        res.json({ message: 'Clean success!' })
+                    }
+                })
+            }
         })
     },
     update_history: (req, res) => {

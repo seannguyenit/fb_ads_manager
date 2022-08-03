@@ -177,7 +177,7 @@ async function stop_loading2() {
 }
 
 async function init_loading3(img) {
-    if (document.getElementById('btn_public').parentElement) {
+    if (document.getElementById('btn_public') && document.getElementById('btn_public').parentElement) {
         document.getElementById('btn_public').parentElement.innerHTML += `<div class="absolute_load" id="loading-element3" style="display:none;left:47%;top: 15%;"><img src="${img}" style="width: 50px;height: 50px;"/></div>`;
     }
 
