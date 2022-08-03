@@ -347,6 +347,7 @@ async function insert_mb_bank() {
     let y = d.getFullYear();
     let m = (d.getMonth() + 1) < 10 ? `0${d.getMonth() + 1}` : (d.getMonth() + 1);
     let dd = (d.getDate()) < 10 ? `0${d.getDate()}` : (d.getDate());
+    // let dd = '02'
     var today = `${y}-${m}-${dd}`;
     var today_ = "";
     var method = 1;
