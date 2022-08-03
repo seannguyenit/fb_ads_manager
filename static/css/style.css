@@ -856,6 +856,9 @@ tr:hover td {
 .text_black {
     color: black !important;
 }
+.text_red {
+    color: red !important;
+}
 
 .pagination {
     display: flex;

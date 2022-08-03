@@ -1,11 +1,59 @@
 'use strict'
 
-init_top_up();
-init_top_up_card();
+init_page();
+
+async function init_page() {
+    await Promise.all([
+        init_top_up(),
+        init_top_up_card(),
+        infor_bank()
+    ]);
+}
+
+
 // init_money();
 
 ///api/money_ticket
 
+// Get infor admin API MBbank
+async function get_admin_bank() {
+    return await fetch('/api/admin_bank' /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+async function infor_bank() {
+    var data = await get_admin_bank();
+    if (data) {
+        data.forEach(f => {
+            switch (f.type) {
+                case 1:
+                    if (Number(f.action) === 0) {
+                        document.getElementById('infor_mb').innerHTML = ` <span class="text_red"> Đang bảo trì vui lòng nạp bằng hình thức khác </span>`
+                    }
+                    break;
+                case 2:
+                    if (Number(f.action) === 0) {
+                        document.getElementById('infor_acb').innerHTML = ` <span class="text_red"> Đang bảo trì vui lòng nạp bằng hình thức khác </span>`
+                    }
+                    break;
+                case 3:
+                    if (Number(f.action) === 0) {
+                        document.getElementById('infor_momo').innerHTML = ` <span class="text_red"> Đang bảo trì vui lòng nạp bằng hình thức khác </span>`
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        })
+    }
+}
 async function init_top_up() {
     var data = await get_money_top_up();
     var placed = document.getElementById('tb_money_his');
@@ -56,9 +104,9 @@ async function init_top_up() {
         var cr_u = get_cr_user();
         if (document.getElementById('ticket_number')) {
             document.getElementById('ticket_number').innerText = "napthe" + get_number_by_id(cr_u.id);
-          
+
         }
-        if( document.getElementById('ticket_number__')){
+        if (document.getElementById('ticket_number__')) {
             document.getElementById('ticket_number__').value = "napthe" + get_number_by_id(cr_u.id);
         }
     }
