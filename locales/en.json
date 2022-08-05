@@ -140,7 +140,8 @@
     "renewalpackage" : "Package renewal",
     "renew" : "Renew",
     "enter_keywords" : "Enter Keywords",
-    "sendmessage" : "Please send a message"
+    "sendmessage" : "Please send a message",
+    "request_day" : "post / day"
 
 
 

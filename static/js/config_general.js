@@ -252,6 +252,7 @@ async function open_data_admin_contacts() {
             document.getElementById('Email_admin').value = `${f.email}`
             document.getElementById('link_fb').value = `${f.facebook}`
             document.getElementById('link_zl').value = `${f.zalo}`
+            document.getElementById('link_telegram').value = `${f.telegram}`
         })
     }
    
@@ -283,12 +284,13 @@ async function save_admin_contacts(){
     var email = $("#Email_admin").val();
     var facebook = $("#link_fb").val();
     var zalo = $("#link_zl").val();
+    var telegram = $("#link_telegram").val();
 
     var url = `/api/admin_contacts`;
     var meth = 'POST';
     const formData = new FormData();
 
-    var data = { name: name, phone: phone, email: email, facebook:facebook, zalo:zalo};
+    var data = { name: name, phone: phone, email: email, facebook:facebook, zalo:zalo,telegram:telegram};
 
     let rs = await admin_contacts_save(url, data, meth);
     init();

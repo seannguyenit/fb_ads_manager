@@ -91,6 +91,17 @@ async function init_default() {
                       <div class="ml-3">
                       ${item.limit_fb} Facebook Accounts
                       </div>
+                       
+                    </div>
+                    <div class="d-flex align-center animation-content mt-2">
+                      <div><i aria-hidden="true"
+                          class="v-icon notranslate mb-1 fab fa-facebook theme--light"
+                          style="font-size: 14px; color: rgb(60, 138, 205); caret-color: rgb(60, 138, 205);"></i>
+                      </div>
+                      <div class="ml-3">
+                      ${item.limit_request} <span data-lang="request_day"></span>
+                      </div>
+                       
                     </div>
                   </div>
                 </div>

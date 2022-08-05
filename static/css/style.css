@@ -391,9 +391,6 @@ a:hover {
         padding-left: 10px;
     }
 
-    .margin-top_avar_ad {
-        /* margin-top: 5vw !important; */
-    }
 
     .box_flex-wrap {
         width: 96% !important;
@@ -842,7 +839,9 @@ tr:hover td {
     cursor: pointer;
     background-color: #383d52;
 }
-
+.tr td {
+    font-size: 0.85rem;
+}
 .tr:hover td {
     color: #000;
     cursor: pointer;

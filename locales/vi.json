@@ -12,7 +12,7 @@
     "Content": "Nội dung bài viết",
     "Schedule": "Hẹn Lịch",
     "Public": "ĐĂNG BÀI",
-    "Linkpost": "Liên kết bài",
+    "Linkpost": "LIÊN KẾT BÀI",
     "Công_Cụ" : "Công Cụ",
     "Tài_Khoản": "Tài khoản",
     "Đại_lý": "Đại Lý",
@@ -140,7 +140,8 @@
     "renewalpackage" : "Gia hạn gói",
     "renew" : "Gia hạn",
     "enter_keywords" : "Nhập từ khóa",
-    "sendmessage" : "Vui lòng gửi tin nhắn"
+    "sendmessage" : "Vui lòng gửi tin nhắn",
+    "request_day" : "bài viết / ngày"
 
     
 

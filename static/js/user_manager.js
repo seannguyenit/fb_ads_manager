@@ -432,7 +432,7 @@ async function save_() {
     var id = $("#user_id").val()
     var username = $("#user").val()
     var pass = $("#pass").val()
-    var real_name = $("#real_name").val()
+    // var real_name = $("#real_name").val()
     var created_at = new Date();
     var rs_check = await check_username();
     if (!rs_check) {
@@ -445,7 +445,7 @@ async function save_() {
     var url = `/api/accounts`;
     var meth = 'POST';
     const formData = new FormData();
-    var data = { username: username, pass: pass, real_name: real_name, phone: '0', add: 'none' };
+    var data = { username: username, pass: pass, real_name: "", phone: '0', add: 'none' };
 
     if (id != 0) {
         meth = 'PUT';

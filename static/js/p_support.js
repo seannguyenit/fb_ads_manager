@@ -19,6 +19,7 @@ async function menu_contacst() {
     var email_admin = document.getElementById("email_admin");
     var facebook_admin =  document.getElementById("facebook_admin");
     var zalo_admin = document.getElementById("zalo_admin");
+    var telegram_admin = document.getElementById("telegram_admin");
     var data = await get_admin_contacts();
         if (data) {
             data.forEach(f => {
@@ -40,6 +41,9 @@ async function menu_contacst() {
                 }
                 if(name_admin){
                     name_admin.innerHTML=`${f.name}`
+                }
+                if(telegram_admin){
+                    telegram_admin.innerHTML=` <a href="${f.telegram}" target="blank">Telegram</a>`;
                 }
                 
             })
