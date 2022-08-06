@@ -34,7 +34,7 @@ async function init_guide() {
                                 allowfullscreen="allowfullscreen"
                                 style="width: 100%; height: 300px;"></iframe>
                             <div class="pa-4">
-                                <h5 class="font-weight-bold">${item.content_video}</h5>
+                                <h5 style="height:72px" class="font-weight-bold">${item.content_video}</h5>
                                 <div class="d-flex mt-4 text-footer"><i aria-hidden="true"
                                         class="v-icon notranslate mdi mdi-account theme--light"
                                         style="color: rgb(51, 152, 220); caret-color: rgb(51, 152, 220);"></i><span

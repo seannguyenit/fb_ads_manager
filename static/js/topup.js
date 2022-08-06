@@ -34,17 +34,24 @@ async function infor_bank() {
             switch (f.type) {
                 case 1:
                     if (Number(f.action) === 0) {
-                        document.getElementById('infor_mb').innerHTML = ` <span class="text_red"> Đang bảo trì vui lòng nạp bằng hình thức khác </span>`
+                        if(document.getElementById('infor_mb')){
+                            document.getElementById('infor_mb').style.display = `none`
+                        }
+                        
                     }
                     break;
                 case 2:
                     if (Number(f.action) === 0) {
-                        document.getElementById('infor_acb').innerHTML = ` <span class="text_red"> Đang bảo trì vui lòng nạp bằng hình thức khác </span>`
+                        if(document.getElementById('infor_acb')){
+                        document.getElementById('infor_acb').style.display = `none`
+                        }
                     }
                     break;
                 case 3:
                     if (Number(f.action) === 0) {
-                        document.getElementById('infor_momo').innerHTML = ` <span class="text_red"> Đang bảo trì vui lòng nạp bằng hình thức khác </span>`
+                        if(document.getElementById('infor_momo')){
+                        document.getElementById('infor_momo').style.display = `none`
+                        }
                     }
                     break;
 
