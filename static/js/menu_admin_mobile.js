@@ -23,6 +23,15 @@ function dick_play_block(){
     
 }
 
+function dick_play_block_banking(){
+    if( document.getElementById('menu_bank').style.display === 'block'){
+        document.getElementById('menu_bank').style.display='none'
+    }else{
+        document.getElementById('menu_bank').style.display='block'
+    }
+    
+}
+
 function dick_play_block__(){
     if( document.getElementById('menu_').style.display === 'block'){
         document.getElementById('menu_').style.display='none'

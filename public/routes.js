@@ -74,4 +74,9 @@ module.exports = function (app) {
     .get(homeCtrl.rec_success);
   app.route('/home/config_general')
     .get(homeCtrl.config_general)
+    app.route('/home/recharge_banking')
+    .get(homeCtrl.recharge_banking)
+    app.route('/home/recharge_card')
+    .get(homeCtrl.recharge_card)
+    
 };

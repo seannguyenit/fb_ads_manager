@@ -5,6 +5,28 @@ async function init_agency_manager() {
     init_agency_reg();
     init_agency_all();
 }
+async function del_agency(id) {
+    if (!confirm(`Bạn có chắc chắn Xóa đại lý ?`)) {
+        return;
+    }
+    var cr_u = get_cr_user();
+    if (cr_u) {
+        await fetch(`/api/del_agency/${id}`, {
+            method: 'PUT', // or 'PUT'
+        })
+            .then(response => response.text())
+            .then(r => {
+                return r;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+    // alert('Xong !')
+    var mess = 'Xong !';
+    toast_success(mess);
+    init_agency_manager();
+}
 
 async function init_agency_all() {
 
@@ -30,14 +52,13 @@ async function init_agency_all() {
                 <td>${get_format_VND(f.total_bonus || 0)}</td>
                 <td>${get_format_VND(f.total_month || 0)}</td>
                 <td>${format_time(f.agency_time)}</td>
+                <td>
+                      ${button_action_tool(f.id, 'del_agency', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
+                </td>
             </tr>`
         })
     }
-    // if(Number(rs.length) != 0 ){
-    //     document.getElementById('showing').innerHTML = "Showing 1 to "+ rs.length + " of " + rs.length + " entries";
-    // }else{
-    //     document.getElementById('showing').innerHTML = "";
-    // }
+
 }
 
 async function init_agency_reg() {
@@ -65,14 +86,11 @@ async function init_agency_reg() {
                     ${button_action_tool(f.id, 'agency_approved', ['btn', 'btn-sm', 'btn-primary'], '<i class="fa fa-check" aria-hidden="true"></i>')}
                     ${button_action_tool(f.id, 'agency_cancel', ['btn', 'btn-sm', 'btn-danger'], '<i class="fa fa-trash" aria-hidden="true"></i>')}
                     </td>
+                   
                 </tr>`
         })
     }
-    // if(Number(rs.length) != 0 ){
-    //     document.getElementById('showing1').innerHTML = "Showing 1 to "+ rs.length + " of " + rs.length + " entries";
-    // }else{
-    //     document.getElementById('showing1').innerHTML = "";
-    // }
+   
 }
 
 async function agency_approved(id) {
@@ -97,6 +115,7 @@ async function agency_approved(id) {
     // alert('Xong !')
     init_agency_manager();
 }
+
 
 
 async function agency_cancel(id) {

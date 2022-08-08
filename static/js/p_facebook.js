@@ -62,6 +62,7 @@ async function load_token() {
     if (data_tk) {
         data_tk.forEach(item => {
             place.innerHTML += `
+            <div class="d-flex align-center m_b_5 justify-space-between">
             <div class="d-flex align-center">
                  <div class="d-flex align-center"><img
                     src="${item.picture}"
@@ -79,7 +80,10 @@ async function load_token() {
                         aria-hidden="true"
                         class="v-icon notranslate far fa-trash-alt theme--light"
                         style="font-size: 14px; color: rgb(255, 255, 255); caret-color: rgb(255, 255, 255);"></i></span></button>
-            </div>`;
+            </div>
+            </div>
+            
+            `;
         });
                     
             
