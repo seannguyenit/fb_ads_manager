@@ -174,6 +174,29 @@ async function stop_loading2() {
     document.getElementById('loading2').style.opacity = "1";
     document.getElementById('loading-element2').style.display = "none";
 }
+function mess_error(message) {
+    const mess_error = document.getElementById('mess_error');
+    if (mess_error) {
+        mess_error.innerHTML = `
+        <div role="alert"
+                                                                                    class="v-alert mb-0 v-sheet theme--dark v-alert--prominent error">
+                                                                                    <div class="v-alert__wrapper"><i
+                                                                                            aria-hidden="true"
+                                                                                            class="v-icon notranslate v-alert__icon mdi mdi-alert theme--dark"></i>
+                                                                                        <div class="v-alert__content">
+                                                                                            <div
+                                                                                                class="row align-center">
+                                                                                                <div class="col"
+                                                                                                    >
+                                                                                                    ${message}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+        `;
+    }
+}
 
 function toast_error(message) {
     const toast = document.getElementById('toast');

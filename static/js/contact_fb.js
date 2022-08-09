@@ -125,7 +125,7 @@ async function get_list_page(token, id) {
 async function init_default() {
     // start_loading();
     try {
-        document.getElementById('err_place').style.display = 'none';
+        // document.getElementById('err_place').style.display = 'none';
         document.getElementById('rs_tb').innerHTML = '';
         change_card_element();
         var now = new Date();
@@ -180,10 +180,11 @@ async function set_combobox_data() {
         } catch (error) {
             var mess = 'Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !'
             toast_error(mess)
-            if (document.getElementById('error_token')) {
-                document.getElementById('err_place').style.display = 'block';
-                document.getElementById('error_token').innerText = mess;
-            }
+            mess_error(mess)
+            // if (document.getElementById('error_token')) {
+            //     document.getElementById('err_place').style.display = 'block';
+            //     document.getElementById('error_token').innerText = mess;
+            // }
             // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
         }
         await change_card_element();
@@ -192,10 +193,11 @@ async function set_combobox_data() {
     } else {
         var mess = 'Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !'
         toast_error(mess)
-        if (document.getElementById('error_token')) {
-            document.getElementById('err_place').style.display = 'block';
-            document.getElementById('error_token').innerText = mess;
-        }
+        mess_error(mess)
+        // if (document.getElementById('error_token')) {
+        //     document.getElementById('err_place').style.display = 'block';
+        //     document.getElementById('error_token').innerText = mess;
+        // }
         // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
     }
     // stop_loading();
