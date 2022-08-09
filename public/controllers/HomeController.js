@@ -85,7 +85,12 @@ module.exports = {
     },
     recharge_card: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/recharge_card.html'))
+    },
+    edit_money: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/edit_money.html'))
     }
+
+    
     // get_partial: (req,res)=>{
     //     let action = [req.params.action];
     //     res.sendFile(path.join(__dirname,`../../view/partial/${action}.html`))

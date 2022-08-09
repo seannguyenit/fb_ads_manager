@@ -441,13 +441,33 @@
                                                                     class="v-toolbar__title pl-3" data-lang="Đại_lý">
                                                                     Đại Lý
                                                                 </div>
+                                                               
                                                             </div>
                                                         </header>
-
+                                                        <header
+                                                        class="primary--text px-2 v-sheet theme--light v-toolbar v-toolbar--flat"
+                                                        style="height: 64px; display: none;" id="button_agency">
+                                                        <div class="v-toolbar__content"
+                                                            style="height: 64px;color: #2196f3;display: flex;padding-left: 12px!important;padding-top: 14px;">
+                                                            <button id="btn_reg_hiiden"
+                                                            onclick="agency_register()"
+                                                            class="elevation-0 width59 v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default"
+                                                            style="background-color: rgb(51, 152, 220); border-color: rgb(51, 152, 220);color: #fff; width: 65%;"><span
+                                                                class="v-btn__content" style="padding: 15px;"><span
+                                                                    class="white--text"
+                                                                    data-lang="registration">
+                                                                </span></span></button>
+                                                           
+                                                        </div>
+                                                    </header>
+                                                       
                                                     </div>
                                                     <hr role="separator" aria-orientation="horizontal"
                                                         class="v-divider theme--light">
-                                                    <div class="elevation-0 px-6 py-4 v-card v-sheet theme--light">
+                                                        <div class="text-center" id="span_agency" style="display: none;">
+                                                            <p style="padding-bottom: 10px;" class="text_blue">Chưa có đại lý</p>
+                                                        </div>
+                                                    <div class="elevation-0 px-6 py-4 v-card v-sheet theme--light"  id="agency_display" style="display: block;">
                                                         <div>
                                                             <div class="row">
                                                                 <div class="col col-12">
@@ -717,7 +737,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div id="agency_display" style="display: block;">
+                                                        <div>
                                                             <div class="row mb-4">
                                                                 <div class="pb-0 col col-12">
                                                                     <div

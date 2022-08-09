@@ -78,5 +78,7 @@ module.exports = function (app) {
     .get(homeCtrl.recharge_banking)
     app.route('/home/recharge_card')
     .get(homeCtrl.recharge_card)
+    app.route('/home/edit_money')
+    .get(homeCtrl.edit_money)
     
 };

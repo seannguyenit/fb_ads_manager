@@ -15,6 +15,14 @@ module.exports = {
         })
         // let sql = 'CALL `user_getbyname`(?)';
     },
+    list_accounts: (req, res) => {
+        let sql = 'SELECT * FROM `user` WHERE `active` = 1 GROUP by username;';
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+        // let sql = 'CALL `user_getbyname`(?)';
+    },
     get_all_money: (req, res) => {
         var time_from = req.params.from;
         var time_to = req.params.to;

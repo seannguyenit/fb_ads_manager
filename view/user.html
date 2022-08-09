@@ -292,25 +292,9 @@
                 </div>
                 <div class="modal-content">
                     <div class="modal-header">
-                        <span class="">Thay đổi số dư : </span><br>
-                        <select style="height: 30px;color: black;
-                        border: 1px solid black;
-                        padding-left: 15px;" class="form-select" id="edit_money"
-                            aria-label="Default select example">
-                            <option selected value="2">--Trạng Thái--</option>
-                            <option value="1">Cộng Tiền</option>
-                            <option value="0">Trừ tiền</option>
-                            <!-- <option value="3">Three</option> -->
-                        </select>
-                        <div>
-                            <input class="width120" type="number" style="width: 150px;    height: 30px;
-                            border: 1px solid black;
-                            padding-left: 10px;" id="_money"
-                                placeholder="money..">
-                        </div>
+                        
                         <div id="save_edit_money">
-                            <!-- <button type="button" style="height: 30px;" class="btn btn-primary" onclick=""
-                                data-dismiss="modal">Save</button> -->
+                            
                         </div>
                     </div>
                 </div>
@@ -422,6 +406,19 @@
                                 </ul>
                                 <ul class="side-menu">
                                     <li class="slide">
+                                        <a class="side-menu__item" data-bs-toggle="slide" onclick="dick_play_block_user()"
+                                            href="#">
+                                            <img src="../img/account.svg" alt="" class="side-menu__icon">
+                                            <span class="side-menu__label">Thành viên <i class="fa fa-angle-down"
+                                                    aria-hidden="true"></i></span>
+                                        </a>
+                                        <ul id="list_menu_user" class="slide-menu">
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul class="side-menu">
+                                    <li class="slide">
                                         <a class="side-menu__item" data-bs-toggle="slide" onclick="dick_play_block()"
                                             href="#">
                                             <img src="../img/banking.svg" alt="" class="side-menu__icon">
@@ -450,7 +447,7 @@
                                     <li class="slide">
                                         <a class="side-menu__item" data-bs-toggle="slide" onclick="dick_play_block_banking()"
                                             href="#">
-                                            <img src="../img/gear.svg" alt="" class="side-menu__icon">
+                                            <img src="../img/banking.svg" alt="" class="side-menu__icon">
                                             <span class="side-menu__label">Nạp tiền tự động<i class="fa fa-angle-down"
                                                     aria-hidden="true"></i></span>
                                         </a>

@@ -249,7 +249,7 @@ module.exports = {
     },
 
     his_card: (req, res) => {
-        let sql = 'SELECT MH.*,CH.Pin,CH.Seri,CH.Success,U.username FROM `money_history` as MH left JOIN `user` as U on MH.user_id = U.id LEFT JOIN `card_history` as CH on MH.task_id = CH.TaskId WHERE `task_id` IS NOT NULL and CH.Success = 1;'
+        let sql = 'SELECT MH.*,CH.Pin,CH.Seri,CH.Success,U.username FROM `money_history` as MH left JOIN `user` as U on MH.user_id = U.id LEFT JOIN `card_history` as CH on MH.task_id = CH.TaskId WHERE `task_id` IS NOT NULL and CH.Success = 1 ORDER BY time DESC ;'
         // , get_all_bonus() AS all_bonus, get_all_month_money() AS all_month_money, get_all_withdraw_money() AS all_withdraw_money
         db.query(sql, (err, response) => {
             if (err) throw err
@@ -267,7 +267,7 @@ module.exports = {
     },
 
     his_banking: (req, res) => {
-        let sql = 'SELECT MH.*,U.username FROM `money_history` as MH left JOIN `user` as U on MH.user_id = U.id WHERE `procedure` != 0;'
+        let sql = 'SELECT MH.*,U.username FROM `money_history` as MH left JOIN `user` as U on MH.user_id = U.id WHERE `procedure` != 0 ORDER BY time DESC;'
         // , get_all_bonus() AS all_bonus, get_all_month_money() AS all_month_money, get_all_withdraw_money() AS all_withdraw_money
         db.query(sql, (err, response) => {
             if (err) throw err

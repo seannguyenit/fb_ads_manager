@@ -533,8 +533,8 @@ async function init_money_history(id) {
     var tb = document.getElementById('tb_money_his');
     tb.innerHTML = '';
     var bn_money = document.getElementById('save_edit_money');
-    bn_money.innerHTML = `<button type="button" style="height: 30px;line-height: 10px;" class="btn btn-primary" onclick="save_edit_money(${id})"
-    data-dismiss="modal">Save</button>`;
+    bn_money.innerHTML = `<a href="./edit_money?id=${id}" style="height: 30px;line-height: 10px;" class="btn btn-primary" 
+    >Thay đổi số dư</a>`;
     var data = await get_money_history(id);
     if (data) {
         data.forEach(f => {
@@ -887,7 +887,6 @@ async function save_edit_money(id) {
         toast_success(mess)
         // alert("thay đổi tiền thành công")
     }
-    get_user_limit()
     // init_users(cr_page, user_number_page);
 }
 

@@ -110,6 +110,9 @@ module.exports = function (app) {
     .get(accCtrl.list_topup_momo)
   // app.route('/api/infor_agency/:id')
   // .get(accCtrl.get_agency_info_by_user);
+  
+  app.route('/api/list_accounts')
+  .get(accCtrl.list_accounts);
   app.route('/api/agency_m/:id')
     .put(accCtrl.agency_app);
     app.route('/api/del_agency/:id')

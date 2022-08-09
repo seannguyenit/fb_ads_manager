@@ -17,7 +17,10 @@ async function init_agency_public() {
         get_lb_btn(cr_info);
         btn_withdraw();
     }else{
+        
         document.getElementById('agency_display').style.display='none';
+        document.getElementById('button_agency').style.display='block';
+        document.getElementById('span_agency').style.display='block';
     }
 
     await get_agency_count();
@@ -45,11 +48,18 @@ function get_lb_stt(info) {
 function get_lb_btn(info) {
     if (info.agency_time) {
         if (info.is_agency != null) {
+            
             document.getElementById('btn_reg').disabled = 'true';
             if (info.is_agency == 0) {
                 document.getElementById('btn_reg').innerHTML = `<span data-lang="waiting_for_review">Đang chờ xét duyệt<span>`
             } else {
                 document.getElementById('btn_reg').innerHTML = `<span data-lang="was_agency">Đã là đại lý</span>`
+            }
+            document.getElementById('btn_reg_hiiden').disabled = 'true';
+            if (info.is_agency == 0) {
+                document.getElementById('btn_reg_hiiden').innerHTML = `<span data-lang="waiting_for_review">Đang chờ xét duyệt<span>`
+            } else {
+                document.getElementById('btn_reg_hiiden').innerHTML = `<span data-lang="was_agency">Đã là đại lý</span>`
             }
         }
     }
