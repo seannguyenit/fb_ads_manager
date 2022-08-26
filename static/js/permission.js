@@ -80,8 +80,10 @@ async function init_menu() {
     var menu = document.getElementById('main_menu');
     var menu_user_mobie = document.getElementById('menu_user_mobie');
     var menu_ = document.getElementById('menu_money');
+    var menu_bank = document.getElementById('menu_bank');
     var menu_general = document.getElementById('menu_');
     var menu_user = document.getElementById('main_menu__');
+    var list_menu_user = document.getElementById('list_menu_user');
     var cr_url = location.href;
     var cr_url_menu = location.pathname;
     // alert(cr_url_menu)
@@ -153,6 +155,20 @@ async function init_menu() {
                 }
                 if (item.type === 2 && menu_general) {
                     menu_general.innerHTML += `
+                    <li><a class="slide-item" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">
+                    ${item.name}</a></li>
+                    `;
+                    //     // <a class="dropdown-item" href="#">Action</a>
+                }
+                if (item.type === 3 && menu_bank) {
+                    menu_bank.innerHTML += `
+                    <li><a class="slide-item" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">
+                    ${item.name}</a></li>
+                    `;
+                    //     // <a class="dropdown-item" href="#">Action</a>
+                }
+                if (item.type === 4 && list_menu_user) {
+                    list_menu_user.innerHTML += `
                     <li><a class="slide-item" aria-current="page" href="/home/${item.action}" data-lang="${item.name}">
                     ${item.name}</a></li>
                     `;

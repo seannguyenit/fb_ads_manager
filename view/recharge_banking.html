@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>Money</title>
+    <title>Notice</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="stylesheet" type="text/css" href="../css/styleadmin.css" />
     <link href="../css/pricing/style.css" rel="stylesheet" type="text/css">
@@ -18,11 +18,12 @@
         href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
 
 <body style="background-color: #383d52;" class="ltr main-body app horizontal horizontal-hover dark-theme">
-    <!-- Top Bar -->
+   
+
+
     <div class="horizontalMenucontainer">
 
         <div id="global-loader" style="display: none;">
@@ -32,7 +33,7 @@
 
         <div class="page">
             <div>
-
+              
                 <div style="background-color: #2a2e3f !important;border-bottom: 1px solid #383d52;box-shadow: 0 0 10px rgb(20 28 43 / 80%);"
                     class="main-header sticky nav nav-item hor-header" style="margin-bottom: -63px;">
                     <div class="main-container container">
@@ -81,6 +82,7 @@
                     </div>
                 </div>
                 <div class="jumps-prevent" style="padding-top: 63px;"></div>
+
                 <div id="cover_menu" class="v-overlay v-overlay--absolute v-overlay--active theme--dark"
                 style="display: none;z-index: 7;">
                 <div class="v-overlay__scrim"
@@ -88,7 +90,6 @@
                 </div>
                 <div class="v-overlay__content"></div>
             </div>
-
                 <div class="sticky" style="margin-bottom: -63px;">
                     <aside style="background-color: #2a2e3f !important;box-shadow: 0 0 10px rgb(20 28 43 / 80%);"
                         class="app-sidebar ps horizontal-main">
@@ -177,187 +178,106 @@
 
                     <div class="breadcrumb-header justify-content-between">
                         <div class="left-content">
-                            <span style="color: #fff;font-size: 21px;" class="main-content-title mg-b-0 mg-b-lg-1">Quản
-                                lý nạp tiền</span>
+                            <span style="color: #fff;font-size: 21px;" class="main-content-title mg-b-0 mg-b-lg-1">Lịch sử nạp ngân hàng
+                            </span>
                         </div>
                         <div class="justify-content-center mt-2">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item tx-15"><a style="color: #fff !important;"
-                                        href="#">m2v.me</a></li>
+                                <li class="breadcrumb-item tx-15"><a style="color: #fff !important;" href="#">M2v.me</a>
+                                </li>
                                 <li class="breadcrumb-item active" aria-current="page"
-                                    style="color: #38acb3 !important;">Quản lý nạp tiền</li>
+                                    style="color: #38acb3 !important;">Lịch sử nạp ngân hàng
+                                </li>
                             </ol>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12">
-                            <div style="background-color: #2a2e3f !important; color: #fff;margin-bottom: 30px;"
-                                class="card custom-card">
-                                <div class="card-body iconfont text-start">
-                                    <div class="d-flex justify-content-between">
-                                        <h4 class="card-title mb-3">Danh sách nạp tiền</h4>
-                                    </div>
-                                    <div class="col-12 pd_t_1 pb-2">
+                        <div style="background-color: #2a2e3f !important; color: #fff;margin-bottom: 30px;"
+                            class="card">
+                            <div class="card-body iconfont text-start">
+                                <div class="d-flex justify-content-between">
+                                    <h4 class="card-title mb-3">LỊCH SỬ NẠP</h4>
+                                </div>
 
-                                        <div class="w-100 d-flex">
-                                            <div class="form-group w-25">
-                                                <label for="from_date">Từ ngày</label>
-                                                <input
-                                                    style="background-color: #2a2e3f !important;border: 1px solid #383d52;"
-                                                    type="date" class="form-control" name="from_date" id="from_date"
-                                                    aria-describedby="from_date" placeholder="yyyy-MM-dd">
+                                <div class="input-group mb-3">
+                                    <input type="text"
+                                        style="background-color: #2a2e3f !important;border: 1px solid #383d52 !important;"
+                                        class="form-control"
+                                        placeholder="Nhập tài khoảng tìm kiếm ..." name="search"
+                                        value="" id="username">
+                                    <button onclick="search_banking()" class="btn btn-primary" type="submit"><i
+                                            class="fa fa-search"></i>
+                                        Tìm kiếm</button>
+                                </div>
 
-                                            </div>
-                                            <div style="margin:0px 5px 0px 5px !important;width: 26%!important;" class="form-group w-25">
-                                                <label for="to_date">Đến ngày</label>
-                                                <input
-                                                    style="background-color: #2a2e3f !important;border: 1px solid #383d52;"
-                                                    type="date" class="form-control" name="to_date" id="to_date"
-                                                    aria-describedby="to_date" placeholder="yyyy-MM-dd">
+                                <input type="text" hidden value="" id="limit_day_pricing">
+                                <div class="col-12 pd0_web v-data-table__wrapper">
+                                    <table style="border: 1px solid  #383d52 !important;" 
+                                        class="width_table_350 tablemanager text_center table_section table table-striped table-sm"
+                                        cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr class="table_admin">
+                                                <th style="background-color: #2a2e3f !important;width:10%;">ID
+                                                </th>
+                                                <th style="background-color: #2a2e3f !important;width:13%;">Thời Gian</th>
+                                                <th style="background-color: #2a2e3f !important;">Loại
+                                                    </th>
+                                                <th style="background-color: #2a2e3f !important;width:12%;">Mã	 <br>
+                                                    Giao Dịch</th>
+                                                <th style="background-color: #2a2e3f !important;width:13%;">Người 
+                                                    chuyển
+                                                </th>
+                                                <th style="background-color: #2a2e3f !important;">Thực <br>
+                                                    nhận </th>
+                                                    <th style="background-color: #2a2e3f !important;width: 13%;"
+                                                    class="disableFilterBy">Nội Dung</th>
+                                                <th style="background-color: #2a2e3f !important;width: 25%;"
+                                                    class="disableFilterBy">Tài khoảng</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table_data">
 
-                                            </div>
-                                            <div style="padding-top:32px ;" class="form-group w-25">
-                                                <button class="btn btn-primary" data-toggle="modal"
-                                                    onclick="init_topup_all()" data-target="#detailId">search</button>
-                                            </div>
-                                        </div>
-                                        <h5 class="">Danh sách nạp</h5>
-                                        <div id="date_"></div>
-                                    </div>
-                                    <div class="col-12 v-data-table__wrapper">
-                                        <table style="border: 1px solid  #383d52 !important;" id="table_data_reg"
-                                            class="tablemanager width_table_300 table table-striped text_center table_section table-sm"
-                                            cellspacing="0" width="100%">
-                                            <thead>
-                                                <tr class="border_table_ad">
-                                                    <th>STT</th>
-                                                    <th>User</th>
-                                                    <th>Tổng tiền nạp</th>
-                                                    <th>Thời gian</th>
-                                                    <th>Mã CK</th>
-                                                    <th class="disableFilterBy">Thao tác</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-                                            </tbody>
-                                        </table>
-
-                                    </div>
+                                        </tbody>
+                                    </table>
 
                                 </div>
+                                <!-- <div class="pagination " id="paginate"></div> -->
                             </div>
-
+                            <div id="toast">
+                            </div>
                         </div>
                     </div>
-
                 </div>
 
-                <div style="background-color: #2a2e3f;border: 1px solid #2a2e3f;color: #fff;" class="main-footer">
-                    <div class="col-md-12 col-sm-12 text-center">
-                        <div class="container-fluid pd-t-0-f ht-100p">
-                            2022 — Powered by <a href="#" class="text-primary">Arthur Company</a>
-                        </div>
+            </div>
+
+            <div style="background-color: #2a2e3f;border: 1px solid #2a2e3f;color: #fff;" class="main-footer">
+                <div class="col-md-12 col-sm-12 text-center">
+                    <div class="container-fluid pd-t-0-f ht-100p">
+                        2022 — Powered by <a href="#" class="text-primary">Arthur Company</a>
                     </div>
                 </div>
             </div>
-
         </div>
+
     </div>
-        <!-- <section>
-        <div class="col-12">
-            <div class="container pt-5">
-                <h3><i class="pd_r_5 fa fa-university" aria-hidden="true"></i> Quản Lý Nạp Tiền</h3>
-            </div>
-            <div style="margin-top: 2vw;" class="bg-main-color container">
-                <div class="col-12 pd_t_1 pb-2">
-                    <div class="w-100 d-flex">
-                        <div class="form-group w-25">
-                            <label for="from_date">Từ ngày</label>
-                            <input type="date" class="form-control" name="from_date" id="from_date"
-                                aria-describedby="from_date" placeholder="yyyy-MM-dd">
-                        </div>
-                        <div style="margin:0px 5px 0px 5px !important" class="form-group w-25 ">
-                            <label for="to_date">Đến ngày</label>
-                            <input type="date" class="form-control" name="to_date" id="to_date"
-                                aria-describedby="to_date" placeholder="yyyy-MM-dd">
-                        </div>
-                        <div style="padding-top:32px ;" class="form-group w-25 ">
-                            <button class="btn btn-primary" data-toggle="modal" onclick="init_topup_all()"
-                                data-target="#detailId">search</button>
-                        </div>
-                    </div>
-                    <br>
-                    <h5>Danh sách phiếu nạp</h5>
-                    <div id="date_"></div>
-                </div>
-                <div class="col-12 v-data-table__wrapper">
-                    <table id="table_data_reg" class="tablemanager width_table_300 table table-striped text_center table_section table-sm"
-                        cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>User</th>
-                                <th>Tổng tiền nạp</th>
-                                <th>Thời gian</th>
-                                <th>Mã CK</th>
-                                <th class="disableFilterBy">Thao tác</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../js/authen_fuction.js"></script>
+    <script src="../js/helper_manager.js"></script>
+    <script src="../js/permission.js"></script>
+    <script src="../js/pricing_manager.js"></script>
+    <script src="../js/rechange_banking.js"></script>
+    <script src="../js/menu_admin_mobile.js"></script>
 
-                        </tbody>
-                        <caption id="showing"></caption>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section> -->
-        <!-- <hr /> -->
-        <!-- Button trigger modal -->
 
-        <!-- Modal -->
-        <div class="modal fade" id="app" tabindex="-1" role="dialog" aria-labelledby="app" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Xác nhận</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body d-flex">
-                        <div class="col-md-6">
-                            <label for="des" class="form-label">Mã chuyển khoản</label>
-                            <input disabled type="text" class="form-control" id="des" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="money" class="form-label">Số tiền</label>
-                            <input type="number" value="0" class="form-control" id="money" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button onclick="topup_approved()" type="button" class="btn btn-primary">Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="../js/authen_fuction.js"></script>
-        <script src="../js/money_manager_a.js"></script>
-        <script src="../js/helper_manager.js"></script>
-        <script src="../js/permission.js"></script>
-        <script src="../js/menu_admin_mobile.js"></script>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

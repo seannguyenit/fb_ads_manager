@@ -79,7 +79,18 @@ module.exports = {
     },
     config_general: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/config_general.html'))
+    },
+    recharge_banking: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/recharge_banking.html'))
+    },
+    recharge_card: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/recharge_card.html'))
+    },
+    edit_money: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/edit_money.html'))
     }
+
+    
     // get_partial: (req,res)=>{
     //     let action = [req.params.action];
     //     res.sendFile(path.join(__dirname,`../../view/partial/${action}.html`))

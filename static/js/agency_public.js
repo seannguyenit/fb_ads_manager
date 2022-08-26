@@ -12,9 +12,15 @@ async function init_agency_public() {
         $('#des_agency').val(cr_info.ref);
         document.getElementById('btn_money').disabled = false;
         document.getElementById('created_day').innerHTML = `${new Date(Number(cr_info.agency_time * 1000 || 0)).toLocaleString()}`
+       
         get_lb_stt(cr_info);
         get_lb_btn(cr_info);
         btn_withdraw();
+    }else{
+        
+        document.getElementById('agency_display').style.display='none';
+        document.getElementById('button_agency').style.display='block';
+        document.getElementById('span_agency').style.display='block';
     }
 
     await get_agency_count();
@@ -31,8 +37,10 @@ function get_lb_stt(info) {
     if (info.agency_time) {
         if (info.is_agency == 1) {
             document.getElementById('lb_stt').innerHTML = `<span data-lang="was_agency">Đã là đại lý !</span>`
+         
         } else {
-            document.getElementById('lb_stt').innerHTML = `<span data-lang="waiting_for_review">Đang chờ xét duyệt !<span>`
+            document.getElementById('lb_stt').innerHTML = `<span data-lang="waiting_for_review">Đang chờ xét duyệt !<span>`;
+            
         }
     }
 }
@@ -40,11 +48,18 @@ function get_lb_stt(info) {
 function get_lb_btn(info) {
     if (info.agency_time) {
         if (info.is_agency != null) {
+            
             document.getElementById('btn_reg').disabled = 'true';
             if (info.is_agency == 0) {
                 document.getElementById('btn_reg').innerHTML = `<span data-lang="waiting_for_review">Đang chờ xét duyệt<span>`
             } else {
                 document.getElementById('btn_reg').innerHTML = `<span data-lang="was_agency">Đã là đại lý</span>`
+            }
+            document.getElementById('btn_reg_hiiden').disabled = 'true';
+            if (info.is_agency == 0) {
+                document.getElementById('btn_reg_hiiden').innerHTML = `<span data-lang="waiting_for_review">Đang chờ xét duyệt<span>`
+            } else {
+                document.getElementById('btn_reg_hiiden').innerHTML = `<span data-lang="was_agency">Đã là đại lý</span>`
             }
         }
     }

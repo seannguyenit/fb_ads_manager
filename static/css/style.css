@@ -437,6 +437,9 @@ a:hover {
     .border_0 {
         border: 0px;
     }
+    .width_table__200{
+        width: 200% !important;
+    }
 
     .width_table_200 {
         width: 500% !important;

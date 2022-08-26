@@ -429,9 +429,9 @@
                                         height="40px" src="../img/avatar.png" alt="">
                                 </div>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
+                                    <!-- <a class="dropdown-item" href="./user_info"><i class="pd_r_5 fa fa-user-o"
                                             aria-hidden="true"></i>
-                                        Tài Khoảng</a>
+                                        Tài Khoảng</a> -->
                                     <a class="dropdown-item" onclick="acc_logout()"><i class="pd_r_5 fa fa-sign-out"
                                             aria-hidden="true"></i>Đăng xuất</a>
                                 </div>
@@ -467,6 +467,19 @@
                                 </ul>
                                 <ul class="side-menu">
                                     <li class="slide">
+                                        <a class="side-menu__item" data-bs-toggle="slide" onclick="dick_play_block_user()"
+                                            href="#">
+                                            <img src="../img/account.svg" alt="" class="side-menu__icon">
+                                            <span class="side-menu__label">Thành viên <i class="fa fa-angle-down"
+                                                    aria-hidden="true"></i></span>
+                                        </a>
+                                        <ul id="list_menu_user" class="slide-menu">
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul class="side-menu">
+                                    <li class="slide">
                                         <a class="side-menu__item" data-bs-toggle="slide" onclick="dick_play_block()"
                                             href="#">
                                             <img src="../img/banking.svg" alt="" class="side-menu__icon">
@@ -487,6 +500,19 @@
                                                     aria-hidden="true"></i></span>
                                         </a>
                                         <ul id="menu_" class="slide-menu">
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul class="side-menu">
+                                    <li class="slide">
+                                        <a class="side-menu__item" data-bs-toggle="slide" onclick="dick_play_block_banking()"
+                                            href="#">
+                                            <img src="../img/banking.svg" alt="" class="side-menu__icon">
+                                            <span class="side-menu__label">Nạp tiền tự động<i class="fa fa-angle-down"
+                                                    aria-hidden="true"></i></span>
+                                        </a>
+                                        <ul id="menu_bank" class="slide-menu">
 
                                         </ul>
                                     </li>

@@ -15,6 +15,14 @@ module.exports = {
         })
         // let sql = 'CALL `user_getbyname`(?)';
     },
+    list_accounts: (req, res) => {
+        let sql = 'SELECT * FROM `user` WHERE `active` = 1 GROUP by username;';
+        db.query(sql, (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+        // let sql = 'CALL `user_getbyname`(?)';
+    },
     get_all_money: (req, res) => {
         var time_from = req.params.from;
         var time_to = req.params.to;
@@ -444,6 +452,13 @@ module.exports = {
     },
     agency_app: (req, res) => {
         let sql = 'update `user` set is_agency = 1, agency_time = UNIX_TIMESTAMP() ,ref = (LEFT(MD5(RAND()), 8)) where id = ?;'
+        db.query(sql, [Number(req.params.id)], (err, response) => {
+            if (err) throw err
+            res.json({ ok: 1 });
+        })
+    },
+    dell_agency: (req, res) => {
+        let sql = 'update `user` set is_agency = 0, agency_time = "" ,ref = "" where id = ?;'
         db.query(sql, [Number(req.params.id)], (err, response) => {
             if (err) throw err
             res.json({ ok: 1 });

@@ -110,8 +110,13 @@ module.exports = function (app) {
     .get(accCtrl.list_topup_momo)
   // app.route('/api/infor_agency/:id')
   // .get(accCtrl.get_agency_info_by_user);
+  
+  app.route('/api/list_accounts')
+  .get(accCtrl.list_accounts);
   app.route('/api/agency_m/:id')
     .put(accCtrl.agency_app);
+    app.route('/api/del_agency/:id')
+    .put(accCtrl.dell_agency);
   app.route('/api/agency_m/cancel/:id')
     .put(accCtrl.agency_cancel);
   app.route('/api/action_bank/:id/:action')
@@ -238,7 +243,14 @@ module.exports = function (app) {
 
   app.route('/api/list_withdraw/:id')
     .get(moneyCtrl.get_list_withdraw);
-
+    app.route('/api/his_banking')
+    .get(moneyCtrl.his_banking);
+    app.route('/api/his_banking/:username')
+    .get(moneyCtrl.search_his_banking);
+    app.route('/api/his_card')
+    .get(moneyCtrl.his_card);
+    app.route('/api/his_card/:username')
+    .get(moneyCtrl.search_his_card);
   app.route('/api/articles')
     .get(accCtrl.get_articles)
     .post(accCtrl.insert_articles);
