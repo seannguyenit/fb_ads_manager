@@ -339,11 +339,11 @@ async function PreviewImage() {
     try {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("file-input").files[0]);
-        var s = Math.round(document.getElementById("file-input").files[0].size / 1024 / 1024);
-        if (s >= 100) {
-            alert('Chọn file nhỏ hơn 100Mb !')
-            return;
-        }
+        //var s = Math.round(document.getElementById("file-input").files[0].size / 1024 / 1024);
+        // if (s >= 100) {
+        //     alert('Chọn file nhỏ hơn 100Mb !')
+        //     return;
+        // }
         oFReader.onload = function (oFREvent) {
             // document.getElementById("img_1").src = oFREvent.target.result;
         };
@@ -366,11 +366,11 @@ async function PreviewImage1() {
     try {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("file-input1").files[0]);
-        var s = Math.round(document.getElementById("file-input1").files[0].size / 1024 / 1024);
-        if (s >= 100) {
-            alert('Chọn file nhỏ hơn 100Mb !')
-            return;
-        }
+        // var s = Math.round(document.getElementById("file-input1").files[0].size / 1024 / 1024);
+        // if (s >= 100) {
+        //     alert('Chọn file nhỏ hơn 100Mb !')
+        //     return;
+        // }
         oFReader.onload = function (oFREvent) {
             // document.getElementById("img_2").src = oFREvent.target.result;
         };
@@ -742,7 +742,7 @@ async function post_step3(op) {
     if ($('#is_schedule').is(':checked') == true) {
         var timesta = Math.floor((new Date(document.getElementById('schedule_time').value)).getTime() / 1000);
         console.log(timesta);
-        data = { "access_token": token, "published": true, "scheduled_publish_time": Number(timesta) }
+        data = { "access_token": token, "scheduled_publish_time": Number(timesta) }
     }
     var url = `https://graph.facebook.com/v14.0/${op}`;
     return await fetch(
@@ -771,7 +771,6 @@ async function post_step3_pro5(op) {
     var data = { "access_token": token, "is_published": true }
     if ($('#is_schedule').is(':checked') == true) {
         var timesta = Math.floor((new Date(document.getElementById('schedule_time').value)).getTime() / 1000);
-        console.log(timesta);
         data = { "access_token": token, "scheduled_publish_time": Number(timesta) }
     }
     var url = `${r_url2}https://graph.facebook.com/v14.0/${op}`;

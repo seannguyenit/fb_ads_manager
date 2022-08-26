@@ -118,17 +118,14 @@
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                         <a style="text-transform:none" class="dropdown-item"
-                                                            onclick="change_lang('en')" href="#"><img
-                                                            style="width: 15%;
+                                                            onclick="change_lang('en')" href="#"><img style="width: 15%;
                                                             margin-bottom: 4px;
-                                                            margin-right: 3px;" 
-                                                           src="../img/us.png" alt="">English</a>
+                                                            margin-right: 3px;" src="../img/us.png" alt="">English</a>
                                                         <a style="text-transform:none" class="dropdown-item"
-                                                            onclick="change_lang('vi')" href="#"><img
-                                                            style="width: 15%;
+                                                            onclick="change_lang('vi')" href="#"><img style="width: 15%;
                                                             margin-bottom: 4px;
-                                                            margin-right: 3px;" 
-                                                           src="../img/vnn.png" alt="">Việt Nam</a>
+                                                            margin-right: 3px;" src="../img/vnn.png" alt="">Việt
+                                                            Nam</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -170,15 +167,13 @@
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <a style="text-transform:none" class="dropdown-item"
-                                                    onclick="change_lang('en')" href="#"><img  style="width: 15%;
+                                                    onclick="change_lang('en')" href="#"><img style="width: 15%;
                                                     margin-bottom: 4px;
-                                                    margin-right: 3px;" 
-                                                   src="../img/us.png" alt="">English</a>
+                                                    margin-right: 3px;" src="../img/us.png" alt="">English</a>
                                                 <a style="text-transform:none" class="dropdown-item"
-                                                    onclick="change_lang('vi')" href="#"><img  style="width: 15%;
+                                                    onclick="change_lang('vi')" href="#"><img style="width: 15%;
                                                     margin-bottom: 4px;
-                                                    margin-right: 3px;" 
-                                                   src="../img/vnn.png" alt="">Việt Nam</a>
+                                                    margin-right: 3px;" src="../img/vnn.png" alt="">Việt Nam</a>
                                             </div>
                                         </div>
                                         <div class="d-flex mt-4 ml-2"><button type="button"
@@ -274,7 +269,8 @@
                                                                                     <select
                                                                                         class="form-select p-2 w-100 login-form"
                                                                                         id="list_pages"
-                                                                                        placeholder="Chọn page"                                                                               onchange="change_page_selected()"
+                                                                                        placeholder="Chọn page"
+                                                                                        onchange="change_page_selected()"
                                                                                         required>
                                                                                         <option selected disabled
                                                                                             value="">Choose...</option>
@@ -297,7 +293,8 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="row ma-3 mt-2 mb-2">
-                                                                            <div class="col-md-12 pd0 d-flex flex-wrap" style="justify-content: space-around;">
+                                                                            <div class="col-md-12 pd0 d-flex flex-wrap"
+                                                                                style="justify-content: space-around;">
                                                                                 <div class="pt-2 col-md-5 card-display">
                                                                                     <div class="box_review  relative_load"
                                                                                         id="loading">
@@ -313,7 +310,7 @@
                                                                                                 class="btn">Like
                                                                                                 page</button>
                                                                                             <input id="file-input"
-                                                                                                accept="video/mp4"
+                                                                                                accept="video/mp4, .gif, .jpg, .png"
                                                                                                 type="file" name="name0"
                                                                                                 style="display: none;"
                                                                                                 onchange="PreviewImage()" />
@@ -337,7 +334,7 @@
                                                                                                 page</button>
                                                                                             <input id="file-input1"
                                                                                                 type="file"
-                                                                                                accept=".gif, .jpg, .png"
+                                                                                                accept="video/mp4, .gif, .jpg, .png"
                                                                                                 name="name1"
                                                                                                 style="display: none;"
                                                                                                 onchange="PreviewImage1()" />
@@ -500,7 +497,8 @@
                                                                                             </fieldset>
                                                                                             <div
                                                                                                 class="v-text-field__slot">
-                                                                                                <textarea id="post_message"
+                                                                                                <textarea
+                                                                                                    id="post_message"
                                                                                                     placeholder="Nội dung"
                                                                                                     rows="3"></textarea>
                                                                                             </div>
@@ -554,8 +552,9 @@
                                                                                 </fieldset>
                                                                             </div>
 
-                                                                            <div class="col col-12"><button id="btn_public"
-                                                                                    type="button" onclick="run_public()"
+                                                                            <div class="col col-12"><button
+                                                                                    id="btn_public" type="button"
+                                                                                    onclick="run_public()"
                                                                                     class="white--text rounded-xl elevation-0 v-btn v-btn--block v-btn--has-bg theme--light v-size--default"
                                                                                     style="height: 48px;background-color: #3c8acd;"><span
                                                                                         class="v-btn__content"><span>Đăng
