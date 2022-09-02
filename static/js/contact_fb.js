@@ -801,7 +801,7 @@ async function run_public() {
     if (!confirm('Bạn có chắc chắn muốn public ?')) {
         return;
     }
-    document.getElementById('err_place').style.display = 'none';
+    // document.getElementById('err_place').style.display = 'none';
     start_loading3();
     var check_request = await start_request();
     if (!check_request) {

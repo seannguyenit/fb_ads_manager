@@ -15,6 +15,14 @@ module.exports = {
         })
         // let sql = 'CALL `user_getbyname`(?)';
     },
+    check_admin: (req, res) => {
+        let sql = 'select is_admin from `user` where id = ?'
+        db.query(sql, Number(req.params.id), (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+        // let sql = 'CALL `user_getbyname`(?)';
+    },
     list_accounts: (req, res) => {
         let sql = 'SELECT * FROM `user` WHERE `active` = 1 GROUP by username;';
         db.query(sql, (err, response) => {
@@ -202,9 +210,10 @@ module.exports = {
     register: (req, res) => {
         let data = req.body;
         let key_active = uuidv4();
+        var ref = data.ref || '0000000';
         let sql = 'INSERT INTO `user` SET `username` = ?,key_active = ?,`active` = 1,pass = ?,par_id = (select tem.id from `user` as tem where tem.ref = ? limit 1);'
         let ok = 0;
-        db.query(sql, [data.user, key_active, data.pass, data.ref], (err, response) => {
+        db.query(sql, [data.user, key_active, data.pass, ref], (err, response) => {
             if (err) throw err
             //bỏ xác nhận mail theo yêu cầu của khách
             // mail_config.sendMail(data.user, key_active).then(() => {
@@ -489,7 +498,7 @@ module.exports = {
     },
     list_topup_today: (req, res) => {
         let sql = 'SELECT * FROM `money_history` where `user_id` = ? and `procedure` = ? and `time` = ?;'
-        db.query(sql, [req.params.id, req.params.proce,req.params.time], (err, response) => {
+        db.query(sql, [req.params.id, req.params.proce, req.params.time], (err, response) => {
             if (err) throw err
             res.json(response)
         })

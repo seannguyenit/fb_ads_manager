@@ -155,6 +155,7 @@ async function acc_logout() {
     var user = get_cr_user('user');
     var url = `/api/logout`;
     var data = { user: user.id, token: user.token };
+    document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     let rs = await fetch(url, {
         method: 'POST', // or 'PUT'
         headers: {
@@ -169,7 +170,6 @@ async function acc_logout() {
         .catch(error => {
             console.error('Error:', error);
         });
-    document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     location.href = '/';
 }
 

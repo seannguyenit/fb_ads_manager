@@ -28,7 +28,7 @@ async function init_user() {
     var data = await acc_get_all();
     var list_user = document.getElementById('list_user');
     if(data) {
-        data.forEach(f => {
+        data.sort((a, b) => a.username.localeCompare(b.username)).forEach(f => {
             if(Number(id) != 0 ) {
                 if(Number(id) === f.id){
                     list_user.innerHTML = `

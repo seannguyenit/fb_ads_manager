@@ -3,11 +3,28 @@
 init_page();
 
 async function init_page() {
+    await init_menu()
     await Promise.all([
-        init_menu(),
         menu_contacst(),
         init_bank_topup(),
     ]);
+}
+
+async function check_admin() {
+    var user = get_cr_user();
+    if (user && user.id) {
+        var user_is_ad = await fetch(`/api/check_admin/${user.id}` /*, options */)
+            .then((response) => response.json())
+            .then((data) => {
+                return data;
+            })
+            .catch((error) => {
+                console.warn(error);
+                return undefined;
+            });
+        return user_is_ad[0].is_admin || 0;
+    }
+    return 0;
 }
 
 
@@ -25,7 +42,7 @@ function init_bank_topup() {
 // history_login()
 /* menu */
 async function menu_get_template() {
-    return await fetch(`/api/menu` /*, options */ )
+    return await fetch(`/api/menu` /*, options */)
         .then((response) => response.json())
         .then((data) => {
             return data;
@@ -91,9 +108,19 @@ async function init_menu() {
         // menu.innerHTML = '';
         // menu_user.innerHTML = '';
         var cr_user = get_cr_user();
+        if (!cr_user) {
+            location.href = '/login'
+        }
+
         var lst_menu = await menu_get_current_menu(cr_user.id);
+        var is_ad = await check_admin();
         if (!cr_url.includes('user_info') && lst_menu.filter(f => { return cr_url.includes(f.action) }).length == 0) {
             location.href = '/login'
+        }
+        if (is_ad === 0) {
+            if (lst_menu.filter(ft => ft.id_admin === 1).length > 0) {
+                location.href = '/login'
+            }
         }
         if (menu || menu_user) {
             //     lst_menu.forEach(item => {
@@ -306,7 +333,7 @@ async function list_topup_momo(id, proce) {
         });
 }
 
-async function list_topup_today(id, time,proce) {
+async function list_topup_today(id, time, proce) {
     return await fetch(`/api/list_topup_today/${id}/${time}/${proce}` /*, options */)
         .then((response) => response.json())
         .then((data) => {
@@ -459,7 +486,7 @@ async function insert_acb_bank() {
     if (rs_acb_bank) {
         if (rs_acb_bank.status) {
             rs_acb_bank.transactions.forEach(async (f) => {
-              
+
                 if (f.type === "IN") {
                     var des = f.description.toLowerCase()
                     var number = des.indexOf('napthe');
@@ -553,14 +580,14 @@ async function insert_momo_bank() {
         if (rs_momo.momoMsg && rs_momo.momoMsg.tranList) {
             rs_momo.momoMsg.tranList.forEach(async (f) => {
 
-             
+
                 // var list_topup_ = await list_topup_today(user_id,Number(new Date(today).getTime() / 1000),2);
                 if (Number(f.io) === 1) {
                     var des = f.comment.toLowerCase()
                     var number = des.indexOf('napthe');
                     var description = des.substring(Number(number) + 6, Number(number) + 10)
                     if (description === id_user) {
-                        
+
                         today_ = f.clientTime;
                         if (Number(new Date(star_today).getTime() / 1000) < Number(new Date(today_).getTime() / 1000) < Number(new Date(end_today).getTime() / 1000)) {
                             if (list_topup_) {
