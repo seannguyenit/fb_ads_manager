@@ -4,6 +4,7 @@ const util = require('util')
 const mysql = require('mysql')
 const db = require('./../db')
 const rq_sv = require('./request_controller');
+const { get, post } = require('./request_controller');
 
 // const session = require('express-session');
 
@@ -79,44 +80,44 @@ module.exports = {
                 res.json({ mess: "số dư trong tài khoảng không đủ" })
             }
             else {
-               
-               vl.forEach(f=>{
-                if(req.body.transactionID === f.transactionID){                   
-                   return;
+
+                vl.forEach(f => {
+                    if (req.body.transactionID === f.transactionID) {
+                        return;
+                    }
+                })
+                let data = req.body;
+                var active = 1;
+                // nếu là yêu cầu rút tiền thì số tiên nạp sẽ là 0
+                if (req.body.withdraw) {
+                    data.money = 0;
+                    active = 0;
                 }
-               })
-               let data = req.body;
-                    var active = 1;
-                    // nếu là yêu cầu rút tiền thì số tiên nạp sẽ là 0
-                    if(req.body.withdraw){
-                        data.money = 0;
-                        active = 0;
-                    }
-                    // data.money = Number(req.body.money) - Number(total_money_today);
-                    data.type = 1;
-                    data.procedure = 1;
-                    if (data.time) {
-                        data.time = data.time;
-                    } else {
-                        data.time = new Date().getTime() / 1000;
-                    }
-                    // data.time = new Date().getTime()
-                    
-                    if (req.body.active && req.body.active == 1) {
-                        active = 1;
-                    }
-                    data.active = active;
-    
-                    // if(Number(agency) === 1){
-                        data.money_bonus = (data.money / 100) * 10;
-                    // }else{
-                        // data.money_bonus = 0;
-                    // }
-                    let sql = 'insert into money_history SET ?;'
-                    db.query(sql, data, (err, response) => {
-                        if (err) throw err
-                        res.json({ ok: 1 })
-                    })
+                // data.money = Number(req.body.money) - Number(total_money_today);
+                data.type = 1;
+                data.procedure = 1;
+                if (data.time) {
+                    data.time = data.time;
+                } else {
+                    data.time = new Date().getTime() / 1000;
+                }
+                // data.time = new Date().getTime()
+
+                if (req.body.active && req.body.active == 1) {
+                    active = 1;
+                }
+                data.active = active;
+
+                // if(Number(agency) === 1){
+                data.money_bonus = (data.money / 100) * 10;
+                // }else{
+                // data.money_bonus = 0;
+                // }
+                let sql = 'insert into money_history SET ?;'
+                db.query(sql, data, (err, response) => {
+                    if (err) throw err
+                    res.json({ ok: 1 })
+                })
 
             }
         });
@@ -125,49 +126,49 @@ module.exports = {
     add_money_momo: (req, res) => {
         get_current_finance(req.body.user_id, (vl) => {
             let agency = vl[0].is_agency
-                    let data = req.body;
-                    var active = 1;
-                    data.type = 1;
-                    data.procedure = 2;
+            let data = req.body;
+            var active = 1;
+            data.type = 1;
+            data.procedure = 2;
 
-                    data.active = active;
-                    // if(Number(agency) === 1){
-                        data.money_bonus = (data.money / 100) * 10;
-                    // }else{
-                    //     data.money_bonus = 0;
-                    // }
-                    let sql = 'insert into money_history SET ?;'
-                    db.query(sql, data, (err, response) => {
-                        if (err) throw err
-                        res.json({ ok: 1 })
-                    })
+            data.active = active;
+            // if(Number(agency) === 1){
+            data.money_bonus = (data.money / 100) * 10;
+            // }else{
+            //     data.money_bonus = 0;
+            // }
+            let sql = 'insert into money_history SET ?;'
+            db.query(sql, data, (err, response) => {
+                if (err) throw err
+                res.json({ ok: 1 })
+            })
 
-                // }
+            // }
         });
 
     },
     add_money_acbbank: (req, res) => {
         get_current_finance(req.body.user_id, (vl) => {
             let agency = vl[0].is_agency
-                    let data = req.body;
-                    var active = 1;
-                    data.type = 1;
-                    data.procedure = 3;
+            let data = req.body;
+            var active = 1;
+            data.type = 1;
+            data.procedure = 3;
 
-                    data.active = active;
-                    // if(Number(agency) === 1){
-                        data.money_bonus = (data.money / 100) * 10;
-                    // }else{
-                    //     data.money_bonus = 0;
-                    // }
-                   
-                    let sql = 'insert into money_history SET ?;'
-                    db.query(sql, data, (err, response) => {
-                        if (err) throw err
-                        res.json({ ok: 1 })
-                    })
-                // }
-                })
+            data.active = active;
+            // if(Number(agency) === 1){
+            data.money_bonus = (data.money / 100) * 10;
+            // }else{
+            //     data.money_bonus = 0;
+            // }
+
+            let sql = 'insert into money_history SET ?;'
+            db.query(sql, data, (err, response) => {
+                if (err) throw err
+                res.json({ ok: 1 })
+            })
+            // }
+        })
     },
     get_list_money_history_limit: (req, res) => {
         let sql = 'select * from money_history where user_id = ? and `type` = 1 and method = 2 order by `time` DESC limit 1 ;'
@@ -186,6 +187,13 @@ module.exports = {
     get_list_top_up_card: (req, res) => {
         let sql = 'select MH.*,CH.* from money_history as MH LEFT JOIN card_history as CH ON MH.task_id = CH.TaskId where user_id = ? and `type` = 1 and money >= 0 and task_id IS NOT NULL and method != 2 order by `time` DESC limit 10;'
         db.query(sql, Number(req.params.user_id), (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    get_transid: (req, res) => {
+        let sql = 'select transactionID from money_history where (transactionID is not null and length(transactionID) > 1);'
+        db.query(sql, (err, response) => {
             if (err) throw err
             res.json(response)
         })
@@ -242,7 +250,7 @@ module.exports = {
         let username = '%' + req.params.username + '%';
         let sql = 'SELECT MH.*,CH.Pin,CH.Seri,CH.Success,U.username FROM `money_history` as MH left JOIN `user` as U on MH.user_id = U.id LEFT JOIN `card_history` as CH on MH.task_id = CH.TaskId WHERE `task_id` IS NOT NULL and CH.Success = 1 and U.username like ?;'
         // , get_all_bonus() AS all_bonus, get_all_month_money() AS all_month_money, get_all_withdraw_money() AS all_withdraw_money
-        db.query(sql,username, (err, response) => {
+        db.query(sql, username, (err, response) => {
             if (err) throw err
             res.json(response)
         })
@@ -260,7 +268,7 @@ module.exports = {
         let username = '%' + req.params.username + '%';
         let sql = 'SELECT MH.*,U.username FROM `money_history` as MH left JOIN `user` as U on MH.user_id = U.id WHERE `procedure` != 0 and U.username like ?;'
         // , get_all_bonus() AS all_bonus, get_all_month_money() AS all_month_money, get_all_withdraw_money() AS all_withdraw_money
-        db.query(sql,username, (err, response) => {
+        db.query(sql, username, (err, response) => {
             if (err) throw err
             res.json(response)
         })
@@ -276,7 +284,7 @@ module.exports = {
     },
     successfully_topup: (req, res) => {
         let money_history = req.body;
-        console.log('Receive receipt : ',money_history);
+        console.log('Receive receipt : ', money_history);
         if (money_history) {
             insert_history_card(money_history, (rs) => {
                 var err = '';
@@ -316,7 +324,111 @@ module.exports = {
             })
         })
 
+    },
+    cron_money: (req, res) => {
+        insert_acb_bank();
     }
+}
+
+async function insert_acb_bank() {
+    let sql_admin_bank = 'SELECT * FROM admin_bank;'
+    db.query(sql_admin_bank, (err, response) => {
+        var infor_acbbank = response;
+        var action_acb = "";
+        var token_bank = "";
+        var account = "";
+        var password = "";
+        var finfo = infor_acbbank.find(f => ((Number(f.action) === 1) && (Number(f.type) === 2)));
+        if (finfo) {
+            token_bank = finfo.token;
+            account = finfo.account;
+            password = finfo.password;
+            action_acb = finfo.action;
+        }
+        if (Number(action_acb) === 0) {
+            return;
+        }
+
+        get(`https://api.web2m.com/historyapimbv3/${password}/${account}/${token_bank}`).then(rs_acb_bank => {
+            let sql = 'SELECT * FROM `user` WHERE `active` = 1';
+            db.query(sql, (err, response) => {
+                run_by_all_user(response)
+            })
+
+        });
+
+    })
+
+
+    // }
+
+}
+
+async function ticket_save_acb(money, method, des, user_id, time, transactionID) {
+    get_current_finance(req.body.user_id, (vl) => {
+        let agency = vl[0].is_agency
+        let data = req.body;
+        var active = 1;
+        data.type = 1;
+        data.procedure = 3;
+
+        data.active = active;
+        // if(Number(agency) === 1){
+        data.money_bonus = (data.money / 100) * 10;
+        // }else{
+        //     data.money_bonus = 0;
+        // }
+
+        let sql = 'insert into money_history SET ?;'
+        db.query(sql, data, (err, response) => {
+            console.log('insert money to db !', new Date());
+        })
+        // }
+    })
+}
+
+async function run_by_all_user(users) {
+    for (let index = 0; index < users.length; index++) {
+        const cr_u = users[index];
+        var d = new Date();
+        let y = d.getFullYear();
+        let m = (d.getMonth() + 1) < 10 ? `0${d.getMonth() + 1}` : (d.getMonth() + 1);
+        let dd = (d.getDate()) < 10 ? `0${d.getDate()}` : (d.getDate());
+        var today = `${y}-${m}-${dd}`;
+        var today_ = "";
+        var method = 1;
+        let sql_trasn = 'select transactionID from money_history where (transactionID is not null and length(transactionID) > 1);'
+        db.query(sql_trasn, (err, response) => {
+            var list_topup_ = response;
+            if (rs_acb_bank) {
+                if (rs_acb_bank.status) {
+                    var stt_rs = 0;
+                    for (let index_acb = 0; index_acb < rs_acb_bank.transactions.length; index_acb++) {
+                        const f = rs_acb_bank.transactions[index_acb];
+                        if (f.transactionID && f.transactionID.length > 0 && f.type === "IN" && !list_topup_.includes(f.transactionID) && check_user_id_in_des(f.description, cr_u.id)) {
+                            let dd_ = f.transactionDate.substring(0, 2);
+                            let m_ = f.transactionDate.substring(3, 5);
+                            let y_ = f.transactionDate.substring(6, 10);
+                            today_ = `${y_}-${m_}-${dd_}`;
+                            ticket_save_acb(f.amount, method, cr_u.id, cr_u.id, Number(new Date().getTime() / 1000), f.transactionID);
+                        }
+                    }
+                }
+            }
+        })
+    }
+}
+
+function check_user_id_in_des(description, user_id) {
+    try {
+        var des = description.toLowerCase()
+        var number = des.indexOf('napthe');
+        var d = des.substring(Number(number) + 6, Number(number) + 10);
+        return d === id_user;
+    } catch (error) {
+        console.log(error);
+    }
+    return false;
 }
 
 async function waitingForCardResult(task_id) {
@@ -340,7 +452,7 @@ function insert_history_card(data, callback) {
 
 function get_current_finance_topup_bank(time, id, callback) {
     let sql = 'select *,get_topup_money_mbbank_today(`money_history`.`user_id`,?) as get_topup_money_mbbank_today,get_topup_money_momo_today(`money_history`.`user_id`,?) as get_topup_money_momo_today,get_topup_money_abcbank_today(`money_history`.`user_id`,?) as get_topup_money_abcbank_today,get_current_money(`money_history`.`user_id`) as money,get_current_bonus(`money_history`.`user_id`) as bonus from `money_history` where `user_id` = ? and `procedure` != 0 and time = ?;'
-    db.query(sql, [time,time,time, Number(id),time], (err, response) => {
+    db.query(sql, [time, time, time, Number(id), time], (err, response) => {
         if (err) throw err
         callback(response)
     })

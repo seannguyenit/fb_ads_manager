@@ -243,6 +243,10 @@ module.exports = function (app) {
   app.route('/api/money_success_ticket')
     .post(moneyCtrl.add_money_ticket);
 
+  app.route('/api/tranid_acb')
+    .get(moneyCtrl.get_transid);
+  app.route('/api/cron_money')
+    .post(moneyCtrl.cron_money);
   app.route('/api/list_withdraw/:id')
     .get(moneyCtrl.get_list_withdraw);
   app.route('/api/his_banking')
