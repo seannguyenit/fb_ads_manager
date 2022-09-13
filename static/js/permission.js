@@ -6,7 +6,7 @@ async function init_page() {
     await init_menu()
     await Promise.all([
         menu_contacst(),
-        init_bank_topup(),
+        // init_bank_topup(),
     ]);
 }
 
