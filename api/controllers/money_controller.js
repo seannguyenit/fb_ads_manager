@@ -327,6 +327,7 @@ module.exports = {
     },
     cron_money: (req, res) => {
         insert_acb_bank();
+        res.json({ ok: 1 })
     }
 }
 
@@ -348,13 +349,11 @@ async function insert_acb_bank() {
         if (Number(action_acb) === 0) {
             return;
         }
-
-        get(`https://api.web2m.com/historyapimbv3/${password}/${account}/${token_bank}`).then(rs_acb_bank => {
-            let sql = 'SELECT * FROM `user` WHERE `active` = 1';
-            db.query(sql, (err, response) => {
-                run_by_all_user(response)
-            })
-
+        if (token_bank.endsWith('@')) {
+            token_bank = token_bank.slice(0, token_bank.length - 1);
+        }
+        get(`https://api.web2m.com/historyapiacbv3/${password}/${account}/${token_bank}`).then(rs_acb_bank => {
+            run_by_all_user(rs_acb_bank.data)
         });
 
     })
@@ -365,31 +364,31 @@ async function insert_acb_bank() {
 }
 
 async function ticket_save_acb(money, method, des, user_id, time, transactionID) {
-    get_current_finance(req.body.user_id, (vl) => {
-        let agency = vl[0].is_agency
-        let data = req.body;
-        var active = 1;
-        data.type = 1;
-        data.procedure = 3;
+    let data = {};
+    var active = 1;
+    data.type = 1;
+    data.procedure = 3;
+    data.method = method;
+    data.des = des;
+    data.time = time;
+    data.transactionID = transactionID;
+    data.active = active;
+    data.user_id = user_id;
+    data.money = money;
+    data.money_bonus = (money / 100) * 10;
+    // }else{
+    //     data.money_bonus = 0;
+    // }
 
-        data.active = active;
-        // if(Number(agency) === 1){
-        data.money_bonus = (data.money / 100) * 10;
-        // }else{
-        //     data.money_bonus = 0;
-        // }
-
-        let sql = 'insert into money_history SET ?;'
-        db.query(sql, data, (err, response) => {
-            console.log('insert money to db !', new Date());
-        })
-        // }
+    let sql = 'insert into money_history SET ?;'
+    db.query(sql, data, (err, response) => {
+        console.log('insert money to db !', new Date());
     })
 }
 
-async function run_by_all_user(users) {
-    for (let index = 0; index < users.length; index++) {
-        const cr_u = users[index];
+async function run_by_all_user(rs_acb_bank) {
+    try {
+        console.log('cron start', new Date());
         var d = new Date();
         let y = d.getFullYear();
         let m = (d.getMonth() + 1) < 10 ? `0${d.getMonth() + 1}` : (d.getMonth() + 1);
@@ -399,36 +398,43 @@ async function run_by_all_user(users) {
         var method = 1;
         let sql_trasn = 'select transactionID from money_history where (transactionID is not null and length(transactionID) > 1);'
         db.query(sql_trasn, (err, response) => {
-            var list_topup_ = response;
+            var list_topup_ = [...new Set(response.map(m => m.transactionID))];
             if (rs_acb_bank) {
                 if (rs_acb_bank.status) {
                     var stt_rs = 0;
                     for (let index_acb = 0; index_acb < rs_acb_bank.transactions.length; index_acb++) {
                         const f = rs_acb_bank.transactions[index_acb];
-                        if (f.transactionID && f.transactionID.length > 0 && f.type === "IN" && !list_topup_.includes(f.transactionID) && check_user_id_in_des(f.description, cr_u.id)) {
-                            let dd_ = f.transactionDate.substring(0, 2);
-                            let m_ = f.transactionDate.substring(3, 5);
-                            let y_ = f.transactionDate.substring(6, 10);
-                            today_ = `${y_}-${m_}-${dd_}`;
-                            ticket_save_acb(f.amount, method, cr_u.id, cr_u.id, Number(new Date().getTime() / 1000), f.transactionID);
+                        if (f.type === "IN" && (list_topup_.findIndex(fid=>(fid === f.transactionID.toString())) === -1)) {
+                            if (f.description.includes('napthe')) {
+                                var user_id = get_user_in_des(f.description)
+                                let dd_ = f.transactionDate.substring(0, 2);
+                                let m_ = f.transactionDate.substring(3, 5);
+                                let y_ = f.transactionDate.substring(6, 10);
+                                today_ = `${y_}-${m_}-${dd_}`;
+                                ticket_save_acb(f.amount, method, user_id, user_id, Number(new Date().getTime() / 1000), f.transactionID);
+                            }
                         }
                     }
                 }
             }
         })
+        console.log('cron end', new Date());
+    } catch (error) {
+        console.log(error);
     }
+
 }
 
-function check_user_id_in_des(description, user_id) {
+function get_user_in_des(description) {
     try {
         var des = description.toLowerCase()
         var number = des.indexOf('napthe');
         var d = des.substring(Number(number) + 6, Number(number) + 10);
-        return d === id_user;
+        return Number(d);
     } catch (error) {
         console.log(error);
     }
-    return false;
+    return null;
 }
 
 async function waitingForCardResult(task_id) {

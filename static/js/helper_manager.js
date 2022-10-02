@@ -126,7 +126,8 @@ function get_format_VND(str) {
 }
 
 
-// init_loading();
+
+
 async function init_loading() {
     document.body.innerHTML += `<div id="loading-element"><img src="../img/loading.gif"/></div>`;
 }

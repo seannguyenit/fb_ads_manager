@@ -199,34 +199,38 @@
                             <div class="row no-gutters">
                                 <div class="container px-0 px-sm-0 px-md-16 px-lg-0" style="max-width: 1400px;">
                                     <div id="container" class="mt-4 mb-16">
+                                        <div style="width: 100%;">
+                                            <div class="rounded-lg pl-2 pl-sm-4 pl-md-0 pr-xl-0 pt-0 col-lg-12 col-12">
+                                                <div class="white pa-0 rounded-lg boxShadow fheight col col-12 d-flex">
+                                                    <div class="m-auto" style="width: 85%;">
+                                                        <div id="mini-menu-tool"
+                                                            class="white pa-0 rounded-lg boxShadow fheight col col-12 d-flex">
+                                                            <div onclick="run_menu_tool(this)"
+                                                                class="p-3 mini-menu-tool-item active"
+                                                                data-target="tool2">Tool 2</div>
+                                                            <div onclick="run_menu_tool(this)"
+                                                                class="p-3 mini-menu-tool-item" data-target="tool8">
+                                                                Tool 8</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                         <div class="v-window mx-1 v-item-group theme--light v-tabs-items"
                                             style="background-color: inherit;">
                                             <div class="v-window__container">
                                                 <div class="v-window-item v-window-item--active">
                                                     <div class="container">
                                                         <div id="container" class="mb-16">
-                                                            <div class="row">
+
+                                                            <div id="tool2" style="display: block;" class="row">
                                                                 <div
                                                                     class="rounded-lg pl-2 pl-sm-4 pl-md-0 pr-2 pr-sm-4 pr-xl-0 pt-0 col-lg-12 col-12">
                                                                     <div
                                                                         class="white pa-0 rounded-lg boxShadow fheight col col-12">
                                                                         <div id="hideBottomInput" class="row ma-3">
                                                                             <div class="col col-12" id="mess_error">
-                                                                                <!-- <div role="alert" id="err_place"
-                                                                                    class="v-alert mb-0 v-sheet theme--dark v-alert--prominent error">
-                                                                                    <div class="v-alert__wrapper"><i
-                                                                                            aria-hidden="true"
-                                                                                            class="v-icon notranslate v-alert__icon mdi mdi-alert theme--dark"></i>
-                                                                                        <div class="v-alert__content">
-                                                                                            <div
-                                                                                                class="row align-center">
-                                                                                                <div class="col"
-                                                                                                    id="error_token">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div> -->
                                                                             </div>
                                                                             <div class="col col-12">
                                                                                 <div class="d-flex align-center"><button
@@ -598,6 +602,1337 @@
                                                                     class="rounded-lg pl-2 pl-sm-4 pl-md-0 pl-xl-3 pt-0 pr-2 pr-sm-4 pr-md-0 col-lg-6 col-12">
                                                                 </div>
                                                             </div>
+                                                            <div id="tool8" style="display: none;" class="row">
+                                                                <div
+                                                                    class="rounded-lg pl-2 pl-sm-4 pl-md-0 pr-2 pr-sm-4 pr-xl-0 pt-0 col-lg-12 col-12">
+                                                                    <div
+                                                                        class="white pa-0 rounded-lg boxShadow fheight col col-12">
+                                                                        <div id="Tool8_hideBottomInput"
+                                                                            class="row ma-3">
+                                                                            <div class="col col-12"
+                                                                                id="Tool8_mess_error">
+                                                                            </div>
+                                                                            <div class="col col-12">
+                                                                                <div class="d-flex align-center"><button
+                                                                                        type="button"
+                                                                                        class="elevation-0 v-btn v-btn--is-elevated v-btn--fab v-btn--has-bg v-btn--round theme--light v-size--x-small primary"><span
+                                                                                            class="v-btn__content"><i
+                                                                                                aria-hidden="true"
+                                                                                                class="v-icon notranslate ml-1 fas fa-user-edit theme--light"
+                                                                                                style="font-size: 12px;"></i></span></button>
+                                                                                    <h3 class="ml-2 mb-0">
+                                                                                        Soạn bài viết
+                                                                                    </h3>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div
+                                                                                class="col-md-12 t1000_center p-0 d-flex flex-wrap">
+
+                                                                                <div
+                                                                                    class="wth col-md-4 t1000_left m_b_5">
+                                                                                    <label for="Tool8_list_pages"
+                                                                                        class="form-label"
+                                                                                        data-lang="Facebookuser"></label>
+                                                                                    <br>
+                                                                                    <select
+                                                                                        class="form-select p-2 w-100 login-form"
+                                                                                        id="Tool8_list_fb"
+                                                                                        onchange="Tool8_set_combobox_data()"
+                                                                                        required>
+                                                                                        <option selected disabled
+                                                                                            value="">Choose...</option>
+                                                                                        <option>...</option>
+                                                                                    </select>
+
+                                                                                </div>
+                                                                                <div
+                                                                                    class="wth col-md-4 t1000_left m_b_5">
+                                                                                    <label for="Tool8_list_pages"
+                                                                                        class="form-label"
+                                                                                        data-lang="Page"></label> <br>
+                                                                                    <select
+                                                                                        class="form-select p-2 w-100 login-form"
+                                                                                        id="Tool8_list_pages"
+                                                                                        placeholder="Chọn page"
+                                                                                        onchange="Tool8_change_page_selected()"
+                                                                                        required>
+                                                                                        <option selected disabled
+                                                                                            value="">Choose...</option>
+                                                                                        <option>...</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <div class="wth t1000_left col-md-4">
+                                                                                    <label for="Tool8_list_pages"
+                                                                                        class="form-label"
+                                                                                        data-lang="Adsuser"></label>
+                                                                                    <br>
+                                                                                    <select
+                                                                                        class="form-select p-2 w-100 login-form"
+                                                                                        id="Tool8_list_ads" required>
+                                                                                        <option selected disabled
+                                                                                            value="">Choose...</option>
+                                                                                        <option>...</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row ma-3 mt-2 mb-2">
+                                                                            <div class="col-md-12 pd0 d-flex flex-wrap"
+                                                                                style="justify-content: space-around;">
+                                                                                <div class="pt-2 col-md-5 card-display">
+                                                                                    <div class="col-12 Tool8_form_title mb-2">1</div>
+                                                                                    
+                                                                                    <div class="box_review  relative_load"
+                                                                                        id="Tool8_loading1">
+                                                                                        <a
+                                                                                            onclick="Tool8_select_file(1)"><img
+                                                                                                id="Tool8_img_1"
+                                                                                                src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                                                                                        <div
+                                                                                            class="d-flex justify-content-between content">
+                                                                                            <span
+                                                                                                data-select="Tool8_review1">Like
+                                                                                                Page 👉 👉</span>
+                                                                                            <button data-select="Tool8_review1"
+                                                                                                class="btn">Like
+                                                                                                page</button>
+                                                                                            <input
+                                                                                                id="Tool8_file-input1"
+                                                                                                accept="video/mp4, .gif, .jpg, .png"
+                                                                                                type="file" name="name1"
+                                                                                                style="display: none;"
+                                                                                                onchange="Tool8_PreviewImage(1)" />
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="pt-2 col-md-5 card-display">
+                                                                                    <div class="col-12 Tool8_form_title mb-2">2</div>
+                                                                                    <div class="box_review  relative_load"
+                                                                                        id="Tool8_loading2">
+                                                                                        <a
+                                                                                            onclick="Tool8_select_file(2)"><img
+                                                                                                id="Tool8_img_2"
+                                                                                                src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                                                                                        <div
+                                                                                            class="d-flex justify-content-between content">
+                                                                                            <span
+                                                                                                data-select="Tool8_review2">Like
+                                                                                                Page 👉 👉</span>
+                                                                                            <button data-select="Tool8_review2"
+                                                                                                class="btn">Like
+                                                                                                page</button>
+                                                                                            <input
+                                                                                                id="Tool8_file-input2"
+                                                                                                type="file"
+                                                                                                accept="video/mp4, .gif, .jpg, .png"
+                                                                                                name="name2"
+                                                                                                style="display: none;"
+                                                                                                onchange="Tool8_PreviewImage(2)" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="pt-2 col-md-5 card-display">
+                                                                                    <div class="col-12 Tool8_form_title mb-2">3</div>
+                                                                                    <div class="box_review  relative_load"
+                                                                                        id="Tool8_loading3">
+                                                                                        <a
+                                                                                            onclick="Tool8_select_file(3)"><img
+                                                                                                id="Tool8_img_3"
+                                                                                                src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                                                                                        <div
+                                                                                            class="d-flex justify-content-between content">
+                                                                                            <span
+                                                                                                data-select="Tool8_review3">Like
+                                                                                                Page 👉 👉</span>
+                                                                                            <button data-select="Tool8_review3"
+                                                                                                class="btn">Like
+                                                                                                page</button>
+                                                                                            <input
+                                                                                                id="Tool8_file-input3"
+                                                                                                accept="video/mp4, .gif, .jpg, .png"
+                                                                                                type="file" name="name3"
+                                                                                                style="display: none;"
+                                                                                                onchange="Tool8_PreviewImage(3)" />
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="pt-2 col-md-5 card-display">
+                                                                                    <div class="col-12 Tool8_form_title mb-2">4</div>
+                                                                                    <div class="box_review  relative_load"
+                                                                                        id="Tool8_loading4">
+                                                                                        <a
+                                                                                            onclick="Tool8_select_file(4)"><img
+                                                                                                id="Tool8_img_4"
+                                                                                                src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                                                                                        <div
+                                                                                            class="d-flex justify-content-between content">
+                                                                                            <span
+                                                                                                data-select="Tool8_review4">Like
+                                                                                                Page 👉 👉</span>
+                                                                                            <button data-select="Tool8_review4"
+                                                                                                class="btn">Like
+                                                                                                page</button>
+                                                                                            <input
+                                                                                                id="Tool8_file-input4"
+                                                                                                type="file"
+                                                                                                accept="video/mp4, .gif, .jpg, .png"
+                                                                                                name="Tool8_name4"
+                                                                                                style="display: none;"
+                                                                                                onchange="Tool8_PreviewImage(4)" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="pt-2 col-md-5 card-display">
+                                                                                    <div class="col-12 Tool8_form_title mb-2">5</div>
+                                                                                    <div class="box_review  relative_load"
+                                                                                        id="Tool8_loading5">
+                                                                                        <a
+                                                                                            onclick="Tool8_select_file(5)"><img
+                                                                                                id="Tool8_img_5"
+                                                                                                src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                                                                                        <div
+                                                                                            class="d-flex justify-content-between content">
+                                                                                            <span
+                                                                                                data-select="Tool8_review5">Like
+                                                                                                Page 👉 👉</span>
+                                                                                            <button data-select="Tool8_review5"
+                                                                                                class="btn">Like
+                                                                                                page</button>
+                                                                                            <input
+                                                                                                id="Tool8_file-input5"
+                                                                                                accept="video/mp4, .gif, .jpg, .png"
+                                                                                                type="file" name="name5"
+                                                                                                style="display: none;"
+                                                                                                onchange="Tool8_PreviewImage(5)" />
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="pt-2 col-md-5 card-display">
+                                                                                    <div class="col-12 Tool8_form_title mb-2">6</div>
+                                                                                    <div class="box_review  relative_load"
+                                                                                        id="Tool8_loading6">
+                                                                                        <a
+                                                                                            onclick="Tool8_select_file(6)"><img
+                                                                                                id="Tool8_img_6"
+                                                                                                src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                                                                                        <div
+                                                                                            class="d-flex justify-content-between content">
+                                                                                            <span
+                                                                                                data-select="Tool8_review6">Like
+                                                                                                Page 👉 👉</span>
+                                                                                            <button data-select="Tool8_review6"
+                                                                                                class="btn">Like
+                                                                                                page</button>
+                                                                                            <input
+                                                                                                id="Tool8_file-input6"
+                                                                                                type="file"
+                                                                                                accept="video/mp4, .gif, .jpg, .png"
+                                                                                                name="name6"
+                                                                                                style="display: none;"
+                                                                                                onchange="Tool8_PreviewImage(6)" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="pt-2 col-md-5 card-display">
+                                                                                    <div class="col-12 Tool8_form_title mb-2">7</div>
+                                                                                    <div class="box_review  relative_load"
+                                                                                        id="Tool8_loading7">
+                                                                                        <a
+                                                                                            onclick="Tool8_select_file(7)"><img
+                                                                                                id="Tool8_img_7"
+                                                                                                src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                                                                                        <div
+                                                                                            class="d-flex justify-content-between content">
+                                                                                            <span
+                                                                                                data-select="Tool8_review7">Like
+                                                                                                Page 👉 👉</span>
+                                                                                            <button data-select="Tool8_review7"
+                                                                                                class="btn">Like
+                                                                                                page</button>
+                                                                                            <input
+                                                                                                id="Tool8_file-input7"
+                                                                                                accept="video/mp4, .gif, .jpg, .png"
+                                                                                                type="file" name="name7"
+                                                                                                style="display: none;"
+                                                                                                onchange="Tool8_PreviewImage(7)" />
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="pt-2 col-md-5 card-display">
+                                                                                    <div class="col-12 Tool8_form_title mb-2">8</div>
+                                                                                    <div class="box_review  relative_load"
+                                                                                        id="Tool8_loading8">
+                                                                                        <a
+                                                                                            onclick="Tool8_select_file(8)"><img
+                                                                                                id="Tool8_img_8"
+                                                                                                src="https://i.imgur.com/BDJYyka.jpg" /></a>
+                                                                                        <div
+                                                                                            class="d-flex justify-content-between content">
+                                                                                            <span
+                                                                                                data-select="Tool8_review8">Like
+                                                                                                Page 👉 👉</span>
+                                                                                            <button data-select="Tool8_review8"
+                                                                                                class="btn">Like
+                                                                                                page</button>
+                                                                                            <input
+                                                                                                id="Tool8_file-input8"
+                                                                                                type="file"
+                                                                                                accept="video/mp4, .gif, .jpg, .png"
+                                                                                                name="name8"
+                                                                                                style="display: none;"
+                                                                                                onchange="Tool8_PreviewImage(8)" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row ma-3">
+                                                                            <div class="pt-0 col col-12">
+                                                                                <div class="d-flex fheight rounded">
+                                                                                    <div class="button-card rounded-l-xl py-3 fheight c-pointer d-flex align-center justify-center button-card-active white--text"
+                                                                                        onclick="Tool8_set_card(1)"
+                                                                                        id="Tool8_nav-setcard1"
+                                                                                        style="width: 50%;">
+                                                                                        <p data-lang="Tool8_card1"
+                                                                                            id="Tool8_nav-setcard1"
+                                                                                            class="text-uppercase mb-0">
+                                                                                            card 1</p>
+                                                                                    </div>
+                                                                                    <div class="button-card button-card-right py-3 fheight c-pointer d-flex align-center justify-center button-card-noactive grey-opacity-text"
+                                                                                        onclick="Tool8_set_card(2)"
+                                                                                        id="Tool8_nav-setcard2"
+                                                                                        style="width: 50%;">
+                                                                                        <p data-lang="Tool8_card2"
+                                                                                            class="text-uppercase mb-0">
+                                                                                            card 2</p>
+                                                                                    </div>
+                                                                                    <div class="button-card button-card-right py-3 fheight c-pointer d-flex align-center justify-center button-card-noactive grey-opacity-text"
+                                                                                        onclick="Tool8_set_card(3)"
+                                                                                        id="Tool8_nav-setcard3"
+                                                                                        style="width: 50%;">
+                                                                                        <p data-lang="Tool8_card3"
+                                                                                            class="text-uppercase mb-0">
+                                                                                            card 3</p>
+                                                                                    </div>
+                                                                                    <div class="button-card button-card-right py-3 fheight c-pointer d-flex align-center justify-center button-card-noactive grey-opacity-text"
+                                                                                        onclick="Tool8_set_card(4)"
+                                                                                        id="Tool8_nav-setcard4"
+                                                                                        style="width: 50%;">
+                                                                                        <p data-lang="Tool8_card4"
+                                                                                            class="text-uppercase mb-0">
+                                                                                            card 4</p>
+                                                                                    </div>
+                                                                                    <div class="button-card button-card-right py-3 fheight c-pointer d-flex align-center justify-center button-card-noactive grey-opacity-text"
+                                                                                        onclick="Tool8_set_card(5)"
+                                                                                        id="Tool8_nav-setcard5"
+                                                                                        style="width: 50%;">
+                                                                                        <p data-lang="Tool8_card5"
+                                                                                            class="text-uppercase mb-0">
+                                                                                            card 5</p>
+                                                                                    </div>
+                                                                                    <div class="button-card button-card-right py-3 fheight c-pointer d-flex align-center justify-center button-card-noactive grey-opacity-text"
+                                                                                        onclick="Tool8_set_card(6)"
+                                                                                        id="Tool8_nav-setcard6"
+                                                                                        style="width: 50%;">
+                                                                                        <p data-lang="Tool8_card6"
+                                                                                            class="text-uppercase mb-0">
+                                                                                            card 6</p>
+                                                                                    </div>
+                                                                                    <div class="button-card button-card-right py-3 fheight c-pointer d-flex align-center justify-center button-card-noactive grey-opacity-text"
+                                                                                        onclick="Tool8_set_card(7)"
+                                                                                        id="Tool8_nav-setcard7"
+                                                                                        style="width: 50%;">
+                                                                                        <p data-lang="Tool8_card7"
+                                                                                            class="text-uppercase mb-0">
+                                                                                            card 7</p>
+                                                                                    </div>
+                                                                                    <div class="button-card rounded-r-xl button-card-right py-3 fheight c-pointer d-flex align-center justify-center button-card-noactive grey-opacity-text"
+                                                                                        onclick="Tool8_set_card(8)"
+                                                                                        id="Tool8_nav-setcard8"
+                                                                                        style="width: 50%;">
+                                                                                        <p data-lang="Tool8_card8"
+                                                                                            class="text-uppercase mb-0">
+                                                                                            card 8</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col col-12">
+                                                                                <div class="card-display rounded pa-3">
+                                                                                    <!-- 1 -->
+                                                                                    <div id="hideBottomInput1"
+                                                                                        class="row">
+                                                                                        <div class="col-12 Tool8_form_title">1</div>
+                                                                                        <div class="col-sm-6 col-12"
+                                                                                            data-select="Tool8_card1">
+                                                                                            <label
+                                                                                                for="Tool8_list_pages1"
+                                                                                                class="form-label"
+                                                                                                data-lang="Buttons"></label>
+                                                                                            <select
+                                                                                                onchange="Tool8_change_button(1)"
+                                                                                                style="padding: 0.36rem!important;"
+                                                                                                class="form-select input_user w-100 border"
+                                                                                                id="Tool8_list_bts1"
+                                                                                                required>
+                                                                                                <option selected
+                                                                                                    value="Like Page">
+                                                                                                    Like Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="No Button">No
+                                                                                                    Button</option>
+                                                                                                <option
+                                                                                                    value="Learn More">
+                                                                                                    Learn More</option>
+                                                                                                <option
+                                                                                                    value="Book Travel">
+                                                                                                    Book Travel</option>
+                                                                                                <option
+                                                                                                    value="Contact Us">
+                                                                                                    Contact Us</option>
+                                                                                                <option
+                                                                                                    value="Download">
+                                                                                                    Download</option>
+                                                                                                <option
+                                                                                                    value="Get Quote ">
+                                                                                                    Get Quote </option>
+                                                                                                <option
+                                                                                                    value="Install App ">
+                                                                                                    Install App
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Listen Music">
+                                                                                                    Listen Music
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Message Page">
+                                                                                                    Message Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Open Link">
+                                                                                                    Open Link</option>
+                                                                                                <option
+                                                                                                    value="Play Game">
+                                                                                                    Play Game</option>
+                                                                                                <option
+                                                                                                    value="Shop Now">
+                                                                                                    Shop Now</option>
+                                                                                                <option value="Sign Up">
+                                                                                                    Sign Up</option>
+                                                                                                <option
+                                                                                                    value="Subscribe">
+                                                                                                    Subscribe</option>
+                                                                                                <option value="Use App">
+                                                                                                    Use App</option>
+                                                                                                <option
+                                                                                                    value="Watch More">
+                                                                                                    Watch More</option>
+                                                                                                <option
+                                                                                                    value="Watch Video">
+                                                                                                    Watch Video</option>
+                                                                                                <option
+                                                                                                    value="Apply Now">
+                                                                                                    Apply Now</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 p-2"
+                                                                                            data-select="Tool8_card2">
+                                                                                            <label for="Tool8_title1"
+                                                                                                class="form-label"
+                                                                                                data-lang="cardtitle"></label>
+                                                                                            <input
+                                                                                                oninput="Tool8_change_title(1)"
+                                                                                                type="text"
+                                                                                                style="margin-top: 4px"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_title1"
+                                                                                                value="Like Page 👉 👉">
+                                                                                        </div>
+                                                                                        <div class="col-md-12 p-2"
+                                                                                            style="display: none;"
+                                                                                            data-select="Tool8_card2">
+                                                                                            <label for="Tool8_link1"
+                                                                                                class="form-label"
+                                                                                                data-lang="Linkoptional"></label>
+                                                                                            <input type="text"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_link1">
+                                                                                        </div>
+                                                                                        <!---->
+                                                                                    </div>
+                                                                                    <!--  -->
+
+                                                                                    <!-- 2 -->
+                                                                                    <div id="hideBottomInput2"
+                                                                                        class="row">
+                                                                                        <div class="col-12 Tool8_form_title">2</div>
+                                                                                        
+                                                                                        <div class="col-sm-6 col-12"
+                                                                                            data-select="Tool8_card2">
+                                                                                            <label
+                                                                                                for="Tool8_list_pages2"
+                                                                                                class="form-label"
+                                                                                                data-lang="Buttons"></label>
+                                                                                            <select
+                                                                                                onchange="Tool8_change_button(2)"
+                                                                                                style="padding: 0.36rem!important;"
+                                                                                                class="form-select input_user w-100 border"
+                                                                                                id="Tool8_list_bts2"
+                                                                                                required>
+                                                                                                <option selected
+                                                                                                    value="Like Page">
+                                                                                                    Like Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="No Button">No
+                                                                                                    Button</option>
+                                                                                                <option
+                                                                                                    value="Learn More">
+                                                                                                    Learn More</option>
+                                                                                                <option
+                                                                                                    value="Book Travel">
+                                                                                                    Book Travel</option>
+                                                                                                <option
+                                                                                                    value="Contact Us">
+                                                                                                    Contact Us</option>
+                                                                                                <option
+                                                                                                    value="Download">
+                                                                                                    Download</option>
+                                                                                                <option
+                                                                                                    value="Get Quote ">
+                                                                                                    Get Quote </option>
+                                                                                                <option
+                                                                                                    value="Install App ">
+                                                                                                    Install App
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Listen Music">
+                                                                                                    Listen Music
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Message Page">
+                                                                                                    Message Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Open Link">
+                                                                                                    Open Link</option>
+                                                                                                <option
+                                                                                                    value="Play Game">
+                                                                                                    Play Game</option>
+                                                                                                <option
+                                                                                                    value="Shop Now">
+                                                                                                    Shop Now</option>
+                                                                                                <option value="Sign Up">
+                                                                                                    Sign Up</option>
+                                                                                                <option
+                                                                                                    value="Subscribe">
+                                                                                                    Subscribe</option>
+                                                                                                <option value="Use App">
+                                                                                                    Use App</option>
+                                                                                                <option
+                                                                                                    value="Watch More">
+                                                                                                    Watch More</option>
+                                                                                                <option
+                                                                                                    value="Watch Video">
+                                                                                                    Watch Video</option>
+                                                                                                <option
+                                                                                                    value="Apply Now">
+                                                                                                    Apply Now</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 p-2"
+                                                                                            data-select="Tool8_card1">
+                                                                                            <label for="Tool8_title2"
+                                                                                                class="form-label"
+                                                                                                data-lang="cardtitle"></label>
+                                                                                            <input
+                                                                                                oninput="Tool8_change_title(2)"
+                                                                                                type="text"
+                                                                                                style="margin-top: 4px"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_title2"
+                                                                                                value="Like Page 👉 👉">
+                                                                                        </div>
+                                                                                        <div class="col-md-12 p-2"
+                                                                                            style="display: none;"
+                                                                                            data-select="Tool8_card2">
+                                                                                            <label for="Tool8_link2"
+                                                                                                class="form-label"
+                                                                                                data-lang="Linkoptional"></label>
+                                                                                            <input type="text"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_link2">
+                                                                                        </div>
+                                                                                        <!---->
+                                                                                    </div>
+                                                                                    <!--  -->
+
+                                                                                    <!-- 3 -->
+                                                                                    <div id="hideBottomInput3"
+                                                                                        class="row">
+                                                                                        <div class="col-12 Tool8_form_title">3</div>
+
+                                                                                        <div class="col-sm-6 col-12"
+                                                                                            data-select="Tool8_card1">
+                                                                                            <label
+                                                                                                for="Tool8_list_pages3"
+                                                                                                class="form-label"
+                                                                                                data-lang="Buttons"></label>
+                                                                                            <select
+                                                                                                onchange="Tool8_change_button(3)"
+                                                                                                style="padding: 0.36rem!important;"
+                                                                                                class="form-select input_user w-100 border"
+                                                                                                id="Tool8_list_bts3"
+                                                                                                required>
+                                                                                                <option selected
+                                                                                                    value="Like Page">
+                                                                                                    Like Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="No Button">No
+                                                                                                    Button</option>
+                                                                                                <option
+                                                                                                    value="Learn More">
+                                                                                                    Learn More</option>
+                                                                                                <option
+                                                                                                    value="Book Travel">
+                                                                                                    Book Travel</option>
+                                                                                                <option
+                                                                                                    value="Contact Us">
+                                                                                                    Contact Us</option>
+                                                                                                <option
+                                                                                                    value="Download">
+                                                                                                    Download</option>
+                                                                                                <option
+                                                                                                    value="Get Quote ">
+                                                                                                    Get Quote </option>
+                                                                                                <option
+                                                                                                    value="Install App ">
+                                                                                                    Install App
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Listen Music">
+                                                                                                    Listen Music
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Message Page">
+                                                                                                    Message Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Open Link">
+                                                                                                    Open Link</option>
+                                                                                                <option
+                                                                                                    value="Play Game">
+                                                                                                    Play Game</option>
+                                                                                                <option
+                                                                                                    value="Shop Now">
+                                                                                                    Shop Now</option>
+                                                                                                <option value="Sign Up">
+                                                                                                    Sign Up</option>
+                                                                                                <option
+                                                                                                    value="Subscribe">
+                                                                                                    Subscribe</option>
+                                                                                                <option value="Use App">
+                                                                                                    Use App</option>
+                                                                                                <option
+                                                                                                    value="Watch More">
+                                                                                                    Watch More</option>
+                                                                                                <option
+                                                                                                    value="Watch Video">
+                                                                                                    Watch Video</option>
+                                                                                                <option
+                                                                                                    value="Apply Now">
+                                                                                                    Apply Now</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 p-2"
+                                                                                            data-select="Tool_card1">
+                                                                                            <label for="Tool8_title3"
+                                                                                                class="form-label"
+                                                                                                data-lang="cardtitle"></label>
+                                                                                            <input
+                                                                                                oninput="Tool8_change_title(3)"
+                                                                                                type="text"
+                                                                                                style="margin-top: 4px"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_title3"
+                                                                                                value="Like Page 👉 👉">
+                                                                                        </div>
+                                                                                        <div class="col-md-12 p-2"
+                                                                                            style="display: none;"
+                                                                                            data-select="Tool8_card2">
+                                                                                            <label for="Tool8_link3"
+                                                                                                class="form-label"
+                                                                                                data-lang="Linkoptional"></label>
+                                                                                            <input type="text"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_link3">
+                                                                                        </div>
+                                                                                        <!---->
+                                                                                    </div>
+                                                                                    <!--  -->
+
+                                                                                    <!-- 4 -->
+                                                                                    <div id="hideBottomInput4"
+                                                                                        class="row">
+                                                                                        <div class="col-12 Tool8_form_title">4</div>
+
+                                                                                        <div class="col-sm-6 col-12"
+                                                                                            data-select="Tool8_card1">
+                                                                                            <label
+                                                                                                for="Tool8_list_pages4"
+                                                                                                class="form-label"
+                                                                                                data-lang="Buttons"></label>
+                                                                                            <select
+                                                                                                onchange="Tool8_change_button(4)"
+                                                                                                style="padding: 0.36rem!important;"
+                                                                                                class="form-select input_user w-100 border"
+                                                                                                id="Tool8_list_bts4"
+                                                                                                required>
+                                                                                                <option selected
+                                                                                                    value="Like Page">
+                                                                                                    Like Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="No Button">No
+                                                                                                    Button</option>
+                                                                                                <option
+                                                                                                    value="Learn More">
+                                                                                                    Learn More</option>
+                                                                                                <option
+                                                                                                    value="Book Travel">
+                                                                                                    Book Travel</option>
+                                                                                                <option
+                                                                                                    value="Contact Us">
+                                                                                                    Contact Us</option>
+                                                                                                <option
+                                                                                                    value="Download">
+                                                                                                    Download</option>
+                                                                                                <option
+                                                                                                    value="Get Quote ">
+                                                                                                    Get Quote </option>
+                                                                                                <option
+                                                                                                    value="Install App ">
+                                                                                                    Install App
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Listen Music">
+                                                                                                    Listen Music
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Message Page">
+                                                                                                    Message Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Open Link">
+                                                                                                    Open Link</option>
+                                                                                                <option
+                                                                                                    value="Play Game">
+                                                                                                    Play Game</option>
+                                                                                                <option
+                                                                                                    value="Shop Now">
+                                                                                                    Shop Now</option>
+                                                                                                <option value="Sign Up">
+                                                                                                    Sign Up</option>
+                                                                                                <option
+                                                                                                    value="Subscribe">
+                                                                                                    Subscribe</option>
+                                                                                                <option value="Use App">
+                                                                                                    Use App</option>
+                                                                                                <option
+                                                                                                    value="Watch More">
+                                                                                                    Watch More</option>
+                                                                                                <option
+                                                                                                    value="Watch Video">
+                                                                                                    Watch Video</option>
+                                                                                                <option
+                                                                                                    value="Apply Now">
+                                                                                                    Apply Now</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 p-2"
+                                                                                            data-select="Tool8_card1">
+                                                                                            <label for="Tool8_title4"
+                                                                                                class="form-label"
+                                                                                                data-lang="cardtitle"></label>
+                                                                                            <input
+                                                                                                oninput="Tool8_change_title(4)"
+                                                                                                type="text"
+                                                                                                style="margin-top: 4px"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_title4"
+                                                                                                value="Like Page 👉 👉">
+                                                                                        </div>
+                                                                                        <div class="col-md-12 p-2"
+                                                                                            style="display: none;"
+                                                                                            data-select="Tool8_card2">
+                                                                                            <label for="Tool8_link4"
+                                                                                                class="form-label"
+                                                                                                data-lang="Linkoptional"></label>
+                                                                                            <input type="text"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_link4">
+                                                                                        </div>
+                                                                                        <!---->
+                                                                                    </div>
+                                                                                    <!--  -->
+
+                                                                                    <!-- 5 -->
+                                                                                    <div id="hideBottomInput5"
+                                                                                        class="row">
+                                                                                        <div class="col-12 Tool8_form_title">5</div>
+
+                                                                                        <div class="col-sm-6 col-12"
+                                                                                            data-select="Tool_card1">
+                                                                                            <label
+                                                                                                for="Tool8_list_pages5"
+                                                                                                class="form-label"
+                                                                                                data-lang="Buttons"></label>
+                                                                                            <select
+                                                                                                onchange="Tool8_change_button(5)"
+                                                                                                style="padding: 0.36rem!important;"
+                                                                                                class="form-select input_user w-100 border"
+                                                                                                id="Tool8_list_bts5"
+                                                                                                required>
+                                                                                                <option selected
+                                                                                                    value="Like Page">
+                                                                                                    Like Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="No Button">No
+                                                                                                    Button</option>
+                                                                                                <option
+                                                                                                    value="Learn More">
+                                                                                                    Learn More</option>
+                                                                                                <option
+                                                                                                    value="Book Travel">
+                                                                                                    Book Travel</option>
+                                                                                                <option
+                                                                                                    value="Contact Us">
+                                                                                                    Contact Us</option>
+                                                                                                <option
+                                                                                                    value="Download">
+                                                                                                    Download</option>
+                                                                                                <option
+                                                                                                    value="Get Quote ">
+                                                                                                    Get Quote </option>
+                                                                                                <option
+                                                                                                    value="Install App ">
+                                                                                                    Install App
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Listen Music">
+                                                                                                    Listen Music
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Message Page">
+                                                                                                    Message Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Open Link">
+                                                                                                    Open Link</option>
+                                                                                                <option
+                                                                                                    value="Play Game">
+                                                                                                    Play Game</option>
+                                                                                                <option
+                                                                                                    value="Shop Now">
+                                                                                                    Shop Now</option>
+                                                                                                <option value="Sign Up">
+                                                                                                    Sign Up</option>
+                                                                                                <option
+                                                                                                    value="Subscribe">
+                                                                                                    Subscribe</option>
+                                                                                                <option value="Use App">
+                                                                                                    Use App</option>
+                                                                                                <option
+                                                                                                    value="Watch More">
+                                                                                                    Watch More</option>
+                                                                                                <option
+                                                                                                    value="Watch Video">
+                                                                                                    Watch Video</option>
+                                                                                                <option
+                                                                                                    value="Apply Now">
+                                                                                                    Apply Now</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 p-2"
+                                                                                            data-select="Tool8_card1">
+                                                                                            <label for="Tool8_title5"
+                                                                                                class="form-label"
+                                                                                                data-lang="cardtitle"></label>
+                                                                                            <input
+                                                                                                oninput="Tool8_change_title(5)"
+                                                                                                type="text"
+                                                                                                style="margin-top: 4px"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_title5"
+                                                                                                value="Like Page 👉 👉">
+                                                                                        </div>
+                                                                                        <div class="col-md-12 p-2"
+                                                                                            style="display: none;"
+                                                                                            data-select="Tool8_card2">
+                                                                                            <label for="Tool8_link5"
+                                                                                                class="form-label"
+                                                                                                data-lang="Linkoptional"></label>
+                                                                                            <input type="text"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_link5">
+                                                                                        </div>
+                                                                                        <!---->
+                                                                                    </div>
+                                                                                    <!--  -->
+
+                                                                                    <!-- 6 -->
+                                                                                    <div id="hideBottomInput6"
+                                                                                        class="row">
+                                                                                        <div class="col-12 Tool8_form_title">6</div>
+
+                                                                                        <div class="col-sm-6 col-12"
+                                                                                            data-select="Tool8_card1">
+                                                                                            <label
+                                                                                                for="Tool8_list_pages6"
+                                                                                                class="form-label"
+                                                                                                data-lang="Buttons"></label>
+                                                                                            <select
+                                                                                                onchange="Tool8_change_button(6)"
+                                                                                                style="padding: 0.36rem!important;"
+                                                                                                class="form-select input_user w-100 border"
+                                                                                                id="Tool8_list_bts6"
+                                                                                                required>
+                                                                                                <option selected
+                                                                                                    value="Like Page">
+                                                                                                    Like Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="No Button">No
+                                                                                                    Button</option>
+                                                                                                <option
+                                                                                                    value="Learn More">
+                                                                                                    Learn More</option>
+                                                                                                <option
+                                                                                                    value="Book Travel">
+                                                                                                    Book Travel</option>
+                                                                                                <option
+                                                                                                    value="Contact Us">
+                                                                                                    Contact Us</option>
+                                                                                                <option
+                                                                                                    value="Download">
+                                                                                                    Download</option>
+                                                                                                <option
+                                                                                                    value="Get Quote ">
+                                                                                                    Get Quote </option>
+                                                                                                <option
+                                                                                                    value="Install App ">
+                                                                                                    Install App
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Listen Music">
+                                                                                                    Listen Music
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Message Page">
+                                                                                                    Message Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Open Link">
+                                                                                                    Open Link</option>
+                                                                                                <option
+                                                                                                    value="Play Game">
+                                                                                                    Play Game</option>
+                                                                                                <option
+                                                                                                    value="Shop Now">
+                                                                                                    Shop Now</option>
+                                                                                                <option value="Sign Up">
+                                                                                                    Sign Up</option>
+                                                                                                <option
+                                                                                                    value="Subscribe">
+                                                                                                    Subscribe</option>
+                                                                                                <option value="Use App">
+                                                                                                    Use App</option>
+                                                                                                <option
+                                                                                                    value="Watch More">
+                                                                                                    Watch More</option>
+                                                                                                <option
+                                                                                                    value="Watch Video">
+                                                                                                    Watch Video</option>
+                                                                                                <option
+                                                                                                    value="Apply Now">
+                                                                                                    Apply Now</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 p-2"
+                                                                                            data-select="Tool8_card1">
+                                                                                            <label for="Tool8_title6"
+                                                                                                class="form-label"
+                                                                                                data-lang="cardtitle"></label>
+                                                                                            <input
+                                                                                                oninput="Tool8_change_title(6)"
+                                                                                                type="text"
+                                                                                                style="margin-top: 4px"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_title6"
+                                                                                                value="Like Page 👉 👉">
+                                                                                        </div>
+                                                                                        <div class="col-md-12 p-2"
+                                                                                            style="display: none;"
+                                                                                            data-select="Tool8_card2">
+                                                                                            <label for="Tool8_link6"
+                                                                                                class="form-label"
+                                                                                                data-lang="Linkoptional"></label>
+                                                                                            <input type="text"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_link6">
+                                                                                        </div>
+                                                                                        <!---->
+                                                                                    </div>
+                                                                                    <!--  -->
+
+                                                                                    <!-- 7 -->
+                                                                                    <div id="hideBottomInput7"
+                                                                                        class="row">
+                                                                                        <div class="col-12 Tool8_form_title">7</div>
+
+                                                                                        <div class="col-sm-6 col-12"
+                                                                                            data-select="Tool8_card1">
+                                                                                            <label
+                                                                                                for="Tool8_list_pages7"
+                                                                                                class="form-label"
+                                                                                                data-lang="Buttons"></label>
+                                                                                            <select
+                                                                                                onchange="Tool8_change_button(7)"
+                                                                                                style="padding: 0.36rem!important;"
+                                                                                                class="form-select input_user w-100 border"
+                                                                                                id="Tool8_list_bts7"
+                                                                                                required>
+                                                                                                <option selected
+                                                                                                    value="Like Page">
+                                                                                                    Like Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="No Button">No
+                                                                                                    Button</option>
+                                                                                                <option
+                                                                                                    value="Learn More">
+                                                                                                    Learn More</option>
+                                                                                                <option
+                                                                                                    value="Book Travel">
+                                                                                                    Book Travel</option>
+                                                                                                <option
+                                                                                                    value="Contact Us">
+                                                                                                    Contact Us</option>
+                                                                                                <option
+                                                                                                    value="Download">
+                                                                                                    Download</option>
+                                                                                                <option
+                                                                                                    value="Get Quote ">
+                                                                                                    Get Quote </option>
+                                                                                                <option
+                                                                                                    value="Install App ">
+                                                                                                    Install App
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Listen Music">
+                                                                                                    Listen Music
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Message Page">
+                                                                                                    Message Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Open Link">
+                                                                                                    Open Link</option>
+                                                                                                <option
+                                                                                                    value="Play Game">
+                                                                                                    Play Game</option>
+                                                                                                <option
+                                                                                                    value="Shop Now">
+                                                                                                    Shop Now</option>
+                                                                                                <option value="Sign Up">
+                                                                                                    Sign Up</option>
+                                                                                                <option
+                                                                                                    value="Subscribe">
+                                                                                                    Subscribe</option>
+                                                                                                <option value="Use App">
+                                                                                                    Use App</option>
+                                                                                                <option
+                                                                                                    value="Watch More">
+                                                                                                    Watch More</option>
+                                                                                                <option
+                                                                                                    value="Watch Video">
+                                                                                                    Watch Video</option>
+                                                                                                <option
+                                                                                                    value="Apply Now">
+                                                                                                    Apply Now</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 p-2"
+                                                                                            data-select="Tool8_card1">
+                                                                                            <label for="Tool8_title7"
+                                                                                                class="form-label"
+                                                                                                data-lang="cardtitle"></label>
+                                                                                            <input
+                                                                                                oninput="Tool8_change_title(7)"
+                                                                                                type="text"
+                                                                                                style="margin-top: 4px"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_title7"
+                                                                                                value="Like Page 👉 👉">
+                                                                                        </div>
+                                                                                        <div class="col-md-12 p-2"
+                                                                                            style="display: none;"
+                                                                                            data-select="Tool8_card2">
+                                                                                            <label for="Tool8_link7"
+                                                                                                class="form-label"
+                                                                                                data-lang="Linkoptional"></label>
+                                                                                            <input type="text"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_link7">
+                                                                                        </div>
+                                                                                        <!---->
+                                                                                    </div>
+                                                                                    <!--  -->
+
+                                                                                    <!-- 8 -->
+                                                                                    <div id="hideBottomInput8"
+                                                                                        class="row">
+                                                                                        <div class="col-12 Tool8_form_title">8</div>
+
+                                                                                        <div class="col-sm-6 col-12"
+                                                                                            data-select="Tool8_card1">
+                                                                                            <label
+                                                                                                for="Tool8_list_pages8"
+                                                                                                class="form-label"
+                                                                                                data-lang="Buttons"></label>
+                                                                                            <select
+                                                                                                onchange="Tool8_change_button(8)"
+                                                                                                style="padding: 0.36rem!important;"
+                                                                                                class="form-select input_user w-100 border"
+                                                                                                id="Tool8_list_bts8"
+                                                                                                required>
+                                                                                                <option selected
+                                                                                                    value="Like Page">
+                                                                                                    Like Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="No Button">No
+                                                                                                    Button</option>
+                                                                                                <option
+                                                                                                    value="Learn More">
+                                                                                                    Learn More</option>
+                                                                                                <option
+                                                                                                    value="Book Travel">
+                                                                                                    Book Travel</option>
+                                                                                                <option
+                                                                                                    value="Contact Us">
+                                                                                                    Contact Us</option>
+                                                                                                <option
+                                                                                                    value="Download">
+                                                                                                    Download</option>
+                                                                                                <option
+                                                                                                    value="Get Quote ">
+                                                                                                    Get Quote </option>
+                                                                                                <option
+                                                                                                    value="Install App ">
+                                                                                                    Install App
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Listen Music">
+                                                                                                    Listen Music
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Message Page">
+                                                                                                    Message Page
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="Open Link">
+                                                                                                    Open Link</option>
+                                                                                                <option
+                                                                                                    value="Play Game">
+                                                                                                    Play Game</option>
+                                                                                                <option
+                                                                                                    value="Shop Now">
+                                                                                                    Shop Now</option>
+                                                                                                <option value="Sign Up">
+                                                                                                    Sign Up</option>
+                                                                                                <option
+                                                                                                    value="Subscribe">
+                                                                                                    Subscribe</option>
+                                                                                                <option value="Use App">
+                                                                                                    Use App</option>
+                                                                                                <option
+                                                                                                    value="Watch More">
+                                                                                                    Watch More</option>
+                                                                                                <option
+                                                                                                    value="Watch Video">
+                                                                                                    Watch Video</option>
+                                                                                                <option
+                                                                                                    value="Apply Now">
+                                                                                                    Apply Now</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 p-2"
+                                                                                            data-select="Tool8_card1">
+                                                                                            <label for="Tool8_title8"
+                                                                                                class="form-label"
+                                                                                                data-lang="cardtitle"></label>
+                                                                                            <input
+                                                                                                oninput="Tool8_change_title()"
+                                                                                                type="text"
+                                                                                                style="margin-top: 4px"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_title8"
+                                                                                                value="Like Page 👉 👉">
+                                                                                        </div>
+                                                                                        <div class="col-md-12 p-2"
+                                                                                            style="display: none;"
+                                                                                            data-select="Tool8_card2">
+                                                                                            <label for="Tool8_link8"
+                                                                                                class="form-label"
+                                                                                                data-lang="Linkoptional"></label>
+                                                                                            <input type="text"
+                                                                                                class="form-control input_user"
+                                                                                                id="Tool8_link8">
+                                                                                        </div>
+                                                                                        <!---->
+                                                                                    </div>
+                                                                                    <!--  -->
+
+                                                                                    <div class="row">
+                                                                                        <div class="d-flex align-center"
+                                                                                            data-select="Tool8_card2"
+                                                                                            style="width: 100%; overflow-x: auto; white-space: nowrap;">
+                                                                                            <div class="d-flex align-center"
+                                                                                                id="Tool8_lib_img"
+                                                                                                style="width: 100%; overflow-x: auto; white-space: nowrap;">
+
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div id="hideBottomInput"
+                                                                                class="border-input col col-12">
+                                                                                <div
+                                                                                    class="v-input v-textarea v-input--dense theme--light v-text-field v-text-field--is-booted v-text-field--enclosed v-text-field--outlined v-text-field--placeholder">
+                                                                                    <div class="v-input__control">
+                                                                                        <div class="v-input__slot">
+                                                                                            <fieldset
+                                                                                                aria-hidden="true">
+                                                                                                <legend
+                                                                                                    style="width: 0px;">
+                                                                                                    <span
+                                                                                                        class="notranslate">​</span>
+                                                                                                </legend>
+                                                                                            </fieldset>
+                                                                                            <div
+                                                                                                class="v-text-field__slot">
+                                                                                                <textarea
+                                                                                                    id="Tool8_post_message"
+                                                                                                    placeholder="Nội dung"
+                                                                                                    rows="3"></textarea>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="v-text-field__details">
+                                                                                            <div
+                                                                                                class="v-messages theme--light">
+                                                                                                <div
+                                                                                                    class="v-messages__wrapper">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row ma-3">
+                                                                            <div class="col-md-12 p-2 d-flex">
+                                                                                <fieldset
+                                                                                    class="w-100 p-3 rounded border">
+                                                                                    <legend class="w-auto"
+                                                                                        data-lang="Schedule">
+                                                                                    </legend>
+                                                                                    <div style="width: 90%;"
+                                                                                        class="m-auto d-flex justify-content-between">
+                                                                                        <div style="width: 90%;">
+                                                                                            <input
+                                                                                                class="input_user border"
+                                                                                                style="width: 90%;padding: 0.2rem;"
+                                                                                                type="datetime-local"
+                                                                                                id="Tool8_schedule_time"
+                                                                                                name="Tool8_schedule_time"
+                                                                                                disabled
+                                                                                                value="2018-06-12T19:30">
+                                                                                        </div>
+                                                                                        <div style="width: 90%;">
+                                                                                            <div class="custom-control custom-switch"
+                                                                                                style="zoom: 1.2;">
+                                                                                                <input type="checkbox"
+                                                                                                    onchange="Tool8_change_check_schedule()"
+                                                                                                    class="custom-control-input"
+                                                                                                    id="Tool8_is_schedule">
+                                                                                                <label
+                                                                                                    class="custom-control-label"
+                                                                                                    style="width: 50px;"
+                                                                                                    for="Tool8_is_schedule"></label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </fieldset>
+                                                                            </div>
+
+                                                                            <div class="col col-12"><button
+                                                                                    id="Tool8_btn_public" type="button"
+                                                                                    onclick="Tool8_run_public()"
+                                                                                    class="white--text rounded-xl elevation-0 v-btn v-btn--block v-btn--has-bg theme--light v-size--default"
+                                                                                    style="height: 48px;background-color: #3c8acd;"><span
+                                                                                        class="v-btn__content"><span>Đăng
+                                                                                            bài</span></span></button>
+                                                                            </div>
+                                                                            <div class="col-md-12 p-2">
+                                                                                <div
+                                                                                    class="col-12 v-data-table__wrapper">
+                                                                                    <table
+                                                                                        class="width_table_620 table table_section">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);"
+                                                                                                    111
+                                                                                                    data-lang="Facebookuser">
+                                                                                                </th>
+                                                                                                <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);"
+                                                                                                    data-lang="Page">
+                                                                                                </th>
+                                                                                                <th style="border-top: 0px;background-color: #fff;color: rgba(0,0,0,.6);"
+                                                                                                    data-lang="Linkpost">
+                                                                                                </th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody class="text_black"
+                                                                                            id="Tool8_rs_tb">
+                                                                                            <tr>
+                                                                                                <td></td>
+                                                                                                <td></td>
+                                                                                                <td></td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="rounded-lg pl-2 pl-sm-4 pl-md-0 pl-xl-3 pt-0 pr-2 pr-sm-4 pr-md-0 col-lg-6 col-12">
+                                                                </div>
+                                                            </div>
                                                             <!---->
                                                         </div>
                                                     </div>
@@ -660,6 +1995,7 @@
     <script src="../js/helper_manager.js"></script>
     <script src="../js/permission.js"></script>
     <script src="../js/contact_fb.js"></script>
+    <script src="../js/contact_fb_tool_control.js"></script>
     <script defer src="../js/translator.js"></script>
     <script src="../js/menu_mobile_control.js"></script>
 

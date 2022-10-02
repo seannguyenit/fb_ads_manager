@@ -3,6 +3,7 @@ const r_url = "/api/fproxy";
 // const r_url = `https://arthurtech.xyz/`;
 // const r_url = `${window.location.protocol}//${window.location.hostname}/proxy/`;
 
+var cr_fb_count = 0;
 
 
 // init_pricing_history();
@@ -11,27 +12,28 @@ show_pricing()
 
 load_token();
 
-async function ip_addres(){
+async function ip_addres() {
     return await fetch('https://api.ipify.org/?format=json')
-    .then((response) => response.json())
-    .then((data) => {
-        return data;
-    })
-    .catch((error) => {
-        console.warn(error);
-        return undefined;
-    });
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
 }
 
 async function add_token() {
     var token = document.getElementById('token_fb').value;
     if (!token || token.length == 0) return;
-    // var data_tk = await get_all_token();
-    // if(data_tk.length >= 1){
-    //     alert('Hệ thống đang thử nghiệm tối đa được 1 fb !')
-    //     return;
-    // }
- 
+    var cr_pricing = await get_pricing_history_current();
+    if (cr_pricing && cr_pricing.limit_fb) {
+        if (Number(cr_fb_count || 0) >= Number(cr_pricing.limit_fb || 0)) {
+            alert('Tối đa số lượng facebook được nhập !');
+            return;
+        }
+    }
     var data_fb = await get_user_info_from_fb(token);
     if (data_fb) {
         if (data_fb.error) {
@@ -55,11 +57,28 @@ async function del_token(id) {
     load_token();
 }
 
+async function get_pricing_history_current() {
+    var cr_u = get_cr_user();
+    return await fetch(`/api/pricing_public/${cr_u.id || 0}` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data[0] || null;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+
+
 async function load_token() {
     var place = document.getElementById('list_data_token');
     place.innerHTML = '';
     var data_tk = await get_all_token();
     if (data_tk) {
+        cr_fb_count = data_tk.length || 0;
+        var cr_pricing = await get_pricing_history_current();
+        document.getElementById('limit_fb').innerText = `${cr_fb_count}/${cr_pricing.limit_fb}`
         data_tk.forEach(item => {
             place.innerHTML += `
             <div class="d-flex align-center m_b_5 justify-space-between">
@@ -85,20 +104,20 @@ async function load_token() {
             
             `;
         });
-                    
-            
-    //     <div class="table table-bordered">
-    //     <div>
-    //         <div class="d-flex justify-content-between">
-    //             <div>
-    //                 <img width="50" height="50" src="${item.picture}" />
-    //                 <span
-    //                     class="control-label">${item.name}</span>
-    //             </div>
-    //             <button onclick="del_token(${item.id})" class="btn btn-danger"  data-lang="delete">Xóa</button>
-    //         </div>
-    //     </div>
-    // </div>
+
+
+        //     <div class="table table-bordered">
+        //     <div>
+        //         <div class="d-flex justify-content-between">
+        //             <div>
+        //                 <img width="50" height="50" src="${item.picture}" />
+        //                 <span
+        //                     class="control-label">${item.name}</span>
+        //             </div>
+        //             <button onclick="del_token(${item.id})" class="btn btn-danger"  data-lang="delete">Xóa</button>
+        //         </div>
+        //     </div>
+        // </div>
     }
 }
 
@@ -155,7 +174,7 @@ async function delete_token(id) {
 
 
 async function get_user_info_from_fb(token) {
-    const url = `https://graph.facebook.com/v14.0/me?fields=name,picture&access_token=${token}`;
+    const url = `https://graph.facebook.com/v15.0/me?fields=name,picture&access_token=${token}`;
     return await fetch(
         r_url,
         {
@@ -339,7 +358,7 @@ async function show_pricing() {
         }
         else {
             document.getElementById("limit_đate").innerHTML = ` 
-                            ${format_time(rs.limit_time) || "" }`
+                            ${format_time(rs.limit_time) || ""}`
         }
     } else {
         document.getElementById("limit_đate").innerHTML = ` 
@@ -366,7 +385,7 @@ async function show_pricing() {
 
 }
 
-function model_pricing(){
+function model_pricing() {
     window.location.href = 'pricing';
 }
 

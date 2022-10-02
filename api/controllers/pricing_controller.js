@@ -71,8 +71,8 @@ module.exports = {
     //     })
     // },
     pricing_histories: (req, res) => {
-        let sql = 'select PH.*,  (select Date_add(pricing_history.time,interval sum(pricing_history.limit_day) day) as limit_time_ from pricing_history where pricing_history.user_id = ? and pricing_history.pricing_active = 1 and pricing_history.limit_day != 0 limit 1) as limit_time_,  (select Date_add(PH.time,interval sum(P.limit_day)  day) as limit_time from pricing_history AS PH left join history_login AS LG on LG.user_id = PH.user_id left join pricing AS P on P.id = PH.pricing_id where PH.user_id = ? AND PH.pricing_active = 1 and PH.limit_day = 0 limit 1) as limit_time,U.username,U.real_name,P.price,P.name as pricing_name from pricing_history AS PH left join `user` AS U on U.id = PH.user_id left join pricing as P on P.id = PH.pricing_id where PH.user_id = ? and PH.pricing_active = 1 GROUP BY PH.time order by PH.time DESC limit 10'
-        db.query(sql, [Number(req.params.user_id),Number(req.params.user_id),Number(req.params.user_id)], (err, response) => {
+        let sql = 'select PH.*,TB1.limit_time_,TB2.limit_time,U.username,U.real_name,P.price,P.name as pricing_name from pricing_history AS PH left join `user` AS U on U.id = PH.user_id left join (select Date_add(pricing_history.time,interval sum(pricing_history.limit_day) day) as limit_time_,pricing_history.user_id from pricing_history where pricing_history.pricing_active = 1 and pricing_history.limit_day != 0 group by pricing_history.user_id) as TB1 on TB1.user_id = U.id left join (select Date_add(PH.time,interval sum(P.limit_day)  day) as limit_time,PH.user_id from pricing_history AS PH left join history_login AS LG on LG.user_id = PH.user_id left join pricing AS P on P.id = PH.pricing_id where PH.pricing_active = 1 and PH.limit_day = 0 group by PH.user_id) as TB2 on TB2.user_id = U.id left join pricing as P on P.id = PH.pricing_id where PH.user_id = ? and PH.pricing_active = 1 GROUP BY PH.time order by PH.time DESC limit 10'
+        db.query(sql, [Number(req.params.user_id)], (err, response) => {
             if (err) throw err
             res.json(response)
         })

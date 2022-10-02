@@ -77,6 +77,13 @@
     bottom:100px;
     z-index:10
    }
+
+   @media screen and (min-width:300px) {
+      .button-card p{
+        font-size: small !important;
+      }
+   }
+
    @media screen and (min-width:1280px) {
     .img-page {
      max-width:100%;
