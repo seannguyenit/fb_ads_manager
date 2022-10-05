@@ -32,17 +32,17 @@ const option_get = {
 
 init_default();
 check_service();
-
+run_menu_tool();
 async function run_menu_tool(e) {
     var cr_ele = e;
-    var target = cr_ele.dataset.target;
+    var target = "tool2";
     if (cr_ele) {
-
+        target = cr_ele.dataset.target
         //change show content tool
-        var allTab = Array.from(document.getElementById('tool2').parentElement.children);
-        allTab.forEach(tab_content => {
-            tab_content.style.display = 'none';
-        });
+        var tab_content = document.getElementById('tool2');
+        tab_content.style.display = 'none';
+        var Tool8_tab_content = document.getElementById('tool8');
+        Tool8_tab_content.style.display = 'none';
         document.getElementById(target).style.display = 'block';
         //
 
@@ -54,7 +54,21 @@ async function run_menu_tool(e) {
         cr_ele.classList.add('active');
         //
     }
+    //change img lib
+    Array.from(document.querySelectorAll(`[data-tool]`)).forEach((it) => {
+        if (target === it.dataset.tool) {
+            it.classList.remove('hidden-element');
+        } else {
+            it.classList.add('hidden-element');
+        }
+    })
+    //
+
+    if (target === "tool8") {
+        run_tool8_setup();
+    }
 }
+
 
 
 async function acc_get_detail() {
@@ -987,7 +1001,6 @@ function get_select_call_t() {
 function get_param_err() {
     var token = get_token_user();
     var page_id = get_page_value();
-    var ads_id = get_token_ads();
     var call_to_ac = get_select_call_t();
     var link = document.getElementById('link').value;
     var title = document.getElementById('title').value;

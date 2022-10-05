@@ -5,21 +5,63 @@ var Tool8_cr_card = 1;
 // var cr_ads_id;
 var Tool8_cr_token;
 
-var Tool8_cr_video1;
-var Tool8_cr_video2;
-var Tool8_cr_video3;
-var Tool8_cr_video4;
-var Tool8_cr_video5;
-var Tool8_cr_video6;
-var Tool8_cr_video7;
-var Tool8_cr_video8;
+var Tool8_cr_video = {
+    Tool8_cr_video1: null,
+    Tool8_cr_video2: null,
+    Tool8_cr_video3: null,
+    Tool8_cr_video4: null,
+    Tool8_cr_video5: null,
+    Tool8_cr_video6: null,
+    Tool8_cr_video7: null,
+    Tool8_cr_video8: null
+};
+
 var Tool8_cr_time = new Date().getTime();
 
 
-Tool8_init_loading();
-Tool8_init_default();
-Tool8_check_service();
-// init_loading();
+async function run_tool8_setup() {
+    await Tool8_init_loading();
+    await Tool8_init_default();
+    await Tool8_check_service();
+    // init_loading();
+    await run_menu_tool8_inside();
+}
+
+
+
+async function run_menu_tool8_inside(e) {
+    var target = 1;
+    if (e) {
+        target = Number(e.dataset.target || 1);
+    }
+
+    Array.from(document.getElementById('mini-menu-tool8').children).forEach(item => {
+        if (Number(item.dataset.target) === target) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+
+    for (let i = 1; i < 5; i++) {
+        if (i === target) {
+            Array.from(document.querySelectorAll(`[data-group="${i}"]`)).forEach(ele => {
+                if (ele.classList.contains('d-flex')) {
+                    ele.setAttribute('style', 'display=flex !important;')
+                    // ele.style.display = 'flex';
+                } else {
+                    ele.setAttribute('style', 'display=block !important;')
+                }
+                Tool8_set_card((i * 2) - 1);
+            })
+        } else {
+            Array.from(document.querySelectorAll(`[data-group="${i}"]`)).forEach(ele => {
+                ele.setAttribute('style', 'display: none !important;')
+            })
+        }
+    }
+
+}
 
 async function start_loading_bt() {
     document.getElementById('Tool8_btn_public').parentElement.style.opacity = "0.5";
@@ -138,23 +180,12 @@ async function Tool8_init_default() {
     // start_loading();
     try {
         // document.getElementById('err_place').style.display = 'none';
-        document.getElementById('Tool8_rs_tb').innerHTML = '';
+        document.getElementById('rs_tb').innerHTML = '';
         Tool8_change_card_element();
         var now = new Date();
         now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-        document.getElementById('Tool8_schedule_time').value = now.toISOString().substring(0, 16);
-        // document.getElementById('schedule_time').value = new Date(Date.now()).toISOString().substr(0, 16);
-        var combo_fb = document.getElementById('Tool8_list_fb');
-        combo_fb.innerHTML = '';
-
-        document.getElementById('Tool8_lib_img').innerHTML = '';
-        var lst_cr_token = await Tool8_get_all_token();
-        if (lst_cr_token) {
-            await Tool8_lst_cr_token.forEach(f => {
-                combo_fb.innerHTML += `<option data-token="${f.token}" ${lst_cr_token.indexOf(f) == 0 ? "selected" : ""} value="${f.id}" data-img_src="${f.picture}">${f.name}</option>`;
-            });
-            await Tool8_set_combobox_data();
-        }
+        document.getElementById('schedule_time').value = now.toISOString().substring(0, 16);
+        await Tool8_set_combobox_data();
         await Tool8_change_card_element();
     } catch (error) {
         // stop_loading();
@@ -166,78 +197,33 @@ async function Tool8_init_default() {
 
 async function Tool8_set_combobox_data() {
     // start_loading();
-    Tool8_cr_video1 = null;
-    Tool8_cr_video2 = null;
-    var f = Tool8_get_token_user();
-    var combo_pages = document.getElementById('Tool8_list_pages');
-    combo_pages.innerHTML = '';
-    var combo_ads = document.getElementById('Tool8_list_ads');
-    combo_ads.innerHTML = '';
-    var data_pages = await Tool8_get_pages_from_fb(f);
-    if (data_pages) {
-        try {
-            data_pages.forEach(page => {
-                combo_pages.innerHTML += `<option data-name="${page.name}" data-token="${page.access_token}" value="${page.id}" data-img_src="${page.picture.data.url}">${page.name}</option>`;
-            });
-            var data_ads_acc = await Tool8_get_ads_acc_from_fb(f);
-            if (data_ads_acc) {
-                data_ads_acc.forEach(ad => {
-                    combo_ads.innerHTML += `<option value="${ad.account_id}" data-img_src="../img/avatar_user.png">${ad.account_id}</option>`;
-                });
-            }
-            change_page_selected();
-            await Tool8_load_lib_img(-1);
-            var cr_page = Tool8_get_page_value();
-            document.getElementById('Tool8_link').value = `https://www.facebook.com/${cr_page}`;
-        } catch (error) {
-            var mess = 'Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !'
-            toast_error(mess)
-            mess_error(mess)
-            // if (document.getElementById('error_token')) {
-            //     document.getElementById('err_place').style.display = 'block';
-            //     document.getElementById('error_token').innerText = mess;
-            // }
-            // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
-        }
-        await Tool8_change_card_element();
-        document.getElementById('Tool8_img_1').src = 'https://i.imgur.com/BDJYyka.jpg';
-        document.getElementById('Tool8_img_2').src = 'https://i.imgur.com/BDJYyka.jpg';
-        document.getElementById('Tool8_img_3').src = 'https://i.imgur.com/BDJYyka.jpg';
-        document.getElementById('Tool8_img_4').src = 'https://i.imgur.com/BDJYyka.jpg';
-        document.getElementById('Tool8_img_5').src = 'https://i.imgur.com/BDJYyka.jpg';
-        document.getElementById('Tool8_img_6').src = 'https://i.imgur.com/BDJYyka.jpg';
-        document.getElementById('Tool8_img_7').src = 'https://i.imgur.com/BDJYyka.jpg';
-        document.getElementById('Tool8_img_8').src = 'https://i.imgur.com/BDJYyka.jpg';
-        // document.getElementById('Tool8_img_2').src = document.querySelector('div[class="img_item active"]').children[0].src;
-    } else {
-        var mess = 'Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !'
-        toast_error(mess)
-        mess_error(mess)
-        // if (document.getElementById('error_token')) {
-        //     document.getElementById('err_place').style.display = 'block';
-        //     document.getElementById('error_token').innerText = mess;
-        // }
-        // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
+    // Tool8_cr_video.Tool8_cr_video1 = null;
+    // Tool8_cr_video.Tool8_cr_video2 = null;
+    await Tool8_load_lib_img(-1);
+    var cr_page = get_page_value();
+    for (let index = 1; index < 9; index++) {
+        document.getElementById(`Tool8_link${index}`).value = `https://www.facebook.com/${cr_page}`;
+        document.getElementById(`Tool8_img_${index}`).src = 'https://i.imgur.com/BDJYyka.jpg';
     }
-    // stop_loading();
+    await Tool8_change_card_element();
 
 
 }
 
 async function Tool8_load_lib_img(vnum) {
-    var tk = Tool8_get_token_user();
+    // var tk = get_token_user();
     var img_p = document.getElementById('Tool8_lib_img');
     img_p.innerHTML = '';
-    if (Tool8_cr_video1 && Tool8_cr_video1.thumbnails.data) {
-        Tool8_cr_video1.thumbnails.data.forEach(f => {
+    if (Tool8_cr_video.Tool8_cr_video1 && Tool8_cr_video.Tool8_cr_video1.thumbnails.data) {
+        Tool8_cr_video.Tool8_cr_video1.thumbnails.data.forEach(f => {
             img_p.innerHTML += ` <div class="ma-3"><div onclick="Tool8_change_img(this)" data-type="Tool8_video1"><img src="${f.uri}" alt=""
             style="border: 3px solid rgb(52, 152, 219); border-radius: 8px;"
             width="195px"
             height="250px"/></div></div>`;
         });
     }
-    if (Tool8_cr_video2 && Tool8_cr_video2.thumbnails.data) {
-        Tool8_cr_video2.thumbnails.data.forEach(f => {
+    if (Tool8_cr_video.Tool8_cr_video2 && Tool8_cr_video.Tool8_cr_video2.thumbnails.data) {
+        Tool8_cr_video.Tool8_cr_video2.thumbnails.data.forEach(f => {
             img_p.innerHTML += ` <div class="ma-3"><div onclick="Tool8_change_img(this)" data-type="Tool8_video2"><img src="${f.uri}" alt=""
             style="border: 3px solid rgb(52, 152, 219); border-radius: 8px;"
             width="195px"
@@ -245,8 +231,8 @@ async function Tool8_load_lib_img(vnum) {
         });
     }
 
-    if (Tool8_cr_video3 && Tool8_cr_video3.thumbnails.data) {
-        Tool8_cr_video3.thumbnails.data.forEach(f => {
+    if (Tool8_cr_video.Tool8_cr_video3 && Tool8_cr_video.Tool8_cr_video3.thumbnails.data) {
+        Tool8_cr_video.Tool8_cr_video3.thumbnails.data.forEach(f => {
             img_p.innerHTML += ` <div class="ma-3"><div onclick="Tool8_change_img(this)" data-type="Tool8_video3"><img src="${f.uri}" alt=""
             style="border: 3px solid rgb(52, 152, 219); border-radius: 8px;"
             width="195px"
@@ -254,8 +240,8 @@ async function Tool8_load_lib_img(vnum) {
         });
     }
 
-    if (Tool8_cr_video4 && Tool8_cr_video4.thumbnails.data) {
-        Tool8_cr_video4.thumbnails.data.forEach(f => {
+    if (Tool8_cr_video.Tool8_cr_video4 && Tool8_cr_video.Tool8_cr_video4.thumbnails.data) {
+        Tool8_cr_video.Tool8_cr_video4.thumbnails.data.forEach(f => {
             img_p.innerHTML += ` <div class="ma-3"><div onclick="Tool8_change_img(this)" data-type="Tool8_video4"><img src="${f.uri}" alt=""
             style="border: 3px solid rgb(52, 152, 219); border-radius: 8px;"
             width="195px"
@@ -263,8 +249,8 @@ async function Tool8_load_lib_img(vnum) {
         });
     }
 
-    if (Tool8_cr_video5 && Tool8_cr_video5.thumbnails.data) {
-        Tool8_cr_video5.thumbnails.data.forEach(f => {
+    if (Tool8_cr_video.Tool8_cr_video5 && Tool8_cr_video.Tool8_cr_video5.thumbnails.data) {
+        Tool8_cr_video.Tool8_cr_video5.thumbnails.data.forEach(f => {
             img_p.innerHTML += ` <div class="ma-3"><div onclick="Tool8_change_img(this)" data-type="Tool8_video5"><img src="${f.uri}" alt=""
             style="border: 3px solid rgb(52, 152, 219); border-radius: 8px;"
             width="195px"
@@ -272,8 +258,8 @@ async function Tool8_load_lib_img(vnum) {
         });
     }
 
-    if (Tool8_cr_video6 && Tool8_cr_video6.thumbnails.data) {
-        Tool8_cr_video6.thumbnails.data.forEach(f => {
+    if (Tool8_cr_video.Tool8_cr_video6 && Tool8_cr_video.Tool8_cr_video6.thumbnails.data) {
+        Tool8_cr_video.Tool8_cr_video6.thumbnails.data.forEach(f => {
             img_p.innerHTML += ` <div class="ma-3"><div onclick="Tool8_change_img(this)" data-type="Tool8_video6"><img src="${f.uri}" alt=""
             style="border: 3px solid rgb(52, 152, 219); border-radius: 8px;"
             width="195px"
@@ -281,8 +267,8 @@ async function Tool8_load_lib_img(vnum) {
         });
     }
 
-    if (Tool8_cr_video7 && Tool8_cr_video7.thumbnails.data) {
-        Tool8_cr_video7.thumbnails.data.forEach(f => {
+    if (Tool8_cr_video.Tool8_cr_video7 && Tool8_cr_video.Tool8_cr_video7.thumbnails.data) {
+        Tool8_cr_video.Tool8_cr_video7.thumbnails.data.forEach(f => {
             img_p.innerHTML += ` <div class="ma-3"><div onclick="Tool8_change_img(this)" data-type="Tool8_video7"><img src="${f.uri}" alt=""
             style="border: 3px solid rgb(52, 152, 219); border-radius: 8px;"
             width="195px"
@@ -290,8 +276,8 @@ async function Tool8_load_lib_img(vnum) {
         });
     }
 
-    if (Tool8_cr_video8 && Tool8_cr_video8.thumbnails.data) {
-        Tool8_cr_video8.thumbnails.data.forEach(f => {
+    if (Tool8_cr_video.Tool8_cr_video8 && Tool8_cr_video.Tool8_cr_video8.thumbnails.data) {
+        Tool8_cr_video.Tool8_cr_video8.thumbnails.data.forEach(f => {
             img_p.innerHTML += ` <div class="ma-3"><div onclick="Tool8_change_img(this)" data-type="Tool8_video8"><img src="${f.uri}" alt=""
             style="border: 3px solid rgb(52, 152, 219); border-radius: 8px;"
             width="195px"
@@ -299,7 +285,7 @@ async function Tool8_load_lib_img(vnum) {
         });
     }
 
-    var lst_img = await Tool8_get_img_acc_from_ad(Tool8_get_token_ads(), tk);
+    var lst_img = await Tool8_get_img_acc_from_ad(get_token_ads(), get_token_user());
     if (lst_img) {
         lst_img.forEach(im => {
             img_p.innerHTML += ` <div class="ma-3"><div onclick="Tool8_change_img(this)" data-type="Tool8_image"><img src="${im.url}" alt=""
@@ -321,9 +307,9 @@ async function Tool8_load_lib_img(vnum) {
 
 }
 
-async function Tool8_change_title() {
-    var title = document.getElementById('Tool8_title').value;
-    document.querySelector('span[data-select="Tool8_review1"]').innerText = title;
+async function Tool8_change_title(num) {
+    var title = document.getElementById(`Tool8_title${num}`).value;
+    document.querySelector(`span[data-select="Tool8_review${num}"]`).innerText = title;
 }
 
 async function Tool8_change_button(num) {
@@ -345,21 +331,23 @@ async function Tool8_change_check_schedule() {
 }
 async function Tool8_change_page_selected() {
     document.querySelector('span[data-select="Tool8_review2"]').innerText = $('#Tool8_list_pages :selected').data('name');
-    var p_id = Tool8_get_page_value();
+    var p_id = get_page_value();
     document.getElementById('Tool8_link').value = `https://www.facebook.com/${p_id}`;
 }
 
 async function Tool8_change_img(ele) {
-    ele.querySelector('Tool8_img').classList.remove('active');
+    ele.querySelectorAll('[data-type="Tool8_img"]').forEach(e => {
+        e.classList.remove('active');
+    })
     ele.classList.add('active');
     Tool8_change_img_selected(ele);
 }
 async function Tool8_change_img_selected(ele) {
     if (!ele) return;
     if (Tool8_cr_card == 1 && Tool8_f_l == 0) {
-        document.getElementById('Tool8_img_1').src = ele.querySelector('Tool8_img').src;
+        document.getElementById('Tool8_img_1').src = ele.querySelector('img').src;
     } else {
-        document.getElementById(`Tool8_img_${Tool8_cr_card}`).src = ele.querySelector('Tool8_img').src;
+        document.getElementById(`Tool8_img_${Tool8_cr_card}`).src = ele.querySelector('img').src;
     }
 }
 
@@ -403,7 +391,7 @@ async function Tool8_PreviewImage(num) {
     try {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById(`Tool8_file-input${num}`).files[0]);
-        var s = Math.round(document.getElementById("file-input").files[0].size / 1024 / 1024);
+        var s = Math.round(document.getElementById(`Tool8_file-input${num}`).files[0].size / 1024 / 1024);
         if (s >= 100) {
             alert('Chọn file nhỏ hơn 100Mb !')
             return;
@@ -575,7 +563,7 @@ async function Tool8_upload_and_return_url(file_element, ads_id, token, card) {
                 var new_id = vd_rs.id;
                 if (new_id) {
                     var thumbnails_details = await Tool8_get_thumbnails_video(new_id);
-                    this[`Tool8_cr_video${card}`] = thumbnails_details;
+                    Tool8_cr_video[`Tool8_cr_video${card}`] = thumbnails_details;
                     Tool8_load_lib_img(card)
                 } else {
                     alert('Không up được video ! Kiểm tra đường truyền mạng hoặc phân quyền trên page ! Vui lòng tải lại (refresh) trang !')
@@ -588,7 +576,7 @@ async function Tool8_upload_and_return_url(file_element, ads_id, token, card) {
 
 
 async function Tool8_get_thumbnails_video(vid) {
-    var token = Tool8_get_page_token();
+    var token = get_page_token();
     var url = `https://graph.facebook.com/v15.0/${vid}?access_token=${token}&fields=["captions","description","id","length","spherical","thumbnails","title","updated_time","live_status"]`;
     //thumbnails
     var dt_rs = await Tool8_get_thumbnails_from_api(url);
@@ -624,80 +612,11 @@ async function Tool8_get_thumbnails_from_api(url) {
 }
 
 async function Tool8_public_data() {
-    // start_loading();
-
-    var token = Tool8_get_token_user();
-    var page_id = Tool8_get_page_value();
-    var ads_id = Tool8_get_token_ads();
-    var call_to_ac = Tool8_get_select_call_t();
-    var link = document.getElementById('link').value;
-    var title = document.getElementById('title').value;
-    var pic1 = document.getElementById('img_1').src;
-    var pic2 = document.getElementById('img_2').src;
-    var video1 = (cr_video1 || {}).id || undefined;
-    var video2 = (cr_video2 || {}).id || undefined;
-    var mess = document.getElementById('post_message').value || '';
-    var data = {
-        "access_token": token,
-        "object_story_spec": {
-            "link_data": {
-                "child_attachments": [
-                    {
-                        "call_to_action": {
-                            "type": call_to_ac,
-                            "value": {
-                                "page": page_id
-                            }
-                        },
-                        "link": link,
-                        "name": title,
-                        "picture": pic1
-                    },
-                    {
-                        "call_to_action": {
-                            "type": call_to_ac,
-                            "value": {
-                                "page": page_id
-                            }
-                        },
-                        "link": link,
-                        "name": title,
-                        "picture": pic2
-                    }
-                ],
-                "message": mess,
-                "multi_share_end_card": false,
-                "multi_share_optimized": true
-            },
-            "page_id": page_id
-        }
-    };
-
-    if (video1) {
-        //video_id	"669722817375557"
-        data.object_story_spec.link_data.child_attachments[0].video_id = video1;
-    }
-    if (video2) {
-        data.object_story_spec.link_data.child_attachments[1].video_id = video2;
-    }
-
-    if (pic1 == 'https://i.imgur.com/BDJYyka.jpg') {
-        alert('Chưa chọn file video ở ô 1 !');
+    var ads_id = get_token_ads();
+    var data = Tool8_get_param_err();
+    if (!data) {
         return;
     }
-    if (pic2 == 'https://i.imgur.com/BDJYyka.jpg') {
-        alert('Chưa chọn file hình ảnh ở ô 2 !');
-        return;
-    }
-
-    if (call_to_ac != 'LIKE_PAGE') {
-        data.object_story_spec.link_data.child_attachments[0].call_to_action = { type: call_to_ac };
-        data.object_story_spec.link_data.child_attachments[1].call_to_action = { type: call_to_ac };
-    }
-
-    //data.object_story_spec.link_data.child_attachments = [...data.object_story_spec.link_data.child_attachments,...data.object_story_spec.link_data.child_attachments];
-
-    // console.log(data);
     var url = `https://graph.facebook.com/v15.0/act_${ads_id}/adcreatives`;
 
     let rs = await fetch(
@@ -723,8 +642,8 @@ async function Tool8_public_data() {
 
 
 async function Tool8_get_step2(id) {
-    // var token = Tool8_get_token_user();
-    var token = Tool8_get_page_token();
+    // var token = get_token_user();
+    var token = get_page_token();
     var url = `https://graph.facebook.com/v15.0/${id}?access_token=${token}&fields=effective_object_story_id`;
     return await fetch(
         r_url2,
@@ -748,8 +667,8 @@ async function Tool8_get_step2(id) {
 
 
 // async function Tool8_option_step3(op) {
-//     // var token = Tool8_get_token_user();
-//     // var ads_id = Tool8_get_token_ads();
+//     // var token = get_token_user();
+//     // var ads_id = get_token_ads();
 
 //     var url = `${r_url}https://graph.facebook.com/v15.0/${op}`;
 //     return await fetch(url, {
@@ -767,8 +686,8 @@ async function Tool8_get_step2(id) {
 
 
 async function Tool8_post_step3(op) {
-    var token = Tool8_get_page_token();
-    // var ads_id = Tool8_get_token_ads();
+    var token = get_page_token();
+    // var ads_id = get_token_ads();
     var data = { "access_token": token, "is_published": true }
     if ($('#Tool8_is_schedule').is(':checked') == true) {
         var timesta = Math.floor((new Date(document.getElementById('Tool8_schedule_time').value)).getTime() / 1000);
@@ -797,8 +716,8 @@ async function Tool8_post_step3(op) {
 }
 
 async function Tool8_post_step3_pro5(op) {
-    var token = Tool8_get_page_token();
-    // var ads_id = Tool8_get_token_ads();
+    var token = get_page_token();
+    // var ads_id = get_token_ads();
     var data = { "access_token": token, "is_published": true }
     if ($('#Tool8_is_schedule').is(':checked') == true) {
         var timesta = Math.floor((new Date(document.getElementById('Tool8_schedule_time').value)).getTime() / 1000);
@@ -877,7 +796,7 @@ async function Tool8_run_public() {
             } else {
                 alert(JSON.stringify(rs.error));
             }
-            await Tool8_end_request(0, check_request.time, JSON.stringify({ result: rs, param: get_param_err() }))
+            await Tool8_end_request(0, check_request.time, JSON.stringify({ result: rs, param: { result: "none" } }))
             stop_loading_bt();
             return;
         }
@@ -886,9 +805,9 @@ async function Tool8_run_public() {
 }
 
 async function Tool8_after_public(s2, check_request) {
-    var row_rs = document.getElementById('Tool8_rs_tb');
-    var fb = Tool8_get_token_user_text();
-    var page_id = Tool8_get_token_page_text();
+    var row_rs = document.getElementById('rs_tb');
+    var fb = get_token_user_text();
+    var page_id = get_token_page_text();
     var link = `https://www.facebook.com/permalink.php?story_fbid=${s2.effective_object_story_id.split('_')[1]}&id=${s2.effective_object_story_id.split('_')[0]}`;
     row_rs.innerHTML += `<tr class="tr"><td class="text-left">${fb}</td><td class="text-left">${page_id}</td><td class="text-left"><a class="btn btn-primary" style="
     color: #fff;" href="${link}" id="rs_link" target="_blank">Link</a></td></tr>`;
@@ -960,39 +879,15 @@ async function Tool8_end_request(status, time, error = '') {
     }
 }
 
-function Tool8_get_token_user() {
-    var ele = document.getElementById('Tool8_list_fb');
-    return ele.options[ele.selectedIndex].dataset.token;
-}
-function Tool8_get_token_user_text() {
-    var ele = document.getElementById('Tool8_list_fb');
-    return ele.options[ele.selectedIndex].text;
-}
-function Tool8_get_token_page_text() {
-    var ele = document.getElementById('Tool8_list_pages');
-    return ele.options[ele.selectedIndex].text;
-}
-function Tool8_get_page_value() {
-    var ele = document.getElementById('Tool8_list_pages');
-    return ele.options[ele.selectedIndex].value;
-}
-function Tool8_get_page_token() {
-    var ele = document.getElementById('Tool8_list_pages');
-    return ele.options[ele.selectedIndex].dataset.token;
-}
-function Tool8_get_token_ads() {
-    var ele = document.getElementById('Tool8_list_ads');
-    return ele.options[ele.selectedIndex].value;
-}
 function Tool8_get_select_call_t(num) {
     var ele = document.getElementById(`Tool8_list_bts${num}`);
     return ele.options[ele.selectedIndex].value.toUpperCase().replace(' ', '_');
 }
 
 function Tool8_get_param_err() {
-    var token = Tool8_get_token_user();
-    var page_id = Tool8_get_page_value();
-    var ads_id = Tool8_get_token_ads();
+    var token = get_token_user();
+    var page_id = get_page_value();
+    var ads_id = get_token_ads();
 
     // var call_to_ac = Tool8_get_select_call_t();
     // var link = document.getElementById('link').value;
@@ -1001,9 +896,10 @@ function Tool8_get_param_err() {
     // var pic2 = document.getElementById('img_2').src;
     // var video1 = (cr_video1 || {}).id || undefined;
     // var video2 = (cr_video2 || {}).id || undefined;
-    var mess = document.getElementById('Tool8_post_message').value || '';
+    var mess = document.getElementById('post_message').value || '';
 
     var child_data = [];
+    var err_item = [];
     for (let index = 1; index < 9; index++) {
         var it = {
             "call_to_action": {
@@ -1016,11 +912,19 @@ function Tool8_get_param_err() {
             "name": document.getElementById(`Tool8_title${index}`).value,
             "picture": document.getElementById(`Tool8_img_${index}`).src
         };
-        var vd = this[`Tool8_cr_video${index}`];
+        var vd = Tool8_cr_video[`Tool8_cr_video${index}`];
         if (vd) {
-            it.video_id = vd;
+            it.video_id = vd.id;
+        }
+        if (it.picture === 'https://i.imgur.com/BDJYyka.jpg') {
+            err_item.push(index);
         }
         child_data.push(it);
+    }
+
+    if (err_item.length > 0) {
+        toast_error(`Các ô ${err_item.join(',')} chưa chọn hình !`)
+        return null;
     }
 
     var data = {

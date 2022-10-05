@@ -1491,9 +1491,30 @@ input::-ms-input-placeholder {
     max-width: '40%';
 }
 
-.Tool8_form_title{
+.Tool8_form_title {
     padding: 5px;
     background-color: #2196f3;
     color: #fff;
     text-align: center;
+}
+
+.hidden-element {
+    display: none !important;
+}
+
+.mini-menu-tool-item-tool8-inside.active {
+    border-bottom: 3px solid #2196f3;
+    /* background-color: #2196f3; */
+    color:  #2196f3;
+}
+.mini-menu-tool-item-tool8-inside{
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.mini-menu-tool-item-tool8-inside:hover{
+    border-bottom: 3px solid  #2196f3;
+    /* background-color: #2196f3; */
+    color: #2196f3;
 }
