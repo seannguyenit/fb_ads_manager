@@ -27,7 +27,6 @@
     "information_user": "Thông tin tài khoản",
     "change_password": "Thay đổi mật khẩu",
     "creation_date:" : "Ngày tạo :",
-    "creation_date" : "Ngày tạo",
     "day":"Ngày",
     "day_usage":"ngày dùng",
     "money:" : "Số dư :",
@@ -121,7 +120,7 @@
     "node11":"- Bạn vui lòng chuyển khoản chính xác nội dung để được cộng tiền nhanh nhất.",
     "node12":"- Nếu sau 10 phút từ khi tiền trong tài khoản của bạn bị trừ mà vẫn chưa được cộng tiền vui liên hệ Admin để được hỗ trợ.",
     "node13":"- Vui lòng không nạp từ bank khác qua bank này (tránh lỗi).",
-    "node14":"- Nạp sai cú pháp, sai số tài khoản, sai ngân hàng sẽ bị trừ 20% phí giao dịch. Vd: nạp 100k sai nội dung sẽ chỉ nhận được 80k coin và phải liên hệ admin để cộng tay.",
+    "node14":"- Nạp sai nội dung chuyển khoản sẽ bị trừ 20% phí giao dịch. Vd: nạp 100k sai nội dung sẽ chỉ nhận được 80k coin và phải liên hệ admin để cộng tay.",
     "type" : "Loại",
     "transaction_code" : "Mã Giao Dịch",
     "name" : "Người Chuyển",
@@ -141,7 +140,7 @@
     "renew" : "Gia hạn",
     "enter_keywords" : "Nhập từ khóa",
     "sendmessage" : "Vui lòng gửi tin nhắn",
-    "request_day" : "bài viết / ngày"
+    "request_day" : "Bài viết / ngày"
 
     
 
