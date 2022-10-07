@@ -104,10 +104,10 @@ async function check_service() {
         }
 
         if (date === 0) {
-            alert("Mua gói dịch vụ để sử dụng !");
+            toast_error("Mua gói dịch vụ để sử dụng !");
             window.location.href = 'pricing';
         } else if (date <= today) {
-            alert("Gói dịch vụ đã hết hạn !");
+            toast_error("Gói dịch vụ đã hết hạn !");
             window.location.href = 'pricing';
         }
     }
@@ -223,7 +223,7 @@ async function set_combobox_data() {
             //     document.getElementById('err_place').style.display = 'block';
             //     document.getElementById('error_token').innerText = mess;
             // }
-            // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
+            // toast_error('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
         }
         await change_card_element();
         document.getElementById('img_1').src = 'https://i.imgur.com/BDJYyka.jpg';
@@ -236,7 +236,7 @@ async function set_combobox_data() {
         //     document.getElementById('err_place').style.display = 'block';
         //     document.getElementById('error_token').innerText = mess;
         // }
-        // alert('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
+        // toast_error('Token đã hết hạn hoặc chưa nhập token vui lòng kiểm tra lại !')
     }
     // stop_loading();
 
@@ -379,11 +379,14 @@ async function PreviewImage() {
     try {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("file-input").files[0]);
-        //var s = Math.round(document.getElementById("file-input").files[0].size / 1024 / 1024);
-        // if (s >= 100) {
-        //     alert('Chọn file nhỏ hơn 100Mb !')
-        //     return;
-        // }
+        var s = Math.round(document.getElementById("file-input").files[0].size);
+        if (s >= 100*1024*1024) {
+            stop_loading1();
+            mess_error('file bạn chọn vướt quá 100MB, load lại trang để tiếp tục !');
+            toast_error('file bạn chọn vướt quá 100MB, load lại trang để tiếp tục !');
+            return;
+        }
+        else{
         oFReader.onload = function (oFREvent) {
             // document.getElementById("img_1").src = oFREvent.target.result;
         };
@@ -392,6 +395,7 @@ async function PreviewImage() {
             document.getElementById("img_1").src = new_obj.images[document.getElementById("file-input").files[0].name].url
             document.getElementById("img_1").dataset.hash = new_obj.images[document.getElementById("file-input").files[0].name].hash
         }
+    }
         // console.log(new_obj);
     } catch (error) {
         stop_loading1();
@@ -406,11 +410,14 @@ async function PreviewImage1() {
     try {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("file-input1").files[0]);
-        // var s = Math.round(document.getElementById("file-input1").files[0].size / 1024 / 1024);
-        // if (s >= 100) {
-        //     alert('Chọn file nhỏ hơn 100Mb !')
-        //     return;
-        // }
+        var s = Math.round(document.getElementById("file-input1").files[0].size );
+        if (s >= 100*1024*1024) {
+            stop_loading2();
+            mess_error('file bạn chọn vướt quá 100MB, load lại trang để tiếp tục !')
+            toast_error('file bạn chọn vướt quá 100MB, load lại trang để tiếp tục !');
+            return;
+        } 
+        else{
         oFReader.onload = function (oFREvent) {
             // document.getElementById("img_2").src = oFREvent.target.result;
         };
@@ -418,6 +425,7 @@ async function PreviewImage1() {
         if (new_obj) {
             document.getElementById("img_2").src = new_obj.images[document.getElementById("file-input1").files[0].name].url
             document.getElementById("img_2").dataset.hash = new_obj.images[document.getElementById("file-input1").files[0].name].hash
+        }
         }
         console.log(new_obj);
     } catch (error) {
@@ -508,9 +516,11 @@ async function get_img_acc_from_ad(id, token) {
         });
     if (rs.error) {
         if (rs.error.message) {
-            alert(rs.error.message);
+            toast_error(rs.error.message);
+            mess_error(rs.error.message);
         } else {
-            alert('Lỗi phần quyền trên page hoặc trên tk quản cáo !')
+            toast_error('Lỗi phần quyền trên page hoặc trên tài khoản ADS !');
+            mess_error('Lỗi phần quyền trên page hoặc trên tài khoản ADS !');
             // stop_loading();
         }
         return null;
@@ -520,7 +530,7 @@ async function get_img_acc_from_ad(id, token) {
 
 async function upload_and_return_url(file_element, ads_id, token, card) {
     if (!file_element || !ads_id || !token) {
-        alert('Chưa đầy đủ thông tin !');
+        toast_error('Chưa đầy đủ thông tin !');
         return;
     }
     // start_loading();
@@ -574,7 +584,8 @@ async function upload_and_return_url(file_element, ads_id, token, card) {
 
         if (vd_rs) {
             if (vd_rs.error) {
-                alert((vd_rs.error.message) || 'Lỗi phân quyền trên page');
+                mess_error((vd_rs.error.message) || 'Lỗi phân quyền trên page');
+                toast_error((vd_rs.error.message) || 'Lỗi phân quyền trên page');
             } else {
                 var new_id = vd_rs.id;
                 if (new_id) {
@@ -587,7 +598,8 @@ async function upload_and_return_url(file_element, ads_id, token, card) {
                         load_lib_img(false)
                     }
                 } else {
-                    alert('Không up được video ! Kiểm tra đường truyền mạng hoặc phân quyền trên page ! Vui lòng tải lại (refresh) trang !')
+                    mess_error('Không up được video ! Kiểm tra đường truyền mạng hoặc phân quyền trên page ! Vui lòng tải lại (refresh) trang !')
+                    toast_error('Không up được video ! Kiểm tra đường truyền mạng hoặc phân quyền trên page ! Vui lòng tải lại (refresh) trang !')
                 }
             }
         }
@@ -691,11 +703,11 @@ async function public_data() {
     }
 
     if (pic1 == 'https://i.imgur.com/BDJYyka.jpg') {
-        alert('Chưa chọn file video ở ô 1 !');
+        toast_error('Chưa chọn file video ở ô 1 !');
         return;
     }
     if (pic2 == 'https://i.imgur.com/BDJYyka.jpg') {
-        alert('Chưa chọn file hình ảnh ở ô 2 !');
+        toast_error('Chưa chọn file hình ảnh ở ô 2 !');
         return;
     }
 
@@ -878,13 +890,16 @@ async function run_public() {
                     stop_loading3();
                 }
             } else {
-                alert('Đã xảy ra lỗi về phân quyền trên page !')
+                mess_error('Đã xảy ra lỗi về phân quyền trên page !')
+                toast_error('Đã xảy ra lỗi về phân quyền trên page !')
             }
         } else {
             if (rs.error.error_user_msg) {
-                alert(rs.error.error_user_msg);
+                mess_error(rs.error.error_user_msg);
+                toast_error(rs.error.error_user_msg);
             } else {
-                alert(JSON.stringify(rs.error));
+                mess_error(JSON.stringify(rs.error));
+                toast_error(JSON.stringify(rs.error));
             }
             await end_request(0, check_request.time, JSON.stringify({ result: rs, param: get_param_err() }))
             stop_loading3();
@@ -935,7 +950,8 @@ async function start_request() {
             console.error('Error:', error);
         });
     if (rs.error) {
-        alert(rs.error);
+        mess_error(rs.error);
+        toast_error(rs.error);
         return null;
     } else {
         return rs;
@@ -962,7 +978,8 @@ async function end_request(status, time, error = '') {
             console.error('Error:', error);
         });
     if (rs.error) {
-        alert(rs.error);
+        mess_error(rs.error);
+        toast_error(rs.error);
         return false;
     } else {
         return true;
