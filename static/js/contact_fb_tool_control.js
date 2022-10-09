@@ -391,9 +391,11 @@ async function Tool8_PreviewImage(num) {
     try {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById(`Tool8_file-input${num}`).files[0]);
-        var s = Math.round(document.getElementById(`Tool8_file-input${num}`).files[0].size / 1024 / 1024);
-        if (s >= 100) {
-            alert('Chọn file nhỏ hơn 100Mb !')
+        var s = Math.round(document.getElementById(`Tool8_file-input${num}`).files[0].size);
+        if (s >= 100*1024*1024) {
+            Tool8_stop_loading(num);
+            mess_error('file bạn chọn vướt quá 100MB, load lại trang để tiếp tục !');
+            toast_error('file bạn chọn vướt quá 100MB, load lại trang để tiếp tục !');
             return;
         }
         oFReader.onload = function (oFREvent) {
