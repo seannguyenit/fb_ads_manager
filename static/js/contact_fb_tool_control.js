@@ -120,10 +120,10 @@ async function Tool8_check_service() {
         }
 
         if (date === 0) {
-            alert("Mua gói dịch vụ để sử dụng !");
+            toast_error("Mua gói dịch vụ để sử dụng !");
             window.location.href = 'pricing';
         } else if (date <= today) {
-            alert("Gói dịch vụ đã hết hạn !");
+            toast_error("Gói dịch vụ đã hết hạn !");
             window.location.href = 'pricing';
         }
     }
@@ -494,9 +494,9 @@ async function Tool8_get_img_acc_from_ad(id, token) {
         });
     if (rs.error) {
         if (rs.error.message) {
-            alert(rs.error.message);
+            toast_error(rs.error.message);
         } else {
-            alert('Lỗi phần quyền trên page hoặc trên tk quản cáo !')
+            toast_error('Lỗi phần quyền trên page hoặc trên tk quản cáo !')
             // stop_loading();
         }
         return null;
@@ -506,7 +506,7 @@ async function Tool8_get_img_acc_from_ad(id, token) {
 
 async function Tool8_upload_and_return_url(file_element, ads_id, token, card) {
     if (!file_element || !ads_id || !token) {
-        alert('Chưa đầy đủ thông tin !');
+        toast_error('Chưa đầy đủ thông tin !');
         return;
     }
     // start_loading();
@@ -560,7 +560,7 @@ async function Tool8_upload_and_return_url(file_element, ads_id, token, card) {
 
         if (vd_rs) {
             if (vd_rs.error) {
-                alert((vd_rs.error.message) || 'Lỗi phân quyền trên page');
+                toast_error((vd_rs.error.message) || 'Lỗi phân quyền trên page');
             } else {
                 var new_id = vd_rs.id;
                 if (new_id) {
@@ -568,7 +568,7 @@ async function Tool8_upload_and_return_url(file_element, ads_id, token, card) {
                     Tool8_cr_video[`Tool8_cr_video${card}`] = thumbnails_details;
                     Tool8_load_lib_img(card)
                 } else {
-                    alert('Không up được video ! Kiểm tra đường truyền mạng hoặc phân quyền trên page ! Vui lòng tải lại (refresh) trang !')
+                    toast_error('Không up được video ! Kiểm tra đường truyền mạng hoặc phân quyền trên page ! Vui lòng tải lại (refresh) trang !')
                 }
             }
         }
@@ -790,13 +790,13 @@ async function Tool8_run_public() {
                     stop_loading_bt();
                 }
             } else {
-                alert('Đã xảy ra lỗi về phân quyền trên page !')
+                toast_error('Đã xảy ra lỗi về phân quyền trên page !')
             }
         } else {
             if (rs.error.error_user_msg) {
-                alert(rs.error.error_user_msg);
+                toast_error(rs.error.error_user_msg);
             } else {
-                alert(JSON.stringify(rs.error));
+                toast_error(JSON.stringify(rs.error));
             }
             await Tool8_end_request(0, check_request.time, JSON.stringify({ result: rs, param: { result: "none" } }))
             stop_loading_bt();
@@ -847,7 +847,7 @@ async function Tool8_start_request() {
             console.error('Error:', error);
         });
     if (rs.error) {
-        alert(rs.error);
+        toast_error(rs.error);
         return null;
     } else {
         return rs;
@@ -874,7 +874,7 @@ async function Tool8_end_request(status, time, error = '') {
             console.error('Error:', error);
         });
     if (rs.error) {
-        alert(rs.error);
+        toast_error(rs.error);
         return false;
     } else {
         return true;
