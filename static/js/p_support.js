@@ -25,7 +25,7 @@ async function menu_contacst() {
             data.forEach(f => {
                 if(phone_admin){
                     phone_admin.innerHTML = `
-                    ${f.phone} (<span data-lang="sendmessage">(Vui lòng gửi tin nhắn)</span>)`;
+                    ${f.phone} <span data-lang="sendmessage">(Vui lòng gửi tin nhắn)</span>`;
                 }
                if(email_admin){
                 email_admin.innerHTML = `
