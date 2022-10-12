@@ -30,7 +30,7 @@ async function add_token() {
     var cr_pricing = await get_pricing_history_current();
     if (cr_pricing && cr_pricing.limit_fb) {
         if (Number(cr_fb_count || 0) >= Number(cr_pricing.limit_fb || 0)) {
-            alert('Tối đa số lượng facebook được nhập !');
+            toast_error('Tối đa số lượng facebook được nhập !');
             return;
         }
     }
@@ -222,7 +222,7 @@ async function change_pass() {
     if (rs.error) {
         alert(rs.error);
     } else {
-        alert('Đổi mật khẩu thành công ! Quay lại trang đăng nhập !')
+        toast_success('Đổi mật khẩu thành công ! Quay lại trang đăng nhập !')
         window.location.href = '/login'
     }
 }
