@@ -31,6 +31,8 @@ module.exports = function (app) {
     .get(homeCtrl.user_info);
   app.route('/home/p_manager')
     .get(homeCtrl.pricing_manager);
+  app.route('/home/tool_manager')
+    .get(homeCtrl.tool_manager);
 
   app.route('/home/pricing')
     .get(homeCtrl.pricing_public);
@@ -47,9 +49,9 @@ module.exports = function (app) {
     .get(homeCtrl.manager_articles);
   app.route('/home/p_articles')
     .get(homeCtrl.p_articles);
-    app.route('/home/p_support')
+  app.route('/home/p_support')
     .get(homeCtrl.p_support);
-    app.route('/home/p_guide')
+  app.route('/home/p_guide')
     .get(homeCtrl.p_guide);
   app.route('/home/p_facebook')
     .get(homeCtrl.p_facebook);
@@ -74,11 +76,11 @@ module.exports = function (app) {
     .get(homeCtrl.rec_success);
   app.route('/home/config_general')
     .get(homeCtrl.config_general)
-    app.route('/home/recharge_banking')
+  app.route('/home/recharge_banking')
     .get(homeCtrl.recharge_banking)
-    app.route('/home/recharge_card')
+  app.route('/home/recharge_card')
     .get(homeCtrl.recharge_card)
-    app.route('/home/edit_money')
+  app.route('/home/edit_money')
     .get(homeCtrl.edit_money)
-    
+
 };

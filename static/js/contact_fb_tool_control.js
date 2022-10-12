@@ -387,6 +387,7 @@ async function Tool8_change_card_element() {
 }
 
 async function Tool8_PreviewImage(num) {
+    console.log(num);
     Tool8_start_loading(num);
     try {
         var oFReader = new FileReader();
@@ -912,6 +913,10 @@ function Tool8_get_param_err() {
             "name": document.getElementById(`Tool8_title${index}`).value,
             "picture": document.getElementById(`Tool8_img_${index}`).src
         };
+        if (it.call_to_action.type != 'LIKE_PAGE') {
+            var ty = it.call_to_action.type;
+            it.call_to_action = { type: ty };
+        }
         var vd = Tool8_cr_video[`Tool8_cr_video${index}`];
         if (vd) {
             it.video_id = vd.id;

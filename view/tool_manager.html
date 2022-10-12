@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="stylesheet" type="text/css" href="../css/styleadmin.css" />
-    <link href="../css/pricing/style.css" rel="stylesheet" type="text/css">
+    <link href="../css/tool/style.css" rel="stylesheet" type="text/css">
 
     <link data-n-head="1" rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;display=swap">
@@ -32,7 +32,7 @@
             </div>
             <div style="margin-top: 2vw;" class="bg-main-color container">
                 <div class="col-12 pd_t_1 pb-2">
-                    <button onclick="open_modal_pricing(0)" class="btn btn-primary">Tạo mới</button>
+                    <button onclick="open_modal_tool(0)" class="btn btn-primary">Tạo mới</button>
                 </div>
                 <div class="col-12 v-data-table__wrapper" >
                     <table id="table_data" class="width_table_300 tablemanager text_center table_section table table-striped table-sm"
@@ -58,67 +58,33 @@
             </div>
         </div>
     </section> -->
-    <div class="modal fade" id="pricing_details" data-backdrop="static" data-keyboard="false" tabindex="-1"
-        aria-labelledby="pricing_details" aria-hidden="true">
+    <div class="modal fade" id="tool_details" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="tool_details" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal_title">Thông tin gói dịch vụ</h5>
+                    <h5 class="modal-title" id="modal_title">Thông tin Tool</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body d-flex flex-wrap">
-                    <input hidden id="pricing_id" value="0" />
-                    <div class="col-md-6">
+                    <input hidden id="tool_id" value="0" />
+                    <div class="col-md-12">
                         <label for="name" class="form-label">Tên</label>
                         <input type="text" class="form-control" id="name" required>
                     </div>
-                    <div class="col-md-6">
-                        <label for="price" class="form-label">Giá</label>
-                        <input type="number" class="form-control" id="price" required>
+                    <div class="col-md-12">
+                        <label for="symbol" class="form-label">symbol</label>
+                        <input type="text" class="form-control" id="symbol" required>
                     </div>
-                    <div class="col-md-12" style="display: none;">
-                        <label for="des" class="form-label">Mô tả</label>
-                        <textarea rows="2" type="text" class="form-control" value="" id="des"></textarea>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="limit_fb" class="form-label">SL FB</label>
-                        <input type="number" class="form-control" id="limit_fb" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="limit_day" class="form-label">SL Ngày</label>
-                        <input type="number" class="form-control" id="limit_day" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="limit_request" class="form-label">Request</label>
-                        <input type="number" class="form-control" id="limit_request" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="level" class="form-label">Bậc</label>
-                        <input type="text" class="form-control" id="level" required>
-                    </div>
-                    <div class="col-md-12 d-flex flex-wrap" id="tool_list_check">
-                        <div class="w-50">
-                            <label for="check_box1" class="form-label">Tool 2</label>
-                            <div class="custom-control custom-switch" style="zoom: 1.2;">
-                                <input type="checkbox" onchange="save_tool_pricing()" class="custom-control-input"
-                                    id="check_box1">
-                                <label class="custom-control-label" for="check_box1"></label>
-                            </div>
-                        </div>
-                        <div class="w-50">
-                            <label for="check_box1" class="form-label">Tool 2</label>
-                            <div class="custom-control custom-switch" style="zoom: 1.2;">
-                                <input type="checkbox" onchange="save_tool_pricing()" class="custom-control-input"
-                                    id="check_box1">
-                                <label class="custom-control-label" for="check_box1"></label>
-                            </div>
-                        </div>
+                    <div class="col-md-12">
+                        <label for="order" class="form-label">Thứ tự</label>
+                        <input type="number" class="form-control" id="order" required>
                     </div>
                 </div>
                 <div class="modal-footer d-flex" style="justify-content: space-between;"><button type="button"
-                        class="btn btn-primary" onclick="save_pricing()" data-dismiss="modal">Save</button><button
+                        class="btn btn-primary" onclick="save_tool()" data-dismiss="modal">Save</button><button
                         type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
             </div>
         </div>
@@ -183,12 +149,12 @@
                 </div>
                 <div class="jumps-prevent" style="padding-top: 63px;"></div>
                 <div id="cover_menu" class="v-overlay v-overlay--absolute v-overlay--active theme--dark"
-                    style="display: none;z-index: 7;">
-                    <div class="v-overlay__scrim"
-                        style="opacity: 0.46; background-color: rgb(33, 33, 33); border-color: rgb(33, 33, 33);">
-                    </div>
-                    <div class="v-overlay__content"></div>
+                style="display: none;z-index: 7;">
+                <div class="v-overlay__scrim"
+                    style="opacity: 0.46; background-color: rgb(33, 33, 33); border-color: rgb(33, 33, 33);">
                 </div>
+                <div class="v-overlay__content"></div>
+            </div>
 
                 <div class="sticky" style="margin-bottom: -63px;">
                     <aside style="background-color: #2a2e3f !important;box-shadow: 0 0 10px rgb(20 28 43 / 80%);"
@@ -209,8 +175,8 @@
                                 </ul>
                                 <ul class="side-menu">
                                     <li class="slide">
-                                        <a class="side-menu__item" data-bs-toggle="slide"
-                                            onclick="dick_play_block_user()" href="#">
+                                        <a class="side-menu__item" data-bs-toggle="slide" onclick="dick_play_block_user()"
+                                            href="#">
                                             <img src="../img/account.svg" alt="" class="side-menu__icon">
                                             <span class="side-menu__label">Thành viên <i class="fa fa-angle-down"
                                                     aria-hidden="true"></i></span>
@@ -248,8 +214,8 @@
                                 </ul>
                                 <ul class="side-menu">
                                     <li class="slide">
-                                        <a class="side-menu__item" data-bs-toggle="slide"
-                                            onclick="dick_play_block_banking()" href="#">
+                                        <a class="side-menu__item" data-bs-toggle="slide" onclick="dick_play_block_banking()"
+                                            href="#">
                                             <img src="../img/banking.svg" alt="" class="side-menu__icon">
                                             <span class="side-menu__label">Nạp tiền tự động<i class="fa fa-angle-down"
                                                     aria-hidden="true"></i></span>
@@ -275,64 +241,56 @@
             <div class="main-content horizontal-content">
 
                 <div class="main-container container">
-
-                    <div class="breadcrumb-header justify-content-between">
-                        <div class="left-content">
-                            <span style="color: #fff;font-size: 21px;" class="main-content-title mg-b-0 mg-b-lg-1">Quản
-                                lý gói dịch vụ</span>
-                        </div>
-                        <div class="justify-content-center mt-2">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item tx-15"><a style="color: #fff !important;" href="#">m2v.me</a>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page"
-                                    style="color: #38acb3 !important;">Quản lý gói dịch vụ</li>
-                            </ol>
-                        </div>
+        
+                  <div class="breadcrumb-header justify-content-between">
+                    <div class="left-content">
+                      <span  style="color: #fff;font-size: 21px;" class="main-content-title mg-b-0 mg-b-lg-1">Quản lý tool</span>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div style="background-color: #2a2e3f !important; color: #fff;margin-bottom: 30px;"
-                                class="card custom-card">
-                                <div class="card-header d-flex custom-card-header border-bottom-0 ">
-                                    <h5 class="card-title" style="padding: 10px 0px;margin: 0px;">Bảng giá dịch vụ</h5>
-                                    <div class="card-options">
-                                        <a href="#" onclick="open_modal_pricing(0)" class="btn btn-primary btn-sm"><i
-                                                class="fa fa-plus"></i>
-                                            Tạo mới</a>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="col-12 v-data-table__wrapper">
-                                        <table style="border: 1px solid  #383d52 !important;" id="table_data"
-                                            class="width_table_300 tablemanager text_center table_section table table-striped table-sm"
-                                            cellspacing="0" width="100%">
-                                            <thead>
-                                                <tr class="border_table_ad">
-                                                    <th>STT</th>
-                                                    <th>Tên</th>
-                                                    <th>Giá</th>
-                                                    <th>SL FB</th>
-                                                    <th>Request/Day</th>
-                                                    <th>Hạn Ngày</th>
-                                                    <th>Bậc</th>
-                                                    <th class="disableFilterBy">Thao tác</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                    <div class="justify-content-center mt-2">
+                      <ol class="breadcrumb">
+                        <li class="breadcrumb-item tx-15"><a style="color: #fff !important;" href="#">m2v.me</a></li>
+                        <li class="breadcrumb-item active" aria-current="page" style="color: #38acb3 !important;">Quản lý tool</li>
+                      </ol>
+                    </div>
+                  </div>
+        
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div style="background-color: #2a2e3f !important; color: #fff;margin-bottom: 30px;" class="card custom-card">
+                        <div class="card-header d-flex custom-card-header border-bottom-0 ">
+                          <h5 class="card-title" style="padding: 10px 0px;margin: 0px;">Danh sách tool</h5>
+                          <div class="card-options">
+                            <a href="#"  onclick="open_modal_tool(0)"class="btn btn-primary btn-sm"><i
+                                class="fa fa-plus"></i>
+                              Tạo mới</a>
+                          </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-12 v-data-table__wrapper" >
+                                <table style="border: 1px solid  #383d52 !important;" id="table_data" class="width_table_300 tablemanager text_center table_section table table-striped table-sm"
+                                    cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr  class="border_table_ad">
+                                            <th>STT</th>
+                                            <th>Tên</th>
+                                            <th>symbol</th>
+                                            <th>Thứ tự</th>
+                                            <th class="disableFilterBy">Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+            
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-
+                      </div>
                     </div>
-                </div>
 
-            </div>
+                  </div>
+                </div>
+        
+              </div>
 
             <div style="background-color: #2a2e3f;border: 1px solid #2a2e3f;color: #fff;" class="main-footer">
                 <div class="col-md-12 col-sm-12 text-center">
@@ -346,7 +304,7 @@
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/authen_fuction.js"></script>
-    <script src="../js/pricing_manager.js"></script>
+    <script src="../js/tool_manager.js"></script>
     <script src="../js/helper_manager.js"></script>
     <script src="../js/permission.js"></script>
     <script src="../js/menu_admin_mobile.js"></script>
@@ -363,7 +321,7 @@
 <script>
     let main_table = document.getElementById('table_data').children[1];
     let showing = document.getElementById('showing');
-    init_pricing();
+    init_tool();
 
 </script>
 

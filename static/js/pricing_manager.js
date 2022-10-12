@@ -1,5 +1,6 @@
 'use strict'
 
+var current_pricing_ = 0;
 
 /* pricing */
 async function pricing_get_all() {
@@ -98,6 +99,8 @@ async function init_pricing() {
     }
 }
 async function open_modal_pricing(params) {
+    document.getElementById('tool_list_check').innerHTML = '';
+    current_pricing_ = params;
     if (params != 0) {
         var detail_dt = await pricing_get_detail(params);
         $('#pricing_id').val(detail_dt.id || 0);
@@ -108,6 +111,7 @@ async function open_modal_pricing(params) {
         $('#limit_request').val(detail_dt.limit_request || 0);
         $('#limit_day').val(detail_dt.limit_day || 0);
         $('#level').val(detail_dt.level || 0);
+        await init_list_tool();
     } else {
         $('#pricing_id').val(0);
         $('#name').val('');
@@ -186,4 +190,102 @@ async function get_wrap_pricing_history(user_id) {
             console.warn(error);
             return undefined;
         });
+}
+
+
+async function tool_get_all() {
+    return await fetch(`/api/tool` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+
+async function tool_get_all_current() {
+    return await fetch(`/api/tool_pricing_stt/${current_pricing_}` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+
+async function tool_del(tool_id, pricing_id) {
+    var url = `/api/tool_pricing/${tool_id}`;
+    var meth = 'DELETE';
+    return await fetch(url, {
+        method: meth, // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ tool_id, pricing_id })
+    })
+        .then(response => response.json())
+        .then(result => {
+            return result;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+async function tool_pricing_save(tool_id, pricing_id) {
+    var url = `/api/tool_pricing`;
+    var meth = 'POST';
+    return await fetch(url, {
+        method: meth, // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ tool_id, pricing_id })
+    })
+        .then(response => response.json())
+        .then(result => {
+            return result;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+async function save_tool_pricing(check, id) {
+    var pricing_id = current_pricing_;
+    var tool_id = id;
+    if (check.checked === true) {
+        await tool_del(tool_id, pricing_id);
+        await tool_pricing_save(tool_id, pricing_id);
+    } else {
+        await tool_del(tool_id, pricing_id);
+    }
+}
+
+async function init_list_tool() {
+    var rs = await Promise.all([
+        tool_get_all(),
+        tool_get_all_current()
+    ]);
+    let lst_tool = rs[0];
+    let lst_stt = rs[1].map(m => (m.tool_id));
+    if (lst_tool && lst_tool.length > 0) {
+        lst_tool.forEach(item => {
+            document.getElementById('tool_list_check').innerHTML += `
+            <div class="w-50">
+            <label for="${item.symbol}" class="form-label">${item.name}</label>
+            <div class="custom-control custom-switch" style="zoom: 1.2;">
+                <input type="checkbox" ${lst_stt.includes(item.id) ? 'checked="true"' : ''} onchange="save_tool_pricing(this,${item.id})" class="custom-control-input"
+                    id="${item.symbol}">
+                <label class="custom-control-label" for="${item.symbol}"></label>
+            </div>
+        </div>
+        `;
+        })
+
+    }
 }

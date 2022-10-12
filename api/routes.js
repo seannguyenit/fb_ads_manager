@@ -22,7 +22,7 @@ module.exports = function (app) {
   let pricingCtrl = require('./controllers/pricing_controller');
   let fbCtrl = require('./controllers/fb_controller');
   let moneyCtrl = require('./controllers/money_controller');
-
+  let toolCtrl = require('./controllers/tool_controller')
 
 
   app.route('/api/login')
@@ -172,6 +172,27 @@ module.exports = function (app) {
   app.route('/api/pricing/:id')
     .put(pricingCtrl.update)
     .delete(pricingCtrl.delete);
+
+  // Tool 
+  app.route('/api/tool_pricing/check/:user_id/:symbol')
+  .get(toolCtrl.check_symbol_tool)
+  app.route('/api/tool_pricing')
+    .get(toolCtrl.get_all_tool_pricing)
+    .post(toolCtrl.insert_tool_pricing);
+  app.route('/api/tool_pricing_stt/:id')
+    .get(toolCtrl.get_tool_pricing_stt);
+
+  app.route('/api/tool_pricing/:id')
+    .delete(toolCtrl.delete_tool_pricing);
+
+  app.route('/api/tool')
+    .get(toolCtrl.get)
+    .post(toolCtrl.store);
+
+  app.route('/api/tool/:id')
+    .get(toolCtrl.detail)
+    .put(toolCtrl.update)
+    .delete(toolCtrl.delete);
 
   app.route('/api/token_fb/:ip')
     .post(accCtrl.store_token);

@@ -2,6 +2,19 @@
 // show_pricing()
 init_default();
 
+async function tool_pricing_all() {
+    return await fetch(`/api/tool_pricing` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+
+        });
+}
+
 async function init_default() {
     const color_pring = [
         '',
@@ -14,44 +27,13 @@ async function init_default() {
     var option_pricing = document.getElementById('option_pricing');
     var place_ = document.getElementById('main_content');
     var btnsave = document.getElementById('btnSave');
-    
+
     place_.innerHTML = '';
     var data = await pricing_get_all();
     if (data) {
+        var tool_pricing = await tool_pricing_all();
         data.forEach(item => {
-            //         place_.innerHTML += ` <div class="col-md-4">
-            //     <div style="background-color: #fff;box-shadow: rgba(80, 102, 224, 0.08) 0px 5px 15px 5px;margin: 0;
-            //     margin-top: 0px;
-            //     margin-bottom: 40px;
-            //   padding: 0;
-            //   border: 0;
-            //   outline: none; position: relative;" class="pricing">
-            //         <div style="background: rgba(0, 0, 0, 0) linear-gradient(45deg, rgb(55, 166, 250), rgb(170, 18, 210)) repeat scroll 0% 0%;color:white;height: 160px;
-            //         width: 100%;" class="pricing_title">
-            //         <i class=" pd_r_5 fa fa-shopping-cart" aria-hidden="true"></i>
-            //         ${item.name}
-            //         </div>
-
-            //         <div class="pricing_benefit">
-
-            //             <div class="pricing_benefit_item">
-            //                 <div><i class="fa fa-facebook" aria-hidden="true"></i> <span>${item.limit_fb} </span>FB account</div>
-            //                 <div><i class="fa fa-clock-o" aria-hidden="true"></i> <span>${item.limit_day} </span>Ngày</div>
-            //                 <div><i class="fa fa-database" aria-hidden="true"></i> <span>${item.limit_request} </span>Request/Ngày</div>
-            //             </div>
-            //         </div>
-            //         <div class="pricing_cost">
-            //             ${get_format_VND(item.price)} VNĐ
-            //             <br>
-            //             <br>
-            //         </div>
-            //         </div>
-            //         <div class="text-center absolute_buy mt-2 mb-2"><button style="border-radius: 25px;" onclick="order_pricing(${item.id},'${item.name}',${item.price},${item.limit_day},${item.level},${item.limit_fb},${item.limit_request})" class="btn btn-primary" data-lang="">  <i class=" pd_r_5 fa fa-shopping-cart" aria-hidden="true"></i></button></div>
-            // </div>`;
-            // var s = 1;
-            // alert(s++);
-            // ${item.id},'${item.name}',${item.price},${item.limit_day},${item.level},${item.limit_fb},${item.limit_request}
-            option_pricing.innerHTML +=`<option value="${item.id}"> ${item.name} (  ${item.limit_day} <span data-lang="day"> Ngày</span> )</option>`;
+            option_pricing.innerHTML += `<option value="${item.id}"> ${item.name} (  ${item.limit_day} <span data-lang="day"> Ngày</span> )</option>`;
             place_.innerHTML += `    
             <div class="my-4 col-sm-6 col-md-4 col-lg-3 col-12">
             <div class="rounded-xl boxShadow-hover c-pointer pos-relative v-card v-sheet theme--light pb-6">
@@ -74,7 +56,7 @@ async function init_default() {
                   <h5 style="color: rgb(88, 108, 155);"><span data-lang="rights.">Quyền Lợi</span></h5>
                 </div>
                 <div class="d-flex justify-center">
-                  <div>
+                  <div id="pricing-info-${item.id}">
                     <div class="d-flex align-center animation-content mt-2">
                       <div><i aria-hidden="true" class="v-icon notranslate mb-1 fas fa-users theme--light"
                           style="font-size: 14px; color: rgb(60, 138, 205); caret-color: rgb(60, 138, 205);"></i>
@@ -121,16 +103,33 @@ async function init_default() {
     `;
 
         });
+        tool_pricing.forEach(tp => {
+            var ele = document.getElementById(`pricing-info-${tp.pricing_id}`);
+            if (ele) {
+                ele.innerHTML += `
+                <div class="d-flex align-center animation-content mt-2">
+                <div><i aria-hidden="true"
+                    class="v-icon notranslate mb-1 fab fa-facebook theme--light"
+                    style="font-size: 14px; color: rgb(60, 138, 205); caret-color: rgb(60, 138, 205);"></i>
+                </div>
+                <div class="ml-3">
+                ${tp.tool_name} <span></span>
+                </div>
+                 
+              </div>
+                `
+            }
+        })
     }
 }
 
-async function check_order_pricing(){
-    var id_p =  $('#option_pricing').val();
+async function check_order_pricing() {
+    var id_p = $('#option_pricing').val();
     var data = await pricing_get_all();
     if (data) {
         data.forEach(item => {
-            if(Number(item.id) === Number(id_p)){
-             order_pricing(item.id,item.name,item.price,item.limit_day,item.level,item.limit_fb,item.limit_request);
+            if (Number(item.id) === Number(id_p)) {
+                order_pricing(item.id, item.name, item.price, item.limit_day, item.level, item.limit_fb, item.limit_request);
             }
         })
     }
@@ -244,6 +243,6 @@ async function get_wrap_pricing_history(user_id) {
 //     }
 // }
 
- function open_modal() {
+function open_modal() {
     $('#pricing_ticket').modal('show');
 }

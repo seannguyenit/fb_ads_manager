@@ -150,6 +150,20 @@ async function menu_get_current_menu() {
         });
 }
 
+async function check_tool_symbol(symbol) {
+    var cr_u = get_cr_user();
+    return await fetch(`/api/tool_pricing/check/${cr_u.id}/${symbol}` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+
+
 async function acc_logout() {
     //await check_authen();
     var user = get_cr_user('user');

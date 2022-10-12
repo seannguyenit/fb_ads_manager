@@ -29,6 +29,9 @@ module.exports = {
     pricing_manager: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/pricing_m.html'))
     },
+    tool_manager: (req, res) => {
+        res.sendFile(path.join(__dirname, '../../view/tool_manager.html'))
+    },
     pricing_public: (req, res) => {
         res.sendFile(path.join(__dirname, '../../view/pricing_public.html'))
     },

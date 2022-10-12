@@ -30,9 +30,37 @@ const option_get = {
 };
 
 
+init_tool_list();
 init_default();
 check_service();
 run_menu_tool();
+
+async function init_tool_list() {
+    document.getElementById('mini-menu-tool').innerHTML = '';
+    var lst_tool = await tool_get_all();
+    if (lst_tool) {
+        lst_tool.forEach(tool => {
+            document.getElementById('mini-menu-tool').innerHTML += `
+            <div onclick="run_menu_tool(this)"
+                class="p-3 mini-menu-tool-item ${tool.id === 1 ? 'active' : ''}"
+                data-target="${tool.symbol}">${tool.name}</div>
+            `
+        })
+    }
+}
+
+async function tool_get_all() {
+    return await fetch(`/api/tool` /*, options */)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
+}
+
 async function run_menu_tool(e) {
     var cr_ele = e;
     var target = "tool2";
@@ -63,12 +91,19 @@ async function run_menu_tool(e) {
         }
     })
     //
-
+    await check_pricing_has_tool(target);
     if (target === "tool8") {
         run_tool8_setup();
     }
 }
 
+async function check_pricing_has_tool(symbol) {
+    let tool_info = await check_tool_symbol(symbol);
+    if (!tool_info || !tool_info.tool_id) {
+        toast_error("Mua gói dịch vụ để sử dụng !");
+        window.location.href = 'pricing';
+    }
+}
 
 
 async function acc_get_detail() {
@@ -380,22 +415,22 @@ async function PreviewImage() {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("file-input").files[0]);
         var s = Math.round(document.getElementById("file-input").files[0].size);
-        if (s >= 100*1024*1024) {
+        if (s >= 100 * 1024 * 1024) {
             stop_loading1();
             mess_error('file bạn chọn vướt quá 100MB, load lại trang để tiếp tục !');
             toast_error('file bạn chọn vướt quá 100MB, load lại trang để tiếp tục !');
             return;
         }
-        else{
-        oFReader.onload = function (oFREvent) {
-            // document.getElementById("img_1").src = oFREvent.target.result;
-        };
-        var new_obj = await upload_and_return_url(document.getElementById("file-input"), get_token_ads(), get_token_user(), 1);
-        if (new_obj) {
-            document.getElementById("img_1").src = new_obj.images[document.getElementById("file-input").files[0].name].url
-            document.getElementById("img_1").dataset.hash = new_obj.images[document.getElementById("file-input").files[0].name].hash
+        else {
+            oFReader.onload = function (oFREvent) {
+                // document.getElementById("img_1").src = oFREvent.target.result;
+            };
+            var new_obj = await upload_and_return_url(document.getElementById("file-input"), get_token_ads(), get_token_user(), 1);
+            if (new_obj) {
+                document.getElementById("img_1").src = new_obj.images[document.getElementById("file-input").files[0].name].url
+                document.getElementById("img_1").dataset.hash = new_obj.images[document.getElementById("file-input").files[0].name].hash
+            }
         }
-    }
         // console.log(new_obj);
     } catch (error) {
         stop_loading1();
@@ -410,22 +445,22 @@ async function PreviewImage1() {
     try {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("file-input1").files[0]);
-        var s = Math.round(document.getElementById("file-input1").files[0].size );
-        if (s >= 100*1024*1024) {
+        var s = Math.round(document.getElementById("file-input1").files[0].size);
+        if (s >= 100 * 1024 * 1024) {
             stop_loading2();
             mess_error('file bạn chọn vướt quá 100MB, load lại trang để tiếp tục !')
             toast_error('file bạn chọn vướt quá 100MB, load lại trang để tiếp tục !');
             return;
-        } 
-        else{
-        oFReader.onload = function (oFREvent) {
-            // document.getElementById("img_2").src = oFREvent.target.result;
-        };
-        var new_obj = await upload_and_return_url(document.getElementById("file-input1"), get_token_ads(), get_token_user(), 2);
-        if (new_obj) {
-            document.getElementById("img_2").src = new_obj.images[document.getElementById("file-input1").files[0].name].url
-            document.getElementById("img_2").dataset.hash = new_obj.images[document.getElementById("file-input1").files[0].name].hash
         }
+        else {
+            oFReader.onload = function (oFREvent) {
+                // document.getElementById("img_2").src = oFREvent.target.result;
+            };
+            var new_obj = await upload_and_return_url(document.getElementById("file-input1"), get_token_ads(), get_token_user(), 2);
+            if (new_obj) {
+                document.getElementById("img_2").src = new_obj.images[document.getElementById("file-input1").files[0].name].url
+                document.getElementById("img_2").dataset.hash = new_obj.images[document.getElementById("file-input1").files[0].name].hash
+            }
         }
         console.log(new_obj);
     } catch (error) {
