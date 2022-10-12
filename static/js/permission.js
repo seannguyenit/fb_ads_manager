@@ -469,7 +469,7 @@ function check_user_id_in_des(description, user_id) {
         var des = description.toLowerCase()
         var number = des.indexOf('napthe');
         var d = des.substring(Number(number) + 6, Number(number) + 10);
-        return d === id_user;
+        return Number(d) === user_id;
     } catch (error) {
         console.log(error);
     }
@@ -510,7 +510,7 @@ async function insert_acb_bank() {
             var stt_rs = 0;
             for (let index_acb = 0; index_acb < rs_acb_bank.transactions.length; index_acb++) {
                 const f = rs_acb_bank.transactions[index_acb];
-                if (f.transactionID && f.transactionID.length > 0 && f.type === "IN" && !list_topup_.includes(f.transactionID) && check_user_id_in_des(f.description, user_id)) {
+                if (f.type === "IN" && !list_topup_.includes(f.transactionID) && check_user_id_in_des(f.description, user_id)) {
                     let dd_ = f.transactionDate.substring(0, 2);
                     let m_ = f.transactionDate.substring(3, 5);
                     let y_ = f.transactionDate.substring(6, 10);
