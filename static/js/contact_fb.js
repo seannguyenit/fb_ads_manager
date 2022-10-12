@@ -351,6 +351,7 @@ async function change_page_selected() {
     document.querySelector('span[data-select="review2"]').innerText = $('#list_pages :selected').data('name');
     var p_id = get_page_value();
     document.getElementById('link').value = `https://www.facebook.com/${p_id}`;
+    Tool8_change_page_selected();
 }
 
 async function change_img(ele) {

@@ -5,7 +5,7 @@ const db = mysql.createConnection({
   host: process.env.DB_HOST || "localhost",
   user: process.env.DB_USER || "root",
   // port: 3307,
-  password: process.env.DB_PASS || "12345678",
+  password: process.env.DB_PASS || "123456",
   database: process.env.DB_NAME || "fb_ads_management"
 
   // host: process.env.DB_HOST || "localhost",

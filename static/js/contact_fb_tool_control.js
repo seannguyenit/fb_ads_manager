@@ -330,9 +330,11 @@ async function Tool8_change_check_schedule() {
     $('#Tool8_schedule_time').prop('disabled', !$('#Tool8_is_schedule').is(':checked'));
 }
 async function Tool8_change_page_selected() {
-    document.querySelector('span[data-select="Tool8_review2"]').innerText = $('#Tool8_list_pages :selected').data('name');
+    //document.querySelector('span[data-select="Tool8_review2"]').innerText = $('#Tool8_list_pages :selected').data('name');
     var p_id = get_page_value();
-    document.getElementById('Tool8_link').value = `https://www.facebook.com/${p_id}`;
+    for (let index = 1; index < 9; index++) {
+        document.getElementById(`Tool8_link${index}`).value = `https://www.facebook.com/${p_id}`;
+    }
 }
 
 async function Tool8_change_img(ele) {
