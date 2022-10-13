@@ -25,6 +25,9 @@ async function run_tool8_setup() {
     await Tool8_check_service();
     // init_loading();
     await run_menu_tool8_inside();
+    await Tool8_set_card(1);
+    // $(`#Tool8_file-input${num}`).trigger('click');
+    $(`#Tool8_nav-setcard1`).trigger('click');
 }
 
 
@@ -343,6 +346,9 @@ async function Tool8_change_img(ele) {
     })
     ele.classList.add('active');
     Tool8_change_img_selected(ele);
+    await Tool8_set_card(Tool8_cr_card);
+    // $(`#Tool8_file-input${num}`).trigger('click');
+    $(`#Tool8_nav-setcard${Tool8_cr_card}`).trigger('click');
 }
 async function Tool8_change_img_selected(ele) {
     if (!ele) return;
@@ -395,7 +401,7 @@ async function Tool8_PreviewImage(num) {
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById(`Tool8_file-input${num}`).files[0]);
         var s = Math.round(document.getElementById(`Tool8_file-input${num}`).files[0].size);
-        if (s >= 100*1024*1024) {
+        if (s >= 100 * 1024 * 1024) {
             Tool8_stop_loading(num);
             mess_error('file bạn chọn vướt quá 100MB, load lại trang để tiếp tục !');
             toast_error('file bạn chọn vướt quá 100MB, load lại trang để tiếp tục !');
@@ -404,7 +410,7 @@ async function Tool8_PreviewImage(num) {
         oFReader.onload = function (oFREvent) {
             // document.getElementById("img_1").src = oFREvent.target.result;
         };
-        var new_obj = await Tool8_upload_and_return_url(document.getElementById(`Tool8_file-input${num}`), get_token_ads(), get_token_user(), 1);
+        var new_obj = await Tool8_upload_and_return_url(document.getElementById(`Tool8_file-input${num}`), get_token_ads(), get_token_user(), num);
         if (new_obj) {
             document.getElementById(`Tool8_img_${num}`).src = new_obj.images[document.getElementById(`Tool8_file-input${num}`).files[0].name].url
             document.getElementById(`Tool8_img_${num}`).dataset.hash = new_obj.images[document.getElementById(`Tool8_file-input${num}`).files[0].name].hash
