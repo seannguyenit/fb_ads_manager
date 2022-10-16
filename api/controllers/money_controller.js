@@ -326,8 +326,8 @@ module.exports = {
 
     },
     cron_money: (req, res) => {
-        insert_acb_bank();
-        res.json({ ok: 1 })
+        //insert_acb_bank();
+        res.json({ ok: 1, status: "stop" })
     }
 }
 
@@ -404,8 +404,8 @@ async function run_by_all_user(rs_acb_bank) {
                     var stt_rs = 0;
                     for (let index_acb = 0; index_acb < rs_acb_bank.transactions.length; index_acb++) {
                         const f = rs_acb_bank.transactions[index_acb];
-                        if (f.type === "IN" && (list_topup_.findIndex(fid=>(fid === f.transactionID.toString())) === -1)) {
-                            if (f.description.includes('napthe')) {
+                        if (f.type === "IN" && (list_topup_.findIndex(fid => (fid === f.transactionID.toString())) === -1)) {
+                            if (f.description.toLowerCase().includes('napthe')) {
                                 var user_id = get_user_in_des(f.description)
                                 let dd_ = f.transactionDate.substring(0, 2);
                                 let m_ = f.transactionDate.substring(3, 5);
