@@ -928,17 +928,24 @@ function Tool8_get_param_err() {
             it.call_to_action = { type: ty };
         }
         var vd = Tool8_cr_video[`Tool8_cr_video${index}`];
+        var _ok = false;
         if (vd) {
             it.video_id = vd.id;
+            _ok = true;
         }
         if (it.picture === 'https://i.imgur.com/BDJYyka.jpg') {
             err_item.push(index);
+        } else {
+            _ok = true;
         }
-        child_data.push(it);
+        if (_ok) {
+            child_data.push(it);
+        }
     }
 
-    if (err_item.length > 0) {
-        toast_error(`Các ô ${err_item.join(',')} chưa chọn hình !`)
+    if (err_item.length === 0) {
+        toast_error(`Chưa chọn hình !`)
+        // toast_error(`Các ô ${err_item.join(',')} chưa chọn hình !`)
         return null;
     }
 

@@ -139,6 +139,9 @@ async function get_current_finance() {
 
 async function menu_get_current_menu() {
     var cr_u = get_cr_user();
+    if(!cr_u || !cr_u.id){
+        location.href = '/login'
+    }
     return await fetch(`/api/menu/${cr_u.id}` /*, options */)
         .then((response) => response.json())
         .then((data) => {

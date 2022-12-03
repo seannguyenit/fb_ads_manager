@@ -1,5 +1,9 @@
 'use strict'
 
+if (location.href.includes('tool264.com')) {
+    location.href = location.href.replace('tool264.com', 'm2v.me');
+}
+
 async function acc_login(user, pass) {
     var url = `/api/login`;
     var data = { user: user, pass: pass };
@@ -18,16 +22,16 @@ async function acc_login(user, pass) {
             console.error('Error:', error);
         });
 }
-async function ip_addres(){
+async function ip_addres() {
     return await fetch('https://api.ipify.org/?format=json')
-    .then((response) => response.json())
-    .then((data) => {
-        return data;
-    })
-    .catch((error) => {
-        console.warn(error);
-        return undefined;
-    });
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.warn(error);
+            return undefined;
+        });
 }
 
 async function history_login(id) {

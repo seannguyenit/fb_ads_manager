@@ -3,6 +3,7 @@
 init_page();
 
 async function init_page() {
+    
     await init_menu()
     await Promise.all([
         menu_contacst(),
@@ -43,7 +44,7 @@ function init_bank_topup() {
 // history_login()
 /* menu */
 async function menu_get_template() {
-    return await fetch(`/api/menu` /*, options */)
+    return await fetch(`/api/menu_template` /*, options */)
         .then((response) => response.json())
         .then((data) => {
             return data;
@@ -109,7 +110,7 @@ async function init_menu() {
         // menu.innerHTML = '';
         // menu_user.innerHTML = '';
         var cr_user = get_cr_user();
-        if (!cr_user) {
+        if (!cr_user || !cr_user.id) {
             location.href = '/login'
         }
 

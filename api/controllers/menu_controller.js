@@ -59,14 +59,14 @@ module.exports = {
         })
     },
     get_img_logo: (req, res) => {
-        let sql = 'SELECT * from logo where type = 1 and active = 1 limit 1;'
+        let sql = 'SELECT * from `logo` where type = 1 and active = 1 limit 1;'
         db.query(sql, (err, response) => {
             if (err) throw err
             res.json(response)
         })
     },
     get_img_login: (req, res) => {
-        let sql = 'SELECT * from logo where type = 2 and active = 1 limit 1;'
+        let sql = 'SELECT * from `logo` where type = 2 and active = 1 limit 1;'
         db.query(sql, (err, response) => {
             if (err) throw err
             res.json(response)
@@ -94,7 +94,8 @@ module.exports = {
     },
     get_by_user: (req, res) => {
         let sql = 'CALL `get_all_menu_by_user`(?);'
-        db.query(sql, [req.params.id], (err, response) => {
+        var id = Number(req.params.id)||0;
+        db.query(sql, [id], (err, response) => {
             if (err) throw err
             res.json(response)
         })

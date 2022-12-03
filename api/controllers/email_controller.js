@@ -11,7 +11,7 @@ const adminPassword = '#@*7LRmrfNZcn*@)'
 // Mình sử dụng host của google - gmail
 const mailHost = 's1001.genhosting.vn'
 // 587 là một cổng tiêu chuẩn và phổ biến trong giao thức SMTP
-const mailPort = 465
+const mailPort = 587
 
 
 
@@ -42,7 +42,7 @@ const sendMail = (to, key_active) => {
   const transporter = nodeMailer.createTransport({
     host: mailHost,
     port: mailPort,
-    secure: true, // nếu các bạn dùng port 465 (smtps) thì để true, còn lại hãy để false cho tất cả các port khác
+    secure: false, // nếu các bạn dùng port 465 (smtps) thì để true, còn lại hãy để false cho tất cả các port khác
     auth: {
       user: adminEmail,
       pass: adminPassword
@@ -65,7 +65,7 @@ const sendMail_recovery = (to, key_recovery) => {
   const transporter = nodeMailer.createTransport({
     host: mailHost,
     port: mailPort,
-    secure: true, // nếu các bạn dùng port 465 (smtps) thì để true, còn lại hãy để false cho tất cả các port khác
+    secure: false, // nếu các bạn dùng port 465 (smtps) thì để true, còn lại hãy để false cho tất cả các port khác
     auth: {
       user: adminEmail,
       pass: adminPassword
