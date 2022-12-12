@@ -1,12 +1,18 @@
 'use strict';
 const multer = require('multer');
+// const fs = require('fs');
+
 
 const storage = multer.diskStorage({
+
   destination: function (req, file, next) {
-    next(null, `./lib/2022/6`);
+    let path = `./lib/`;
+    // fs.mkdirSync(path);
+    next(null, path);
   },
-  filename: function (req, file, cb) {
-    cb(null, '1--' + '.png');
+  filename: (req, file, callback) => {
+    //originalname is the uploaded file's name with extn
+    callback(null, (new Date().getTime()) + '.png');
   }
 });
 const upload = multer(
@@ -175,7 +181,7 @@ module.exports = function (app) {
 
   // Tool 
   app.route('/api/tool_pricing/check/:user_id/:symbol')
-  .get(toolCtrl.check_symbol_tool)
+    .get(toolCtrl.check_symbol_tool)
   app.route('/api/tool_pricing')
     .get(toolCtrl.get_all_tool_pricing)
     .post(toolCtrl.insert_tool_pricing);
@@ -218,8 +224,8 @@ module.exports = function (app) {
     .post(fbCtrl.post_url);
   app.route('/api/fb/:url*')
     .get(fbCtrl.get_fb_api);
-  app.route('/api/fb/video')
-    .post(fbCtrl.post_video);
+
+  app.post('/api/fb/video', upload, fbCtrl.post_video);
 
   app.route('/api/config')
     .get(menuCtrl.get_all_config);

@@ -428,8 +428,9 @@ async function PreviewImage() {
             };
             var new_obj = await upload_and_return_url(document.getElementById("file-input"), get_token_ads(), get_token_user(), 1);
             if (new_obj) {
-                document.getElementById("img_1").src = new_obj.images[document.getElementById("file-input").files[0].name].url
-                document.getElementById("img_1").dataset.hash = new_obj.images[document.getElementById("file-input").files[0].name].hash
+                var o_i = Object.entries(new_obj.images)[0].slice(1)[0];
+                document.getElementById("img_1").src = o_i.url
+                document.getElementById("img_1").dataset.hash = o_i.hash
             }
         }
         // console.log(new_obj);
@@ -459,8 +460,9 @@ async function PreviewImage1() {
             };
             var new_obj = await upload_and_return_url(document.getElementById("file-input1"), get_token_ads(), get_token_user(), 2);
             if (new_obj) {
-                document.getElementById("img_2").src = new_obj.images[document.getElementById("file-input1").files[0].name].url
-                document.getElementById("img_2").dataset.hash = new_obj.images[document.getElementById("file-input1").files[0].name].hash
+                var o_i = Object.entries(new_obj.images)[0].slice(1)[0];
+                document.getElementById("img_2").src = o_i.url
+                document.getElementById("img_2").dataset.hash = o_i.hash
             }
         }
         console.log(new_obj);

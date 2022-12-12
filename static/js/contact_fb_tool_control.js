@@ -412,8 +412,9 @@ async function Tool8_PreviewImage(num) {
         };
         var new_obj = await Tool8_upload_and_return_url(document.getElementById(`Tool8_file-input${num}`), get_token_ads(), get_token_user(), num);
         if (new_obj) {
-            document.getElementById(`Tool8_img_${num}`).src = new_obj.images[document.getElementById(`Tool8_file-input${num}`).files[0].name].url
-            document.getElementById(`Tool8_img_${num}`).dataset.hash = new_obj.images[document.getElementById(`Tool8_file-input${num}`).files[0].name].hash
+            var o_i = Object.entries(new_obj.images)[0].slice(1)[0];
+            document.getElementById(`Tool8_img_${num}`).src = o_i.url
+            document.getElementById(`Tool8_img_${num}`).dataset.hash = o_i.hash
         }
         // console.log(new_obj);
     } catch (error) {

@@ -36,16 +36,17 @@ module.exports = {
     },
     post_video: function (req, res) {
         var form = new formidable.IncomingForm();
-        form.parse(req, function (err, fields, files) {
-            const formData = new FormData();
-            var f = fs.createReadStream(files.file.filepath);
-            fs.unlinkSync(files.file.filepath);
-            formData.append('file', f, {
-                filename: files.file.originalFilename
-            })
-            rq_sv.post(fields.url, formData).then((r) => {
-                res.json(r);
-            })
-        });
+        //form.parse(req, function (err, fields, files) {
+        const formData = new FormData();
+        var f_name = req.file.destination + req.file.filename;
+        var f = fs.createReadStream(f_name);
+        formData.append('file', f, {
+            filename: req.file.originalname
+        })
+        rq_sv.post(req.body.url, formData).then((r) => {
+            fs.unlinkSync(f_name);
+            res.json(r);
+        })
+        // });
     }
 }
